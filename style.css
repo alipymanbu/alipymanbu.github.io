@@ -317,10 +317,9 @@ a.pg-btn:hover { color: var(--accent); border-color: var(--accent); background: 
 .arch-year[open] summary::after { content: "–"; }
 .arch-year summary:hover { color: var(--accent); }
 .arch-list { list-style: none; }
-.arch-list li { display: flex; gap: 18px; align-items: baseline; padding: 9px 20px; border-bottom: 1px solid var(--border); }
-.arch-list li:last-child { border-bottom: none; }
+.arch-list li { display: flex; gap: 14px; align-items: baseline; padding: 9px 20px; border-bottom: 1px solid var(--border); }
 .arch-list li:hover { background: var(--panel-2); }
-.arch-list time { color: var(--faint); font-family: var(--mono); font-size: .8rem; flex-shrink: 0; }
+.arch-list time { margin-left: auto; color: var(--faint); font-family: var(--mono); font-size: .8rem; flex-shrink: 0; }
 .arch-list a { color: var(--text); font-size: .95rem; line-height: 1.6; }
 .arch-list a:hover { color: var(--accent); }
 
@@ -404,7 +403,9 @@ a.pg-btn:hover { color: var(--accent); border-color: var(--accent); background: 
 
 @media (max-width: 900px) {
   .card-grid, .card-grid.cols-3 { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+  /* 移动端页脚单列居中（不然三块文本全部靠左挤在一边） */
+  .footer-grid { grid-template-columns: 1fr; gap: 26px; text-align: center; }
+  .footer-bar { flex-direction: column; align-items: center; gap: 6px; text-align: center; }
   .post-nav { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
