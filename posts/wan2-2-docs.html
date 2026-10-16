@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑 · 老杨技术栈</title>
+  
+<meta name="description" content="Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/wan2-2-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑">
+<meta property="og:description" content="Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/wan2-2-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/wan2-2-docs/performance-benchmark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/wan2-2-docs/performance-benchmark.png">
+
+<meta name="twitter:title" content="Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑">
+<meta name="twitter:description" content="Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Wan2.2 \u662f\u76ee\u524d\u5f00\u6e90\u9886\u57df\u6548\u679c\u6700\u597d\u7684\u89c6\u9891\u751f\u6210\u6a21\u578b\u4e4b\u4e00\uff0c\u4f46\u672c\u5730\u90e8\u7f72\u8fdc\u6ca1\u6709 README \u770b\u8d77\u6765\u90a3\u4e48\u987a\u5229\u3002\u672c\u6587\u6574\u7406\u4e86\u4ece\u663e\u5b58\u6ea2\u51fa\u3001\u5206\u8fa8\u7387\u914d\u7f6e\u5230 FlashAttention \u5b89\u88c5\u7684\u516b\u4e2a\u5e38\u89c1\u7ffb\u8f66\u70b9\uff0c\u6bcf\u4e2a\u90fd\u7ed9\u51fa\u73b0\u8c61\u3001\u539f\u56e0\u548c\u89e3\u51b3\u65b9\u6848\u3002", "headline": "Wan2.2 \u672c\u5730\u90e8\u7f72\u907f\u5751\u6307\u5357\uff1a\u4ece OOM \u5230 FlashAttention \u7f16\u8bd1\u5931\u8d25\uff0c\u6211\u8e29\u8fc7\u7684\u516b\u4e2a\u5751", "image": ["https://alipymanbu.github.io/images/wan2-2-docs/performance-benchmark.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/wan2-2-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/wan2-2-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Wan2.2 \u672c\u5730\u90e8\u7f72\u907f\u5751\u6307\u5357\uff1a\u4ece OOM \u5230 FlashAttention \u7f16\u8bd1\u5931\u8d25\uff0c\u6211\u8e29\u8fc7\u7684\u516b\u4e2a\u5751", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 13 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+  </header>
+  <div class="prose">
+<p>第一次在 4090 上尝试跑 Wan2.2 的时候，我以为跟着 README 敲命令就能出片——毕竟<a href="https://wan2-2.uerg.quest" target="_blank" rel="noopener">官网</a>宣传里 TI2V-5B 是"消费级显卡友好"的典范。结果从下午折腾到半夜，控制台里反复跳出 OOM、nvcc not found、CUDA version mismatch 这些错误，一度以为显卡要报废。</p>
+<p>后来才发现，Wan2.2 的坑大多不是"模型本身有问题"，而是官方文档默认你已经踩过同类模型的所有前置知识、或者你手里正好有一张 A100。如果你只有一张 24GB 的 4090、装的是 Windows、CUDA 版本还是跟着 PyTorch 默认装的，那你大概率会遇到下面这些问题。</p>
+<h2>坑一：分辨率为什么一定要是 32 的倍数？720P 不是标准分辨率吗</h2>
+<p><strong>症状</strong>：你兴冲冲地把 <code>--size 1280*720</code> 敲进命令行，控制台直接报错退出，或者跑出来的视频边缘有奇怪的黑条/拉伸。</p>
+<p><strong>原因</strong>：Wan2.2 系列的 VAE（变分自编码器）压缩比是 4×32×32——这意味着输入图像在时间、宽度、高度三个维度上都被 32 整除后再压缩。720 不能被 32 整除（720 ÷ 32 = 22.5），所以模型没法正确处理。官方文档里写了 <code>1280*704</code> 和 <code>704*1280</code> 是 TI2V-5B 的推荐分辨率，但没解释为什么，很容易让人以为是个"随便选个接近 720P 就行"的建议。</p>
+<p><strong>解法</strong>：直接用 <code>1280*704</code> 或 <code>704*1280</code>（横屏和竖屏）。如果你觉得 704 和 720 的差距太明显，记住一句话——Wan2.2 的世界里，"标准"是被 VAE 压缩率定义的，不是被影视行业定义的。</p>
+<p><img src="../images/wan2-2-docs/performance-benchmark.png" alt="Wan2.2 性能基准测试" loading="lazy"></p>
+<h2>坑二：24GB 显存跑 TI2V-5B 直接 OOM，说好的"消费级显卡友好"呢</h2>
+<p><strong>症状</strong>：你执行了官方示例命令，控制台在加载完模型权重后突然崩掉，报 <code>OutOfMemoryError: CUDA out of memory</code>，提示需要约 30GB 显存。</p>
+<p><strong>原因</strong>：官方 README 里的示例命令假设模型可以完整放进显存——那是 A100 80GB 的配置。消费级 24GB 显卡需要额外加三个参数：<code>--offload_model True</code>、<code>--convert_model_dtype</code> 和 <code>--t5_cpu</code>。其中 <code>--t5_cpu</code> 是关键——把 T5 文本编码器搬到 CPU 上跑，能瞬间释放十几个 GB 的显存。少一个都可能 OOM。</p>
+<p>我第一次跑的时候，因为嫌命令太长懒得全部复制粘贴，只加了 <code>--offload_model True</code>，结果反反复复报 OOM 半小时才意识到少了 <code>--t5_cpu</code> 这个最关键的参数。</p>
+<p><strong>解法</strong>：把下面四个参数当成不可拆分的组合拳：</p>
+<ul><li><code>--offload_model True</code>：模型分片，一部分常驻 GPU，一部分临时卸载</li><li><code>--convert_model_dtype</code>：强制 bfloat16，比默认 float32 省一半</li><li><code>--t5_cpu</code>：T5 编码器放 CPU，这是 24GB 能跑起来的前提</li><li><code>--size 1280*704</code>：分辨率控制在 VAE 友好的范围</li></ul>
+<p>如果你的显卡连 24GB 都不到（比如 16GB 的 4060 Ti），那就必须降到 480P（<code>854*480</code>），社区还有 FP8 量化的权重版本可以进一步省显存，但量化会有轻微的质量损失。</p>
+<h2>坑三：FlashAttention 编译失败，Windows 上从源码编译根本装不上</h2>
+<p><strong>症状</strong>：你跟着文档敲 <code>pip install flash-attn --no-build-isolation</code>，然后就是一长串红色的编译错误，从 <code>nvcc not found</code> 到 <code>MSVC version mismatch</code>，五花八门。</p>
+<p><strong>原因</strong>：FlashAttention 是 Wan2.2 的性能加速器——不装也能跑，但显存占用会从 22GB 涨到 30GB+，速度还慢 1.5 到 2 倍。问题是 FlashAttention 要求的编译环境极其苛刻：PyTorch ≥ 2.4.0、CUDA Toolkit 版本必须和 PyTorch 完全匹配、Python 3.10~3.12、NVIDIA 驱动也要跟上。Windows 上还要额外装 Visual Studio C++ Build Tools，而且版本不能太旧。</p>
+<p><strong>解法</strong>：分三步走。第一，确认你的 PyTorch 版本和 CUDA 版本——用 <code>python -c &quot;import torch; print(torch.__version__, torch.version.cuda)&quot;</code> 看。第二，Linux 用户老老实实 <code>pip install flash-attn --no-build-isolation</code>，记得放在所有依赖都装完之后最后再装，避免编译时找不到头文件。第三，Windows 用户别从源码编译了，直接去 FlashAttention 的 GitHub Releases 下载和你的 PyTorch+CUDA 完全匹配的预编译 wheel 文件，然后 <code>pip install 文件名.whl</code> 就行。</p>
+<p>实在装不上也能跑——就是别指望 24GB 的 4090 在 720P 下流畅出片，FlashAttention 装不上的时候 720P 可能直接 OOM，你就只能降 480P 或者用 FP8 量化了。</p>
+<h2>坑四：Prompt 扩展报 DashScope API Key 错误，环境变量明明设了</h2>
+<p><strong>症状</strong>：你设置了 <code>DASH_API_KEY</code> 环境变量，加上了 <code>--use_prompt_extend --prompt_extend_method dashscope</code> 参数，但运行时报 <code>API key not found</code> 或者认证失败。</p>
+<p><strong>原因</strong>：两个常见情况。一是你用的是阿里云国际站的账号，这时还要额外设置 <code>DASH_API_URL=https://dashscope-intl.aliyuncs.com/api/v1</code>——不设这个，SDK 会默认走国内 endpoint，国际站的 Key 在那认证不了。二是 Windows 上用 <code>set DASH_API_KEY=xxx</code> 设的环境变量只在当前命令行窗口有效，关掉窗口重新打开就没了，你需要用系统属性里的"环境变量"界面去设用户级的永久变量，或者用 PowerShell 的 <code>$env:DASH_API_KEY=&quot;xxx&quot;</code>（同样只当前会话有效）。</p>
+<p><strong>解法</strong>：先确认你的阿里云账号是国内站还是国际站，国际站记得加 <code>DASH_API_URL</code>。然后在同一个终端窗口里先 <code>echo %DASH_API_KEY%</code>（cmd）或 <code>echo $env:DASH_API_KEY</code>（PowerShell）确认变量真的存在，再跑推理命令。如果想一劳永逸，去 Windows 系统设置里加永久环境变量。</p>
+<h2>坑五：以为 A14B 系列也能在 4090 上跑，白下载了 270 亿参数的模型</h2>
+<p><strong>症状</strong>：你满怀期待地从<a href="https://wan2-2.uerg.quest/download.html" target="_blank" rel="noopener">下载</a>获取了 Wan2.2-T2V-A14B 或 A14B 的 LoRA，兴冲冲地用 4090 跑起来，结果要么直接报显存不足，要么就算勉强装上 <code>--offload_model True</code> 也卡得一动不了。</p>
+<p><strong>原因</strong>：A14B 是 MoE（混合专家）架构，虽然名字里写着"14B"，但激活参数量实际上是 270 亿级别。它需要 80GB 显存的 A100/H100，还需要多卡 FSDP 并行（<code>torchrun --nproc_per_node=8</code>）。这个需求在 README 的"硬件要求"里写得很清楚，但很多人会被 TI2V-5B 的"消费级显卡友好"宣传带偏，以为 Wan2.2 全家桶都能在 4090 上跑。</p>
+<p><strong>解法</strong>：消费级显卡（24GB 及以下）只能跑 TI2V-5B 系列。A14B 系列不用想了，要么走百炼云端 API，要么攒机上 A100/H100。</p>
+<h2>坑六：S2V-14B 语音驱动模型也以为能在本地跑</h2>
+<p><strong>症状</strong>：你对 S2V 语音驱动对口型很感兴趣，下载了模型权重，结果发现和 A14B 一样报显存不足。</p>
+<p><strong>原因</strong>：S2V-14B 需要整整 80GB 显存，和 A14B 是一个级别的硬件门槛。后来去<a href="https://wan2-2-docs.pages.dev/" target="_blank" rel="noopener">Wan2.2文档</a>翻了一下，官方专门给它写了"显存门槛"一节，但很多人跳过了直接下载。</p>
+<p><strong>解法</strong>：S2V-14B 只有云端一条路——百炼的 DashScope API 已经封装好了 S2V 的 animate 接口，你只需要准备好人像照片、音频文件和可选的姿态参考视频，调用 API 就能出对口型视频。本地想跑？没有 A100/H100 就别想了。</p>
+<h2>坑七：Prompt 扩展以为可有可无，出片效果差距巨大</h2>
+<p><strong>症状</strong>：你没开 prompt 扩展，原始 prompt 写了"两只猫在打架"，跑出来的视频猫的动作很生硬、场景细节很少，和网上别人晒的效果差很多。</p>
+<p><strong>原因</strong>：Wan2.2 官方强烈建议开启 prompt 扩展，但文档里没说清楚"不开到底会差多少"。扩展不仅仅是"帮你把短句变成长句"——它会自动补充镜头语言（特写还是远景？）、光照条件（聚光灯还是自然光？）、动作细节（毛发飞散还是手套碰撞？）。这些补充的信息直接决定了模型生成画面的丰富度和连贯性。不开扩展的话，模型只能猜你想要什么。</p>
+<p><strong>解法</strong>：默认开启。DashScope 云端 API 方式最简单，设好环境变量加两个参数就行；不想用云端的话可以下载本地 Qwen 系列模型做扩展，但会额外占显存。扩展模型的选择也有讲究——文本生视频用 Qwen2.5-14B-Instruct（效果最好但占显存），图文生视频用 Qwen2.5-VL-7B-Instruct。百炼有免费额度，超出后按量计费，对于个人玩家来说完全够用。</p>
+<h2>坑八：以为 FlashAttention 版本随便装，Hopper 架构装了 FA2 白折腾</h2>
+<p><strong>症状</strong>：你有 H100，装了 FlashAttention 2 以为能用，结果推理速度和不装差不多，也没省显存。</p>
+<p><strong>原因</strong>：FlashAttention 有三个版本，分别对应不同的 GPU 架构。H100（Hopper）应该用 FlashAttention 3，A100/4090/3090（Ampere）用 FlashAttention 2，再老的架构才考虑 FA1。版本不对的话，要么编译时不报错但运行时不走优化路径，要么直接性能不提升。官方文档里有一张版本对应表，但藏得比较深。</p>
+<p><strong>解法</strong>：查表选版本。Hopper → FA3，Ampere → FA2，其他 → FA1（不推荐）。H100 用 FA3 相比 FA2 在长序列推理上有明显的速度提升和显存节省，值得专门装一下。</p>
+<p><img src="../images/wan2-2-docs/moe-architecture.png" alt="Wan2.2 MoE 架构示意" loading="lazy"></p>
+<h2>防坑清单速查</h2>
+<p>整理了几个最容易被忽略但一踩就半天出不来的点：</p>
+<ul><li><strong>参数组合拳不能拆</strong>：24GB 显卡跑 TI2V-5B 必须 <code>--offload_model True</code> + <code>--convert_model_dtype</code> + <code>--t5_cpu</code> 三个一起上，少一个都可能 OOM</li><li><strong>分辨率记 704 不记 720</strong>：Wan2.2 的 VAE 压缩比决定了高宽必须是 32 的倍数，704 才是正确的"720P"</li><li><strong>FlashAttention 装不上先查架构</strong>：Hopper 要 FA3，Ampere 要 FA2，装错版本等于没装</li><li><strong>A14B 和 S2V-14B 没有本地 24GB 方案</strong>：直接上云端，别浪费下载时间</li><li><strong>Prompt 扩展默认开启</strong>：不开扩展出片质量会差一个档次，DashScope 有免费额度</li></ul>
+<p>知道这些坑之后，Wan2.2 其实相当省心——只要硬件对上、参数没漏、FlashAttention 装对版本，出片效果确实对得起"开源最强"的名头。开源项目的代码在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Wan2.2" target="_blank" rel="noopener">GitHub</a>有完整仓库，国内用户也能在<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Wan2.2" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Wan2.2" target="_blank" rel="noopener">GitCode</a>上找到对应的镜像副本。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/retroarch-docs.html">RetroArch 用了三年才发现的四个狠活——着色器叠 16 层、观战大厅、按游戏存配置……</a></h2>
+  <p class="card-desc">大家用 RetroArch 一般就是选核心加载 ROM 玩游戏吧？其实它藏着一堆官方不怎么宣传的进阶功能，从着色器的多层叠加到 Netplay 的观战模式，每一个都能彻底改变你的复古游戏体验。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/motivation-docs.html">Motivation 深度盘点：一款把正能量拆成三条路径递到你眼前的语录 App</a></h2>
+  <p class="card-desc">Motivation 不止是每日推一句鸡汤那么简单——应用内、小组件、通知三条路径各自独立配内容，多提醒组分时段精准送达，Affirmations 练习和签到 streak 把碎片化正念练成习惯。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/itch-docs.html">用 itch 客户端踩过的五个坑：装不上、打不开、更新失败怎么办</a></h2>
+  <p class="card-desc">itch.io 客户端看着简单，实际在系统版本、杀毒拦截、依赖项等方面藏着几个高频翻车点。本文整理我踩过的五个真实坑，每个都有症状、原因和解法，附防坑清单速查。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/retroarch-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">RetroArch 用了三年才发现的四个狠活——着色器叠 16 层、观战大厅、按游戏存配置……</span>
+  </a>
+  
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>
