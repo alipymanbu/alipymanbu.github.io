@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>WinKawaks 从零到一：30 分钟把街机模拟器跑起来 · 老杨技术栈</title>
+  
+<meta name="description" content="下载解压、放 ROM、启动扫描、配按键——跟着五步走完，你的 WinKawaks 就能跑出第一款游戏。文章末尾还整理了三个新手最容易翻车的卡点和解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/kawaks-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WinKawaks 从零到一：30 分钟把街机模拟器跑起来">
+<meta property="og:description" content="下载解压、放 ROM、启动扫描、配按键——跟着五步走完，你的 WinKawaks 就能跑出第一款游戏。文章末尾还整理了三个新手最容易翻车的卡点和解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/kawaks-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/kawaks-docs/main-window.gif">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/kawaks-docs/main-window.gif">
+
+<meta name="twitter:title" content="WinKawaks 从零到一：30 分钟把街机模拟器跑起来">
+<meta name="twitter:description" content="下载解压、放 ROM、启动扫描、配按键——跟着五步走完，你的 WinKawaks 就能跑出第一款游戏。文章末尾还整理了三个新手最容易翻车的卡点和解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e0b\u8f7d\u89e3\u538b\u3001\u653e ROM\u3001\u542f\u52a8\u626b\u63cf\u3001\u914d\u6309\u952e\u2014\u2014\u8ddf\u7740\u4e94\u6b65\u8d70\u5b8c\uff0c\u4f60\u7684 WinKawaks \u5c31\u80fd\u8dd1\u51fa\u7b2c\u4e00\u6b3e\u6e38\u620f\u3002\u6587\u7ae0\u672b\u5c3e\u8fd8\u6574\u7406\u4e86\u4e09\u4e2a\u65b0\u624b\u6700\u5bb9\u6613\u7ffb\u8f66\u7684\u5361\u70b9\u548c\u89e3\u6cd5\u3002", "headline": "WinKawaks \u4ece\u96f6\u5230\u4e00\uff1a30 \u5206\u949f\u628a\u8857\u673a\u6a21\u62df\u5668\u8dd1\u8d77\u6765", "image": ["https://alipymanbu.github.io/images/kawaks-docs/main-window.gif"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/kawaks-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/kawaks-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "WinKawaks \u4ece\u96f6\u5230\u4e00\uff1a30 \u5206\u949f\u628a\u8857\u673a\u6a21\u62df\u5668\u8dd1\u8d77\u6765", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">WinKawaks 从零到一：30 分钟把街机模拟器跑起来</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">WinKawaks 从零到一：30 分钟把街机模拟器跑起来</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">下载解压、放 ROM、启动扫描、配按键——跟着五步走完，你的 WinKawaks 就能跑出第一款游戏。文章末尾还整理了三个新手最容易翻车的卡点和解法。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程结束时，你将能够：<strong>下载并运行 WinKawaks、正确放置 ROM 文件、成功载入一款街机游戏、配置好键盘或手柄按键</strong>。全程五步，中间遇到卡点直接跳到文末故障排查。</p>
+<h2>准备工作：你需要知道什么</h2>
+<p>WinKawaks 是街机模拟器圈的老牌选手，它的<a href="https://kawaks.uerg.quest" target="_blank" rel="noopener">官网</a>维护着最新版本和适配说明，专门模拟 <strong>Capcom CPS-1 / CPS-2</strong> 和 <strong>SNK Neo Geo</strong> 三种基板——拳皇 97、街头霸王 2、合金弹头、恐龙快打这些经典街机都是它的菜。</p>
+<ul><li><strong>运行平台</strong>：Windows 7 / 10 / 11，32 位 64 位都行</li><li><strong>前置条件</strong>：一份 WinKawaks 程序包 + 至少一款游戏的 ROM 文件</li><li><strong>不需要</strong>：安装过程、管理员权限、联网安装依赖——解压即用</li></ul>
+<h2>第一步：下载并解压 WinKawaks</h2>
+<p>先拿到程序本体。安装包从<a href="https://kawaks.uerg.quest/download.html" target="_blank" rel="noopener">kawaks下载</a>拿，建议解压到一个<strong>没有中文字符的纯英文路径</strong>——比如 <code>D:\Games\WinKawaks</code>。中文路径在某些老版本 Kawaks 上会导致 ROM 扫描失败，这里直接规避掉。</p>
+<p>解压后的目录结构大概这样：</p>
+<pre><code>WinKawaks/
+├── Winkawaks.exe       ← 双击这个启动
+├── Winkawaks.dll
+├── roms/               ← 游戏 ROM 放这里
+├── saves/              ← 存档自动存在这
+├── winkawaks.ini       ← 主配置文件
+└── ...</code></pre>
+<p>这里注意：<strong>解压完先别急着删压缩包</strong>，等确认能正常启动再清理不迟。如果双击 exe 没反应，可以右键以管理员身份运行试试。</p>
+<p><img src="../images/kawaks-docs/main-window.gif" alt="WinKawaks 主窗口" loading="lazy"></p>
+<h2>第二步：把 ROM 文件放进 roms 目录</h2>
+<p>这是新手最容易犯迷糊的一步——我单独拎出来讲。</p>
+<p><strong>ROM 是什么</strong>：街机游戏主板上的只读芯片转储文件，WinKawaks 本身<strong>不带任何游戏</strong>，所有内容都来自 ROM。每款游戏对应一个 ZIP 包，ZIP 内部是 <code>.bin</code>、<code>.prg</code>、<code>.p1</code> 之类的原始芯片文件。</p>
+<p><strong>关键纪律</strong>：</p>
+<ol><li>ROM 文件保持 <strong>ZIP 压缩包原样</strong>，<strong>不要解压</strong>。解压后的散文件 Kawaks 不认，扫不出来</li><li>直接把 ZIP 丢进 <code>roms/</code> 文件夹根目录就行，<strong>不用按基板分子目录</strong>——Kawaks 会自动识别</li><li>一次放一两个 ROM 先测试，成功后再批量导入，免得一大片扫不出来不知道是哪个出了问题</li></ol>
+<p>放好之后，<code>roms/</code> 目录长这样：</p>
+<pre><code>roms/
+├── kof97.zip       ← 拳皇 97
+├── sf2.zip         ← 街头霸王 2
+└── mslug.zip       ← 合金弹头</code></pre>
+<h2>第三步：启动模拟器，扫描 ROM</h2>
+<p>双击 <code>Winkawaks.exe</code>，主界面出来后：</p>
+<ol><li>点击顶部菜单栏 <strong>File → Load Game</strong></li><li>在弹出的载入对话框左下角，点击 <strong>Rescan all</strong> 按钮——模拟器会遍历整个 <code>roms/</code> 目录检查 ROM 完整性</li><li>勾选右上角的 <strong>Only Available</strong>（只显示可用的），这样列表里只剩那些能直接跑的游戏，一堆灰色的"不支持"条目眼不见心不烦</li></ol>
+<p>扫完之后列表里出现你的游戏了吗？出现了就进入第四步；一个都没出来的话，跳到文末「常见卡点一」。</p>
+<h2>第四步：载入第一款游戏</h2>
+<p>在游戏列表里<strong>双击</strong>你想玩的那一款，比如拳皇 97——屏幕黑一下，然后游戏画面就出来了。第一次载入可能需要几秒钟，ROM 越大约慢，正常现象。</p>
+<p>载入成功后先别着急按键盘——<strong>还没投币</strong>！WinKawaks 模拟的是真实街机框体，要先投币再开始，默认按键是：</p>
+<table><thead><tr><th>功能</th><th>默认键</th></tr></thead><tbody><tr><td>投币 Coin</td><td>数字键 <strong>5</strong></td></tr><tr><td>开始 Start</td><td>数字键 <strong>1</strong></td></tr><tr><td>方向</td><td><strong>W A S D</strong></td></tr><tr><td>拳脚按钮</td><td><strong>J K L</strong></td></tr></tbody></table>
+<p>按 5 投币，按 1 开始——应该能看到角色站在选人界面了。恭喜，你的第一款街机游戏跑起来了。</p>
+<h2>第五步：配置按键（手柄玩家看这里）</h2>
+<p>默认键位不一定顺手，或者你插了手柄想用手柄玩——改按键在 <strong>Game → Redefine Keys → Player 1</strong> 里。</p>
+<p><img src="../images/kawaks-docs/redefinekeys.gif" alt="按键重定义窗口" loading="lazy"></p>
+<p>操作流程：</p>
+<ol><li>点击你想改的那一行，比如 Up（上方向）</li><li>这一行会变成 "Press any key to remap..." 的状态</li><li>按下你想绑定的按键或手柄按钮</li><li>成功后那一行显示出新的键值</li><li>全部改完点 OK 保存</li></ol>
+<p>如果你用手柄但按了没反应——别慌，先到 Windows 控制面板「设备和打印机 → 游戏控制器」里测试一下按键亮不亮，确认系统层能识别。系统能识别但 Kawaks 里不识别的话，多半是 DirectInput 的问题，重启模拟器或换个 USB 口通常能解决。手柄适配的特殊说明在<a href="https://kawaks-docs.pages.dev/" target="_blank" rel="noopener">kawaks文档</a>里还有更细的分类表。</p>
+<p><strong>记得存配置</strong>：改完按键后去 <strong>Game → Save Current Configuration As Default</strong> 保存为默认，否则每次重启可能又重置回默认键位。</p>
+<h2>常见卡点</h2>
+<h3>卡点一：Rescan all 后列表空的</h3>
+<p>扫完一个游戏都没出来，按这个顺序查：</p>
+<ol><li><strong>ROM ZIP 解压了吗？</strong> 解开压缩包散着放 = 白放，重新打包回 ZIP 或直接下载压缩好的 ROM</li><li><strong>ROM 放在正确位置了吗？</strong> 必须在 <code>roms/</code> 目录根层级，不要嵌套子目录</li><li><strong>ROM 集版本对得上吗？</strong> Kawaks 只认 CPS1/CPS2/Neo Geo 三种基板的 ROM，MAME 的其他基板 ROM 放进来也没用</li><li><strong>路径有中文吗？</strong> 检查 WinKawaks 整个安装路径，有中文的话挪到纯英文目录</li></ol>
+<h3>卡点二：启动游戏黑屏或花屏</h3>
+<p>大概率是视频模式的问题。改 <code>winkawaks.ini</code> 里的 <code>Videomode</code> 参数：</p>
+<ol><li>关闭模拟器，用记事本打开根目录的 <code>winkawaks.ini</code></li><li>找到 <code>[WinKawaks]</code> 段里的 <code>Videomode=</code> 行</li><li>默认是 1（Hardware 硬件加速），改成 2（Software 软件渲染）试试</li><li>如果之前是全屏黑，把 <code>FullScreen=1</code> 改成 <code>FullScreen=0</code> 强制窗口化启动</li></ol>
+<p>保存后重启模拟器，大概率能进。</p>
+<h3>卡点三：手柄插了但按不动</h3>
+<p>按「系统识别 → 模拟器识别 → 按键映射 → 冲突排查」四步查，别跳步：</p>
+<ol><li>控制面板里游戏控制器属性测试面板能亮 → Windows 识别 OK</li><li>Kawaks Redefine Keys 窗口按手柄能抓到键值 → 模拟器识别 OK</li><li>游戏里按了没反应 → 检查是不是忘了投币开始、映射有没有保存</li><li>按一个按钮触发多个动作 → 回到 Redefine Keys 清理重复绑定</li></ol>
+<p>PS 手柄需要 Ds4Windows 模拟成 Xbox 手柄，Switch Pro 需要 BetterJoy 驱动，这两类老玩家常见的特殊手柄额外注意。</p>
+<h2>进阶一句话</h2>
+<p>等单机玩顺了，可以试试 Kaillera 联机对战——UDP 27888 端口放行（Windows 防火墙 + 路由器端口映射），就能让互联网上的朋友直连你的本地服务器一起打拳皇。折腾联机过程中用到的 ROM 清单和配置模板，我同步在了<a href="https://github.com/alipymanbu/APK/tree/main/APP/kawaks" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/kawaks" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/APP/kawaks" target="_blank" rel="noopener">GitCode</a> 三个仓库，方便国内不同网络环境的朋友各取所需。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/kanade-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">3.79MB 的网易云客户端 kanade，从匿名项目到 v1.3 的进化路</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/kazumi-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Kazumi 这三年：从三条内置规则到规则驱动的追番框架</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

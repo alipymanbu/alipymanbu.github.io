@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>AssetStudio 用了两年：从&#34;提个 BGM 当铃声&#34;到每天都开的工具 · 老杨技术栈</title>
+  
+<meta name="description" content="从原版到 AssetStudioMod，从只会点 GUI 到能跑 CLI 批量导出，两年时间把 AssetStudio 的边界摸了个遍——有些预期高估了，有些功能越用越离不开。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/assetstudio.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AssetStudio 用了两年：从&#34;提个 BGM 当铃声&#34;到每天都开的工具">
+<meta property="og:description" content="从原版到 AssetStudioMod，从只会点 GUI 到能跑 CLI 批量导出，两年时间把 AssetStudio 的边界摸了个遍——有些预期高估了，有些功能越用越离不开。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/assetstudio.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/assetstudio/home-main.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/assetstudio/home-main.png">
+
+<meta name="twitter:title" content="AssetStudio 用了两年：从&#34;提个 BGM 当铃声&#34;到每天都开的工具">
+<meta name="twitter:description" content="从原版到 AssetStudioMod，从只会点 GUI 到能跑 CLI 批量导出，两年时间把 AssetStudio 的边界摸了个遍——有些预期高估了，有些功能越用越离不开。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u539f\u7248\u5230 AssetStudioMod\uff0c\u4ece\u53ea\u4f1a\u70b9 GUI \u5230\u80fd\u8dd1 CLI \u6279\u91cf\u5bfc\u51fa\uff0c\u4e24\u5e74\u65f6\u95f4\u628a AssetStudio \u7684\u8fb9\u754c\u6478\u4e86\u4e2a\u904d\u2014\u2014\u6709\u4e9b\u9884\u671f\u9ad8\u4f30\u4e86\uff0c\u6709\u4e9b\u529f\u80fd\u8d8a\u7528\u8d8a\u79bb\u4e0d\u5f00\u3002", "headline": "AssetStudio \u7528\u4e86\u4e24\u5e74\uff1a\u4ece\"\u63d0\u4e2a BGM \u5f53\u94c3\u58f0\"\u5230\u6bcf\u5929\u90fd\u5f00\u7684\u5de5\u5177", "image": ["https://alipymanbu.github.io/images/assetstudio/home-main.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/assetstudio.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/assetstudio.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "AssetStudio \u7528\u4e86\u4e24\u5e74\uff1a\u4ece\"\u63d0\u4e2a BGM \u5f53\u94c3\u58f0\"\u5230\u6bcf\u5929\u90fd\u5f00\u7684\u5de5\u5177", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">AssetStudio 用了两年：从&#34;提个 BGM 当铃声&#34;到每天都开的工具</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">AssetStudio 用了两年：从&#34;提个 BGM 当铃声&#34;到每天都开的工具</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 10 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从原版到 AssetStudioMod，从只会点 GUI 到能跑 CLI 批量导出，两年时间把 AssetStudio 的边界摸了个遍——有些预期高估了，有些功能越用越离不开。</p>
+  </header>
+  <div class="prose">
+<p>AssetStudio 装到现在快两年了，它的<a href="https://assetstudio.laze.skin" target="_blank" rel="noopener">官网</a>我收藏了快两年。从 Perfare 原版 v0.16.47 用到现在的 AssetStudioMod .NET 9，中间踩过的坑比看过的教程还多——每个版本都是从<a href="https://assetstudio.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿的安装包。当初装它的理由特别朴素——某款独立游戏的 BGM 太好听，想提出来当手机铃声。就这么一个简单到有点无聊的需求，把我带进了 Unity 资源提取这个小圈子。</p>
+<p><img src="../images/assetstudio/home-main.png" alt="AssetStudio 主界面，左侧资源列表 + 右侧预览面板的典型布局" loading="lazy"></p>
+<h2>变化三连：哪些越用越顺，哪些慢慢露出了真面目</h2>
+<p>当初刚装上的时候，只觉得这东西"能开就行"。现在回头看，好几个点是用了一段时间才发现它真的设计得好——或者真的设计得坑。</p>
+<p><strong>Extract 再 Load，这个流程是我踩了三次崩溃才记住的。</strong> 第一次加载一个 300MB 的 AssetBundle，电脑风扇突然拉满，内存占用直顶 95%，窗口直接变灰被系统杀进程。我以为是包坏了，重新下载了三遍，结果每次一样。后来去<a href="https://assetstudio.pages.dev/" target="_blank" rel="noopener">assetstudio文档</a>翻了一下才知道：AssetStudio 加载 AssetBundle 时是在内存里整包解压的，包一大内存峰值直接炸。</p>
+<p>正确做法是先 Extract 到本地目录，再用 Load folder 扫解压后的文件。解压后的文件就是普通文件了，读取不再整包占内存，多大的包都能稳住。就这一个操作习惯的改变，让 AssetStudio 的可用性翻了倍。现在拿到任何 Unity 包，第一反应就是先 Extract——成了肌肉记忆。</p>
+<p><strong>Filter Type + 搜索框的组合，是我每天都在用的功能。</strong> 刚开始只会在 Asset List 里瞎翻，几百上千条资源里找一个音频或贴图，纯靠肉眼。后来发现列表区域右键有 Filter Type，可以按类型只勾选 AudioClip、Texture2D、Font 之类的——一下子把噪音砍掉大半。再加上顶部搜索框输个 <code>bgm</code> 或 <code>icon</code>，Include 模式自动过滤，定位一个资源从原来的十几分钟变成几秒。</p>
+<p>AssetStudioMod 还加了正则模式，<code>RegexName</code> 和 <code>RegexContainer</code> 两种都支持。这个功能我用到的场合不多，但偶尔遇到一批命名不规范的资源时，一条正则就能把目标全部捞出来，省不少事。说个反直觉的：正则筛选我只用过不超过十次，但每次用都觉得"这功能设计得真好"——平时不显山露水，关键时刻救场。</p>
+<p><strong>CLI 是我当初完全没料到会重度依赖的东西。</strong> 刚上手时觉得 GUI 够了，点一点看预览再导出，体验挺直观。直到有一次需要从十几个散落在不同子目录的 AssetBundle 里批量导出所有 Texture2D——如果用 GUI，就得逐个 Load、逐个 Filter、逐个 Export，点到手酸。那时候才发现 AssetStudioMod 带了跨平台 CLI：<code>AssetStudioModCLI</code>，Windows、Linux、macOS 都能跑，<code>-m info / export / dump / live2d / splitObjects / animator</code> 切换模式。</p>
+<p>一行命令就能搞定的事：<code>AssetStudioModCLI -m export -i &lt;输入目录&gt; -o &lt;输出目录&gt; --filter-by-type Texture2D</code>。现在但凡涉及批量处理、或者想写进脚本流水线，全走 CLI。GUI 留给临时看一眼、预览确认内容的场景——两个模式各有各的位置，谁也替代不了谁。</p>
+<h2>那些越用越烦的点：AssetStudio 也有它的边界</h2>
+<p>用了两年，也慢慢摸清了 AssetStudio 哪些事情它就是做不到。当初以为它"万能"，现在知道这些边界是工具本身的定位决定的。</p>
+<p><strong>UnityCN 加密包是硬伤。</strong> 大陆版 Unity 在 AssetBundle 里加了资源加密，原版和 AssetStudioMod 都打不开。Mod 版最多能检测到加密然后弹个提示，不会告诉你怎么解密。第一次遇到这种包时我以为是加载姿势不对，反复 Load、Extract、换版本，折腾了快一小时才放弃。后来才知道得用专门对付加密包的工具——Razmoth Studio 或 AnimeStudio。AssetStudio 在这块就是无能为力，不是配置问题也不是我菜。</p>
+<p><strong>MonoBehaviour 提取的门槛比想象中高。</strong> 想把 Unity 脚本组件里的字段数据导出来，AssetStudio 需要对应的程序集 dll。Mono 打包的游戏还好，直接喂 <code>Managed</code> 目录就行；Il2Cpp 打包的游戏就麻烦了，得先跑 Il2CppDumper 生成 dummy dll，再把 dummy dll 的目录喂过去。这个流程每次走起来都觉得繁琐——特别是某些游戏的 Il2Cpp 版本比较新，Dumper 还不一定能直接用。不是 AssetStudio 的锅，是 Unity 本身的技术路线决定的，但用起来就是烦。</p>
+<p><strong>Shader 在 Unity 2022+ 基本导不出东西。</strong> Unity 2021 及更早的 Shader 资源包含可读的 HLSL/ShaderLab 源码，AssetStudio 能显示源码并导出。但 2022 之后 ShaderGraph 产生的 Shader 经过编译，不再包含可读源码。Asset List 里能看到 Shader 条目，但导出来是空的或者只有编译后的字节码。想研究 Shader 的话，还得去找 Unity 5.x 或 2020.x 的老项目。</p>
+<h2>观感修正：哪些当初的判断被时间打脸了</h2>
+<p><strong>高估了原版的"官方感"。</strong> 刚开始装的是 Perfare 原版，觉得"原版就是正统"，Mod 版是"第三方"不放心。实际上原版 v0.16.47 之后就收官了，Unity 2023、2024、Unity 6 的数据格式变化原版根本跟不上。现在谁还在用原版？新项目一律选 AssetStudioMod。原版剩下的唯一价值可能是做个参考实现——如果你要自己改 C# 源码从官方基线 fork，再考虑它。</p>
+<p><strong>低估了社区生态的活力。</strong> 原版停更之后，我以为 AssetStudio 这个工具也就到头了。结果社区 fork 比原版还热闹——AssetStudioMod 活跃更新到 Unity 6000.2，加了 Live2D Cubism 导出、WebP、Switch swizzle 纹理还原、Dark Mode；SiMaLaoShi 专门适配国内团结引擎；甚至还有 ARM 64 架构的手机版。一个开源工具在作者停更后还能靠社区续好几年命，这种事在独立工具圈不算常见。</p>
+<p><strong>低估了 Extract 这一步的重要性。</strong> 上面提过了，但值得再说一遍：这不是一个"可选的优化步骤"，是处理大包的<strong>必须步骤</strong>。当初把它当成"内存不够时的备选方案"，现在知道它是 AssetStudio 使用的基本姿势。</p>
+<p><img src="../images/assetstudio/gui-loading.png" alt="加载 AssetBundle 的过程，状态栏显示解析进度" loading="lazy"></p>
+<h2>哪些功能我碰都没再碰</h2>
+<p>说几个装了但几乎没用过的功能吧。</p>
+<p><strong>手机版 coyamo.assetstudio</strong> 我试过三次，每次都是"临时想在手机上看个包"，结果要么包太大手机 RAM 顶不住被杀进程，要么功能被砍了一大半（没有正则筛选、没有 CLI、Il2Cpp 游戏跑不了），最后还是传回电脑用 AssetStudioMod。手机版安装包 6.28MB 确实小，但能做的事情也确实少。现在我只在确实没电脑、文件又就在手机里的时候才会想起它——但这种场景一年到头也没几次。</p>
+<p><strong>Scene Hierarchy 标签页</strong> 我用得也不多。它按 GameObject 父子关系组织树形结构，在游戏 Mod 制作时找场景里的具体对象很方便。但我大部分时候是找贴图、音频、字体这些零散资源，Asset List 扁平列表 + Filter Type 筛选更快。Scene Hierarchy 留给 Mod 制作者吧。</p>
+<p><strong>VideoClip/MovieTexture 导出</strong> 只在早期用过一次。导出来就是原视频文件流，不解码不转码——能用，但我也没什么从 Unity 包里提视频的刚需。</p>
+<h2>去留结论：什么时候该换，什么时候继续用</h2>
+<p>AssetStudio 我不会卸载。它不是那种"用完就丢"的工具，而是你手头有 Unity 资源包时第一个会想到的东西。从原版到 Mod 版的迁移过程很平滑，CLI 加 GUI 的双模式已经成了我的工作流标配。</p>
+<p>什么信号出现就该换了？说实话，暂时看不到。除非 Unity 出了下一代引擎格式把现有资源结构全推翻了，或者社区 fork 都停更了——后者可能性不大，前者如果真发生了那整个生态都得跟着变。</p>
+<p>倒是可以多留意几个备选：如果遇到 UnityCN 加密包，Razmoth Studio 和 AnimeStudio 是现成的替代；如果目标是团结引擎的国产游戏，SiMaLaoShi 的 fork 专门适配过。但这些都是特定场景的补充，不是 AssetStudio 的替代品。</p>
+<p>总结一下？两年用下来，AssetStudio 给我的感觉是：<strong>边界清晰，定位精准，社区撑住了后劲。</strong> 它不万能（谁也别想从 UnityCN 加密包里白嫖），但在它能覆盖的范围内，没有比它更好用的了。</p>
+<p>这套资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/assetstudio" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/assetstudio" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/assetstudio" target="_blank" rel="noopener">GitCode</a>三个仓库都能拿到，随时可以去翻。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/aseprite.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用 Aseprite 做第一个像素动画：从零到循环精灵图只需 15 分钟</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/astral-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从 Hamachi 到 Astral：虚拟局域网工具这十五年的进化逻辑</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>HoYoGet 到底值不值得折腾：一个原神玩家的时间账 · 老杨技术栈</title>
+  
+<meta name="description" content="HoYoGet 是免费工具，但它要求你配置 Shizuku、ADB、处理国产系统的各种限制——这篇把时间成本按三类使用强度算清楚，帮你三秒决定要不要上手。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hoyoget.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HoYoGet 到底值不值得折腾：一个原神玩家的时间账">
+<meta property="og:description" content="HoYoGet 是免费工具，但它要求你配置 Shizuku、ADB、处理国产系统的各种限制——这篇把时间成本按三类使用强度算清楚，帮你三秒决定要不要上手。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hoyoget.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hoyoget/method-adb.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hoyoget/method-adb.webp">
+
+<meta name="twitter:title" content="HoYoGet 到底值不值得折腾：一个原神玩家的时间账">
+<meta name="twitter:description" content="HoYoGet 是免费工具，但它要求你配置 Shizuku、ADB、处理国产系统的各种限制——这篇把时间成本按三类使用强度算清楚，帮你三秒决定要不要上手。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "HoYoGet \u662f\u514d\u8d39\u5de5\u5177\uff0c\u4f46\u5b83\u8981\u6c42\u4f60\u914d\u7f6e Shizuku\u3001ADB\u3001\u5904\u7406\u56fd\u4ea7\u7cfb\u7edf\u7684\u5404\u79cd\u9650\u5236\u2014\u2014\u8fd9\u7bc7\u628a\u65f6\u95f4\u6210\u672c\u6309\u4e09\u7c7b\u4f7f\u7528\u5f3a\u5ea6\u7b97\u6e05\u695a\uff0c\u5e2e\u4f60\u4e09\u79d2\u51b3\u5b9a\u8981\u4e0d\u8981\u4e0a\u624b\u3002", "headline": "HoYoGet \u5230\u5e95\u503c\u4e0d\u503c\u5f97\u6298\u817e\uff1a\u4e00\u4e2a\u539f\u795e\u73a9\u5bb6\u7684\u65f6\u95f4\u8d26", "image": ["https://alipymanbu.github.io/images/hoyoget/method-adb.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hoyoget.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hoyoget.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "HoYoGet \u5230\u5e95\u503c\u4e0d\u503c\u5f97\u6298\u817e\uff1a\u4e00\u4e2a\u539f\u795e\u73a9\u5bb6\u7684\u65f6\u95f4\u8d26", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">HoYoGet 到底值不值得折腾：一个原神玩家的时间账</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">HoYoGet 到底值不值得折腾：一个原神玩家的时间账</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">HoYoGet 是免费工具，但它要求你配置 Shizuku、ADB、处理国产系统的各种限制——这篇把时间成本按三类使用强度算清楚，帮你三秒决定要不要上手。</p>
+  </header>
+  <div class="prose">
+<p>它到底值不值得折腾？</p>
+<p>这是我蹲完提瓦特小助手的排行榜之后反复问自己的问题。HoYoGet 的<a href="https://hoyoget.yoan.quest" target="_blank" rel="noopener">官网</a>上写得很清楚，它不是那种一刀下去见分晓的付费软件——它免费，代码开源，文档写得比大多数同类工具都认真，但它要你花在配置上的时间，是实打实的"隐形付费"。今天就把这笔账摊开算。</p>
+<h2>定价拆解：免费，但不是零成本</h2>
+<p>HoYoGet 本身<strong>完全免费</strong>——没有内购、没有广告、没有高级版解锁。从它的<a href="https://hoyoget.yoan.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿下来就能用，功能上不做任何阉割。</p>
+<p>但"免费"这两个字背后藏着真正的门槛：<strong>获取抽卡链接的四种方式，对不同用户的友好度天差地别</strong>。</p>
+<p>最简单的一条路是<strong>账号登录获取</strong>：填米游社账号密码，登录，复制链接——三步搞定，零配置。但这条路有个硬伤，官方对账号登录获取做了频率限制，短时间内反复拉取会触发风控。</p>
+<p>第二条路是<strong>云游戏获取</strong>：打开 HoYoGet 里的云·原神或云·星穹铁道入口，登录一次米哈游账号，进游戏打开抽卡历史页面就能取到链接。比账号登录稍微多一步排队等待，但胜在不走账号 API，被风控的概率低。</p>
+<p>第三条路是 <strong>ADB + Shizuku</strong>——这是 HoYoGet 最硬核也最稳定的方式：手机上装 Shizuku，电脑上跑 adb 无线配对，授权之后 HoYoGet 就能直接从游戏日志里抓抽卡链接，完全不走网络请求，不怕风控、不限频率。但这条路的配置成本……看看<a href="https://hoyoget.pages.dev/" target="_blank" rel="noopener">HoYoGet文档</a>那张厂商适配表你就懂了：</p>
+<p><img src="../images/hoyoget/method-adb.webp" alt="ADB获取方式的入口图标" loading="lazy"></p>
+<table><thead><tr><th>系统</th><th>你要做的事</th></tr></thead><tbody><tr><td>MIUI</td><td>改通知样式、开 USB 调试（安全设置）、别用手机管家</td></tr><tr><td>ColorOS</td><td>关权限监控</td></tr><tr><td>Flyme</td><td>关 Flyme 支付保护</td></tr><tr><td>EMUI</td><td>开"仅充电模式下允许 ADB 调试"</td></tr><tr><td>OriginOS</td><td><strong>基本无解，换设备或改走云游戏</strong></td></tr></tbody></table>
+<p><img src="../images/hoyoget/adb-notify-miui.webp" alt="MIUI系统中Shizuku配对通知的样式切换提示" loading="lazy"></p>
+<p>vivo/iQOO 用户最惨——OriginOS 对游戏日志做了系统级限制，哪怕 Shizuku 配对成功了，HoYoGet 也拿不到链接。官方给出的建议是：换设备，或者改用云游戏获取。</p>
+<h2>算账：三类用户的时间账</h2>
+<h3>轻度用户：每月看一次抽卡记录</h3>
+<p>这类人占大多数——偶尔想看看自己这池歪没歪，频率大概一个月一次，或者版本更新完想复盘一下。</p>
+<p><strong>免费版够不够？完全够。</strong></p>
+<p>走账号登录或者云游戏获取，一次五分钟搞定。不需要 Shizuku，不需要 adb，不需要折腾厂商设置。唯一要注意的是账号登录别太频繁——但你一个月才用一次，这条限制对你不存在。</p>
+<p><strong>成本：每月五分钟。</strong> 折算成年是一小时。这个量级的时间，我觉得不值得你花一下午去配置 Shizuku。</p>
+<h3>主力用户：每周查抽卡数据</h3>
+<p>这类玩家是真正在意抽卡统计的——每池必看，追五星平均出金数，记保底进度，甚至做抽卡记录的长期趋势。频率大概每周一次，或者每两天一次。</p>
+<p><strong>免费版够用但不稳。</strong></p>
+<p>账号登录的频率限制在这个使用强度下开始显现——两天一次很可能触发临时封禁。云游戏获取不受频率限制，但每次要排队进云游戏、切页面，实际操作比账号登录慢一倍。</p>
+<p>这时候 Shizuku + ADB 的优势出来了：配对一次之后，每次取链接就是打开 HoYoGet、点按钮、复制——十秒钟搞定，不限频率，不怕风控。</p>
+<p><strong>成本对比：</strong></p>
+<ul><li>不配置 Shizuku：每次 2 分钟 × 52 周 = 每年 104 分钟（1.7 小时），还有被风控的风险</li><li>花 1 小时配好 Shizuku：每次 10 秒 × 52 周 = 每年 8.7 分钟</li><li><strong>净节省：每年约 95 分钟，加上零风控的心理安全感</strong></li></ul>
+<p>值不值？一小时的配置时间换回来每年少花一个半小时在重复操作上，而且 Shizuku 配好之后基本不用管。我觉得对主力玩家来说，这笔账是正的。</p>
+<h3>重度用户：每天查，做抽卡分析报告</h3>
+<p>这类人要么是内容创作者（做抽卡分析视频、写攻略），要么是数据党——不仅查自己的，可能还帮朋友查、做批量分析。频率每天一次甚至更多。</p>
+<p><strong>Shizuku 是刚需。</strong></p>
+<p>账号登录和云游戏获取在这个频率下都不现实——前者触发风控，后者排队时间累加起来就是灾难。ADB + Shizuku 是唯一能稳定支撑高频使用的方式。</p>
+<p><strong>成本：</strong></p>
+<ul><li>花 1 小时配好 Shizuku（vivo/iQOO 用户可能要换设备或改走云游戏）</li><li>之后每次十秒，不限频率</li><li>如果你每天查一次，一年能省下来的时间是：假设云游戏每次 5 分钟，Shizuku 每次 10 秒 → 每天省 4 分 50 秒 → 每年省约 29.5 小时</li></ul>
+<p>29 小时。这个量级的时间，放在任何一个创作者或数据党身上，都不是个小数。</p>
+<h2>替代方案：不折腾 HoYoGet 的其他路</h2>
+<p>如果你看完上面的账觉得"还是不想折腾"，还有几个替代选项：</p>
+<p><strong>直接用提瓦特小助手的手动录入。</strong> 提瓦特小助手本身支持手动输入抽卡记录——你自己记下每次抽了几发、出了什么，每周手动填一次。好处是零配置、零风控，坏处是费脑子——你得真的记得每一发的结果，而且手动录入本身就是个麻烦事。适合那种"偶尔看看但不想折腾任何工具"的纯佛系玩家。</p>
+<p><strong>降低频率。</strong> 把每周查一次改成每月查一次，或者干脆只在版本末复盘。这样账号登录的频率限制永远不会触发，也不用花时间配 Shizuku。代价是你放弃了实时的抽卡进度感知——如果你不怎么在意保底跑到哪了，这完全可行。</p>
+<p><strong>用其他平台的云游戏。</strong> HoYoGet 还支持 BiliGame 等第三方云游戏平台获取链接——这条路绕开了米哈游自家云游戏的排队限制，但配置起来也需要额外操作，本质上和云游戏获取是同一条路的不同入口。</p>
+<h2>结论：三秒对号入座</h2>
+<p>现在回到最初的问题——它到底值不值得折腾？</p>
+<ul><li><strong>轻度玩家（每月一次）：闭眼装，但别花时间配 Shizuku。</strong> 下载下来用账号登录或云游戏获取就够了，五分钟解决问题，剩下的配置是浪费时间。</li><li><strong>主力玩家（每周一次）：花一小时配好 Shizuku，值。</strong> 配对一次，之后一劳永逸。每年省下来的一个半小时加上零风控的安心感，回报比超过 1:10。</li><li><strong>重度用户（每天一次+）：Shizuku 是刚需。</strong> 别犹豫，去配。如果你是 vivo/iQOO 用户，要么换设备要么老老实实走云游戏——没有第三条路。</li><li><strong>vivo/iQOO 用户不管哪类：放弃 ADB 这条路。</strong> 官方文档已经把这话说死了，别浪费时间折腾。</li></ul>
+<p>还有一点必须提——HoYoGet 取到的抽卡分析链接<strong>带着你的身份授权</strong>，拿在手里就能分页读你完整的抽卡记录。它的安全性做得还算扎实（数据操作全部在本地或与米哈游服务器之间完成，不上传第三方），但这条链接你粘给谁、用完清不清剪贴板，这是你自己的责任。官方在每个获取方法页面都写了同一句话：</p>
+<blockquote><p>请妥善保管与处理您的抽卡分析链接，向不明身份的人或应用泄露该链接可能导致账号被盗！</p></blockquote>
+<p>这句话不是吓你的——抽卡记录暴露的 UID、角色养成进度、资源投入节奏，正是定向诈骗最爱用的画像信息。</p>
+<p>最后，如果你想了解更详细的获取方法和配置步骤，HoYoGet 的文档是我见过同类工具里写得最认真的一份——四种获取方式全部分章节展开，连各国产系统的适配清单都列出来了。HoYoGet 本身也免费开源，<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/HoYoGet" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/HoYoGet" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/HoYoGet" target="_blank" rel="noopener">GitCode</a> 三个代码仓库都能拿到全套资料。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/hobby-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">AI 角色扮演 App 横评：Hobby 为什么在养崽和探剧两条线上同时出彩</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/hyperate.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">HypeRate 到底值不值得掏钱？——直播心率覆盖层付费决策账本</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

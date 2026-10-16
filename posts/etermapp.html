@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>eTermapp 用了一年——手机端的航信指令终端到底值不值得长期留着 · 老杨技术栈</title>
+  
+<meta name="description" content="从只会 SI 登录到能独立完成查询、出票、退改全套操作，这篇长期使用报告聊聊 eTermapp 这一年里哪些地方越用越顺手、哪些地方慢慢暴露出问题。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/etermapp.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eTermapp 用了一年——手机端的航信指令终端到底值不值得长期留着">
+<meta property="og:description" content="从只会 SI 登录到能独立完成查询、出票、退改全套操作，这篇长期使用报告聊聊 eTermapp 这一年里哪些地方越用越顺手、哪些地方慢慢暴露出问题。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/etermapp.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/etermapp/screenshot-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/etermapp/screenshot-1.jpg">
+
+<meta name="twitter:title" content="eTermapp 用了一年——手机端的航信指令终端到底值不值得长期留着">
+<meta name="twitter:description" content="从只会 SI 登录到能独立完成查询、出票、退改全套操作，这篇长期使用报告聊聊 eTermapp 这一年里哪些地方越用越顺手、哪些地方慢慢暴露出问题。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u53ea\u4f1a SI \u767b\u5f55\u5230\u80fd\u72ec\u7acb\u5b8c\u6210\u67e5\u8be2\u3001\u51fa\u7968\u3001\u9000\u6539\u5168\u5957\u64cd\u4f5c\uff0c\u8fd9\u7bc7\u957f\u671f\u4f7f\u7528\u62a5\u544a\u804a\u804a eTermapp \u8fd9\u4e00\u5e74\u91cc\u54ea\u4e9b\u5730\u65b9\u8d8a\u7528\u8d8a\u987a\u624b\u3001\u54ea\u4e9b\u5730\u65b9\u6162\u6162\u66b4\u9732\u51fa\u95ee\u9898\u3002", "headline": "eTermapp \u7528\u4e86\u4e00\u5e74\u2014\u2014\u624b\u673a\u7aef\u7684\u822a\u4fe1\u6307\u4ee4\u7ec8\u7aef\u5230\u5e95\u503c\u4e0d\u503c\u5f97\u957f\u671f\u7559\u7740", "image": ["https://alipymanbu.github.io/images/etermapp/screenshot-1.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/etermapp.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/etermapp.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "eTermapp \u7528\u4e86\u4e00\u5e74\u2014\u2014\u624b\u673a\u7aef\u7684\u822a\u4fe1\u6307\u4ee4\u7ec8\u7aef\u5230\u5e95\u503c\u4e0d\u503c\u5f97\u957f\u671f\u7559\u7740", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">eTermapp 用了一年——手机端的航信指令终端到底值不值得长期留着</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">eTermapp 用了一年——手机端的航信指令终端到底值不值得长期留着</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从只会 SI 登录到能独立完成查询、出票、退改全套操作，这篇长期使用报告聊聊 eTermapp 这一年里哪些地方越用越顺手、哪些地方慢慢暴露出问题。</p>
+  </header>
+  <div class="prose">
+<p>去年冬天我第一次从<a href="https://etermapp.djnf.quest" target="_blank" rel="noopener">eTermapp官网</a>把它装到手机上，起因是有个周末客户临时改行程，我在家翻了半天才找到一台装了桌面端的旧笔记本。那次折腾完我就决定：航信终端必须有个移动端备份。</p>
+<p>装完之后第一周基本是在熟悉流程——SI 登录要输工作号、密码、工作区，比桌面端多了几次确认；指令行输入因为屏幕窄，经常按错数字键；PVGPEK/20OCT 这种城市对日期格式敲起来远不如键盘顺手。当时的感觉就是：能用，但没到离不开的程度。</p>
+<h2>哪些地方越用越顺手</h2>
+<p>会话管理这块是变化最大的。刚上手的时候我跟大多数新人一样，操作完就 SO 退出，下次用再 SI 重新登录。航信的 PID 是有限资源，高峰期重新 SI 经常要排队等几十秒。后来慢慢养成了习惯：短时间离开用 AO 临时下线，回来 AI 恢复，PID 保留不释放——整个流程不到两秒。现在 AO/AI 成了我每天必敲的指令，反而是 SO 只在彻底下班时才用。</p>
+<p><img src="../images/etermapp/screenshot-1.jpg" alt="会话管理界面" loading="lazy"></p>
+<p>其次是指令的肌肉记忆。FV:PEKSHA/20OCT/0600/1 这种查询最早有座航班的指令，现在不用想就能敲出来。刚开始总觉得 FV 和 AV 功能重复，后来发现旅客说"越早能走越好"的时候，FV 直接跳过无座航班从最早开始筛，比 AV 逐页翻高效不止一倍。</p>
+<p>从<a href="https://etermapp.djnf.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包时我没太注意端口配置，端口切换也从模糊变得清晰了。350 专线和 443 公网 HTTPS 的区别，我是用了小半年才真正搞明白：公司工位有专线，延迟低、响应快，但只能在桌面端用；手机端走 443，只要有网就能登，弱网时偶尔需要重试，但应急场景下没有替代品。现在我基本不纠结端口配置了——桌面是 350、手机是 443，两套工作流互不干扰。</p>
+<h2>哪些地方越用越烦</h2>
+<p>PID 被抢的问题至今没解决。航信分配给每个公司的 PID 池是固定的，高峰期（比如早班机出港时段）经常遇到 SI 返回"PID 不足"的情况。手机端没有桌面端的地址认证，每次登录都要走密码验证，高峰期排队更久。有次我在外面试了二十分钟才登上，最后还是让同事在工位用专线帮我查的。</p>
+<p>XE 取消的操作纪律也是踩过坑才记住的。刚上手时以为 XE:PNR编号@ 是万能取消，结果有次在有 SSR TKNE 票号的已出票 PNR 上直接 XE，航信拒绝执行不说，还触发了风险预警。后来才搞清楚：未出票可以直接 XE，已出票必须先 ETRF 退票、确认票号清除后再 XE。这个规则后来去<a href="https://etermapp.pages.dev/" target="_blank" rel="noopener">etermapp文档</a>翻了一下才记牢，但手机端操作时屏幕小，很容易一眼漏掉 RT 返回里的 SSR 项。</p>
+<h2>哪个功能成了每天离不开的</h2>
+<p>还是 FV。之前总觉得"查最早航班"是个低频场景，其实客户说"我今天就要走"的时候比想象中多。FV 一条指令直接把可订的最早航班拉出来，不用在 AV 的长列表里挨个看哪个有座位。搭配座位数参数，遇到多人出行也不用来回试。</p>
+<p><img src="../images/etermapp/screenshot-3.jpg" alt="航班查询界面" loading="lazy"></p>
+<p>反而是一开始最期待的 SIIF 状态查询，现在碰都没再碰过——因为会话管理熟了之后，AO 下线、AI 恢复的状态在指令行顶端一目了然，专门 SIIF 查一次纯属多余。</p>
+<h2>时间修正了哪些判断</h2>
+<p>当初我以为手机版就是桌面版的缩水替代品，只是应急用的备份。用了一年下来发现反直觉的地方很多：443 端口虽然依赖公网，但它的便携性让我能在去机场的路上帮客户改签；指令行输入虽然慢，但 FV 这种针对性指令在移动端反而比桌面端更方便——因为我通常是单任务操作，不会像桌面端那样同时开多个订单窗口。</p>
+<p>还有一个判断被修正的是"共享工作号"。刚入职时听说同事们共用 O 账号，觉得这种方式迟早要出事。但实际用下来，规范 AO/SO 之后其实还行——用完立即 SO 让出来，短时间离开用 AO 保留，基本不会出现互相踩 PID 的情况。</p>
+<h2>去留结论</h2>
+<p>eTermapp 我不会卸载。</p>
+<p>真正让我考虑换掉的信号可能有两个：一是航信如果推出了真正支持移动端的专线接入方式，那 443 的重连问题可能需要重新评估；二是如果出现了比指令行更直觉化的操作界面（比如直接点选航班座位），但我目前看不到这种迹象——航信的指令体系稳定了快二十年，短期内不太可能动。</p>
+<p>总结下来，这个 App 的定位很清晰：桌面端的备份和延伸，而不是替代品。用对了场景它能省很多事，用错了（比如想在手机端处理复杂 PNR 修改）那就是自找苦吃。一年前我装它是应急，现在它是我每天打开的第五个 App——排在微信、钉钉、日历、航旅纵横之后。</p>
+<hr>
+<p>整理这套航信指令的资料花了不少时间，文档、样本和操作示例我同步放在三个仓库里了，方便随时查阅：<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/etermapp" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/etermapp" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/etermapp" target="_blank" rel="noopener">GitCode</a>。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/equalizer-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了半年 equalizer：从&#34;换个播放器&#34;到&#34;离不开它&#34;的真实感受</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/exagear.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">出差三周，我用安卓手机把十年前的老 PC 游戏通关了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

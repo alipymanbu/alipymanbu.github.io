@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>dzmm.ai 用了快一年，踩过的那些让 AI 崩人设的坑 · 老杨技术栈</title>
+  
+<meta name="description" content="DZMM 上手门槛很低，但想让 AI 角色对话稳定不翻车，有几个细节没注意到就会白忙活。这篇把我踩过的坑一一拆解，附速查清单。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/dzmm-ai.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dzmm.ai 用了快一年，踩过的那些让 AI 崩人设的坑">
+<meta property="og:description" content="DZMM 上手门槛很低，但想让 AI 角色对话稳定不翻车，有几个细节没注意到就会白忙活。这篇把我踩过的坑一一拆解，附速查清单。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/dzmm-ai.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/dzmm-ai/character-card-editor.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/dzmm-ai/character-card-editor.jpeg">
+
+<meta name="twitter:title" content="dzmm.ai 用了快一年，踩过的那些让 AI 崩人设的坑">
+<meta name="twitter:description" content="DZMM 上手门槛很低，但想让 AI 角色对话稳定不翻车，有几个细节没注意到就会白忙活。这篇把我踩过的坑一一拆解，附速查清单。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "DZMM \u4e0a\u624b\u95e8\u69db\u5f88\u4f4e\uff0c\u4f46\u60f3\u8ba9 AI \u89d2\u8272\u5bf9\u8bdd\u7a33\u5b9a\u4e0d\u7ffb\u8f66\uff0c\u6709\u51e0\u4e2a\u7ec6\u8282\u6ca1\u6ce8\u610f\u5230\u5c31\u4f1a\u767d\u5fd9\u6d3b\u3002\u8fd9\u7bc7\u628a\u6211\u8e29\u8fc7\u7684\u5751\u4e00\u4e00\u62c6\u89e3\uff0c\u9644\u901f\u67e5\u6e05\u5355\u3002", "headline": "dzmm.ai \u7528\u4e86\u5feb\u4e00\u5e74\uff0c\u8e29\u8fc7\u7684\u90a3\u4e9b\u8ba9 AI \u5d29\u4eba\u8bbe\u7684\u5751", "image": ["https://alipymanbu.github.io/images/dzmm-ai/character-card-editor.jpeg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/dzmm-ai.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/dzmm-ai.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "dzmm.ai \u7528\u4e86\u5feb\u4e00\u5e74\uff0c\u8e29\u8fc7\u7684\u90a3\u4e9b\u8ba9 AI \u5d29\u4eba\u8bbe\u7684\u5751", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">dzmm.ai 用了快一年，踩过的那些让 AI 崩人设的坑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">dzmm.ai 用了快一年，踩过的那些让 AI 崩人设的坑</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">DZMM 上手门槛很低，但想让 AI 角色对话稳定不翻车，有几个细节没注意到就会白忙活。这篇把我踩过的坑一一拆解，附速查清单。</p>
+  </header>
+  <div class="prose">
+<p>我第一次接触 DZMM 是去年夏天，朋友说"这个能自己做 AI 角色陪聊"，听起来挺新鲜。先去<a href="https://dzmm-ai.hhdc.tech" target="_blank" rel="noopener">dzmm.ai官网</a>看了看介绍，再从<a href="https://dzmm-ai.hhdc.tech/download.html" target="_blank" rel="noopener">下载</a>拿了安装包，注册账号、五分钟建了第一张角色卡，一切都很顺利。结果真正跑起来对话的时候，AI 的表现把我整懵了——说好的"温柔安静的图书馆女生"，聊到一半突然变成了话痨大姐大。</p>
+<p>那之后我又折腾了小半年，建了十几张角色卡，崩人设的次数加起来也差不多有十几回。慢慢摸出来，这软件看着简单，其实有几个坑踩进去就白忙活。写出来给刚上手的朋友提个醒。</p>
+<h2>第一个坑：人设写了一堆形容词，AI 根本不认</h2>
+<p>这是我踩的第一个也是最常见的坑。第一次写角色人设，我写了这样一段：</p>
+<blockquote><p>她性格温柔内向，喜欢安静看书，说话轻声细语，偶尔会害羞。</p></blockquote>
+<p>听起来没毛病吧？但跑起来 AI 完全不是这么回事——有时候真的轻声细语，但聊着聊着突然开始长篇大论，有时候又变得过分迁就，我说什么都"好的好的"。</p>
+<p>后来去<a href="https://dzmm-ai.pages.dev/" target="_blank" rel="noopener">dzmm.ai文档</a>翻了一下才明白原因。AI 读人设的时候，它不是在"理解角色"，而是在"提取行为模式"。"温柔"这两个字是抽象标签，AI 不知道该怎么执行"温柔"——它可以补全成轻声细语，也可以补全成过分迁就，甚至补全成唠叨。结果就是随机的，每次对话都可能不一样。</p>
+<p>解法也很简单：<strong>别写标签，写行为和反应</strong>。把上面那段改成：</p>
+<blockquote><p>说话轻声细语，被夸奖时会低头笑，紧张时会搓手指。喜欢安静看书，聊到感兴趣的话题会眼睛亮一下但不打断对方。</p></blockquote>
+<p>这样 AI 就有具体的行为可以模仿了。我改了之后，同一个角色卡连续对话十轮，人设没崩过。</p>
+<p><img src="../images/dzmm-ai/character-card-editor.jpeg" alt="人设编辑界面" loading="lazy"></p>
+<h2>第二个坑：人设写太长，AI 后半部分直接忽略</h2>
+<p>有一次我心血来潮，给一个"深夜便利店值班员"角色写了两千多字的人设——背景故事、性格特征、日常习惯、遇到醉客怎么处理、遇到加班的程序员怎么搭话，全写进去了。结果跑起来 AI 完全没按后面的设定来，遇到醉客直接说"我报警了"，跟人设里写的"先递一杯热水再慢慢劝"差了十万八千里。</p>
+<p>原因是 AI 的注意力不是无限的。人设超过 2000 字之后，后半部分很可能被忽略，AI 只抓前面的内容来表现。官方给出的建议是 300 到 800 字，这个范围刚好能覆盖背景、性格、反应示例三个维度，又不会超出模型的关注范围。</p>
+<p>写长人设还有另一个问题——你自己也记不住。角色卡存了一堆边角设定，等对话出了问题你想调整，翻半天才能找到是哪段写的。不如精简到几个核心特质，反复强化。</p>
+<h2>第三个坑：说话风格只写文字描述，不加示例对话</h2>
+<p>这个坑我是在第三四张角色卡的时候踩的。当时我在说话风格字段里写了"说话简洁，偶尔冷幽默"，结果 AI 要么说一堆，要么根本没幽默感——它对"简洁"和"冷幽默"的理解跟我完全不一样。</p>
+<p>后来我换了个方式，直接在说话风格里写了三到五轮示例对话：用户说什么，角色答什么。比如用户问"今天生意怎么样"，角色答"还行，刚才有个客人把泡面汤洒地上了"。有了具体的对话示例之后，AI 开口直接就是那个调调，根本不会跑偏。</p>
+<p>这个坑和第一个坑本质是一样的——AI 对抽象描述的理解不稳定，但对具体的、有上下文的示例执行得非常准。不管是人设还是说话风格，能写示例就别光写描述。</p>
+<h2>第四个坑：收藏堆了上百张角色卡，找不到想用的</h2>
+<p>DZMM 的角色广场上有几十万张公开角色卡，我每天刷得停不下来，看到喜欢的就点收藏。结果收藏了一百多张之后，角色列表翻半天找不到我上次想聊的那个"英语陪练"。</p>
+<p>官方说收藏不计入自建角色卡的数量上限，喜欢多少就能收多少。但上限没说不代表数量多了没问题。收藏太多不仅列表变乱，AI 也不会因为你收藏了就自动帮你分类。我现在每次刷广场，只收藏当天可能用到的，用完就删，列表保持在二三十张左右。</p>
+<h2>防坑清单</h2>
+<p>踩了这么多坑之后，我总结了几条每次创建角色卡前都过一遍的速查项：</p>
+<ul><li>人设里有没有抽象形容词？全删掉，换成具体的行为和反应描述。</li><li>人设字数有没有超过 800？超过就精简，留核心特质，边角设定果断放弃。</li><li>说话风格有没有写示例对话？至少三到五轮，比任何描述都管用。</li><li>收藏列表是不是超过三十张？该删就删，别舍不得。</li></ul>
+<h2>最后</h2>
+<p>DZMM 本身其实挺省心的——模型切换方便，对话数据加密存储，角色卡还能导出成 JSON 带走。但省心的前提是你给 AI 的指令要准。把上面这几个坑避开，AI 崩人设的概率至少能降七成。文档里提到的角色卡模板和整理好的人设示例，我也同步到了三个仓库，国内访问优先 Gitee，GitHub 和 GitCode 也各放了一份，随便哪个顺手用哪个。知道这些坑之后，这软件其实相当省心。</p>
+<p><a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/dzmm.ai" target="_blank" rel="noopener">GitHub</a> · <a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/dzmm.ai" target="_blank" rel="noopener">Gitee</a> · <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/dzmm.ai" target="_blank" rel="noopener">GitCode</a></p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/dynamicspot.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">dynamicSpot 原理拆解：Android 上复刻灵动岛的技术代价</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/echo-music-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Echo Music 深度拆解：为什么它能把 Android 音乐播放做到 Bit-perfect</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

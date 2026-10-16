@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>200MB 换来了什么——PokeDex 全量离线架构的设计取舍 · 老杨技术栈</title>
+  
+<meta name="description" content="为什么 PokeDex 敢把两百多兆数据塞进安装包，而同类图鉴不敢？从 SQLite 存储到版本化数据管理，拆解它&#34;离线优先&#34;背后的技术逻辑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/pokedex-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="200MB 换来了什么——PokeDex 全量离线架构的设计取舍">
+<meta property="og:description" content="为什么 PokeDex 敢把两百多兆数据塞进安装包，而同类图鉴不敢？从 SQLite 存储到版本化数据管理，拆解它&#34;离线优先&#34;背后的技术逻辑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/pokedex-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/pokedex-docs/screenshot-pokedex-detail.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/pokedex-docs/screenshot-pokedex-detail.png">
+
+<meta name="twitter:title" content="200MB 换来了什么——PokeDex 全量离线架构的设计取舍">
+<meta name="twitter:description" content="为什么 PokeDex 敢把两百多兆数据塞进安装包，而同类图鉴不敢？从 SQLite 存储到版本化数据管理，拆解它&#34;离线优先&#34;背后的技术逻辑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e3a\u4ec0\u4e48 PokeDex \u6562\u628a\u4e24\u767e\u591a\u5146\u6570\u636e\u585e\u8fdb\u5b89\u88c5\u5305\uff0c\u800c\u540c\u7c7b\u56fe\u9274\u4e0d\u6562\uff1f\u4ece SQLite \u5b58\u50a8\u5230\u7248\u672c\u5316\u6570\u636e\u7ba1\u7406\uff0c\u62c6\u89e3\u5b83\"\u79bb\u7ebf\u4f18\u5148\"\u80cc\u540e\u7684\u6280\u672f\u903b\u8f91\u3002", "headline": "200MB \u6362\u6765\u4e86\u4ec0\u4e48\u2014\u2014PokeDex \u5168\u91cf\u79bb\u7ebf\u67b6\u6784\u7684\u8bbe\u8ba1\u53d6\u820d", "image": ["https://alipymanbu.github.io/images/pokedex-docs/screenshot-pokedex-detail.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/pokedex-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/pokedex-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "200MB \u6362\u6765\u4e86\u4ec0\u4e48\u2014\u2014PokeDex \u5168\u91cf\u79bb\u7ebf\u67b6\u6784\u7684\u8bbe\u8ba1\u53d6\u820d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">200MB 换来了什么——PokeDex 全量离线架构的设计取舍</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">200MB 换来了什么——PokeDex 全量离线架构的设计取舍</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">为什么 PokeDex 敢把两百多兆数据塞进安装包，而同类图鉴不敢？从 SQLite 存储到版本化数据管理，拆解它&#34;离线优先&#34;背后的技术逻辑。</p>
+  </header>
+  <div class="prose">
+<p>你有没有过这种经历：地铁上好不容易掏出手机，想查一下刚抓到的那只宝可梦能不能进化，结果图鉴 app 加载半天卡在转圈——信号时断时续，4G 像个得了帕金森的老头子，你越急它越不动。</p>
+<p>我一直以为这是"现代 app 的通病"：毕竟云时代嘛，数据都在服务器上，客户端只是个壳子。直到碰到<a href="https://pokedex.qhah.skin" target="_blank" rel="noopener">PokeDex官网</a>，装完两百多兆，开飞行模式搜一只烈咬陆鲨，图鉴秒开、计算器秒响应、队伍编辑器随手配——全程零网络，零延迟。</p>
+<p>这就有意思了。<strong>同样是图鉴应用，为什么 PokeDex 敢把几百兆数据塞进 APK，而别的图鉴不敢？它是怎么做到的，代价又是什么？</strong></p>
+<h2>全量打包：一个反直觉的架构决策</h2>
+<p>先说结论：PokeDex 选择了一条在移动应用界越来越少见的路——<strong>数据与代码强绑定，安装即拥有</strong>。</p>
+<p>大部分现代 app 的思路是瘦客户端 + 胖后端。客户端只放界面框架，所有数据走 API 拉取，好处是 app 本体小（通常几兆到几十兆）、数据更新不需要重新安装、服务端可以随时推送新内容。代价也很明显：<strong>没有网络 = 没有 app</strong>。图鉴这种工具类应用最尴尬——你用它的场景恰恰可能是没网的地方。</p>
+<p>PokeDex 的设计团队做了相反的选择。他们把从第一代到第八代的全部宝可梦数据、招式表、道具清单、特性说明、属性相克矩阵、各种计算器公式——<strong>一次性全部打在安装包里</strong>。结果就是 200+ MB 的 APK，从<a href="https://pokedex.qhah.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿的时候就能感受到它的分量，装完直接自包含，运行时不需要向任何服务器请求数据。</p>
+<p><img src="../images/pokedex-docs/screenshot-pokedex-detail.png" alt="图鉴详情页，全量数据秒开" loading="lazy"></p>
+<p>这听起来像是个很"笨"的方案。但仔细想一下宝可梦玩家的使用场景，这个决策一点都不笨：地铁、山区、考场禁网、出国没漫游——这些场景在重度玩家的日常里出现频率比普通 app 高得多。宝可梦的核心数据（数值、招式、属性）是相对稳定的，不像新闻或社交媒体需要实时更新，所以打包一次能用很久。</p>
+<h2>SQLite 版本化存储：一份数据，多种口径</h2>
+<p>但"全量打包"只是故事的开头。真正精妙的是它怎么在离线前提下处理<strong>版本差异</strong>这个最棘手的问题。</p>
+<p>宝可梦这个 IP 的数据复杂度极高。同一只宝可梦在剑盾里的捕捉地点、在阿尔宙斯里的合法球种、在朱紫里学会的招式，三套数据完全不一样。如果只是把所有版本的数据平铺在一起，用户搜一只宝可梦看到的会是一锅粥——哪些适用于当前版本根本分不清。</p>
+<p>PokeDex 的解法是<strong>版本化的数据分层</strong>。它在 SQLite 里把每条数据都打上版本标签：招式记录会标注"此招式在剑盾中可通过升级习得、在朱紫中已被删除、在阿尔宙斯中不存在"；球种列表会按游戏版本做合法性过滤；甚至连计算器里的性格修正公式，不同版本的系数都不一样，也各自存一份。</p>
+<p>用户在设置里选了"剑盾"之后，整个应用就像戴上了一副滤镜——<strong>所有查询结果自动只展示当前版本的合法数据</strong>。不只是图鉴详情页，队伍编辑器的合法性校验、能力计算器的修正系数、地区图鉴的捕捉地点，全部跟着版本切换。切换是即时生效的，不需要重新加载。</p>
+<p>这套机制有个容易被忽略的好处：<strong>用户不会被"错误口径"的信息误导</strong>。我见过太多玩家查了某只宝可梦的捕捉地点，兴冲冲跑去游戏里找，结果那地点是另一个版本的——白跑一趟。PokeDex 用版本化存储从根源上解决了这个问题，<a href="https://pokedex-docs.pages.dev/" target="_blank" rel="noopener">PokeDex文档</a>里对这个过滤逻辑有更详细的拆解。</p>
+<h2>本地持久化：队伍数据的生命周期管理</h2>
+<p>队伍编辑器是 PokeDex 最复杂的功能之一——6 只宝可梦、每只 4 个招式槽、性格、个体值、努力值、道具、特性，这一整套配置存下来就是一条不小的记录。PokeDex 同样没有选择云同步，而是全部存在本地 SQLite。</p>
+<p>保存时它会做一套<strong>合法性校验链</strong>：检查每只宝可梦的招式数量是否不超过 4、检查道具和招式在当前游戏版本下是否合法、检查队伍总数是否不超过对战规则的 6 只、甚至会温馨提示"你当前设置的是阿尔宙斯版本，但这支队伍归属剑盾——部分数据可能需要调整"。</p>
+<p>导出格式兼容社区通用的 Smogon 文本格式，这是个很聪明的设计——网上流传的配队方案几乎都是这种格式，用户复制粘贴就能直接导入。跨版本迁移时，如果某只宝可梦的招式在新版本被删了，PokeDex 会把那一项标红，让你手动调整，而不是静默丢失数据。</p>
+<p><img src="../images/pokedex-docs/screenshot-tools.png" alt="战队编辑器，本地持久化" loading="lazy"></p>
+<h2>这套设计的代价：200MB 不是白来的</h2>
+<p>讲到这里你可能已经在想：这么好的方案为什么别的 app 不抄？</p>
+<p>第一个代价就是<strong>安装包体积</strong>。200+ MB 在 5G 时代不算特别大，但对比其他图鉴 app（常见 30~50 MB）确实重了不少。对存储空间紧张的老用户来说，这是个实打实的门槛。</p>
+<p>第二个代价是<strong>数据更新的滞后性</strong>。因为数据打在包里，游戏出了新版本或 DLC，PokeDex 必须等开发团队把新数据更新、打包、发布、用户重新安装——整条链路下来可能要等几周甚至更久。对比云同步方案，服务端改一行就能全量推送，这方面确实吃亏。</p>
+<p>第三个代价是<strong>没有社区和云同步</strong>。PokeDex 纯离线的定位决定了它不做云备份、不做社区分享、不做排行榜。队伍数据存在本地，换手机就得导出再导入。资讯板块完全依赖联网，离线时是空的。</p>
+<h2>谁适合、谁不适合</h2>
+<p>那这套架构到底值不值？我的判断是：</p>
+<p><strong>适合</strong>：在信号差环境用手机玩宝可梦的人（地铁党、住校党、偏远地区玩家）；同时玩多个版本、频繁切换查数据的人；对"数据口径正确性"有洁癖的硬核玩家；出国旅行怕没漫游的人。</p>
+<p><strong>不太适合</strong>：只在有 WiFi 的家里玩、对安装包体积敏感的人；需要云端同步队伍到多设备的人；只想快速查一下进化表、对版本精度要求不高的休闲玩家。</p>
+<p>本质上 PokeDex 做的是一个取舍——<strong>用更大的安装包和更慢的更新速度，换来了即时响应、全场景可用、口径精准这三件事</strong>。在越来越多的应用把数据往云端堆的时候，它反其道而行之，把所有东西打包到本地。这个选择在宝可梦这个垂直领域特别成立，因为宝可梦数据稳定、玩家使用场景特殊、社区有通用格式可以对接。</p>
+<p>它的设计思路值得所有工具类应用参考：<strong>你的用户在什么场景用你的产品？那个场景的网络状况怎么样？</strong> 如果答案是"信号不好、甚至没信号"，那"离线优先"就不应该是一个可选项，而应该是一个设计前提。</p>
+<hr>
+<p>资料整理参考了 PokeDex 的公开文档和社区配队格式规范——APK 仓库同步维护在 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/PokeDex" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/PokeDex" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/PokeDex" target="_blank" rel="noopener">GitCode</a>，国内访问选 Gitee 会快不少。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/poipiku.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">poipiku 的三道设计选择题：为什么它同时做了发现流、隐私矩阵和标签筛选</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/polyai-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">花了一周把 PolyAI 的 Studio 摸了个遍，说点真实感受</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

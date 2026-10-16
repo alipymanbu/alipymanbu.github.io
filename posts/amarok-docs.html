@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Amarok 深度盘点：蛰伏六年后重出江湖的全能本地音乐播放器 · 老杨技术栈</title>
+  
+<meta name="description" content="从 2.9 到 3.3 的技术底座换代，收藏体系、动态播放列表、远程接入、脚本生态——这篇把 Amarok 3.x 的完整能力面系统性铺开，同时客观列出短板与用户画像。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/amarok-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Amarok 深度盘点：蛰伏六年后重出江湖的全能本地音乐播放器">
+<meta property="og:description" content="从 2.9 到 3.3 的技术底座换代，收藏体系、动态播放列表、远程接入、脚本生态——这篇把 Amarok 3.x 的完整能力面系统性铺开，同时客观列出短板与用户画像。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/amarok-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/amarok-docs/amarok30.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/amarok-docs/amarok30.png">
+
+<meta name="twitter:title" content="Amarok 深度盘点：蛰伏六年后重出江湖的全能本地音乐播放器">
+<meta name="twitter:description" content="从 2.9 到 3.3 的技术底座换代，收藏体系、动态播放列表、远程接入、脚本生态——这篇把 Amarok 3.x 的完整能力面系统性铺开，同时客观列出短板与用户画像。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece 2.9 \u5230 3.3 \u7684\u6280\u672f\u5e95\u5ea7\u6362\u4ee3\uff0c\u6536\u85cf\u4f53\u7cfb\u3001\u52a8\u6001\u64ad\u653e\u5217\u8868\u3001\u8fdc\u7a0b\u63a5\u5165\u3001\u811a\u672c\u751f\u6001\u2014\u2014\u8fd9\u7bc7\u628a Amarok 3.x \u7684\u5b8c\u6574\u80fd\u529b\u9762\u7cfb\u7edf\u6027\u94fa\u5f00\uff0c\u540c\u65f6\u5ba2\u89c2\u5217\u51fa\u77ed\u677f\u4e0e\u7528\u6237\u753b\u50cf\u3002", "headline": "Amarok \u6df1\u5ea6\u76d8\u70b9\uff1a\u86f0\u4f0f\u516d\u5e74\u540e\u91cd\u51fa\u6c5f\u6e56\u7684\u5168\u80fd\u672c\u5730\u97f3\u4e50\u64ad\u653e\u5668", "image": ["https://alipymanbu.github.io/images/amarok-docs/amarok30.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/amarok-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/amarok-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "Amarok \u6df1\u5ea6\u76d8\u70b9\uff1a\u86f0\u4f0f\u516d\u5e74\u540e\u91cd\u51fa\u6c5f\u6e56\u7684\u5168\u80fd\u672c\u5730\u97f3\u4e50\u64ad\u653e\u5668", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">Amarok 深度盘点：蛰伏六年后重出江湖的全能本地音乐播放器</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Amarok 深度盘点：蛰伏六年后重出江湖的全能本地音乐播放器</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 2.9 到 3.3 的技术底座换代，收藏体系、动态播放列表、远程接入、脚本生态——这篇把 Amarok 3.x 的完整能力面系统性铺开，同时客观列出短板与用户画像。</p>
+  </header>
+  <div class="prose">
+<p>Amarok 不是那种靠营销和流量堆起来的播放器，它的<a href="https://amarok.fewa.skin" target="_blank" rel="noopener">官网</a>一直保持着最小维护状态。它在 Linux 桌面音乐圈摸爬滚打了快二十年，中间蛰伏六年（2018 年 2.9.0 之后就基本停更），2024 年突然带着 Qt5/KF5 技术底座的 3.0「Castaway」版杀回来，安装包从<a href="https://amarok.fewa.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿就行，连发十余个小版本，直接冲到 3.3（2025 年 7 月），Qt6/KF6 + GStreamer 引擎全到位。老用户惊呼「它还活着」，新用户则在问「这玩意到底强在哪」。</p>
+<p><img src="../images/amarok-docs/amarok30.png" alt="Amarok 3.0 Castaway 版本主界面" loading="lazy"></p>
+<p>这篇盘点就把 Amarok 3.x 的能力面完整铺开——从收藏管理到动态播放列表，从远程接入到脚本生态，每一块讲清楚它提供什么、亮点在哪、什么场景用得上。同时客观说出它现在还不够好的地方，免得你抱着过高期待入坑。</p>
+<h2>收藏管理：本地硬盘只是起点</h2>
+<p>播放器的根在收藏体系。Amarok 把这件事做了三层：本地硬盘、远程服务、播客/电台。本地扫描是基础——指定目录、递归索引、标签入库，Emoji 等极端字符在 3.3 版之后也能正常入库。曲库上千首之后，层级浏览（艺人 → 专辑 → 曲目）比平铺直叙好用得多。</p>
+<p>搜索和筛选是收藏的另一双眼睛。媒体源面板顶部的过滤框是实时过滤——边输边筛，输入 "black rain" 只留同时含两词的条目；而过滤框旁边按钮打开的「编辑筛选器」对话框则从文字匹配升级到标签条件构造：选择字段（艺人、专辑、流派、年份、评分、播放次数等）、设定匹配条件（等于、包含、大于）、多个条件之间用「与/或」组合，能造出「流派 = 爵士 且 评分 ≥ 4」「年份 = 1990 年代 且 播放次数 = 0」这类只有筛选器才做得了的精确查询。3.2 版本还专门加了「按缺标签/空标签筛选」——想找出所有没填流派的歌慢慢补，这一版直接给了入口。常用查询还能存成书签，之后一键回到同样的筛选状态。</p>
+<p>远程收藏是 Amarok 收藏体系的最大杀招。音乐不止在本地硬盘——官方内置 Ampache 集成，把家里 NAS 或自建的流媒体音乐库直接接进来，像本地文件一样浏览、搜索、评分、加入播放列表。这里有个版本节点值得记：3.2 修复了 Ampache 5.0.0 及以上的登录问题，服务器版本新于 5.0.0 时播放器至少要升到 3.2。远程播放走网络，千兆局域网基本无感，跨公网就取决于上行带宽了——但总比直接在 NAS 上开个网页播放器要强。</p>
+<p>同属「音乐不在本地」范畴的还有播客（订阅制下载）和网络电台（直播流），三者分工一句话：<strong>远程收藏 = 我自己的库；播客 = 我订阅的节目；电台 = 大家都在听的直播</strong>。</p>
+<h2>动态播放列表：十二种规则的自动选歌引擎</h2>
+<p>手动拖歌进列表谁都会，但真正拉开差距的是动态播放列表——设置好规则，播放器自己续歌。Amarok 的动态播放列表全靠 biases（偏差规则）驱动，一条 bias 就是一个选歌约束：续歌时从所有满足规则的歌里随机挑。十二种规则分两类：</p>
+<p><strong>直接匹配歌曲的单条规则</strong>：Random（完全随机，兜底永远能出歌）、Search（按搜索词匹配，与收藏搜索语法一致）、Match Meta Tag（按标签条件匹配）、Album Play（整张专辑按顺序连播）、Quiz Play（接龙规则——上一首某标签的尾字 = 下一首同标签的首字）、EchoNest similar artist / Last.fm similar（按曲风相似度续歌，数据源不同）、Last.fm weekly top artist（匹配 Last.fm 周榜艺人，需要联网）。</p>
+<p><strong>装别的规则的容器规则</strong>：And（满足所有子规则）、Or（满足任一子规则）、Partition（按比例出歌，滑杆设定占比）、If Else（先按第一组找，找不到再按第二组兜底）。组合规则可以嵌套——And 里面套 Or、外面再套 Partition，理论上能表达非常复杂的选歌策略。</p>
+<p>三组拿来就用的配方：「我收藏的爵士电台」= And（流派含 Jazz 且 评分 ≥ 3），只在及格线以上的爵士里随机；「完整听专辑」= Album Play（种子丢进某专辑一首歌，后续自动按曲目顺序播完整张）；「六成常听四成挖坟」= Partition（评分 ≥ 4 占六成，播放次数 = 0 占四成），主导听感是熟悉的好歌，同时定期塞进冷门货。</p>
+<p>规则系统最常见的问题是组合出了不可能条件——And 里两条互斥（流派 = 爵士 And 流派 = 摇滚）、或条件在库里空匹配。排查口诀：先只留 Random 确认机制正常，再逐条加回规则，加到哪条不出歌就是哪条的条件有问题；不确定时把 And 换成 Or 放宽条件试试——更完整的进阶玩法和排查思路，翻<a href="https://amarok-docs.pages.dev/" target="_blank" rel="noopener">Amarok文档</a>能找到。</p>
+<h2>界面与上下文：肌肉记忆还在，但细节变了</h2>
+<p>从 2.x 升级过来的老用户会发现三分格局没变——媒体源、上下文视图、播放列表的骨架完全一致，肌肉记忆大体有效。但 applet 有增减：相似艺人 applet 在 3.0 缺席、3.1 回归；当前曲目 applet 从 3.2 起默认显示；暂停/停止淡出默认关闭（3.1.1 起）——觉得「怎么按暂停不对劲」的先去设置看看。</p>
+<p>ReplayGain 和可视化从「看 Phonon 后端运气」变成 3.3 之后的全员统一可用——这是升级后最先该重新验证的功能面。数据库字符集升级之后，emoji 等极端字符正常入库，也不会再出现中文文件名乱码。</p>
+<p><img src="../images/amarok-docs/amarok33.png" alt="Amarok 3.3 版本界面，上下文视图 applet 默认显示" loading="lazy"></p>
+<h2>短板也要说</h2>
+<p>脚本生态是 3.x 与 2.x 断层最大的一块。脚本框架从 QtScript 迁到 QJSEngine，迁移期旧 2.x 脚本大多不兼容，脚本商店下载功能一度禁用，官方自己也承认 API 文档部分过时。依赖 2.x 脚本工作流的人（尤其歌词脚本重度用户）迁移前要有心理准备。</p>
+<p>RealMedia 与 Audible 支持在 3.3 被移除，部分 Last.fm 电台功能也清理了——这是功能层面的"收"，换来的是 cue 文件支持恢复、数据库字符集升级、ReplayGain 统一的"放"。官方取舍很明确：守住核心体验，砍掉长尾格式。</p>
+<h2>什么样的人该用它</h2>
+<p>第一类是<strong>Linux 桌面重度用户</strong>。Amarok 在 Linux 上的体验是原生级的——KDE 桌面环境下与 Dolphin 整合、系统托盘控制、全局快捷键、MTP 设备同步，这些都是 Windows 端比不了的优势。</p>
+<p>第二类是<strong>曲库过万、愿意花时间整理元数据的人</strong>。收藏体系的搜索筛选、远程接入、评分统计、动态播放列表规则，这些能力都是在"有整理过的曲库"这个前提下才能发挥出来。随手丢几百首 mp3 进去凑活听的话，任何播放器都够用，Amarok 用不上这些深度功能。</p>
+<p>第三类是<strong>开源生态爱好者</strong>。Amarok 完全开源、社区驱动，每年 GSoC 都有学生贡献代码。从 Ampache 集成到 Last.fm 对接，背后都是开源项目之间的协作。不想碰商业闭源音乐平台订阅的人，Amarok 是把自己的曲库真正"管起来"的少数选择之一。</p>
+<p>蛰伏六年还能活过来、连发十余个版本、技术底座从 Qt5 升到 Qt6，Amarok 证明了开源项目只要核心维护者不放弃，就没有真正的"已死"。它现在还在重建——脚本生态在补，细节在修，Amarok 4 也已经在路上。这套整理好的资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Amarok" target="_blank" rel="noopener">GitHub</a>上维护主版本，国内访问慢直接看<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Amarok" target="_blank" rel="noopener">Gitee</a>镜像，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Amarok" target="_blank" rel="noopener">GitCode</a>那边也同步了一份。如果你对本地音乐还有执念，值得给它一个机会。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/alist-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">聚合盘这么多，为什么我还在用 alist</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/amls-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AMLS 零基础入门：手机上也能做 After Effects 级别的动画</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

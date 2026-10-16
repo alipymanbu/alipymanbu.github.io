@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零在 miyu 捏一个能聊剧情的 AI 角色：世界书 + 角色卡实战 · 老杨技术栈</title>
+  
+<meta name="description" content="带你一步步在手机上搭一个有世界观、有性格、能推进剧情的 AI 角色，从世界书写法到角色卡打磨，避坑点一次讲清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/miyu-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零在 miyu 捏一个能聊剧情的 AI 角色：世界书 + 角色卡实战">
+<meta property="og:description" content="带你一步步在手机上搭一个有世界观、有性格、能推进剧情的 AI 角色，从世界书写法到角色卡打磨，避坑点一次讲清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/miyu-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/miyu-docs/character-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/miyu-docs/character-card.png">
+
+<meta name="twitter:title" content="从零在 miyu 捏一个能聊剧情的 AI 角色：世界书 + 角色卡实战">
+<meta name="twitter:description" content="带你一步步在手机上搭一个有世界观、有性格、能推进剧情的 AI 角色，从世界书写法到角色卡打磨，避坑点一次讲清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5e26\u4f60\u4e00\u6b65\u6b65\u5728\u624b\u673a\u4e0a\u642d\u4e00\u4e2a\u6709\u4e16\u754c\u89c2\u3001\u6709\u6027\u683c\u3001\u80fd\u63a8\u8fdb\u5267\u60c5\u7684 AI \u89d2\u8272\uff0c\u4ece\u4e16\u754c\u4e66\u5199\u6cd5\u5230\u89d2\u8272\u5361\u6253\u78e8\uff0c\u907f\u5751\u70b9\u4e00\u6b21\u8bb2\u6e05\u3002", "headline": "\u4ece\u96f6\u5728 miyu \u634f\u4e00\u4e2a\u80fd\u804a\u5267\u60c5\u7684 AI \u89d2\u8272\uff1a\u4e16\u754c\u4e66 + \u89d2\u8272\u5361\u5b9e\u6218", "image": ["https://alipymanbu.github.io/images/miyu-docs/character-card.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/miyu-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/miyu-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u5728 miyu \u634f\u4e00\u4e2a\u80fd\u804a\u5267\u60c5\u7684 AI \u89d2\u8272\uff1a\u4e16\u754c\u4e66 + \u89d2\u8272\u5361\u5b9e\u6218", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">从零在 miyu 捏一个能聊剧情的 AI 角色：世界书 + 角色卡实战</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零在 miyu 捏一个能聊剧情的 AI 角色：世界书 + 角色卡实战</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">带你一步步在手机上搭一个有世界观、有性格、能推进剧情的 AI 角色，从世界书写法到角色卡打磨，避坑点一次讲清。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程结束时，你能独立完成一件事：在<a href="https://miyu.hfdk.space" target="_blank" rel="noopener">miyu官网</a>打造一个带世界观、性格稳定、能跟着你推进剧情的 AI 角色——不是随便聊两句就跑题那种，而是在你设定的框架内持续互动。</p>
+<h2>准备工作</h2>
+<p>在动手之前，确认两件事：</p>
+<ol><li><strong>设备</strong>：一台 Android 手机（miyu 的主要支持平台），存储空间至少空出 200MB，安装包从<a href="https://miyu.hfdk.space/download.html" target="_blank" rel="noopener">官方下载</a>拿</li><li><strong>账号状态</strong>：打开 APP 后用手机号或邮箱登录——游客模式下你写的角色和聊的记录只存在这台手机上，换设备就没了</li></ol>
+<p>别急着跳过第二步直接创建角色——先登录。后面你就会明白：写了半小时的角色卡，如果哪天手机丢了或者重装 APP，没登录就全没了。</p>
+<h2>第一步：先搭"世界书"，再写角色卡</h2>
+<p>大部分新手上来就直接建角色，结果 AI 聊着聊着就"出戏"了——比如你设定的是魔法学院的学生，AI 突然掏出一部手机。这不是 AI 笨，是你没告诉它"这个世界里有什么、没什么"。</p>
+<p>miyu 里这个功能叫世界书（Worldbook）。它和角色卡的关系是：<strong>角色卡定义"这个角色是谁"，世界书定义"这个角色处在什么世界"</strong>。AI 生成回应时会同时参考两套设定，缺了任何一套都容易跑偏。</p>
+<h3>世界书怎么写——三个结构就够用</h3>
+<p>打开 APP 找到世界设定的入口（不同版本位置可能不一样，有的在角色编辑页，有的在剧情模式的开场附加项里），按下面这个结构往里填：</p>
+<p><strong>世界观规则</strong>：用要点式列出来，不要写小说。比如写一个现代都市背景：</p>
+<ul><li>时间：2026 年秋天</li><li>地点：上海某大学</li><li>科技水平：跟现实一致，无超能力</li></ul>
+<p><strong>关键场景</strong>：挑两三个你计划频繁出现的场景，每个给一两句细节：</p>
+<ul><li>图书馆：靠窗有个固定位置，主角每次去都坐那里</li><li>奶茶店：学校南门那家，招牌是芋泥奶茶</li></ul>
+<p><strong>其他 NPC</strong>：除了你要建的主角色，顺便提一两个配角，帮 AI 建立关系网：</p>
+<ul><li>陈老师：图书馆管理员，认识主角，偶尔聊两句</li><li>小王：主角室友，性格活泼</li></ul>
+<p>写完之后检查一遍——有没有写 AI 不需要知道的废话？有没有规则互相矛盾？确认没问题了就保存。</p>
+<p><img src="../images/miyu-docs/character-card.png" alt="世界书与角色卡配合" loading="lazy"></p>
+<h3>新手卡点：写太细 vs 写太粗</h3>
+<p>一个常见误区是把世界书写得像论文，几千字的世界观设定扔进去——AI 对长文本的前面部分权重更高，写太长反而稀释了关键规则。控制在 <strong>200~500 字、每条一句话</strong> 是比较合适的密度。</p>
+<p>反过来也有问题：只写一句"现代都市"就完事了。AI 对"现代都市"的理解可能是北京、可能是东京、可能有魔法、可能没有——你不写清楚，它就随便蒙。</p>
+<h2>第二步：填角色卡，把性格和说话习惯写死</h2>
+<p>有了世界书打底，现在打开角色创建页面。miyu 的角色卡通常包含这些字段：名称、头像、性格基调、背景故事、说话习惯、开场场景。</p>
+<h3>性格基调和背景故事——互相呼应</h3>
+<p>性格基调写一句话就行，但要具体。不要写"温柔"，写"温柔但有主见，不喜欢被别人替她做决定"。背景故事要跟性格对上——如果性格是"沉默寡言的程序员"，背景就别写"从小参加合唱团"。</p>
+<h3>说话习惯——这是让角色"活起来"的关键</h3>
+<p>说话习惯不是选个"御姐音"或"萝莉音"标签就完事了——那是声线，是听感上的。真正决定角色开口怎么说的是下面这些细节：</p>
+<ul><li><strong>称呼方式</strong>：叫你"同学"？还是直接叫名字？还是用"你"？</li><li><strong>口头禅</strong>：有没有一句话她经常挂在嘴边？比如"别急，我想想"</li><li><strong>情绪反应</strong>：你夸她的时候会害羞还是淡定？你怼她的时候会生气还是开玩笑带过？</li><li><strong>句式偏好</strong>：喜欢用短句还是长句？喜欢用反问还是陈述？</li></ul>
+<p>举个例子，一个"高冷学姐"的说话习惯可以这样写：</p>
+<blockquote><p>说话简洁，不啰嗦。称呼对方"学弟/学妹"。遇到不熟的话题会沉默一下然后转开。被追问时偶尔会说"你为什么对这个感兴趣？"</p></blockquote>
+<p>别小看这几行字——AI 在生成每一轮回应时都会对照这些约束。你写得越具体，角色的性格一致性就越强。要是觉得这些还不够用，想加更多约束项，可以去<a href="https://miyu-docs.pages.dev/" target="_blank" rel="noopener">miyu文档</a>翻一下参数参考。</p>
+<p><img src="../images/miyu-docs/chat-interaction.jpg" alt="对话互动效果" loading="lazy"></p>
+<h3>开场场景——把角色"引入"你的世界</h3>
+<p>开场场景是角色对你说的第一句话，也是 AI 理解剧情起点的锚点。好的开场不是"你好我是 XX 我们聊聊吧"，而是<strong>把你拉进世界书设定的场景里</strong>。</p>
+<p>比如你设定在图书馆相遇，开场可以写：</p>
+<blockquote><p>你推开图书馆的门，靠窗位置那个安静看书的女生抬起头，嘴角带着一点笑意："又来占座？今天我帮你留了。"</p></blockquote>
+<p>这句话同时完成了三件事：地点（图书馆）、角色关系（熟人，帮你留座）、语气（轻松、温柔）。AI 之后的对话都会从这个起点往下接。</p>
+<h2>第三步：导出角色卡，做个备份</h2>
+<p>角色卡打磨到满意之后，<strong>立刻导出一份 PUB 格式的文件</strong>。这一步不是可选的——手机丢了、APP 重装、账号数据出问题，只有导出的文件能帮你快速恢复角色。</p>
+<p>在角色编辑页找到「导出」或「分享角色卡」按钮，点一下就生成一个 JSON 文件。给文件起个好认的名字，比如"图书馆学姐-温柔治愈.json"，存到网盘或者电脑上。</p>
+<p>导出的文件包含角色的所有核心设定：性格、背景、说话习惯、开场场景。但<strong>不包含</strong>你的聊天记录，也不包含 miyu 特有的声线绑定——这些换了设备或换了应用需要重新设置。</p>
+<h2>常见卡点</h2>
+<h3>卡点一：AI 总是不按设定来</h3>
+<p>检查两个地方：世界书里有没有把"禁止"的东西写进去（比如"这个世界没有魔法"要正面写，别只写"有元素魔法"），角色卡里的说话习惯有没有跟性格基调矛盾。</p>
+<p>还有一个隐形原因：AI 对前面的内容权重更高。把最重要的规则放在世界书最前面、最显眼的位置。</p>
+<h3>卡点二：聊天记录丢了</h3>
+<p>基本都是没开云端备份或者用了游客模式。去设置里确认一下「云端备份」开关是打开的，换手机前先手动导出角色卡——双保险。</p>
+<h3>卡点三：角色卡导入其他应用失败</h3>
+<p>miyu 导出的 PUB 文件是通用格式，但不同应用对字段名的支持略有差异。用文本编辑器打开导出的 JSON，检查一下关键字段（name、persona、scenario）是不是目标应用能识别的名称。实在不行，拿文本编辑器改一下字段名就能用。</p>
+<h2>进阶一句话</h2>
+<p>世界书和角色卡搭配好了之后，试试往群聊里加两三个角色——同一个世界书框架下的多角色互动，会比单角色对话有意思得多。</p>
+<p>顺带一提，这套资料我也同步传到了三个代码仓库，方便大家按需取用：<a href="https://github.com/alipymanbu/APK/tree/main/APP/miyu" target="_blank" rel="noopener">GitHub</a> 上的版本最全，国内网络不稳的话可以去<a href="https://gitee.com/manbu1103/APK/tree/main/APP/miyu" target="_blank" rel="noopener">Gitee</a> 或<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/miyu" target="_blank" rel="noopener">GitCode</a> 备份站拉取，内容都是一样的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/mixplorer.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从零上手 MiXplorer：双面板、云存储、WebDAV 一路打通</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/mm131.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">我装 MM131 用了三天，说点真的</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

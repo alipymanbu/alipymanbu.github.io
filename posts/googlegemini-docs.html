@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 GoogleGemini 做完整工作流 —— 从日常问答到深度调研 · 老杨技术栈</title>
+  
+<meta name="description" content="从网页端初次上手到手机端 Agent 自动化，一步步带你把 GoogleGemini 的核心能力真正用起来，覆盖 Deep Research、订阅选择和常见坑点。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/googlegemini-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 GoogleGemini 做完整工作流 —— 从日常问答到深度调研">
+<meta property="og:description" content="从网页端初次上手到手机端 Agent 自动化，一步步带你把 GoogleGemini 的核心能力真正用起来，覆盖 Deep Research、订阅选择和常见坑点。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/googlegemini-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/googlegemini-docs/chat-interface.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/googlegemini-docs/chat-interface.png">
+
+<meta name="twitter:title" content="用 GoogleGemini 做完整工作流 —— 从日常问答到深度调研">
+<meta name="twitter:description" content="从网页端初次上手到手机端 Agent 自动化，一步步带你把 GoogleGemini 的核心能力真正用起来，覆盖 Deep Research、订阅选择和常见坑点。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u7f51\u9875\u7aef\u521d\u6b21\u4e0a\u624b\u5230\u624b\u673a\u7aef Agent \u81ea\u52a8\u5316\uff0c\u4e00\u6b65\u6b65\u5e26\u4f60\u628a GoogleGemini \u7684\u6838\u5fc3\u80fd\u529b\u771f\u6b63\u7528\u8d77\u6765\uff0c\u8986\u76d6 Deep Research\u3001\u8ba2\u9605\u9009\u62e9\u548c\u5e38\u89c1\u5751\u70b9\u3002", "headline": "\u7528 GoogleGemini \u505a\u5b8c\u6574\u5de5\u4f5c\u6d41 \u2014\u2014 \u4ece\u65e5\u5e38\u95ee\u7b54\u5230\u6df1\u5ea6\u8c03\u7814", "image": ["https://alipymanbu.github.io/images/googlegemini-docs/chat-interface.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/googlegemini-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/googlegemini-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 GoogleGemini \u505a\u5b8c\u6574\u5de5\u4f5c\u6d41 \u2014\u2014 \u4ece\u65e5\u5e38\u95ee\u7b54\u5230\u6df1\u5ea6\u8c03\u7814", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">用 GoogleGemini 做完整工作流 —— 从日常问答到深度调研</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 GoogleGemini 做完整工作流 —— 从日常问答到深度调研</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 10 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从网页端初次上手到手机端 Agent 自动化，一步步带你把 GoogleGemini 的核心能力真正用起来，覆盖 Deep Research、订阅选择和常见坑点。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程的目标很明确：<strong>读完之后，你能用 <a href="https://googlegemini.uerg.quest" target="_blank" rel="noopener">GoogleGemini官网</a> 独立完成三个层次的任务——日常问答与写作辅助、Deep Research 深度调研、以及手机端 Spark Agent 的日程自动化</strong>。不是知道功能在哪，而是真的把它跑起来出活。</p>
+<h2>准备工作</h2>
+<p>先说清楚几件事，别等你卡在半路才回头：</p>
+<ul><li><strong>平台选择</strong>：如果你有电脑，建议<strong>先用网页端上手</strong>。网页端的 Deep Research 和 Canvas 协作画布是手机端没有的完整功能，适合做正事。手机端 App 后面会用到，但主要场景是移动中的快速查询和 Daily Brief。</li><li><strong>账号</strong>：用你自己的 Google 账号直接登录，不需要额外注册。</li><li><strong>网络</strong>：中国大陆网络下无法直接访问 gemini.google.com。这部分需要你自己解决网络连接问题，教程不展开。</li><li><strong>免费版够用吗</strong>：够用，能覆盖日常问答、基础写作、图片生成。Deep Think 和 Deep Research 有次数限制但每天会重置。订阅方案我们放到后面说，先把免费版跑通再决定要不要掏钱。</li></ul>
+<p>准备好了就打开浏览器，进 gemini.google.com，右上角点登录。</p>
+<h2>第一步：网页端初次上手</h2>
+<p>登录之后你会看到输入框——别直接输问题，先花三十秒看一下界面布局。</p>
+<p>输入框下方有一排工具栏，默认是「Chat」模式，旁边依次是「Deep Research」「Canvas」「Notebook」这些功能入口。左侧边栏可以切换历史对话、创建新对话，还能进入 Gallery（别人分享的 Gem 集合）。</p>
+<p><strong>先做一件事</strong>：在输入框里随便输一个简单问题，比如「帮我写一份今天的工作清单」，回车发送。你会注意到右上角有个模型选择器——默认是「Auto（自动路由）」，Google 会根据问题难度自动选最合适的模型。后面你可以手动切到 Flash（快）或 Pro（强），但自动路由对新手来说是最省心的选择。</p>
+<p><img src="../images/googlegemini-docs/chat-interface.png" alt="GoogleGemini 网页端聊天界面" loading="lazy"></p>
+<p>回答出来之后，试着点一下回答下方的几个小图标：复制、重新生成、点赞、分享（生成 Gem）、还有那个不太起眼的「继续追问」输入框。这些都是高频操作，先熟悉一下。</p>
+<h2>第二步：第一次用 Deep Research 做调研</h2>
+<p>这是 GoogleGemini 和其他 AI 聊天产品最不一样的地方——Deep Research 会像研究员一样工作，而不是搜一两个网页就草草回答。</p>
+<p>操作路径：输入框下方工具栏直接点「Deep Research」按钮。如果没看到，说明你在免费版里，Deep Research 可能藏在输入框左侧的「+」号工具面板里。</p>
+<p>输入你的研究问题，比如「帮我调研 2026 年国内主流云服务厂商的价格对比」，然后在弹出的面板里选研究深度——<strong>先用「标准」就行</strong>。「深度」模式会花更久（可能 15 分钟以上），看更多来源，适合真正需要严谨数据的场景。</p>
+<p>点开始之后你会看到实时进度：正在搜索、正在阅读第 X 篇文章、正在交叉比对。这段时间你可以开个新标签页干别的，Deep Research 不会打断你。</p>
+<p>完成后报告会出现在对话里，结构通常是<strong>执行摘要 → 方法说明 → 分章节正文 → 来源引用 → 后续建议</strong>。每一个事实后面都带来源链接，可以点击跳转验证。</p>
+<p>报告可以直接导出为 PDF、Markdown 或 Google Docs——找到报告右上角的三个点菜单，选「导出」。如果你还要继续和 AI 讨论这份报告，直接在下方输入框里追问就行，AI 知道你在说哪份报告。Deep Research 的进阶参数调优和更多案例，可以去 <a href="https://googlegemini-docs.pages.dev/" target="_blank" rel="noopener">GoogleGemini文档</a> 里翻，里面写得很细。</p>
+<h2>第三步：手机端 Spark 和 Daily Brief</h2>
+<p>网页端解决了重任务的问题，但真正能把 Gemini 融入日常的是手机端 App。</p>
+<p>先从<a href="https://googlegemini.uerg.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿到 GoogleGemini App，用同一个 Google 账号登录。打开之后你会发现界面比网页端简洁很多——输入框 + 历史对话 + 底部 Tab 栏（Chat / Spark / Discover / Me）。</p>
+<p><strong>Spark Tab 是重点</strong>。它的 Daily Brief 功能每天早上自动帮你扫 Gmail、Calendar 和 Tasks，生成一份个性化简报，直接推到 App 里。简报分四个模块：今日重点（Top of Mind）、今日日程（Schedule）、邮件精选（Email Highlights）和未来几天的预安排（Looking Ahead）。</p>
+<p>设置路径：<strong>Spark Tab → 右上角设置 → Daily Brief</strong>。你可以完全控制：</p>
+<ul><li>开/关整个 Daily Brief</li><li>设置推送时间（默认早上 7 点）</li><li>关掉 Email 扫描（只看 Calendar）</li><li>告诉 Spark 你的优先级（「工作日程优先于个人邮件」）</li></ul>
+<p>里面有个很反直觉的设计：Spark 不是机械地拼装信息，它会做<strong>优先级判断</strong>——比如识别出「你下午 3 点到 4 点有个空档」，然后主动建议「要不要约 Alex 聊聊下周的方案？」。每条待办事项下方都有快捷操作按钮：创建提醒、查看完整邮件、起草回复草稿、标记完成。</p>
+<p><img src="../images/googlegemini-docs/mobile-ui.png" alt="GoogleGemini 手机端界面" loading="lazy"></p>
+<h2>常见卡点</h2>
+<h3>卡点一：模型选择器太乱，不知道选哪个</h3>
+<p>GoogleGemini 支持的模型非常多：Flash、Pro、Ultra、Deep Think 模式、还有 Nano Banana 图像模型。新手第一次进模型选择器绝对会懵。</p>
+<p><strong>实用建议</strong>：保持「Auto（自动路由）」就行。Google 的自动路由会根据任务难度自动切换模型——简单问答用 Flash（快且省 token），复杂推理自动切 Pro 加 Deep Think。你手动选的话反而容易浪费 Pro 的配额。</p>
+<p>只有在你明确知道自己要什么的时候才手动切：比如你专门想玩 Deep Think 的长推理，手动切到 Pro 之后记得把 Deep Think 开关打开。</p>
+<h3>卡点二：订阅方案看不懂，怕花钱</h3>
+<p>2025 I/O 之后 Google 把订阅体系重新命名了，新旧对照很容易混淆：</p>
+<table><thead><tr><th>旧方案</th><th>新方案</th><th>价格</th></tr></thead><tbody><tr><td>Gemini Advanced</td><td>Google AI Pro</td><td>$19.99/月</td></tr><tr><td>（之前没有）</td><td>Google AI Plus</td><td>$9.99/月</td></tr><tr><td>（之前没有）</td><td>Google AI Ultra</td><td>$249.99/月</td></tr></tbody></table>
+<p>判断要不要订阅很简单——看你有没有高频用到这些 Pro 专属功能：<strong>Deep Think 深度思考、完整 Agent 能力、更高额度的 Deep Research、Nano Banana Pro 4K 图像、Omni 视频生成、更大的 Notebook 存储</strong>。</p>
+<p>如果你只是日常问答和偶尔用 Deep Research，免费版够了，每天次数重置。Plus 档适合主要想升级模型但不需要 Agent 的人。</p>
+<h3>卡点三：Deep Research 报告质量不稳定</h3>
+<p>有时候你会发现 Deep Research 引用了一些不靠谱的来源（低质量博客、过时信息）。这不是 AI 笨，是它在特定领域里没有足够的权威来源可选。</p>
+<p><strong>解法</strong>：研究开始前手动在输入框里加一句限定——「只引用权威来源（如官方文档、行业报告、主流媒体），忽略个人博客」。这能显著提升引用质量。另外，时效性强的话题（比如「今天刚发布的产品」）别等 Deep Research 自动搜，先自己在 Google 搜一遍核心新闻，再把链接喂给 Deep Research。</p>
+<h2>进阶玩法</h2>
+<p>把上面三步跑通之后，你可以试试几个进阶方向：</p>
+<ul><li><strong>Notebook 模式</strong>：在输入框工具栏创建 Notebook，把 Deep Research 的报告拖进去，然后和 AI 一起编辑、写代码、生成图表。Notebook 的存储也计入你的 Google 账号。</li><li><strong>Gem 分享</strong>：把你常用的 prompt 模板存成 Gem，在 Gallery 里可以看到别人分享的现成 Gem，直接拿来用。</li><li><strong>Agent 自动化</strong>：在手机端 Spark 里逐步开放的 Agent 执行能力，可以让它帮你自动完成多步任务——比如查机票、比价、生成行程，最后发邮件给同事。这块还在迭代，但已经能跑简单的自动化场景了。</li></ul>
+<hr>
+<p>关于这套资料，最后说一下备份的事——我习惯把整理好的 GoogleGemini 使用文档放在三个仓库里方便随时查阅和国内访问：<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/GoogleGemini" target="_blank" rel="noopener">GitHub</a> 主仓库、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/GoogleGemini" target="_blank" rel="noopener">Gitee</a> 镜像以及 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/GoogleGemini" target="_blank" rel="noopener">GitCode</a> 的副本，路径都是「最新版/GoogleGemini」目录下，直接克隆就能拿到完整的 markdown 文档。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/google-one.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">旧 Pixel 屏幕碎了那天，我才庆幸自己开过 Google One</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/grayjay.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Grayjay 入坑两月踩过的那些坑——从黑屏播放到数据全丢</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

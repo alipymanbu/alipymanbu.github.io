@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>第一次逛同人展？CPP 无差别同人站 5 分钟上手 · 老杨技术栈</title>
+  
+<meta name="description" content="刚入坑同人圈想逛 COMICUP，却不知道从哪下手？这篇带你从零搞定购票、刷本、加心愿单，连老粉都在用的新手路径一起讲明白。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/cpp-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一次逛同人展？CPP 无差别同人站 5 分钟上手">
+<meta property="og:description" content="刚入坑同人圈想逛 COMICUP，却不知道从哪下手？这篇带你从零搞定购票、刷本、加心愿单，连老粉都在用的新手路径一起讲明白。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/cpp-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/cpp-docs/splash.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/cpp-docs/splash.png">
+
+<meta name="twitter:title" content="第一次逛同人展？CPP 无差别同人站 5 分钟上手">
+<meta name="twitter:description" content="刚入坑同人圈想逛 COMICUP，却不知道从哪下手？这篇带你从零搞定购票、刷本、加心愿单，连老粉都在用的新手路径一起讲明白。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u521a\u5165\u5751\u540c\u4eba\u5708\u60f3\u901b COMICUP\uff0c\u5374\u4e0d\u77e5\u9053\u4ece\u54ea\u4e0b\u624b\uff1f\u8fd9\u7bc7\u5e26\u4f60\u4ece\u96f6\u641e\u5b9a\u8d2d\u7968\u3001\u5237\u672c\u3001\u52a0\u5fc3\u613f\u5355\uff0c\u8fde\u8001\u7c89\u90fd\u5728\u7528\u7684\u65b0\u624b\u8def\u5f84\u4e00\u8d77\u8bb2\u660e\u767d\u3002", "headline": "\u7b2c\u4e00\u6b21\u901b\u540c\u4eba\u5c55\uff1fCPP \u65e0\u5dee\u522b\u540c\u4eba\u7ad9 5 \u5206\u949f\u4e0a\u624b", "image": ["https://alipymanbu.github.io/images/cpp-docs/splash.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/cpp-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/cpp-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7b2c\u4e00\u6b21\u901b\u540c\u4eba\u5c55\uff1fCPP \u65e0\u5dee\u522b\u540c\u4eba\u7ad9 5 \u5206\u949f\u4e0a\u624b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">第一次逛同人展？CPP 无差别同人站 5 分钟上手</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">第一次逛同人展？CPP 无差别同人站 5 分钟上手</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">刚入坑同人圈想逛 COMICUP，却不知道从哪下手？这篇带你从零搞定购票、刷本、加心愿单，连老粉都在用的新手路径一起讲明白。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到用起来，不需要任何基础——哪怕你以前连"同人志"是什么都没听说过，跟着走完下面几步，下次 CP 开展你也能轻车熟路。</p>
+<p>先说一件最容易让人误会的事：<strong>此 CPP 非 C++ 编程语言</strong>。这里说的 CPP 是「COMICUP 无差别同人站」，国内最大的同人展线上平台。如果你想逛 COMICUP（上海 CP 展），或者追某个画师的新刊，这就是你绕不开的那个 App，可以直接去<a href="https://cpp.ggcd.store" target="_blank" rel="noopener">cpp官网</a>看看。</p>
+<p><img src="../images/cpp-docs/splash.png" alt="CPP 开屏界面，熟悉一下这个图标" loading="lazy"></p>
+<h2>它到底是干嘛的——一个生活化类比</h2>
+<p>把 CPP 想象成一个<strong>专门给同人展用的"大众点评 + 购票 + 朋友圈"</strong>三合一 App：</p>
+<ul><li><strong>大众点评那一面</strong>：参展的几千个社团提前把自己要卖的同人志、周边、徽章都拍好照片登上去，你在家躺在床上就能把几个小时才能逛完的摊位全看一遍，知道哪个社团出了新刊、哪个限定版有特典；</li><li><strong>购票那一面</strong>：CP 的电子票就在这里买，绑实名、扫二维码检票，不用排队；</li><li><strong>朋友圈那一面</strong>：你关注的社团和画手会在上面发帖更新进度，展会前后有什么消息、有没有通贩复刊，刷一下就知道。</li></ul>
+<p>核心逻辑很简单：<strong>展前逛本、展中扫摊、展后跟踪</strong>——三个阶段，CPP 全程陪着你。</p>
+<h2>五分钟上手：从下载到第一次跑通</h2>
+<p>别担心，整个流程真的不复杂。跟着一步一步来：</p>
+<h3>第一步：下载和注册</h3>
+<p>去手机应用商店搜「无差别同人站」就能找到，或者直接从<a href="https://cpp.ggcd.store/download.html" target="_blank" rel="noopener">cpp下载</a>拿安装包，图标是一只小刺猬的那个就是官方版。下载完打开，用手机号注册——<strong>必须实名</strong>，这是 CPP 的硬性规定，购票和检票都跟实名信息绑在一起，填的时候注意别写错名字和身份证号。</p>
+<h3>第二步：答题和入场权限</h3>
+<p>注册完不是立刻就能刷全站内容的。CPP 会让你做几道简单的题（关于版权、同人规则、社区规范之类的），答完通过答题审核才能看到完整的展会内容。放心，题不难，而且可以反复答，选错了也能改。这一步是为了让新人先了解同人圈的基本规矩，避免闹不愉快。</p>
+<h3>第三步：找到你感兴趣的展会</h3>
+<p>首页会列出当前和最近即将开展的 COMICUP 活动，点进去就是展会详情页。这里能看到参展社团名录、作品刊登、摊位图等信息。如果你不是冲着某一届 CP 来的，也可以逛「发现」页，按"粮坑"（也就是兴趣分类，比如原神、明日方舟、东方 Project）刷全站内容，不限展会。</p>
+<p><img src="../images/cpp-docs/event-detail.png" alt="展会详情页，这是你探索的起点" loading="lazy"></p>
+<h3>第四步：搜你追的社团或作品</h3>
+<p>这一步是整个 CPP 最有用的功能。顶部有搜索栏，你可以直接搜<strong>作品名</strong>（比如想找《XX》相关的同人志）、<strong>社团名</strong>、或者画手的 ID。搜到之后点进去看他们本届展会带了哪些新刊、什么价格、有没有线上预约或者仅限现场。</p>
+<h3>第五步：加收藏或心愿单</h3>
+<p>看到想要的本子，直接点进去详情页，右下角一般有收藏按钮。也可以加到「心愿单」里——心愿单更像一个待办清单，展前可以对照着规划路线，现场扫摊的时候掏出手机一条一条划掉，效率比瞎逛高出不知道多少。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>搞定上面五步，你已经是 CPP 的合格用户了。但别急着停，下面三个功能是老粉最常用的，新手越早用上越好。</p>
+<h3>功能一：心愿单——别等到现场才想起来要买什么</h3>
+<p>心愿单不只是个收藏夹。你会发现它最大的用处是在<strong>开展前一晚</strong>：打开 APP，对着心愿单逐个核对每样商品的状态——有没有标记"仅限现场"、有没有特典需要满足条件、价格是多少、对应摊位号是几号。这五分钟核对能帮你在现场节省至少一小时的盲目搜索。</p>
+<p>别忘了把摊位号记进每个收藏的备注里。开展当天摊位图公布后，对着摊位号走过去，比在几千个摊位里瞎逛效率高太多。</p>
+<h3>功能二：关注和订阅流——只看你关心的，别让算法瞎掺和</h3>
+<p>CPP 有个叫「关注和订阅」的页面，它的特别之处在于：<strong>这里只出现你主动关注的内容，算法完全不插手</strong>。顶部有三个筛选器可以切换：</p>
+<ul><li><strong>只看关注</strong>：关注对象的一切动态，日常刷着玩；</li><li><strong>只看展品</strong>：只看制品和刊登信息——展前一晚切到这个，快速过一遍所有目标新刊的状态；</li><li><strong>只看图文</strong>：只看图文类帖子，适合"吃粮"模式（就是看创作 REPO、同人图这些）。</li></ul>
+<p>老粉的经验是：展前两周常驻「只看展品」，新刊刊登一条不漏；展后切回「只看关注」，等社团的通贩、再版公告。订阅流还有更细的玩法想了解的话，可以去<a href="https://cpp-docs.pages.dev/" target="_blank" rel="noopener">cpp文档</a>查。</p>
+<h3>功能三：购票和实名——确认好再点"立即支付"</h3>
+<p>终于说到买票了。在展会详情页里找到购票入口，选好日期（Day1 和 Day2 是两张不同的票，别买错），填好实名信息，付钱就行。电子票存在 APP 里，开展当天直接在入口处出示扫码检票。</p>
+<p><strong>这里要特别提醒</strong>：CPP 的票是<strong>不可退、不可转赠</strong>的。买完之后日期错了、人填错了，都很麻烦。退票要找客服手动处理，而且离展日越近手续费越高，有的场次根本不给退。所以下单前务必把日期和实名信息都核对三遍。</p>
+<h2>小白的三个常见疑问</h2>
+<h3>Q1：退票怎么办？手续费多少？</h3>
+<p>先说结论：CPP 的电子票原则上<strong>不支持无理由自助退票</strong>，要退只能走 APP 内的客服通道手动申请，而且会按"离展日还有多少天"收取梯度手续费——越近手续费越高，具体档位每届在购票须知里有公示。</p>
+<p>退票操作路径：在 APP 内找到客服入口，说明退票诉求，提供订单号和购票信息，客服确认后执行退款，票款原路返回，到账一般 1-7 个工作日。但要做好心理准备：客服高峰（开票日、开展前）响应可能很慢，非紧急问题建议错峰提问。</p>
+<h3>Q2：APP 出问题了、页面报错了找谁？</h3>
+<p>CPP 的反馈入口比较分散，不同问题走不同渠道效率差很多：</p>
+<ul><li><strong>订单、退款、实名修改</strong> → 走 APP 内客服，虽然响应慢但处理最靠谱；</li><li><strong>APP 崩溃、页面报错</strong> → 发邮件 cpp@comicup.cn，这是官方在 App Store 简介里留的；</li><li><strong>活动规则、开票公告</strong> → 去微博搜 @CPP无差别同人站小无，评论区常有人答疑；</li><li><strong>展会本身的规则问题</strong> → 找 COMICUP 组委会在 B 站的官方账号。</li></ul>
+<p>提问时记得备好：注册手机号、问题发生的时间和操作步骤、订单号（涉及购票退款时）、报错截图。这些信息一次给全，能省好几个来回。</p>
+<h3>Q3：现场能直接买票吗？会不会贵？</h3>
+<p>绝大多数 CP 场次<strong>现场不售票</strong>，必须提前在 APP 里买。而且热门场次会出现开票即秒没的情况，所以如果确定要去，最好在开票日当天提前守着。购票信息会在官方微博和 APP 首页提前预告开票时间，留意就行。</p>
+<h2>写在最后</h2>
+<p>同人展这件事，看起来圈子小、门槛高，其实真的上手之后很简单——<strong>提前刷本、列好清单、现场照单扫摊</strong>，就这三步。CPP 把整个流程数字化了，新人也能跟上节奏。</p>
+<p>上面这些够用了，先玩起来再说。等你逛完第一次 CP，自然会发现更多有趣的玩法。到时候可以深入研究研究同人本的分类、关注几个喜欢的社团、看看有没有什么限定版值得蹲。同人圈最棒的地方就是总有新东西让你惊喜——好好享受吧。对了，这套关于 CPP 的入门说明也放在开源仓库里了，维护在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/cpp" target="_blank" rel="noopener">GitHub</a>和<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/cpp" target="_blank" rel="noopener">Gitee</a>，国内访问优先看<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/cpp" target="_blank" rel="noopener">GitCode</a>那份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/coremail-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">入职第一天，我用 Coremail 把 1000 封未读邮件驯服了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/deeptalk-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">当我的用户群突破八千人那天，我终于换掉了用了三年的聊天工具</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

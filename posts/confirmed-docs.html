@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从抽签工具到球鞋社区——CONFIRMED 这一路怎么走来的 · 老杨技术栈</title>
+  
+<meta name="description" content="Adidas 官方球鞋发售应用 CONFIRMED，从最初只做抽签报名的单一工具，进化为覆盖全球多地区、支持多发售机制的完整社区。我们从它的功能轨迹里，看看这家运动巨头的产品迭代逻辑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/confirmed-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从抽签工具到球鞋社区——CONFIRMED 这一路怎么走来的">
+<meta property="og:description" content="Adidas 官方球鞋发售应用 CONFIRMED，从最初只做抽签报名的单一工具，进化为覆盖全球多地区、支持多发售机制的完整社区。我们从它的功能轨迹里，看看这家运动巨头的产品迭代逻辑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/confirmed-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/confirmed-docs/confirmed-screenshot-home.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/confirmed-docs/confirmed-screenshot-home.webp">
+
+<meta name="twitter:title" content="从抽签工具到球鞋社区——CONFIRMED 这一路怎么走来的">
+<meta name="twitter:description" content="Adidas 官方球鞋发售应用 CONFIRMED，从最初只做抽签报名的单一工具，进化为覆盖全球多地区、支持多发售机制的完整社区。我们从它的功能轨迹里，看看这家运动巨头的产品迭代逻辑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Adidas \u5b98\u65b9\u7403\u978b\u53d1\u552e\u5e94\u7528 CONFIRMED\uff0c\u4ece\u6700\u521d\u53ea\u505a\u62bd\u7b7e\u62a5\u540d\u7684\u5355\u4e00\u5de5\u5177\uff0c\u8fdb\u5316\u4e3a\u8986\u76d6\u5168\u7403\u591a\u5730\u533a\u3001\u652f\u6301\u591a\u53d1\u552e\u673a\u5236\u7684\u5b8c\u6574\u793e\u533a\u3002\u6211\u4eec\u4ece\u5b83\u7684\u529f\u80fd\u8f68\u8ff9\u91cc\uff0c\u770b\u770b\u8fd9\u5bb6\u8fd0\u52a8\u5de8\u5934\u7684\u4ea7\u54c1\u8fed\u4ee3\u903b\u8f91\u3002", "headline": "\u4ece\u62bd\u7b7e\u5de5\u5177\u5230\u7403\u978b\u793e\u533a\u2014\u2014CONFIRMED \u8fd9\u4e00\u8def\u600e\u4e48\u8d70\u6765\u7684", "image": ["https://alipymanbu.github.io/images/confirmed-docs/confirmed-screenshot-home.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/confirmed-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/confirmed-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u62bd\u7b7e\u5de5\u5177\u5230\u7403\u978b\u793e\u533a\u2014\u2014CONFIRMED \u8fd9\u4e00\u8def\u600e\u4e48\u8d70\u6765\u7684", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">从抽签工具到球鞋社区——CONFIRMED 这一路怎么走来的</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从抽签工具到球鞋社区——CONFIRMED 这一路怎么走来的</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Adidas 官方球鞋发售应用 CONFIRMED，从最初只做抽签报名的单一工具，进化为覆盖全球多地区、支持多发售机制的完整社区。我们从它的功能轨迹里，看看这家运动巨头的产品迭代逻辑。</p>
+  </header>
+  <div class="prose">
+<h2>现在这版 CONFIRMED 是什么样子</h2>
+<p>打开手机上的 CONFIRMED，首页是一张醒目的商品大图轮播，下面一排排即将发售的球鞋卡片，每张卡片上清晰标着发售机制、时间倒计时和价格。点进任何一双，详情页从上到下依次铺开主图、品牌系列、发售方式标识、时间窗口、尺码选择器和操作按钮——整套流程一气呵成，像一台精密的取票机。</p>
+<p>这已经不是当年那个只能报名抽签的简陋应用了。它现在同时支持三种发售机制：抽签、排队和邀请；它有国内版和海外版两个独立应用，可以在同一台手机上共存、各自登录；它背后绑定着 adiClub 会员体系，积分、权益、到店取货全打通。安装包约 120 MB，要求 Android 5.2 以上或 iOS 系统，在主流应用商店和<a href="https://confirmed.laze.skin" target="_blank" rel="noopener">CONFIRMED官网</a>都能拿到。</p>
+<p><img src="../images/confirmed-docs/confirmed-screenshot-home.webp" alt="CONFIRMED 首页" loading="lazy"></p>
+<p>但我最在意的不是它现在功能有多全，而是它是怎么一步一步走到这里的。</p>
+<h2>它从哪起步——一个只为抽签而生的小工具</h2>
+<p>样本文档里没有直接给出 CONFIRMED 的首发版本号或发布日期，这本身就是一个有意思的信号：官方似乎不太愿意反复强调它"从哪来"，更关心"现在是什么"。不过从它早期的产品形态和功能轮廓，大致能拼出起点的模样。</p>
+<p>CONFIRMED 最初的核心使命只有一件事：<strong>让限量球鞋的发售更公平</strong>。在它之前，Adidas 的热门联名款发售要么走线下排队（经常引发混乱），要么走第三方平台的抢单系统（黄牛横行、普通用户根本排不上）。CONFIRMED 的方案很直接：抽签报名，系统随机分配购买资格，中签的人有 10 分钟付款时限。</p>
+<p>所以最早版本的 CONFIRMED 功能极度收敛：一个球鞋列表页、一个报名按钮、一个中签结果查询。没有收藏、没有推送、没有社区、甚至没有商品详情页——点进去就是一张图加一个"报名抽签"。当时的 Android 兼容门槛也没现在这么高，能跑 Android 4.x 的老机器都能装，从<a href="https://confirmed.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿包装也没什么阻碍。</p>
+<p>我记得早期用的时候，最难受的是通知几乎等于没有。报名之后只能自己惦记着去应用里刷结果，推送偶尔会到但延迟很高。那段时间 CONFIRMED 给人的印象就是一个"能用但不好用"的抽签工具，刚需用户离不开，但体验实在谈不上。</p>
+<h2>关键转折点——从单一抽签到多机制共存</h2>
+<p>CONFIRMED 真正的产品跃迁，是它在某个版本（样本文档没提具体号，我猜是 2.x 末到 3.x 初之间）开始引入<strong>排队发售</strong>机制。这是一个大胆的决定——之前的抽签模式本质是"随机分配"，排队模式则是"先到先得"，两种机制在公平性哲学上完全对立。</p>
+<p>为什么要同时保留？后来想明白了：不是所有球鞋都适合抽签。超级联名款（比如 Pharrell Williams 的 Human Race）僧多粥少，抽签最合理；但一些限量但没那么热门的款式，排队就能满足发售需求，还能让真正想第一时间拿到的人有机会。两种机制并行，本质上是 CONFIRMED 从"一个工具"进化到"一个平台"的标志——它开始根据不同商品的热度，提供不同的发售方案。</p>
+<p>紧接着加入的是<strong>邀请制</strong>发售。这是一种更为小众的机制：只有收到邀请码的用户才能参与，通常用于极高规格的联名或限量极罕见的款式。邀请制的出现，意味着 CONFIRMED 的产品形态从"面向所有人的公平平台"，开始带上了"圈层运营"的色彩——这可能是 Adidas 有意为之的品牌策略，用稀缺感维系核心用户的忠诚度。</p>
+<p>到这一步，商品详情页就必须重构了——原来那一页图加一个按钮的简陋布局，已经无法承载三种发售机制的差异化信息。现在的详情页从上到下分层展示主图、品牌系列、发售机制标识、精确到分钟的时间窗口、尺码选择器、操作按钮和发售规则底部说明——这套结构就是在引入多发售机制那次重构中定型的，之后几乎没大改过。</p>
+<p><img src="../images/confirmed-docs/confirmed-screenshot-draw.webp" alt="CONFIRMED 抽签发售界面" loading="lazy"></p>
+<h2>地区分化——为什么是两个独立应用</h2>
+<p>如果说多发售机制是功能层面的扩展，那<strong>中国大陆版和海外版的彻底分家</strong>，就是产品战略层面的一次大手术。</p>
+<p>样本文档里写得很清楚：两个版本包名不同、安装包独立、账号数据不互通，但可以在同一台手机上共存。背后的原因也很直白——不同地区的合规要求、发售鞋款、支付渠道、adiClub 积分规则全都不一样。做成本地化团队独立运营，比在一个应用里塞地区切换逻辑要干净得多。</p>
+<p>这件事让我对 CONFIRMED 团队的工程判断刮目相看。很多全球化产品会选择"一个应用多地区配置"的方案，维护成本低但体验割裂严重。CONFIRMED 干脆两个独立应用，看似增加了维护量，实则让每个地区的团队能独立迭代、独立测试、独立对接本地支付渠道——对用户来说，装两个应用、各自登录，换来的是更贴合本地习惯的体验。</p>
+<h2>从迭代节奏看团队的优先级</h2>
+<p>把这些功能节点串起来，一个清晰的产品优先级画像就出来了：</p>
+<p><strong>他们一直在死磕"发售公平性"和"履约可靠性"。</strong> 抽签、排队、邀请三种机制的引入，本质上都是在不同热度下找到最合适的发售方案；国内海外分家是为了让每个地区的履约更顺畅；通知权限的精细配置（<a href="https://confirmed-docs.pages.dev/" target="_blank" rel="noopener">CONFIRMED文档</a>里专门用一整页讲权限全开），背后是"中签了必须让用户收到通知"这个硬要求——10 分钟付款窗口，收不到通知就等于白中。</p>
+<p><strong>他们一直没怎么碰的，是"社区化"。</strong> 虽然 adiClub 体系里有积分和权益，但 CONFIRMED 里至今没有评论区、晒单区、用户动态流这些典型社区功能。用户进来、选鞋、报名/排队、付款、走人——整个流程是交易闭环，不是社交闭环。这可能是 Adidas 的刻意选择：CONFIRMED 的核心使命始终是"卖鞋"，不是"做社区"。</p>
+<p>还有几个一直没解决的小问题：解析包出错（APK 不完整、版本不对）的排查步骤依然是那几条老方法，推送服务偶尔还是会延迟，Android 上的后台限制（小米、华为、OPPO、vivo 这些品牌的电池优化）至今还是需要用户手动改。这些都是"体验最后一公里"的问题，不影响核心交易但影响口碑——团队似乎把资源优先砸在新功能和新地区上了，基础体验的打磨排得靠后。</p>
+<h2>下一步大概会走向哪里</h2>
+<p>从迭代规律推，我觉得有三个方向的可能性最大。</p>
+<p>第一，<strong>更多地区的本地化版本</strong>。现在只有中国大陆版和海外版（以美国为例），但 Adidas 的全球市场远不止这两块。如果 CONFIRMED 的产品框架已经验证成功，往欧洲、东南亚、日韩等地区铺开是顺理成章的事——方式可能不是再拆更多独立应用，而是在现有海外版里做地区配置细化。</p>
+<p>第二，<strong>发售机制可能还会变</strong>。抽签、排队、邀请三种机制的组合目前覆盖了大部分场景，但 Adidas 作为运动巨头，联名合作的形式千变万化，不排除以后会出现第四种甚至第五种发售机制——比如针对 adiClub 高等级会员的优先购通道，或者针对特定社群的专属发售。</p>
+<p>第三，<strong>基础体验会补，但优先级不会太高</strong>。解析包问题、推送延迟、Android 后台限制这些老问题，用户反馈肯定一直在有，但从团队的历史优先级来看，新地区、新机制永远排在前面。什么时候补，大概率要看用户留存率和转化率的数据压力——如果基础体验真的影响了核心指标，就会被提上来。</p>
+<p>当然这全是从迭代规律推的，不是官方口径。Adidas 的产品团队怎么走，还得看他们自己的商业判断和资源分配。</p>
+<h2>写在最后</h2>
+<p>CONFIRMED 走的这条路，其实是很多工具类应用都会遇到的成长轨迹：从一个单点痛点的解决方案出发，逐步扩展到更宽的场景，再根据不同市场的需求做分化。它最可贵的地方不在于功能有多炫酷，而在于每一次迭代都围绕着一个清晰的核心使命——让限量球鞋的发售对普通用户更友好。工具味一直没丢，这在产品越来越花哨的今天反而是个难得的品质。关于它的资料整理我也在几个开源仓库同步更新，海外访问走<a href="https://github.com/alipymanbu/APK/tree/main/APP/CONFIRMED" target="_blank" rel="noopener">GitHub</a>，国内用户用<a href="https://gitee.com/manbu1103/APK/tree/main/APP/CONFIRMED" target="_blank" rel="noopener">Gitee</a>镜像，还有一份放在<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/CONFIRMED" target="_blank" rel="noopener">GitCode</a>做备份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/comico-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">每天坐山手线三小时，我是怎么靠 comico 把追连载这件事变轻松的</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/coremail-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">入职第一天，我用 Coremail 把 1000 封未读邮件驯服了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

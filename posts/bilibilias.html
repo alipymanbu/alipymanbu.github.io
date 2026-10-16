@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>BILIBILIAS 嵌进我的 B 站离线缓存全流程 · 老杨技术栈</title>
+  
+<meta name="description" content="每周要把 B 站追番和教程视频离线存进平板、再同步网盘备份，以前三步手动复制，现在一条链走完。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/bilibilias.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BILIBILIAS 嵌进我的 B 站离线缓存全流程">
+<meta property="og:description" content="每周要把 B 站追番和教程视频离线存进平板、再同步网盘备份，以前三步手动复制，现在一条链走完。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/bilibilias.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/bilibilias/storage-path.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/bilibilias/storage-path.png">
+
+<meta name="twitter:title" content="BILIBILIAS 嵌进我的 B 站离线缓存全流程">
+<meta name="twitter:description" content="每周要把 B 站追番和教程视频离线存进平板、再同步网盘备份，以前三步手动复制，现在一条链走完。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6bcf\u5468\u8981\u628a B \u7ad9\u8ffd\u756a\u548c\u6559\u7a0b\u89c6\u9891\u79bb\u7ebf\u5b58\u8fdb\u5e73\u677f\u3001\u518d\u540c\u6b65\u7f51\u76d8\u5907\u4efd\uff0c\u4ee5\u524d\u4e09\u6b65\u624b\u52a8\u590d\u5236\uff0c\u73b0\u5728\u4e00\u6761\u94fe\u8d70\u5b8c\u3002", "headline": "BILIBILIAS \u5d4c\u8fdb\u6211\u7684 B \u7ad9\u79bb\u7ebf\u7f13\u5b58\u5168\u6d41\u7a0b", "image": ["https://alipymanbu.github.io/images/bilibilias/storage-path.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/bilibilias.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/bilibilias.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "BILIBILIAS \u5d4c\u8fdb\u6211\u7684 B \u7ad9\u79bb\u7ebf\u7f13\u5b58\u5168\u6d41\u7a0b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">BILIBILIAS 嵌进我的 B 站离线缓存全流程</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">BILIBILIAS 嵌进我的 B 站离线缓存全流程</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">每周要把 B 站追番和教程视频离线存进平板、再同步网盘备份，以前三步手动复制，现在一条链走完。</p>
+  </header>
+  <div class="prose">
+<h2>我每周要做的这件事</h2>
+<p>我有一个固定节奏：每周日晚上把这一周在 B 站攒下来的追番更新、教程干货、UP 主新视频全部离线存一遍。目的很简单——工作日通勤地铁上没有稳定信号，平板离线看完再连回 B 站 App 追番表同步进度；同时手机里的视频还要自动备份到网盘，省得半年后换手机丢素材。</p>
+<p>以前这条链要手动操作三次：浏览器打开 B 站网页版用插件下载 → 下载好的文件手动剪切到平板指定目录 → 再把同一份文件手动上传网盘客户端。文件命名又乱，有时候 B 站插件下的是一串 BV 号加随机后缀，回头找哪个视频是什么还要再打开文件管理器。我试过换好几个下载工具，要么得登录又丢 Cookie、要么格式只能一种，始终没有一个工具能直接在手机上把整条链的开头接住。</p>
+<p>后来把 <a href="https://bilibilias.wxhp.skin" target="_blank" rel="noopener">BILIBILIAS官网</a> 放进这条链的第一环——它的<a href="https://bilibilias.wxhp.skin/download.html" target="_blank" rel="noopener">官方下载</a>装起来不需要任何配置，整条线直接串了起来——B 站 App 分享出去，BILIBILIAS 自动接住解析缓存，默认路径让系统相册和网盘客户端都能直接扫到，中间不再有人工参与。</p>
+<h2>新流程：从分享到备份一条线</h2>
+<p>整套流程现在是这样的：</p>
+<pre><code>B 站 App 点「分享」 → 选中 BILIBILIAS → 自动解析 + 选清晰度 → 缓存完成 → 网盘客户端检测到新文件自动上传 → 平板定期从网盘同步</code></pre>
+<p>BILIBILIAS 在这条链上扮演的角色很具体——它是<strong>唯一</strong>在手机端把 B 站视频 URL 解析成可缓存文件的环节，同时它的默认存储路径选得巧：<code>Download/BILIBILIAS</code> 放在系统公开的下载目录里，不需要额外高权限。这意味着下游的两个环节——系统相册自动扫描、网盘客户端的文件夹同步任务——都能完全自动地工作，文件一落盘就被各自接住。</p>
+<p><img src="../images/bilibilias/storage-path.png" alt="系统下载目录下的 BILIBILIAS 缓存文件夹" loading="lazy"></p>
+<p>上下游配合的几个衔接点我调了两周才定好：</p>
+<ul><li><strong>B 站 App → BILIBILIAS</strong>：用 B 站自带的分享菜单直接跳过去，省了复制链接再贴进解析框这一步。分享菜单里选「更多」，会列出手机上所有能接收分享的应用，BILIBILIAS 注册了这个接收入口，一点就进。</li><li><strong>BILIBILIAS → 网盘客户端</strong>：缓存路径固定在 <code>Download/BILIBILIAS</code>，网盘客户端（我用的是夸克，但任何支持文件夹同步的都行）在设置里开启这个目录的自动同步。这样 BILIBILIAS 缓存完一个视频，网盘客户端后台就自动开始上传，不需要我手动选文件。</li><li><strong>网盘客户端 → 平板</strong>：平板那边同一个网盘账号，设置一个相反方向的同步——只要 <code>BILIBILIAS</code> 文件夹有新文件就自动拉下来。整条链下来我什么都不用点，最多在 B 站 App 里多按一次「分享」。</li></ul>
+<h2>实操里最容易断链的两个地方</h2>
+<p>这条链跑了两个月，真正常出问题的就两个环节，都不是 BILIBILIAS 本身的 bug，而是 Android 版本权限和登录状态的维护——这两个地方细节没处理好会让整条链静默停摆。</p>
+<p><strong>第一个：Android 13 及以上的高权限提示。</strong></p>
+<p>我最早在 Android 11 的旧手机上跑这条链没问题，换了 Android 14 的新手机后第一次启动 BILIBILIAS 就弹了个高权限请求框。当时没细看直接点了拒绝——结果 BILIBILIAS 还能跑，但我想自定义存储路径到 SD 卡就不行了。后来翻 <a href="https://bilibilias.pages.dev/" target="_blank" rel="noopener">BILIBILIAS文档</a> 才搞明白：拒绝高权限<strong>不会</strong>让 APP 崩溃，只是锁死了自定义路径；默认路径 <code>Download/BILIBILIAS</code> 不需要高权限就能正常读写。</p>
+<p>所以这条链在 Android 13+ 上的正确姿势反而是<strong>保持默认路径不动</strong>，不要碰高权限请求。文档里也明确推荐了这一点——默认路径同时满足「APP 能自由读写」「系统相册能扫描到」「文件管理器能直接访问」三个条件，是最省事的选择。如果不小心点了拒绝又想开启自定义路径，得进系统设置 → 应用管理 → BILIBILIAS → 权限管理里手动打开，重新打开 APP 才生效。</p>
+<p><img src="../images/bilibilias/android13-permission.jpg" alt="Android 13 及以上的高权限提示框" loading="lazy"></p>
+<p><strong>第二个：登录状态的 Cookie 有效期。</strong></p>
+<p>BILIBILIAS 的基础功能在 2.1.5 以后不登录也能用，但不登录最高画质固定在 480P。我用的是大会员账号，为了 4K 缓存必须登录。扫码登录的过程本身不难——BILIBILIAS 生成二维码 → B 站 App 扫码 → 在 B 站确认 → 回到 BILIBILIAS 点完成登录。问题在于 Cookie 会过期，过期了不影响基础解析，但登录账号锁定的高分辨率选项会悄悄失效，缓存下来的视频画质突然变低而我自己不知道。</p>
+<p>解决办法很土但管用：每周日跑这条链之前先扫一眼 BILIBILIAS 首页头像还在不在，不在就用 B 站 App 重新扫一遍码。整个流程不超过 30 秒，但能避免一整批缓存视频画质不合格的返工。BILIBILIAS 文档里专门提到了二维码有效期——过期了点刷新重新生成就行，这点细节也让重新登录的操作成本很低。</p>
+<p>扫码登录完整链路就五步：</p>
+<ol><li>打开 BILIBILIAS 切到「我的」页面点登录</li><li>保存生成的二维码到手机相册</li><li>点击「跳转扫码」让 B 站 App 接管</li><li>在 B 站 App 里从相册选刚才保存的二维码图片</li><li>B 站确认后切回 BILIBILIAS 点「完成登录」</li></ol>
+<p><img src="../images/bilibilias/scan-album.jpg" alt="B 站 App 从相册选择二维码图片完成扫码" loading="lazy"></p>
+<h2>效果：少了哪些手动步骤</h2>
+<p>量化一下这条链省下来的动作：</p>
+<ul><li>以前：B 站 App 退出 → 浏览器打开 B 站网页版 → 复制视频链接 → 粘贴到下载插件 → 下载 → 剪切到平板指定目录 → 手动上传网盘 = 共 7 个手动动作，其中 3 次涉及文件复制</li><li>现在：B 站 App 看视频想离线 → 点分享 → 选 BILIBILIAS → 选清晰度 → 缓存完自动触发下游 = 共 3 个手动动作，其中 0 次文件复制</li></ul>
+<p><strong>少了 4 个手动动作、3 次文件复制。</strong> 看起来不多，但这是每周要做的固定任务——攒一个月就是 16 个动作和 12 次复制，之前我经常因为嫌麻烦攒到月末一起做，结果视频文件名互相覆盖或者忘了同步。</p>
+<p>当然这套流程也有边界。如果你的设备还是 Android 10 及以下，存储权限模型完全不同，流程里的「系统相册自动扫描」这一步可能不生效；如果你用的是 iOS 设备，BILIBILIAS 本身就没有 iOS 版本，得换别的方案。另外 BILIBILIAS 在 2.x 以后停止了 APK 分发，新用户需要找靠谱渠道拿安装包，或者自己用 GitHub Actions 从源码构建——这部分文档里也写了 Fork 仓库后配置 4 个机密变量就能一键编译出 4 种架构的 APK，从触发到出产物大概 12 分钟。</p>
+<h2>最后说一句</h2>
+<p>我自己的代码仓库和文档仓库里留了一份完整的 BILIBILIAS 资料，涵盖 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/BILIBILIAS" target="_blank" rel="noopener">主仓库</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/BILIBILIAS" target="_blank" rel="noopener">国内镜像</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/BILIBILIAS" target="_blank" rel="noopener">GitCode 的归档版本</a>，跨三个平台存是为了防止某一个挂掉就找不到了——毕竟这是我这条离线缓存流程的核心环节，踩不起断链的坑。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/bilby-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">通勤路上的 B 站工作流——从官方客户端切到 Bilby 后我省了多少事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/bing-ai-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">关于 bing AI，你最想问的八件事</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

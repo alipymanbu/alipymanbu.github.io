@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把 speedtest.cn 嵌进每周网络巡检：从三步折腾到一条流水线 · 老杨技术栈</title>
+  
+<meta name="description" content="以前排查家里 Wi-Fi 卡顿、孩子上网课延迟，要手动切三四个工具来回比对。现在用 speedtest.cn 串起 Wi-Fi 分析、测速、场景化测试，上下游配合飞书和笔记软件，半小时巡检压缩到十分钟。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/speedtest-cn-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把 speedtest.cn 嵌进每周网络巡检：从三步折腾到一条流水线">
+<meta property="og:description" content="以前排查家里 Wi-Fi 卡顿、孩子上网课延迟，要手动切三四个工具来回比对。现在用 speedtest.cn 串起 Wi-Fi 分析、测速、场景化测试，上下游配合飞书和笔记软件，半小时巡检压缩到十分钟。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/speedtest-cn-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/speedtest-cn-docs/5g-signal.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/speedtest-cn-docs/5g-signal.jpg">
+
+<meta name="twitter:title" content="把 speedtest.cn 嵌进每周网络巡检：从三步折腾到一条流水线">
+<meta name="twitter:description" content="以前排查家里 Wi-Fi 卡顿、孩子上网课延迟，要手动切三四个工具来回比对。现在用 speedtest.cn 串起 Wi-Fi 分析、测速、场景化测试，上下游配合飞书和笔记软件，半小时巡检压缩到十分钟。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u6392\u67e5\u5bb6\u91cc Wi-Fi \u5361\u987f\u3001\u5b69\u5b50\u4e0a\u7f51\u8bfe\u5ef6\u8fdf\uff0c\u8981\u624b\u52a8\u5207\u4e09\u56db\u4e2a\u5de5\u5177\u6765\u56de\u6bd4\u5bf9\u3002\u73b0\u5728\u7528 speedtest.cn \u4e32\u8d77 Wi-Fi \u5206\u6790\u3001\u6d4b\u901f\u3001\u573a\u666f\u5316\u6d4b\u8bd5\uff0c\u4e0a\u4e0b\u6e38\u914d\u5408\u98de\u4e66\u548c\u7b14\u8bb0\u8f6f\u4ef6\uff0c\u534a\u5c0f\u65f6\u5de1\u68c0\u538b\u7f29\u5230\u5341\u5206\u949f\u3002", "headline": "\u628a speedtest.cn \u5d4c\u8fdb\u6bcf\u5468\u7f51\u7edc\u5de1\u68c0\uff1a\u4ece\u4e09\u6b65\u6298\u817e\u5230\u4e00\u6761\u6d41\u6c34\u7ebf", "image": ["https://alipymanbu.github.io/images/speedtest-cn-docs/5g-signal.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/speedtest-cn-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/speedtest-cn-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "\u628a speedtest.cn \u5d4c\u8fdb\u6bcf\u5468\u7f51\u7edc\u5de1\u68c0\uff1a\u4ece\u4e09\u6b65\u6298\u817e\u5230\u4e00\u6761\u6d41\u6c34\u7ebf", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">把 speedtest.cn 嵌进每周网络巡检：从三步折腾到一条流水线</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把 speedtest.cn 嵌进每周网络巡检：从三步折腾到一条流水线</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前排查家里 Wi-Fi 卡顿、孩子上网课延迟，要手动切三四个工具来回比对。现在用 speedtest.cn 串起 Wi-Fi 分析、测速、场景化测试，上下游配合飞书和笔记软件，半小时巡检压缩到十分钟。</p>
+  </header>
+  <div class="prose">
+<h2>我每周要做一件事：网络巡检，以前三步太折腾</h2>
+<p>家里有小孩上网课、我自己远程办公、老婆偶尔追剧，三个人挤在同一个 Wi-Fi 下。以前每周日晚上我要花半小时做一轮网络体检——先手动开网页测一遍网速，再掏出手机看 Wi-Fi 信号，再分别去在线教育平台、视频网站各自跑一遍延迟。数据散在三个地方，出了问题还要回忆刚才哪个数值不对劲。</p>
+<p>更糟的是定位链路：网速测出来够，但是网课还是卡，到底是 Wi-Fi 信道被邻居挤了，还是教育平台那边在抖动？以前要一个个试，先换信道再测、再切有线连接再测，来回切换工具之间很容易断思路。</p>
+<p>直到半年前我把 <a href="https://speedtest-cn.uerg.quest" target="_blank" rel="noopener">speedtest.cn官网</a> 嵌进这条链，现在每周巡检不到十分钟就完事，而且问题定位能精确到环节。</p>
+<h2>新流程：speedtest.cn 放在中间，上下游各接一个钩子</h2>
+<p>整条流水线现在是这样的：<strong>Wi-Fi 分析 → 测速 → 场景化定向检测 → 结果丢飞书文档归档</strong>。speedtest.cn 是核心节点，前后各有一个轻量钩子——前面用 Wi-Fi 扫描判断物理层有没有问题，后面用场景化测试确认到具体平台的链路质量，最后把结果截图丢进飞书文档做月度趋势。</p>
+<h3>第一步：Wi-Fi 分析做前置过滤</h3>
+<p>先从 <a href="https://speedtest-cn.uerg.quest/download.html" target="_blank" rel="noopener">官方下载</a> 拿到 PC 客户端或者手机 APP，打开 Wi-Fi 分析功能扫一遍。这个功能会列出周围所有 Wi-Fi 的信号强度、信道、加密方式——我主要看两个指标：</p>
+<p><strong>信号强度够不够</strong>。dBm 是负数，-50 以上算好，-70 以下就差了。客厅和卧室各扫一次，如果卧室只有 -75 dBm，那就该考虑加个中继或者调整路由器位置。</p>
+<p><strong>信道挤不挤</strong>。2.4G 只有 1、6、11 三个不重叠信道，邻居们如果都挤在同一个，信号会互相干扰。Wi-Fi 分析一眼就能看到周围哪些信道被占，然后进路由器后台把自家信道改成空闲的那个。5G 频段信道多、干扰少但穿墙弱，如果卧室 5G 信号也够，优先切 5G。</p>
+<p><img src="../images/speedtest-cn-docs/5g-signal.jpg" alt="Wi-Fi 信号扫描结果" loading="lazy"></p>
+<p>这步做完如果物理层没毛病，继续第二步测速——如果物理层就有问题，后面的测速结果没意义，直接回去调路由器。</p>
+<h3>第二步：测速做基准快照</h3>
+<p>主界面中央那个大按钮就是测速，一键跑下来拿到下载、上传、延迟三个核心数。我习惯看<strong>上传带宽</strong>——很多家庭光宽带下载够 500M，但上传只有 50M，视频会议和网课上行容易被卡住。</p>
+<p>测速完直接在客户端里截一张曲线图保存，这个曲线图比单一的平均数值有用得多——我能看到测速过程中有没有突降、延迟有没有波动。这些异常点后面排查时要重点留意。</p>
+<h3>第三步：场景化定向测试做精细定位</h3>
+<p>这步是旧流程里最缺的一环。普通测速只测到测速服务器的速度，但网课卡的时候瓶颈根本不在测速服务器，而在教育平台。speedtest.cn 里有个场景化测试入口，专门测到具体在线教育平台的延迟、抖动和丢包率——这才是真正的痛点指标。</p>
+<p>如果这步显示到教育平台延迟偏高，但前面测速基准快照没问题，那要么是平台那边在抖动，要么是上行带宽不够挤了。反过来如果测速基准本身就低，那就是自家宽带的事了。</p>
+<p>除了在线教育，还有视频测试、网页测速、游戏测试——每个场景都是定向到对应平台，比笼统的测速数据靠谱多了。</p>
+<p><img src="../images/speedtest-cn-docs/pc-client-30-home.png" alt="PC 客户端主界面各功能模块" loading="lazy"></p>
+<h3>第四步：归档到飞书文档做趋势</h3>
+<p>speedtest.cn 的测速历史可以在客户端里看曲线图，但我习惯每周把三张图（Wi-Fi 扫描截图、测速曲线、场景化测试结果）拖进飞书的一张巡检文档里，按月分组。月底能一眼看到这一个月的网络波动趋势——比如是不是每逢周末晚上延迟就高，或者 Wi-Fi 信号有没有在某个时段明显下降。</p>
+<p>这步其实可以更自动化，但目前手动拖图两分钟就完，没必要为了这点时间写脚本。</p>
+<h2>实操细节：流程里最容易断链的两个环节</h2>
+<h3>Wi-Fi 分析在 PC 和手机上的差别</h3>
+<p>PC 客户端和手机 APP 都有 Wi-Fi 分析，但手机天线更灵敏，扫描出来的信号列表更完整。我一般用手机扫完再在 PC 客户端里对照看——两个设备交叉验证，避免某个设备读数不准导致误判。另外如果需要移动到不同房间测信号覆盖，手机 APP 是唯一的选择，PC 搬不动。</p>
+<h3>场景化测试的平台列表会变</h3>
+<p>官方会不定期更新支持的在线教育、视频、游戏平台，完整列表可以去 <a href="https://speedtest-cn-docs.pages.dev/" target="_blank" rel="noopener">speedtest.cn文档</a> 查。如果某个常用平台没在列表里，可以先跑通用测速，然后手动去那个平台自己的测速工具（比如视频平台的内置检测）补一下——通用测速 + 平台专用工具比等官方更新快。</p>
+<h2>效果与边界：这套流程什么时候划算，什么时候不划算</h2>
+<p><strong>省了多少事</strong>：旧流程我要手动开三个工具、来回切窗口、比对五六组数据，现在一条龙跑完十分钟不到。更重要的是问题定位快了——Wi-Fi 扫描不过关就直接调路由器，不用再纠结测速结果为什么异常。</p>
+<p><strong>边界在哪</strong>：这套流程能覆盖 90% 的家庭网络问题，但有两个盲区。一是光猫本身的故障——光猫没重启或者固件太老，Wi-Fi 分析和测速都会表现异常，但根因在光猫不在路由器。二是运营商层面的抖动——比如晚高峰整个小区都卡，你这边再怎么调 Wi-Fi 也没用。这两种情况 speedtest.cn 能帮你识别出来（因为测速结果会显示所有节点都差），但解决不了，只能等或者投诉运营商。</p>
+<p>另外，speedtest.cn 免费版已经够用了，我没开过会员。如果你是网络运维或者需要导出详细的测速日志做专业分析，可能值得看看付费版，但家庭场景没必要。</p>
+<p>半年跑下来，这条流水线帮我定位过三次邻居信道干扰、两次上行带宽被占满、一次教育平台自身抖动。以前这些问题平均要折腾一晚上，现在看完三张截图就能决定下一步该做什么。</p>
+<p>家里的网络巡检这件事，本质上就是一个数据流——从物理层到链路层到应用层，逐层往下钻。把 speedtest.cn 放在这条流的中间做统一采集点，比在每个环节各用一个工具要顺畅得多。毕竟工具的价值不在于它能测多少指标，而在于它能不能帮你更快做出判断。</p>
+<p>整理的资料分散保存在三个代码仓库里方便查——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/speedtest.cn" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/speedtest.cn" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/speedtest.cn" target="_blank" rel="noopener">GitCode</a> 各有一份，搜软件名就能找到对应目录。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/sparkle-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">一个远程开发者的晨间手机工作流：用 Sparkle 串起密码、笔记、壁纸和摸鱼</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/squid-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Squid 快问快答：一款把手写笔记做进 Chromebook 生态的应用</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>KimiClaw 这两年：一个 AI Agent 是怎么从云端跑到你手机上的 · 老杨技术栈</title>
+  
+<meta name="description" content="从只有云端托管到 Android 终端、桌面端本地部署，KimiClaw 的迭代路线藏着团队的清晰逻辑——他们一直在把 Agent 往你身边推。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/kimiclaw.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KimiClaw 这两年：一个 AI Agent 是怎么从云端跑到你手机上的">
+<meta property="og:description" content="从只有云端托管到 Android 终端、桌面端本地部署，KimiClaw 的迭代路线藏着团队的清晰逻辑——他们一直在把 Agent 往你身边推。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/kimiclaw.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/kimiclaw/desktop-deploy-mac.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/kimiclaw/desktop-deploy-mac.png">
+
+<meta name="twitter:title" content="KimiClaw 这两年：一个 AI Agent 是怎么从云端跑到你手机上的">
+<meta name="twitter:description" content="从只有云端托管到 Android 终端、桌面端本地部署，KimiClaw 的迭代路线藏着团队的清晰逻辑——他们一直在把 Agent 往你身边推。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u53ea\u6709\u4e91\u7aef\u6258\u7ba1\u5230 Android \u7ec8\u7aef\u3001\u684c\u9762\u7aef\u672c\u5730\u90e8\u7f72\uff0cKimiClaw \u7684\u8fed\u4ee3\u8def\u7ebf\u85cf\u7740\u56e2\u961f\u7684\u6e05\u6670\u903b\u8f91\u2014\u2014\u4ed6\u4eec\u4e00\u76f4\u5728\u628a Agent \u5f80\u4f60\u8eab\u8fb9\u63a8\u3002", "headline": "KimiClaw \u8fd9\u4e24\u5e74\uff1a\u4e00\u4e2a AI Agent \u662f\u600e\u4e48\u4ece\u4e91\u7aef\u8dd1\u5230\u4f60\u624b\u673a\u4e0a\u7684", "image": ["https://alipymanbu.github.io/images/kimiclaw/desktop-deploy-mac.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/kimiclaw.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/kimiclaw.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "KimiClaw \u8fd9\u4e24\u5e74\uff1a\u4e00\u4e2a AI Agent \u662f\u600e\u4e48\u4ece\u4e91\u7aef\u8dd1\u5230\u4f60\u624b\u673a\u4e0a\u7684", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">KimiClaw 这两年：一个 AI Agent 是怎么从云端跑到你手机上的</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">KimiClaw 这两年：一个 AI Agent 是怎么从云端跑到你手机上的</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从只有云端托管到 Android 终端、桌面端本地部署，KimiClaw 的迭代路线藏着团队的清晰逻辑——他们一直在把 Agent 往你身边推。</p>
+  </header>
+  <div class="prose">
+<h2>现状：一个 Agent 有三种住法</h2>
+<p>现在打开 KimiClaw 的<a href="https://kimiclaw.ggcd.uno" target="_blank" rel="noopener">官网</a>，你会看到一个有意思的局面——同一个 AI Agent，官方给了它三套完全不同的"住处"：云端托管版跑在 Moonshot 的虚拟机里、Android 终端版占着你闲置手机的后台、桌面端版直接把 OpenClaw Gateway 装到你的电脑本地。三选一，也可以同时开。</p>
+<p><img src="../images/kimiclaw/desktop-deploy-mac.png" alt="桌面端部署界面" loading="lazy"></p>
+<p>这在两年前是不可想象的。我还记得最早那会，想跑 Claw 只能老老实实掏钱买会员，实例全在云端，你能操作的也就是 Kimi 官方给的那套控制界面。那时候谁能想到，今天你可以让一个 Agent 真的住在你口袋里的备用机上，帮你定时查快递、自动刷小红书？</p>
+<h2>来路：三次形态迭代，每次都是赌注</h2>
+<p>仔细翻<a href="https://kimiclaw.pages.dev/" target="_blank" rel="noopener">KimiClaw文档</a>能挖出一些关键的时间节点。</p>
+<p>第一次大的迭代是 Android 终端版的上线——这个决定很激进。让一个 AI Agent 跑在用户自己的安卓手机上，意味着 Claw 要获得屏幕读取、模拟点击、相机、GPS、通知这些硬件级权限。文档里写得很直白：<strong>"不是云端虚拟机，是你手机上的独占进程"</strong>。这背后的技术挑战可以想象——怎么让 Android 不把后台进程杀掉？怎么处理电量耗尽自动关机？怎么在手机休眠时保持连接？团队给出的答案也很务实：建议用闲置手机、插着电源、开自启动、关电池优化——不跟系统对抗，而是绕开主力机这个战场。</p>
+<p>2025 年 3 月 9 日是另一个分水岭。那天之后新创建的 KimiClaw 实例，默认就带企业微信插件了。这个变化看似微小，实则暴露了一个优先级——聊天渠道的覆盖正在从"可选配件"变成"出厂标配"。更早的时候，飞书、微信、企微这些渠道都需要手动装插件、输凭证、跑长连接配置，一套流程下来新手能被劝退。现在企微接入已经简化到四步：创建机器人、发两个 ID 给 Claw、再贴一段配对信息、完事。文档里那个"把凭证发给 Claw"的截图，背后是团队把几十行配置代码封装成了自然语言交互。</p>
+<p>然后是桌面端本地部署——"部署到我的电脑"这五个字，标志着 Claw 从"只能住在厂商服务器上"彻底变成了"可以安家在任何设备上"。这个功能的文案写得很克制：点击按钮后，系统自动从<a href="https://kimiclaw.ggcd.uno/download.html" target="_blank" rel="noopener">官方下载</a>拉取 OpenClaw Gateway 二进制文件，装到 <code>~/.openclaw/</code> 或 <code>C:\Users\&lt;用户名&gt;\.openclaw\</code>，配置好默认模型，连上联网搜索和技能库，整个过程 1-3 分钟。没有炫技，就是把本地部署这件事做到了和建云端实例一样简单。</p>
+<p><img src="../images/kimiclaw/android-dashboard.png" alt="Android Dashboard 主界面" loading="lazy"></p>
+<h2>规律：他们一直在死磕什么</h2>
+<p>把这三次迭代串起来看，团队的优先级清晰得可怕——<strong>扩大 Agent 的"落脚点"，让它离用户越来越近</strong>。</p>
+<p>从云端虚拟机到用户手机，再到用户的电脑本地，每一步都在缩短 Agent 和真实世界之间的距离。云端版的能力边界是"AI + 联网 + 技能库"，到了 Android 版突然就多出了"操控手机 App + 接入传感器"，到了桌面端又多了本地文件系统和更稳定的常驻进程。这不是在堆功能，是在给 Agent 换更好的"身体"。</p>
+<p>反过来看，有什么事他们一直没做？文档里反复提到"云端版能保证 7×24，Android 版取决于手机是否开机"——他们没去给 Android 版搞什么保活黑科技，而是老老实实说清楚边界。微信的智能机器人接入至今还不支持自建小程序形态，企业微信的微信插件也暂不支持——这些"应该有"的功能，团队要么直接禁止（金融类 App 自动封锁），要么不急着做。</p>
+<p>还有件小事挺有意思：所有形态的 Claw 都用同一套 <code>/status</code> 和 <code>/logs</code> 命令做诊断。这个统一的终端界面，从第一天就没变过——不管底层是云端虚拟机还是安卓进程还是本地网关，用户敲命令得到的是同样结构的状态输出。这种跨形态的一致性，恰恰说明团队在扩张部署方式的同时，刻意保持了核心体验的稳定。</p>
+<h2>预判：照这个路线，下一步会是哪</h2>
+<p>从迭代规律推，而不是从官方公告猜——我觉得有两个方向值得留意。</p>
+<p>第一个方向是更轻量的终端形态。现在 Android 版已经跑通了，但手机终究还是个大家伙。如果团队继续沿着"离用户更近"的逻辑走，有没有可能把 OpenClaw Gateway 塞进更便携的设备？比如智能音箱、比如便携小主机？当然这是从现有路线推导的，不当官方口径传。</p>
+<p>第二个方向是聊天渠道的进一步融合。现在飞书、微信、企微已经全覆盖了，但文档里还提到"暂不支持以自建小程序形态完成智能回复"。如果这个功能补上，意味着 Claw 可以直接嵌进微信生态的小程序里，不需要用户先去加机器人好友。这对新用户的门槛降低是巨大的。</p>
+<p>不过说回来，这些都是从迭代节奏反推的。真正值得期待的，还是那个"把 Agent 往你身边推"的逻辑能走到多远——毕竟两年前谁能想到，今天我们能让一个 AI 住在自己的备用机里，帮我们查快递、领优惠券、刷小红书？</p>
+<p>最后补一句：这套资料我在三个仓库都同步了一份，怕一个挂了找不着——GitHub 上的 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/KimiClaw" target="_blank" rel="noopener">alipymanbu/APK</a>、Gitee 上的 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/KimiClaw" target="_blank" rel="noopener">manbu1103/APK</a>、GitCode 上的 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/KimiClaw" target="_blank" rel="noopener">qq352325405/APK</a>，路径都是官方版下面的 KimiClaw 目录。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zepp-app.html">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</a></h2>
+  <p class="card-desc">把 Amazfit 手表生态从连接、健康监测到个性化改造的能力面完整铺开，哪些是真亮点、哪些藏着短板、哪类人最值得入手这套组合。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wispr-docs.html">Wispr v1.3.3：一个加密通讯应用在&#34;安全优先&#34;路上的四年迭代</a></h2>
+  <p class="card-desc">从 VOBP 协议到 P2P 直连，从手机号免费层到 Matrix ID 付费身份，CryptoDATA 的 Wispr 用一个个小版本慢慢拼凑出它对&#34;加密通讯该怎么做&#34;的答案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wibu-docs.html">给 wibu 算一笔付费账：Wibu+ 订阅到底值不值得掏这 $9.99</a></h2>
+  <p class="card-desc">从定价拆解到按使用强度算账，把 Wibu+ 订阅的每一项权益换算成你实际能省的时间和赚到的钱，看完你就知道自己该不该付。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/kimichat.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用 Kimi 踩过的五个坑——别等 credits 烧光才反应过来</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/kingdraw.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">KingDraw 避坑指南：画了半年结构式才发现的几个暗坑</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

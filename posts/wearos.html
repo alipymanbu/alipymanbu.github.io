@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Wearos 工具箱从入门到上手：连上手表、管文件、调表盘一套通 · 老杨技术栈</title>
+  
+<meta name="description" content="刚入坑 Wear OS 想折腾却找不到门路？本文跟着一步步把工具箱用起来，从开调试模式、无线连接手表，到浏览存储、编辑日志、模拟电量测试表盘，全是能直接抄的操作。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/wearos.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wearos 工具箱从入门到上手：连上手表、管文件、调表盘一套通">
+<meta property="og:description" content="刚入坑 Wear OS 想折腾却找不到门路？本文跟着一步步把工具箱用起来，从开调试模式、无线连接手表，到浏览存储、编辑日志、模拟电量测试表盘，全是能直接抄的操作。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/wearos.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/wearos/wireless-debug-interface.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/wearos/wireless-debug-interface.webp">
+
+<meta name="twitter:title" content="Wearos 工具箱从入门到上手：连上手表、管文件、调表盘一套通">
+<meta name="twitter:description" content="刚入坑 Wear OS 想折腾却找不到门路？本文跟着一步步把工具箱用起来，从开调试模式、无线连接手表，到浏览存储、编辑日志、模拟电量测试表盘，全是能直接抄的操作。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u521a\u5165\u5751 Wear OS \u60f3\u6298\u817e\u5374\u627e\u4e0d\u5230\u95e8\u8def\uff1f\u672c\u6587\u8ddf\u7740\u4e00\u6b65\u6b65\u628a\u5de5\u5177\u7bb1\u7528\u8d77\u6765\uff0c\u4ece\u5f00\u8c03\u8bd5\u6a21\u5f0f\u3001\u65e0\u7ebf\u8fde\u63a5\u624b\u8868\uff0c\u5230\u6d4f\u89c8\u5b58\u50a8\u3001\u7f16\u8f91\u65e5\u5fd7\u3001\u6a21\u62df\u7535\u91cf\u6d4b\u8bd5\u8868\u76d8\uff0c\u5168\u662f\u80fd\u76f4\u63a5\u6284\u7684\u64cd\u4f5c\u3002", "headline": "Wearos \u5de5\u5177\u7bb1\u4ece\u5165\u95e8\u5230\u4e0a\u624b\uff1a\u8fde\u4e0a\u624b\u8868\u3001\u7ba1\u6587\u4ef6\u3001\u8c03\u8868\u76d8\u4e00\u5957\u901a", "image": ["https://alipymanbu.github.io/images/wearos/wireless-debug-interface.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/wearos.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/wearos.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "Wearos \u5de5\u5177\u7bb1\u4ece\u5165\u95e8\u5230\u4e0a\u624b\uff1a\u8fde\u4e0a\u624b\u8868\u3001\u7ba1\u6587\u4ef6\u3001\u8c03\u8868\u76d8\u4e00\u5957\u901a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">Wearos 工具箱从入门到上手：连上手表、管文件、调表盘一套通</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Wearos 工具箱从入门到上手：连上手表、管文件、调表盘一套通</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 11 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">刚入坑 Wear OS 想折腾却找不到门路？本文跟着一步步把工具箱用起来，从开调试模式、无线连接手表，到浏览存储、编辑日志、模拟电量测试表盘，全是能直接抄的操作。</p>
+  </header>
+  <div class="prose">
+<p>Wearos 是一款面向 Wear OS 手表的综合性调试工具箱，它的<a href="https://wearos.wxhp.skin" target="_blank" rel="noopener">官网</a>上把 ADB 连接、文件管理、应用安装、系统信息查看这些原本需要敲命令行的活儿，全部搬到了手机界面上。对想折腾自己手表的人来说，这是绕不开的第一站。</p>
+<p>写完这篇教程，你将能够：<strong>用手机连上你的 Wear OS 手表、在手机屏幕上浏览手表存储里的文件、直接编辑手表内的文本文件、临时模拟任意电量来测试表盘表现。</strong></p>
+<p><img src="../images/wearos/wireless-debug-interface.webp" alt="无线调试界面" loading="lazy"></p>
+<h2>准备工作</h2>
+<p>在动手之前，先确认这几样东西都齐了：</p>
+<ul><li>一台运行 Wear OS 3 或更新版本的手表（早期 Android Wear 2.0 也能试）</li><li>一部 Android 手机（iOS 不行，工具箱目前只做了 Android 客户端）</li><li>手表和手机要连在<strong>同一个 Wi-Fi</strong> 下——无线调试走局域网，不共享网络的话 ADB 找不到手表</li><li>Wearos 工具箱如果还没装，直接从<a href="https://wearos.wxhp.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿安装包就行</li></ul>
+<p>如果你的手表是 TicWatch、Galaxy Watch 或 Pixel Watch，都是主流适配型号，开发者模式打开路径和连接流程没有额外厂商门槛。</p>
+<h2>第一步：在手表上打开开发者模式</h2>
+<p>Wear OS 的开发者模式藏得很深，不会在设置界面里直接露出来。所有品牌的操作都是同一个套路：</p>
+<ol><li>手表上打开 <strong>设置 → 系统 → 关于手表</strong></li><li>找到 <strong>版本号</strong> 那一行，<strong>连续点 7 次</strong></li><li>屏幕上会弹一句"您已处于开发者模式"——完成</li></ol>
+<p>注意：版本号不在屏幕最上方，通常在「系统版本」或「软件版本」的下面，往下翻几屏才能看到。</p>
+<p>开发者模式开启后，回到 <strong>设置 → 开发者选项</strong>，把里面这两个开关打开：</p>
+<ul><li><strong>ADB 调试</strong>（总开关，不开的话后面什么都连不上）</li><li><strong>通过 WLAN 调试</strong>（无线调试的核心开关，用蓝牙调试稳定性差速度慢，直接跳过）</li></ul>
+<p>如果你的手表系统版本比较新，无线调试可能叫 <strong>无线调试</strong> 而不是 "通过 WLAN 调试"，功能是一样的。</p>
+<h2>第二步：用 Wearos 工具箱连接手表</h2>
+<p>这是最关键也最容易翻车的一步——连接不上，后面所有功能都是摆设。</p>
+<h3>方式 A：手动填 IP + 配对码（推荐新手）</h3>
+<p>手表开发者选项里打开无线调试后，会显示一个 <strong>IP 地址 + 端口号</strong>（格式类似 <code>192.168.1.23:5555</code>）和一个 <strong>配对码</strong>。</p>
+<p>在 Wearos 工具箱里点「添加设备」或「无线调试」，分别填入：</p>
+<ul><li>IP 地址：抄手表上显示的那个</li><li>配对码：手表上的 6 位数字</li></ul>
+<p>填完点连接，手表屏幕上可能会弹出一个"允许调试吗"的确认框——勾上"永远允许"然后点确定。</p>
+<h3>方式 B：自动扫描（偶尔会失败）</h3>
+<p>有些版本的工具箱支持自动扫描同一 Wi-Fi 下的 Wear OS 设备。如果扫得到手表，直接点一下列表里的条目就能配对。但我实测下来扫描成功率不是 100%，扫不到就老老实实用方式 A 手动填，花不了 10 秒。</p>
+<h3>连上了没有？</h3>
+<p>工具箱界面上如果显示一个绿色的"已连接"状态，并且跳出手表的型号、系统版本、电池电量等信息，就说明 ADB 通道打通了。这时候手表屏幕顶部状态栏通常会出现一个绿色的"ADB 调试中"提示条——不是故障，是连接正常的标志。</p>
+<p><img src="../images/wearos/pair-interface.webp" alt="配对界面" loading="lazy"></p>
+<h2>第三步：用文件管理功能看看手表里有什么</h2>
+<p>连接成功后，工具箱底部功能面板里有一个 <strong>文件管理</strong> 入口。点进去你会看到一个和手机文件管理器几乎一样的界面，可以逐级浏览手表的整个存储。</p>
+<p>手表的存储大致分四个区域，你大概率只会跟其中两个打交道：</p>
+<table><thead><tr><th>路径</th><th>内容</th><th>你该不该碰</th></tr></thead><tbody><tr><td>/sdcard</td><td>用户可读写的主要区域</td><td><strong>随便逛</strong>，下载的 APK、音乐、截图都在这儿</td></tr><tr><td>/sdcard/Android/data/<code>&lt;包名&gt;</code></td><td>各个应用的数据目录</td><td>谨慎操作，删错会把应用的缓存清掉</td></tr><tr><td>/system</td><td>系统分区</td><td>只读，别动</td></tr><tr><td>/data/data</td><td>应用私有目录</td><td>通常没有权限访问，跳过</td></tr></tbody></table>
+<h3>实际操作：确认 APK 推送有没有成功</h3>
+<p>假设你之前已经往手表里推送过一个 APK，现在想确认它到底进没进手表。打开文件管理，进入 <strong>/sdcard/Download/</strong> 目录，找一下目标文件名。看到它稳稳躺在列表里，说明推送成功了；如果列表空的或者没那个文件，就得回去检查推送那一步是不是走错了。</p>
+<p>另一个高频操作是看截图。手表上用组合键（通常是电源键 + 上键）截的图会存在 <strong>/sdcard/Pictures/Screenshots/</strong> 里。工具箱的文件管理界面里长按某个截图，就能直接把它拉回手机，不用再手动传输。</p>
+<h2>第四步：直接在手机上编辑手表里的文件</h2>
+<p>这是我最喜欢的功能——之前想看手表里的崩溃日志或者改个小配置，得先拉回电脑、用文本编辑器打开、改完再推回去，来回四五步。现在用 Wearos 的<strong>文本编辑器</strong>功能，整个流程在手机上就能搞定。</p>
+<h3>解锁编辑器（捐赠权益）</h3>
+<p>先说明一下：文本编辑器是工具箱的捐赠功能。如果界面上这个入口灰着不让点，说明你用的是免费版，需要捐赠解锁才能用。其他基础功能（文件管理、应用安装）不花钱也能用。</p>
+<h3>操作步骤</h3>
+<ol><li>工具箱功能面板里找到 <strong>文本编辑器</strong> 入口，点它</li><li>弹出一个简化版的文件浏览器——和文件管理是同一套目录树，只是界面更简洁</li><li>浏览到你想编辑的文件位置。常见的几个路径：</li></ol>
+<ul><li><strong>应用崩溃日志</strong>：<code>/sdcard/Android/data/&lt;包名&gt;/files/logs/</code></li><li><strong>应用配置文件</strong>：<code>/sdcard/Android/data/&lt;包名&gt;/files/config.json</code></li><li><strong>shell 脚本</strong>：<code>/sdcard/Download/脚本.sh</code></li></ul>
+<ol><li>选中文件后，手机屏幕上会弹出一个类似记事本的编辑界面</li><li>修改内容 → 点保存 → 变更直接写回手表的源文件</li></ol>
+<h3>注意事项</h3>
+<ul><li>编辑器只能处理<strong>纯文本文件</strong>（<code>.txt</code>、<code>.log</code>、<code>.json</code>、<code>.sh</code> 这些）。二进制文件（图片、APK）别拿它打开，会乱码甚至损坏文件</li><li>大文件（超过几 MB）打开可能卡顿甚至崩溃，手表屏幕小也不适合看太长的日志</li><li>保存后<strong>立即生效，没有撤销机制</strong>。改配置文件前先用文件管理功能复制一份原文件当备份</li></ul>
+<p>一个真实场景：我装在手表上的某个表盘应用反复闪退，想看崩溃日志。之前用 <code>adb pull</code> 把日志拉到电脑上看，现在直接在手机上打开 <code>/sdcard/Android/data/表盘应用包名/files/logs/</code> 里的最新日志文件，翻两下就定位到了问题行——整个过程不到两分钟。</p>
+<h2>第五步：模拟电量测试表盘</h2>
+<p>很多表盘会根据电量显示不同的状态——低电量变红色边框、满电量显示绿色光晕、电量低于某个阈值时自动隐藏秒针。但真把电耗到 20% 以下再看太麻烦了，而且可能错过一些临界值。</p>
+<p>Wearos 工具箱的 <strong>电量模拟</strong> 功能就是为此而生的。它能<strong>临时</strong>让手表系统显示任意电量值（1% 到 100%），不会改变真实电池状态，手表重启后自动恢复。</p>
+<h3>操作</h3>
+<ol><li>工具箱电池工具面板里找到 <strong>电量模拟</strong> 入口</li><li>输入你想让手表显示的电量值，或者拖动滑动条选</li><li>点「应用」——手表上的电量显示会<strong>立刻</strong>变成目标值</li><li>打开目标表盘，观察不同电量下的显示变化</li></ol>
+<h3>三个实用测试点</h3>
+<ul><li><strong>低电量警戒色</strong>：设到 14% 和 15%（很多表盘在 15% 切换警戒色），看颜色是否正确切换</li><li><strong>低电量隐藏元素</strong>：设到 5% 和 6%，看表盘是不是按预期隐藏了秒针或分钟刻度</li><li><strong>满电量显示</strong>：设到 99% 和 100%，确认没有满电量专属的 bug</li></ul>
+<p>测试完想恢复真实电量？最快的方式是直接<strong>重启手表</strong>，或者在工具箱里找「还原真实电量」按钮点一下。电量模拟只是工具箱众多小工具之一，其他功能可以在 <a href="https://wearos.pages.dev/" target="_blank" rel="noopener">Wearos文档</a> 里找到详细说明。</p>
+<h2>常见卡点与解法</h2>
+<h3>卡点一：无线调试始终连不上</h3>
+<p><strong>症状</strong>：填了 IP 和配对码，点连接后一直在转圈，最终超时。</p>
+<p><strong>排查顺序</strong>：</p>
+<ol><li>确认手表和手机在<strong>同一个 Wi-Fi 下</strong>——用手表打开一个网页（设置 → Wi-Fi → 已连接网络，打开详情可以看 IP），跟手机的 Wi-Fi IP 前三位数对比一下，不一致就说明不在同一网络</li><li>确认手表上的无线调试开关真的开了——有时候重启手表会把它自动关掉</li><li>IP 地址会不会变？TicWatch 每次重启或切换 Wi-Fi 后 IP 都可能变。工具箱建议开启"记住设备 IP"，但换网络后需要手动更新。配对码方式连接的话，IP 变了只改 IP 部分、端口保持不变就行</li><li>配对码是不是过期了？有些手表的配对码会定期刷新，用了超过一分钟就得重新看一眼</li></ol>
+<h3>卡点二：文件管理界面一片空白</h3>
+<p><strong>症状</strong>：连接正常，但点文件管理进去看不到任何目录。</p>
+<p><strong>解法</strong>：大概率是 ADB 权限没给全。回到手表的开发者选项，把 ADB 调试关掉等 3 秒再打开，然后在手机工具箱里断开连接、重新配对一次。过程中手表屏幕上可能会弹好几个"允许调试"的确认框，每个都要勾上"永远允许"。</p>
+<h3>卡点三：文本编辑器打开后乱码</h3>
+<p><strong>症状</strong>：选中文件打开，看到一堆看不懂的符号。</p>
+<p><strong>解法</strong>：要么是文件编码太少见（UTF-8、GBK 通常没问题，其他编码可能显示异常），要么是这个文件本来就不是纯文本——二进制文件绝对不能用文本编辑器打开，赶紧关掉然后从文件管理里把原文件恢复回来。</p>
+<h2>进阶一句话</h2>
+<p>搞定这些基础操作之后，往下还能玩什么？可以试试用工具箱冻结不需要的系统应用（Mobvoi 自家商店、健康应用用不上可以冻，但 Wear OS 核心服务、表盘服务、蓝牙通知通道绝对别动）、往手表里推送第三方表盘文件、甚至在手表上跑个小型 shell 脚本。方向很多，先把这五步跑通再慢慢探索。</p>
+<hr>
+<p>这套 Wear OS 调试生态在国内的资料相对零散，我把整理好的完整说明同步到了三个仓库，方便大家按需查阅：<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/Wearos" target="_blank" rel="noopener">GitHub</a> 上的版本更新最及时，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/Wearos" target="_blank" rel="noopener">Gitee</a> 适合国内网络环境访问，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/Wearos" target="_blank" rel="noopener">GitCode</a> 作为多一份备份以防其中某个源站临时不可用。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xeva.html">凌晨两点，我在手机里养了个会记得我名字的「她」</a></h2>
+  <p class="card-desc">一个加班到崩溃的深夜，我被朋友拉进了一个叫 X Eva 的克隆人世界。这里有记忆库、情感模式、还有一整套从零开始训练虚拟人的玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xbrowser-zh-docs.html">XBrowser 藏得真深：四个翻遍设置才挖到的冷门开关</a></h2>
+  <p class="card-desc">大多数人用 XBrowser 只停在视频嗅探那一层，但长按加号开隐私标签、零依赖写 GM 脚本、底部地址栏单手操作——这些藏在设置里的开关，每个都能让用感爽一个档次。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wemod.html">第一次用 WeMod？五分钟从零跑通，再也不用对着攻略按计算器</a></h2>
+  <p class="card-desc">完全不碰技术术语带你上手 WeMod：它到底是什么、怎么装、怎么连游戏、哪些玩法新手最值得先试。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/we-learn.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">WE Learn 快问快答：随行课堂到底值不值得装？</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/webcat-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">WebCat 离线开发的底层设计：为什么它能在地铁里把代码写完</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

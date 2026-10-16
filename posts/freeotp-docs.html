@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>飞行模式下，我靠一个开源 App 救了凌晨三点的紧急工单 · 老杨技术栈</title>
+  
+<meta name="description" content="凌晨在境外转机，公司内网突发状况，VPN 登录卡卡在两步验证这关——没有 Wi-Fi、没有数据漫游，FreeOTP 让我在飞行模式下照常出码，这篇文章讲我和它是怎么认识的。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/freeotp-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="飞行模式下，我靠一个开源 App 救了凌晨三点的紧急工单">
+<meta property="og:description" content="凌晨在境外转机，公司内网突发状况，VPN 登录卡卡在两步验证这关——没有 Wi-Fi、没有数据漫游，FreeOTP 让我在飞行模式下照常出码，这篇文章讲我和它是怎么认识的。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/freeotp-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/freeotp-docs/screenshot-tokens.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/freeotp-docs/screenshot-tokens.png">
+
+<meta name="twitter:title" content="飞行模式下，我靠一个开源 App 救了凌晨三点的紧急工单">
+<meta name="twitter:description" content="凌晨在境外转机，公司内网突发状况，VPN 登录卡卡在两步验证这关——没有 Wi-Fi、没有数据漫游，FreeOTP 让我在飞行模式下照常出码，这篇文章讲我和它是怎么认识的。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u51cc\u6668\u5728\u5883\u5916\u8f6c\u673a\uff0c\u516c\u53f8\u5185\u7f51\u7a81\u53d1\u72b6\u51b5\uff0cVPN \u767b\u5f55\u5361\u5361\u5728\u4e24\u6b65\u9a8c\u8bc1\u8fd9\u5173\u2014\u2014\u6ca1\u6709 Wi-Fi\u3001\u6ca1\u6709\u6570\u636e\u6f2b\u6e38\uff0cFreeOTP \u8ba9\u6211\u5728\u98de\u884c\u6a21\u5f0f\u4e0b\u7167\u5e38\u51fa\u7801\uff0c\u8fd9\u7bc7\u6587\u7ae0\u8bb2\u6211\u548c\u5b83\u662f\u600e\u4e48\u8ba4\u8bc6\u7684\u3002", "headline": "\u98de\u884c\u6a21\u5f0f\u4e0b\uff0c\u6211\u9760\u4e00\u4e2a\u5f00\u6e90 App \u6551\u4e86\u51cc\u6668\u4e09\u70b9\u7684\u7d27\u6025\u5de5\u5355", "image": ["https://alipymanbu.github.io/images/freeotp-docs/screenshot-tokens.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/freeotp-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/freeotp-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u98de\u884c\u6a21\u5f0f\u4e0b\uff0c\u6211\u9760\u4e00\u4e2a\u5f00\u6e90 App \u6551\u4e86\u51cc\u6668\u4e09\u70b9\u7684\u7d27\u6025\u5de5\u5355", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">飞行模式下，我靠一个开源 App 救了凌晨三点的紧急工单</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">飞行模式下，我靠一个开源 App 救了凌晨三点的紧急工单</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">凌晨在境外转机，公司内网突发状况，VPN 登录卡卡在两步验证这关——没有 Wi-Fi、没有数据漫游，FreeOTP 让我在飞行模式下照常出码，这篇文章讲我和它是怎么认识的。</p>
+  </header>
+  <div class="prose">
+<p>凌晨两点四十五分，阿姆斯特丹史基浦机场的转机大厅里，我盯着锁屏上那三格信号——一格都没有。</p>
+<p>手机刚自动切到飞行模式，运营商在这个时区还没漫游协商完。我正准备把它塞回背包去免税店晃一圈，Slack 的通知像故意等这一刻似的弹了出来。</p>
+<p>运维组的老李发的："预发布环境数据库挂了，客户那边报错，你手上有生产权限，能不能登内网看一眼？"</p>
+<p>我当时脑子嗡了一下。不是因为数据库挂了——这种事一年碰个三四次——而是我上一个验证器 App 是谷歌验证器，上次在日本山区没信号的时候它就抽过风，验证码刷不出来，差点误了登机。</p>
+<p>VPN 连得上，两步验证过不了。而我现在，一个在国际转机厅里连半格信号都没有的人，最不需要的就是再搞一次那种焦虑。</p>
+<h2>为什么是它，而不是别的</h2>
+<p>我跟 FreeOTP 的相识，其实也是一次"怕麻烦"的结果。</p>
+<p>之前手机上同时装着谷歌验证器和 Authy，一个公司账号用，一个自己的私人平台用。后来换手机的时候搬令牌，谷歌验证器不支持云端导出，Authy 又因为我太久没登录触发了额外验证，折腾了快一个礼拜才把所有令牌重新绑完。</p>
+<p>那阵子正好在折腾红帽的一个在线课程，红帽的官方文档里把 FreeOTP 列成了"仅有的两种受支持验证器之一"。我当时随手搜了一下，翻了翻 FreeOTP 的<a href="https://freeotp.gerw.hair" target="_blank" rel="noopener">官网</a>，发现这玩意是红帽自家赞助的开源项目，不收集数据，验证码全在本地算——"离线可用"四个大字摆在介绍页最显眼的位置。</p>
+<p>说实话，"离线可用"这四个字我当时没太当回事。以为就是个"顺便提一下"的卖点，跟市面上其他验证器区别不大。于是就抱着"反正免费，试试也不吃亏"的心态去<a href="https://freeotp.gerw.hair/download.html" target="_blank" rel="noopener">下载</a>了一个，然后把几个关键账号的令牌重新绑了一遍。</p>
+<p><img src="../images/freeotp-docs/screenshot-tokens.png" alt="FreeOTP 主界面：令牌以卡片列表呈现" loading="lazy"></p>
+<p>主界面很朴素，就一堆卡片，每张卡左侧是服务图标，右边是账户名。点一下卡片，6 位验证码带着倒计时条展开，再点一下收起。右下角那个加号是唯一的添加入口，可以扫码也可以手动填——我绑公司内网令牌的时候正好遇到二维码加载不出来，手动输入了 base32 密钥，默认的 SHA1 算法和 6 位数字一次就过了，没碰过参数。</p>
+<h2>飞行模式下的那 30 秒</h2>
+<p>拉回凌晨的史基浦机场。</p>
+<p>我点开 VPN 客户端，心跳开始加速。VPN 连上了，弹出两步验证的页面——6 位验证码输入框空荡荡地等着。</p>
+<p>然后我打开了 FreeOTP。</p>
+<p>飞行模式的图标还在状态栏上亮着。公司内网那张令牌的卡片静静躺在列表里。我点了一下。</p>
+<p>6 位数字蹦出来。倒计时条开始从 30 往回走。</p>
+<p>我愣了两秒。然后反应过来：这玩意真的不联网。密钥在绑定时就存进手机了，出码就是密钥加当前时间做一遍计算，全程不需要跟任何服务器通信。飞行模式、地下车库、高铁过隧道——只要手机时钟是准的，它就能出码。</p>
+<p>我抄下那串数字输进 VPN 验证框。通过。</p>
+<p>接下来的 12 分钟里，我在转机大厅的塑料椅子上，用手机浏览器连上内网，跟着老李的指引定位到数据库挂掉的原因——一个定时任务的 SQL 在新版本里多了一行 <code>ORDER BY</code>，锁表了。我 kill 掉锁进程，临时改了 cron，让它先跳过去，等天亮了再在预发布环境回滚测试。</p>
+<p>中间 FreeOTP 又验证了三次。每次我点开它，数字照常刷新，倒计时照常跳动，状态栏上飞行模式的图标从来没灭过。</p>
+<p><img src="../images/freeotp-docs/screenshot-token-menu.png" alt="离线也能出码：点击令牌即显示验证码" loading="lazy"></p>
+<h2>为什么这件事值得写</h2>
+<p>数据库挂了又救回来，这件事本身不值得写。凌晨转机被薅起来处理故障，这种经历每个运维和工程师大概都有过。</p>
+<p>让我觉得值得记一笔的，是那 12 分钟里我对"两步验证"这件事的理解被悄悄修正了一点。</p>
+<p>以前我选验证器的时候，优先看的是"能不能云同步"——换机的时候省心。FreeOTP 不云同步。它的哲学是"出码链路零网络"，把同步的事情交给用户自己解决。想备份？自己手动导密钥、自己保管。听起来很反人类，但它换回来的是另一样东西：<strong>可靠</strong>。</p>
+<p>云同步的验证器，出码路径上多了一层云端。便利是便利，但真要是网络断了、或者云服务那边出了点状况，你连出码都出不来。而两步验证这东西，恰恰是在"最紧急"的时候用的——账号被盗的第一时间、凌晨故障的处理现场、境外出差的紧急登录。这个时候如果验证器自己先掉链子，那整个 2FA 的设计初衷就被架空了。</p>
+<p>FreeOTP 的选择是把"离线可用"执行到底。验证码全程在本地算，网络权限只用来拉一下服务图标——图标拿不到就显示默认图，出码不受任何影响。红帽作为赞助方，把它列进官方文档的受支持清单，我现在觉得背后可能也有同样的考量：企业级 2FA，可靠性比便利更重要。</p>
+<p>后来我在<a href="https://freeotp-docs.pages.dev/" target="_blank" rel="noopener">FreeOTP文档</a>里还翻到一篇关于时间同步的故障排查——验证码永远不对怎么办？检查手机的自动时间开关，因为 FreeOTP 出码只认本地时间。这一点我也深有体会：有次出差到一个时区比较偏的地方，手机时间慢了三分钟，所有令牌出的码全错，折腾了好一会才找到原因。</p>
+<h2>回到日常</h2>
+<p>从那次转机之后，FreeOTP 成了我手机上唯一留着的验证器。谷歌验证器因为搬家麻烦没留住，Authy 因为我不喜欢它的联网依赖也卸载了。</p>
+<p>几个同事听了我的故事后也陆续装上了。其中有个哥们在外企，公司内网的 2FA 强制绑定 FreeOTP——红帽生态的公司，流程里写死了的。他说有次坐飞机跨太平洋，中途手机没信号，正好要登录客户系统看个紧急配置，也是靠飞行模式下的出码搞定的。</p>
+<p>我们俩在 Slack 上对了一下眼神，彼此发了一个"懂"的表情。</p>
+<p>这大概就是开源软件最朴素的价值：它不做花哨的营销，不搞订阅制，不收集你的数据，就安安静静地把一件事做好——在你最需要它的时候，哪怕没有网络、没有信号、手机只剩最后几格电，它也能把那 6 位数字准时送到你手上。</p>
+<p>当然它也有代价。没有云同步意味着我得自己维护好密钥备份，每绑一个新令牌都会顺手记一份，存进加密的密码管理器里。这个麻烦我心甘情愿担着——因为比起"换机的时候多花十分钟"，我更不想在凌晨三点的转机厅里，盯着一个刷不出码的验证器 App 发呆。</p>
+<p>如果你也在纠结选哪个验证器，我的建议是：先想清楚你用 2FA 是为了"方便"还是为了"安心"。选 FreeOTP，就是选后者。开源项目的资料散得开，怕哪个仓库抽风的话，可以分别在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/FreeOTP" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/FreeOTP" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/FreeOTP" target="_blank" rel="noopener">GitCode</a> 上各留个书签，总有一个能打开。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/freeok-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">freeok 到底好用在哪？一次把追剧的方方面面说清楚</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/funbox-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">FunBox 深度盘点：一个 LSPosed 模块能把聊天面板玩出什么花样</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

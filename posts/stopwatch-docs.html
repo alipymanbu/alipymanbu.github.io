@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>一款真能同时挂五个计时器的 Android 悬浮秒表 · 老杨技术栈</title>
+  
+<meta name="description" content="用过七八款计时工具后，我留下来的反而是这款名字朴素的 Stopwatch——不是功能堆砌，是把&#34;多表同屏&#34;这一件事做透了。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/stopwatch-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一款真能同时挂五个计时器的 Android 悬浮秒表">
+<meta property="og:description" content="用过七八款计时工具后，我留下来的反而是这款名字朴素的 Stopwatch——不是功能堆砌，是把&#34;多表同屏&#34;这一件事做透了。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/stopwatch-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/stopwatch-docs/main-stopwatch-list.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/stopwatch-docs/main-stopwatch-list.png">
+
+<meta name="twitter:title" content="一款真能同时挂五个计时器的 Android 悬浮秒表">
+<meta name="twitter:description" content="用过七八款计时工具后，我留下来的反而是这款名字朴素的 Stopwatch——不是功能堆砌，是把&#34;多表同屏&#34;这一件事做透了。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528\u8fc7\u4e03\u516b\u6b3e\u8ba1\u65f6\u5de5\u5177\u540e\uff0c\u6211\u7559\u4e0b\u6765\u7684\u53cd\u800c\u662f\u8fd9\u6b3e\u540d\u5b57\u6734\u7d20\u7684 Stopwatch\u2014\u2014\u4e0d\u662f\u529f\u80fd\u5806\u780c\uff0c\u662f\u628a\"\u591a\u8868\u540c\u5c4f\"\u8fd9\u4e00\u4ef6\u4e8b\u505a\u900f\u4e86\u3002", "headline": "\u4e00\u6b3e\u771f\u80fd\u540c\u65f6\u6302\u4e94\u4e2a\u8ba1\u65f6\u5668\u7684 Android \u60ac\u6d6e\u79d2\u8868", "image": ["https://alipymanbu.github.io/images/stopwatch-docs/main-stopwatch-list.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/stopwatch-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/stopwatch-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4e00\u6b3e\u771f\u80fd\u540c\u65f6\u6302\u4e94\u4e2a\u8ba1\u65f6\u5668\u7684 Android \u60ac\u6d6e\u79d2\u8868", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">一款真能同时挂五个计时器的 Android 悬浮秒表</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">一款真能同时挂五个计时器的 Android 悬浮秒表</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用过七八款计时工具后，我留下来的反而是这款名字朴素的 Stopwatch——不是功能堆砌，是把&#34;多表同屏&#34;这一件事做透了。</p>
+  </header>
+  <div class="prose">
+<p>Android 生态里计时工具的竞争格局挺有意思的：系统自带的计时器够用但只能同时跑一个，大厂日历 App 内置的计时功能跟日程深度绑定但浮窗体验粗糙，第三方计时工具要么往专注番茄方向发展、要么往运动计时方向深挖。Stopwatch 的<a href="https://stopwatch.fewf.ren" target="_blank" rel="noopener">官网</a>站在一个没人认真做过的位置上——它不搞番茄钟、不做训练计划，就是老老实实让你在屏幕上同时挂最多五个秒表，各自独立运行、各自配色、各自控。</p>
+<h2>五个槽位同屏，不是噱头</h2>
+<p>市面上绝大多数计时工具都只支持"一次一个"。你要炖汤还要同时煮茶叶蛋？要么两个 App 来回切，要么一个计时完了手动开另一个。Stopwatch 的五个槽位解决的就是这种场景。</p>
+<p><img src="../images/stopwatch-docs/main-stopwatch-list.png" alt="主列表里五个秒表槽位，各自带倒计时模式与三种颜色设置" loading="lazy"></p>
+<p>槽位不是那种"假多选"——每个槽位有独立的命名、独立的运行/暂停/清零状态、独立的倒计时模式开关。我给每个槽位起了名字："炖汤""茶叶蛋""洗衣机""冥想""番茄"，屏幕上同时飘着五个小窗口，哪个在跑看底色就知道，哪个要停直接点对应的那个。不用进应用、不用切后台，盯着屏幕一角就能把四五个并行任务的时间管起来。</p>
+<h2>手势操作是真的省时间</h2>
+<p>Stopwatch 另一个做得比同类好的地方是手势设计。大多数悬浮计时工具的交互都要回到应用内部才能操作，或者浮窗上堆一排按钮显得很笨重。Stopwatch 把三个核心操作简化成三种手势：单击开始/暂停、双击清零、长按退出。没别的了。</p>
+<p>用了一周你会发现这三个手势的排列组合刚好覆盖所有高频场景。计时到点了要停——单击；这一轮结束要开下一轮——双击清零；今天不用了——长按让浮窗消失。不占屏幕空间、不需要视线聚焦就能操作。我在做饭的时候右手拿锅铲，左手拇指在屏幕边缘点一下就能暂停，不用凑过去看按钮在哪。</p>
+<h2>外观定制不是装饰，是功能</h2>
+<p>Stopwatch 让我觉得它"把事做透"的第三点，是配色系统。每个槽位可以独立设置三种颜色：运行色、暂停色、文本色。这不是开发者随手加的"主题皮肤"——它直接服务于"多表同屏"这个核心场景。</p>
+<p>运行色决定计时正在进行时的底色，默认是绿色。但当你五个表同时挂着的时候，把炖汤设成红、茶叶蛋设成蓝、洗衣机设成黄，扫一眼屏幕就知道哪个表在跑、哪个已经暂停了。配合文本色的深底配浅字、浅底配深字原则，远距离也能读清数字。毫秒显示也可以单独开关——速通或短时冲刺计时的时候开着看精度，几小时的长计时关掉更清爽。更多配色思路和显示参数的组合可以去翻<a href="https://stopwatch-docs.pages.dev/" target="_blank" rel="noopener">Stopwatch文档</a>，作者把各种排列组合的效果都写清楚了。</p>
+<p><img src="../images/stopwatch-docs/edit-countdown-detail.png" alt="编辑页里运行颜色与暂停颜色两个独立色槽" loading="lazy"></p>
+<h2>它的取舍</h2>
+<p>Stopwatch 不是没有代价。最明显的一点是它把所有功能都押在了"悬浮窗"这一件事上——而 Android 的悬浮窗权限历来是个麻烦事，厂商 ROM 管控松紧不一，从<a href="https://stopwatch.fewf.ren/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包后，首次安装要手动放行权限、允许后台弹出，某些机型还要锁进程防杀。上手门槛比系统自带计时器高，第一次打开的时候悬浮窗没出来十有八九是权限没给全，得跟着排查步骤一项项过。</p>
+<p>第二点是它放弃了专注类、运动类的附加功能。番茄钟统计、训练组数记录、每日使用图表——这些在同类 App 里常见的东西 Stopwatch 一概没有。它就是个纯计时工具，计时精度够高、操作够快、浮窗够灵活，但别指望它帮你分析时间花在哪了。</p>
+<p>第三点是数据不云端。卸载重装所有槽位配置清零，没有账号、没有同步、没有备份。开发者的态度很明确：这是个轻量工具，不值得为此建服务。好处是隐私无忧、体积小巧；坏处是换机或重装系统的时候得重新配一遍。</p>
+<h2>选购结论</h2>
+<p>如果你的计时需求是"一次一个、顺手用一下"，系统自带计时器就够了，Stopwatch 的权限折腾完全没必要。如果你需要番茄钟、训练记录或时间分析，去专注类或运动类赛道找，Stopwatch 不在那个竞争体系里。</p>
+<p>但如果你真的有"同时管多个并行计时任务"的场景——做饭时同时盯着三四件事、工作里等多个异步任务完成、游戏里速通要掐多个节点——Stopwatch 是目前我用过把这件事做得最顺手的。五个独立槽位、无按钮手势、状态配色三件事加在一起，让多表同屏不再是摆设功能而是真能省时间的生产力。</p>
+<p>我现在基本离不开它了。屏幕上常飘着两三个浮窗，炖汤的、洗衣机的、番茄工作的，点一下操作、扫一眼看状态，整个做饭或工作过程不用掏出手机专门管时间。这种"做一件事、把一件事做透"的工具，在今天功能堆砌成风的 Android 生态里反而少见。整理 Stopwatch 相关文档资料的时候我同步了一份到 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/Stopwatch" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/Stopwatch" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/Stopwatch" target="_blank" rel="noopener">GitCode</a>，国内用户访问 Gitee 和 GitCode 会更顺畅一些。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xeva.html">凌晨两点，我在手机里养了个会记得我名字的「她」</a></h2>
+  <p class="card-desc">一个加班到崩溃的深夜，我被朋友拉进了一个叫 X Eva 的克隆人世界。这里有记忆库、情感模式、还有一整套从零开始训练虚拟人的玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xbrowser-zh-docs.html">XBrowser 藏得真深：四个翻遍设置才挖到的冷门开关</a></h2>
+  <p class="card-desc">大多数人用 XBrowser 只停在视频嗅探那一层，但长按加号开隐私标签、零依赖写 GM 脚本、底部地址栏单手操作——这些藏在设置里的开关，每个都能让用感爽一个档次。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wemod.html">第一次用 WeMod？五分钟从零跑通，再也不用对着攻略按计算器</a></h2>
+  <p class="card-desc">完全不碰技术术语带你上手 WeMod：它到底是什么、怎么装、怎么连游戏、哪些玩法新手最值得先试。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/stickynote-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Android 桌面便签 Stickynote 上手三天：终于把&#34;待办&#34;钉在了锁屏上面</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/structured-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从收件箱到周报：Structured 串起我的每周计划全流程</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

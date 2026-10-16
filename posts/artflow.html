@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>ArtFlow 这几年在忙什么——从一个画板到 GPU 引擎的进化史 · 老杨技术栈</title>
+  
+<meta name="description" content="从最早的简单速写板到现在主打 GPU 加速的专业级绘画应用，ArtFlow 的迭代节奏里藏着移动绘画工具的取舍逻辑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/artflow.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArtFlow 这几年在忙什么——从一个画板到 GPU 引擎的进化史">
+<meta property="og:description" content="从最早的简单速写板到现在主打 GPU 加速的专业级绘画应用，ArtFlow 的迭代节奏里藏着移动绘画工具的取舍逻辑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/artflow.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/artflow/artflow-scene-04.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/artflow/artflow-scene-04.png">
+
+<meta name="twitter:title" content="ArtFlow 这几年在忙什么——从一个画板到 GPU 引擎的进化史">
+<meta name="twitter:description" content="从最早的简单速写板到现在主打 GPU 加速的专业级绘画应用，ArtFlow 的迭代节奏里藏着移动绘画工具的取舍逻辑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u6700\u65e9\u7684\u7b80\u5355\u901f\u5199\u677f\u5230\u73b0\u5728\u4e3b\u6253 GPU \u52a0\u901f\u7684\u4e13\u4e1a\u7ea7\u7ed8\u753b\u5e94\u7528\uff0cArtFlow \u7684\u8fed\u4ee3\u8282\u594f\u91cc\u85cf\u7740\u79fb\u52a8\u7ed8\u753b\u5de5\u5177\u7684\u53d6\u820d\u903b\u8f91\u3002", "headline": "ArtFlow \u8fd9\u51e0\u5e74\u5728\u5fd9\u4ec0\u4e48\u2014\u2014\u4ece\u4e00\u4e2a\u753b\u677f\u5230 GPU \u5f15\u64ce\u7684\u8fdb\u5316\u53f2", "image": ["https://alipymanbu.github.io/images/artflow/artflow-scene-04.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/artflow.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/artflow.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "ArtFlow \u8fd9\u51e0\u5e74\u5728\u5fd9\u4ec0\u4e48\u2014\u2014\u4ece\u4e00\u4e2a\u753b\u677f\u5230 GPU \u5f15\u64ce\u7684\u8fdb\u5316\u53f2", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">ArtFlow 这几年在忙什么——从一个画板到 GPU 引擎的进化史</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">ArtFlow 这几年在忙什么——从一个画板到 GPU 引擎的进化史</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从最早的简单速写板到现在主打 GPU 加速的专业级绘画应用，ArtFlow 的迭代节奏里藏着移动绘画工具的取舍逻辑。</p>
+  </header>
+  <div class="prose">
+<h2>现状：它现在是什么样子</h2>
+<p>如果你今天去 <a href="https://artflow.ggcd.online" target="_blank" rel="noopener">ArtFlow官网</a> 或 Google Play 搜索，或者从<a href="https://artflow.ggcd.online/download.html" target="_blank" rel="noopener">官方下载</a>拿安装包，打开第一眼看到的是一个近乎全屏的画布——侧边悬浮着工具抽屉，左上角是主菜单，右上角是图层面板。画笔在屏幕上移动的那一瞬间你就能感觉到：笔触没有延迟，跟手程度接近纸笔。</p>
+<p>这是 ArtFlow 最新版给人的第一印象。但让我真正停下来细看的不是流畅的笔触，而是它画完一张 A4 尺寸插画后，图层面板里还躺着的那 20 多个层——每一层的合成和渲染都没有掉帧。</p>
+<p>这种体验不是从第一天就有的。三年前我第一次装 ArtFlow 的时候，它还只是个能在手机上画速写的小工具。图层限制、撤销步数、画笔种类，处处透露着"够用就行"的产品哲学。</p>
+<p><img src="../images/artflow/artflow-scene-04.png" alt="ArtFlow 主界面" loading="lazy"></p>
+<h2>来路：几个关键转折点</h2>
+<p>样本文档里没有给出精确的版本号时间线，但从现有功能的分层可以反推几个阶段。</p>
+<h3>第一阶段：画板起步</h3>
+<p>早期版本的 ArtFlow 定位非常明确——手机上的速写板。免费版的 3 层限制就是这个思路的残留：线稿层 + 分色层 + 光影层，刚好覆盖一张速写的完整流程，再多就是给"认真画画"的人准备的了。撤销历史 6 步、画笔 20 个，都是同样的逻辑——速写不需要无限撤销，也不需要一百种画笔，够用就行。</p>
+<p>这个阶段的核心卖点可能是"手机上最好用的免费画板"。没广告、不用注册、装了就能画——在一堆带强制广告和弹窗的同类型应用里，这个简洁度本身就是竞争力。</p>
+<h3>第二阶段：Pro 版与 GPU 引擎同步出现</h3>
+<p>我不确定 ArtFlow 的 Pro 版和 GPU 引擎是不是在同一个版本引入的，但从产品逻辑上看，它们几乎应该是同时发生的。</p>
+<p>为什么？因为 GPU 引擎是一个重投入——Shader 编写、画布分块渲染、多层合成优化，这些工程量远不止是"加几个画笔"。团队愿意砸这个量级的开发资源，一定是瞄准了"专业级绘画工具"这个更大的市场，而不是继续在免费速写板里挤。</p>
+<p>GPU 引擎带来的变化是根本性的。之前用 CPU 逐像素算笔刷颜色的方式，在高分辨率画布上必然卡。ArtFlow 把笔刷渲染、颜色混合、图层合成全部交给 GPU 的着色器去跑，CPU 只干 UI 和文件读写——这个架构决策让它从"手机画板"跨到了"平板专业绘画工具"的门槛。</p>
+<p>Pro 版的功能设计也紧扣这个定位转变：50 层、无限制撤销、100+ 画笔、自定义画笔、PSD 导出——每一项都是在说"你可以在 ArtFlow 里完成一整张插画，然后无缝衔接到桌面端继续"。一次性买断 2.99 到 4.99 美元的定价也很克制，没有按订阅收费。</p>
+<p><img src="../images/artflow/artflow-scene-02.png" alt="GPU 引擎效果" loading="lazy"></p>
+<h3>第三阶段：免费版与 Pro 版的边界固化</h3>
+<p>从样本文档里的免费版限制可以看出，团队在某个版本后把免费版和 Pro 版的功能边界给固化了。免费版维持着 3 层、6 步撤销、20 画笔的限制不变，但也没有进一步砍功能——对称工具的单轴模式、基础滤镜、基础画布尺寸，这些都还在免费版里。Pro 版则在持续堆积新功能：涂抹工具、渐变填充、对称工具多轴模式、调色板导入导出。</p>
+<p>这个策略很聪明。免费版保持着"不干扰、够用"的底线，给速写用户一个安心的选择；Pro 版的解锁内容刚好卡在"认真做插画"的那个临界点——3 层不够用的人会自然流向 50 层，不能导出 PSD 的人会被跨软件协作的需求推一把。</p>
+<h2>规律：他们一直在死磕什么</h2>
+<p>从迭代节奏看，Artflow Studio 这个团队的优先级非常清晰。</p>
+<p><strong>死磕性能</strong>：GPU 引擎是他们最核心的投入。后来翻了<a href="https://artflow.pages.dev/" target="_blank" rel="noopener">ArtFlow文档</a>才弄明白引擎原理——Shader 计算、帧缓冲写入、60fps 目标、画布分块渲染、多图层合成优化。这不是"刚好能用"的水平，是"专门写了一篇技术文档来解释"的水平。对于一个主要靠 Google Play 内购变现的独立团队来说，花这么多精力在底层引擎上而不是去堆 UI 花活，说明性能体验是他们真正的护城河。</p>
+<p><strong>不碰的东西</strong>：订阅收费。在这个行业里订阅几乎是标配，但 ArtFlow 坚持一次性买断。Pro 版通过 Google Play 应用内购买，绑定 Google 账号，换设备直接恢复。从用户口碑来看，这个决策让很多人愿意掏钱——20 多块换 50 层、PSD 导出、无限制撤销，性价比够直观。</p>
+<p><strong>也没怎么碰的东西</strong>：社区和素材市场。ArtFlow 没有内置素材商城、没有用户作品社区、没有云同步功能。你画完就导出，自己存。对于一个主打专业创作的工具来说，这其实是个挺独特的选择——很多竞品靠社区留用户，ArtFlow 则靠纯粹的工具力。</p>
+<h2>预判：照这个路线，下一步大概率什么走向</h2>
+<p>从迭代规律推，我觉得接下来几个版本可能会往这几个方向走。</p>
+<p>一个是 Pro 版的功能密度会继续增加，但免费版的边界不会动。免费版保持"速写够用"的定位，Pro 版持续承接"专业创作"的溢出需求——这个分层已经跑通了，没理由改。</p>
+<p>另一个是 GPU 引擎的扩展。现在它只服务于绘制，未来可能往实时预览和更复杂的滤镜效果上推。样本文档里提到画布温度管理和显存优化，说明团队也在关注设备端的性能瓶颈，而这些限制随着硬件更新会逐步放宽。</p>
+<p>还有一个不太确定的可能：多平台扩展。样本文档里没有提到 iOS 版本，但既然 GPU 引擎的架构已经跑通了，往其他平台适配的门槛其实比从 0 建要低。不过这个要看团队规模和资源情况。</p>
+<p>当然这些都只是从现有迭代节奏推的，不当官方口径传。</p>
+<h2>一点补充</h2>
+<p>样本文档没提的早期历史部分，恰恰说明了这个产品的成长路径非常集中——从"解决手机上画画卡"这个单点痛点出发，把 GPU 引擎做透，然后围绕这个核心往专业方向扩。没有中间路线，没有花架子，每一步都在夯实"移动端也能画出桌面级流畅度"这件事。</p>
+<p>我觉得这是 ArtFlow 最值得看的地方：它不是那种快速迭代堆功能的产品，而是找准了一个技术突破口——移动端绘画的延迟问题——然后持续深耕下去。三年时间，从画板到专业工具，中间没有走过弯路。</p>
+<p>对于想在手机和平板上认真画画的人来说，ArtFlow 值得花点时间试用。免费版的速写功能足够好用，Pro 版的解锁也划算。它不一定能完全替代桌面端的 Photoshop 或 Clip Studio，但在移动创作这个场景里，它的 GPU 引擎确实是目前最好的选择之一。</p>
+<p>整理这套资料的时候我顺手在三个仓库都留了备份——<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ArtFlow" target="_blank" rel="noopener">GitHub</a> 是主力源，国内访问 <a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ArtFlow" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ArtFlow" target="_blank" rel="noopener">GitCode</a> 更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/armoury-crate-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Armoury Crate 避坑指南：这几个地方我踩过了，你别再踩</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/aseprite.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用 Aseprite 做第一个像素动画：从零到循环精灵图只需 15 分钟</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

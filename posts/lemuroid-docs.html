@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Lemuroid 老玩家避坑：五个我踩过才知道的暗礁 · 老杨技术栈</title>
+  
+<meta name="description" content="从纵横比误拉满屏到菜单键狂误触，从分区存储找不到 ROM 到假 APK 冒充——这些坑文档不会提前告诉你，但踩过一次就记一辈子。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/lemuroid-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lemuroid 老玩家避坑：五个我踩过才知道的暗礁">
+<meta property="og:description" content="从纵横比误拉满屏到菜单键狂误触，从分区存储找不到 ROM 到假 APK 冒充——这些坑文档不会提前告诉你，但踩过一次就记一辈子。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/lemuroid-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/lemuroid-docs/library-view.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/lemuroid-docs/library-view.webp">
+
+<meta name="twitter:title" content="Lemuroid 老玩家避坑：五个我踩过才知道的暗礁">
+<meta name="twitter:description" content="从纵横比误拉满屏到菜单键狂误触，从分区存储找不到 ROM 到假 APK 冒充——这些坑文档不会提前告诉你，但踩过一次就记一辈子。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u7eb5\u6a2a\u6bd4\u8bef\u62c9\u6ee1\u5c4f\u5230\u83dc\u5355\u952e\u72c2\u8bef\u89e6\uff0c\u4ece\u5206\u533a\u5b58\u50a8\u627e\u4e0d\u5230 ROM \u5230\u5047 APK \u5192\u5145\u2014\u2014\u8fd9\u4e9b\u5751\u6587\u6863\u4e0d\u4f1a\u63d0\u524d\u544a\u8bc9\u4f60\uff0c\u4f46\u8e29\u8fc7\u4e00\u6b21\u5c31\u8bb0\u4e00\u8f88\u5b50\u3002", "headline": "Lemuroid \u8001\u73a9\u5bb6\u907f\u5751\uff1a\u4e94\u4e2a\u6211\u8e29\u8fc7\u624d\u77e5\u9053\u7684\u6697\u7901", "image": ["https://alipymanbu.github.io/images/lemuroid-docs/library-view.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/lemuroid-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/lemuroid-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "Lemuroid \u8001\u73a9\u5bb6\u907f\u5751\uff1a\u4e94\u4e2a\u6211\u8e29\u8fc7\u624d\u77e5\u9053\u7684\u6697\u7901", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">Lemuroid 老玩家避坑：五个我踩过才知道的暗礁</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Lemuroid 老玩家避坑：五个我踩过才知道的暗礁</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从纵横比误拉满屏到菜单键狂误触，从分区存储找不到 ROM 到假 APK 冒充——这些坑文档不会提前告诉你，但踩过一次就记一辈子。</p>
+  </header>
+  <div class="prose">
+<h2>写在前面</h2>
+<p><a href="https://lemuroid.djnf.quest" target="_blank" rel="noopener">Lemuroid官网</a> 宣传上把自己包装成"装完就能玩"的模拟器——选个 ROM、点一下，画面就出来了。我当初也是这么想的，结果前后折腾了一个礼拜才把基础体验理顺。现在回头看，那些坑其实都不难避开，只是<strong>第一次接触模拟器的人很容易凭"直觉"做出错误选择</strong>。这篇就把我踩过的几个真实坑摆出来，没一个是编的。</p>
+<p><img src="../images/lemuroid-docs/library-view.webp" alt="Lemuroid 默认界面截图" loading="lazy"></p>
+<h2>坑一：纵横比直接拉全屏，玩一周才发现画面变形</h2>
+<p>这是我第一个踩的，也是最难受的。刚装好 Lemuroid，打开一个 GBA 游戏，第一反应是"怎么两边黑了两条？"，想都没想就把显示模式切到了<strong>全屏拉伸</strong>。画面瞬间填满，爽了。</p>
+<p>然后玩了三天《火焰纹章》，总觉得"这角色怎么看着怪"、"攻击范围圈不像正圆"，但又说不上来哪里不对。直到有一天切回"保持原始纵横比"对比了一下——我之前玩的所有画面都是<strong>横向被压扁</strong>的。GBA 原始是 3:2，我那台手机是 16:9，强行拉满等于把画面横向扯宽了 50%。</p>
+<ul><li><strong>症状</strong>：圆形变椭圆、跳跃高度看着"不够劲"、游戏里所有几何图形都轻微变形</li><li><strong>原因</strong>：老游戏机根本不是 16:9，Lemuroid 默认全屏拉伸但<strong>没有任何醒目提示</strong>说比例被破坏了</li><li><strong>解法</strong>：打开设置 → 显示 → 画面适配，直接选<strong>保持原始纵横比</strong>。别再纠结那几条黑边，黑边不影响画面，变形是永久的体验损失</li></ul>
+<p>如果是平板横屏玩 PSX 或 NES，还可以选<strong>整数倍缩放</strong>——画质更好，黑边多一点但比例完全正确。</p>
+<h2>坑二：菜单键默认位置在屏幕中间，玩到高潮必误触</h2>
+<p>这个坑是在玩《街霸 2》的时候暴露的——我正跟 CPU 拼连招，突然画面一切，弹出了 Lemuroid 的存档菜单。手滑点了一下，菜单没关，又点了一下存档槽，把我之前 40 分钟的进度覆盖了。</p>
+<p><img src="../images/lemuroid-docs/touch-controls.webp" alt="激烈对战中很容易误碰边缘按键" loading="lazy"></p>
+<ul><li><strong>症状</strong>：激烈操作时菜单键被碰到，弹出模拟器菜单，甚至误操作存档/读档</li><li><strong>原因</strong>：Lemuroid 默认把菜单键放在屏幕<strong>正中央的底部区域</strong>——恰好是玩游戏时右手拇指会不自觉划到的地方</li><li><strong>解法</strong>：进按键编辑模式，把菜单键直接拖到<strong>屏幕的最角落</strong>（比如右下角最边角、屏幕外面一点点），再打开"长按才能触发"开关。两条都设上之后，我至今没再误触过</li></ul>
+<p>顺便说一句，快进键默认放在左边缘也是这个道理。如果你习惯左手持机、右手操作，快进键建议挪到右边缘。位置全凭你自己顺手，别跟默认设置死磕。不同形态设备的推荐布局差异也挺有意思，<a href="https://lemuroid-docs.pages.dev/" target="_blank" rel="noopener">Lemuroid文档</a>里针对折叠屏、平板横屏、Android TV 都单独给出了参考方案。</p>
+<h2>坑三：Android 11 分区存储下，ROM 文件夹"找不到了"</h2>
+<p>我之前一直用 Android 10，内部存储随便读。换了 Android 12 的新机装 Lemuroid，打开 App 让"选择游戏目录"，系统弹出文件选择器，结果我平时放 ROM 的那个文件夹<strong>在选择器里根本看不到</strong>。</p>
+<ul><li><strong>症状</strong>：App 里看不到任何之前在文件管理器里能正常访问的 ROM 文件夹</li><li><strong>原因</strong>：Android 11 引入了分区存储，Lemuroid 不能直接扫整个内置存储——必须通过系统文件选择器让你<strong>明确指定</strong>某个文件夹。文件选择器只显示它有权限的目录，你在文件管理器里看到的某些路径，选择器里未必能看到</li><li><strong>解法</strong>：进系统设置 → 存储，把 ROM 文件夹的位置确认清楚，然后打开 Lemuroid 的文件选择器，仔细翻找对应目录。如果还是找不到，最简单的办法是把 ROM 整个挪到 Lemuroid 自己生成的文档目录下——它一定有权限</li></ul>
+<p>另外用 SD 卡的朋友注意：SD 卡必须在系统里先挂载好，不然文件选择器里连 SD 卡的入口都没有。</p>
+<h2>坑四：分不清真假 APK，差点装上一个"解锁版"</h2>
+<p>Lemuroid 是完全免费开源的软件。但我在浏览器搜"Lemuroid 下载"的时候，前排结果里有几个第三方镜像站，标题写着"Lemuroid Pro 破解版解锁全功能"、"Lemuroid VIP 订阅版"。要不是我多看了一眼，差点就点了。</p>
+<ul><li><strong>症状</strong>：装完 App 里有 Premium 入口、要求输入邮箱登录、弹出订阅提示</li><li><strong>原因</strong>：第三方下载站故意做了带多个假下载按钮的页面，把山寨 APK 混在真链接中间</li><li><strong>解法</strong>：只走两个正规渠道——Google Play 搜索 Lemuroid（开发者是 Filippo Scognamiglio），或者直接走<a href="https://lemuroid.djnf.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿 APK。任何声称有"破解版""专业版""内购"的都是假货，直接关页面</li></ul>
+<p>装完之后养成一个习惯：打开设置页，快速扫一遍有没有"Premium""解锁""订阅""登录"这类字样。真 Lemuroid 里不会出现这些。</p>
+<h2>坑五：快进直接拉到最大，游戏音频炸了</h2>
+<p>Lemuroid 的快进速度有五档：1.5x、2x、3x、5x、最大速度。我一开始图省事直接选"最大速度"，结果打开《口袋妖怪》，快进的时候音乐开始断断续续、人物对话音画不同步，关掉快进之后音频也乱了好一会儿才恢复。</p>
+<ul><li><strong>症状</strong>：快进时音频爆裂、音画不同步、某些游戏快进结束后音频需要几秒才能恢复正常</li><li><strong>原因</strong>：5x 以上的快进速度会让部分老游戏的音频缓冲跟不上——模拟器核心在加速执行指令，但游戏的音频通道处理不了这么快的采样率</li><li><strong>解法</strong>：用 2x 或 3x 就够了，大多数 RPG 对话和加载都能跳过。真需要极端加速的时候再临时切大档位，用完立刻切回来</li></ul>
+<h2>防坑清单（速查版）</h2>
+<p>最后整理一下，<strong>每次换设备重装 Lemuroid 按这个顺序走一遍</strong>，10 分钟就能避开上面五个坑：</p>
+<ol><li>安装只走 Google Play 或 GitHub Releases，跳过所有第三方镜像站</li><li>第一次打开 App 让选目录时，耐心翻文件选择器，别直接瞎点</li><li>设置 → 显示 → 画面适配，立刻改成"保持原始纵横比"，顺手把整数倍缩放也了解一下</li><li>进按键编辑模式，菜单键拖到最角落 + 打开长按触发</li><li>快进速度先用 2x，炸了再调低</li></ol>
+<p>Lemuroid 本身是一款相当扎实的模拟器，Libretro 内核的兼容性摆在那里，系统也在持续更新。这些坑其实不是 bug，更多是<strong>老玩家的惯性思维和 Android 新版本的安全机制之间的摩擦</strong>。知道这些之后，这套组合起来相当省心，我现在手机上常驻 20 多个 ROM，随手一掏就能开一局。顺带一提，这套整理出来的完整笔记我也同步放好了，在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Lemuroid" target="_blank" rel="noopener">GitHub</a> 仓库能直接看到，国内网络走 <a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Lemuroid" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Lemuroid" target="_blank" rel="noopener">GitCode</a> 镜像站打开更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/layout-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Layout 还能这么用——把拼图嵌进每周分享工作流</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/lespark.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">搬去上海第三个月，我终于不再一个人吃外卖了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

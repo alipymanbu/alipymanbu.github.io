@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>期末复习周，我把B站改造成了只有视频的专属播放器 · 老杨技术栈</title>
+  
+<meta name="description" content="一个大三学生在图书馆被弹幕和推荐算法烦死，花了一个下午用 FusionApp 把网页壳改造成干净观影工具的完整经历。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/fusionapp-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="期末复习周，我把B站改造成了只有视频的专属播放器">
+<meta property="og:description" content="一个大三学生在图书馆被弹幕和推荐算法烦死，花了一个下午用 FusionApp 把网页壳改造成干净观影工具的完整经历。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/fusionapp-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/fusionapp-docs/components-config.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/fusionapp-docs/components-config.jpg">
+
+<meta name="twitter:title" content="期末复习周，我把B站改造成了只有视频的专属播放器">
+<meta name="twitter:description" content="一个大三学生在图书馆被弹幕和推荐算法烦死，花了一个下午用 FusionApp 把网页壳改造成干净观影工具的完整经历。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u5927\u4e09\u5b66\u751f\u5728\u56fe\u4e66\u9986\u88ab\u5f39\u5e55\u548c\u63a8\u8350\u7b97\u6cd5\u70e6\u6b7b\uff0c\u82b1\u4e86\u4e00\u4e2a\u4e0b\u5348\u7528 FusionApp \u628a\u7f51\u9875\u58f3\u6539\u9020\u6210\u5e72\u51c0\u89c2\u5f71\u5de5\u5177\u7684\u5b8c\u6574\u7ecf\u5386\u3002", "headline": "\u671f\u672b\u590d\u4e60\u5468\uff0c\u6211\u628aB\u7ad9\u6539\u9020\u6210\u4e86\u53ea\u6709\u89c6\u9891\u7684\u4e13\u5c5e\u64ad\u653e\u5668", "image": ["https://alipymanbu.github.io/images/fusionapp-docs/components-config.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/fusionapp-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/fusionapp-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "\u671f\u672b\u590d\u4e60\u5468\uff0c\u6211\u628aB\u7ad9\u6539\u9020\u6210\u4e86\u53ea\u6709\u89c6\u9891\u7684\u4e13\u5c5e\u64ad\u653e\u5668", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">期末复习周，我把B站改造成了只有视频的专属播放器</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">期末复习周，我把B站改造成了只有视频的专属播放器</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个大三学生在图书馆被弹幕和推荐算法烦死，花了一个下午用 FusionApp 把网页壳改造成干净观影工具的完整经历。</p>
+  </header>
+  <div class="prose">
+<h2>周五下午三点，图书馆三楼靠窗的位置</h2>
+<p>那是第十六周的周五，高数期末考定在下周一。我抱着一摞课本躲到图书馆三楼靠窗的角落，手机开着 B 站的移动网页版——本来是想放一门课的串讲视频当背景音，结果半小时过去了，一门课没听完，收藏夹里多了七个 UP 主。</p>
+<p>算法推荐像个不知疲倦的朋友，每刷完一个视频就塞来三个更对我胃口的。弹幕开关被我反复按了四次，开了嫌吵，关了又忍不住点开看大家在说什么。最后我把手机屏幕朝下扣在桌上，盯着天花板发了十分钟呆——<strong>能不能就只放视频？弹幕、首页推荐、底部导航，统统给我消失？</strong></p>
+<h2>朋友发来了一个链接</h2>
+<p>晚上回宿舍跟室友吐槽这件事，他正在折腾一款叫 FusionApp 的东西——这是一款可以把网页打包成独立 App 的工具，它的<a href="https://fusionapp.fewf.ren" target="_blank" rel="noopener">官网</a>上介绍得很清楚，还能自己改界面。我本来没当回事——这不就是个壳工具吗？直到他掏出自己改好的 B 站壳给我演示：点开就是视频播放页，没有首页、没有分区、没有推荐位，顶栏还留了个搜索框方便我直接搜课程名。</p>
+<p>"你是怎么做到的？"我凑过去看。</p>
+<p>他说 FusionApp 有个网页改造模式，不只是简单套壳，而是可以在加载后自动执行一段脚本，把页面上不需要的元素统统删掉。他改 B 站用了三段 CSS 隐藏规则加一个首页拦截逻辑，整个工程文件写在一个 JSON 里，打包就能装。</p>
+<h2>周六上午，我第一次打开 FusionApp</h2>
+<p>安装包从<a href="https://fusionapp.fewf.ren/download.html" target="_blank" rel="noopener">官方下载</a>拿到手之后，新建工程的界面比我想象的要友好——选择网页模板、填网址，就能生成一个基础壳。我填了 B 站移动版的地址，然后在编辑页里找"组件配置"的入口。</p>
+<p>真正让我摸到门道的是预览功能。右上角有个三角形播放键，点一下就能在应用内直接看到效果，改完几行配置重新点一下，几秒钟后新的页面就出来了。<strong>我不用每次改完都打包安装再卸载重跑</strong>，这个细节省了我至少一半的时间。</p>
+<p>第一轮我只是把顶部导航栏隐藏了，效果不错，但底部的 TabBar 还在。翻了内置手册，原来组件配置里有个「移除组件」的列表，把 B 站底部那几个按钮的 class 名填进去，打个勾就完事。我用内置的检查工具点了一下底部元素，class 名自动填充进来，比我想象的要省事。</p>
+<p><img src="../images/fusionapp-docs/components-config.jpg" alt="组件配置界面，勾选需要隐藏的页面元素" loading="lazy"></p>
+<h2>踩了第一个坑：白屏</h2>
+<p>第三轮改造我想做得激进一点——直接把首页重定向到搜索页，让 App 一打开就是搜索框。改完配置点预览，屏幕白了。</p>
+<p>我慌了。刚才还好好的，怎么一改就崩？</p>
+<p>然后我想起 FusionApp 的<a href="https://fusionapp-docs.pages.dev/" target="_blank" rel="noopener">中文文档</a>里有个白屏排查指南，按位置分了两条路线：工程里预览白屏，还是打包安装后白屏。我属于前者，排查树告诉我先检查地址协议是不是 http/https 不匹配，再看应用栏的开关有没有被误关。</p>
+<p>地址没问题。我又打开应用栏的配置面板，发现"重定向规则"那块我写错了——写成了相对路径而不是完整 URL。改回来，重新预览，页面出来了。</p>
+<h2>下午三点，壳成了</h2>
+<p>从上午九点到下午三点，中间吃了个午饭，我改了大约二十轮。最终成品长这样：</p>
+<ul><li>打开直接是 B 站视频播放页，顶栏只留了搜索按钮和返回键</li><li>首页、分区、动态、我的——全部隐藏</li><li>加了一个自定义首页，写着"请在搜索框输入课程名"，避免每次都看到推荐流</li><li>保留了夜间模式和全屏播放</li></ul>
+<p>打包生成 APK 的过程比我想象的顺利。构建进度条跑完，一个几十 MB 的安装包就躺在输出目录里了。装到手机上点开，没有任何启动广告，直接进入我设定的搜索界面。</p>
+<p><img src="../images/fusionapp-docs/build-apk.png" alt="打包完成的 APK 文件和构建日志" loading="lazy"></p>
+<h2>一点感慨</h2>
+<p>说实话，之前我对"套壳工具"这个品类的印象不太好——大多是简单把网页塞进 WebView，功能和直接用浏览器没什么区别。FusionApp 让我第一次觉得，<strong>套壳也能是一件有创造力的事</strong>：它不只是个打包器，还给了你改页面结构、写脚本注入、配置组件的全套工具链。</p>
+<p>真正让我写这篇文章的原因，是下周考完试之后我打算用同样的方法把几个在线学习工具也改造一下——知乎专栏去掉评论区、百度文库去掉侧边广告、知乎的盐选文章页去掉推荐位。工具已经熟了，剩下的只是复制粘贴一些 CSS 选择器的事。</p>
+<p>FusionApp 的社区资料和示例工程在三个平台都同步维护着，GitHub 上的<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/fusionapp" target="_blank" rel="noopener">仓库</a>最全，国内访问也可以看 <a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/fusionapp" target="_blank" rel="noopener">Gitee</a> 上的镜像，GitCode 那边<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/fusionapp" target="_blank" rel="noopener">也有一份</a>。如果你也像我一样，被那些"什么都好就是太吵"的网页烦过，不妨试试看——有时候你只是需要一个更安静的壳。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/funbox-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">FunBox 深度盘点：一个 LSPosed 模块能把聊天面板玩出什么花样</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/gal-lop.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Gal Lop 嵌进我的周更视觉小说流程：从四步折腾到一条链打穿</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

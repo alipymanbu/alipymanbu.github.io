@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>microG 快问快答：安卓去谷歌化绕不开的那个名字 · 老杨技术栈</title>
+  
+<meta name="description" content="整理一篇关于 microG 的问答速查——它是什么、组件怎么装、定位后端怎么挑、推送通知为啥开了没反应、安卓版本有哪些坑，一次性讲清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/microg.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="microG 快问快答：安卓去谷歌化绕不开的那个名字">
+<meta property="og:description" content="整理一篇关于 microG 的问答速查——它是什么、组件怎么装、定位后端怎么挑、推送通知为啥开了没反应、安卓版本有哪些坑，一次性讲清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/microg.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/microg/self-check.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/microg/self-check.webp">
+
+<meta name="twitter:title" content="microG 快问快答：安卓去谷歌化绕不开的那个名字">
+<meta name="twitter:description" content="整理一篇关于 microG 的问答速查——它是什么、组件怎么装、定位后端怎么挑、推送通知为啥开了没反应、安卓版本有哪些坑，一次性讲清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6574\u7406\u4e00\u7bc7\u5173\u4e8e microG \u7684\u95ee\u7b54\u901f\u67e5\u2014\u2014\u5b83\u662f\u4ec0\u4e48\u3001\u7ec4\u4ef6\u600e\u4e48\u88c5\u3001\u5b9a\u4f4d\u540e\u7aef\u600e\u4e48\u6311\u3001\u63a8\u9001\u901a\u77e5\u4e3a\u5565\u5f00\u4e86\u6ca1\u53cd\u5e94\u3001\u5b89\u5353\u7248\u672c\u6709\u54ea\u4e9b\u5751\uff0c\u4e00\u6b21\u6027\u8bb2\u6e05\u3002", "headline": "microG \u5feb\u95ee\u5feb\u7b54\uff1a\u5b89\u5353\u53bb\u8c37\u6b4c\u5316\u7ed5\u4e0d\u5f00\u7684\u90a3\u4e2a\u540d\u5b57", "image": ["https://alipymanbu.github.io/images/microg/self-check.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/microg.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/microg.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "microG \u5feb\u95ee\u5feb\u7b54\uff1a\u5b89\u5353\u53bb\u8c37\u6b4c\u5316\u7ed5\u4e0d\u5f00\u7684\u90a3\u4e2a\u540d\u5b57", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">microG 快问快答：安卓去谷歌化绕不开的那个名字</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">microG 快问快答：安卓去谷歌化绕不开的那个名字</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">整理一篇关于 microG 的问答速查——它是什么、组件怎么装、定位后端怎么挑、推送通知为啥开了没反应、安卓版本有哪些坑，一次性讲清。</p>
+  </header>
+  <div class="prose">
+<p>整理一篇关于 microG 的快问快答，把社区里最常被问的问题挑出来挨个讲透。</p>
+<h3>microG 到底是什么？谁需要装它？</h3>
+<p>microG 的<a href="https://microg.fewz.tech" target="_blank" rel="noopener">官网</a>上写得明明白白，它就是 Google Play Services 的开源替代实现，给那些不装 GMS（Google Mobile Services）的安卓设备提供谷歌 API 的兼容层。简单说：你的手机没装谷歌全家桶，但有一些应用跑起来要用到谷歌的账号服务、推送通知、网络定位这些东西——microG 就是让这些东西能跑起来的那个中间件。</p>
+<p>两类人最需要它：一类是刷机党，刷了 LineageOS 或其他去谷歌化的 ROM；另一类是用鸿蒙、部分国产定制系统，原生不带谷歌服务但偶尔要跑谷歌系应用的用户。</p>
+<p><img src="../images/microg/self-check.webp" alt="microG 的自检界面" loading="lazy"></p>
+<h3>装了 microG 就能完整替代谷歌全家桶吗？组件构成是怎样的？</h3>
+<p>不能。microG 只覆盖了 GMS 提供的那一部分 API，它不提供 Play 商店本身，也不包含 Gmail、YouTube 这类独立应用。核心的可安装 APK 有三个：microG Services（包名 com.google.android.gms，必装，也就是 GmsCore，绝大多数谷歌 API 都靠它）、microG Companion（包名 com.android.vending，推荐装，处理应用许可校验等商店相关的调用）、Services Framework Proxy（包名 com.google.android.gsf，按需装，兼容远古 C2DM 推送协议）。这仨安装包都能从<a href="https://microg.fewz.tech/download.html" target="_blank" rel="noopener">官方下载</a>页面拿到。</p>
+<p>另外还有两块已经内置进 Services、不需要单独安装的东西：UnifiedNlp（网络定位中间件）和 DroidGuard Helper（设备完整性验证）。早年版本里这俩是独立应用，现在直接集成了，旧版可以放心卸载。</p>
+<h3>最头疼的网络定位怎么搞？UnifiedNlp 是什么来头？</h3>
+<p>UnifiedNlp 是 microG 内置的网络定位中间件。安卓应用要"大致位置"（城市级、街区级）时，默认问的是谷歌的网络定位服务——用周边 WiFi 热点与基站指纹换坐标。没有 GMS 的设备上，这个角色就由 UnifiedNlp 承担。它本身不认识路，把"查坐标"这件事转包给可插拔的后端，装哪个后端、开不开，全由你决定。</p>
+<p>它和 GPS 卫星定位的分工是这样的：GPS 精度米级、冷启动慢、需要开阔天空；UnifiedNlp 精度街区到城市级、速度快、依赖 WiFi/基站数据与后端。microG 已经实现了融合定位，应用请求位置时走的是融合接口——GPS 可用时用 GPS，室内或省电场景落到网络定位。UnifiedNlp 只负责其中网络这一半。</p>
+<h3>以前教程里必提的 Mozilla 定位服务还能用吗？现在有哪些后端可选？</h3>
+<p>不能用了。Mozilla Location Service 已于 2024 年停止运营，对应后端随之失效。网上大量旧文仍把它当默认推荐，注意甄别。目前社区接棒的后端主要有三种类型：在线众包型（Radiocells、beaconDB 等，上报周边 WiFi/基站指纹查询社区数据库，覆盖随社区增长但会暴露活动区域环境指纹）、离线本地型（Déjà Vu、Local GSM/WiFi Backend 等，自己边走边攒数据库，设备内查询，零上报但常去区域之外基本不可用）、单一来源型（Apple 等第三方公开接口，覆盖广即装即用但依赖第三方服务的稳定性与政策）。</p>
+<p>推荐组合按需求挑：隐私优先选一个离线本地型，日常通勤路线攒熟后够用；省心优先选一个在线众包型加地址查询后端，开箱即有覆盖；折中方案是在线型加离线型同时勾选，框架按可用性取用。别忘了坐标到地名的翻译由独立后端完成（社区常用基于 Nominatim 的方案），只装位置后端的话，应用能知道你在哪却报不出城市名，别当成定位坏了。后端随时可换，在 UnifiedNlp 设置里取消勾选旧项、勾选新项即可，卸载后端应用即彻底移除。更细致的配置细节和验证方法可以翻<a href="https://microg.pages.dev/" target="_blank" rel="noopener">microg文档</a>。</p>
+<p><img src="../images/microg/microg-logo.png" alt="microG 官方 Logo" loading="lazy"></p>
+<h3>推送通知怎么开？三步搞定了为什么有时候还是收不到？</h3>
+<p>开推送有三个必做步骤，一个别漏。第一步：进 microG 设置主页，确认"注册设备"和"云消息"两项都已勾选。只开云消息不注册设备，或反过来，推送都可能在半路卡住。第二步：到系统设置的电池优化里找到 microG Services，设为不优化或允许后台运行。安卓 6.0 起的省电机制会掐断长连接，官方 Play Services 也是这样要求的，这不是 microG 的特殊待遇。华为等深度定制系统入口不同，需要单独找对应的电池设置页面。第三步：改完开关与电池设置后重启一次，让所有后台服务以新状态拉起。跳过重启可能一切正常也可能各种灵异，别赌。</p>
+<p>开了三步还是收不到的话，记得分层排查：系统层（电池优化有没有真的豁免）、框架层（microG 里两个开关有没有都开）、应用层（应用自己的通知权限有没有开）。部分应用还有自己的省电模式，应用内关了通知，microG 这边通到天边也没用。另外，验证通道是否真正打通不能只看设置界面——装一个依赖推送的聊天类应用，用另一个设备发消息，几秒到几十秒内到达才是真的通了，退到后台甚至锁屏后再测一轮才是真实场景。</p>
+<h3>Companion 是个什么东西？需要另外装商店吗？</h3>
+<p>Companion 占用的是 Play 商店的包名 com.android.vending，但它本身不是商店，不提供应用浏览与下载界面。它的职责是让那些"检查正版授权""依赖商店组件"的应用调用有地方落地。想真正下载应用，社区通行做法是搭配 Aurora Store 这类开源客户端使用，后者可以在有或没有 microG 的环境下独立工作。</p>
+<p>Companion 装不装取决于你用的应用——如果经常碰到打开就弹"需要 Google Play 商店"的提示，装上能省很多麻烦；如果日常用的应用都不依赖商店组件，其实可以跳过。</p>
+<h3>SF Proxy 什么时候才用得上？</h3>
+<p>Services Framework Proxy 是兼容老旧 C2DM 推送协议的桥接层。只有极少数依赖远古 C2DM 的应用才用得上它，绝大多数现代应用都走 FCM，装不装基本无感。另外要注意，在安卓 15 及以上系统，它的普通安装可能失败，需要通过电脑用 adb 附加参数绕过安装。</p>
+<h3>安卓版本有什么坑需要提前知道？</h3>
+<p>最大的一个在安卓 7 之后：普通应用权限的网络定位会被系统拦。要让 UnifiedNlp 的定位真正工作，要么给系统打对应补丁，要么把 microG 装成系统特权应用（放到 /system/priv-app/ 路径下）。多数预装 microG 的 ROM 和华为 -hw 构建已经处理妥当，自己动手装的遇到"网络定位不工作"，先想到这条限制。</p>
+<p>还有一些小细节：部分系统的 SELinux 策略可能阻止 microG 某些组件正常运行，刷了第三方 ROM 的用户在 SELinux 从 Enforcing 降到 Permissive 后功能恢复正常的情况并不少见；Aurora Store 下载应用时偶尔会碰到签名校验问题，这通常不是 microG 的锅，而是 Aurora 本身的兼容性 bug。</p>
+<p>最后一句：如果你还在纠结要不要装，答案很简单——装上，按上面的步骤配置好，手机该怎么用还怎么用，等哪天碰到需要谷歌账号的应用直接登就行。社区维护的安装资料和配置说明同时托管在<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/microG" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/microG" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/microG" target="_blank" rel="noopener">GitCode</a>三个平台，哪个顺手看哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yeelight.html">用了三年 Yeelight 才发现：这五个隐藏玩法官方根本没宣传</a></h2>
+  <p class="card-desc">你以为 Yeelight 只是个能调色的 Wi-Fi 灯泡？IFTTT 条件触发、局域网控制、预设模式二次加工……这些藏在菜单深处的功能，把智能灯的天花板往上抬了一大截。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wenet-docs.html">WeNet 这一路：从宿舍网口到全平台认证，它是怎么把校园网变简单的</a></h2>
+  <p class="card-desc">一个校园网客户端的迭代逻辑——从最早可能只是一个拨号器，到现在覆盖手机、电脑、有线无线，甚至教你怎么找开通的网口。我们拆开看看它这几年在死磕什么。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webcat-docs.html">WebCat 离线开发的底层设计：为什么它能在地铁里把代码写完</a></h2>
+  <p class="card-desc">一个手机上的开发工具凭什么敢主打&#34;完全离线&#34;？本文拆解 WebCat 的本地化架构选择，理解它把编辑器、运行时、打包器全部塞进 APK 的技术取舍与代价边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/meteoblue.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用 meteoblue 查天气，从完全不会到出门不淋雨</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/mimu-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MiMu这一路：从背单词到&#34;边撩边学&#34;的AI学习产品进化</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>无代码游戏引擎的务实派——为什么我把 GDevelop 写进了推荐清单 · 老杨技术栈</title>
+  
+<meta name="description" content="无代码做游戏的工具不少，但 GDevelop 的事件表逻辑、多端发布和云同步把它跟玩具级工具拉开了距离。这篇从同类格局讲起，聊它的三个差异化亮点、代价，以及什么样的人该选它。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/gdevelop-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无代码游戏引擎的务实派——为什么我把 GDevelop 写进了推荐清单">
+<meta property="og:description" content="无代码做游戏的工具不少，但 GDevelop 的事件表逻辑、多端发布和云同步把它跟玩具级工具拉开了距离。这篇从同类格局讲起，聊它的三个差异化亮点、代价，以及什么样的人该选它。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/gdevelop-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/gdevelop-docs/event-sheet.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/gdevelop-docs/event-sheet.png">
+
+<meta name="twitter:title" content="无代码游戏引擎的务实派——为什么我把 GDevelop 写进了推荐清单">
+<meta name="twitter:description" content="无代码做游戏的工具不少，但 GDevelop 的事件表逻辑、多端发布和云同步把它跟玩具级工具拉开了距离。这篇从同类格局讲起，聊它的三个差异化亮点、代价，以及什么样的人该选它。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u65e0\u4ee3\u7801\u505a\u6e38\u620f\u7684\u5de5\u5177\u4e0d\u5c11\uff0c\u4f46 GDevelop \u7684\u4e8b\u4ef6\u8868\u903b\u8f91\u3001\u591a\u7aef\u53d1\u5e03\u548c\u4e91\u540c\u6b65\u628a\u5b83\u8ddf\u73a9\u5177\u7ea7\u5de5\u5177\u62c9\u5f00\u4e86\u8ddd\u79bb\u3002\u8fd9\u7bc7\u4ece\u540c\u7c7b\u683c\u5c40\u8bb2\u8d77\uff0c\u804a\u5b83\u7684\u4e09\u4e2a\u5dee\u5f02\u5316\u4eae\u70b9\u3001\u4ee3\u4ef7\uff0c\u4ee5\u53ca\u4ec0\u4e48\u6837\u7684\u4eba\u8be5\u9009\u5b83\u3002", "headline": "\u65e0\u4ee3\u7801\u6e38\u620f\u5f15\u64ce\u7684\u52a1\u5b9e\u6d3e\u2014\u2014\u4e3a\u4ec0\u4e48\u6211\u628a GDevelop \u5199\u8fdb\u4e86\u63a8\u8350\u6e05\u5355", "image": ["https://alipymanbu.github.io/images/gdevelop-docs/event-sheet.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/gdevelop-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/gdevelop-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u65e0\u4ee3\u7801\u6e38\u620f\u5f15\u64ce\u7684\u52a1\u5b9e\u6d3e\u2014\u2014\u4e3a\u4ec0\u4e48\u6211\u628a GDevelop \u5199\u8fdb\u4e86\u63a8\u8350\u6e05\u5355", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">无代码游戏引擎的务实派——为什么我把 GDevelop 写进了推荐清单</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">无代码游戏引擎的务实派——为什么我把 GDevelop 写进了推荐清单</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">无代码做游戏的工具不少，但 GDevelop 的事件表逻辑、多端发布和云同步把它跟玩具级工具拉开了距离。这篇从同类格局讲起，聊它的三个差异化亮点、代价，以及什么样的人该选它。</p>
+  </header>
+  <div class="prose">
+<p>无代码做游戏这件事，圈子里长期有个误区——要么把这类工具当小孩玩具，要么反过来拿专业引擎的标准去卡它。两个极端都帮不上正在纠结选哪款的人。</p>
+<p>我用过 Construct、GameMaker，也摸过 Godot 写点小 demo，GDevelop 的<a href="https://www.laze.skin" target="_blank" rel="noopener">官网</a>上能直接下载安装，它是这品类里让我愿意长期装着的一个。不是因为它最强大，恰恰相反，是因为它把「够用」这件事做在了刀刃上。同类工具要么拖拽积木太玩具、脚本门槛又突然跳得高；要么一口气塞了 2D 3D 粒子编辑器全套但每样都差口气。GDevelop 的取舍方向很清晰——它只盯着休闲小游戏这个赛道，把从想法到上线的每一步做扎实，不搞大而全。</p>
+<h2>它的差异化在哪</h2>
+<p>从样本文档和日常使用看，GDevelop 有三个别家没做好或者干脆没做的点。</p>
+<h3>事件系统：不是拖拽积木，也不是代码</h3>
+<p>多数无代码工具的"逻辑"是两种极端：要么是 Scratch 式的积木块拼接，表现力有限；要么直接让你写脚本，所谓"无代码"只是 marketing。GDevelop 夹在中间——事件表用条件和动作的自然语言条目来表达逻辑，每帧从上到下跑一遍，条件全满足就执行动作。写法是这样的：</p>
+<blockquote><p>条件：玩家 与 金币 发生碰撞动作：删除 金币动作：把 变量 Score 的值 加 1</p></blockquote>
+<p>就这三行，一个拾取金币的机制完成。再加一条 Score ≥ 10 时切换场景，玩法闭环就有了。看起来简单，但它不是玩具——子事件、循环事件、事件函数都有，需要写复杂逻辑时还能直接嵌入 JavaScript 代码事件。熟悉编程的人能看懂对象拾取（动作只影响条件筛选出的那些实例，不是全场）这件事有多重要，这是很多拖拽工具逻辑错乱的根源。</p>
+<p><img src="../images/gdevelop-docs/event-sheet.png" alt="事件表编辑界面：每条事件左边是条件列表，右边是动作列表" loading="lazy"></p>
+<h3>发布形态：网页为主，一条链路跑通</h3>
+<p>不少人低估了"发网页"这件事的价值。GDevelop 编辑器里点分享，选 gd.games，填信息提交，几分钟就能拿到游戏页链接——免费托管、无限次发布、自带反馈和数据。朋友试玩、社群分享，到此为止就够了。</p>
+<p>想面向更大玩家基盘也有路：导出 HTML5 文件夹打包成 zip，按目标平台流程提交。<a href="https://gdevelop-docs.pages.dev/" target="_blank" rel="noopener">GDevelop文档</a>里列的平台包括 itch.io（个人作品集首选、自定义页面）、Newgrounds（老牌社区评审上线）、CrazyGames 和 Poki（商业平台有流量分成但要接 SDK）、还有自己传对象存储完全自主引流。各平台要点、上传方式、是否需要平台 SDK 扩展，一页说清。这点 Construct 也能导出，但 GDevelop 对国内用户来说路径更直观，gd.games 的免费托管也省了自己找虚拟主机的麻烦。</p>
+<p><img src="../images/gdevelop-docs/export-platforms.png" alt="导出平台选择界面：一键发布 gd.games 或手动导出 HTML5 上传第三方平台" loading="lazy"></p>
+<h3>多端云同步：手机真的能干活</h3>
+<p>GDevelop 有安卓和 iOS 版 App——事件编辑、调参数、看预览都能在触屏上完成，项目跟电脑端云端互通。我试过在地铁上改一个变量数值，回电脑端打开就生效，这个体验不是噱头。</p>
+<p>同类工具要么根本没有移动端，要么移动端只能预览不能编辑（或者编辑体验等于残废）。GDevelop 手机版的定位很明确：不是让你在手机上从零做项目，是让你通勤路上能改参数、调行为、看预览。配合云端项目同步，多设备切换这件事真的通了。安卓安装也不难，Google Play 直接装，没 Play 商店的设备从<a href="https://www.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a>页面拿 APK 就行，版本 1.0.257 体积约 94MB。</p>
+<h2>这些优势的代价</h2>
+<p>GDevelop 不是银弹，它的优势来自几个明确的取舍。</p>
+<p><strong>学习曲线不是零</strong>。事件表看起来简单，但对象拾取规则、子事件的作用域、循环事件的对象遍历逻辑这些概念，第一次上手会懵。文档里有完整的入门路线：第一天过引导教程理解三个核心词，第二三天用平台跳跃模板改关卡，第四五天开空白项目亲手写事件，第六七天导出网页分享。跟着走一周能做出第一个完整的小游戏，跳过引导直接开干的话大概率会卡。</p>
+<p><strong>免费档有上限</strong>。云端项目上限 3 个，做多了要及时删废项目腾位置。商业平台 SDK 接入（CrazyGames、Poki 这类有分成的）虽然有官方扩展，但还是要按文档配几个事件、用平台本地调试工具过一遍，不是挂上扩展就完事。</p>
+<p><strong>3D 能力有限</strong>。文档里提了 3D 支持，但对比 Godot 或 Unity 的完整 3D 工作流，差距明显。GDevelop 的 3D 更准确地说是 2.5D 或简单 3D 场景搭建，复杂的 3D 游戏别选它。这点它自己也很坦诚——引擎定位就是 2D 和休闲向，不跟大厂抢赛道。</p>
+<h2>选购结论</h2>
+<p>什么样的人该选 GDevelop？想快速做出休闲小游戏（平台跳跃、塔防、轻量解谜）、愿意花一周时间理解事件表逻辑、目标是网页发布或小游戏平台上架的人。特别是如果你不想从零学一门引擎的脚本语言，但又不想被拖拽积木的表现力卡死，GDevelop 是这个区间里最务实的选择。</p>
+<p>什么样的人别选？想做 3A 品质项目、或者已经会一门语言想直接上专业引擎的人。GDevelop 的定位很窄，它不试图覆盖所有人，这点反而帮它把核心体验做扎实了。</p>
+<p>最后说一句明确的推荐语：如果你是第一次做游戏、或者想在业余时间快速出一款能分享的网页小游戏，GDevelop 是目前无代码品类里性价比最高的起点。关于 GDevelop 的中文整理资料，我也同步维护在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/GDevelop" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/GDevelop" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/GDevelop" target="_blank" rel="noopener">GitCode</a>，方便不同网络环境下的朋友查阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/gcompris.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">给三岁娃找启蒙软件，我装了这个开源项目</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/geminiai-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了三个月 GeminiAI，这七个坑我踩了至少一半</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

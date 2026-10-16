@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用了三年油猴，我对 Tampermonkey 的真实感受 · 老杨技术栈</title>
+  
+<meta name="description" content="从最初抱着试试看的心态装上第一个脚本，到现在把它当作浏览器日常必备扩展——这篇长期使用报告讲时间让它显出什么样。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/tampermonkey-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用了三年油猴，我对 Tampermonkey 的真实感受">
+<meta property="og:description" content="从最初抱着试试看的心态装上第一个脚本，到现在把它当作浏览器日常必备扩展——这篇长期使用报告讲时间让它显出什么样。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/tampermonkey-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/tampermonkey-docs/script_overview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/tampermonkey-docs/script_overview.png">
+
+<meta name="twitter:title" content="用了三年油猴，我对 Tampermonkey 的真实感受">
+<meta name="twitter:description" content="从最初抱着试试看的心态装上第一个脚本，到现在把它当作浏览器日常必备扩展——这篇长期使用报告讲时间让它显出什么样。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u6700\u521d\u62b1\u7740\u8bd5\u8bd5\u770b\u7684\u5fc3\u6001\u88c5\u4e0a\u7b2c\u4e00\u4e2a\u811a\u672c\uff0c\u5230\u73b0\u5728\u628a\u5b83\u5f53\u4f5c\u6d4f\u89c8\u5668\u65e5\u5e38\u5fc5\u5907\u6269\u5c55\u2014\u2014\u8fd9\u7bc7\u957f\u671f\u4f7f\u7528\u62a5\u544a\u8bb2\u65f6\u95f4\u8ba9\u5b83\u663e\u51fa\u4ec0\u4e48\u6837\u3002", "headline": "\u7528\u4e86\u4e09\u5e74\u6cb9\u7334\uff0c\u6211\u5bf9 Tampermonkey \u7684\u771f\u5b9e\u611f\u53d7", "image": ["https://alipymanbu.github.io/images/tampermonkey-docs/script_overview.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/tampermonkey-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/tampermonkey-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u7528\u4e86\u4e09\u5e74\u6cb9\u7334\uff0c\u6211\u5bf9 Tampermonkey \u7684\u771f\u5b9e\u611f\u53d7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">用了三年油猴，我对 Tampermonkey 的真实感受</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用了三年油猴，我对 Tampermonkey 的真实感受</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从最初抱着试试看的心态装上第一个脚本，到现在把它当作浏览器日常必备扩展——这篇长期使用报告讲时间让它显出什么样。</p>
+  </header>
+  <div class="prose">
+<p>装 Tampermonkey 到现在整三年——那个在浏览器里跑用户脚本的扩展，<a href="https://tampermonkey.qhah.skin" target="_blank" rel="noopener">官网</a>上描述得很清楚。</p>
+<p>最初的动机很简单：某个网站每次跳转都要手动点确认，朋友丢了一个脚本链接，说从<a href="https://tampermonkey.qhah.skin/download.html" target="_blank" rel="noopener">下载</a>装上就自动过。那时候对用户脚本生态一无所知，把 Tampermonkey 和"浏览器小工具"划等号，想着凑合用用就算了。结果一装就是三年，从 Chrome 换到 Edge 再换回来，它是唯一跟我走的扩展。</p>
+<h2>哪点越用越顺手</h2>
+<p>刚装上的时候最犯怵的是脚本来源——Greasy Fork、OpenUserJS、Userscript.Zone 几个站来回切，哪个靠谱哪个水摸不清楚。现在已经有了稳定的路径：Greasy Fork 按关键词搜是默认起手式，已知某个网址想优化就直接去 Userscript.Zone 按域名查，GitHub 上翻 <code>.user.js</code> 文件用 Raw 安装按钮兜底。这个筛选顺序是三年里踩过几次坑磨出来的——在 GitHub 盲搜踩过一次恶意脚本之后，我再也不会跳过前三个来源直接往 GitHub 扎。</p>
+<p><img src="../images/tampermonkey-docs/script_overview.png" alt="脚本管理面板概览" loading="lazy"></p>
+<p>管理面板从最开始的不敢碰，到现在点开就知道要看什么：哪些脚本需要更新、最近哪个脚本在某个域名上有警告、启用/禁用的快速开关。三年里 Tampermonkey 的面板布局基本没大改，这种稳定性在浏览器扩展里其实难得——太多扩展三个月不见就换了个壳。</p>
+<h2>哪点越用越烦</h2>
+<p>兼容性设置是我最想吐槽的地方。三年前从 Greasemonkey 时代遗留下来的老脚本，现在还得靠那一排兼容开关兜底。我手上有个 2019 年写的旧脚本，每次 Tampermonkey 更新后都要重新调一次"兼容 forEach"和"兼容 powerful this"的开关组合——没有任何提示说哪个更新影响了它，只能逐个试。后来去<a href="https://tampermonkey-docs.pages.dev/" target="_blank" rel="noopener">tampermonkey文档</a>翻了一下才明白"自动检测需要哪些适配"的工作原理，但实际体验是自动检测经常漏，尤其是年代久远的脚本。</p>
+<p>还有日志调试这件事。脚本"好像没跑"的时候，要把日志级别调到 Debug，然后分清楚 service worker 控制台、页面控制台、扩展管理页的错误入口各管什么。第一次排障花了快半小时才搞明白"脚本没被注入"的问题要去后台控制台看，而不是页面的 F12。这个三控制台分工的设计对于偶尔调试的用户来说门槛偏高，我至今记不住完整流程，每次都得临时翻笔记。</p>
+<h2>哪个功能成了每天离不开的，哪个碰都没再碰</h2>
+<p>GM_setValue / GM_getValue 这一对我每天都在用。有个自己写的小脚本，跨会话存用户偏好全靠它们——关掉浏览器重开，脚本还能记住上次的设置。三年里换过三次浏览器，GM_setValue 的存储迁移没出过任何问题，这点比我用过的另一个同类扩展稳太多。</p>
+<p>反过来，@grant none 模式我至今没真正用过。官方解释是"关闭沙箱让脚本直接跑在页面环境里"，听起来挺强大，但代价是所有 GM 函数都不可用——对于我这种既想改 DOM 又想存点东西的需求来说，none 模式等于阉割。写过几个测试脚本试过，最终还是回到显式列出需要的 @grant 声明这条路上。</p>
+<p><img src="../images/tampermonkey-docs/compatibility.png" alt="兼容性设置面板" loading="lazy"></p>
+<h2>观感修正：时间让我修正了两个当初的判断</h2>
+<p>刚装上那会儿觉得 Tampermonkey 就是个"装脚本的壳子"——真正决定体验的是脚本作者写得好不好。三年下来发现这个判断只对了一半：好的脚本当然重要，但 Tampermonkey 本身的兼容层、更新机制、权限声明这套基础设施才是生态能跑得动的前提。Greasemonkey 3.x 时代的脚本能在今天跑，靠的不是脚本作者持续维护，是 Tampermonkey 默默在底下做了一堆对齐工作。</p>
+<p>另一个修正：当初高估了"脚本数量"的价值。Greasy Fork 上脚本数量最多、中文区也集中在这里，但真正好用的脚本其实分布得很散——有些作者只在 OpenUserJS 发，有些干脆就放在自己的 GitHub 仓库里。按关键词搜脚本是最容易踩坑的路径，按域名搜反而更靠谱，因为能精确锁定那个网站的具体问题。</p>
+<h2>去留结论：会不会卸载，什么信号出现就该换了</h2>
+<p>不会卸载。三年里它帮我省下了大量重复点击、重复登录、重复翻页的时间——这些时间加起来可能够看完一整本书。</p>
+<p>但有两个信号出现我会考虑换：一是 Tampermonkey 官方开始对同步功能收费，现在免费版的云同步在多浏览器间切换时偶发延迟但还能用；二是浏览器本身开始系统性收紧用户脚本的注入权限——Chrome 的 Manifest V3 迁移已经让部分扩展的行为受限，如果有一天脚本注入也被严格限制，那不管换什么扩展都救不了。</p>
+<p>就目前的节奏来说，它还能陪我好一阵。三年里从 Chrome 换到 Edge 再换回来，从 Greasy Fork 翻到 GitHub，从只会点安装按钮到能自己写几行脚本——这个扩展不是工具，是一扇门，推开之后发现的是整个用户脚本生态。资料在三个仓库都能拿到：<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/tampermonkey" target="_blank" rel="noopener">GitHub</a>上是完整镜像，国内网络环境下 <a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/tampermonkey" target="_blank" rel="noopener">Gitee</a> 访问更快，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/tampermonkey" target="_blank" rel="noopener">GitCode</a> 作为额外备份点。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/talki-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">把 Talki 嵌进创意工作流——一个人也能跑完整的角色扮演迭代</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/testflight-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">TestFlight 避坑指南：99美元花之前，这几个坑我都踩过</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

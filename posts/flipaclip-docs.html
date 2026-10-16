@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>手机上能做出像样的动画？FlipaClip 从零上手实战 · 老杨技术栈</title>
+  
+<meta name="description" content="平板或手机画动画不是天方夜谭。跟着这篇教程，用 FlipaClip 从新建工程到导出成品走一遍完整流程，图层、时间线、AI抠图三个核心玩法一次搞定。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/flipaclip-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机上能做出像样的动画？FlipaClip 从零上手实战">
+<meta property="og:description" content="平板或手机画动画不是天方夜谭。跟着这篇教程，用 FlipaClip 从新建工程到导出成品走一遍完整流程，图层、时间线、AI抠图三个核心玩法一次搞定。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/flipaclip-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/flipaclip-docs/classic-layout.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/flipaclip-docs/classic-layout.png">
+
+<meta name="twitter:title" content="手机上能做出像样的动画？FlipaClip 从零上手实战">
+<meta name="twitter:description" content="平板或手机画动画不是天方夜谭。跟着这篇教程，用 FlipaClip 从新建工程到导出成品走一遍完整流程，图层、时间线、AI抠图三个核心玩法一次搞定。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5e73\u677f\u6216\u624b\u673a\u753b\u52a8\u753b\u4e0d\u662f\u5929\u65b9\u591c\u8c2d\u3002\u8ddf\u7740\u8fd9\u7bc7\u6559\u7a0b\uff0c\u7528 FlipaClip \u4ece\u65b0\u5efa\u5de5\u7a0b\u5230\u5bfc\u51fa\u6210\u54c1\u8d70\u4e00\u904d\u5b8c\u6574\u6d41\u7a0b\uff0c\u56fe\u5c42\u3001\u65f6\u95f4\u7ebf\u3001AI\u62a0\u56fe\u4e09\u4e2a\u6838\u5fc3\u73a9\u6cd5\u4e00\u6b21\u641e\u5b9a\u3002", "headline": "\u624b\u673a\u4e0a\u80fd\u505a\u51fa\u50cf\u6837\u7684\u52a8\u753b\uff1fFlipaClip \u4ece\u96f6\u4e0a\u624b\u5b9e\u6218", "image": ["https://alipymanbu.github.io/images/flipaclip-docs/classic-layout.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/flipaclip-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/flipaclip-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "\u624b\u673a\u4e0a\u80fd\u505a\u51fa\u50cf\u6837\u7684\u52a8\u753b\uff1fFlipaClip \u4ece\u96f6\u4e0a\u624b\u5b9e\u6218", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">手机上能做出像样的动画？FlipaClip 从零上手实战</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">手机上能做出像样的动画？FlipaClip 从零上手实战</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">平板或手机画动画不是天方夜谭。跟着这篇教程，用 FlipaClip 从新建工程到导出成品走一遍完整流程，图层、时间线、AI抠图三个核心玩法一次搞定。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇教程，你能在手机或平板上独立完成一段带转描、分层和简单配音的逐帧动画短片——不是画个小人跳跳那种 demo，而是有完整工程结构、能导出视频文件的正经作品。</p>
+<h2>准备工作：设备、版本和你需要知道的事</h2>
+<p>FlipaClip 跨 iOS、Android 和桌面，但手机端体验最完整——画板握在手里，手指就是笔，这是桌面软件给不了的手感。它的<a href="https://flipaclip.fewa.skin" target="_blank" rel="noopener">官网</a>上功能说明写得很清楚。免费版够用，Plus 订阅解锁无限图层和 AI 功能，第一次打开会送 7 天试用，可以先跑通流程再决定要不要续费。</p>
+<p>安装包从<a href="https://flipaclip.fewa.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿，装好之后第一次启动会引导你创建第一个工程。工程参数别纠结：画布比例按发布平台选（9:16 适合短视频，16:9 适合横屏），帧率 12fps 是逐帧动画的黄金起点——再低会抖，再高工作量翻倍。</p>
+<h2>第一步：新建工程，Classic 和 Studio 布局选哪个</h2>
+<p>进入编辑器之后第一件事不是画，而是找布局切换按钮。FlipaClip 有两套布局：<strong>Classic</strong> 专注作画，<strong>Studio</strong> 专注编排。</p>
+<p>新手默认进 Classic，画布占满屏幕，工具在两侧。先在 Classic 里完成你的原画稿——这是画帧的主战场。底部时间线此时只露出一小条，别急着展开，画完几帧之后再切到 Studio 去排时间。</p>
+<p><img src="../images/flipaclip-docs/classic-layout.png" alt="Classic 布局：工具在两侧，底部时间线收起" loading="lazy"></p>
+<h2>第二步：图层不是越多越好，先理解它的用处</h2>
+<p>画第二帧之前，先打开图层面板。默认只有一个绘图层，点加号可以继续加，但层数不是无限的——免费版看广告逐层解锁，最多到 10 层；订阅版不限。到达上限还想继续加怎么办？合并两层内容腾出一个层位，这是官方给的解法。</p>
+<p>关于图层面板，有两个操作你必须先记住：</p>
+<ul><li><strong>隐藏层</strong>：点层右侧显示百分比数字的位置，那一层的画面就从舞台上消失了，方便你只盯着某一帧单独检查；再点一次眼睛图标恢复。</li><li><strong>调不透明度</strong>：按住那个百分比数字上下滑动——往上越实，往下越透。这个在转描时尤其关键：把导入的视频层透明度调到 40%~60%，就能在半透明的视频底上描摹自己的线稿。</li></ul>
+<p><img src="../images/flipaclip-docs/layers-opacity.png" alt="隐藏与不透明度的入口：就在每个图层右侧的数字位置" loading="lazy"></p>
+<p>一个容易混淆的点：图层的不透明度影响整层所有帧，如果你只想让某一帧的某块颜色变淡，应该用画笔工具里的颜色透明度，两者作用范围完全不同，别搞混。</p>
+<h2>第三步：开始画——逐帧不是逐张复制粘贴</h2>
+<p>初学者最常犯的错：画好第一帧，复制粘贴十次，完事。这样做出来的动画是静止的，只是一张图停在不同位置。</p>
+<p>正确的逐帧逻辑是<strong>每一帧都要做变化</strong>——哪怕只是角色的眼皮动一下，头发飘一根，或者背景里有一片云在慢慢走。FlipaClip 时间线上每一帧都是独立的画布，你在上一帧的基础上修改，下一帧就记录了这个变化。</p>
+<p>建议的起手节奏：</p>
+<ol><li>先画关键帧（动作的起止点）；</li><li>在两个关键帧之间插中间帧，把过渡补满；</li><li>回到 Classic 布局逐帧微调细节。</li></ol>
+<p>画的过程中随时点播放按钮预览，不要等全部画完才看——逐帧动画的节奏问题早发现早改。</p>
+<h2>第四步：切到 Studio 布局排时间，让画面「活」起来</h2>
+<p>画了五六帧之后，点布局切换按钮切到 Studio。这个布局的核心价值是<strong>完整的时间线视图</strong>——每一层占一行，帧方块横向排列，音频轨也在同一个视图里，所有元素的时间点一目了然。</p>
+<p>在这里你要做几件事：</p>
+<ul><li><strong>拉长帧</strong>：抓住某帧的左右边缘往外拖，让一张画在画面上停留更久——替代你在 Classic 里反复复制粘贴的做法；</li><li><strong>修剪音频</strong>：导入一段配音或 BGM，在时间线上直接切分、对齐到对应的画面；</li><li><strong>批量选帧</strong>：按住顶部时间标尺上的某个刻度，可以选中所有图层在这一时刻的内容，整体移动或删除。</li></ul>
+<p><img src="../images/flipaclip-docs/studio-layout.png" alt="Studio 布局：时间线全部铺开，帧、音频、图层在同一视图里编排" loading="lazy"></p>
+<p>Studio 和 Classic 之间切换零成本，工程数据完全共用。实战里最顺手的工作流就是 Classic 里画帧，Studio 里排时间，来回切不丢东西。Studio 时间线上的批量帧操作细节在<a href="https://flipaclip-docs.pages.dev/" target="_blank" rel="noopener">FlipaClip文档</a>里有完整的手势说明。</p>
+<h2>第五步：Magic Cut 抠图——照片也能变成动画素材</h2>
+<p>画了几帧之后你可能想：能不能把一张真人照片也放进动画里当素材？这就是 Magic Cut 的用处——Plus 专属的 AI 抠图功能，选一张照片，AI 自动把主体（人物、物品）抠出来，生成带透明背景的素材，直接进工程当贴图用。</p>
+<p>操作很简单：工程内点右上角三点菜单，打开 Magic Cut，允许访问相册，挑一张主体清晰、背景干净的图片——等几秒 AI 就会输出一摞抠好的素材，点选任一个就能加入你的动画层。抠好的素材还能在素材库里长按组合、删除或分享，不会浪费。</p>
+<p>一个坑要注意：Magic Cut 不包含在早期买断的 Legacy Premium 捆绑包里——老 Premium 用户想用，还是得走 Plus 订阅或 7 天试用。</p>
+<h2>常见卡点：三个新手最容易翻车的地方</h2>
+<p><strong>卡点一：层数不够了怎么办？</strong> 别急着订阅。先用合并图层腾出位置——新版编辑器里按住一层进入多选模式，勾选要合并的层，点合并，多层内容就合成一个新层，原层消失，而且可以撤销。但合并前想清楚：合完就是铁板一块，每层的效果设置（发光、混合模式）也会固化。</p>
+<p><strong>卡点二：转描描不准，线稿和视频对不上。</strong> 十有八九是视频层透明度没调对。太高了看不清自己的线稿，太低了视频糊成一片。从 50% 开始试，根据视频对比度微调——画面亮的视频透明度要更低一些，暗的视频可以高一点。</p>
+<p><strong>卡点三：导出的视频抖，或者画面一顿一顿。</strong> 基本有两个原因：一是中间帧没补够，动作跳得太猛；二是帧率和导出设置不匹配。回去 Studio 布局里检查帧之间的过渡有没有断档，确认工程帧率和导出帧率一致。</p>
+<h2>进阶一句话</h2>
+<p>跑通一遍完整流程之后，试试把 Magic Cut 抠出来的真人素材和手绘帧混合用——照片当脸，手和脚用手绘逐帧动画，出来的是一种独特的混合风格，效果比纯手绘快得多，也比纯照片有味道。</p>
+<p>FlipaClip 的门槛不高，但要做出像样的作品需要一点耐心。手机上画动画确实不如数位板顺手，但它的优势是随时随地都能掏出来改两帧——灵感不会等你回到电脑前。这套资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/FlipaClip" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/FlipaClip" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/FlipaClip" target="_blank" rel="noopener">GitCode</a>三个仓库都同步维护着，国内访问哪个顺手就用哪个。把这篇教程里的五个步骤走一遍，你就有了一套完整的移动端逐帧动画工作流。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xeva.html">凌晨两点，我在手机里养了个会记得我名字的「她」</a></h2>
+  <p class="card-desc">一个加班到崩溃的深夜，我被朋友拉进了一个叫 X Eva 的克隆人世界。这里有记忆库、情感模式、还有一整套从零开始训练虚拟人的玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xbrowser-zh-docs.html">XBrowser 藏得真深：四个翻遍设置才挖到的冷门开关</a></h2>
+  <p class="card-desc">大多数人用 XBrowser 只停在视频嗅探那一层，但长按加号开隐私标签、零依赖写 GM 脚本、底部地址栏单手操作——这些藏在设置里的开关，每个都能让用感爽一个档次。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wemod.html">第一次用 WeMod？五分钟从零跑通，再也不用对着攻略按计算器</a></h2>
+  <p class="card-desc">完全不碰技术术语带你上手 WeMod：它到底是什么、怎么装、怎么连游戏、哪些玩法新手最值得先试。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/flexcil.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Flexcil 避坑：那些看起来像功能 Bug 的小问题，其实都有解法</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/flipboard-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了三年Flipboard，这笔账我得好好算算</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

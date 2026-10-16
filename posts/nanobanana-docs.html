@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>nanobanana 踩坑小记：看着简单，这几处我第一次用差点卸载 · 老杨技术栈</title>
+  
+<meta name="description" content="从提示词堆字数白费劲，到下载的图找不到，再到知识图出事实错误——四个真实踩坑点，症状、原因、解法一次说清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/nanobanana-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nanobanana 踩坑小记：看着简单，这几处我第一次用差点卸载">
+<meta property="og:description" content="从提示词堆字数白费劲，到下载的图找不到，再到知识图出事实错误——四个真实踩坑点，症状、原因、解法一次说清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/nanobanana-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/nanobanana-docs/prompt-structure-leopard.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/nanobanana-docs/prompt-structure-leopard.jpg">
+
+<meta name="twitter:title" content="nanobanana 踩坑小记：看着简单，这几处我第一次用差点卸载">
+<meta name="twitter:description" content="从提示词堆字数白费劲，到下载的图找不到，再到知识图出事实错误——四个真实踩坑点，症状、原因、解法一次说清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u63d0\u793a\u8bcd\u5806\u5b57\u6570\u767d\u8d39\u52b2\uff0c\u5230\u4e0b\u8f7d\u7684\u56fe\u627e\u4e0d\u5230\uff0c\u518d\u5230\u77e5\u8bc6\u56fe\u51fa\u4e8b\u5b9e\u9519\u8bef\u2014\u2014\u56db\u4e2a\u771f\u5b9e\u8e29\u5751\u70b9\uff0c\u75c7\u72b6\u3001\u539f\u56e0\u3001\u89e3\u6cd5\u4e00\u6b21\u8bf4\u6e05\u3002", "headline": "nanobanana \u8e29\u5751\u5c0f\u8bb0\uff1a\u770b\u7740\u7b80\u5355\uff0c\u8fd9\u51e0\u5904\u6211\u7b2c\u4e00\u6b21\u7528\u5dee\u70b9\u5378\u8f7d", "image": ["https://alipymanbu.github.io/images/nanobanana-docs/prompt-structure-leopard.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/nanobanana-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/nanobanana-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "nanobanana \u8e29\u5751\u5c0f\u8bb0\uff1a\u770b\u7740\u7b80\u5355\uff0c\u8fd9\u51e0\u5904\u6211\u7b2c\u4e00\u6b21\u7528\u5dee\u70b9\u5378\u8f7d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">nanobanana 踩坑小记：看着简单，这几处我第一次用差点卸载</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">nanobanana 踩坑小记：看着简单，这几处我第一次用差点卸载</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 5 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从提示词堆字数白费劲，到下载的图找不到，再到知识图出事实错误——四个真实踩坑点，症状、原因、解法一次说清。</p>
+  </header>
+  <div class="prose">
+<p>从<a href="https://nanobanana.djnf.quest" target="_blank" rel="noopener">nanobanana官网</a>下完APK装上就能用，界面干净到不像个能出图的东西。我第一反应是「这也太简单了吧」，然后就天真了——前后踩了四个挺具体的坑，有一次差点把应用卸了重装——装包直接从<a href="https://nanobanana.djnf.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿就行。写下来是怕你也在同样的地方耗一晚上。</p>
+<h2>提示词往 2000 字堆，出图越来越糊</h2>
+<p><strong>症状</strong>：框右下角标了 0/2000，我理解成「写越多模型越理解」，于是一段往里塞场景、风格、光影、情绪、参考图描述、排除词……堆到 1500 多字，结果出图跟写 200 字没区别，甚至更模糊。</p>
+<p><strong>原因</strong>：模型确实吃上下文，但提示词框的 2000 字是硬上限不是推荐字数。五段结构写满也就一两百字，重点是说清而不是说长。堆字数反而让核心指令被淹没——模型看到的是一片形容词，抓不住你真正想要的是什么。</p>
+<p><strong>解法</strong>：写完之后读一遍，把重复形容同一维度的词删掉。比如「高清、高分辨率、像素级清晰、锐利」这四个留一个「高清」就够。控制在五段结构的框架内，每段说一件事。我后来养成的习惯是：生成前自己先读一遍，如果觉得「这他妈到底要画啥」，就重写。提示词怎么写才像样，<a href="https://nanobanana-docs.pages.dev/" target="_blank" rel="noopener">nanobanana文档</a>里有不少避坑经验。</p>
+<p><img src="../images/nanobanana-docs/prompt-structure-leopard.jpg" alt="提示词结构示例：一个明确的五段式指令比堆字数管用得多" loading="lazy"></p>
+<h2>下载的图去相册找不到</h2>
+<p><strong>症状</strong>：点了「下载结果」，Toast 提示存成功了，但进相册按「最近」翻，翻半天没找到新图。我甚至怀疑是不是存进了一个我找不到的隐藏目录。</p>
+<p><strong>原因</strong>：这个不是 nanobanana 独占的坑——Android 的相册应用更新媒体库有延迟，加上部分手机厂商的相册会把某些应用生成的图片归到「其他相册」或者直接不显示。</p>
+<p><strong>解法</strong>：存完等一两分钟再查，别刚点完就刷新相册。真找不到的话，去文件管理器找 Pictures 目录里的 nanobanana 子文件夹，图肯定在那。实在嫌麻烦，每次出图直接点「我的素材」，应用内总有一份。</p>
+<p><img src="../images/nanobanana-docs/app-result-buttons.webp" alt="结果区的四个按钮各管一件事，别按错" loading="lazy"></p>
+<h2>知识图出了个过时的日期，被同事当众指出</h2>
+<p><strong>症状</strong>：让它画一张某项技术发展时间线，里面涉及一个 2023 年的事件，它给我写成了 2021 年。当时把这张图放周会上当资料，被同事指出来尴尬得一批。</p>
+<p><strong>原因</strong>：图像模型背后站着的是有知识截止时间的语言模型。涉及具体数字、日期、人名这类精确事实，它可能会「编」或者用旧版本的知识。这个坑不止知识图会踩——任何带文字的生成都可能出类似问题。</p>
+<p><strong>解法</strong>：事实类内容出图后必须核对一遍。特别是要对外展示的图，别偷懒。拿不准的宁可那个数据点留空，也别信模型瞎编的数字。我现在每次做知识图，先把里面涉及的每个年份和数字列出来，挨个过一遍权威来源。</p>
+<p><img src="../images/nanobanana-docs/knowledge-water-cycle.jpg" alt="水循环知识图，四个节点刚好一个画面舒展开" loading="lazy"></p>
+<h2>一个流程图塞了十二个节点，文字全挤成一团</h2>
+<p><strong>症状</strong>：想画一张复杂的业务流程图，把能想到的环节全列进去——十二个节点，每个节点还有子步骤。出图之后每个框里的文字只有蚂蚁那么大，根本看不清。</p>
+<p><strong>原因</strong>：模型会老老实实把你列的所有要素都塞进去，但它不会替你考虑画面容纳不下这么多内容。信息量超载时，要么字挤成一团，要么直接丢一部分节点。</p>
+<p><strong>解法</strong>：要素控制在一屏能舒服读完的程度，大概五到八个节点。超过了就拆成两张图，一张讲主流程、一张讲分支或细节。横构图对知识图友好，比例设成横版也能多装几个元素。</p>
+<h2>防坑清单</h2>
+<ul><li>提示词控制在五段结构范围，别信 2000 字上限</li><li>下载的图找不到 → 等两分钟 + 查文件管理器，别急着重装应用</li><li>带事实内容的生成（日期、数字、人名），生成后必须核对权威来源</li><li>知识图要素 ≤8 个节点，多了拆图别硬塞</li><li>定期点「清除」重写提示词，别在旧句子上缝缝补补</li></ul>
+<p>知道这些坑之后，这软件其实相当省心。想留个备份或者翻到源码看一眼？相关资料同步放在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/nanobanana" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/nanobanana" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/nanobanana" target="_blank" rel="noopener">GitCode</a> 三个仓库，国内网络访问也方便。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zoomearth.html">ZoomEarth 零基础上手：四步学会用它看风、体感温度和野火</a></h2>
+  <p class="card-desc">从下载安装到叠加三层关键图层，跟着教程一步步搞定，出门前看一眼比查三个天气 App 还省心。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xrecorder.html">XRecorder：我每周移动端教程工作流里那块被严重低估的拼图</a></h2>
+  <p class="card-desc">从手机录屏到飞书交付的四步变两步——聊聊怎么把 XRecorder 的静音录制、通知栏截屏和内置合并嵌进一条不绕路的移动端内容生产链。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vocalremover-docs.html">VocalRemover 迭代观察：从一个去人声小工具到九件套音频工作室</a></h2>
+  <p class="card-desc">这款在线音频工具一路走来，从单纯的&#34;去人声&#34;扩展成涵盖分离、剪辑、变调、录音的完整工作流。我从样本文档里能摸到的迭代规律。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/mycomic.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">MyComic 全能力域盘点：从多源聚合到自定义扩展的深度梳理</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/naraka-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Naraka 值不值得掏钱？把免费签到和付费订阅算明白</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从堆满 console.log 的测试文件到三行断言——我是怎么被 Chai 拯救的 · 老杨技术栈</title>
+  
+<meta name="description" content="一个初级前端从用 console.log 人肉比对测试结果，到被 Chai 的链式断言语法彻底折服的真实经历。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/chai-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从堆满 console.log 的测试文件到三行断言——我是怎么被 Chai 拯救的">
+<meta property="og:description" content="一个初级前端从用 console.log 人肉比对测试结果，到被 Chai 的链式断言语法彻底折服的真实经历。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/chai-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:title" content="从堆满 console.log 的测试文件到三行断言——我是怎么被 Chai 拯救的">
+<meta name="twitter:description" content="一个初级前端从用 console.log 人肉比对测试结果，到被 Chai 的链式断言语法彻底折服的真实经历。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u521d\u7ea7\u524d\u7aef\u4ece\u7528 console.log \u4eba\u8089\u6bd4\u5bf9\u6d4b\u8bd5\u7ed3\u679c\uff0c\u5230\u88ab Chai \u7684\u94fe\u5f0f\u65ad\u8a00\u8bed\u6cd5\u5f7b\u5e95\u6298\u670d\u7684\u771f\u5b9e\u7ecf\u5386\u3002", "headline": "\u4ece\u5806\u6ee1 console.log \u7684\u6d4b\u8bd5\u6587\u4ef6\u5230\u4e09\u884c\u65ad\u8a00\u2014\u2014\u6211\u662f\u600e\u4e48\u88ab Chai \u62ef\u6551\u7684", "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/chai-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/chai-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u5806\u6ee1 console.log \u7684\u6d4b\u8bd5\u6587\u4ef6\u5230\u4e09\u884c\u65ad\u8a00\u2014\u2014\u6211\u662f\u600e\u4e48\u88ab Chai \u62ef\u6551\u7684", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">从堆满 console.log 的测试文件到三行断言——我是怎么被 Chai 拯救的</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从堆满 console.log 的测试文件到三行断言——我是怎么被 Chai 拯救的</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个初级前端从用 console.log 人肉比对测试结果，到被 Chai 的链式断言语法彻底折服的真实经历。</p>
+  </header>
+  <div class="prose">
+<p>上周三晚上十点，我盯着 VSCode 里那堆花花绿绿的 console.log，感觉眼睛要炸了。</p>
+<p>事情是这样的：我在给公司那个用户反馈模块补单元测试，接口返回一堆嵌套对象，我就把每个字段都 console.log 一遍，然后对着 Expected 和 Actual 人肉比对错。跑一次测试，终端里刷屏几十行，关键是改错了又要从头看起——这种调试效率，搁谁谁崩溃。</p>
+<p>同事路过我工位，看了一眼屏幕直接乐了：「你这是 2024 年的测试写法？试试 Chai 吧，就是个断言库，写起来像说话一样。」</p>
+<p>我抱着试试看的心态搜了一下。Chai 是 Node.js 生态里最常用的断言库之一，配合 Mocha 跑测试套件。装起来也简单，从<a href="https://chai.fedq.ren/download.html" target="_blank" rel="noopener">下载</a>拿源码或者直接一条 npm install 都能搞定。而<a href="https://chai.fedq.ren" target="_blank" rel="noopener">官网</a>说它提供三种断言风格——expect、should、assert——让你挑自己觉得顺手的。</p>
+<h2>第一句代码就把我击中了</h2>
+<p>装好之后我写了个最简单的验证脚本：</p>
+<pre><code class="language-javascript">const { expect } = require(&#x27;chai&#x27;);
+
+expect(1 + 1).to.equal(2);
+expect(&#x27;hello&#x27;).to.be.a(&#x27;string&#x27;);
+expect([1, 2, 3]).to.have.lengthOf(3);</code></pre>
+<p>跑了一下 node verify-chai.js，没报错就是绿灯通过。然后我故意写错一个试试错误信息：</p>
+<pre><code class="language-javascript">expect(1 + 1).to.equal(3);</code></pre>
+<p>终端直接给我一行清晰的 AssertionError：expected 2 to equal 3。没有满屏日志，没有乱八七糟的堆栈（默认关闭），就一句人话告诉我哪儿错了。</p>
+<p>我当时的反应是——早说啊，这比我那堆 console.log 香太多了。</p>
+<h2>类型检查帮我踩了好几个坑</h2>
+<p>写了两天测试，我发现 Chai 在类型判断上做了很多贴心的处理，简直是帮新手防踩坑神器。</p>
+<p>比如 JavaScript 那个著名的历史遗留 bug：typeof null 返回 'object'。Chai 不跟着犯傻，它有专门的判断：</p>
+<pre><code class="language-javascript">expect(null).to.be.a(&#x27;null&#x27;);      // ✅ 正确
+expect(null).to.be.an(&#x27;object&#x27;);   // ❌ 会失败</code></pre>
+<p>还有数组，虽然 typeof [] 也是 'object'，但 Chai 里数组就是数组，不会跟普通对象混为一谈：</p>
+<pre><code class="language-javascript">expect([]).to.be.an(&#x27;array&#x27;);   // 通过
+expect([]).to.be.an(&#x27;object&#x27;);  // 失败</code></pre>
+<p>这些小细节看着不起眼，但在写测试的时候能帮你省掉很多低级 bug。我之前就踩过一次——以为某个返回值是对象，结果是数组，用错误的方式遍历直接空数据，找了半天才发现是类型判断的问题。</p>
+<h2>那个 .not 让我纠结了一下</h2>
+<p>Chai 有个否定修饰器 .not，插在链式里就能反转断言结果。我一开始觉得这个挺好用的，写了一堆「不应该是这样」的断言。结果跑测试的时候发现一个问题——失败的时候错误信息不够有信息量。</p>
+<p>举个例子，我之前写过：</p>
+<pre><code class="language-javascript">expect(response.status).to.not.equal(500);</code></pre>
+<p>这个测试确实能通过，但问题是它也允许 status 是 404、302 甚至任意值。如果有一天接口真的返回了 404，这个断言照样绿灯，我压根不会注意到。</p>
+<p>官方文档里特意强调了这个原则：<strong>推荐断言"是什么"，而不是断言"不是什么"</strong>。我后来把那条改成了：</p>
+<pre><code class="language-javascript">expect(response.status).to.equal(200);</code></pre>
+<p>一来二去，我现在基本只在「不应该有」这种场景下用 .not——比如检查一个对象不应该包含某个敏感属性，或者接口不应该报错。这种时候否定反而比正向写更自然。</p>
+<h2>踩了 deep 比较的弯路</h2>
+<p>有次测试一个复杂对象的返回值，我写了：</p>
+<pre><code class="language-javascript">expect(result.user).to.equal(expectedUser);</code></pre>
+<p>结果测试一直红。我百思不得其解——console.log 出来看着一模一样啊！后来翻<a href="https://chai-zh-docs.pages.dev/" target="_blank" rel="noopener">Chai文档</a>才知道，.equal 默认是严格相等，对于嵌套对象需要用 .deep.equal 做深度比较。</p>
+<pre><code class="language-javascript">expect(result.user).to.deep.equal(expectedUser);  // ✅ 深度比较</code></pre>
+<p>加上 .deep 之后绿灯瞬间亮了。这种修饰器链式组合的写法很灵活——.not.deep.equal、.deep.include 都能混着用，顺序还不影响结果。</p>
+<h2>关于配置，我只动了一个地方</h2>
+<p>Chai 有三个全局配置项可以调——includeStack 控制要不要堆栈、showDiff 控制复杂对象比较时要不要显示差异、truncateThreshold 控制长字符串截断阈值。</p>
+<p>我试了一下默认配置，发现 showDiff 默认就是开的，那 diff 高亮确实好看——对比两个数组差异的时候，会用 + 和 - 标记出哪些项多了少了。这个对复杂对象的调试特别有用，一眼就能看出来哪里不一样。</p>
+<p>最后我只改了 truncateThreshold——默认 40 个字符就截断，但我那个用户模块的 JSON 字段多，经常被截得面目全非。改成 0 让它完整显示之后，调试效率又提升了一截。</p>
+<h2>现在的测试文件长什么样</h2>
+<p>一周下来，那个原来堆满 console.log 的测试文件变成了这个样子：</p>
+<pre><code class="language-javascript">describe(&#x27;用户反馈模块&#x27;, () =&gt; {
+  it(&#x27;应该正确解析嵌套对象&#x27;, async () =&gt; {
+    const result = await fetchFeedback();
+    expect(result.user).to.be.an(&#x27;object&#x27;);
+    expect(result.user.profile).to.have.property(&#x27;name&#x27;);
+    expect(result.items).to.be.an(&#x27;array&#x27;).that.has.length.above(0);
+    expect(result.error).to.not.exist;
+  });
+});</code></pre>
+<p>跑一遍，全绿。出错了直接告诉我哪一行断言挂了，错误信息清晰到不用猜。</p>
+<p>对比一下前后的变化：原来每写一个测试用例要先写五六行 console.log，跑一次手动比对；现在一句 expect 搞定，Mocha 自动把所有用例跑完还给你一份漂亮的报告。</p>
+<p>其实这些东西说起来都不复杂——就是一个断言库加一个测试运行器。但真正让我触动的是那种「写代码像说话一样」的感觉。Chai 的链式语法设计得太自然了，to.be.a('string')、to.not.include、to.deep.equal 这些写出来的断言本身就是一段能读懂的句子。</p>
+<p>而这份体验的文档维护得也相当用心，从 npm 安装到 TypeScript 配合、从类型判断到修饰器组合，每个 API 都有具体的代码示例和踩坑提醒。我后来几乎所有问题都能在里面找到答案，不需要再去 Stack Overflow 翻了。</p>
+<p>说实话，写测试这件事以前在我眼里就是个不得不做的苦差事，现在反倒有点享受——因为我知道每一行断言写出来之后，它能帮我在上线前拦住那些低级到自己都懒得回想的 bug。顺手提一句，这套资料我也在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/Chai" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/Chai" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/Chai" target="_blank" rel="noopener">GitCode</a>三处同步维护，国内网络环境下挑个顺手的就能直接访问。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/celestia-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">需要为宇宙模拟器掏腰包吗？Celestia 的免费边界和投入账</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/chatbox-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Chatbox 全能力盘点：从多模型接入到知识库对话的完整版图</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

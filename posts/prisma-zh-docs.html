@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用了 Prisma 一周，我终于把手写 SQL 迁移的老毛病治好了 · 老杨技术栈</title>
+  
+<meta name="description" content="从 Sequelize 切到 Prisma 的第一手体验：Schema 声明式建模、类型安全的查询 API、内省接入已有数据库，以及那些让我眼前一亮又有点懵的细节。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/prisma-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用了 Prisma 一周，我终于把手写 SQL 迁移的老毛病治好了">
+<meta property="og:description" content="从 Sequelize 切到 Prisma 的第一手体验：Schema 声明式建模、类型安全的查询 API、内省接入已有数据库，以及那些让我眼前一亮又有点懵的细节。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/prisma-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/prisma-zh-docs/01_320x569.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/prisma-zh-docs/01_320x569.jpg">
+
+<meta name="twitter:title" content="用了 Prisma 一周，我终于把手写 SQL 迁移的老毛病治好了">
+<meta name="twitter:description" content="从 Sequelize 切到 Prisma 的第一手体验：Schema 声明式建模、类型安全的查询 API、内省接入已有数据库，以及那些让我眼前一亮又有点懵的细节。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece Sequelize \u5207\u5230 Prisma \u7684\u7b2c\u4e00\u624b\u4f53\u9a8c\uff1aSchema \u58f0\u660e\u5f0f\u5efa\u6a21\u3001\u7c7b\u578b\u5b89\u5168\u7684\u67e5\u8be2 API\u3001\u5185\u7701\u63a5\u5165\u5df2\u6709\u6570\u636e\u5e93\uff0c\u4ee5\u53ca\u90a3\u4e9b\u8ba9\u6211\u773c\u524d\u4e00\u4eae\u53c8\u6709\u70b9\u61f5\u7684\u7ec6\u8282\u3002", "headline": "\u7528\u4e86 Prisma \u4e00\u5468\uff0c\u6211\u7ec8\u4e8e\u628a\u624b\u5199 SQL \u8fc1\u79fb\u7684\u8001\u6bdb\u75c5\u6cbb\u597d\u4e86", "image": ["https://alipymanbu.github.io/images/prisma-zh-docs/01_320x569.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/prisma-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/prisma-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528\u4e86 Prisma \u4e00\u5468\uff0c\u6211\u7ec8\u4e8e\u628a\u624b\u5199 SQL \u8fc1\u79fb\u7684\u8001\u6bdb\u75c5\u6cbb\u597d\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">用了 Prisma 一周，我终于把手写 SQL 迁移的老毛病治好了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用了 Prisma 一周，我终于把手写 SQL 迁移的老毛病治好了</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 Sequelize 切到 Prisma 的第一手体验：Schema 声明式建模、类型安全的查询 API、内省接入已有数据库，以及那些让我眼前一亮又有点懵的细节。</p>
+  </header>
+  <div class="prose">
+<p>说实话，之前我对 ORM 是有偏见的。</p>
+<p>项目里用过 Sequelize，也试过 TypeORM，每次都是一开始觉得"哇自动生成 SQL 好方便"，写到一半发现要调个复杂查询或者优化索引，又得绕回 raw query 里写原生 SQL。更头疼的是数据库迁移——团队里几个人各改各的模型文件，迁移文件生成得乱七八遭，合并分支的时候光解冲突就要花半小时。</p>
+<p>所以这次新项目选技术栈的时候，我本来打算还是直接上 Kysely 这种 query builder，手写 SQL 起码心里踏实。正好那段时间<a href="https://prisma.fewf.ren" target="_blank" rel="noopener">Prisma官网</a>也在推新版本，同事甩过来一段它的 Schema 文件让我看：</p>
+<pre><code class="language-prisma">model User {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  posts Post[]
+}</code></pre>
+<p>"就这？"我当时的反应是，"这能比 Kysely 强到哪去？"</p>
+<p>事实证明我还是太年轻了。</p>
+<h2>第一天：装上就能跑，Schema 比想象中强</h2>
+<p>安装包从<a href="https://prisma.fewf.ren/download.html" target="_blank" rel="noopener">官方下载</a>拿，或者直接走 npm：prisma 装 devDependencies，@prisma/client 装 dependencies。然后 npx prisma init 跑一下，它会帮你生成一个 prisma/schema.prisma 模板和一个 .env 文件，让你填数据库连接串。</p>
+<p><img src="../images/prisma-zh-docs/01_320x569.jpg" alt="Prisma 初始化后生成的 schema.prisma 模板" loading="lazy"></p>
+<p>我填了本地 PostgreSQL 的地址，然后开始写 Schema。这个过程让我有点意外——它不是简单把表结构翻译成 JSON，而是用了一种自己的 DSL 语法，model 块里能直接声明字段类型、默认值、唯一约束，还有 Prisma 级的关联字段。比如 User 模型里写 <code>posts Post[]</code>，数据库里不会真的多出一列，但 Prisma Client 生成的时候会给你 include posts 的能力。</p>
+<p>最开始我以为这就是个高级点的类型声明文件，直到运行了 npx prisma migrate dev --name init。这条命令一口气做了四件事：读取 Schema → 生成一条带建表 SQL 的迁移文件 → 应用到数据库 → 自动 generate Prisma Client。一个命令搞定了我以前手动写的全部步骤，包括生成的 Client 居然是 TypeScript 类型安全的——这一点是 Sequelize 和 TypeORM 当年都没做到位的。</p>
+<h2>最惊喜的两个地方：查询真的舒服，迁移真的干净</h2>
+<h3>查询 API 不是吹的</h3>
+<p>写第一个查询的时候我没抱太大期望，不就是个 findMany 吗？结果代码敲到一半发现不对——VS Code 自动补全了 include 参数，我选了 posts，立刻又跳出 where、orderBy、take、skip 一堆选项，而且 posts 里面的字段也跟着补全了。查的时候把 posts 关联数据一起拉下来，就是一行 include: { posts: true }。</p>
+<p>这不是 ORM 的常规操作吗？但真正让我惊艳的是嵌套写入。创建一个用户同时创建他的第一篇文章，以前在 Sequelize 里得先 create user 拿到 id，再 create post 关联上去。Prisma 里直接这么写：</p>
+<pre><code class="language-typescript">await prisma.user.create({
+  data: {
+    email: &#x27;alice@example.com&#x27;,
+    posts: { create: { title: &#x27;Hello Prisma&#x27; } },
+  },
+})</code></pre>
+<p>就一行。Prisma 自动处理了事务、外键关联、ID 传递。我第一次跑这段代码的时候盯着数据库里 User 和 Post 两表同时多出了记录，愣了两秒钟。</p>
+<p>还有 findUnique 这种语义化的方法名——用 id 查就用 findUnique，返回值是单个对象或 null，不是 findFirst 那种可能返回第一条的语义。这些小细节加起来，让写查询的体验跟普通业务代码没什么区别，不像其他 ORM 总在"这到底会不会生成我想要的 SQL"这件事上让我焦虑。</p>
+<h3>迁移系统解决了我最痛的点</h3>
+<p>之前用 Sequelize 的时候，迁移文件是每次改 model 手动生成的，两个同事同时改 model 生成两条迁移，合并的时候就要小心调整顺序。而 Prisma 的 migrate dev 工作流是：你改 Schema → 跑 migrate dev → Prisma 对比差异生成新的迁移文件。迁移文件跟着代码一起进 Git，每个人拉下来都能 migrate dev 对齐本地数据库。</p>
+<p>更重要的是开发和生产分了两条完全不同的命令。migrate dev 会读 Schema 并生成新迁移，而 migrate deploy 只应用 migrations 目录里已有的迁移，根本不碰 Schema。这意味着生产数据库永远只执行已经在开发环境审阅过的迁移文件——我以前最担心的"手滑在生产环境跑了开发命令"这种事故，从设计层面就被堵死了。migrate dev 和 migrate deploy 的完整区别在<a href="https://prisma-zh-docs.pages.dev/" target="_blank" rel="noopener">Prisma文档</a>里有专门的对照表。</p>
+<h2>也有点懵的地方：内省让我"一键接手"了旧数据库</h2>
+<p>项目里还有一个老项目，用的是 TypeORM 建的库，我一直想把它迁到 Prisma 但觉得太麻烦。这次试了 db pull，一条命令直接把 PostgreSQL 里的表结构、外键、索引全翻译成了 schema.prisma。</p>
+<p><img src="../images/prisma-zh-docs/02_320x569.jpg" alt="db pull 自动生成的 Schema 中包含的 @map 注解" loading="lazy"></p>
+<p>它甚至帮我加上了 @map("table_name") 注解，处理了数据库表名是复数 snake_case 而 Prisma model 默认 PascalCase 的命名差异。跑 generate 之后直接就能用 Prisma Client 查老数据——整个过程不到十分钟。</p>
+<p>不过有一个地方让我踩了坑。那个老库里有几张表用了存储过程做复杂查询，Prisma Client 不暴露这些，得用 $queryRaw 写原生 SQL。我当时以为 Prisma 能自动识别并封装，结果发现它的边界画得挺清楚：表结构和外键它管，视图、存储过程、触发器这些数据库一等公民之外的东西，要么自己写 raw query，要么迁移逻辑到应用层。</p>
+<p>另外关系推断也不是百分百准确。老库里有一个多对多的中间表带了额外字段，Prisma 没把它识别成隐式多对多，而是当成了一个独立 model。这也合理——额外字段意味着中间表本身就是业务实体，不该被 Prisma 自动隐藏掉。我手动调整了 Schema 里的关系定义，跑了 generate，一切正常。</p>
+<h2>一周用下来，它适合谁</h2>
+<p>如果你正在新项目选 ORM，而且你的技术栈是 Node.js + TypeScript + 关系数据库，那 Prisma 基本没有理由不试——类型安全的查询、声明式的 Schema、干净的迁移流程，这三点加起来解决了 ORM 社区讨论了好几年的痛点。</p>
+<p>如果你维护着一个老项目想换 ORM，db pull 让迁移成本比想象中低很多。但如果你的数据库里存储过程和触发器用得很重，那可能要重新评估——Prisma 不打算接管这些东西，它的设计哲学是让数据库做擅长的事、让应用层做擅长的事。</p>
+<p>还有一点要提醒的是，Prisma Client 是 generate 出来的，Schema 改了要记得跑 npx prisma generate（migrate dev 会自动触发，但 db push 不会）。我第一天就因为忘了 generate 写了半天代码全是红线，这种小坑踩两次就记住了。</p>
+<p>总之这一周的体验比预期好太多。以前我以为 ORM 就是"自动生成 SQL 的工具"，现在明白它其实可以是"用声明式语言描述数据模型的编译器"——Schema 是源代码，Client 是编译产物，迁移是版本化的数据库变更日志。这个思路一旦转过来，之前用其他 ORM 积累的那些"ORM 不可靠"的成见，好像也站不住脚了。我把这几天整理的笔记和示例代码同步放到了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Prisma" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Prisma" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Prisma" target="_blank" rel="noopener">GitCode</a>，想跑通一遍的可以直接 clone 下来试。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/priority-pass.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">周五傍晚的浦东机场，我靠 Priority Pass 提前预订躲过了贵宾室人潮</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/processon.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">ProcessOn 流程图入门实战：从空白画布到可交付文件</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

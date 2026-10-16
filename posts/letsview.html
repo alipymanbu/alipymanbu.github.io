@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>一根没有线的 HDMI：LetsView 从 0 到跑通的五分钟上手指南 · 老杨技术栈</title>
+  
+<meta name="description" content="完全不懂投屏也没关系——这篇从最生活化的类比讲起，带你五分钟跑通第一次投屏，再挑三个新手最值得先碰的功能，最后解答小白最常踩的三个坑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/letsview.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一根没有线的 HDMI：LetsView 从 0 到跑通的五分钟上手指南">
+<meta property="og:description" content="完全不懂投屏也没关系——这篇从最生活化的类比讲起，带你五分钟跑通第一次投屏，再挑三个新手最值得先碰的功能，最后解答小白最常踩的三个坑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/letsview.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/letsview/android-connected.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/letsview/android-connected.png">
+
+<meta name="twitter:title" content="一根没有线的 HDMI：LetsView 从 0 到跑通的五分钟上手指南">
+<meta name="twitter:description" content="完全不懂投屏也没关系——这篇从最生活化的类比讲起，带你五分钟跑通第一次投屏，再挑三个新手最值得先碰的功能，最后解答小白最常踩的三个坑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5b8c\u5168\u4e0d\u61c2\u6295\u5c4f\u4e5f\u6ca1\u5173\u7cfb\u2014\u2014\u8fd9\u7bc7\u4ece\u6700\u751f\u6d3b\u5316\u7684\u7c7b\u6bd4\u8bb2\u8d77\uff0c\u5e26\u4f60\u4e94\u5206\u949f\u8dd1\u901a\u7b2c\u4e00\u6b21\u6295\u5c4f\uff0c\u518d\u6311\u4e09\u4e2a\u65b0\u624b\u6700\u503c\u5f97\u5148\u78b0\u7684\u529f\u80fd\uff0c\u6700\u540e\u89e3\u7b54\u5c0f\u767d\u6700\u5e38\u8e29\u7684\u4e09\u4e2a\u5751\u3002", "headline": "\u4e00\u6839\u6ca1\u6709\u7ebf\u7684 HDMI\uff1aLetsView \u4ece 0 \u5230\u8dd1\u901a\u7684\u4e94\u5206\u949f\u4e0a\u624b\u6307\u5357", "image": ["https://alipymanbu.github.io/images/letsview/android-connected.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/letsview.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/letsview.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4e00\u6839\u6ca1\u6709\u7ebf\u7684 HDMI\uff1aLetsView \u4ece 0 \u5230\u8dd1\u901a\u7684\u4e94\u5206\u949f\u4e0a\u624b\u6307\u5357", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">一根没有线的 HDMI：LetsView 从 0 到跑通的五分钟上手指南</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">一根没有线的 HDMI：LetsView 从 0 到跑通的五分钟上手指南</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">完全不懂投屏也没关系——这篇从最生活化的类比讲起，带你五分钟跑通第一次投屏，再挑三个新手最值得先碰的功能，最后解答小白最常踩的三个坑。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从「投屏是什么都不知道」到「自己就能把手机画面投到大屏上」，不需要任何基础，跟着走就行。</p>
+<h2>它到底是干嘛的</h2>
+<p>你可以把 LetsView 想象成<strong>一根没有线的 HDMI</strong>。</p>
+<p>平时想把手机里的照片给家人看，得凑在小屏幕上挤脑袋；想把电脑上的 PPT 投到会议室的电视，翻半天找不到合适的转接线；小朋友想在电视上画画，找不到合适的 App——LetsView 就是为这些场景准备的：只要手机、电脑、电视都装一个 App，连同一个 Wi-Fi，画面就能在它们之间自由飞。</p>
+<p>它不挑设备——安卓、iPhone、Windows、Mac、Android TV 全能互通——而且基础功能完全免费，更多细节在<a href="https://letsview.uerg.quest" target="_blank" rel="noopener">LetsView官网</a>上都能找到。</p>
+<p><img src="../images/letsview/android-connected.png" alt="手机连接电脑的界面" loading="lazy"></p>
+<h2>五分钟上手：从下载到第一次投屏</h2>
+<p>别担心，不需要注册账号，也不用填任何信息，整个过程就是装 App → 找设备 → 点一下。</p>
+<h3>第一步：两边都装 LetsView</h3>
+<p>手机装一个，电脑或电视也装一个。手机去应用商店搜就能找到，电脑和电视的安装包从<a href="https://letsview.uerg.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿就行。装完先别急着打开，等两边都就绪了再一起启动。</p>
+<h3>第二步：确保在同一个 Wi-Fi</h3>
+<p>这是最关键的前提。如果手机连的是家里 5G、电脑连的是 2.4G，通常没问题；但如果一个连家里路由器、一个用手机热点，那它们彼此看不见——投屏这回事，<strong>同一网络是基础</strong>。</p>
+<h3>第三步：手机端搜设备并连接</h3>
+<p>打开手机端 LetsView，底部自动扫描附近的设备。几秒钟后，你会看到电脑或电视的名字出现在列表里——点它，再点「共享本机屏幕」，手机画面就出现在大屏上了。</p>
+<p>就是这么简单。整个流程从装完 App 到看到画面，正常情况下不超过五分钟。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>跑通第一次投屏后，别觉得就用完了。这三个功能是新手最值得先碰的，每个都能让你惊呼一声「原来还能这样」。</p>
+<h3>功能一：反向投屏——把电脑投到手机上</h3>
+<p>大多数人以为投屏只能手机投大屏，但 LetsView 反过来也能投。打开手机端，选到你的电脑设备后，别点「共享本机屏幕」，而是点「获取对方屏幕」——电脑上的实时画面立刻缩小到手机里。</p>
+<p>想想看，人在沙发上想瞄一眼电脑上的下载进度，或者躺床上操作主机里的游戏，这个功能直接能用。配合手机端的手指和键盘图标，你甚至能用手机反控电脑。</p>
+<h3>功能二：投屏后的三种画面模式</h3>
+<p>手机投电视后最常遇到的问题是「怎么有黑边」。按一下电视遥控器的方向键，底部会出现三种画面模式：<strong>最佳画质、平铺画面、AI 满屏</strong>。</p>
+<ul><li><strong>最佳画质</strong>是默认模式，画面比例不变，黑边该有就有——适合投电影，不想看到字幕被裁掉的话就用这个。</li><li><strong>平铺画面</strong>会把画面拉伸铺满整个屏幕，代价是会变形——人脸和圆形物体会被压扁，一般不推荐。</li><li><strong>AI 满屏</strong>是官方推荐的投视频选项，它等比例放大画面铺满屏幕，边缘可能被裁掉一点但不会拉伸变形，观感最好。</li></ul>
+<p>投竖屏内容（手机游戏、短视频）到横屏电视时，三种模式的差别最明显——你可以三种都试一下，自己觉得舒服就好。</p>
+<h3>功能三：小画板——手机涂鸦实时同屏到大屏</h3>
+<p>打开手机端 LetsView，切到底部「发现」页，里面有一个容易被忽略的组件叫<strong>小画板</strong>。点进去就是一块画布，手机变成画板，你画的每一笔实时同步到大屏上。</p>
+<p>笔刷有几种类型可选，粗细三档，颜色也有多色。顶部的撤销按钮让你画错可以回退一步，画完还能保存。</p>
+<p>它不是专业绘画工具——笔刷少、没有图层，但它的价值在于<strong>即时同屏</strong>这个链路：给小朋友当涂鸦玩具，或者线上课堂画个流程示意图，画的东西立刻出现在电脑上，这种反馈是非常直观的。想了解更多功能的参数和细节，去<a href="https://letsview.pages.dev/" target="_blank" rel="noopener">LetsView文档</a>里翻就行。</p>
+<p><img src="../images/letsview/tv-mode-best.png" alt="投屏三种画面模式" loading="lazy"></p>
+<h2>小白的三个常见疑问</h2>
+<h3>Windows 版打开就闪退怎么办</h3>
+<p>这是 Windows 用户最常遇到的问题，别慌，<strong>八成不是软件坏了，是运行环境缺东西</strong>。按下面三步走：</p>
+<ol><li><strong>装 .NET Framework 4.7 或更高版本</strong>——幕连 Windows 端依赖这个运行库，系统里没装或版本太低时，程序启动立刻就退。Win10/Win11 通常自带，但老一些的系统（Win7、早期 Win10）最容易踩这个坑。</li><li><strong>更新到最新版客户端</strong>——从官方渠道重新下载最新版本覆盖安装，旧版本的兼容问题往往在新版里已经修复。</li><li><strong>更新显卡驱动</strong>——以上两步都做完还闪退的话，检查显卡驱动。投屏画面渲染依赖显卡，驱动过旧或损坏会引发渲染层崩溃。到 NVIDIA/AMD/Intel 官网或用系统设备管理器更新就行。</li></ol>
+<p>三步都做完还不行？主界面右上角点【三】→【问题反馈】，把日志提交给官方，他们会处理。</p>
+<h3>投屏搜不到对方设备</h3>
+<p>先确认两边是不是真的在同一个 Wi-Fi 里——别一个连家里路由器、一个用手机热点。确认没问题后，试试把两边的 LetsView 都关掉再重新打开，或者关掉手机 Wi-Fi 再开一次。极端情况下，手机连电脑的热点反而能连上，这是最后的兜底方案。</p>
+<h3>投屏有声音没画面，或者画面发糊</h3>
+<p>画面发糊通常是清晰度不够，去电脑端设置里找清晰度调节，把档位调高就行。有声音没画面或画面卡住，一般是网络信号问题——路由器离得远、隔墙太多，都会让投屏体验变差，试试把设备挪近一点，或者换个干扰少的信道。</p>
+<h2>最后说一句</h2>
+<p>LetsView 的厉害之处不在于它有多少高级功能，而在于<strong>它把一件本来很麻烦的事（跨设备传画面）做得特别简单</strong>——不用插线、不用配置、不用登录，装完就能用。</p>
+<p>入门后可以继续探索电脑和电脑互投、手机反控电脑这些进阶玩法。你会发现，当设备之间的墙被拆掉之后，很多之前觉得麻烦的事，突然就变得顺手了。这份文档的原始资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/LetsView" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/LetsView" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/LetsView" target="_blank" rel="noopener">GitCode</a>三个仓库都同步维护着，国内访问哪个快就连哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/lespark.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">搬去上海第三个月，我终于不再一个人吃外卖了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/levilauncher.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Bedrock 玩家最头疼的三个问题，我用一个启动器全解决了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

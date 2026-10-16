@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>ProcessOn 流程图入门实战：从空白画布到可交付文件 · 老杨技术栈</title>
+  
+<meta name="description" content="从零带你用 ProcessOn 画出第一流程图——图形拖拽、快捷连线、一键美化、导出交付，五个步骤走完整个闭环，附新手容易翻车的三个坑和解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/processon.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ProcessOn 流程图入门实战：从空白画布到可交付文件">
+<meta property="og:description" content="从零带你用 ProcessOn 画出第一流程图——图形拖拽、快捷连线、一键美化、导出交付，五个步骤走完整个闭环，附新手容易翻车的三个坑和解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/processon.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/processon/flow-create.gif">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/processon/flow-create.gif">
+
+<meta name="twitter:title" content="ProcessOn 流程图入门实战：从空白画布到可交付文件">
+<meta name="twitter:description" content="从零带你用 ProcessOn 画出第一流程图——图形拖拽、快捷连线、一键美化、导出交付，五个步骤走完整个闭环，附新手容易翻车的三个坑和解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u96f6\u5e26\u4f60\u7528 ProcessOn \u753b\u51fa\u7b2c\u4e00\u6d41\u7a0b\u56fe\u2014\u2014\u56fe\u5f62\u62d6\u62fd\u3001\u5feb\u6377\u8fde\u7ebf\u3001\u4e00\u952e\u7f8e\u5316\u3001\u5bfc\u51fa\u4ea4\u4ed8\uff0c\u4e94\u4e2a\u6b65\u9aa4\u8d70\u5b8c\u6574\u4e2a\u95ed\u73af\uff0c\u9644\u65b0\u624b\u5bb9\u6613\u7ffb\u8f66\u7684\u4e09\u4e2a\u5751\u548c\u89e3\u6cd5\u3002", "headline": "ProcessOn \u6d41\u7a0b\u56fe\u5165\u95e8\u5b9e\u6218\uff1a\u4ece\u7a7a\u767d\u753b\u5e03\u5230\u53ef\u4ea4\u4ed8\u6587\u4ef6", "image": ["https://alipymanbu.github.io/images/processon/flow-create.gif"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/processon.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/processon.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "ProcessOn \u6d41\u7a0b\u56fe\u5165\u95e8\u5b9e\u6218\uff1a\u4ece\u7a7a\u767d\u753b\u5e03\u5230\u53ef\u4ea4\u4ed8\u6587\u4ef6", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">ProcessOn 流程图入门实战：从空白画布到可交付文件</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">ProcessOn 流程图入门实战：从空白画布到可交付文件</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从零带你用 ProcessOn 画出第一流程图——图形拖拽、快捷连线、一键美化、导出交付，五个步骤走完整个闭环，附新手容易翻车的三个坑和解法。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程走完，你能独立画出一张像样的流程图，并且把它导出到 PPT 或文档里交付。全程不涉及付费功能，免费账号够用。<a href="https://processon.uerg.quest" target="_blank" rel="noopener">processon官网</a>浏览器直接打开就能用，桌面端和移动端也都有客户端。</p>
+<h2>准备阶段</h2>
+<p>ProcessOn 是一款在线协作的流程图和思维导图工具，浏览器直接打开就能用，桌面端和移动端也都有客户端。你需要准备：</p>
+<ul><li>一个可用的 ProcessOn 账号（注册就能用，免费版有文件数量限制但足够练习）；</li><li>Chrome 或 Edge 浏览器，版本尽量新一点——老版本浏览器偶尔会出现编辑器卡顿；</li><li>一张你想画的流程草图，或者一个明确的场景（比如「用户注册流程」「请假审批」「订单发货」）。</li></ul>
+<p>客户端安装包从<a href="https://processon.uerg.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿。建议先用网页端练手，界面功能最全；熟练之后再考虑装客户端。</p>
+<h2>第一步：新建流程图并进入编辑器</h2>
+<p>登录后，在「我的文件」页面点击右上角的「新建」按钮，选择「流程图」。你会被带进一个空白画布的编辑器，同时画布下方会弹出一排推荐模板——模板可以跳过，后面画完结构再调样式不迟。</p>
+<p><img src="../images/processon/flow-create.gif" alt="创建流程图" loading="lazy"></p>
+<p>编辑器界面可以先认三块区域：左侧是图形库（各种形状都在里面），中间是无限延伸的画布（画到边缘会自动扩展，不用省地方），右侧是属性面板和工具栏。快捷键先记两个：<code>T</code> 添加文本，<code>L</code> 创建连线——这两个用得最多。</p>
+<h2>第二步：拖拽图形搭流程骨架</h2>
+<p>左侧图形库分组摆放，常用的基础图形集中在前几组：开始/结束用圆角矩形，处理步骤用普通矩形，判定节点用菱形，数据输入输出用平行四边形。别贪多，前期就用这四种，足够应付 80% 的流程。</p>
+<p>具体操作：</p>
+<ol><li>从图形库按住鼠标左键，把图形拖到画布松手即创建；</li><li>选中画布上的某个图形后，它四周会出现一圈小 <code>+</code> 图标——顺着流程方向点 <code>+</code>，就会在对应方向自动创建同组的下一个图形，省得来回拖拽；</li><li>想改图形大小，拖周围八个轴点；想旋转，点图形右上角的小图标；</li><li>画错了按 <code>Delete</code> 删除，撤销是 <code>Ctrl+Z</code>。</li></ol>
+<p>画的时候别急着调颜色、边框粗细这些外观——先把所有节点摆好、连线顺通，最后统一用格式刷或一键美化收尾。这是新手最容易踩的时间陷阱。</p>
+<h2>第三步：连线并调整走向</h2>
+<p>节点摆好之后，需要用箭头把它们串起来。连线有两种画法：</p>
+<ul><li><strong>拖出连线</strong>：鼠标移到图形边缘，光标变成十字箭头后按住左键拖向另一个图形，松手就生成一条带方向的连线；</li><li><strong>快捷点连</strong>：还是用刚才的 <code>+</code> 图标——点它不仅会创建新图形，还自动带一条从当前节点指向新节点的连线，结构对的时候这是最快的方式。</li></ul>
+<p><img src="../images/processon/flow-connect.gif" alt="快捷连线" loading="lazy"></p>
+<p>连线的走向可以在中间加拐点：选中连线后在拐点处拖拽就能弯曲；或者双击连线手动插入额外拐点。默认的直角折线比斜线更规整，适合正式交付的图。</p>
+<p>有一个细节注意：判定菱形出来的连线，分叉之后往往需要在连线上标注「是」「否」这类条件。选中连线后直接双击就能添加文字标签。</p>
+<h2>第四步：填写文字并一键美化</h2>
+<p>每个图形拖进来默认就有一个文本框，单击开始打字。文字的字号、颜色、对齐方式都在右侧属性面板里改。</p>
+<p>结构和连线全部完成之后，别手动一个个调样式——选中所有元素（<code>Ctrl+A</code>），然后找顶部工具栏里的「一键美化」按钮。这个功能会自动对齐、统一配色、整理间距，几秒钟把一张乱糟糟的草稿变成能直接展示的成品。</p>
+<p>格式刷也是好帮手：如果某个图形的样式你觉得好看，点格式刷在它上面刷一下，再点其他图形，就把样式复制过去了。想了解更多样式调整的细节，可以去<a href="https://processon.pages.dev/" target="_blank" rel="noopener">processon文档</a>翻配色和格式刷的专题。</p>
+<h2>第五步：导出到目标格式</h2>
+<p>画完的流程图要离开编辑器去往 PPT 或文档，右上角有个「导出为」按钮。ProcessOn 支持的导出格式挺全：</p>
+<ul><li><strong>PNG / SVG</strong>：插进 PPT 或文档用，SVG 是矢量格式，放大不糊；</li><li><strong>高清 PDF</strong>：打印或正式归档用；</li><li><strong>POS</strong>：ProcessOn 自己的开放格式，想以后回来继续编辑就存一份；</li><li>另外如果画的是思维导图，还能直接导出 Word、PPT、Excel——导图直接变成汇报文档或任务清单，这个很实用。</li></ul>
+<p>免费账号有少量格式限制，但日常用到的 PNG、SVG、PDF 都是开放的，够用。</p>
+<h2>三个新手最容易翻车的卡点</h2>
+<p><strong>卡点一：画布找不到自己画的东西了。</strong> 画布是无限的，有时候一拖就不知道漂到哪去了。双击鼠标滚轮可以快速回到所有元素的中心位置，或者用右下角的「适应画布」按钮一键把全部内容缩放到可见区域。</p>
+<p><strong>卡点二：连线总断、对不准。</strong> 连线要从图形边缘的锚点拖出，而不是从图形中心开始。把鼠标慢慢挪到边缘，出现小十字图标再按住拖，这样连线才会真正「粘」在图形上，图形移动时连线跟着走。</p>
+<p><strong>卡点三：想改已经画好的流程结构，牵一发动全身。</strong> 别直接删了重画——选中某段流程的起点，右键菜单里找「重新布局」，可以只对局部自动调整；或者按住 <code>Shift</code> 多选几个元素一起移动，保持相对位置。</p>
+<h2>往下还能玩什么</h2>
+<p>流程图之外，ProcessOn 的思维导图编辑器同样在线协作，支持给主题加图标、标签和任务信息，把一张头脑风暴图直接变成带负责人和进度的可跟踪清单。画完之后还能一键切换到演示模式，像 PPT 一样逐页讲——做项目汇报的时候挺好用。</p>
+<p>关于 ProcessOn 的资料和文档，我整理了一份完整的仓库备份，<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/processon" target="_blank" rel="noopener">GitHub</a> 上的地址是主仓库，国内访问不稳定的时候可以用 <a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/processon" target="_blank" rel="noopener">Gitee</a> 的镜像，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/processon" target="_blank" rel="noopener">GitCode</a> 也同步了一份——三处内容一样，挑能打开的看就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/prisma-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了 Prisma 一周，我终于把手写 SQL 迁移的老毛病治好了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/qcy.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">QCY 耳机新手入门：五分钟搞定连接、降噪和 APP 全部玩法</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Steam 账户被盗那晚，我用 KeepassDX 重建了整套凭证 · 老杨技术栈</title>
+  
+<meta name="description" content="一个深夜的账户被盗经历，让我下定决心放弃&#34;所有网站用同一个密码&#34;的坏习惯。这篇文章记录我如何用 KeepassDX 从零搭建自己的密码库，从分组规划到 TOTP 配置，一步步把散落在手机备忘录和浏览器里的凭证全部收编。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/keepassdx.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Steam 账户被盗那晚，我用 KeepassDX 重建了整套凭证">
+<meta property="og:description" content="一个深夜的账户被盗经历，让我下定决心放弃&#34;所有网站用同一个密码&#34;的坏习惯。这篇文章记录我如何用 KeepassDX 从零搭建自己的密码库，从分组规划到 TOTP 配置，一步步把散落在手机备忘录和浏览器里的凭证全部收编。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/keepassdx.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/keepassdx/app-overview-1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/keepassdx/app-overview-1.png">
+
+<meta name="twitter:title" content="Steam 账户被盗那晚，我用 KeepassDX 重建了整套凭证">
+<meta name="twitter:description" content="一个深夜的账户被盗经历，让我下定决心放弃&#34;所有网站用同一个密码&#34;的坏习惯。这篇文章记录我如何用 KeepassDX 从零搭建自己的密码库，从分组规划到 TOTP 配置，一步步把散落在手机备忘录和浏览器里的凭证全部收编。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u6df1\u591c\u7684\u8d26\u6237\u88ab\u76d7\u7ecf\u5386\uff0c\u8ba9\u6211\u4e0b\u5b9a\u51b3\u5fc3\u653e\u5f03\"\u6240\u6709\u7f51\u7ad9\u7528\u540c\u4e00\u4e2a\u5bc6\u7801\"\u7684\u574f\u4e60\u60ef\u3002\u8fd9\u7bc7\u6587\u7ae0\u8bb0\u5f55\u6211\u5982\u4f55\u7528 KeepassDX \u4ece\u96f6\u642d\u5efa\u81ea\u5df1\u7684\u5bc6\u7801\u5e93\uff0c\u4ece\u5206\u7ec4\u89c4\u5212\u5230 TOTP \u914d\u7f6e\uff0c\u4e00\u6b65\u6b65\u628a\u6563\u843d\u5728\u624b\u673a\u5907\u5fd8\u5f55\u548c\u6d4f\u89c8\u5668\u91cc\u7684\u51ed\u8bc1\u5168\u90e8\u6536\u7f16\u3002", "headline": "Steam \u8d26\u6237\u88ab\u76d7\u90a3\u665a\uff0c\u6211\u7528 KeepassDX \u91cd\u5efa\u4e86\u6574\u5957\u51ed\u8bc1", "image": ["https://alipymanbu.github.io/images/keepassdx/app-overview-1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/keepassdx.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/keepassdx.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "Steam \u8d26\u6237\u88ab\u76d7\u90a3\u665a\uff0c\u6211\u7528 KeepassDX \u91cd\u5efa\u4e86\u6574\u5957\u51ed\u8bc1", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">Steam 账户被盗那晚，我用 KeepassDX 重建了整套凭证</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Steam 账户被盗那晚，我用 KeepassDX 重建了整套凭证</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个深夜的账户被盗经历，让我下定决心放弃&#34;所有网站用同一个密码&#34;的坏习惯。这篇文章记录我如何用 KeepassDX 从零搭建自己的密码库，从分组规划到 TOTP 配置，一步步把散落在手机备忘录和浏览器里的凭证全部收编。</p>
+  </header>
+  <div class="prose">
+<h2>凌晨三点的那条短信</h2>
+<p>凌晨三点零七分，手机震了一下。我迷迷糊糊摸过来——是 Steam 的验证码短信。</p>
+<p>"您的 Steam 验证码为：7F3D2。此验证码 5 分钟内有效，请勿向任何人透露。"</p>
+<p>我一下就醒了。我没有在这个时间登录任何东西。更要命的是，我没有开启 Steam Guard 手机验证——我嫌麻烦，用的是邮箱验证，而那个邮箱的密码和我的 Steam 密码是<strong>同一个</strong>。</p>
+<p>跳起来打开电脑，改密码的时候手还在抖。好在邮箱有二次验证，抢回来了；但那十分钟里我脑子里只有一个念头：我到底在多少个网站上用了这套凭证？</p>
+<h2>十年积弊，一张纸列不完</h2>
+<p>天亮之后我做的第一件事，是列出所有我在用的网站和服务。浏览器保存了一长串，但还有一堆是存在手机备忘录里、或者干脆只靠脑子记的。银行、邮箱、云盘、论坛、订阅服务——最后数下来四十七处。</p>
+<p>四十七处里，有三十一处用了同一个密码。剩下的十六处，分别是那个密码后面加个年份、加个感叹号、或者把数字稍微改一下。安全？这叫一捅就破的纸糊墙。</p>
+<p>我试过用系统自带的密码管理器。Chrome 的能自动填但跨平台就废了，iOS 的钥匙串对 PC 端无能为力。然后朋友给我甩了一个链接——KeepassDX，一个开源的 Android 密码管理器，它的<a href="https://keepassdx.boop.uno" target="_blank" rel="noopener">官网</a>上有详细的功能说明。</p>
+<h2>从零开始搭库的那个下午</h2>
+<p>从<a href="https://keepassdx.boop.uno/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包之后，第一次打开 KeepassDX，它让我创建一个新的 KeePass 数据库文件，再设一个主密码。这个主密码是唯一需要我<strong>记在脑子里</strong>的东西——我花了十分钟想了一句足够长、足够独特的口令，没有存任何地方。</p>
+<p>新建数据库的时候，KeepassDX 预创建了几个默认分组：General、Internet、eMail。但这些对我来说太模糊了。我需要一套能让我一眼定位到"这东西在哪个分组"的结构。</p>
+<p>最后我是这么分的：</p>
+<ul><li><strong>银行与支付</strong>——所有有资金风险的东西独立一组</li><li><strong>邮箱与云盘</strong>——邮箱、OneDrive、Dropbox</li><li><strong>社交与论坛</strong>——微博、知乎、Steam、B站</li><li><strong>工作相关</strong>——公司邮箱、内部系统、API Key</li><li><strong>家庭共用</strong>——Wi-Fi 密码、路由器后台</li><li><strong>归档</strong>——已经不用但舍不得删的旧账户</li></ul>
+<p>分组不超过两层嵌套，每个分组名字一看就知道装的是什么。原来那四十七处凭证，我花了整个下午逐条录入、改密码、归位。改密码这一步是最累的——每个网站都得切过去走一遍找回/修改流程，但也是最有成就感的。</p>
+<p><img src="../images/keepassdx/app-overview-1.png" alt="分组管理" loading="lazy"></p>
+<h2>那些浏览器存不了的东西</h2>
+<p>录入到一半的时候我发现，有些信息根本不是"用户名+密码"能装下的。</p>
+<p>比如某家银行在登录之后还要输入一个单独的 PIN 码——和密码分开的、只有四位数的数字码。比如几个网站的安全问题答案，我当年随便填的，现在得找回来。比如我的 Steam 恢复码，一张纸拍的照片，之前存在相册里。</p>
+<p>KeepassDX 的自定义字段就是干这个的。每个条目除了固定的标题、用户名、密码、URL、备注，还能加任意多的 Key-Value 对。PIN 码我标成了"保护字段"——默认隐藏，点一下才显示，而且从剪贴板复制的时候需要我再输一次主密码确认。Steam 的恢复码我直接作为附件挂在了条目上。</p>
+<p>这样一来，原来散在备忘录、相册、甚至一张便签纸上的零碎信息，全归到了对应的条目下面。找的时候不用翻手机相册，进 KeepassDX 搜关键字就行。</p>
+<h2>Steam 验证码那点事——以及 Pro 版值不值</h2>
+<p>说到 Steam，就绕不开它那套特立独行的双因子认证。</p>
+<p>标准的 TOTP 是 SHA-1 加 30 秒周期出 6 位纯数字码，但 Steam 不用这套。它用自定义的哈希算法，出的是 5 位字母数字混合码——还特意排除了 O、I 这种容易和 0、1 混淆的字符。官方只在自己的手机 App 里内置了这个算法，开源 2FA 应用全都不支持，因为 Steam 没公开算法细节。</p>
+<p>KeepassDX Pro 版实现了这套逆向出来的 Steam 算法——后来去<a href="https://keepassdx.pages.dev/" target="_blank" rel="noopener">KeepassDX文档</a>翻了一下才知道，这是少数几个非标准 TOTP 被支持的案例。配置的时候把类型切到 "Steam"，从 Steam Guard 导出共享密钥填进去就行，码直接在条目界面显示。甚至可以直接导入 Steam 的 <code>maFile.sda</code> JSON 文件，自动填好所有参数。</p>
+<p>Pro 版要花多少钱？一次性买断四美元左右，不是订阅。功能上除了 Steam TOTP，还有更灵活的 OTP 参数配置和数据库加密选项。但说实话，如果没有 Steam 账户，这笔钱确实花不出去——Free 版和 F-Droid 上的 Libre 版已经覆盖了 99% 的普通用户需求，密码管理、自动填充、普通 TOTP、Passkey、附件这些核心功能全有。</p>
+<p>我最终还是买了。倒不是为了 Steam 验证码——Steam 的手机 App 其实一直能用来生成，双轨并行也没什么。主要是 KeepassDX 开发者单枪匹马维护这么多年，这点钱算是份心意。</p>
+<p><img src="../images/keepassdx/screenshot-2.jpg" alt="Pro 版功能解锁" loading="lazy"></p>
+<h2>那晚之后</h2>
+<p>从凌晨三点收到那条短信，到所有凭证重新归位、所有密码改成唯一值、Steam 也开了双重验证，前后花了大概三天。</p>
+<p>现在的状态是：主密码只记在脑子里，数据库文件存一份在手机一份在云盘做备份，每次新增账户都直接进 KeepassDX 生成随机密码——十六位起，字母数字符号混合。手机上的 Magikeyboard 自动填充，打开任何网站都不用手动敲密码。</p>
+<p>回头看那次被盗，本质上不是 Steam 的漏洞，是我自己用了十年的密码复用习惯在那天被人撞上了。KeepassDX 没有帮我阻止那次入侵，但它给了我一个干净的起点——不用再记四十七套密码，只用记一个；不用再担心某个网站被拖库会不会牵连其他账户，因为每个密码都不同。</p>
+<h2>收尾</h2>
+<p>写这篇文章的时候我顺手整理了一遍资料链接，分别同步到了三个代码托管平台：<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/KeepassDX" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/KeepassDX" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/KeepassDX" target="_blank" rel="noopener">GitCode</a>，国内用户选哪个顺手用哪个就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yousician.html">Yousician 翻底朝天：这五个隐藏功能 90% 的用户没碰过</a></h2>
+  <p class="card-desc">把 Yousician 从入门到进阶挖透，Practice 循环片段、Wait To Play、Auto-adjust 自动调速、唱歌移调、Vocal Range 校准——每一个都能改变练习效率</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vidhub-docs.html">VidHub 快问快答：多设备影视播放器 9 个最关心的问题一次说清</a></h2>
+  <p class="card-desc">VidHub 是什么人在用、怎么装、同步哪些数据、刮削怎么跑、WebDAV 有什么坑、要不要付费——整理成一篇问答速查，看完直接上手。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/trani-docs.html">我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤</a></h2>
+  <p class="card-desc">从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/keep-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Keep 安卓上手教程：从零到第一次跑完一次 AI 教练带练</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/keeta-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">圣保罗加班夜：我是怎么在陌生城市靠一个APP搞定一顿热饭的</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

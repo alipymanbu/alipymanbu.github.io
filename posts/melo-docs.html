@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>MELO 音乐创作的几个坑——过来人给你讲讲 · 老杨技术栈</title>
+  
+<meta name="description" content="MELO 上手门槛不高，但音色克隆卡壳、民乐像合成器、WAV 没存导致后期白做、iPad 装完有黑边……这些坑我踩过，给你捋捋症状、原因和解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/melo-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MELO 音乐创作的几个坑——过来人给你讲讲">
+<meta property="og:description" content="MELO 上手门槛不高，但音色克隆卡壳、民乐像合成器、WAV 没存导致后期白做、iPad 装完有黑边……这些坑我踩过，给你捋捋症状、原因和解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/melo-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/melo-docs/compare-review.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/melo-docs/compare-review.png">
+
+<meta name="twitter:title" content="MELO 音乐创作的几个坑——过来人给你讲讲">
+<meta name="twitter:description" content="MELO 上手门槛不高，但音色克隆卡壳、民乐像合成器、WAV 没存导致后期白做、iPad 装完有黑边……这些坑我踩过，给你捋捋症状、原因和解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "MELO \u4e0a\u624b\u95e8\u69db\u4e0d\u9ad8\uff0c\u4f46\u97f3\u8272\u514b\u9686\u5361\u58f3\u3001\u6c11\u4e50\u50cf\u5408\u6210\u5668\u3001WAV \u6ca1\u5b58\u5bfc\u81f4\u540e\u671f\u767d\u505a\u3001iPad \u88c5\u5b8c\u6709\u9ed1\u8fb9\u2026\u2026\u8fd9\u4e9b\u5751\u6211\u8e29\u8fc7\uff0c\u7ed9\u4f60\u634b\u634b\u75c7\u72b6\u3001\u539f\u56e0\u548c\u89e3\u6cd5\u3002", "headline": "MELO \u97f3\u4e50\u521b\u4f5c\u7684\u51e0\u4e2a\u5751\u2014\u2014\u8fc7\u6765\u4eba\u7ed9\u4f60\u8bb2\u8bb2", "image": ["https://alipymanbu.github.io/images/melo-docs/compare-review.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/melo-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/melo-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "MELO \u97f3\u4e50\u521b\u4f5c\u7684\u51e0\u4e2a\u5751\u2014\u2014\u8fc7\u6765\u4eba\u7ed9\u4f60\u8bb2\u8bb2", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">MELO 音乐创作的几个坑——过来人给你讲讲</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">MELO 音乐创作的几个坑——过来人给你讲讲</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">MELO 上手门槛不高，但音色克隆卡壳、民乐像合成器、WAV 没存导致后期白做、iPad 装完有黑边……这些坑我踩过，给你捋捋症状、原因和解法。</p>
+  </header>
+  <div class="prose">
+<p>第一次用<a href="https://melo.fwen.ren" target="_blank" rel="noopener">MELO官网</a>这款 AI 音乐创作工具的时候，我以为就是个"说几句话就能出歌"的玩具——界面干净，提示词框一填点生成，几十秒后还真出来一段像样的旋律。但连着玩了几天，各种奇奇怪怪的问题就冒出来了：音色克隆训练卡了快半小时才出来、生成的二胡像电子合成器扒出来的、iPad 装完四周一圈黑边……</p>
+<p>不是说这个软件不好，就是有几个地方它没给你打预防针，直接上手大概率会撞墙。我把踩过的几个坑整理一下，每个都讲清楚症状是什么、为什么会这样、怎么救或者怎么提前避开。</p>
+<h2>坑一：音色克隆训练卡壳超过十五分钟</h2>
+<p><strong>症状</strong>：提交了一段 30 多秒的录音，MELO 说"正在训练你的音色模型"，然后就没有然后了——进度条不动、等了 20 多分钟还没好。</p>
+<p><strong>原因</strong>：后来去<a href="https://melo-docs.pages.dev/" target="_blank" rel="noopener">MELO文档</a>翻了一下才搞明白，音色克隆的训练服务器不是完全独立的，高峰期（晚上八九点、周末下午）大家都在玩的时候负载就会飙上去。我第一次遇到的时候以为要重装软件，甚至去网上搜"MELO 克隆训练卡住怎么解决"，后来退出重进反而好了。</p>
+<p><strong>解法</strong>：别慌，先等等——超过 15 分钟才算真的卡。解决办法有三个：</p>
+<ul><li>直接退出创作界面再进来，有些版本会自动检测到你之前的训练进度</li><li>换个时间段再来，凌晨或者工作日白天成功率明显高</li><li>如果 MELO 支持取消训练，取消后重新提交一次（别覆盖，新建一个音色，保留旧的说不定哪天能用上）</li></ul>
+<h2>坑二：生成的民乐像合成器模拟的</h2>
+<p><strong>症状</strong>：提示词里写了"二胡独奏"，出来的确实有二胡的调子，但总觉得哪里不对——像是用电子合成器扒了个二胡的 MIDI，不是真实乐器的声音。</p>
+<p><strong>原因</strong>：我查了一下，MELO 里如果你只说"二胡"，它有时候会偷懒用合成器音色来凑。这个问题在民族乐器上特别明显，因为海外 AI 音乐工具本来对民乐支持就差，MELO 虽然针对中国民族乐器做了优化，但提示词里没给足信号的话它还是会选"安全"的合成器音色。</p>
+<p><strong>解法</strong>：提示词里<strong>必须加"真实民乐音色"或者"不要电子感"</strong>，比如把"间奏二胡独奏"改成"间奏用真实二胡独奏，滑音要自然，不要电子感"。另外，描述演奏方式也有帮助——"二胡的滑音独奏，慢慢拉上来再落下"比单纯说"二胡"效果好得多。</p>
+<p><img src="../images/melo-docs/compare-review.png" alt="民乐真实音色对比" loading="lazy"></p>
+<h2>坑三：只存了 MP3，后期想改做不了了</h2>
+<p><strong>症状</strong>：生成了一首很满意的歌，当时觉得 WAV 太大没必要只下了 MP3。过了一周想拖进 Logic Pro 做个 EQ 调整、加个混响，发现怎么调都出不来效果——某些高频细节已经被 MP3 压缩删掉了。</p>
+<p><strong>原因</strong>：MP3 是有损压缩格式，为了缩小文件体积会直接删掉人耳听不到（但后期有用）的高频细节。MELO 生成的音乐底层用的是专业级采样规格（44100Hz / 16bit 或更高），导出 WAV 就是把原始文件直接给你，没有经过任何压缩。但 MELO 云端会清理较旧的生成记录——等你想回去重新导 WAV 可能已经没了。</p>
+<p><strong>解法</strong>：养成一个习惯——<strong>生成完一次导 MP3 + WAV 两份</strong>。MP3 日常听、发朋友圈、做 BGM 没问题；WAV 存起来，哪天想做专业存档、进 DAW 混音或者发行到音乐平台都能用。也不费时间，就是多点一下导出 WAV 的按钮。</p>
+<h2>坑四：iPad 安装完四周有黑边</h2>
+<p><strong>症状</strong>：在 App Store 搜 MELO，iPad 上也能装，但装完打开发现界面只占中间一块，四周一圈黑边——放大模式也救不了。</p>
+<p><strong>原因</strong>：MELO 的 iOS 客户端是<strong>专门为 iPhone 设计的</strong>，iPad 没有做单独适配。App Store 允许 iPhone App 在 iPad 上安装，但默认是按 iPhone 的屏幕尺寸渲染然后放大填充，空白区域自然就是黑边。这个不是 bug，就是没适配。</p>
+<p><strong>解法</strong>：其实也没什么好解的——iPad 用 MELO 确实体验一般，目前<a href="https://melo.fwen.ren/download.html" target="_blank" rel="noopener">下载</a>的客户端只做了 iPhone 适配。如果想在大屏幕上玩，不如直接用浏览器打开 MELO 的网页端，网页版是自适应的，iPad Safari 打开满屏都是。我现在 iPad 上基本只用网页端。</p>
+<h2>坑五：唢呐炸场但炸得刺耳</h2>
+<p><strong>症状</strong>：提示词里写了"副歌唢呐炸场"，出来的唢呐确实挺炸——但音色尖锐刺耳，像在耳边吹了一声喇叭，完全是扰民级别的。</p>
+<p><strong>原因</strong>：MELO 默认把唢呐的高音区开得太满了，打击乐（锣鼓）的音量也偏大。如果你只说"炸场"，它会理解成"能有多吵就有多吵"，完全没考虑舒适度。</p>
+<p><strong>解法</strong>：在提示词里加约束词就行——把"副歌唢呐炸场"改成"副歌唢呐炸但不要刺耳，鼓点减半"。描述得越具体效果越好："唢呐的循环换气长音，中间不要断"比单纯说"唢呐"出来的音色控制就好很多。</p>
+<p><img src="../images/melo-docs/gallery-piece2.png" alt="唢呐炸场 vs 唢呐可控" loading="lazy"></p>
+<h2>防坑清单（30 秒快速过）</h2>
+<ul><li><strong>音色克隆别死等</strong>：超过 15 分钟就算卡，退出来重进或者换个时间段</li><li><strong>民乐必加"真实音色"</strong>：只说乐器名容易出合成器味，加一句"不要电子感"</li><li><strong>永远导 WAV 备份</strong>：MP3 够用但留 WAV，MELO 云端会清理旧记录</li><li><strong>iPad 用网页端</strong>：客户端没适配，网页端体验好得多</li><li><strong>唢呐锣鼓加约束</strong>：说"炸但不要刺耳"、"鼓点减半"来收住</li></ul>
+<p>知道这些坑之后，这软件其实相当省心——提示词写到位、多端互通、音色克隆玩腻了还能换预设音色试试不同风格。我后来搞明白了，AI 音乐工具的上限不取决于模型本身，更多取决于你会不会写提示词、会不会绕开工具的"偷懒"区域。MELO 就是一个明显的例子：它能出好东西，但得给它喂对指令。关于 MELO 的更多提示词模板和技术资料，我在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/MELO" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/MELO" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/MELO" target="_blank" rel="noopener">GitCode</a>上都同步了一份，国内用户搜 Gitee 或 GitCode 更方便。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xmol.html">我把每周追文献的三步走流程压成了一条自动链</a></h2>
+  <p class="card-desc">以前要手动刷十几本期刊、翻 Google Scholar、邮箱里翻 alert，现在一条链走完。讲怎么把 xmol 嵌进科研周更工作流，从盯文献到选刊投稿全打通。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/walkplay.html">凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了</a></h2>
+  <p class="card-desc">用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/usagi-zh-docs.html">Usagi 用了半年才踩明白的 5 个坑，第一个就差点让我放弃</a></h2>
+  <p class="card-desc">Usagi 看着是个清爽的阅读器 app，实际上手才发现里面藏着不少容易踩的小陷阱——授权失败、匹配不准、显示调伤眼，每一个都能把新人劝退。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/melia-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Melia 踩坑实录——五个让你欲哭无泪的手机版应用问题</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/meteoblue.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用 meteoblue 查天气，从完全不会到出门不淋雨</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

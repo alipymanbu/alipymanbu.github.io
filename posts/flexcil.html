@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Flexcil 避坑：那些看起来像功能 Bug 的小问题，其实都有解法 · 老杨技术栈</title>
+  
+<meta name="description" content="用 Flexcil 半年踩了四个大坑——打印批注消失、迁移丢文件、键盘快捷键失灵、模板换完内容错位，逐个讲清楚症状、原因和解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/flexcil.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flexcil 避坑：那些看起来像功能 Bug 的小问题，其实都有解法">
+<meta property="og:description" content="用 Flexcil 半年踩了四个大坑——打印批注消失、迁移丢文件、键盘快捷键失灵、模板换完内容错位，逐个讲清楚症状、原因和解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/flexcil.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/flexcil/flexcil-app-1024x628.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/flexcil/flexcil-app-1024x628.png">
+
+<meta name="twitter:title" content="Flexcil 避坑：那些看起来像功能 Bug 的小问题，其实都有解法">
+<meta name="twitter:description" content="用 Flexcil 半年踩了四个大坑——打印批注消失、迁移丢文件、键盘快捷键失灵、模板换完内容错位，逐个讲清楚症状、原因和解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528 Flexcil \u534a\u5e74\u8e29\u4e86\u56db\u4e2a\u5927\u5751\u2014\u2014\u6253\u5370\u6279\u6ce8\u6d88\u5931\u3001\u8fc1\u79fb\u4e22\u6587\u4ef6\u3001\u952e\u76d8\u5feb\u6377\u952e\u5931\u7075\u3001\u6a21\u677f\u6362\u5b8c\u5185\u5bb9\u9519\u4f4d\uff0c\u9010\u4e2a\u8bb2\u6e05\u695a\u75c7\u72b6\u3001\u539f\u56e0\u548c\u89e3\u6cd5\u3002", "headline": "Flexcil \u907f\u5751\uff1a\u90a3\u4e9b\u770b\u8d77\u6765\u50cf\u529f\u80fd Bug \u7684\u5c0f\u95ee\u9898\uff0c\u5176\u5b9e\u90fd\u6709\u89e3\u6cd5", "image": ["https://alipymanbu.github.io/images/flexcil/flexcil-app-1024x628.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/flexcil.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/flexcil.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Flexcil \u907f\u5751\uff1a\u90a3\u4e9b\u770b\u8d77\u6765\u50cf\u529f\u80fd Bug \u7684\u5c0f\u95ee\u9898\uff0c\u5176\u5b9e\u90fd\u6709\u89e3\u6cd5", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Flexcil 避坑：那些看起来像功能 Bug 的小问题，其实都有解法</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Flexcil 避坑：那些看起来像功能 Bug 的小问题，其实都有解法</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用 Flexcil 半年踩了四个大坑——打印批注消失、迁移丢文件、键盘快捷键失灵、模板换完内容错位，逐个讲清楚症状、原因和解法。</p>
+  </header>
+  <div class="prose">
+<p>Flexcil 这款手写笔记 + PDF 批注工具，我用了快半年。一开始是在它的<a href="https://flexcil.ggcd.store" target="_blank" rel="noopener">官网</a>上看到介绍，冲着 iPad 手写体验和 Android 端键盘快捷键支持入坑的，结果用着用着发现——这软件看着简单，其实有几个坑，如果没提前注意，轻则白忙活半小时，重则整个笔记库废掉。</p>
+<p>这篇就是把我踩过的坑挨个摊开讲，每个都讲清楚我当时看到什么不对劲、为什么会这样、怎么救或者怎么提前避开。用得上就顺手拿走，别像我一样一个一个试错。</p>
+<p><img src="../images/flexcil/flexcil-app-1024x628.png" alt="Flexcil 主界面" loading="lazy"></p>
+<h2>坑一：打印出来批注全没了</h2>
+<p>这个坑我第一踩就懵了。那天用 Flexcil 给一份 PDF 做了很多批注——高亮、下划线、手写笔记都有，想打印出来带走。在 Flexcil 里点了打印，走系统的打印流程，结果拿到纸一看：干干净净一张原文，我花了一小时加的批注一条都没出现。</p>
+<p>一开始以为是打印机的问题，换了台打印机还是不行。又以为是 Flexcil 的打印入口有 bug，来回试了好多次。最后翻了<a href="https://flexcil.pages.dev/" target="_blank" rel="noopener">Flexcil文档</a>才明白——<strong>Android 端部分打印机或打印 App 不能正确处理 Flexcil 批注层</strong>。Flexcil 的批注是独立于 PDF 正文的层，某些打印驱动渲染 PDF 时只抓了正文层，批注那层就被忽略了。</p>
+<p>解法很简单：不要直接打印，先导出为<strong>展平 PDF</strong>，再用系统打印功能打印这个展平后的文件。展平就是把批注层和正文层合成一张静态图，打印机拿到的就是一份完整的 PDF，不会漏东西。我后来每次打印都先走一遍展平导出，再也没出过问题。</p>
+<p>如果你在其他 PDF 阅读器里能看到批注但打印时没有，基本就是这个问题，直接展平是最稳的方案。</p>
+<h2>坑二：版本迁移后 PDF 和笔记对不上</h2>
+<p>去年底 Flexcil 2 发布，官方说购买过 Flexcil 1 标准版的用户可以免费升级。我高高兴兴在 Google Play 更新了——其实除了应用商店，也能从<a href="https://flexcil.ggcd.store/download.html" target="_blank" rel="noopener">Flexcil下载</a>拿到安装包，国内网络环境下反而更快。然后点开 Flexcil 2 选了"迁移 Flexcil 1 数据"，按提示找到备份文件等了几分钟。迁移完成，打开旧笔记一看——PDF 页面是空的，笔记里引用的 PDF 页全断了，只剩手写的笔记内容飘在那儿。</p>
+<p>查了官方的已知问题列表，主要有两个原因：一是<strong>备份文件损坏</strong>——如果备份过程没完整跑完就中断，备份文件里 PDF 和笔记的引用关系就断了，迁移过去自然对不上；二是早期 Flexcil 1 的备份格式本身就有 bug，迁移到 Flexcil 2 时引用会丢失。</p>
+<p>怎么救？首先，迁移前一定要在 Flexcil 1 里确认备份进度条跑完了再退出，不要中途切 App。如果已经迁坏了，有备份好的完整文件的话，删了 Flexcil 2 重装，重新走一遍完整备份 → 迁移的流程。没有备份的话，只能去支持中心搜"数据迁移错误"，官方有针对不同情况的恢复脚本。</p>
+<p>我的教训是：跨大版本迁移之前，<strong>全量备份两次</strong>——一份留在原设备的本地，一份拷到电脑上。别嫌麻烦，丢过一次笔记的人都懂。</p>
+<h2>坑三：外接键盘快捷键失灵</h2>
+<p>我日常用蓝牙键盘接 Android 设备操作 Flexcil，键盘快捷键确实能大幅提升效率——比如 Control + Tab 切标签、Alt + O 打开文件管理器、Control + Alt + A 打开批注菜单。但有几次我按快捷键完全没反应，或者反而触发了系统的某个功能，白白浪费时间。</p>
+<p>最常见的一种情况是<strong>手势/笔模式切换键和系统快捷键冲突</strong>。Flexcil 里手势和笔模式的切换是 <code>Control + &#x27;</code>，但某些 Android 系统版本把这个组合键分配给了别的功能——比如切换输入法或打开语言设置。我第一次遇到时以为要重装 Flexcil，后来才发现问题在系统层。</p>
+<p>还有一种情况是<strong>菜单被隐藏后，部分快捷键会失效</strong>。比如 Shift + Tab 是显隐菜单，如果你不小心把菜单藏起来了，此时一些依赖菜单弹出的快捷键就按不动了。先按 Shift + Tab 把菜单叫出来，再试快捷键，通常就恢复正常了。</p>
+<p>我现在的做法是：接键盘后先试一遍模式切换和菜单显隐这两个最基础的快捷键，确认没问题再批量操作。一旦某个键失灵，先排除系统冲突，再检查菜单状态，不用急着重启 App。</p>
+<p><img src="../images/flexcil/flexcil-app-400x516.png" alt="Flexcil 键盘快捷键对照" loading="lazy"></p>
+<h2>坑四：换了模板之后内容错位</h2>
+<p>Flexcil 新建笔记时让你选模板——空白、点阵、方格、横线，还有季度规划、日计划这些。我一开始贪新鲜，先建了个方格笔记写了几页数学公式，觉得方格不够看，后来长按笔记选了"更换模板"换成了点阵。换完打开一看——原来方格上写的公式歪歪扭扭，有些行飞离了网格，嵌入的 PDF 页也被拉长变形了。</p>
+<p>原因其实不复杂：<strong>不同模板的页面尺寸和网格密度不一样</strong>。方格模板的网格间距是 5mm，点阵是 10mm，模板一换，Flexcil 把原内容硬套进新网格里，手写内容和 PDF 页就会错位。而且某些计划模板的页面比例跟空白模板不同，PDF 页面放进去会被强制缩放。</p>
+<p>解法很实在：模板尽量在<strong>新建笔记的那一刻就选好</strong>，写了内容之后尽量别换。如果一定要换，先在原模板下导出一份备份，换完模板检查一遍内容，有错位的话还能回退。另外，嵌入 PDF 的笔记最好用空白或方格模板，别用比例差异大的计划类模板，PDF 页面被拉伸的概率会小很多。</p>
+<h2>防坑清单</h2>
+<p>把上面四个坑浓缩成几句话，每次用 Flexcil 前扫一眼：</p>
+<ol><li><strong>打印前先展平</strong>，别直接打，展平导出再上打印机最稳</li><li><strong>大版本迁移前全量备份两次</strong>，一份本地一份电脑，别嫌麻烦</li><li><strong>键盘快捷键先试基础组合</strong>，确认没和系统冲突再批量操作</li><li><strong>模板一开始就定好</strong>，写了内容之后尽量不换，嵌入 PDF 别用计划模板</li><li><strong>菜单隐藏后快捷键可能失效</strong>，先 Shift + Tab 叫出来再按</li></ol>
+<p>知道这些坑之后，Flexcil 其实相当省心。手写体验、批注功能、多设备同步该有的都有——只要提前避开上面这几个雷，日常用下来基本不会出什么幺蛾子。另外这套资料我在 GitHub、Gitee、GitCode 三处都留了备份，国内访问或备份的话可以顺手转到对应仓库：<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Flexcil" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Flexcil" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Flexcil" target="_blank" rel="noopener">GitCode</a>。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/flai-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">FLAI 到底值不值得掏钱？一份把账算到骨头里的付费决策账本</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/flipaclip-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">手机上能做出像样的动画？FlipaClip 从零上手实战</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

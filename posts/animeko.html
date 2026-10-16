@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用了 Animeko 两年才挖透——那些藏得真深的追番体验彩蛋 · 老杨技术栈</title>
+  
+<meta name="description" content="Animeko 不只是一个在线看番的壳子，翻到底层能挖出好几个官方不怎么宣传的隐藏功能：自动跳 OP/ED、画面拉伸四档切换、离线缓存静默同步……每一个都在悄悄改变追番的爽感上限。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/animeko.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用了 Animeko 两年才挖透——那些藏得真深的追番体验彩蛋">
+<meta property="og:description" content="Animeko 不只是一个在线看番的壳子，翻到底层能挖出好几个官方不怎么宣传的隐藏功能：自动跳 OP/ED、画面拉伸四档切换、离线缓存静默同步……每一个都在悄悄改变追番的爽感上限。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/animeko.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/animeko/ui-more-1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/animeko/ui-more-1.png">
+
+<meta name="twitter:title" content="用了 Animeko 两年才挖透——那些藏得真深的追番体验彩蛋">
+<meta name="twitter:description" content="Animeko 不只是一个在线看番的壳子，翻到底层能挖出好几个官方不怎么宣传的隐藏功能：自动跳 OP/ED、画面拉伸四档切换、离线缓存静默同步……每一个都在悄悄改变追番的爽感上限。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Animeko \u4e0d\u53ea\u662f\u4e00\u4e2a\u5728\u7ebf\u770b\u756a\u7684\u58f3\u5b50\uff0c\u7ffb\u5230\u5e95\u5c42\u80fd\u6316\u51fa\u597d\u51e0\u4e2a\u5b98\u65b9\u4e0d\u600e\u4e48\u5ba3\u4f20\u7684\u9690\u85cf\u529f\u80fd\uff1a\u81ea\u52a8\u8df3 OP/ED\u3001\u753b\u9762\u62c9\u4f38\u56db\u6863\u5207\u6362\u3001\u79bb\u7ebf\u7f13\u5b58\u9759\u9ed8\u540c\u6b65\u2026\u2026\u6bcf\u4e00\u4e2a\u90fd\u5728\u6084\u6084\u6539\u53d8\u8ffd\u756a\u7684\u723d\u611f\u4e0a\u9650\u3002", "headline": "\u7528\u4e86 Animeko \u4e24\u5e74\u624d\u6316\u900f\u2014\u2014\u90a3\u4e9b\u85cf\u5f97\u771f\u6df1\u7684\u8ffd\u756a\u4f53\u9a8c\u5f69\u86cb", "image": ["https://alipymanbu.github.io/images/animeko/ui-more-1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/animeko.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/animeko.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528\u4e86 Animeko \u4e24\u5e74\u624d\u6316\u900f\u2014\u2014\u90a3\u4e9b\u85cf\u5f97\u771f\u6df1\u7684\u8ffd\u756a\u4f53\u9a8c\u5f69\u86cb", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">用了 Animeko 两年才挖透——那些藏得真深的追番体验彩蛋</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用了 Animeko 两年才挖透——那些藏得真深的追番体验彩蛋</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Animeko 不只是一个在线看番的壳子，翻到底层能挖出好几个官方不怎么宣传的隐藏功能：自动跳 OP/ED、画面拉伸四档切换、离线缓存静默同步……每一个都在悄悄改变追番的爽感上限。</p>
+  </header>
+  <div class="prose">
+<h2>引子：你以为它只是个"又一个看番的"？</h2>
+<p>说实话，刚开始在<a href="https://animeko.gltd.quest" target="_blank" rel="noopener">Animeko官网</a>上手时我也这么想——网页版、聚合几个源、能看弹幕，和市面上一堆同类比起来没什么新鲜的。但架不住它更新勤快，从<a href="https://animeko.gltd.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包后 v5.x 一路迭代下来，我在各种犄角旮旯里挖到好几个"官方都不单独写进更新日志亮点"的功能。</p>
+<p>这些东西不是什么惊天动地的大模块，但就是那种"你一旦知道了就再也回不去"的体验细节。今天把我翻了两年才攒到的私藏全说出来。</p>
+<h2>隐藏功能一：自动跳 OP/ED——不是手动标记，是服务端替你记了时间</h2>
+<p>这个功能藏得有多深？开关在<strong>播放页的设置面板里</strong>，不是全局设置，而且默认是关的。我是某次连追新番时手滑点了播放页的齿轮图标才发现的。</p>
+<p>原理比我想象的狠——Animeko 内置了一份 OP/ED 时间标记数据库，不是让用户自己拉进度条标记，而是<strong>服务端维护的</strong>。播放某一集时自动匹配这部番在数据库里有没有标记，有就到点直接跳。</p>
+<p>覆盖范围是"<strong>部分新番</strong>"，官方没吹这个，但当季热门番基本都有，冷门新番和老番就别指望了。不过有了就是巨大体验提升——我之前追某个 24 集的新番，每集 OP 两分半、ED 一分半，全程手动拖进度拖了 12 次，发现这个功能后后半季直接连播加自动跳，一次操作都没做。</p>
+<p>要注意和"连播下一集"是两个独立开关，分开的好处是你可以只开连播不开跳，或者只开跳不开连播。两个一起开就是真正的"全自动追番模式"。</p>
+<h2>隐藏功能二：画面拉伸四档——老番党会哭的</h2>
+<p>v5.3.1 加的，藏在同一个播放页设置面板里。四种填充方式不是简单的"拉伸/不拉伸"二选一：</p>
+<ul><li><strong>保持比例</strong>——老番 4:3 在宽屏上左右黑边，画质完全不伤</li><li><strong>裁剪填充</strong>——画面填满屏幕但裁掉一点边缘，适合不介意损失半帧画面的人</li><li><strong>水平拉伸 / 垂直拉伸</strong>——只拉一个方向，用来修正那些本身就被源拉伸过的奇怪比例</li></ul>
+<p>桌面端还能<strong>快捷键快速切换</strong>——不用打开设置面板，按几下就能找到最舒服的填充方式。这个偏好是本机存的，不会跟着 Bangumi 账号同步，但可以通过 v5.1.0 起就有的"导入导出设置"搬到新设备上。</p>
+<p>经典老番的 4:3 画面在 16:9 屏上永远是个问题，要么黑边要么变形，Animeko 这四档给了中间地带——裁剪填充牺牲一点边缘换满屏体验，保持比例留黑边换画质，自己选。</p>
+<p><img src="../images/animeko/ui-more-1.png" alt="老番4:3比例在宽屏上的四种填充效果对比" loading="lazy"></p>
+<h2>隐藏功能三：离线缓存 + 静默同步——地铁上看完一整季，联网后自动写进 Bangumi</h2>
+<p>这个我用了快一年才搞明白完整逻辑。Animeko 绑定 Bangumi 账号后，观看进度的默认行为是自动同步，但<strong>离线场景的处理</strong>藏得很深：</p>
+<p>完全断网时（地铁、飞机、深山老林），进度更新先写在<strong>本机数据库</strong>里——你看完一整集、看到第 5 集第 12 分 34 秒，这些都先存着。恢复网络后，Animeko 在后台静默把积压的进度推送到 Bangumi，通常几秒就完，完全不打扰你正在看的内容。</p>
+<p>所以"离线缓存看番会不会丢进度"这个问题的答案是：<strong>不会，联网自动补</strong>。唯一的前提是登录态没过期——登录态过期需要联网刷新，离线状态下过期了就暂时不能同步，等联网再登录一次就行。</p>
+<p>还有一个冷知识：<strong>多设备同时看同一部番时，Bangumi 取的是最大进度</strong>——A 设备看到第 5 集、B 设备看到第 8 集，两边最终都会显示第 8 集。这个逻辑是 Bangumi 侧的，不是 Animeko 决定的，但知道了就不会在设备之间切换时困惑"我的进度怎么跳了"。</p>
+<p><img src="../images/animeko/cloud-sync-progress.png" alt="跨设备观看进度自动同步到 Bangumi 收藏列表" loading="lazy"></p>
+<h2>隐藏功能四：缓存可以跨版本升级——踩过一次坑才知道升级前要备份</h2>
+<p>这个严格来说不是"隐藏功能"，是一个<strong>避坑点</strong>——但知道了就能省一堆麻烦。</p>
+<p>v5.3.1 做过一次缓存引擎重构，官方更新日志里用感叹号加粗提醒：「更新会导致缓存失效，请提前备份」。旧缓存格式和新引擎完全不兼容，升级后所有旧缓存自动清理，而且<strong>备份了也没用——格式不兼容，新引擎认不出来</strong>。</p>
+<p>那次我直接升了，几百集缓存没了，还花了一周重新下冷门番才补回来。后来养成了一个习惯：<strong>升级前扫一眼更新日志</strong>，重点看有没有「缓存/数据相关的重大变更」「需要手动操作的一次性步骤」「标了感叹号或 ⚠️ 的警告」。Animeko 的<a href="https://animeko.pages.dev/" target="_blank" rel="noopener">中文文档</a>里把这些注意事项都整理好了，花 30 秒能省好几个小时。</p>
+<p>好消息是 v5.3.1 之后引擎稳定了，后续版本（v5.3.2 → v5.4.x → v5.5.x → v6.x）的升级<strong>不会再清缓存</strong>，以后不用再怕了。</p>
+<h2>隐藏功能五：弹幕也缓存——离线也能看到上次的弹幕池</h2>
+<p>这个没写在任何更新日志里，是我某次断网看缓存视频时偶然发现的：Animeko 会把弹幕缓存文件和视频一起存，离线看缓存的时候，上次加载的弹幕还能正常显示。</p>
+<p>弹幕缓存是本机文件，换设备不会同步——但在同一设备上，离线看番体验是完整的：视频、弹幕、进度、甚至上次的播放位置，全在。</p>
+<p>要注意的是弹幕缓存和视频缓存是分开的，如果你手动清理缓存时只删了弹幕缓存，离线看就没有弹幕了。设置里可以分开管理这两类缓存。</p>
+<h2>收尾：把它用透的态度</h2>
+<p>Animeko 这种产品，好用的地方从来不是"它有某某功能"，而是"你能不能在它给的所有选项里找到最适合自己的那个组合"。自动跳 OP/ED + 连播 + 离线缓存 + 静默同步，这四个开一起就是"拿起来就能看、放下自动续、换设备无缝接"的追番闭环。</p>
+<p>挖隐藏功能这件事本身就是一种乐趣——每个版本更新都值得翻一遍设置面板，说不定又藏了什么新彩蛋。</p>
+<hr>
+<p>Animeko 的核心资料在公开仓库也能拿到，<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Animeko" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Animeko" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Animeko" target="_blank" rel="noopener">GitCode</a> 三个镜像仓库都同步维护了完整的中文文档和版本记录，跨平台用户选哪个方便下哪个就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yeelight.html">用了三年 Yeelight 才发现：这五个隐藏玩法官方根本没宣传</a></h2>
+  <p class="card-desc">你以为 Yeelight 只是个能调色的 Wi-Fi 灯泡？IFTTT 条件触发、局域网控制、预设模式二次加工……这些藏在菜单深处的功能，把智能灯的天花板往上抬了一大截。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wenet-docs.html">WeNet 这一路：从宿舍网口到全平台认证，它是怎么把校园网变简单的</a></h2>
+  <p class="card-desc">一个校园网客户端的迭代逻辑——从最早可能只是一个拨号器，到现在覆盖手机、电脑、有线无线，甚至教你怎么找开通的网口。我们拆开看看它这几年在死磕什么。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webcat-docs.html">WebCat 离线开发的底层设计：为什么它能在地铁里把代码写完</a></h2>
+  <p class="card-desc">一个手机上的开发工具凭什么敢主打&#34;完全离线&#34;？本文拆解 WebCat 的本地化架构选择，理解它把编辑器、运行时、打包器全部塞进 APK 的技术取舍与代价边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/anifun.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">每周追番两小时压缩到二十分钟：我用 AniFun 搭了一条季度追番流水线</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/animoe-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Animoe 快问快答：装之前先把这九件事搞清楚</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

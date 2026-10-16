@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>RPCS3 入坑前必看的四个翻车现场 · 老杨技术栈</title>
+  
+<meta name="description" content="看着解压即用，其实暗藏四个让新人反复重装的坑——解压位置、运行库、锁帧误区、兼容等级误读，每个都踩过才算真入门。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/rpcs3.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RPCS3 入坑前必看的四个翻车现场">
+<meta property="og:description" content="看着解压即用，其实暗藏四个让新人反复重装的坑——解压位置、运行库、锁帧误区、兼容等级误读，每个都踩过才算真入门。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/rpcs3.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/rpcs3/main-window-file-menu.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/rpcs3/main-window-file-menu.png">
+
+<meta name="twitter:title" content="RPCS3 入坑前必看的四个翻车现场">
+<meta name="twitter:description" content="看着解压即用，其实暗藏四个让新人反复重装的坑——解压位置、运行库、锁帧误区、兼容等级误读，每个都踩过才算真入门。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u770b\u7740\u89e3\u538b\u5373\u7528\uff0c\u5176\u5b9e\u6697\u85cf\u56db\u4e2a\u8ba9\u65b0\u4eba\u53cd\u590d\u91cd\u88c5\u7684\u5751\u2014\u2014\u89e3\u538b\u4f4d\u7f6e\u3001\u8fd0\u884c\u5e93\u3001\u9501\u5e27\u8bef\u533a\u3001\u517c\u5bb9\u7b49\u7ea7\u8bef\u8bfb\uff0c\u6bcf\u4e2a\u90fd\u8e29\u8fc7\u624d\u7b97\u771f\u5165\u95e8\u3002", "headline": "RPCS3 \u5165\u5751\u524d\u5fc5\u770b\u7684\u56db\u4e2a\u7ffb\u8f66\u73b0\u573a", "image": ["https://alipymanbu.github.io/images/rpcs3/main-window-file-menu.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/rpcs3.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/rpcs3.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "RPCS3 \u5165\u5751\u524d\u5fc5\u770b\u7684\u56db\u4e2a\u7ffb\u8f66\u73b0\u573a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">RPCS3 入坑前必看的四个翻车现场</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">RPCS3 入坑前必看的四个翻车现场</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">看着解压即用，其实暗藏四个让新人反复重装的坑——解压位置、运行库、锁帧误区、兼容等级误读，每个都踩过才算真入门。</p>
+  </header>
+  <div class="prose">
+<h2>开头：我以为装个模拟器能有多难</h2>
+<p>第一次碰 RPCS3 是在一台朋友的老台式上。那时候刚迷上《神秘海域》的画面片段，搜到它的<a href="https://rpcs3.yoan.quest" target="_blank" rel="noopener">官网</a>上明确标注了 PC 版可用，兴冲冲下了压缩包往 Program Files 一扔，双击——界面是出来了，但每次改完设置关掉重开，全部回到默认值。我以为是压缩包损坏，重下三次还是一样，最后差点放弃。</p>
+<p>后来才发现，这种"看着简单其实有坑"的情况，在 RPCS3 身上至少能列出四个。每个我都踩过，有些还不止一次。写下来是希望你别再走老路。</p>
+<h2>坑一：解压到 Program Files，然后设置存不上</h2>
+<p><strong>症状</strong>：改完分辨率、渲染器选项，关掉模拟器重开，全部还原。有时候连缓存生成都失败，启动日志里全是拒绝写入的错误。</p>
+<p><strong>原因</strong>：我一开始以为是模拟器本身的 bug，实际上是 Windows 的 UAC 权限机制在搞事。RPCS3 配置文件、缓存、日志全部写在它自己的安装目录下，不是 AppData 也不是用户目录。把它塞进 Program Files（哪怕是 64 位的那个），写入操作会被系统静默拦截或者重定向到一个你找不到的虚拟路径。</p>
+<p><strong>解法</strong>：解压的时候就选对地方。推荐一个独立目录，比如 <code>D:\rpcs3\</code>，路径里尽量别带中文（中文路径偶尔会让某些游戏的资源加载出怪毛病）。我自己现在就老老实实放在 D 盘根目录下，用了两年没再碰过权限问题。</p>
+<p>还有一件事值得提：不要下任何"捆绑安装版"或者"高速下载器"。RPCS3 本身是纯解压即用的开源项目，根本不需要安装器。第三方安装包几乎可以肯定是挂了东西的假货。认准<a href="https://rpcs3.yoan.quest/download.html" target="_blank" rel="noopener">官方下载</a>就好。</p>
+<p><img src="../images/rpcs3/main-window-file-menu.png" alt="解压目录建议：选一个权限宽松的独立路径" loading="lazy"></p>
+<h2>坑二：启动直接报缺 DLL，然后到处找补丁</h2>
+<p><strong>症状</strong>：双击 exe，瞬间弹一个错误框，大意是"找不到 VCRUNTIME140.dll"，或者类似的运行库缺失提示。</p>
+<p><strong>原因</strong>：Windows 默认并不自带 Visual C++ 2022 运行库。RPCS3 的底层用了这套运行时，缺它就起不来。我当时的第一反应是去 C 站下一个单独的 dll 文件往 System32 里塞——这是很多人下意识的操作，也是最危险的操作。从不知名站点下的 dll 很可能被篡改，而且系统级的替换操作本身就可能触发反作弊或者安全软件的警觉。</p>
+<p><strong>解法</strong>：老老实实去微软官方支持页下载 Visual C++ Redistributable 的 x64 版本，装完重启电脑就行。这是一个几十 MB 的官方安装包，装一次终身受益。同样需要留意的还有显卡驱动——Vulkan 渲染器依赖较新的驱动，下拉列表里找不到 Vulkan 选项的时候，先检查驱动是不是最新的，不要急着换渲染器。</p>
+<h2>坑三：把模拟器锁帧当 60 帧补丁用</h2>
+<p><strong>症状</strong>：30 帧的游戏强行锁到 60，画面是流畅了，但角色走路像在溜冰、格斗游戏连招对不上判定窗口、竞速游戏计时器跑飞。我第一次在《鬼泣》里把锁帧开到 60，结果所有敌人的攻击都提前半拍打过来，完全没法玩。</p>
+<p><strong>原因</strong>：这是 RPCS3 的 Frame Limit 选项最容易被误解的一点。模拟器的锁帧，本质是给 GPU 输出加一个节拍器——帧数高于限值时等待。但 PS3 当年的游戏，物理引擎、碰撞判定、计时器几乎全部按固定帧率精心调校。你强行锁到一个游戏没预期的值，就等于把整套游戏内部逻辑的时间轴打乱了。</p>
+<p><strong>解法</strong>：Frame Limit 只该用在"游戏本来就能跑满 60 帧，偶尔掉帧想稳住"的场景。想让 30 帧游戏真的跑到 60，正确工具是<strong>社区 60 帧补丁</strong>——这些补丁修改了游戏内部逻辑，让物理和判定也按 60 帧走。在游戏列表里右键，找到补丁管理，拉一下最新补丁库就能看到社区已经做好的补丁清单。版本要对上，否则不生效或者出新 bug。</p>
+<p>记住这个区分：模拟器锁帧 = 遮丑用的，补丁 = 正道。</p>
+<p><img src="../images/rpcs3/settings-gpu-tab.png" alt="GPU 设置页里的帧率限制与补丁入口" loading="lazy"></p>
+<h2>坑四：看见"可玩"二字就开跑，然后被兼容性扇脸</h2>
+<p><strong>症状</strong>：对着官方兼容表的"可玩"等级兴冲冲加载进去，结果要么过场动画全程闪烁、要么存档界面一打开就崩溃、要么玩到一半突然闪退丢了进度。我在《最终幻想 XIII》上栽过一次——兼容表标可玩，但存档界面的渲染有个已知 bug，一打开就闪退。</p>
+<p><strong>原因</strong>：RPCS3 的兼容等级是个五档体系（可玩、进游戏、进开场、能加载、无反应），但"可玩"只代表"流程走得通，没有硬性障碍"，不代表"满速、无已知 bug、存档安全"。每个游戏的详情页里其实还藏着已知问题清单、推荐设置、版本备注这些关键信息——我当时没看，直接按等级字面理解了。</p>
+<p>还有一个容易误读的点：等级描述的是"当前最新构建"。同一个游戏半年前的等级和现在可能完全不同，别把去年搜到的博客文章里的结论当作今年的真相。</p>
+<p><strong>解法</strong>：查兼容表之前，先翻一遍<a href="https://rpcs3.pages.dev/" target="_blank" rel="noopener">rpcs3文档</a>里每个游戏的详情页——已知问题、推荐设置、版本备注都写在那里。存档操作尽量在每次大里程碑之后做一次，不要赌"可玩"就等于零 bug。另外"可玩"也不代表"满速"——等级解决能不能玩，你的 CPU 配置解决顺不顺，这是两件事，都要查。</p>
+<h2>防坑清单（一句话速查）</h2>
+<ul><li><strong>解压位置选独立盘根目录</strong>，别塞 Program Files，别带中文路径。</li><li><strong>缺 DLL 就装微软官方 VC++ 运行库</strong>，别去 C 站找单独文件。</li><li><strong>30 帧想变 60 用社区补丁</strong>，模拟器锁帧只给本来就能 60 帧的游戏稳速。</li><li><strong>兼容等级只表示流程能走通</strong>，每个游戏的已知问题和推荐设置一定要看。</li><li><strong>下载渠道只认官方</strong>，任何第三方"高速下载器"都是假货。</li></ul>
+<h2>最后</h2>
+<p>知道这些坑之后，RPCS3 其实是个相当省心的项目——解压即用，滚动发版，社区补丁生态也活跃。这篇文章里提到的这些避坑经验和项目资料，我同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/rpcs3" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/rpcs3" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/rpcs3" target="_blank" rel="noopener">GitCode</a> 三个仓库，毕竟国内各平台访问差异大，多份备份总不是坏事。踩过这几个坑，后面就是踏踏实实玩游戏了。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yousician.html">Yousician 翻底朝天：这五个隐藏功能 90% 的用户没碰过</a></h2>
+  <p class="card-desc">把 Yousician 从入门到进阶挖透，Practice 循环片段、Wait To Play、Auto-adjust 自动调速、唱歌移调、Vocal Range 校准——每一个都能改变练习效率</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vidhub-docs.html">VidHub 快问快答：多设备影视播放器 9 个最关心的问题一次说清</a></h2>
+  <p class="card-desc">VidHub 是什么人在用、怎么装、同步哪些数据、刮削怎么跑、WebDAV 有什么坑、要不要付费——整理成一篇问答速查，看完直接上手。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/trani-docs.html">我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤</a></h2>
+  <p class="card-desc">从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/rotation-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">还在手动切横竖屏？Rotation 把自动旋转这件事做对了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/runway-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">翻了三天设置菜单，我挖出了这款修图 App 藏得最深的五个冷门用法</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

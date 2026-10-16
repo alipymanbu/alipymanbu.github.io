@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Gator 用了三个月，踩过的那些让人以为要重装的坑 · 老杨技术栈</title>
+  
+<meta name="description" content="Gator 看着就是个清理工具，其实里面藏着好几个 Android 系统层面的限制，第一次遇到时差点以为软件坏了。这篇把踩过的坑和绕法整理一下，省得你跟我一样走弯路。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/gator-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gator 用了三个月，踩过的那些让人以为要重装的坑">
+<meta property="og:description" content="Gator 看着就是个清理工具，其实里面藏着好几个 Android 系统层面的限制，第一次遇到时差点以为软件坏了。这篇把踩过的坑和绕法整理一下，省得你跟我一样走弯路。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/gator-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/gator-docs/screenshot-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/gator-docs/screenshot-1.jpg">
+
+<meta name="twitter:title" content="Gator 用了三个月，踩过的那些让人以为要重装的坑">
+<meta name="twitter:description" content="Gator 看着就是个清理工具，其实里面藏着好几个 Android 系统层面的限制，第一次遇到时差点以为软件坏了。这篇把踩过的坑和绕法整理一下，省得你跟我一样走弯路。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Gator \u770b\u7740\u5c31\u662f\u4e2a\u6e05\u7406\u5de5\u5177\uff0c\u5176\u5b9e\u91cc\u9762\u85cf\u7740\u597d\u51e0\u4e2a Android \u7cfb\u7edf\u5c42\u9762\u7684\u9650\u5236\uff0c\u7b2c\u4e00\u6b21\u9047\u5230\u65f6\u5dee\u70b9\u4ee5\u4e3a\u8f6f\u4ef6\u574f\u4e86\u3002\u8fd9\u7bc7\u628a\u8e29\u8fc7\u7684\u5751\u548c\u7ed5\u6cd5\u6574\u7406\u4e00\u4e0b\uff0c\u7701\u5f97\u4f60\u8ddf\u6211\u4e00\u6837\u8d70\u5f2f\u8def\u3002", "headline": "Gator \u7528\u4e86\u4e09\u4e2a\u6708\uff0c\u8e29\u8fc7\u7684\u90a3\u4e9b\u8ba9\u4eba\u4ee5\u4e3a\u8981\u91cd\u88c5\u7684\u5751", "image": ["https://alipymanbu.github.io/images/gator-docs/screenshot-1.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/gator-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/gator-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Gator \u7528\u4e86\u4e09\u4e2a\u6708\uff0c\u8e29\u8fc7\u7684\u90a3\u4e9b\u8ba9\u4eba\u4ee5\u4e3a\u8981\u91cd\u88c5\u7684\u5751", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">Gator 用了三个月，踩过的那些让人以为要重装的坑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Gator 用了三个月，踩过的那些让人以为要重装的坑</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Gator 看着就是个清理工具，其实里面藏着好几个 Android 系统层面的限制，第一次遇到时差点以为软件坏了。这篇把踩过的坑和绕法整理一下，省得你跟我一样走弯路。</p>
+  </header>
+  <div class="prose">
+<p><a href="https://gator.ggcd.uno" target="_blank" rel="noopener">Gator官网</a>把它定位成一款专注于 Android 设备的轻量清理工具，我手机上装了快半年，日常用着确实省心——扫一遍垃圾、清一下缓存，存储空间说多就多。但说实话，从<a href="https://gator.ggcd.uno/download.html" target="_blank" rel="noopener">官方下载</a>下来安装好，刚跑起来就踩了好几个坑，其中有两次差点把它卸载重装，以为是软件本身出了 bug。后来才发现，几乎所有的"不对劲"都不是 Gator 的问题，而是 Android 系统层面的限制和设计。</p>
+<p>这篇就把我踩过的坑按印象深刻程度排一下，每个都讲清楚"你看到的现象 → 为什么会这样 → 怎么绕过去"，看完基本能避开 80% 的折腾。</p>
+<p><img src="../images/gator-docs/screenshot-1.jpg" alt="Gator 主界面截图" loading="lazy"></p>
+<h2>坑一：Scheduler 到点不清理——不是定时器坏了，是系统杀了它</h2>
+<p>第一个坑就是自动清理不触发。我装完 Gator 设了每天凌晨三点自动跑 System Cleaner，等了两天看清理历史，一条记录都没有。手动点开跑是正常的，说明 Gator 本身没坏，但定时就是不执行。</p>
+<p>一开始我怀疑是不是 Scheduler 配置错了，反复进去检查时间、勾选的清理项，甚至把频率改成"每小时一次"来测，锁屏放一夜起来还是零记录。</p>
+<p>症状就是这么个症状，原因其实很无奈：<strong>Android 的后台管理策略把 Gator 杀掉了</strong>。尤其是 MIUI、ColorOS、OneUI 这些定制系统，后台闲置超过一定时间就会清理进程、收回权限。Scheduler 依赖 Gator 的后台定时器活着，进程一杀，定时器自然就没了。</p>
+<p>解法也很直白——把 Gator 加入电池优化白名单。不同品牌系统叫法不一样：原生 Android 叫"不受限制"，小米 MIUI 叫"无限制"，OPPO ColorOS 在"后台运行管理"里，三星 OneUI 还要额外加一层后台使用限制白名单。我用的是小米，除了电池优化白名单，还得去安全中心把"后台弹出界面"打开、关掉"后台冻结"和"异常耗电自动优化"，缺一个都不保险。</p>
+<p>白名单加完之后我把 Scheduler 临时改成每分钟执行，锁屏放了十分钟，回来一看清理历史里已经有七八条记录——管用了。之后改回正常频率，到点就清，再也没出过问题。</p>
+<h2>坑二：缓存清理没生效——无障碍服务被偷偷关掉了</h2>
+<p>这个坑跟第一个有点像，但表现不同。Scheduler 能正常触发了，清理历史里也有记录，但存储空间数字就是没怎么变。进 System Cleaner 手动清其他类型（残留文件、日志、浏览器历史）都是正常的，唯独应用缓存这块，跑了跟没跑一样。</p>
+<p>排查了好一阵才明白：<strong>Android 6.0 之后，应用后台不能直接清其他应用的缓存</strong>。Google 为了安全加了这个限制，所有标注"自动清理缓存"的 App 底层都得用无障碍服务绕过——模拟用户打开目标应用的系统设置页、点"清除缓存"按钮。Scheduler 自动跑的时候，残留、日志、浏览器历史这三类 Gator 自己能清，唯独应用缓存必须靠无障碍服务。</p>
+<p>我开了无障碍服务吗？开了。但问题出在：<strong>电池优化和后台限制不仅会杀进程，还会自动关掉无障碍服务</strong>。MIUI 上这个问题尤其常见，系统判定 Gator"不活跃"就把它的无障碍权限收回了。</p>
+<p>解法分两步：先确认无障碍服务开关还亮着（进系统无障碍设置页，找到 Gator 那一项），然后回到 Scheduler 看最近一次清理的详细日志——如果只有缓存被跳过、其他三类都正常执行，基本就是无障碍关了。开回来就行，但要注意这是个可能复发的问题，每次发现缓存没清第一时间检查这个开关。</p>
+<p><img src="../images/gator-docs/shot-perm.jpg" alt="权限引导页的无障碍服务项" loading="lazy"></p>
+<h2>坑三：系统应用卸不掉——灰掉的按钮不是 bug</h2>
+<p>App Manager 里想卸几个手机厂商预装的 App，点进去一看，系统自带那些（Settings、Messages、Phone、Google Play Services）卸载按钮全是灰的，点不动。我第一反应是"Gator 的卸载功能坏了"，甚至提交过一次反馈。后来去<a href="https://gator-docs.pages.dev/" target="_blank" rel="noopener">Gator文档</a>翻了一下才明白——</p>
+<p>其实根本不是故障——<strong>Android 把系统自带应用放在只读分区里</strong>，没有 root 权限的进程碰都碰不到那个分区。Gator 的 App Manager 会先检测设备的 root 状态，无 root 时卸载按钮直接灰掉，这是正确的行为，不是 bug。</p>
+<p>真想去掉预装的话，分两种情况。没 root 设备上，最实际的替代方案是"禁用"——系统设置里进应用详情页点禁用，效果跟卸载差不多，应用本体还在分区里但不会在桌面显示、不会推送通知、不会跑后台。如果已经 root 了，App Manager 的卸载按钮会恢复可用，直接点就能删分区里的文件。</p>
+<p>还有一点容易混淆：灰掉的只是系统自带应用，用户自己装的（应用商店下的、侧装的）都能正常卸，不受影响。我之前就是没注意到这个区别，以为 App Manager 整体坏了。</p>
+<h2>坑四：Storage Analyzer 只给数据不动手——得自己切工具</h2>
+<p>Storage Analyzer 扫完告诉我微信占了 2.3 GB、某个游戏 OBB 包占了 1.8 GB，我盯着文件列表想直接删，找了半天发现这个界面根本没有删除按钮。</p>
+<p>这是我对 Gator 功能设计的误解——Storage Analyzer <strong>只做展示不做操作</strong>，它是诊断工具，不是清理工具。它告诉我哪块空间浪费最严重，但动手清理得切到对应的其他卡片：大体积视频切 Exporter 搬到 SD 或 Duplicate Finder 找重复，大体积 APK 切 App Manager 备份后卸载，游戏 OBB 包先确认游戏是否还留着（用 App Manager 查），不留的话手动去文件管理器删整个目录，微信、QQ 这类缓存大户切 Cache Cleaner 定向清。</p>
+<p>这个设计逻辑其实挺合理的——诊断和操作分开，用户不会在一个界面里手滑误删。但第一次用的时候确实不习惯，总觉得"都给我列出来了为啥不让我删"。</p>
+<h2>坑五：卸载游戏后 OBB 包还在——Android 的设计，不是残留</h2>
+<p>有次卸载了一个 2 GB 的游戏，过了一周 Storage Analyzer 又扫出来那个 1.8 GB 的 OBB 文件还躺在 <code>/sdcard/Android/obb/</code> 下。一开始以为是卸载没清干净，反复卸了装、装了卸，OBB 文件就是不动。</p>
+<p>后来查资料才知道，<strong>Android 卸载应用时默认不删除 OBB 数据包</strong>——这是 Android 的设计，原因是 Google 不想让用户卸载游戏时丢掉存档或 DLC。OBB 文件放在独立目录 <code>/sdcard/Android/obb/&lt;包名&gt;/</code> 下，跟 APK 本体分离，卸载动作只删 APK 和数据分区里的文件，OBB 目录留在原地。</p>
+<p>解法很简单：卸载游戏后，进 App Manager 确认应用确实没了，然后去文件管理器手动删对应的 OBB 目录。Gator 的 System Cleaner 有可能识别为残留帮你清，但别等它，自己确认一下更靠谱。</p>
+<h2>防坑清单</h2>
+<p>把上面的浓缩成几条速查，遇到问题先对着过一遍：</p>
+<ul><li><strong>Scheduler 不触发</strong> → 先查电池优化白名单，尤其是 MIUI / ColorOS / OneUI</li><li><strong>缓存清理没效果</strong> → 去无障碍设置页看 Gator 的开关是不是被系统关了</li><li><strong>系统应用卸载按钮灰</strong> → 不是 bug，Android 只读分区设计，无 root 就别想，用"禁用"替代</li><li><strong>Storage Analyzer 不能删</strong> → 它只诊断，动手切到对应清理工具</li><li><strong>卸载游戏后 OBB 还在</strong> → Android 默认不删 OBB，卸载后手动去文件管理器清目录</li></ul>
+<p>说实话，知道这些坑之后，Gator 用起来真的相当省心。它的功能设计是清晰的，权限引导也是到位的，大部分"看起来像故障"的现象，本质上都是 Android 系统在不同层面对后台行为的限制——Gator 只是在这个框架内尽可能做好清理。搞清楚哪些是系统限制、哪些是 Gator 自身的功能，用起来就不会慌。</p>
+<p>如果你也在用 Gator，或者刚装打算试试，希望这篇能帮你跳过我踩过的那些坑。这套清理工具的开源资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/Gator" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/Gator" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/Gator" target="_blank" rel="noopener">GitCode</a> 上都有同步维护，国内访问选后两个更顺手。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xmol.html">我把每周追文献的三步走流程压成了一条自动链</a></h2>
+  <p class="card-desc">以前要手动刷十几本期刊、翻 Google Scholar、邮箱里翻 alert，现在一条链走完。讲怎么把 xmol 嵌进科研周更工作流，从盯文献到选刊投稿全打通。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/walkplay.html">凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了</a></h2>
+  <p class="card-desc">用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/usagi-zh-docs.html">Usagi 用了半年才踩明白的 5 个坑，第一个就差点让我放弃</a></h2>
+  <p class="card-desc">Usagi 看着是个清爽的阅读器 app，实际上手才发现里面藏着不少容易踩的小陷阱——授权失败、匹配不准、显示调伤眼，每一个都能把新人劝退。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/gamesir-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">地铁上挤了四十分钟，我的手机终于像个游戏机了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/gbox-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用 GBox 把华为手机接回 Google 生态——一套跑通 Gmail、Docs、YouTube 的日常工作流</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

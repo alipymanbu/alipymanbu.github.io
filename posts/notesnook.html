@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Notesnook 零知识加密的底层逻辑——服务器到底能看到什么 · 老杨技术栈</title>
+  
+<meta name="description" content="当一款笔记软件号称&#34;零知识&#34;时，它到底意味着什么？我把 Notesnook 的加密流程一层层拆开，从密钥体系到同步机制，看看这套设计的真正边界在哪里。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/notesnook.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notesnook 零知识加密的底层逻辑——服务器到底能看到什么">
+<meta property="og:description" content="当一款笔记软件号称&#34;零知识&#34;时，它到底意味着什么？我把 Notesnook 的加密流程一层层拆开，从密钥体系到同步机制，看看这套设计的真正边界在哪里。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/notesnook.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/notesnook/enter-recovery-key.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/notesnook/enter-recovery-key.png">
+
+<meta name="twitter:title" content="Notesnook 零知识加密的底层逻辑——服务器到底能看到什么">
+<meta name="twitter:description" content="当一款笔记软件号称&#34;零知识&#34;时，它到底意味着什么？我把 Notesnook 的加密流程一层层拆开，从密钥体系到同步机制，看看这套设计的真正边界在哪里。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5f53\u4e00\u6b3e\u7b14\u8bb0\u8f6f\u4ef6\u53f7\u79f0\"\u96f6\u77e5\u8bc6\"\u65f6\uff0c\u5b83\u5230\u5e95\u610f\u5473\u7740\u4ec0\u4e48\uff1f\u6211\u628a Notesnook \u7684\u52a0\u5bc6\u6d41\u7a0b\u4e00\u5c42\u5c42\u62c6\u5f00\uff0c\u4ece\u5bc6\u94a5\u4f53\u7cfb\u5230\u540c\u6b65\u673a\u5236\uff0c\u770b\u770b\u8fd9\u5957\u8bbe\u8ba1\u7684\u771f\u6b63\u8fb9\u754c\u5728\u54ea\u91cc\u3002", "headline": "Notesnook \u96f6\u77e5\u8bc6\u52a0\u5bc6\u7684\u5e95\u5c42\u903b\u8f91\u2014\u2014\u670d\u52a1\u5668\u5230\u5e95\u80fd\u770b\u5230\u4ec0\u4e48", "image": ["https://alipymanbu.github.io/images/notesnook/enter-recovery-key.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/notesnook.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/notesnook.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "Notesnook \u96f6\u77e5\u8bc6\u52a0\u5bc6\u7684\u5e95\u5c42\u903b\u8f91\u2014\u2014\u670d\u52a1\u5668\u5230\u5e95\u80fd\u770b\u5230\u4ec0\u4e48", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">Notesnook 零知识加密的底层逻辑——服务器到底能看到什么</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Notesnook 零知识加密的底层逻辑——服务器到底能看到什么</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">当一款笔记软件号称&#34;零知识&#34;时，它到底意味着什么？我把 Notesnook 的加密流程一层层拆开，从密钥体系到同步机制，看看这套设计的真正边界在哪里。</p>
+  </header>
+  <div class="prose">
+<h2>一个问题：当你在 Notesnook 里写笔记时，服务器在看什么</h2>
+<p>我第一次接触 Notesnook 时，最打动我的不是它那堆功能——富文本编辑、跨端同步、Monograph 发布——而是它在<a href="https://notesnook.qhah.skin" target="_blank" rel="noopener">官网</a>上那句直白的宣称：<strong>服务器永远看不到你的笔记内容</strong>。</p>
+<p>这句话听起来像 marketing slogan，但仔细想下去，它背后藏着一串相当硬核的工程问题：你用什么加密？密钥放哪？同步时密文怎么传？服务器端到底能看到哪些元数据？零知识的边界在哪里？</p>
+<p>我花了一段时间把这些问题挖到底，发现 Notesnook 这套设计有意思的地方不在于它用了什么前沿密码学——XChaCha20-Poly1305 和 Argon2i 都是成熟方案——而在于它如何在「用户体验」和「加密强度」之间做取舍，以及这套取舍对普通用户意味着什么。</p>
+<h2>三层密钥：把加密责任一层层往用户端推</h2>
+<p>Notesnook 的加密体系核心是<strong>三层密钥架构</strong>。理解了这三层，你就理解了它为什么敢说"零知识"。</p>
+<p>最底层是<strong>数据加密密钥（DEK）</strong>。每条笔记在上传服务器之前，会先用一个独立的 DEK 加密。这个 DEK 是随机生成的，每次加密都换。加密用的是 XChaCha20-Poly1305——一种现代流密码加消息认证码的组合，简单说就是"保密性 + 完整性一把梭"，服务器拿到密文之后既打不开，也篡改不了。</p>
+<p>中间层是<strong>主密钥</strong>。DEK 本身也不能裸着存，它是被主密钥加密之后才和笔记密文一起传到服务器的。主密钥来自你的账户密码，用 Argon2i 算法做了 key derivation——这个算法的设计初衷就是"让暴力破解变得很贵"，计算耗时和内存消耗都调得比较重，防的就是有人拿到密文后跑字典。</p>
+<p>最顶层是<strong>恢复密钥</strong>。这是 Argon2i 的一个副产品：如果将来换了设备、忘了密码，恢复密钥可以让你在不知道原密码的情况下重新派生主密钥。但恢复密钥本身也是一段需要你自己妥善保管的字符串——Notesnook 服务器不存，恢复密钥的完整保管策略可以在<a href="https://notesnook.pages.dev/" target="_blank" rel="noopener">notesnook文档</a>里查到。</p>
+<p><img src="../images/notesnook/enter-recovery-key.png" alt="输入恢复密钥恢复账户" loading="lazy"></p>
+<p>这套设计的妙处在于：<strong>服务器全程只见过密文和加密过的 DEK，从来没碰过真正的明文，也从来没碰过能解开明文的密钥</strong>。打个比方，就像你把一封信用自己锁扣好的信盒装起来交给快递员——快递员负责把盒子从 A 送到 B，但从头到尾看不到里面的信，也打不开那个锁。</p>
+<h2>同步机制：密文在网络上怎么走</h2>
+<p>笔记写完之后，按一下保存（或者它自动触发保存），Notesnook 客户端在本地做的事情是：序列化 → DEK 加密 → 把密文对象发到服务器。这个过程完全发生在你的设备上，服务器端只是接收到一串看起来毫无规律的字节流。</p>
+<p>换个设备<a href="https://notesnook.qhah.skin/download.html" target="_blank" rel="noopener">下载</a> Notesnook 并登录同一个账号时，反向流程：客户端先拉取所有密文条目，用本地存的主密钥解开那些加密过的 DEK，再用 DEK 解每条笔记。<strong>真正的解密只在用户端发生</strong>，服务器不参与、也没能力参与。</p>
+<p>离线编辑呢？完全支持。没网的时候你照常写、照常改，所有变更先堆在本地。恢复网络后客户端自动把这些离线积累的变更重新加密上传。如果两台设备同时离线改了同一条笔记——Notesnook 不会覆盖任何一方，两份都保留并打上冲突标记，让你手动选或者合并。</p>
+<p>那服务器到底能看到什么？我整理了一下：邮箱（登录验证用）、笔记的条目 ID 和时间戳（增量同步用）、密文本身、存储配额。<strong>看不到的是标题、正文、Notebook 归属、Tag 标签、Vault 锁定状态</strong>——这些全在加密数据里。</p>
+<p>这个边界很重要。零知识不等于"服务器啥都不知道"，它的准确含义是：<strong>服务器知道的那些东西，不足以让它还原你的笔记内容</strong>。时间戳能用来推断你什么时候写的，但推断不了你写了什么。</p>
+<h2>Monograph 的独立加密：发布了也能保密</h2>
+<p>Notesnook 有个 Monograph 功能——把笔记发布成可分享的网页。有意思的是，发布出去的 Monograph 支持密码保护和自毁，而且这里用的是<strong>独立于主账户的加密密钥</strong>。</p>
+<p>密码保护的 Monograph 打开时先弹密码框，输对了才显示内容。它的加密流程和主笔记一致（XChaCha20-Poly1305 + Argon2i），但密钥是单独生成的，不和你账户里的任何东西挂钩。Notesnook 服务器不存密码明文，也打不开受保护的 Monograph。</p>
+<p>自毁更狠——只能被看一次，URL 立即失效，内容从服务器删除。适合发一次性验证码之类的东西。不过这里有个设计取舍：自毁<strong>不能和密码保护叠加</strong>。从工程角度想也合理——如果一个东西看一次就没了，再套一层密码保护意义不大，反而增加实现复杂度。</p>
+<h2>这套设计的代价是什么</h2>
+<p>说了这么多好处，得讲讲 Notesnook 这套加密架构的成本。</p>
+<p>第一，<strong>用户必须自己保管密钥</strong>。Argon2i 虽然安全，但意味着你设了密码之后，如果忘了、也丢了恢复密钥——那就是真没了。没有客服能帮你找回，因为 Notesnook 自己也找不回。这是零知识的核心 trade-off：隐私和遗忘不可兼得。</p>
+<p>第二，<strong>同步冲突处理是"最后写入胜出"加手动合并</strong>。两台设备同时改同一条笔记，Notesnook 不会自动帮你 merge，而是留两份让你自己选。这对单人使用问题不大，但如果你的工作流里频繁跨设备编辑同一条笔记，会有点烦。</p>
+<p>第三，<strong>免费版有限制</strong>。Monograph 发布在免费版里会剥离链接和嵌入内容，工具栏自定义要 Pro 才能保存自定义布局——这些都是功能层面的 gating，和加密架构无关，但实际使用时能感受到边界。</p>
+<p><img src="../images/notesnook/toolbar-customize.png" alt="Pro 版工具栏自定义界面" loading="lazy"></p>
+<h2>适合谁、不适合谁</h2>
+<p>最后做个判断。Notesnook 的加密架构决定了它特别适合这几类人：<strong>对隐私有明确焦虑的知识工作者、有合规要求的团队成员、日常处理敏感文档的写作者</strong>——他们能接受"丢了就是真丢了"的代价，换回来的是真·零知识的隐私保护。</p>
+<p>不太适合的场景：<strong>需要多人实时协作的团队笔记、要求找回密码的普通用户、习惯了云服务帮你做所有事的懒人</strong>——如果你连恢复密钥都懒得存，那零知识对你来说反而是个累赘。</p>
+<p>用下来的感觉是，Notesnook 没有在加密这件事上玩噱头。它选的密码学方案都是经过时间检验的，密钥分层设计也是业内成熟范式。真正让我觉得有意思的是，它把这套加密体系做到了几乎不打扰日常使用——写笔记的时候你完全意识不到背后有三层密钥在工作，只有当你换设备登录、或者想发布 Monograph 的时候，才会想起"哦对，这玩意是真加密的"。</p>
+<p>这可能是好的加密产品应该有的样子：<strong>安全藏在默认设置里，用户看不见，但它一直在那儿</strong>。</p>
+<p>如果你想把这篇文章里提到的 Notesnook 相关资料完整收集起来，我在三个仓库都放了一份——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/notesnook" target="_blank" rel="noopener">GitHub</a> 是主仓库，国内访问不方便时可以去 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/notesnook" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/notesnook" target="_blank" rel="noopener">GitCode</a> 拉取，内容完全同步。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zepp-app.html">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</a></h2>
+  <p class="card-desc">把 Amazfit 手表生态从连接、健康监测到个性化改造的能力面完整铺开，哪些是真亮点、哪些藏着短板、哪类人最值得入手这套组合。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wispr-docs.html">Wispr v1.3.3：一个加密通讯应用在&#34;安全优先&#34;路上的四年迭代</a></h2>
+  <p class="card-desc">从 VOBP 协议到 P2P 直连，从手机号免费层到 Matrix ID 付费身份，CryptoDATA 的 Wispr 用一个个小版本慢慢拼凑出它对&#34;加密通讯该怎么做&#34;的答案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wibu-docs.html">给 wibu 算一笔付费账：Wibu+ 订阅到底值不值得掏这 $9.99</a></h2>
+  <p class="card-desc">从定价拆解到按使用强度算账，把 Wibu+ 订阅的每一项权益换算成你实际能省的时间和赚到的钱，看完你就知道自己该不该付。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/noteshelf-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">考研课上老师讲得飞起，我却在平板上把节奏抓回来了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ocat-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">OCAT 是什么？快问快答帮你搞懂这款 AI 口语采句工具</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

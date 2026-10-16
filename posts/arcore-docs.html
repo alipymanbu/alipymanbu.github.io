@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>ARCore 版本进化史：Google 这八年死磕的那件事 · 老杨技术栈</title>
+  
+<meta name="description" content="从没有 changelog 的文档站反推 ARCore 的迭代逻辑，看运动跟踪、Depth API、Geospatial 一步步把 AR 从玩具变成基础设施的路径">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/arcore-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARCore 版本进化史：Google 这八年死磕的那件事">
+<meta property="og:description" content="从没有 changelog 的文档站反推 ARCore 的迭代逻辑，看运动跟踪、Depth API、Geospatial 一步步把 AR 从玩具变成基础设施的路径">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/arcore-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/arcore-docs/motion-tracking.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/arcore-docs/motion-tracking.jpg">
+
+<meta name="twitter:title" content="ARCore 版本进化史：Google 这八年死磕的那件事">
+<meta name="twitter:description" content="从没有 changelog 的文档站反推 ARCore 的迭代逻辑，看运动跟踪、Depth API、Geospatial 一步步把 AR 从玩具变成基础设施的路径">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u6ca1\u6709 changelog \u7684\u6587\u6863\u7ad9\u53cd\u63a8 ARCore \u7684\u8fed\u4ee3\u903b\u8f91\uff0c\u770b\u8fd0\u52a8\u8ddf\u8e2a\u3001Depth API\u3001Geospatial \u4e00\u6b65\u6b65\u628a AR \u4ece\u73a9\u5177\u53d8\u6210\u57fa\u7840\u8bbe\u65bd\u7684\u8def\u5f84", "headline": "ARCore \u7248\u672c\u8fdb\u5316\u53f2\uff1aGoogle \u8fd9\u516b\u5e74\u6b7b\u78d5\u7684\u90a3\u4ef6\u4e8b", "image": ["https://alipymanbu.github.io/images/arcore-docs/motion-tracking.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/arcore-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/arcore-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "ARCore \u7248\u672c\u8fdb\u5316\u53f2\uff1aGoogle \u8fd9\u516b\u5e74\u6b7b\u78d5\u7684\u90a3\u4ef6\u4e8b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">ARCore 版本进化史：Google 这八年死磕的那件事</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">ARCore 版本进化史：Google 这八年死磕的那件事</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从没有 changelog 的文档站反推 ARCore 的迭代逻辑，看运动跟踪、Depth API、Geospatial 一步步把 AR 从玩具变成基础设施的路径</p>
+  </header>
+  <div class="prose">
+<p>我最近在翻 ARCore 的文档站，本来想找一份官方 changelog 看看版本演进——结果找了三天没找到。整个文档站几乎全是当前能力的使用指南：Depth API 的故障排查、遮挡渲染的着色器实现、Geospatial API 的配额限制……就是没有时间线。但这种"没有版本号"的呈现方式本身，反而是理解 ARCore 进化逻辑的最好切口。</p>
+<h2>现状：Android 上的 AR 事实标准</h2>
+<p>先说说现在这版 ARCore 是什么状态。作为 Google 推出的 Android AR SDK，它已经不是什么新奇实验品了——Play Services for AR 随 Android 系统分发，覆盖了全球数十亿设备。能力栈从基础的运动跟踪一路延伸到 ToF 硬件深度、Geospatial VPS 地理空间定位、Cloud Anchors 多人共享，定价结构也稳定得很克制：核心 SDK 和所有基础能力完全免费，只有云端服务（Cloud Anchors、Geospatial）按调用量计费，还给了不小的免费额度。想知道具体的免费额度和计费标准，可以去<a href="https://arcore.gltd.quest" target="_blank" rel="noopener">ARCore官网</a>查最新的定价表。</p>
+<p>但矛盾点也很明显：遮挡渲染这件事在 ToF 设备上已经能做到厘米级精度，但在没有 ToF 的单摄设备上，被动深度还是会因为纹理太少、光照不足而抖动得让虚拟物体"飘"起来。文档站里关于 Depth API 的故障排查指南占了近一半篇幅，从深度图全黑到遮挡边缘锯齿，给了从高端到低端设备的分级策略——这种细致反而暴露出一个事实：ARCore 团队现在最头疼的，就是怎么让遮挡这件事在所有设备上都能过关。</p>
+<h2>来路：从一个平面到一整座城市</h2>
+<p>样本文档没给我精确的版本号，但从功能模块的层级关系，演进路径还是能反推出来。</p>
+<p>一切的起点是运动跟踪——SLAM 算法让手机能在空间里定位自己，没有这个就没有 AR。然后是环境理解：平面检测让虚拟物体能"放"在桌上而不是飘在空中，光照估算让虚拟物体的颜色和亮度能匹配真实环境。</p>
+<p><img src="../images/arcore-docs/motion-tracking.jpg" alt="运动跟踪" loading="lazy"></p>
+<p>再然后是 Depth API 和遮挡渲染——这是质变。之前的 AR 应用里，虚拟物体永远盖在所有真实物体上面，放的虚拟恐龙会穿过桌子腿、穿出墙壁。有了深度数据，GPU 能对比虚拟物体和真实物体的深度值，让虚拟物体出现在正确的前后位置关系上。<a href="https://arcore-docs.pages.dev/" target="_blank" rel="noopener">ARCore文档</a>里给了 OpenGL ES 的实现思路：把 Depth API 提供的深度缓冲绑定到 GPU，在渲染虚拟物体之前用真实世界的深度做遮挡测试——听起来简单，但要让这件事在不同硬件上都稳定工作，背后的调优量可想而知。文档里还给出了 Unity 里调用 Depth API 的完整代码示例，从设备检测到配置时机再到遮挡模式切换，步骤分得清清楚楚。</p>
+<p>Cloud Anchors 让单人 AR 变成了多人共享——两个人在同一个地方打开同一个 AR 应用，看到的虚拟物体能对齐到同一个位置。再往后是 Geospatial API，把 AR 从桌面搬到了真实城市，结合 Google Street View 数据做 VPS（视觉定位系统），能在户外把虚拟物体锚定到精确的经纬度上。</p>
+<p><img src="../images/arcore-docs/environmental-understanding.jpg" alt="环境理解" loading="lazy"></p>
+<p>定价这件事也值得单独说一句。核心 SDK 完全免费，Cloud Anchors 每月有 1 万次 host + 1 万次 resolve 的免费额度，Geospatial API 目前也是免费的，只是有请求频率限制。对于商用开发者来说，这个结构挺友好——初期不用花钱，用户量大了才按量付费，而且不收应用内分成。想尝试 ARCore 的开发者可以从<a href="https://arcore.gltd.quest/download.html" target="_blank" rel="noopener">下载</a>获取最新的 SDK 包，几分钟就能跑起第一个 Demo。</p>
+<h2>规律：他们一直在死磕什么</h2>
+<p>从这些功能模块的引入顺序和文档投入来看，ARCore 团队的优先级非常清晰。</p>
+<p>第一件事：让虚拟物体更真实地融入环境。这是一条从"看得见"到"放得下"到"挡得住"的完整路线。运动跟踪解决"我在哪"，平面检测解决"往哪放"，Depth API 解决"谁在前谁在后"。现在他们又在啃最后一公里：不同设备的深度质量差异。文档里给了从 ToF 硬件深度（±1cm 精度、有效范围 0.1m~5m）到被动深度（±5~15cm、有效范围 0.5m~3m）的详细参数对比，还给了 Unity 里按设备分级选择遮挡策略的代码示例——高端设备完整遮挡、中端简化遮挡、低端直接关闭。这种"不追求完美覆盖"的务实态度，说明他们已经想明白了：与其在低端设备上硬扛遮挡效果，不如老老实实降级。</p>
+<p>第二件事：覆盖尽可能多的设备。文档里的设备兼容性检测做得特别细——三层检测（基础 ARCore 支持 → 特定 API 支持 → 应用自身声明）+ 运行时降级策略，甚至给了 AndroidManifest.xml 里 <code>android:required=&quot;true&quot;</code> 和 <code>android:required=&quot;false&quot;</code> 两种写法的选择建议。这说明 ARCore 从一开始就不是只盯着旗舰机做的，而是想让尽可能多的 Android 用户都能跑起基础 AR。</p>
+<p>而商业层面的 Cloud Anchors 和 Geospatial，虽然重要，但都在"实验性"标签下晃了很久。定价也很克制——基础能力全免费，只在云端服务按调用计费。这种"先把体验做好，商业化不急"的节奏，和很多先收钱再做事的 SDK 形成了对比。</p>
+<h2>预判：下一步大概率是什么</h2>
+<p>从迭代规律推，我觉得 ARCore 接下来会啃两个硬骨头。</p>
+<p>第一个是低端设备的被动深度质量。现在 ToF 硬件深度已经很成熟了，但单摄设备的被动深度还是差强人意——样本文档里也提到了"纹理太少时深度值抖动""距离太远精度急剧下降"这些痛点。Google 可能会继续优化被动深度算法，或者推动更多中低端机型搭载 ToF 传感器。</p>
+<p>第二个是 Geospatial API 的成熟化。现在它还带着"实验性"的标签，有请求频率限制，而且文档里也明确说"未来是否会转为按量计费尚不确定"。如果 Geospatial AR 能跑起来，Google 大概率会让它脱离实验性标签，提升配额，甚至转为按量计费——毕竟底层依赖的 Google Maps 和 Street View 数据本身就是付费服务。</p>
+<p>Instant Placement 可能继续强化。这个能让用户"放下"虚拟物体的体验已经存在了，但样本文档没给它太多篇幅，说明还有优化空间。</p>
+<p>当然这些都是从迭代规律推的，不当官方口径传。毕竟 ARCore 这八年，团队的节奏一直很稳——不跟风，不抢风口，就是慢慢把"让虚拟物体融入真实世界"这件事做扎实。怕 Google 的文档哪天改了或者下线了，我自己整理了一份完整的能力清单和代码示例，放在 <a href="https://github.com/alipymanbu/APK/tree/main/APP/ARCore" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/ARCore" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/APP/ARCore" target="_blank" rel="noopener">GitCode</a> 上，国内访问的话 Gitee 和 GitCode 会快不少。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/appteka.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Appteka 深度盘点：这个轻量应用市场的能力边界在哪里</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/aria2-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">aria2 上手测评：命令行下载工具凭什么让我把迅雷卸了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

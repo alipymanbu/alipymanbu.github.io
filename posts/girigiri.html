@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Girigiri 值不值掏钱？一个追番党的算账笔记 · 老杨技术栈</title>
+  
+<meta name="description" content="追番工具越来越多，有的按月订阅、有的买断、有的广告插满。我把 Girigiri 的时间表、榜单、缓存、弹幕按时间成本掰扯一遍——三类用户各自值不值掏钱，看完就有答案。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/girigiri.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Girigiri 值不值掏钱？一个追番党的算账笔记">
+<meta property="og:description" content="追番工具越来越多，有的按月订阅、有的买断、有的广告插满。我把 Girigiri 的时间表、榜单、缓存、弹幕按时间成本掰扯一遍——三类用户各自值不值掏钱，看完就有答案。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/girigiri.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/girigiri/schedule.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/girigiri/schedule.jpg">
+
+<meta name="twitter:title" content="Girigiri 值不值掏钱？一个追番党的算账笔记">
+<meta name="twitter:description" content="追番工具越来越多，有的按月订阅、有的买断、有的广告插满。我把 Girigiri 的时间表、榜单、缓存、弹幕按时间成本掰扯一遍——三类用户各自值不值掏钱，看完就有答案。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8ffd\u756a\u5de5\u5177\u8d8a\u6765\u8d8a\u591a\uff0c\u6709\u7684\u6309\u6708\u8ba2\u9605\u3001\u6709\u7684\u4e70\u65ad\u3001\u6709\u7684\u5e7f\u544a\u63d2\u6ee1\u3002\u6211\u628a Girigiri \u7684\u65f6\u95f4\u8868\u3001\u699c\u5355\u3001\u7f13\u5b58\u3001\u5f39\u5e55\u6309\u65f6\u95f4\u6210\u672c\u63b0\u626f\u4e00\u904d\u2014\u2014\u4e09\u7c7b\u7528\u6237\u5404\u81ea\u503c\u4e0d\u503c\u638f\u94b1\uff0c\u770b\u5b8c\u5c31\u6709\u7b54\u6848\u3002", "headline": "Girigiri \u503c\u4e0d\u503c\u638f\u94b1\uff1f\u4e00\u4e2a\u8ffd\u756a\u515a\u7684\u7b97\u8d26\u7b14\u8bb0", "image": ["https://alipymanbu.github.io/images/girigiri/schedule.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/girigiri.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/girigiri.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Girigiri \u503c\u4e0d\u503c\u638f\u94b1\uff1f\u4e00\u4e2a\u8ffd\u756a\u515a\u7684\u7b97\u8d26\u7b14\u8bb0", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Girigiri 值不值掏钱？一个追番党的算账笔记</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Girigiri 值不值掏钱？一个追番党的算账笔记</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">追番工具越来越多，有的按月订阅、有的买断、有的广告插满。我把 Girigiri 的时间表、榜单、缓存、弹幕按时间成本掰扯一遍——三类用户各自值不值掏钱，看完就有答案。</p>
+  </header>
+  <div class="prose">
+<p>Girigiri 到底值不值得掏钱？这是我用了它大半个季度之后一直在心里嘀咕的问题。</p>
+<p>追番这个需求挺有意思——它不像剪辑软件或笔记工具那样有明确的"生产力刚需"，省一小时就是一小时工钱。追番的"省时间"更隐蔽：帮你不用记更新日期、帮你一眼从榜单里捞到值得追的新番、帮你在地铁没信号的时候不至于对着黑屏发呆。这些细碎的便利，累积起来到底值不值一杯奶茶钱？我把 Girigiri 和市面上几类追番工具对比了一圈，算的不是标价，是<strong>时间账</strong>。</p>
+<h2>先看它给什么——免费版的功能边界</h2>
+<p>先把家底亮出来——安装包从<a href="https://girigiri.laze.skin/download.html" target="_blank" rel="noopener">Girigiri下载</a>拿一份，装进手机几分钟就能上手。我用过的追番工具里，要么是播放器套壳堆功能，要么是追番日历但播放链路拉胯。<a href="https://girigiri.laze.skin" target="_blank" rel="noopener">Girigiri官网</a>对产品定位说得很清楚：它是为动漫爱好者设计的追番工具，不是什么视频都能塞的通用播放器。这个定位带来了几个实打实的功能取舍：</p>
+<p><strong>每周更新时间表</strong>是它最核心的一张牌——按周一到周日排，当天更新的番一眼可见，卡片上标清楚更新到第几集、几点放送。我之前用某工具，要追的番分散在十几个平台，每个平台都得记"周二更"还是"周三更"，经常漏更两三天才发现。Girigiri 把这些集中在一个时间轴上，打开就知道今天该看哪部。</p>
+<p><img src="../images/girigiri/schedule.jpg" alt="每周更新时间表" loading="lazy"></p>
+<p>然后是<strong>双榜单</strong>——爱动画榜和爱剧场榜独立排序，评分、播放量、更新进度一起看。这个设计挺聪明的，动画追更和剧场版找片是两种完全不同的需求：追更新的人在意"这部番热度高不高、评分稳不稳"，找片的人在意"这部剧场版是不是经典"。把它们揉成一张榜单只会两边都乱。</p>
+<p><img src="../images/girigiri/ranking.jpg" alt="双榜单入口" loading="lazy"></p>
+<p>还有几个功能加在一起构成了追番体验的"基本盘"：<strong>多线路高清播放</strong>（某条线路加载慢立刻换另一条，画质档位随网络随时调）、<strong>弹幕互动</strong>（支持开关、速度调节、关键词屏蔽、中日双语池切换）、<strong>离线缓存</strong>（登录后可批量勾选集数缓存到本地）、<strong>投屏与夜间模式</strong>。</p>
+<p>目前这些功能<strong>全部免费开放</strong>，没有会员墙。但问题的关键不在于它现在收不收费——而是<strong>如果它哪天开始收费了，这些东西值不值</strong>。</p>
+<h2>算账：三类追番党各自的时间成本</h2>
+<p>追番这个事，不同使用强度的用户，对"省时间"的感知天差地别。我按三类人分别算一笔账。</p>
+<h3>轻度用户：偶尔追一两部新番</h3>
+<p>场景大概是这样：每个季度挑个一两部口碑好的追，更新时间随缘记，忘了就忘了，反正也没那么急。</p>
+<p>对这类用户来说，时间表确实能帮你省一点"查更新时间"的麻烦——但这个麻烦本身也不是多大的事，大不了下次想起来的时候去搜一下。双榜单帮你从新番季里捞口碑好的番，这确实能帮你不踩雷，但轻度用户本来就没那么多坑可踩。</p>
+<p><strong>时间账</strong>：每周省大概 10~15 分钟，主要是不用到处查更新时间和不用点开好几部番再退出来。</p>
+<p><strong>值不值</strong>：以一杯奶茶 15 块算，15 分钟值不值？如果它按月订阅，轻度用户永远用不上。</p>
+<h3>主力用户：每周追三五部，偶尔补老番</h3>
+<p>这是 Girigiri 最精准击中的一群人——同时追三到五部新番，每部都不想漏；偶尔翻收藏里的老番出来补；通勤路上没信号但手痒想接着看。</p>
+<p>时间表在这个量级下的价值翻了好几倍。同时追五部番，更新日期各不相同，有的周二更、有的周四更、有的周更有的双周更——靠脑子记绝对会漏。Girigiri 的时间表把这些排得明明白白，今天打开一看就知道该看哪几部，不用挨个点进去检查更新进度。</p>
+<p>离线缓存在这个场景下是刚需。地铁通勤四十分钟，信号飘来飘去，提前缓存两三集就能稳稳接着看。Girigiri 支持批量勾选集数缓存，比一集一集点下载省了不少操作。</p>
+<p>弹幕的关键词屏蔽在主力用户这里也有用——我之前去<a href="https://girigiri.pages.dev/" target="_blank" rel="noopener">Girigiri文档</a>翻了一下才搞清楚怎么设关键词组，追热门番的时候弹幕里满屏剧透和无关刷屏，设几个关键词就能把糟心的弹幕过滤掉。</p>
+<p><strong>时间账</strong>：每周省 30~60 分钟——包括不用挨个平台查更新、通勤不因为没信号中断追番、弹幕不剧透不用跳过。</p>
+<p><strong>值不值</strong>：这个量级的用户已经能感受到"省时间"的实际意义了。如果 Girigiri 每月收 5~10 块，相当于每小时省下的时间值 10~20 块——比大多数人时薪高，闭着眼付。</p>
+<h3>重度用户：同时追十几部 + 补番清单长到放不下</h3>
+<p>场景是这样的：新番季追了七八部，老番还没补完，剧场版清单上还有十来部标记着"想看"。收藏书架和追番列表分开管理的设计在这个量级下才真正体现价值——追番是正在追的，需要在时间表里看到更新提醒；收藏是暂时没空但想存着的，不能跟追番混在一起把列表搞乱。</p>
+<p>云端同步也是刚需——换个手机登账号，追番列表和收藏书架都在，不用重新加一遍。游客状态下收藏功能是灰的，这其实是个挺合理的门槛：重度用户不可能不登录。</p>
+<p>多线路切换在热门番播放卡顿的时候能救命。我追某部高热度番的时候，晚上八点档某条线路直接卡死，换另一条立刻恢复。这种场景下，"能看"比"画质最高"重要得多。</p>
+<p><strong>时间账</strong>：每周省 1~2 小时——时间表防止漏更、多线路防止卡顿断片、离线缓存解决所有没网的场景、收藏/追番分离防止列表混乱。</p>
+<p><strong>值不值</strong>：重度用户是付费意愿最强的群体。如果 Girigiri 出个"去广告 + 提前看 + 专属线路"的会员，哪怕每月 15~20 块都有人抢着付——不是钱的问题，是不想为了省那点钱而错过任何一集更新。</p>
+<h2>替代方案对比：不付钱有什么别的路</h2>
+<p>算完了时间账，再看看不付这笔钱有什么别的路——毕竟市面上追番工具不止一家。</p>
+<p>第一类是<strong>纯播放器套壳</strong>：某几款工具播放器功能极强，但追番功能约等于零——没有时间表、没有榜单、没有收藏书架，加个书签就叫"追番"了。这类工具适合"我已经知道要看什么、只是需要一个能播的东西"的用户，但如果你是靠榜单发现新番、靠时间表提醒更新的人，套壳工具根本没法用。</p>
+<p>第二类是<strong>追番日历但播放链路拉胯</strong>：有时间表、有榜单，但播放得跳转到别的平台，体验断了一截。而且很多这类工具的数据源不稳定，热门番一卡就没了。Girigiri 把追番逻辑和播放链路打通了——在同一个 App 里完成"看更新时间表 → 点进去看 → 缓存 → 投屏"这一整套操作，不用来回跳转。</p>
+<p>第三类是<strong>同定位但要付费的工具</strong>：我试过一款按月订阅的追番工具，功能和 Girigiri 大致对得上——也有时间表、也有榜单、也有缓存。但它的定价挺鸡贼的：免费版只能追最多 3 部番，超过就要开会员。如果你正好追 4 部，等于逼着你掏钱。Girigiri 目前没有这种限制，追 10 部也是免费。</p>
+<p>当然也可以<strong>多工具拼接</strong>：A 工具看时间表，B 工具用来播放，C 工具记收藏——但这样来回切换的成本本身就是时间浪费，省下来的那点"会员费"又花回去了。</p>
+<h2>结论：谁该掏钱、谁再等等、谁永远不用付</h2>
+<p>最后给个可执行的结论——对号入座就行：</p>
+<p><strong>重度追番党（同时追 10 部以上）：闭眼付</strong>。如果 Girigiri 哪天出会员，不管定价多少（合理范围内），直接开。每周省一两小时的时间价值已经远超过会员费，而且没网的时候能接着看、卡顿的时候能换线路——这些"不能停"的体验比什么都值钱。</p>
+<p><strong>主力追番党（每周追 3~5 部）：再等等</strong>。目前功能全免费，但如果哪天收费了，建议观望一下付费版到底多了什么——如果只是"去广告"，那免费版广告也不多，忍忍就好；如果多了"提前一天看"、"专属高速线路"这类硬功能，再考虑。每小时省的时间值 10~20 块，只要定价在这个范围内就合理。</p>
+<p><strong>轻度追番党（偶尔追一两部）：永远免费版够用</strong>。时间表和榜单确实好用，但你用不上那么高的强度——免费版的功能完全覆盖需求，不值得为"省 10 分钟"掏钱。</p>
+<p>最后说句公道话：Girigiri 的定位在追番工具里算比较稀缺的——不是播放器堆功能，也不是日历工具套壳，是真的按追番人的逻辑组织了整套体验。它的时间表、双榜单、收藏/追番分离这几个设计，我对比了一圈同类，没见到第二家做得这么顺的。如果哪天它收费了，我大概率会支持——不是因为必须用，是因为做对了一件事的产品值得买单。顺手提一句，这套资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/girigiri" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/girigiri" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/girigiri" target="_blank" rel="noopener">GitCode</a> 上都有同步更新，国内用户选 Gitee 访问更稳当。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/genspark-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Genspark 避坑四连：从免费积分到 AI 秘书，我踩过的那些真问题</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/gkd-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">gkd 新手五分钟入门：手机自动点广告这件事，一次讲透</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

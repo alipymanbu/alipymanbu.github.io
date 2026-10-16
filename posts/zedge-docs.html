@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了 · 老杨技术栈</title>
+  
+<meta name="description" content="每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/zedge-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了">
+<meta property="og:description" content="每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/zedge-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/zedge-docs/app-ringtones.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/zedge-docs/app-ringtones.jpg">
+
+<meta name="twitter:title" content="用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了">
+<meta name="twitter:description" content="每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6bcf\u5468\u7ed9 Android \u548c iPhone \u5404\u6362\u4e00\u5957\u94c3\u58f0+\u58c1\u7eb8\u7684\u56fa\u5b9a\u4efb\u52a1\uff0c\u4ee5\u524d\u8981\u5728\u4e94\u516d\u4e2a App \u4e4b\u95f4\u6765\u56de\u5207\u3001\u624b\u52a8\u8f6c\u683c\u5f0f\u3001\u627e\u534a\u5929\u7d20\u6750\uff0c\u73b0\u5728\u7528 Zedge \u505a\u4e3b\u5165\u53e3\uff0c\u4e24\u6761\u7aef\u7684\u6d41\u7a0b\u5404\u81ea\u6536\u655b\u5230\u4e00\u6b65\uff0c\u53ea\u5728 iOS \u90a3\u8fb9\u7559\u4e00\u4e2a GarageBand \u8f6c\u6362\u7684\u5fc5\u7ecf\u8282\u70b9\u3002", "headline": "\u7528 Zedge \u6253\u901a\u53cc\u7aef\u94c3\u58f0\u58c1\u7eb8\u2014\u2014\u6bcf\u5468 10 \u5206\u949f\u6362\u4e00\u5957\uff0c\u65e7\u6d41\u7a0b\u8e29\u8fc7\u7684\u5751\u90fd\u7ed5\u5f00\u4e86", "image": ["https://alipymanbu.github.io/images/zedge-docs/app-ringtones.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/zedge-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/zedge-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 Zedge \u6253\u901a\u53cc\u7aef\u94c3\u58f0\u58c1\u7eb8\u2014\u2014\u6bcf\u5468 10 \u5206\u949f\u6362\u4e00\u5957\uff0c\u65e7\u6d41\u7a0b\u8e29\u8fc7\u7684\u5751\u90fd\u7ed5\u5f00\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+  </header>
+  <div class="prose">
+<p>我每周有个固定任务：给 Android 主力机和 iPhone 备机各换一套铃声和壁纸。理由不复杂——长期不换，来电铃声像别人的，壁纸看久了视觉疲劳。但以前这事做起来真不顺，两端各有各的麻烦，一条完整的流程要跨五六个工具才能走完。</p>
+<h2>旧流程有多碎</h2>
+<p>先不说找素材的痛苦——这是后话。就说素材到手之后的落地环节：</p>
+<p>Android 那边还算争气，但旧版 Zedge 偶尔会出现"设完没反应"的情况，得手动进系统设置里找半天；iOS 就是纯粹的噩梦——第三方 App 根本没资格直接设铃声，下载回来的 MP3 必须先转成 M4R，还要走 GarageBand 或者旧版 iTunes 同步，一通操作下来，半小时没了。</p>
+<p>更烦的是素材找起来也散。铃声去一个站找，壁纸去另一个站找，iOS 格式转换还要翻教程，每次都要重新回忆"这步怎么弄来着"。最惨的一次找了一个巨喜欢的铃声，iOS 那边卡了二十分钟 GarageBand 才导出成功，最后忘了设通知音，还是默认铃声，白折腾了。</p>
+<p>这套流程大概是这样：<strong>搜素材（浏览器+收藏夹翻一圈）→ 下载存网盘 → Android 手动导入系统 → iOS 转格式 + GarageBand 导出 → 设通知音和闹钟音 → 换壁纸</strong>。六步，每步都要跳工具。少一个都不行。</p>
+<h2>新流程：Zedge 做主入口，两端各自收敛</h2>
+<p>现在把 <a href="https://zedge.ggcd.store" target="_blank" rel="noopener">Zedge官网</a> 放进流程的最前端做统一入口，剩下的事分成两条端各自处理——只留一个必走的转换节点在 iOS 侧：</p>
+<p><strong>第一步：Zedge 内选好铃声和壁纸</strong>。搜索功能够用，分类也清晰，铃声、通知音、动态壁纸、静态壁纸都有分栏。挑的时候注意一下时长，iOS 铃声最长 30 秒，Zedge 本身有筛选，但偶尔还是会碰到超限的，后面 GarageBand 那边会截断。</p>
+<p><img src="../images/zedge-docs/app-ringtones.jpg" alt="在 Zedge 里浏览铃声列表" loading="lazy"></p>
+<p><strong>第二步：Android 侧直接落地</strong>。在 Zedge 里点 Set → 选默认铃声、通知音、闹钟音，一键全设。这步现在是最省心的，Android 新版媒体存储 API 把音频注册到系统目录是自动的，设完就是生效。偶发的"设完没声音"重启手机一次就能解决，概率很低。</p>
+<p><strong>第三步：iOS 侧走 GarageBand 转换</strong>。下载好的铃声存到"文件"App，进 GarageBand 开一个 Audio Recorder 项目，把音频拖进去，分享选"铃声"，导出完成后在设置里选。这步没法绕开，Apple 锁死了第三方 App 写系统音频目录的权限，GarageBand 是唯一可行的免电脑方案。</p>
+<p>整个流程现在是 <strong>Zedge 选素材 → Android 一键设 / iOS GarageBand 转</strong>，三步。少了浏览器搜素材、少了网盘中转、少了手动进系统设置找音频。两个端都只在 Zedge 里完成选素材，剩下的各自在端上闭环。</p>
+<h2>实操里最容易断的两个环节</h2>
+<h3>iOS  GarageBand 找不到文件</h3>
+<p>这个坑踩过三次。从<a href="https://zedge.ggcd.store/download.html" target="_blank" rel="noopener">Zedge下载</a>的铃声后默认存到"文件"App，但有时候路径是 iCloud Drive 而不是本地存储。GarageBand 的文件浏览器默认只扫本地，iCloud Drive 的文件得手动切过去。</p>
+<p>解决办法：下载完成后在 Zedge 里确认一下存储位置，或者直接在"文件"App 里把音频从 iCloud Drive 挪到"我的 iPhone"本地目录，再回 GarageBand 导入。文件就在眼前，就怕 GarageBand 没找对地方——后来翻了<a href="https://zedge-docs.pages.dev/" target="_blank" rel="noopener">Zedge文档</a>才确认这是 iCloud Drive 的老问题，不是 GarageBand 本身的 bug。</p>
+<h3>动态壁纸耗电</h3>
+<p>Android 上的 Live Wallpaper 和视频壁纸确实好看，但 GPU 持续跑的代价是续航明显掉下去。以前试过几个粒子效果的，中度使用手机从早撑不到晚。现在的做法是：动态壁纸只在周末或者特定场景用一用，工作日换回静态。部分厂商系统设置里有"关闭动态壁纸动画"的节能开关，开了之后视觉效果打折但省电效果明显，看需求选。</p>
+<p><img src="../images/zedge-docs/app-wallpapers-list.jpg" alt="浏览壁纸列表" loading="lazy"></p>
+<h2>效果和边界</h2>
+<p>现在每周这事儿大概 10 分钟能搞定——Zedge 里挑、Android 那边 3 个 Set 点完、iOS 那边 GarageBand 拖一下导出，完事。对比旧流程至少省了 20 分钟，而且全程不需要离开 Zedge 或者 GarageBand 这两个 App，没了跨工具的切换成本。</p>
+<p>这套流程什么时候不划算？两个场景：一是你只在单端用，iOS 或者 Android 只留一个设备，那 iOS 那个 GarageBand 转换环节可以忽略，整个流程基本就是 Zedge 选完直接 Set；二是你追求非常小众的铃声或壁纸，Zedge 库里找不到，还得回到浏览器搜素材那条老路。</p>
+<p>至于 Premium 订阅要不要买，我的判断是只在你用 AI 生成铃声或壁纸的情况下才值——去广告和无限 AI 两个核心权益，平时只用现成素材的话免费版完全够，广告虽然烦但不至于挡路。订阅渠道一定要注意，iOS 走 App Store、Android 走 Google Play，Zedge 应用里找不到取消入口，别白花冤枉钱。</p>
+<p>另外提一句，这套铃声整理和使用说明的资料，在 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Zedge" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Zedge" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Zedge" target="_blank" rel="noopener">GitCode</a> 三个仓库都同步了一份，国内访问哪个方便就用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yuni-docs.html">Yuni 看着挺省心？我踩过的五个坑</a></h2>
+  <p class="card-desc">第一次用 Yuni 分身聊天时以为就是个普通 AI 对话，结果连着踩了好几个看不见的坑——版本门槛、火花续断、回复节奏……这篇把我踩过的坑和拆弹方法全列出来。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/zarchiver.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">ZArchiver长期使用报告：两年下来哪些功能真离不开</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/zepp-app.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

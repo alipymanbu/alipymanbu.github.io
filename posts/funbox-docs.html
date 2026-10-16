@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>FunBox 深度盘点：一个 LSPosed 模块能把聊天面板玩出什么花样 · 老杨技术栈</title>
+  
+<meta name="description" content="从表情到语音、从面板到辅助，FunBox 用模块形态接管了 QQ 微信里两处最常用的交互入口——这篇盘点把它的能力面完整铺开。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/funbox-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FunBox 深度盘点：一个 LSPosed 模块能把聊天面板玩出什么花样">
+<meta property="og:description" content="从表情到语音、从面板到辅助，FunBox 用模块形态接管了 QQ 微信里两处最常用的交互入口——这篇盘点把它的能力面完整铺开。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/funbox-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/funbox-docs/app-basic-info.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/funbox-docs/app-basic-info.jpg">
+
+<meta name="twitter:title" content="FunBox 深度盘点：一个 LSPosed 模块能把聊天面板玩出什么花样">
+<meta name="twitter:description" content="从表情到语音、从面板到辅助，FunBox 用模块形态接管了 QQ 微信里两处最常用的交互入口——这篇盘点把它的能力面完整铺开。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u8868\u60c5\u5230\u8bed\u97f3\u3001\u4ece\u9762\u677f\u5230\u8f85\u52a9\uff0cFunBox \u7528\u6a21\u5757\u5f62\u6001\u63a5\u7ba1\u4e86 QQ \u5fae\u4fe1\u91cc\u4e24\u5904\u6700\u5e38\u7528\u7684\u4ea4\u4e92\u5165\u53e3\u2014\u2014\u8fd9\u7bc7\u76d8\u70b9\u628a\u5b83\u7684\u80fd\u529b\u9762\u5b8c\u6574\u94fa\u5f00\u3002", "headline": "FunBox \u6df1\u5ea6\u76d8\u70b9\uff1a\u4e00\u4e2a LSPosed \u6a21\u5757\u80fd\u628a\u804a\u5929\u9762\u677f\u73a9\u51fa\u4ec0\u4e48\u82b1\u6837", "image": ["https://alipymanbu.github.io/images/funbox-docs/app-basic-info.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/funbox-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/funbox-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "FunBox \u6df1\u5ea6\u76d8\u70b9\uff1a\u4e00\u4e2a LSPosed \u6a21\u5757\u80fd\u628a\u804a\u5929\u9762\u677f\u73a9\u51fa\u4ec0\u4e48\u82b1\u6837", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">FunBox 深度盘点：一个 LSPosed 模块能把聊天面板玩出什么花样</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">FunBox 深度盘点：一个 LSPosed 模块能把聊天面板玩出什么花样</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从表情到语音、从面板到辅助，FunBox 用模块形态接管了 QQ 微信里两处最常用的交互入口——这篇盘点把它的能力面完整铺开。</p>
+  </header>
+  <div class="prose">
+<h2>开头：为什么一个模块值得认真盘点</h2>
+<p>在安卓圈子里，LSPosed 模块不算新鲜，但真正能把「一个切入点」做深做透的并不多。<a href="https://funbox.fewz.tech" target="_blank" rel="noopener">FunBox官网</a> 选的切口很小——QQ 和微信的表情、语音面板——但它在这条窄路上走得够远，远到你用了一段时间之后会发现：原来面板还能这样用、原来长按还能解锁这么多姿势。</p>
+<p>它不是独立的表情应用，也不是第三方语音包市场。它是一个模块，意味着它不跟聊天应用抢入口，而是<strong>就在你已经在聊的界面上</strong>，把面板接管过来、在原位置扩展出新的能力。这个设计决定了它的体验底色：不切换、不跳转、不打断对话流。</p>
+<p><img src="../images/funbox-docs/app-basic-info.jpg" alt="FunBox 基础信息页，能看到模块版本号与作用域勾选状态" loading="lazy"></p>
+<h2>能力域一：表情面板——从「发个表情」到「管理表情生态」</h2>
+<p>FunBox 对表情面板的改造，远不止多给你几个表情包那么简单。它把面板从一个「选取器」升级成了一个「表情资源管理器」。</p>
+<h3>面板唤起与浏览</h3>
+<p>最核心的入口是<strong>长按表情图标</strong>。这个手势跟聊天应用自带的单击表情图标形成了明确分工：单击进原生收藏，长按下沉到 FunBox 管理的那片面板。两条路径互不干扰，也不抢位置——你习惯了原来的用法就继续用，想试试新面板就长按一下，没有强制迁移的焦虑。</p>
+<p>面板里的浏览动线跟大家熟的滑动翻页一致，点选即发送，表情直接走当前会话的发送流程，全程不离开聊天窗口。</p>
+<h3>表情资源的下载与收藏</h3>
+<p>FunBox 自己带了在线资源的下载通道，面板默认只是一个起点，真正让它活起来的是你自己往里装的东西。资源下载到本地之后，面板就成了你的专属收藏夹——常用私藏全放这儿，聊天应用自带的收藏维持原样，各管一摊。</p>
+<h3>发送方式的可控性</h3>
+<p>一个容易被忽略但很实用的小开关：<strong>总是以图片方式打开表情</strong>。开了之后，面板里的表情以图片形式发出，某些场景下（比如对方的聊天应用对动图格式兼容不好）能显著提升接收端的体验——具体还有哪些辅助开关、各自适用什么场景，去<a href="https://funbox-docs.pages.dev/" target="_blank" rel="noopener">funbox文档</a>翻一下就清楚了。面板图片看久了缓存会堆，也有一键清缓存的入口，不用跑去设置里找。</p>
+<h2>能力域二：语音面板——同样的手势，不同的惊喜</h2>
+<p>表情面板做扎实了之后，FunBox 用<strong>同样的长按逻辑</strong>在语音侧复制了一套面板能力。位置换成了语音图标或语音按钮，手势完全不变，记忆成本为零。</p>
+<h3>唤起逻辑与聊天应用的兼容</h3>
+<p>QQ 上长按聊天界面的语音图标、微信上长按语音按钮，就这么简单。唯一需要注意的是个别版本下原生长按菜单可能先弹出来，多点一次返回再长按就能触发模块面板——这类交互细节随聊天应用版本变化，但整体上 FunBox 的面板优先策略是稳定的。</p>
+<h3>前提条件：别踩坑</h3>
+<p>语音面板和表情面板共用同一套前提，四个条件缺一不可：面板设置页的语音面板开关、作用域里勾选了当前聊天应用、开关或作用域变动后重启过聊天应用、应用版本在支持线内。第四条常常被忽略——FunBox 会跟随聊天应用的版本迭代适配，支持线外的版本可能面板根本唤不出来，这时候先看版本再折腾设置，省很多时间。</p>
+<h2>能力域三：辅助功能——面板之外的工具箱</h2>
+<p>面板是 FunBox 的主舞台，但它还藏着一排辅助开关，覆盖了日常使用里那些「要是能方便一点就好了」的小痛点。这些开关统一收在辅助功能页里，按需开启，不强制、不打扰。</p>
+<p><img src="../images/funbox-docs/app-assist-functions.jpg" alt="辅助功能页，一排开关按需开启，不强制不打扰" loading="lazy"></p>
+<h2>能力域四：安装、更新与渠道——框架软件绕不开的工程素养</h2>
+<p>模块类软件的体验好不好，安装和更新环节的工程素养占一半权重。FunBox 在这方面做得比多数同类产品扎实。</p>
+<h3>更新顺序：不是「装个新的」</h3>
+<p>FunBox 的更新链路长（框架、作用域、重启缺一不可），所以它给了一套明确的三步流程：更新前留三样东西（抄版本号、记开关状态、确认资源在本地）→ 从<a href="https://funbox.fewz.tech/download.html" target="_blank" rel="noopener">官方下载</a>拿新版安装包直接覆盖（不用先卸）→ 更新后重启作用域、核对勾选、长按验证。这条流程的好处是「有据可查」——出问题时你能知道是从哪个版本升上来的、哪些开关可能被重置过。</p>
+<h3>渠道认准与版本号的坑</h3>
+<p>FunBox 的作者是 Hicores，正版渠道主要有三个：LSPosed 模块仓库（权威收录、可查历史版本）、作者 TG 频道（第一时间跟进版本）、第三方应用商店（适合没有框架环境的用户先了解）。这里有个容易踩的坑：第三方商店的版本号是三位数编号（v698、v683），LSPosed 仓库是 v2173 这种体系，<strong>两套版本号不通用，不能跨渠道比新旧</strong>。识别正版的最硬标准是安卓包名 <code>have.fun</code>，各渠道一致，改不了。</p>
+<h3>反馈机制</h3>
+<p>作者在 TG 频道的反馈模板很清晰：安卓版本、应用小版本、日志、操作手法、具体现象，五件事说清楚就能得到有效回应。不像一些模块作者让用户去 GitHub Issue 里乱跑或者在评论区自由发挥。</p>
+<h2>短板也要说</h2>
+<p>盘点不能只说好听的。FunBox 目前有几个明显的局限：</p>
+<p><strong>框架依赖是硬门槛</strong>。它是 LSPosed 模块，没有 root 或没有 LSPosed 框架的用户根本装不上。这意味着它的受众天花板很明确——只在折腾党圈子里流通，主流用户接触不到。</p>
+<p><strong>交互受聊天应用版本影响</strong>。前面提到的原生长按菜单抢弹的问题，本质上是模块与宿主应用的博弈——聊天应用改了一个内部逻辑，FunBox 的适配就要跟进。某些版本组合上面板可能唤不出来、某些场景下开关可能被重置，这些不是 FunBox 的 bug，是模块形态的天然局限。</p>
+<p><strong>功能集中在面板侧</strong>。目前 FunBox 的能力边界很清晰——就是表情和语音面板。如果你期待它改聊天界面其他部分，那不在它的设计意图里。简洁是优点，但也意味着覆盖的场景有限。</p>
+<h2>什么样的人该用它</h2>
+<ul><li><strong>表情重度用户</strong>：每天在群聊里翻表情包翻到手酸的人。FunBox 的本地收藏 + 在线下载 + 长按即发这套连招，是独立表情应用比不了的——因为它不离开聊天界面。</li><li><strong>语音包玩家</strong>：喜欢折腾变声、喜欢存一堆语音素材随手发的人。语音面板的长按唤起跟表情面板同源，会用一个就会用另一个，学习成本极低。</li><li><strong>LSPosed 玩家</strong>：已经在用 LSPosed 框架的用户，装上 FunBox 基本是零成本尝鲜——不用额外装独立应用、不用切换入口，就当给聊天面板加了一个扩展层。</li></ul>
+<p>FunBox 的作者在 TG 频道维护着版本更新与反馈通道，LSPosed 模块仓库有完整的历史发行版可回溯，第三方应用商店也普遍收录了稳定版本。这套资料顺手也同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/funbox" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/funbox" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/funbox" target="_blank" rel="noopener">GitCode</a> 三个仓库，国内访问哪边顺畅就去哪边找。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/freeotp-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">飞行模式下，我靠一个开源 App 救了凌晨三点的紧急工单</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/fusionapp-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">期末复习周，我把B站改造成了只有视频的专属播放器</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

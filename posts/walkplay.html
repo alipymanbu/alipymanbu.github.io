@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了 · 老杨技术栈</title>
+  
+<meta name="description" content="用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/walkplay.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了">
+<meta property="og:description" content="用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/walkplay.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/walkplay/eq-panel.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/walkplay/eq-panel.png">
+
+<meta name="twitter:title" content="凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了">
+<meta name="twitter:description" content="用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528\u4e86\u534a\u5e74\u7684\u5165\u8033\u5f0f\u8033\u673a\u9ad8\u9891\u523a\u8033\u3001\u4f4e\u9891\u53d1\u865a\uff0c\u7cfb\u7edf EQ \u600e\u4e48\u8c03\u90fd\u522b\u626d\u3002\u76f4\u5230\u670b\u53cb\u8ba9\u6211\u8bd5\u8bd5\u76f4\u63a5\u8c03 DSP \u82af\u7247\u2014\u2014Walk Play \u5b9e\u65f6\u8bd5\u542c\u52a0\u4e00\u952e\u5199\u82af\u7247\uff0c\u534a\u5c0f\u65f6\u8c03\u51fa\u4e00\u4e2a\u81ea\u5df1\u4e0d\u60f3\u6458\u7684\u58f0\u97f3\u3002", "headline": "\u51cc\u6668\u4e09\u70b9\u526a\u7247\u65f6\uff0c\u6211\u7ec8\u4e8e\u628a\u90a3\u5e45\u585e\u4e86\u534a\u5e74\u7684\u8033\u673a\u6551\u6d3b\u4e86", "image": ["https://alipymanbu.github.io/images/walkplay/eq-panel.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/walkplay.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/walkplay.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u51cc\u6668\u4e09\u70b9\u526a\u7247\u65f6\uff0c\u6211\u7ec8\u4e8e\u628a\u90a3\u5e45\u585e\u4e86\u534a\u5e74\u7684\u8033\u673a\u6551\u6d3b\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。</p>
+  </header>
+  <div class="prose">
+<h2>凌晨三点的崩溃时刻</h2>
+<p>那是一个周三的凌晨。我在剪一个学校社团招新的视频，已经连续熬了三个晚上。电脑外放开着降噪，声音闷得像闷罐——毕竟隔壁室友已经睡了。于是我翻出那幅半年前攒生活费买的入耳式，插上 DAC，准备把最后三分钟的 BGM 混完。</p>
+<p>戴上的瞬间我就皱了眉。</p>
+<p>高频太亮了，歌手的齿音像一根根小针扎耳朵——我调了好几次系统自带的均衡器，把 6 kHz 往下拉了 4 dB，齿音没消多少，人声反而变得像蒙了一层纱布。再把低频往上推，鼓点倒是隆起来了，但 150 Hz 那段共鸣峰直接炸了，听久了头嗡嗡的。</p>
+<p>我把耳机摘下来扔到桌上，盯着屏幕上的波形图发愣。这不是我第一次遇到这种情况——这款耳机的曲线我看过评测，高频有个天然尖峰、低频下限又不够，属于"开箱就能听但永远调不顺"的那种。系统 EQ 能拉曲线但救不了它，因为系统 EQ 是在 DAC 输出之后才介入，信号已经过了一轮模拟处理，动任何一刀都是在给已经炸掉的波形打补丁。</p>
+<p>"你别调系统 EQ 了，"半夜三点微信还在线的朋友打过来，"你那幅耳机带 DSP 的吧？直接调芯片啊。"</p>
+<h2>从系统 EQ 到芯片调音：完全不同的世界</h2>
+<p>他说的就是 Walk Play。<a href="https://walkplay.usea.quest" target="_blank" rel="noopener">Walk Play 官网</a>上的介绍写得很清楚。</p>
+<p><img src="../images/walkplay/eq-panel.png" alt="Walk Play 调音面板" loading="lazy"></p>
+<p>Walk Play 不是那种装在手机里调完丢缓存的均衡器——它调的是耳机内置 DSP 芯片的寄存器。之前我以为这种东西只有发烧友才玩，直到朋友把链接甩过来让我试试，三分钟就从<a href="https://walkplay.usea.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿完 APK，插上 OTG 打开调音台，我才发现我之前半年都白调了系统 EQ。</p>
+<p>界面很直白：左边一排频段滑条，Frequency 设频率、Gain 拉增益、Q 调带宽，上面几个滤波器模式可选，底部一个 Preamp 防削波，还有个大按钮叫"写入芯片"。最关键的是——<strong>所有调整实时生效</strong>。</p>
+<p>我拖动 6 kHz 的滑条往下拉，从 0 到 -3 dB，耳机里歌手的齿音像被人一把揪掉了。不用保存、不用重启 DAC、不用换线，就一个手在屏幕上划，耳朵里的声音同步变化。我赶紧切到那首混了半小时的 BGM，找到之前最刺耳的那段人声——</p>
+<p>继续拉，从 -3 到 -5 dB。齿音完全消失了，人声的自然感也没丢。我停了十秒，再切回旁通开关（Walk Play 界面自带的一键切换 EQ / 平直线），对比了两三次，确认这个调整就是我要的。</p>
+<h2>半小时调音实录：低频 + 高频，两个频段解决一半问题</h2>
+<p>搞定高频之后，我开始处理低频。那幅耳机的低频我之前一直觉得"不够"，但朋友让我先搞清楚到底是"下限不足"还是"膨胀过度"——这俩是两种完全相反的问题。</p>
+<p>我放了一段动态范围大的 EDM，Walk Play 调到平直线。鼓点踩下去像敲空桶，落地后很快消失——<strong>低频下限不足</strong>，不是膨胀。好，那在 80 Hz 试试。</p>
+<p>新建频段，Frequency 设 80 Hz（朋友说这是入耳式动圈最常用的低频提升点，低于 60 Hz 大多数耳机本身就到不了，提了也白提），Q 设 0.7 做宽频覆盖，Gain 从 0 慢慢往 +2、+3、+4 拉。每次拉一点我就停五秒，再切旁通对比——到 +3 dB 的时候，鼓点有了重量感但还没隆隆作响，就是这个点。</p>
+<p>但这时总增益上去了——高频拉了 -5 dB 但低频加了 +3 dB，还有之前调的一些小频段，加起来总增益接近 +8 dB。Walk Play 的 DSP 安全总增益上限约 ±12 dB，再往上就会削波。我记得<a href="https://walkplay.pages.dev/" target="_blank" rel="noopener">walkplay文档</a>里说过，<strong>低频提升后一定要检查 Preamp</strong>，把它往负方向拉抵消掉多出来的增益。</p>
+<p>我边播放边慢慢拉 Preamp 到 -2 dB，耳朵里传来的感觉很神奇：刺耳的削波声逐渐消失，但之前调好的低频重量感和高频顺滑度都还在。找到那个临界点——没有削波且整体音量不太低——就停手。</p>
+<h2>一键写芯片：调音不是存在手机里的缓存</h2>
+<p>调完之后最让我意外的是"写入芯片"这个按钮。</p>
+<p>我之前用系统 EQ 调的所有东西，都存的是手机本地数据——换手机、卸 APP、清理缓存甚至重启手机，都可能丢。Walk Play 不一样，写入芯片就是把调好的参数<strong>直接烧录到耳机 DSP 的非易失性存储</strong>里，跟耳机走，跟我用什么手机什么播放器没关系。</p>
+<p>写完之后我做了三个验证：重启手机、换了一根数据线、再把耳机插电脑上。调音一直在。我甚至把耳机借室友听了一会儿——他用自己的手机（和我完全不同的系统）打开 Walk Play 看了一眼，DAC 里的调音曲线就是我刚才写的，纹丝不动。</p>
+<h2>凌晨四点的复盘</h2>
+<p>现在那幅耳机在我桌上放着，插电脑用、插手机用、借人用，声音永远是那个我凌晨三点半小时调出来的状态——高频不炸、低频有重量、人声自然。之前我以为要换一副耳机才能解决的问题，其实就是调错了地方。</p>
+<p>Walk Play 对我来说最大的意义可能不是调音本身，而是让我终于搞懂了一件事：耳机的声音不是出厂时盖棺定论的——DSP 芯片就在那儿，参数寄存器就在那儿，你只是之前没找到正确的调法而已。</p>
+<p>如果你的耳机也有 DSP，也在抱怨高频刺耳、低频发虚、系统 EQ 怎么调都别扭，别忍了。找 Walk Play，晚上花半小时调一下，比什么都强。Walk Play 的中文资料在三个代码仓库里都能翻到——<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/walkplay" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/walkplay" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/walkplay" target="_blank" rel="noopener">GitCode</a>，维护的朋友更新得挺勤的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xmol.html">我把每周追文献的三步走流程压成了一条自动链</a></h2>
+  <p class="card-desc">以前要手动刷十几本期刊、翻 Google Scholar、邮箱里翻 alert，现在一条链走完。讲怎么把 xmol 嵌进科研周更工作流，从盯文献到选刊投稿全打通。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/usagi-zh-docs.html">Usagi 用了半年才踩明白的 5 个坑，第一个就差点让我放弃</a></h2>
+  <p class="card-desc">Usagi 看着是个清爽的阅读器 app，实际上手才发现里面藏着不少容易踩的小陷阱——授权失败、匹配不准、显示调伤眼，每一个都能把新人劝退。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/super-ai-docs.html">Super AI 避坑指南：这些地方我踩过，你就别再交学费了</a></h2>
+  <p class="card-desc">Super AI 功能多、上手快，但几个细节踩错就是浪费时间还出不了片——首尾帧翻车、短剧风格崩、数字人表情硬、AI 查重率爆高，逐个拆解症状和解法。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/voyago-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">为什么 VoyaGO 要把规划、导航、记账揉成一个 App？</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/wallcraft-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

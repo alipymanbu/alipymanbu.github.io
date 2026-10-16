@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Tyranor 深度盘点：安卓端 KRKR 模拟器到底能跑多远 · 老杨技术栈</title>
+  
+<meta name="description" content="把 Tyranor 的加载兼容、版本维护、故障排查、存储适配四大能力域逐项拆开看，给正在搭安卓 GalGame 运行环境的你一份系统性参考。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/tyranor-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tyranor 深度盘点：安卓端 KRKR 模拟器到底能跑多远">
+<meta property="og:description" content="把 Tyranor 的加载兼容、版本维护、故障排查、存储适配四大能力域逐项拆开看，给正在搭安卓 GalGame 运行环境的你一份系统性参考。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/tyranor-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/tyranor-docs/menu-slowmode.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/tyranor-docs/menu-slowmode.jpg">
+
+<meta name="twitter:title" content="Tyranor 深度盘点：安卓端 KRKR 模拟器到底能跑多远">
+<meta name="twitter:description" content="把 Tyranor 的加载兼容、版本维护、故障排查、存储适配四大能力域逐项拆开看，给正在搭安卓 GalGame 运行环境的你一份系统性参考。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u628a Tyranor \u7684\u52a0\u8f7d\u517c\u5bb9\u3001\u7248\u672c\u7ef4\u62a4\u3001\u6545\u969c\u6392\u67e5\u3001\u5b58\u50a8\u9002\u914d\u56db\u5927\u80fd\u529b\u57df\u9010\u9879\u62c6\u5f00\u770b\uff0c\u7ed9\u6b63\u5728\u642d\u5b89\u5353 GalGame \u8fd0\u884c\u73af\u5883\u7684\u4f60\u4e00\u4efd\u7cfb\u7edf\u6027\u53c2\u8003\u3002", "headline": "Tyranor \u6df1\u5ea6\u76d8\u70b9\uff1a\u5b89\u5353\u7aef KRKR \u6a21\u62df\u5668\u5230\u5e95\u80fd\u8dd1\u591a\u8fdc", "image": ["https://alipymanbu.github.io/images/tyranor-docs/menu-slowmode.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/tyranor-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/tyranor-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Tyranor \u6df1\u5ea6\u76d8\u70b9\uff1a\u5b89\u5353\u7aef KRKR \u6a21\u62df\u5668\u5230\u5e95\u80fd\u8dd1\u591a\u8fdc", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Tyranor 深度盘点：安卓端 KRKR 模拟器到底能跑多远</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Tyranor 深度盘点：安卓端 KRKR 模拟器到底能跑多远</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">把 Tyranor 的加载兼容、版本维护、故障排查、存储适配四大能力域逐项拆开看，给正在搭安卓 GalGame 运行环境的你一份系统性参考。</p>
+  </header>
+  <div class="prose">
+<p>KRKR 引擎的视觉小说和 GalGame 在安卓端的运行方案，长期以来是不少玩家的「灰度区」——原生移植的寥寥无几，模拟器路线又常常踩坑。Tyranor 是目前这条路线上走得比较远的一个开源项目，它的<a href="https://tyranor.boop.uno" target="_blank" rel="noopener">官网</a>上能看到完整的版本迭代，从 2020 年左右开始活跃，如今 v2.3.4 版本把几个老问题都补上了。这篇盘点就从「一个正常玩家从装包到把游戏跑起来」的完整路径出发，把它的能力面完整铺开。</p>
+<h2>能力域一：加载与启动兼容——三层兜底链</h2>
+<p>Tyranor 面对的不是单一引擎版本，而是 KRKR 从 v1 到 KRKR2 跨了十几年的格式差异，加上开发者对文件组织方式也没统一标准。加载兼容不是一个开关，而是一条三层兜底链：</p>
+<p><strong>第一层是兼容模式</strong>——按单游戏隔离，零代价。如果某部游戏画面卡顿或渲染异常，先去游戏列表里长按它的条目，勾选对应的兼容选项。这个设计的妙处在于，你不用为一部冷门作品去影响整个模拟器的默认行为。</p>
+<p><strong>第二层是慢速加载模式</strong>——全局开关、有代价。只有当游戏根本起不来的时候才考虑开它。慢速加载换了一条更保守的预载路线：把资源先行整理进缓存再运行。代价有两个：等待时间明显拉长，且需要预留大于游戏体积的存储空间做缓存。素材里有一张应用内菜单的截图，慢速加载勾选项就在那一排功能入口里，通常建议临时开、玩完关，避免拖累其他正常游戏的加载速度。</p>
+<p><img src="../images/tyranor-docs/menu-slowmode.jpg" alt="应用内菜单中的慢速加载选项" loading="lazy"></p>
+<p><strong>第三层是文件形态优化</strong>——这是最容易被忽略的一层。全散文件的游戏（成千上万个小文件）在慢速模式下会非常缓慢，反而应该先考虑打包或保留 ZIP 直读形态。压缩形态对慢速加载更友好，这一点在<a href="https://tyranor-docs.pages.dev/" target="_blank" rel="noopener">tyranor文档</a>里反复强调过。</p>
+<p>三层兜底的决策顺序很清晰：卡顿先试兼容模式（单游戏、零代价），彻底起不来再试慢速加载（全局、有代价），都无效就转向故障排查路径。这条链本身就是 Tyranor 成熟度的体现——早期版本只有一个加载开关，现在拆成三层后，绝大多数启动问题都能在中间层解决。</p>
+<h2>能力域二：版本与数据维护——升级不丢档是基本要求</h2>
+<p>模拟器类应用更新频繁，Tyranor 从 v2.3.2 到 v2.3.4 就连续出了几个版本，每个版本都带着 KR2 启动闪退修复、SD 卡存档导出这类实质性改动。版本管理能力的核心考验是：<strong>升级后存档还在不在</strong>。</p>
+<p>Tyranor 对此的处理分三块：</p>
+<p><strong>应用内检查更新</strong>。「其他 → 检查更新」会显示当前版本号并查询新版本，升级完成后回到这里确认版本号变化即可。从素材里的截图可以看到，其他页同时还挂着存储、权限这类杂项入口，更新检查就嵌在其中。</p>
+<p><img src="../images/tyranor-docs/others-page.png" alt="「其他」页中的检查更新与当前版本显示" loading="lazy"></p>
+<p><strong>升级前的两分钟备份</strong>。覆盖安装一般不影响数据，但涉及存档的游戏值得花两分钟：找到存档目录，把 savedata 文件夹整个复制到电脑或另一目录。这个备份成本低到没有理由省略——素材里明确提到，升级失败导致存档丢失的事故虽然不常见，但一旦发生就是毁灭性的。</p>
+<p><strong>升级后的三件确认</strong>：游戏列表还在不在、权限有没有被回收、KR2 游戏能不能正常启动。v2.3.4 起游戏列表有缓存，重启不清除，但如果列表为空，手动触发一次扫描就好。</p>
+<p>版本回退是另一个极端场景——新版本不合手想回去，直接卸载重装旧版 APK 就行，但<strong>卸载会清掉应用私有数据</strong>，备份存档是硬性前提。历史版本要从<a href="https://tyranor.boop.uno/download.html" target="_blank" rel="noopener">tyranor下载</a>这类可信渠道拿，别混装来路不明的「特别版」——签名不一致会导致正版怎么装都报「应用未安装」。</p>
+<h2>能力域三：安装与故障排查——问题几乎都出在「包」或「机」</h2>
+<p>Tyranor 的安装环节排错能力，在同类模拟器里算是文档最完整的一档。素材里给了一张对照表，把五种典型报错场景的可能原因和处理方法逐项列了出来：</p>
+<ul><li>「解析包时出现问题」→ APK 下载不完整或传输中损坏，重新下载；网盘转存的先校验文件再装</li><li>「应用未安装」→ 与已有应用签名冲突，先卸载来路不明的同包名应用</li><li>机型不兼容提示 → 安卓版本过低或架构不匹配，换历史版本试</li><li>存储空间不足 → 清出至少 2～3 倍安装包体积的空间再试</li><li>安装按钮灰色 / 无响应 → 关闭第三方安全应用的安装拦截后重试</li></ul>
+<p>这里有两个容易忽略的点：<strong>别混装魔改包</strong>——签名不一致会让正版永远装不上；以及<strong>安装成功 ≠ 运行成功</strong>——应用能打开后，游戏跑不跑得起来是另一组问题，属于启动与运行环节。</p>
+<p>什么时候该放弃一个安装包？素材给出了实用的判断：连续换渠道重下、换历史版本都报同一个错，大概率是包本身的问题，不是手机的问题——换一个信得过的源头，比在同一个包上反复折腾省时间。</p>
+<h2>能力域四：存储管理——SD 卡时代正在远去</h2>
+<p>把几十 GB 的游戏库塞进 SD 卡曾是安卓玩家的省钱传统，但新版安卓对外置存储越管越严。Tyranor 在 v2.3.4 的更新里专门补了这块，背后是两条正在收紧的规则：</p>
+<p><strong>SD 卡目录的读写限制</strong>——安卓 11 起应用访问 SD 卡要过系统授权，安卓 13 后部分路径干脆只读。游戏在 SD 卡上的常见症状是扫得到、起不来或存不了档。</p>
+<p><strong>Android/data 访问墙</strong>——这个目录是应用私有数据区，新版系统连文件管理器都不给直接进了。应用数据与存档可能与它有关。</p>
+<p>Tyranor 给的出路是：支持把 SD 卡上 KR2 游戏的存档导出至 Android/data，给受限的存档开了一条合规通道。素材里还贴心给了一张决策表：游戏在 SD 卡频繁出问题的，迁回内置存储的收集目录；必须用 SD 卡的，优先放 KR2 游戏并用新版存档导出；从旧机迁移 SD 卡的，存档先导出再迁移。</p>
+<p>还有一个常被误判的因素是 SD 卡本身的健康度。存储卡的读写速度、坏块问题，在跑大游戏时很容易被归罪到模拟器头上。出状况先验卡：用电脑读一次核对文件体积、跑一次读写验证、卡速过低（老 Class 10 以下）直接换。</p>
+<h2>短板也要说</h2>
+<p>Tyranor 的能力面铺得不错，但几个短板在盘点时不能跳过：</p>
+<p><strong>慢速加载是全局开关</strong>——一旦开启作用于所有游戏，不像兼容模式按游戏隔离。这意味着你得记得玩完就关掉，否则整个游戏库的加载速度都会被拖累。</p>
+<p><strong>安卓存储政策持续收紧</strong>——官方给的通道是「合规导出存档」，但 SD 卡本身的读写限制是系统级的，模拟器能做的只是绕路，没法根本解决。素材里的实用结论很直接：「游戏本体放内置存储，SD 卡留给备份与低频内容」，这是当前最省心的结构。</p>
+<p><strong>旧系统兼容成本高</strong>——v2.3.4 修了非中文系统下 KR2 游戏启动闪退的问题，这类兼容补丁的存在说明，模拟器要覆盖的版本矩阵越广，每轮更新的隐性成本就越高。</p>
+<h2>什么样的人该用它</h2>
+<p>盘点下来，Tyranor 的用户画像大致落在三类人身上：</p>
+<p><strong>KRKR 重度玩家</strong>——手里有大量 KRKR 引擎作品，从 v1 到 KR2 都有，需要一个能跑全版本的安卓端解决方案。Tyranor 的三层加载兼容链和版本迭代节奏，正是为这类跨版本需求设计的。</p>
+<p><strong>GalGame 收藏党</strong>——追求把整个游戏库搬上手机，对 SD 卡、存档迁移、换机同步这些细节有刚性要求。Tyranor 的文档覆盖了从装包到存档的完整路径，排错效率高。</p>
+<p><strong>折腾型安卓用户</strong>——不怕折腾存储权限、签名冲突、系统版本差异，愿意为一部冷门作品反复试不同的兼容模式和加载方式。Tyranor 的开源头属性意味着遇到问题还能去源码里找答案。</p>
+<p>如果你不属于这三类，可能 Tyranor 对你来说确实重了点——但对上面这三类，它是目前安卓端 KRKR 路线上最靠谱的选项。开源资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/tyranor" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/tyranor" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/tyranor" target="_blank" rel="noopener">GitCode</a> 三个仓库都能找到，国内访问有需要的直接 Gitee 就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/twitchtv.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从零上手 Twitch：注册、开播、搜频道一把梭</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ubox-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">uboX 为什么不做全时录像？低功耗摄像头的架构取舍</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

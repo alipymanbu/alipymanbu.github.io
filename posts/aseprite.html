@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 Aseprite 做第一个像素动画：从零到循环精灵图只需 15 分钟 · 老杨技术栈</title>
+  
+<meta name="description" content="装好 Aseprite、建对画布、打开洋葱皮，跟着五步做完一个能直接丢进游戏引擎的弹跳小球循环——新手练完就能理解逐帧动画的骨架。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/aseprite.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Aseprite 做第一个像素动画：从零到循环精灵图只需 15 分钟">
+<meta property="og:description" content="装好 Aseprite、建对画布、打开洋葱皮，跟着五步做完一个能直接丢进游戏引擎的弹跳小球循环——新手练完就能理解逐帧动画的骨架。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/aseprite.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/aseprite/onion-skin.gif">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/aseprite/onion-skin.gif">
+
+<meta name="twitter:title" content="用 Aseprite 做第一个像素动画：从零到循环精灵图只需 15 分钟">
+<meta name="twitter:description" content="装好 Aseprite、建对画布、打开洋葱皮，跟着五步做完一个能直接丢进游戏引擎的弹跳小球循环——新手练完就能理解逐帧动画的骨架。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u88c5\u597d Aseprite\u3001\u5efa\u5bf9\u753b\u5e03\u3001\u6253\u5f00\u6d0b\u8471\u76ae\uff0c\u8ddf\u7740\u4e94\u6b65\u505a\u5b8c\u4e00\u4e2a\u80fd\u76f4\u63a5\u4e22\u8fdb\u6e38\u620f\u5f15\u64ce\u7684\u5f39\u8df3\u5c0f\u7403\u5faa\u73af\u2014\u2014\u65b0\u624b\u7ec3\u5b8c\u5c31\u80fd\u7406\u89e3\u9010\u5e27\u52a8\u753b\u7684\u9aa8\u67b6\u3002", "headline": "\u7528 Aseprite \u505a\u7b2c\u4e00\u4e2a\u50cf\u7d20\u52a8\u753b\uff1a\u4ece\u96f6\u5230\u5faa\u73af\u7cbe\u7075\u56fe\u53ea\u9700 15 \u5206\u949f", "image": ["https://alipymanbu.github.io/images/aseprite/onion-skin.gif"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/aseprite.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/aseprite.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u7528 Aseprite \u505a\u7b2c\u4e00\u4e2a\u50cf\u7d20\u52a8\u753b\uff1a\u4ece\u96f6\u5230\u5faa\u73af\u7cbe\u7075\u56fe\u53ea\u9700 15 \u5206\u949f", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">用 Aseprite 做第一个像素动画：从零到循环精灵图只需 15 分钟</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 Aseprite 做第一个像素动画：从零到循环精灵图只需 15 分钟</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">装好 Aseprite、建对画布、打开洋葱皮，跟着五步做完一个能直接丢进游戏引擎的弹跳小球循环——新手练完就能理解逐帧动画的骨架。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程结束时，你会在 Aseprite 里做出一个<strong>弹跳小球的循环像素动画</strong>，带挤压拉伸形变，能直接导出 Sprite Sheet 丢进 Unity 或 Godot。全程 15 分钟，从零开始。</p>
+<h2>准备：三件事先搞定</h2>
+<p>在动手之前，确认下面三件事：</p>
+<p><strong>第一，装好 Aseprite。</strong> 你需要去<a href="https://aseprite.qhah.skin" target="_blank" rel="noopener">Aseprite官网</a>拿安装包。个人用途可以从源码自己编译，想省事就直接从<a href="https://aseprite.qhah.skin/download.html" target="_blank" rel="noopener">官方下载</a>装——省的是编译那一步。Windows、macOS、Linux 都支持。</p>
+<p><strong>第二，画布尺寸选对。</strong> 打开 Aseprite 后 File → New Sprite，这一步别随便填。像素画的尺寸越小越有"像素味"，弹跳小球这种练习选 <strong>16×16</strong> 就够了——256 个像素能画出的东西比你想象的多。颜色模式选 RGBA（默认就是），Frame Rate 先留着 24，后面随时改。</p>
+<blockquote><p>这里注意：画布一旦建错尺寸，缩小会裁掉像素、放大会引入空白边。建之前想 10 秒，比事后改省 10 分钟。</p></blockquote>
+<p><strong>第三，时间轴面板可见。</strong> Aseprite 的界面是可自定义的，如果你看不到底部的时间轴，按 Tab 键切换显示。桌面版默认会显示，但如果之前调过布局可能被隐藏了。</p>
+<h2>第一步：画第一帧——落地的小球</h2>
+<p>在第 1 帧画一个绿色小球。别急着画圆——像素画不用硬套几何图形，而是<strong>一格一格点</strong>：</p>
+<ol><li>选铅笔工具（快捷键 B），像素大小设 1</li><li>选一个深绿色当主色，在画布偏上的位置点出一个圆形轮廓</li><li>填内部（快捷键 G 是油漆桶），再用一个浅绿色在左上角点两三笔高光</li><li>最后用更深的绿色在右下角点阴影——一个立体小球就出来了</li></ol>
+<p>16×16 的画布里，小球占 8×8 就好。太大会没空间做位置变化，太小看不清形变。</p>
+<p>画完之后<strong>先按一次 Ctrl+S</strong>。别迷信自动保存——Aseprite 从 2000 年到现在都没有自动保存功能，社区解释过：专业工具不想用后台进程打断创作节奏。数据恢复是救命稻草，不是日常流程。具体恢复操作和临时文件位置可以去<a href="https://aseprite.pages.dev/" target="_blank" rel="noopener">Aseprite文档</a>查。</p>
+<h2>第二步：开洋葱皮，复制帧</h2>
+<p>画逐帧动画和画静态图最大的区别，就是你能<strong>看到前后帧</strong>。Aseprite 的洋葱皮（Onion Skin）就是干这个的——把相邻帧以半透明影子叠在当前画面上。</p>
+<ol><li>点时间轴工具栏上的洋葱皮图标（或者直接按 <code>;</code> 键）</li><li>默认前后各显示 2 帧，够用了——动作幅度小就调 1，动作快调到 3~4</li><li>时间轴里右键当前第 1 帧 → <strong>Copy Frame</strong>，或者选中后按 Ctrl+Shift+D</li><li>现在你有第 1 帧和第 2 帧两张一模一样的画面了</li></ol>
+<p>打开洋葱皮之后你会发现，第 2 帧上半透明地叠着第 1 帧的影子。这就是你对位的参照——让第 2 帧的小球沿着一条合理的路径往下走。</p>
+<p><img src="../images/aseprite/onion-skin.gif" alt="洋葱皮开关效果，红蓝描边模式下前后帧半透明对位" loading="lazy"></p>
+<blockquote><p>别急着跳到下一步。先把洋葱皮调熟——开关几次、改改前后帧数，感受一下"有参照"和"没参照"画动画的区别。</p></blockquote>
+<h2>第三步：逐帧画弹跳——位置 + 形变</h2>
+<p>现在是真正的动画部分。弹跳小球不是从上往下再回来就完了——关键在于<strong>挤压拉伸（Squash &amp; Stretch）</strong>。这是动画师的第一课，也是像素画里最能体现"生动"的技巧。</p>
+<p>弹跳过程拆成 4 帧来画：</p>
+<table><thead><tr><th>帧号</th><th>小球状态</th><th>怎么做</th></tr></thead><tbody><tr><td>1</td><td>最高点（正常比例 8×8）</td><td>起始帧，已经画好</td></tr><tr><td>2</td><td>下落中（微拉长 7×9）</td><td>小球往下挪 4 格，纵向拉长 1 像素、横向收 1 像素</td></tr><tr><td>3</td><td>落地瞬间（压扁 10×6）</td><td>小球到画布底部，横向撑开到 10 像素、纵向压到 6 像素——<strong>总体积不变</strong>，扁了就必须宽</td></tr><tr><td>4</td><td>弹起中（微拉长 7×9）</td><td>和第 2 帧对称，往上挪、拉长成椭圆形</td></tr><tr><td>5</td><td>回到最高点（正常比例 8×8）</td><td>和第 1 帧一模一样，形成循环</td></tr></tbody></table>
+<p><strong>怎么改形状？</strong> 铅笔 + 橡皮擦（快捷键 E）逐格调整就行——像素画没有变形工具能帮你自动算，全靠手点。但好处是像素少，改不了几格。</p>
+<p>每画完一帧，复制它、在新帧上改。别在同一帧上反复改来改去——帧是独立的，画砸了删帧重画比在同一帧里修修补补快。</p>
+<p>画完之后按 Enter（桌面版）或者时间轴上的播放按钮预览。如果弹跳看起来像一块木头在飘——检查一下是不是漏了挤压拉伸；如果小球看起来"跳得没力气"——检查落地帧是不是压得不够扁。</p>
+<h2>第四步：设播放方式——乒乓省帧大法</h2>
+<p>时间轴画完了，但直接播放默认是正向循环（1→2→3→4→5→1）。对于弹跳这种<strong>对称动作</strong>，Aseprite 有个省帧神器叫 <strong>乒乓模式（Ping-Pong）</strong>：</p>
+<ol><li>在时间轴左侧的帧选择器里，<strong>框选全部 5 帧</strong></li><li>右键 → <strong>New Tag</strong>（给这段动画起个标签）</li><li>方向（Direction）下拉选 <strong>Ping-Pong</strong></li><li>播放类型选 <strong>Forward</strong>（或者 Reverse，看你想让它先弹还是先落）</li></ol>
+<p>乒乓模式的效果是：1→2→3→4→5→4→3→2→1 循环。相当于你只画了半个动作，回程自动补上。待机呼吸、光标闪烁、水面波纹——所有往复动作都能用这个省帧。</p>
+<p><img src="../images/aseprite/playback-modes.gif" alt="三种播放方向对比：正向循环、反向倒放、乒乓往复" loading="lazy"></p>
+<blockquote><p>这里提一个容易踩的坑：Ping-Pong 模式下<strong>起点帧和终点帧不要一模一样</strong>。上面的例子里第 1 帧和第 5 帧是同一个位置、同一个形状，乒乓播放时会有一瞬间的卡顿。简单的解法是把第 5 帧删掉，变成 1→2→3→4→3→2→1——卡顿就没了。</p></blockquote>
+<h2>第五步：导出 Sprite Sheet</h2>
+<p>动画做完了，最后一步是把它变成游戏引擎能吃的格式。File → Export Sprite Sheet：</p>
+<ul><li><strong>Layout</strong> 选 Horizontal Strip（横向一排）——Unity 和 Godot 默认都认这个</li><li><strong>Frame Padding</strong> 设 2 像素，引擎采样时不容易串帧</li><li><strong>Output</strong> 选 PNG，保存到你的项目 assets 目录</li><li>如果你的游戏用的是 Godot，直接导出 <code>.ase</code> 原生格式也行——Godot 4.0+ 原生支持 Aseprite 文件</li></ul>
+<p>导出完把 PNG 拖进 Unity/Godot，引擎会自动把每一行像素切成独立帧，设置播放速率就是一个能用的动画组件了。</p>
+<h2>新手最容易翻车的三个点</h2>
+<p><strong>第一，不做备份，崩溃了哭。</strong> Aseprite 没有自动保存，数据恢复只保留两周临时文件，磁盘坏了或文件被手动删了就彻底没了。最低纪律是每 10 分钟按一次 Ctrl+S，推荐每天开工时 Save As 加日期后缀，工程文件存在云同步文件夹里。</p>
+<p><strong>第二，洋葱皮开着就画细节。</strong> 洋葱皮的半透明影子会干扰你看清当前帧的像素，尤其是画高光、阴影这些精细调整的时候。画细节时关掉，画位置对位时再打开——别全程开着不关。</p>
+<p><strong>第三，画布放大非整数倍看预览。</strong> 任何时候预览像素图，必须整数倍（×2、×3、×4）。非整数倍缩放（比如 Aseprite 默认的 100% 但你屏幕 DPI 不是整数倍缩放）会让相邻像素合并成中间色、边缘模糊。发朋友圈之前先整倍放大截图，或者直接导出 ×4 PNG 再发。</p>
+<h2>接下来还能玩什么</h2>
+<p>弹跳小球练完之后，下一个里程碑是<strong>走路循环</strong>——6~8 帧，四个方向（上、下、左、右）。那时候你会真正体会到：洋葱皮从"可选辅助"变成"必开工具"，因为走路的姿势变化比弹跳复杂得多，没有参照根本对位不准。</p>
+<p>如果打算长期用，还可以翻一下 Aseprite 文档里的调色板管理和 Lua 脚本——调色板能让你在多帧多图层之间保持颜色一致，脚本则能批量做重复操作（比如给一堆 Sprite 加水印、批量导出不同尺寸）。官方社区里有不少现成的脚本可以直接拿来用，不用自己从零写。</p>
+<p>完整的调色板预设和 Lua 脚本示例我也整理了一份，在<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Aseprite" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Aseprite" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Aseprite" target="_blank" rel="noopener">GitCode</a>三个地方都能拿到——国内访问优先 Gitee，备份也更保险。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/artflow.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">ArtFlow 这几年在忙什么——从一个画板到 GPU 引擎的进化史</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/assetstudio.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AssetStudio 用了两年：从&#34;提个 BGM 当铃声&#34;到每天都开的工具</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

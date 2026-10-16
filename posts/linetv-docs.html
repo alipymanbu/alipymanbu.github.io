@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>LINE TV 踩坑实录：那些看着简单实则一踩就翻的地方 · 老杨技术栈</title>
+  
+<meta name="description" content="用了两年 LINE TV，从投影黑屏到订阅偷偷扣费，从账号被登出到收藏片单突然消失，这篇把我踩过的坑一条条掰开说清楚，帮你提前避雷。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/linetv-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LINE TV 踩坑实录：那些看着简单实则一踩就翻的地方">
+<meta property="og:description" content="用了两年 LINE TV，从投影黑屏到订阅偷偷扣费，从账号被登出到收藏片单突然消失，这篇把我踩过的坑一条条掰开说清楚，帮你提前避雷。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/linetv-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:title" content="LINE TV 踩坑实录：那些看着简单实则一踩就翻的地方">
+<meta name="twitter:description" content="用了两年 LINE TV，从投影黑屏到订阅偷偷扣费，从账号被登出到收藏片单突然消失，这篇把我踩过的坑一条条掰开说清楚，帮你提前避雷。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528\u4e86\u4e24\u5e74 LINE TV\uff0c\u4ece\u6295\u5f71\u9ed1\u5c4f\u5230\u8ba2\u9605\u5077\u5077\u6263\u8d39\uff0c\u4ece\u8d26\u53f7\u88ab\u767b\u51fa\u5230\u6536\u85cf\u7247\u5355\u7a81\u7136\u6d88\u5931\uff0c\u8fd9\u7bc7\u628a\u6211\u8e29\u8fc7\u7684\u5751\u4e00\u6761\u6761\u63b0\u5f00\u8bf4\u6e05\u695a\uff0c\u5e2e\u4f60\u63d0\u524d\u907f\u96f7\u3002", "headline": "LINE TV \u8e29\u5751\u5b9e\u5f55\uff1a\u90a3\u4e9b\u770b\u7740\u7b80\u5355\u5b9e\u5219\u4e00\u8e29\u5c31\u7ffb\u7684\u5730\u65b9", "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/linetv-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/linetv-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "LINE TV \u8e29\u5751\u5b9e\u5f55\uff1a\u90a3\u4e9b\u770b\u7740\u7b80\u5355\u5b9e\u5219\u4e00\u8e29\u5c31\u7ffb\u7684\u5730\u65b9", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">LINE TV 踩坑实录：那些看着简单实则一踩就翻的地方</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">LINE TV 踩坑实录：那些看着简单实则一踩就翻的地方</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用了两年 LINE TV，从投影黑屏到订阅偷偷扣费，从账号被登出到收藏片单突然消失，这篇把我踩过的坑一条条掰开说清楚，帮你提前避雷。</p>
+  </header>
+  <div class="prose">
+<p>我第一次用 LINE TV 是奔着台剧日剧情报全、更新快去的——去它的<a href="https://linetv.fwen.ren" target="_blank" rel="noopener">官网</a>逛了一圈，界面清爽，内容分类也清楚，乍一看像个省心的流媒体 App。但真用久了才发现，这软件藏着好几个让人挠头的坑，有几个我第一次遇到时以为要重装才能解决，结果一通排查下来全是"原来如此"的简单道理。今天把我踩过的四个坑逐条掰开，看完这篇再去用，基本不会再踩同样的雷。</p>
+<h2>第一个坑：投影搜不到设备，投屏直接黑屏</h2>
+<p>买了 Chromecast 想把 LINE TV 的台剧投到电视上，从<a href="https://linetv.fwen.ren/download.html" target="_blank" rel="noopener">官方下载</a>装上 App 打开，就是找不到投屏按钮。好不容易连上了，画面全黑或者直接弹个错误提示。我当时以为是 Chromecast 坏了，拿去店里换了个新的，结果还是一样——后来才知道根本不是硬件的事。</p>
+<p><strong>症状</strong>：Chromecast / AirPlay 设备搜不到；或者搜到了连上了但画面黑屏、只有声音没有画面。</p>
+<p><strong>原因</strong>：这个坑其实叠了三四层。最底层的一层是——投影功能<strong>仅限 VIP 会员</strong>，免费用户打开 App 根本看不见 Chromecast 和 AirPlay 的图标。然后是 Wi-Fi 同网段问题：手机和电视必须连在<strong>完全一样</strong>的 Wi-Fi 名称上，2.4GHz 和 5GHz 在很多路由器上是分开的网段，企业网络的客户端隔离更是直接让设备互相看不见。还有 HDCP 这个东西：Chromecast 和 Apple TV 都要求发射端和接收端支持 HDCP 协议，山寨转接器经常不带完整 HDCP 支持，投过去就是黑屏。最后 iOS 18 用户注意了——Lightning HDMI 有线投屏目前被砍掉了，根本投不出去。</p>
+<p><strong>解法</strong>：先到个人页确认自己是不是 VIP，刚升级的话等三五分钟再试。然后检查手机和电视的 Wi-Fi 名称是不是一字不差，别漏了 2.4G 和 5G 的后缀。转接器只买 Apple 原厂的数位 AV 转接器，别图便宜买杂牌。iOS 18 用户直接放弃有线，改用 AirPlay 无线投就行。如果两个方式都不灵，最后还有一招——装电视原生 App 当备选。</p>
+<h2>第二个坑：好好的账号突然被登出</h2>
+<p>晚上躺床上刷了一天的剧，睡前想再看两集，打开 App 直接被踢回登录页了。我的第一反应是账号被盗了，差点慌得去改密码甚至报客服。后来才发现这根本不是什么安全事故，是 LINE TV 自己设计的机制。</p>
+<p><strong>症状</strong>：打开 App 发现自己不在登录状态，所有数据都还在，但需要重新输入账号密码。</p>
+<p><strong>原因</strong>：LINE TV 有个<strong>90 天强制登出</strong>的安全策略——同一个账号在同一台设备上连续 90 天没有完整执行过一次登出操作，系统就会自动把你踢下线。注意关键词是"登出"，不是"关闭 App"或者"后台杀掉"，必须走一次完整的账号退出流程才会重置计时。</p>
+<p><strong>解法</strong>：不用慌，重新登录就好，收藏片单和观看历史一点都不会丢。为了不让它半夜突然把你踢下线，建议养成习惯——每月至少手动登出再登录一次，就当给账号做个体检。这个规则在<a href="https://linetv-docs.pages.dev/" target="_blank" rel="noopener">linetv文档</a>里写得明明白白，只是没多少人会主动去查。</p>
+<h2>第三个坑：收藏的片单说没就没了</h2>
+<p>上个月收藏了一部台剧准备周末追，今天打开收藏片单直接空了。我以为是 App 出 bug 了，甚至跑去重装了一遍，重装完发现确实不是 bug——那部剧在 LINE TV 彻底消失了。</p>
+<p><strong>症状</strong>：之前收藏或标记过的作品突然从片单里消失，搜索也搜不到。</p>
+<p><strong>原因</strong>：版权到期下架。LINE TV 每部作品都有明确的下架日期，由版权合约决定。下架当天 23:59 之前还能正常观看，过了这个时间点，无论免费用户还是 VIP 会员，谁都访问不了。更糟的是，如果你之前花 VIP 权益买了某部全集的兑换权，作品下架时这份权益也会跟着失效，一分钱都退不了。</p>
+<p><strong>解法</strong>：养成每周扫一眼"即将下架"榜单的习惯——App 首页和各分类页都有这个区块，横向滚动就能看到，每部作品还会显示距离下架还有多少天。看到想追的赶紧标记。对于长篇剧集，如果时间紧赶不上看，用 VIP 的离线下载功能慢慢啃，下载下来的内容在本地可以一直看。</p>
+<h2>第四个坑：卸载了 App 还在偷偷扣订阅费</h2>
+<p>半年前觉得 LINE TV 更新慢，就卸载了 App 换了别的流媒体。这个月查银行账单才发现——LINE TV 的自动续费居然还在扣！我当时以为卸载就等于取消订阅了，想得太天真。</p>
+<p><strong>症状</strong>：已经卸载 LINE TV 很久，但每月账单里仍有订阅扣款记录。</p>
+<p><strong>原因</strong>：卸载 App 和取消订阅是两码事。LINE TV 的订阅费用走的是 LINE Pay、Apple ID 或 Google Play 的支付通道，卸载软件根本碰不到这些自动续费的设置。另外还有个容易忽略的点——VIP 会员是不能直接申请删除账号的，必须等订阅方案到期后才能操作。</p>
+<p><strong>解法</strong>：先别急着删，先去订阅管理页面手动关闭自动续费。等当前付费周期到期后，如果你确定不想用了，再去账号设置里申请删除。删除账号会永久清除观看历史、收藏片单等所有数据，想清楚再动手。</p>
+<hr>
+<h2>防坑清单速查</h2>
+<ul><li>投影投屏之前先确认自己是不是 VIP，免费用户根本搜不到设备</li><li>每月至少手动登出再登录一次，避开 90 天强制下线</li><li>每周扫一眼即将下架榜单，标记想看的作品，长篇用离线下载救急</li><li>卸载 App 之前必须先取消订阅，不然扣款根本停不下来</li><li>iOS 18 用户直接放弃有线投屏，改用 AirPlay 无线投更省心</li></ul>
+<p>知道这些坑之后，这软件其实相当省心——内容够全，更新够快，只要提前踩过这些雷，基本可以稳用了。相关的资料我也在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/linetv" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/linetv" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/linetv" target="_blank" rel="noopener">GitCode</a>各留了一份备份，哪天想起来查什么都能找着。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/linc-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">LiNC 到底值不值得掏钱？一个付费粉丝算的实账</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/lingq-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">LingQ 到底怎么用？一篇快问快答帮你搞懂语言学习神器</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

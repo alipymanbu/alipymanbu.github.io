@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 LibChecker 摸清你手机里每款 App 的底细——从装到用完整走一遍 · 老杨技术栈</title>
+  
+<meta name="description" content="LibChecker 能看穿 Android 应用的原生库架构、知名 SDK 引用、签名和权限。这篇教程从安装到快照追踪到 WebUI 导出，带你完整走一遍。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/libchecker.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 LibChecker 摸清你手机里每款 App 的底细——从装到用完整走一遍">
+<meta property="og:description" content="LibChecker 能看穿 Android 应用的原生库架构、知名 SDK 引用、签名和权限。这篇教程从安装到快照追踪到 WebUI 导出，带你完整走一遍。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/libchecker.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/libchecker/library-detail.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/libchecker/library-detail.jpg">
+
+<meta name="twitter:title" content="用 LibChecker 摸清你手机里每款 App 的底细——从装到用完整走一遍">
+<meta name="twitter:description" content="LibChecker 能看穿 Android 应用的原生库架构、知名 SDK 引用、签名和权限。这篇教程从安装到快照追踪到 WebUI 导出，带你完整走一遍。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "LibChecker \u80fd\u770b\u7a7f Android \u5e94\u7528\u7684\u539f\u751f\u5e93\u67b6\u6784\u3001\u77e5\u540d SDK \u5f15\u7528\u3001\u7b7e\u540d\u548c\u6743\u9650\u3002\u8fd9\u7bc7\u6559\u7a0b\u4ece\u5b89\u88c5\u5230\u5feb\u7167\u8ffd\u8e2a\u5230 WebUI \u5bfc\u51fa\uff0c\u5e26\u4f60\u5b8c\u6574\u8d70\u4e00\u904d\u3002", "headline": "\u7528 LibChecker \u6478\u6e05\u4f60\u624b\u673a\u91cc\u6bcf\u6b3e App \u7684\u5e95\u7ec6\u2014\u2014\u4ece\u88c5\u5230\u7528\u5b8c\u6574\u8d70\u4e00\u904d", "image": ["https://alipymanbu.github.io/images/libchecker/library-detail.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/libchecker.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/libchecker.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 LibChecker \u6478\u6e05\u4f60\u624b\u673a\u91cc\u6bcf\u6b3e App \u7684\u5e95\u7ec6\u2014\u2014\u4ece\u88c5\u5230\u7528\u5b8c\u6574\u8d70\u4e00\u904d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">用 LibChecker 摸清你手机里每款 App 的底细——从装到用完整走一遍</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 LibChecker 摸清你手机里每款 App 的底细——从装到用完整走一遍</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">LibChecker 能看穿 Android 应用的原生库架构、知名 SDK 引用、签名和权限。这篇教程从安装到快照追踪到 WebUI 导出，带你完整走一遍。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇教程，你将能独立用 LibChecker 扫描手机上每一款 App 的原生库、追踪版本变化、并在电脑上查看完整的应用信息报告。全程不用 root，也不需要懂反编译。</p>
+<h2>准备工作</h2>
+<p>你需要：</p>
+<ul><li>一台 Android 6.0 以上的手机</li><li>存储空间至少预留 100MB（快照和导出都占空间）</li><li>LibChecker 最新版——去它的<a href="https://libchecker.gkhf.beer" target="_blank" rel="noopener">官网</a>拿安装包就行，或者直接搜"<a href="https://libchecker.gkhf.beer/download.html" target="_blank" rel="noopener">LibChecker下载</a>"也能找到</li></ul>
+<p>好，假设你已经装好并打开了应用。下面我们一步步来。</p>
+<h2>第一步：主界面初览——应用列表上的标签都是什么意思</h2>
+<p>打开 LibChecker，第一眼是按字母排序的应用列表。每一行除了图标、名字、版本号，还有几个小标签：</p>
+<ul><li><strong>32 位 / 64 位 / 多架构 / 无原生库</strong>：这是它最核心的功能标签。判断依据是 APK 里 <code>lib/</code> 目录下有哪些 ABI 架构的 .so 文件。完全没有 .so 的应用就是"无原生库"，讨论架构对它没意义。</li><li><strong>Kotlin</strong>：说明这款应用用了 Kotlin 写业务代码。</li><li><strong>Split APK</strong>：表示它是 Google Play 的拆分式安装包。</li><li><strong>16KB / Overlay / Modern Xposed</strong>：这些是 LibChecker v2.x 新增的识别标签，分别对应不同的技术特征。</li></ul>
+<p>别急着逐个点开，先记住一件事：<strong>架构标签不是随便猜的</strong>，它实打实扫描了 APK 二进制。后面我们进详情页会看到具体证据。</p>
+<h2>第二步：点进一款 App——原生库和知名库两个 Tab</h2>
+<p>随便挑一款 App（比如微信或者抖音），点进去。默认展示的是应用概览页，这里能看到包名、安装来源、首次安装时间、签名证书指纹这些基本信息。</p>
+<p>切换到「原生库」Tab，这就是 LibChecker 最初被开发出来要解决的核心问题——看一款应用的 .so 文件清单和架构分布。</p>
+<p><img src="../images/libchecker/library-detail.jpg" alt="某应用的原生库详情页" loading="lazy"></p>
+<p>上面的截图里，你会看到 <code>.so</code> 文件按 ABI 分组列出。比如一款多架构的应用，<code>arm64-v8a</code> 和 <code>armeabi-v7a</code> 两个目录下的 .so 文件都会列出来。这里的知识补充一下：ARMv8 设备优先装载 arm64-v8a，找不到才退到 armeabi-v7a，最后才是更老的 armeabi。Google Play 从 2019 年开始就强制新上架应用支持 64 位，就是为了避免兼容层带来的性能损失。</p>
+<p>再切到「知名库」Tab。这里的匹配结果来自 LibChecker 维护的云端规则仓库——可以在设置里选 GitHub 源还是 Gitee 源，国内网络环境下选 Gitee 通常更新更顺。更详细的规则匹配逻辑和阈值调整，去<a href="https://libchecker.pages.dev/" target="_blank" rel="noopener">LibChecker文档</a>里能翻到完整说明。如果识别到某款知名 SDK（比如 OkHttp、Glide、MMKV），会标亮并给出简介。</p>
+<p><img src="../images/libchecker/marked-library.jpg" alt="知名库匹配结果" loading="lazy"></p>
+<p>这一步的实用场景：<strong>你想知道某款 App 用了什么开源库、有没有引入你不想用的 SDK</strong>（比如某些统计 SDK），这里是最快的办法。</p>
+<h2>第三步：快照功能——追踪 App 悄悄改了什么</h2>
+<p>这是 LibChecker v2.0+ 引入的杀手级功能，但很多人第一次用会被"保存完列表是空的"搞懵。我们来理清楚它的逻辑。</p>
+<p><strong>快照的本质</strong>：在一个时间点把手机上所有应用的分析结果拍下来存好；之后保存第二张快照，两次对比就能看到哪些 App 的原生库、权限、签名变了。</p>
+<p><strong>操作路径</strong>：主界面右上角三个点 → 保存快照 → 等进度条跑完（100+ 应用可能要等个十几秒）。</p>
+<p><strong>关键认知</strong>：第一次保存完，快照列表<strong>本来就是空的</strong>。快照页面只会在<strong>应用发生变化</strong>时自动生成对比项。你保存第一张快照是"基准线"，等某个 App 更新了（比如应用商店推了新版本），再来保存第二张，那时候对比项就出来了。</p>
+<p><img src="../images/libchecker/snapshot-compare.jpg" alt="两次快照的差异对比" loading="lazy"></p>
+<p>对比视图里，新增的库会标绿、删除的标红、权限变动和签名变更也一目了然。做逆向分析的人常用这个功能追 App 版本迭代引入了什么新组件，普通用户也能用来察觉"这款 App 更新后偷偷加了什么权限"。</p>
+<h2>第四步：导出完整报告——在电脑上看</h2>
+<p>LibChecker v2.5.4 之后加了应用信息导出功能。如果你不想在小屏幕上一个个翻，或者想做一次设备 App 盘点，这步很实用。</p>
+<p><strong>导出操作</strong>：主界面 → 设置 → 应用信息导出。执行后文件会保存在设备存储里（路径取决于 Android 版本）。</p>
+<p><strong>查看方式有两种</strong>：</p>
+<ol><li><strong>手机浏览器直接打开</strong> lc.absinthe.life，上传刚才导出的文件</li><li><strong>传到电脑</strong>——数据线、微信文件传输助手、云盘都行，然后在电脑浏览器打开同一个网址</li></ol>
+<p>WebUI 展示的结构和手机端看到的一致，但数据更完整：它包含了手机端扫描到而 WebUI 无法从 APK 二进制推断的字段，比如<strong>安装来源</strong>和<strong>首次安装时间</strong>。</p>
+<p>导出功能的几个典型场景：</p>
+<ul><li><strong>换机前盘点</strong>：旧手机导出 → 新手机 WebUI 打开 → 对比两款设备的 App 生态差异</li><li><strong>定期量化</strong>：每隔一段时间导出一次，看看设备上 32 位应用的占比是不是在减少</li><li><strong>团队协作</strong>：导出文件可以直接分享，同事打开就能看</li></ul>
+<h2>常见卡点与解法</h2>
+<h3>卡点一：快照保存卡住不动</h3>
+<p>最常见的三个原因：</p>
+<ol><li><strong>存储空间不够</strong>：去系统设置 → 存储，确认有剩余空间。快照文件虽然不大，但内存卡满了系统什么都做不了。</li><li><strong>前台服务被系统杀掉</strong>：LibChecker v2.0+ 靠前台服务后台保存，但国内厂商 ROM 的后台策略特别激进。解决办法是把 LibChecker 加进系统白名单（各厂商的"自启动管理"或"后台管理"里设），同时给它"忽略电池优化"权限。</li><li><strong>应用太多等得久</strong>：100+ 应用的设备，快照保存可能要半分钟以上——别慌，等就好。</li></ol>
+<h3>卡点二：保存完快照列表为空</h3>
+<p>再强调一遍：<strong>这是正常行为</strong>。快照页面只在应用发生变化时才显示对比项。第一次保存是基准线，没有东西可以对比。去应用商店随便更一款 App，回来再保存一次快照，差异就出来了。</p>
+<h3>卡点三：想重置设置但找不到按钮</h3>
+<p>LibChecker 的设置面板没有一键重置。要重置只有两条路：</p>
+<ol><li>系统设置 → 应用 → LibChecker → 存储 → 清除数据</li><li>卸载重装</li></ol>
+<p>注意：清除应用数据会同时清掉本地快照和云端规则缓存，提前备份好快照。</p>
+<h2>进阶一句话</h2>
+<p>你可以在设置里切换云端规则仓库源、调整库引用统计的阈值（默认展示出现 ≥N 次的库）、手动触发云端规则更新；快照数据也能导出备份，换手机或清数据前记得跑一下备份。</p>
+<hr>
+<p>这套工具的规则仓库和文档维护用的是 GitHub 生态，同步到了三个镜像源：主仓库在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/LibChecker" target="_blank" rel="noopener">GitHub</a>，国内用户访问慢的话可以直接走<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/LibChecker" target="_blank" rel="noopener">Gitee</a>镜像，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/LibChecker" target="_blank" rel="noopener">GitCode</a>那边也有一份备份。三份内容完全一致，选哪个看你网络顺手就好。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zepp-app.html">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</a></h2>
+  <p class="card-desc">把 Amazfit 手表生态从连接、健康监测到个性化改造的能力面完整铺开，哪些是真亮点、哪些藏着短板、哪类人最值得入手这套组合。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wispr-docs.html">Wispr v1.3.3：一个加密通讯应用在&#34;安全优先&#34;路上的四年迭代</a></h2>
+  <p class="card-desc">从 VOBP 协议到 P2P 直连，从手机号免费层到 Matrix ID 付费身份，CryptoDATA 的 Wispr 用一个个小版本慢慢拼凑出它对&#34;加密通讯该怎么做&#34;的答案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wibu-docs.html">给 wibu 算一笔付费账：Wibu+ 订阅到底值不值得掏这 $9.99</a></h2>
+  <p class="card-desc">从定价拆解到按使用强度算账，把 Wibu+ 订阅的每一项权益换算成你实际能省的时间和赚到的钱，看完你就知道自己该不该付。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/levilauncher.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Bedrock 玩家最头疼的三个问题，我用一个启动器全解决了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/linc-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">LiNC 到底值不值得掏钱？一个付费粉丝算的实账</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 Kimi 踩过的五个坑——别等 credits 烧光才反应过来 · 老杨技术栈</title>
+  
+<meta name="description" content="Kimi 看起来就是一个聊天框，点开就能用，但我第一次上手时在 credits 消耗、模型选择、网页端功能边界上来回翻车。这篇把我踩过的坑逐个拆开，每个都有症状、原因和解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/kimichat.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Kimi 踩过的五个坑——别等 credits 烧光才反应过来">
+<meta property="og:description" content="Kimi 看起来就是一个聊天框，点开就能用，但我第一次上手时在 credits 消耗、模型选择、网页端功能边界上来回翻车。这篇把我踩过的坑逐个拆开，每个都有症状、原因和解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/kimichat.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/kimichat/agent-flow.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/kimichat/agent-flow.png">
+
+<meta name="twitter:title" content="用 Kimi 踩过的五个坑——别等 credits 烧光才反应过来">
+<meta name="twitter:description" content="Kimi 看起来就是一个聊天框，点开就能用，但我第一次上手时在 credits 消耗、模型选择、网页端功能边界上来回翻车。这篇把我踩过的坑逐个拆开，每个都有症状、原因和解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Kimi \u770b\u8d77\u6765\u5c31\u662f\u4e00\u4e2a\u804a\u5929\u6846\uff0c\u70b9\u5f00\u5c31\u80fd\u7528\uff0c\u4f46\u6211\u7b2c\u4e00\u6b21\u4e0a\u624b\u65f6\u5728 credits \u6d88\u8017\u3001\u6a21\u578b\u9009\u62e9\u3001\u7f51\u9875\u7aef\u529f\u80fd\u8fb9\u754c\u4e0a\u6765\u56de\u7ffb\u8f66\u3002\u8fd9\u7bc7\u628a\u6211\u8e29\u8fc7\u7684\u5751\u9010\u4e2a\u62c6\u5f00\uff0c\u6bcf\u4e2a\u90fd\u6709\u75c7\u72b6\u3001\u539f\u56e0\u548c\u89e3\u6cd5\u3002", "headline": "\u7528 Kimi \u8e29\u8fc7\u7684\u4e94\u4e2a\u5751\u2014\u2014\u522b\u7b49 credits \u70e7\u5149\u624d\u53cd\u5e94\u8fc7\u6765", "image": ["https://alipymanbu.github.io/images/kimichat/agent-flow.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/kimichat.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/kimichat.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 Kimi \u8e29\u8fc7\u7684\u4e94\u4e2a\u5751\u2014\u2014\u522b\u7b49 credits \u70e7\u5149\u624d\u53cd\u5e94\u8fc7\u6765", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">用 Kimi 踩过的五个坑——别等 credits 烧光才反应过来</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 Kimi 踩过的五个坑——别等 credits 烧光才反应过来</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Kimi 看起来就是一个聊天框，点开就能用，但我第一次上手时在 credits 消耗、模型选择、网页端功能边界上来回翻车。这篇把我踩过的坑逐个拆开，每个都有症状、原因和解法。</p>
+  </header>
+  <div class="prose">
+<h2>看着简单，其实有几个坑</h2>
+<p>我第一次打开 Kimi 的<a href="https://kimichat.uerg.quest" target="_blank" rel="noopener">官网</a>的时候以为就是个普通 AI 聊天框——登录、输入问题、得到答案，就这么回事。结果三天后我的 credits 就烧光了，Agent 任务跑不动了，还以为是账号出了问题。后来才发现我在模型选择、思考强度、Swarm 调度这几个地方上反复踩坑，每一次都实打实消耗 credits。</p>
+<p>这篇把我踩过的坑逐个讲清楚，每个都给了提前避开的解法。看完这篇，你至少不会像我那样白烧几百 credits。</p>
+<h2>坑一：不知道 credits 怎么没的，以为会员额度是无限的</h2>
+<h3>症状</h3>
+<p>第一天登录，随手发了几个问题，然后点了几次 Agent 模式，第二天打开发现 K3 模型用不了了，提示 credits 已耗尽。我当时以为是程序 bug，反复刷新都没用。</p>
+<h3>原因</h3>
+<p>Kimi 的 credits 不是"免费随便用"的聊天额度，而是高级 AI 能力的计量货币。K2.6 的简单聊天不消耗 credits——但我当时没分清模型，随手切到 K3 又开了 High 思考强度，每次对话都在烧。Agent 模式、Swarm、OK Computer 这些功能消耗更快，跑一个中等复杂度的 PPT 任务可能就要 30 到 50 credits，深度研究报告直接上百。</p>
+<p>更糟的是 K3 Swarm 模式，并行 10 个子 Agent，看起来是"一次搞定"，但每个子 Agent 的 token 都累计消耗，credits 是单 Agent 的 2 到 3 倍。我那天不小心让一个 Swarm 任务跑了两遍，直接烧了将近 200 credits，等于当天额度的三分之一。</p>
+<h3>解法</h3>
+<p>不确定具体怎么算的可以先去<a href="https://kimichat.pages.dev/" target="_blank" rel="noopener">kimichat文档</a>翻一下，把 credits 的消耗逻辑搞清楚再开 Agent。简单任务老老实实回 K2.6，需要 K3 的任务先用 Low 档——K3 Low 比 High 省 50 到 70%，大部分场景够用。同一个任务别让 Agent 反复重来，每次重来都是重新消耗，正确做法是说"上一版的第 3 页不对，改一下就好，其他保留"。</p>
+<p>定期看一下 credits 余额，养成每周查一次的习惯。快用完了就换回 K2.6 做简单问答，或者调整思考强度。别像我那样等耗尽了才反应过来。</p>
+<p><img src="../images/kimichat/agent-flow.png" alt="Kimi Agent 执行流程截图" loading="lazy"></p>
+<h2>坑二：模型切换的认知偏差——K2.6 不是万能的，Swarm 也不是越快越好</h2>
+<h3>症状</h3>
+<p>用 K2.6 让它"帮我做一个公司官网"，得到的只有一段纯文本描述，没有完整的网站交付。然后切到 K3 Swarm 去"翻译一段 500 字的文字"，等了将近一分钟，消耗了 60 credits，而 K2.6 同样的翻译只用了三秒。</p>
+<h3>原因</h3>
+<p>K2.6 定位是快速对话和问答，聊天模式免费、响应快，但它做不了 Agent 端到端交付。复杂多模态任务（写 Excel 公式、从设计稿截图生成前端代码）K2.6 只能输出纯文本，解析不了图片和表格。</p>
+<p>Swarm 的加速只在有大量可并行子任务时才成立。"搜 20 家公司的官网"、"处理 10 个独立 Excel"这类任务能快 3 到 5 倍，但"先写代码再测试再修 bug"这种强依赖串行的任务，Swarm 和单 Agent 速度差不多——甚至因为子 Agent 启动开销，简单任务反而更慢。</p>
+<h3>解法</h3>
+<p>先看任务里有没有"大量"、"全部"、"上千条"这类关键词。没有的话先用 K3 单 Agent 试试，嫌慢再换 Swarm。简单问答、翻译、代码片段生成，直接 K2.6 搞定，别浪费 credits 开 K3。</p>
+<h2>坑三：网页端的天花板——以为不需要装桌面端</h2>
+<h3>症状</h3>
+<p>在网页端用 Kimi 做了一个需要访问本地文件夹的任务，反复失败。以为是 prompt 写得不好，改了三次指令还是不行。后来才知道网页端根本不支持本地文件访问。</p>
+<h3>原因</h3>
+<p>Kimi 网页端（kimi.com）确实最快上手，零安装、零门槛，但它有几个硬伤。网页端没有本地文件访问能力——Kimi Work 桌面端可以挂载文件夹让 Agent 读写本地文件，网页端做不到。定时任务 Cron 和跨标签页自动化的浏览器扩展也只在桌面端有。OK Computer 虚拟电脑更是桌面端独占。</p>
+<p>我当时在网页端做一个"批量整理本地 Downloads 文件夹"的任务，反复改 prompt 都没用，浪费了好几个小时。</p>
+<h3>解法</h3>
+<p>快速问答、不需要本地文件的 Agent 任务，网页端足够。但一旦任务涉及本地文件操作、定时触发、浏览器自动化，直接从<a href="https://kimichat.uerg.quest/download.html" target="_blank" rel="noopener">kimichat下载</a>装 Kimi Work 桌面端，别在网页端死磕。网页端和桌面端的账号是互通的，聊天记录会自动同步。</p>
+<h2>坑四：Swarm 的加速错觉——不是所有任务都能快 4.5 倍</h2>
+<h3>症状</h3>
+<p>看到官方说 Swarm 比单 Agent 快 4.5 倍，就把所有任务都换成 Swarm。结果"一步步写代码 + 测试 + 修复"这种任务，Swarm 比单 Agent 还慢了几秒。</p>
+<h3>原因</h3>
+<p>那个 4.5 倍加速比是有前提的——任务里必须有足够多的可并行环节。官方测试的场景都是"搜 20 个来源"、"1000 行 Excel 处理"、"竞品矩阵 20 家公司"，这些子任务之间互不依赖，可以同时开跑。</p>
+<p>但当任务有强依赖关系时，比如"先分析数据 → 再做图表 → 再写报告"，每一步都要等上一步完成，Swarm 的子 Agent 只能排队。极端情况下，如果一个子 Agent 都用不上，Swarm 启动开销反而让整体更慢。</p>
+<p>还有一个隐形的瓶颈：当子 Agent 数量特别多（比如 300 个），主 Agent 的规划和汇总本身成了瓶颈，边际收益递减。</p>
+<h3>解法</h3>
+<p>中等任务（10 到 30 分钟）先用 K3 单 Agent 试试，嫌慢再换 Swarm。大型任务（1000 条以上数据、30 个以上来源）直接 Swarm，省下来的时间值回 credits。极端简单的任务（"搜一个词"）别开 Swarm，子 Agent 启动开销都不止几秒。</p>
+<h2>防坑清单</h2>
+<ul><li><strong>搞清楚 credits 逻辑</strong>：K2.6 聊天免费，K3 和 Agent 都消耗 credits，每次升级思考强度都在乘以消耗倍率</li><li><strong>任务先看复杂度</strong>：简单任务 K2.6，中等任务 K3 单 Agent，大型并行任务才上 Swarm</li><li><strong>本地任务直接装桌面端</strong>：网页端没有本地文件访问，别在网页端死磕本地操作</li><li><strong>同一个会话把任务做完</strong>：反复换 Session 或让 Agent 重来，每次都重新消耗大量 credits</li><li><strong>定期查余额</strong>：每周看一次 credits，快用完了及时切换模型或调整思考强度</li></ul>
+<p>知道这些坑之后，这软件其实相当省心——只要把 credits 花在刀刃上，模型选对档位，Kimi 真能顶得上一个小团队。对了，整理好的中文资料同步放在了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/kimichat" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/kimichat" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/kimichat" target="_blank" rel="noopener">GitCode</a>三个仓库，国内网络访问有不同体验。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/keymapper.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">手机音量键还能这么玩？Key Mapper 五分钟从入门到上瘾</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/kimiclaw.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">KimiClaw 这两年：一个 AI Agent 是怎么从云端跑到你手机上的</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Mooncell 上手实战：从零搭建你的 FGO 周常规划体系 · 老杨技术栈</title>
+  
+<meta name="description" content="这篇教程带你从零掌握 Mooncell 的核心用法——周常规划、从者数据查询、社区贡献三件事一次性搞定。跟着步骤走，把你每天刷关的时间砍一半。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/fgowikimooncell.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mooncell 上手实战：从零搭建你的 FGO 周常规划体系">
+<meta property="og:description" content="这篇教程带你从零掌握 Mooncell 的核心用法——周常规划、从者数据查询、社区贡献三件事一次性搞定。跟着步骤走，把你每天刷关的时间砍一半。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/fgowikimooncell.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/fgowikimooncell/mooncell-home.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/fgowikimooncell/mooncell-home.jpg">
+
+<meta name="twitter:title" content="Mooncell 上手实战：从零搭建你的 FGO 周常规划体系">
+<meta name="twitter:description" content="这篇教程带你从零掌握 Mooncell 的核心用法——周常规划、从者数据查询、社区贡献三件事一次性搞定。跟着步骤走，把你每天刷关的时间砍一半。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd9\u7bc7\u6559\u7a0b\u5e26\u4f60\u4ece\u96f6\u638c\u63e1 Mooncell \u7684\u6838\u5fc3\u7528\u6cd5\u2014\u2014\u5468\u5e38\u89c4\u5212\u3001\u4ece\u8005\u6570\u636e\u67e5\u8be2\u3001\u793e\u533a\u8d21\u732e\u4e09\u4ef6\u4e8b\u4e00\u6b21\u6027\u641e\u5b9a\u3002\u8ddf\u7740\u6b65\u9aa4\u8d70\uff0c\u628a\u4f60\u6bcf\u5929\u5237\u5173\u7684\u65f6\u95f4\u780d\u4e00\u534a\u3002", "headline": "Mooncell \u4e0a\u624b\u5b9e\u6218\uff1a\u4ece\u96f6\u642d\u5efa\u4f60\u7684 FGO \u5468\u5e38\u89c4\u5212\u4f53\u7cfb", "image": ["https://alipymanbu.github.io/images/fgowikimooncell/mooncell-home.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/fgowikimooncell.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/fgowikimooncell.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "Mooncell \u4e0a\u624b\u5b9e\u6218\uff1a\u4ece\u96f6\u642d\u5efa\u4f60\u7684 FGO \u5468\u5e38\u89c4\u5212\u4f53\u7cfb", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">Mooncell 上手实战：从零搭建你的 FGO 周常规划体系</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Mooncell 上手实战：从零搭建你的 FGO 周常规划体系</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">这篇教程带你从零掌握 Mooncell 的核心用法——周常规划、从者数据查询、社区贡献三件事一次性搞定。跟着步骤走，把你每天刷关的时间砍一半。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇教程，你能自己在 Mooncell 上完成三件事：规划一周的御主任务并拿到最优关卡组合、从者升级需要的资源秒算清楚、发现页面错误后自己动手修正。</p>
+<h2>准备：你需要什么</h2>
+<ul><li>一台能上网的设备（手机或电脑都行，Mooncell 响应式做得不错）</li><li>一个 FGO 账号（不需要登录 Mooncell 就能用大部分功能，但登录后才能编辑）</li><li>大概 10 分钟的完整时间——别边刷边学，中途切出去很容易忘步骤</li></ul>
+<p>先打开浏览器，去<a href="https://fgowikimooncell.xnyx.quest" target="_blank" rel="noopener">fgowikimooncell官网</a>。页面加载出来会看到顶部导航栏——从者、关卡、活动、周常规划、社区，这么多入口第一次看会懵。别急着点，我们按顺序来。想离线查数据的话可以从<a href="https://fgowikimooncell.xnyx.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿一份备份包。</p>
+<p><img src="../images/fgowikimooncell/mooncell-home.jpg" alt="Mooncell 首页：导航栏和主要入口一目了然" loading="lazy"></p>
+<h2>第一步：把周常任务塞进规划器</h2>
+<p>御主任务每七天刷新一次，固定那几条：完成 N 次关卡、击杀 N 个敌人、获得 N 种素材。很多人刷关前会打开任务栏看一遍，刷完发现还差一条，得回去补。规划器就是解决这个的。</p>
+<p><strong>1. 登录并进入周常规划页</strong></p>
+<p>点击顶部导航栏的「周常规划」标签。没登录的话会跳出注册页面——用邮箱注册就行，不需要 FGO 账号绑定。登录后规划器页面会记住你的上周设置，下次进来直接覆盖。</p>
+<p><strong>2. 勾选本周要完成的任务</strong></p>
+<p>规划器页面左侧是本周御主任务列表，每个任务有个复选框。默认全勾上——先别改，我们后面再加自定义条件。注意看每个任务旁边的进度数字，有些是你已经完成的部分（比如已经击杀了 30/50 个敌人），规划器会自动扣掉。</p>
+<p><strong>3. 设置你的偏好</strong></p>
+<p>页面中间有几个下拉框：</p>
+<ul><li><strong>刷关效率偏好</strong>：选「AP 效率优先」（省体力）还是「QP 效率优先」（攒金币）</li><li><strong>是否计入活动关卡</strong>：活动期间勾选上，规划器会把活动关卡也纳入计算</li><li><strong>自定义范围</strong>：比如你只想刷 2.4 章之后的关卡，在这里输入章节号就行</li></ul>
+<p>设置好之后点「计算最优方案」按钮。</p>
+<p><strong>4. 拿到推荐关卡组合</strong></p>
+<p>右侧会跳出一组关卡列表，每条包含关卡名、需要刷几次、能覆盖哪些任务、预计消耗多少 AP。比如它可能告诉你「刷 3 次『新宿二丁目』+ 2 次『冬木大桥』就能同时完成击杀 50 个敌人和获得 5 种素材两个任务」。</p>
+<p>把这个列表截个图或者记在备忘录里，然后直接按顺序刷就完了——不用再打开任务栏核对。</p>
+<p><img src="../images/fgowikimooncell/mooncell-detail.jpg" alt="从者详情页：Mooncell 把数据拆解得很细" loading="lazy"></p>
+<h2>第二步：从者升级需要多少资源？直接查</h2>
+<p>你抽到一个新从者，想从 1 级升到满级（100 级），然后圣杯转临到 120。光凭感觉会花掉几十亿 QP——但精确数字是多少？Mooncell 的从者详情页直接给你。</p>
+<p><strong>1. 搜索从者</strong></p>
+<p>顶部搜索框输入从者名字，支持中文、日文罗马音、稀有度筛选。比如搜「阿尔托莉雅」，出来一堆，点你要的那个进详情页。</p>
+<p><strong>2. 找到升级消耗表</strong></p>
+<p>详情页往下滚，有个「强化数据」板块。里面分三个部分：</p>
+<ul><li><strong>等级提升</strong>：每一级从 1 到 100 各需要多少经验卡和 QP，表格列得清清楚楚。注意看——升到 100 级那一下的 QP 消耗是前 99 级总和还要多，很多人在这里翻车。</li><li><strong>技能升级</strong>：每个技能从 1 到 10 的素材列表。比如一个技能升到 10 级需要 15 个龙鳞 + 10 个羽毛笔 + 5 个传承结晶，后面两栏直接告诉你这些素材在哪个关卡刷效率最高。</li><li><strong>圣杯转临</strong>：如果你想升到 120，这里会列出每用一个圣杯需要的 QP 和圣杯数量——第一次用圣杯只要 1000 万，第七次要 2 亿，指数增长。</li></ul>
+<p><strong>3. 用经验值换算器快速算</strong></p>
+<p>不想手动加？从者详情页右上角有个小计算器图标，点进去是经验值换算器。输入「当前等级 1 → 目标等级 120」，它直接告诉你总共需要多少张金卡经验卡、多少张银卡、多少 QP。输出结果可以复制到剪贴板，方便你和工会里的朋友讨论。</p>
+<h2>第三步：发现页面错误？自己动手改</h2>
+<p>Mooncell 没有官方运营，所有数据都是玩家录入的。偶尔你会发现某个从者的攻击力写错了，或者某个关卡的掉落表漏了一项——这不是 Bug，是社区开放 Wiki 的正常状态。你可以自己修正。</p>
+<p><strong>1. 找到编辑入口</strong></p>
+<p>每个页面顶部标签栏最右边有个「编辑」按钮（铅笔图标）。登录后就能看到。点进去是一个可视化编辑器——不用写 Wiki 语法，跟编辑普通文档差不多。需要完整的编辑器语法参考和页面模板清单？Mooncell 的<a href="https://fgowikimooncell.pages.dev/" target="_blank" rel="noopener">fgowikimooncell文档</a>里全部写好了。</p>
+<p><strong>2. 修正内容</strong></p>
+<p>改之前先看一眼页面的「历史」标签，确认你要改的是最新版本还是已经有人改过但没发布。编辑时尽量只改你确定的错误，别顺手改格式或重排——编辑冲突是社区里最常见的问题，一次改太多很容易和别人撞车。</p>
+<p>在编辑摘要框里写清楚你改了什么、数据来源是什么——比如「修正吉尔伽美什技能 3 攻击力 8%→10%，来源 Aniplex 2026.10 卡池公告」。下次有人查这个数据时，就能溯源验证。</p>
+<p><strong>3. 发布并验证</strong></p>
+<p>点「显示预览」先看一遍格式对不对，没问题就点「保存页面」。保存后去页面的「历史」标签里，应该能看到你的编辑记录排在最上面。如果改的是关键数据（比如从者数值），过一两个小时再回来刷新看看有没有被管理员或其他玩家复查。</p>
+<h2>常见卡点：1~3 个新手最容易翻车的地方</h2>
+<h3>卡点一：规划器推荐的关卡我还没打到</h3>
+<p>规划器默认推荐全服务器解锁的最优关卡，但你可能还在 1.0 章开荒。解决方法：在规划器的自定义范围里勾选「仅显示已解锁章节」，它会自动过滤你没打到的章节。或者在关卡配置页的筛选器里设个最低 AP 消耗的范围——低 AP 关卡大多在早期章节。</p>
+<h3>卡点二：经验卡换算器算出来的数量看起来不对</h3>
+<p>换算器有个隐藏选项：是否考虑经验卡翻倍活动。默认是关闭的，如果你攒了一堆金卡想等双倍活动再用，记得把这个开关打开——双倍活动期间每张卡给的经验翻番，换算器会自动把数量砍半。</p>
+<h3>卡点三：编辑页面后内容消失了</h3>
+<p>几乎都是编辑冲突导致的——你打开编辑器的时候另一个玩家刚好也在改，你保存时它会弹出冲突提示。别慌，它会把两个版本并排显示，让你选择保留哪部分。选完保存就行，内容不会丢。如果真丢了，去页面的「历史」标签找到之前的版本，点「撤销」一键恢复。</p>
+<h2>进阶：往下还能玩什么</h2>
+<p>周常规划器只是 Mooncell 的冰山一角。活动期间把限时任务也勾上，它能算出同时覆盖周常和限时任务的最优组合；圣杯计算器输入几个数字就能告诉你给一个从者升 120 级总共要烧多少 QP；关卡筛选器可以按掉落素材反查——你缺龙鳞？它直接列出所有掉龙鳞的关卡按 AP 效率排序。</p>
+<p>这套资料在三个仓库都能拿到，GitHub 上维护的是最新主版本，Gitee 和 GitCode 方便国内镜像访问。社区编辑时遇到问题，讨论页里发个帖通常几小时内就有资深玩家回复——这就是没有官方运营但活了好几年的开放 Wiki 最神奇的地方。所有页面数据和模板源码在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/fgowikimooncell" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/fgowikimooncell" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/fgowikimooncell" target="_blank" rel="noopener">GitCode</a> 三个平台同步，随时可以本地备份或二次开发。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yousician.html">Yousician 翻底朝天：这五个隐藏功能 90% 的用户没碰过</a></h2>
+  <p class="card-desc">把 Yousician 从入门到进阶挖透，Practice 循环片段、Wait To Play、Auto-adjust 自动调速、唱歌移调、Vocal Range 校准——每一个都能改变练习效率</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vidhub-docs.html">VidHub 快问快答：多设备影视播放器 9 个最关心的问题一次说清</a></h2>
+  <p class="card-desc">VidHub 是什么人在用、怎么装、同步哪些数据、刮削怎么跑、WebDAV 有什么坑、要不要付费——整理成一篇问答速查，看完直接上手。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/trani-docs.html">我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤</a></h2>
+  <p class="card-desc">从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/fgowiki.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">把 fgowiki 嵌进每周 FGO 流程：从看公告到算周常一条链走完</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/filetransfer-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">手机到电脑零流量秒传——Filetransfer 从开机到文件落地完整实战</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

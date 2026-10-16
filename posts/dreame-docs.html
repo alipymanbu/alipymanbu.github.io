@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从拆箱到第一张地图：DREAME 扫地机完整配网建图实操 · 老杨技术栈</title>
+  
+<meta name="description" content="跟着做一遍 DREAME 扫地机从 WiFi 配网、地图扫描到房间命名的全流程，避开双频路由、权限限制这些新手高频坑，半小时搞定自动化清扫的全部基础。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/dreame-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从拆箱到第一张地图：DREAME 扫地机完整配网建图实操">
+<meta property="og:description" content="跟着做一遍 DREAME 扫地机从 WiFi 配网、地图扫描到房间命名的全流程，避开双频路由、权限限制这些新手高频坑，半小时搞定自动化清扫的全部基础。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/dreame-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/dreame-docs/dock-autoempty.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/dreame-docs/dock-autoempty.jpg">
+
+<meta name="twitter:title" content="从拆箱到第一张地图：DREAME 扫地机完整配网建图实操">
+<meta name="twitter:description" content="跟着做一遍 DREAME 扫地机从 WiFi 配网、地图扫描到房间命名的全流程，避开双频路由、权限限制这些新手高频坑，半小时搞定自动化清扫的全部基础。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8ddf\u7740\u505a\u4e00\u904d DREAME \u626b\u5730\u673a\u4ece WiFi \u914d\u7f51\u3001\u5730\u56fe\u626b\u63cf\u5230\u623f\u95f4\u547d\u540d\u7684\u5168\u6d41\u7a0b\uff0c\u907f\u5f00\u53cc\u9891\u8def\u7531\u3001\u6743\u9650\u9650\u5236\u8fd9\u4e9b\u65b0\u624b\u9ad8\u9891\u5751\uff0c\u534a\u5c0f\u65f6\u641e\u5b9a\u81ea\u52a8\u5316\u6e05\u626b\u7684\u5168\u90e8\u57fa\u7840\u3002", "headline": "\u4ece\u62c6\u7bb1\u5230\u7b2c\u4e00\u5f20\u5730\u56fe\uff1aDREAME \u626b\u5730\u673a\u5b8c\u6574\u914d\u7f51\u5efa\u56fe\u5b9e\u64cd", "image": ["https://alipymanbu.github.io/images/dreame-docs/dock-autoempty.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/dreame-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/dreame-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u62c6\u7bb1\u5230\u7b2c\u4e00\u5f20\u5730\u56fe\uff1aDREAME \u626b\u5730\u673a\u5b8c\u6574\u914d\u7f51\u5efa\u56fe\u5b9e\u64cd", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">从拆箱到第一张地图：DREAME 扫地机完整配网建图实操</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从拆箱到第一张地图：DREAME 扫地机完整配网建图实操</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">跟着做一遍 DREAME 扫地机从 WiFi 配网、地图扫描到房间命名的全流程，避开双频路由、权限限制这些新手高频坑，半小时搞定自动化清扫的全部基础。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程带你从零把 <a href="https://dreame.qjxz.skin" target="_blank" rel="noopener">DREAME官网</a> 扫地机真正用起来——不是简单开机充电，而是完成配网、扫描建图、房间命名三件事。做完这三件，你就能给每个房间设置清扫顺序、预约时间、甚至语音控制某间房单独扫，自动化清扫的架子算是搭起来了。</p>
+<h2>准备工作：先把这三件事搞定</h2>
+<p>动手之前花五分钟确认一下，能省后面半小时的排查时间。</p>
+<p><strong>设备和手机</strong>：DREAME 主机一台、基站一个、充电线一根，手机一台（iOS 或 Android 都可以，从 <a href="https://dreame.qjxz.skin/download.html" target="_blank" rel="noopener">下载</a> 页或应用商店搜 DREAME 装官方 App）。主机底部和基站背面的铭牌留着——配网时要对着设备型号看。</p>
+<p><strong>路由器</strong>：这是新手翻车率最高的环节。先看手机 WiFi 列表，你家是两个名字（比如 home 和 home-5G）还是一个名字？DREAME 只认 2.4GHz 频段——如果路由器把双频合成一个名称，先去路由器后台关掉合并，让 2.4G 和 5G 各走各的名。不知道怎么进后台？浏览器地址栏输机身贴纸上的 IP，密码也在贴纸上。</p>
+<p><strong>App 账号</strong>：装完 App 先注册登录，登录时国家/地区选对——选错了会导致后面云连接不上。注册完先别急着添加设备，等主机充上电再开 App 走配网流程。</p>
+<h2>第一步：主机回桩充电，开机就绪</h2>
+<p>新机器拆箱后主机一般是低电量状态，直接手动推到基站上也能充，但更稳的做法是：基站插电 → 主机开机 → 长按主机顶部按键让它自动回桩。充到电量指示灯常亮（大概 30 分钟起步）再开始配网——低电量配到一半断电是常有的事。</p>
+<p><img src="../images/dreame-docs/dock-autoempty.jpg" alt="主机回桩充电" loading="lazy"></p>
+<p>充电间隙可以打开 App 点「添加设备」，提前在列表里找到你的型号（L20 / L30 / X30 / X40 系列各自图标不一样）。</p>
+<h2>第二步：WiFi 配网——只有 2.4G 能连上</h2>
+<p>配网的核心逻辑就一条：<strong>手机连哪个 WiFi，就把哪个 WiFi 的信息传给主机</strong>。所以在 App 开始配网之前，确保手机连着的是你家的 2.4G 热点——名字里不带「5G」字样的那个。</p>
+<p>具体步骤：</p>
+<ol><li>主机电量充足后，长按主机按键进入配网模式（指示灯闪）。</li><li>App 里点「添加设备」→ 找到对应型号 → 选择当前 2.4G WiFi → 输入密码。</li><li>App 弹出权限请求时全部允许——特别是定位和蓝牙权限，配网阶段需要。</li><li>接下来两分钟左右，App 会自动发现附近的 DREAME 设备、下发 WiFi 密码、等待主机回复成功。</li></ol>
+<p>这里注意一个细节：如果你之前改过 WiFi 密码，或者换过路由器，App 里记住的密码还是旧的。配网失败后第一检查项是「手机当前连的 WiFi 密码有没有和路由器一致」——不是 App 里存的那个，是路由器实际在用的那个。</p>
+<h2>第三步：自动扫描，建立第一张地图</h2>
+<p>配网成功后 App 会自动提示「开始建图」，按提示把主机放回基站，确保它周围一米内没有大件家具遮挡，然后点「开始」。主机会以基站为圆心向外扫描一圈，期间会绕着房间走——别碰它，也别关门关窗，让它完整走一遍。</p>
+<p>扫描速度取决于房子大小，两居室一般 5~8 分钟，大户型或复式需要 15 分钟以上。扫描过程中 App 里能实时看到轮廓逐渐出现，从一团模糊到清晰的房间边界。</p>
+<p>扫描完成后主机会自动回桩充电，App 弹出「地图已创建」的提示。这时候别直接设置清扫——先做第四步的房间命名，后面所有自动化设置都依赖这些名字。</p>
+<h2>第四步：房间重命名，给自动化打标签</h2>
+<p>刚建完图的默认名称是「房间一、房间二」，一周后你自己都分不清哪个是哪个。<a href="https://dreame-docs.pages.dev/" target="_blank" rel="noopener">DREAME文档</a> 里专门把重命名写成独立教程，说明这是高频刚需。</p>
+<p>命名操作藏在地图编辑器里：打开 App → 进入设备卡片 → 点「地图编辑」→ 选择「房间分区」工具 → 在房间列表里选中要改的房间 → 点「重命名」输入新名字。</p>
+<p><img src="../images/dreame-docs/rename-entry.jpg" alt="房间分区工具入口" loading="lazy"></p>
+<p>命名就用最朴素的叫法：客厅、主卧、次卧、书房、厨房、阳台——这些名字后面会出现在清扫顺序、预约设置、甚至语音指令里。我见过有人把次卧叫「客房」、书房叫「老王的游戏间」，半年后切换清扫顺序时逐个查房间号，悔不当初。</p>
+<p>还有个容易忽略的权限细节：<strong>房间重命名只有主账号有权限</strong>。如果你把设备共享给家人，他们能启动清扫、能看地图，但改不了房间名——不是操作错了，是权限本来就没开放。</p>
+<p><img src="../images/dreame-docs/rename-map.jpg" alt="地图编辑里直接重命名" loading="lazy"></p>
+<p>如果是复式或别墅，每层楼一张地图。这种情况用「多楼层地图管理」里改名字更方便——左右滑动切换楼层，每层统一命名规则如「一楼」「二楼」，不会拿错。</p>
+<h2>三个新手最容易翻车的卡点</h2>
+<p><strong>卡点一：配网始终报连接失败</strong></p>
+<p>90% 的情况是手机连了 5GHz 热点。确认方法：手机设置里看当前 WiFi 名称，有没有「5G」「5GHz」「G5」之类的后缀？有就换。如果路由器是双频合一（只有一个名字），进后台关掉合并——具体菜单因品牌而异，搜「你的路由器品牌 + 双频合一」就能找到步骤。</p>
+<p><strong>卡点二：地图扫出来有大片空白</strong></p>
+<p>扫描的时候主机被遮挡物堵了——比如门没开、大型绿植挡住去路、或者基站放在了角落里。重新扫描前先把主机和基站移到开阔处，确保它能看到房间的四个角。多楼层的话别指望一张地图扫完所有层——每层单独建图，App 支持多楼层地图切换。</p>
+<p><strong>卡点三：共享用户改不了房间名</strong></p>
+<p>不是 bug，是设计限制。只有注册设备的主账号拥有房间编辑权限。如果需要家人一起设置，把主账号密码告诉他们或者让他们用主账号登录 App——共享账号只能操作清扫任务和查看状态，改不了地图结构。</p>
+<h2>做好这一步，后面就顺了</h2>
+<p>配网、建图、命名三件事完成后，你已经搭好了 DREAME 自动化清扫的全部骨架。接下来可以设置清扫顺序（比如先扫厨房再扫卧室，避免油烟带过去）、给特定房间设置禁止清扫区、甚至接入语音助手一句话让它去扫主卧。</p>
+<p>官方对这款设备的定位是「全屋智能清洁节点」——这些听起来虚的功能，基础全在这三步里。命名偷懒用默认值、配网凑合用 5G、建图时懒得挪基站，后面每一步都要返工。</p>
+<p>整理好的参考资料同步在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/DREAME" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/DREAME" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/DREAME" target="_blank" rel="noopener">GitCode</a>，国内访问不快的话换个地址试试。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zepp-app.html">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</a></h2>
+  <p class="card-desc">把 Amazfit 手表生态从连接、健康监测到个性化改造的能力面完整铺开，哪些是真亮点、哪些藏着短板、哪类人最值得入手这套组合。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wispr-docs.html">Wispr v1.3.3：一个加密通讯应用在&#34;安全优先&#34;路上的四年迭代</a></h2>
+  <p class="card-desc">从 VOBP 协议到 P2P 直连，从手机号免费层到 Matrix ID 付费身份，CryptoDATA 的 Wispr 用一个个小版本慢慢拼凑出它对&#34;加密通讯该怎么做&#34;的答案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wibu-docs.html">给 wibu 算一笔付费账：Wibu+ 订阅到底值不值得掏这 $9.99</a></h2>
+  <p class="card-desc">从定价拆解到按使用强度算账，把 Wibu+ 订阅的每一项权益换算成你实际能省的时间和赚到的钱，看完你就知道自己该不该付。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/drawpile.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Drawpile 藏着多少你没摸到的小机关</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/dreamface.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">DreamFace 实战教程——从零到做出第一条能发的数字人视频</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

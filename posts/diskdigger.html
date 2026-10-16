@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>DiskDigger 这十年：从一个 U 盘救星到跨平台数据恢复全家桶 · 老杨技术栈</title>
+  
+<meta name="description" content="它可能是数据恢复领域最被低估的工具——没有华丽的营销、没有繁冗的功能堆砌，却在&#34;扫描时就能预览&#34;这一件事上把同行甩了一条街。从最初只支持图片恢复的小工具，到如今覆盖 Windows、macOS、Linux、Android 四大平台的完整产品线，DiskDigger 的迭代轨迹藏着一个独立开发者对&#34;够用&#34;的执念。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/diskdigger.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DiskDigger 这十年：从一个 U 盘救星到跨平台数据恢复全家桶">
+<meta property="og:description" content="它可能是数据恢复领域最被低估的工具——没有华丽的营销、没有繁冗的功能堆砌，却在&#34;扫描时就能预览&#34;这一件事上把同行甩了一条街。从最初只支持图片恢复的小工具，到如今覆盖 Windows、macOS、Linux、Android 四大平台的完整产品线，DiskDigger 的迭代轨迹藏着一个独立开发者对&#34;够用&#34;的执念。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/diskdigger.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/diskdigger/android-app-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/diskdigger/android-app-cover.jpg">
+
+<meta name="twitter:title" content="DiskDigger 这十年：从一个 U 盘救星到跨平台数据恢复全家桶">
+<meta name="twitter:description" content="它可能是数据恢复领域最被低估的工具——没有华丽的营销、没有繁冗的功能堆砌，却在&#34;扫描时就能预览&#34;这一件事上把同行甩了一条街。从最初只支持图片恢复的小工具，到如今覆盖 Windows、macOS、Linux、Android 四大平台的完整产品线，DiskDigger 的迭代轨迹藏着一个独立开发者对&#34;够用&#34;的执念。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5b83\u53ef\u80fd\u662f\u6570\u636e\u6062\u590d\u9886\u57df\u6700\u88ab\u4f4e\u4f30\u7684\u5de5\u5177\u2014\u2014\u6ca1\u6709\u534e\u4e3d\u7684\u8425\u9500\u3001\u6ca1\u6709\u7e41\u5197\u7684\u529f\u80fd\u5806\u780c\uff0c\u5374\u5728\"\u626b\u63cf\u65f6\u5c31\u80fd\u9884\u89c8\"\u8fd9\u4e00\u4ef6\u4e8b\u4e0a\u628a\u540c\u884c\u7529\u4e86\u4e00\u6761\u8857\u3002\u4ece\u6700\u521d\u53ea\u652f\u6301\u56fe\u7247\u6062\u590d\u7684\u5c0f\u5de5\u5177\uff0c\u5230\u5982\u4eca\u8986\u76d6 Windows\u3001macOS\u3001Linux\u3001Android \u56db\u5927\u5e73\u53f0\u7684\u5b8c\u6574\u4ea7\u54c1\u7ebf\uff0cDiskDigger \u7684\u8fed\u4ee3\u8f68\u8ff9\u85cf\u7740\u4e00\u4e2a\u72ec\u7acb\u5f00\u53d1\u8005\u5bf9\"\u591f\u7528\"\u7684\u6267\u5ff5\u3002", "headline": "DiskDigger \u8fd9\u5341\u5e74\uff1a\u4ece\u4e00\u4e2a U \u76d8\u6551\u661f\u5230\u8de8\u5e73\u53f0\u6570\u636e\u6062\u590d\u5168\u5bb6\u6876", "image": ["https://alipymanbu.github.io/images/diskdigger/android-app-cover.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/diskdigger.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/diskdigger.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "DiskDigger \u8fd9\u5341\u5e74\uff1a\u4ece\u4e00\u4e2a U \u76d8\u6551\u661f\u5230\u8de8\u5e73\u53f0\u6570\u636e\u6062\u590d\u5168\u5bb6\u6876", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">DiskDigger 这十年：从一个 U 盘救星到跨平台数据恢复全家桶</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">DiskDigger 这十年：从一个 U 盘救星到跨平台数据恢复全家桶</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">它可能是数据恢复领域最被低估的工具——没有华丽的营销、没有繁冗的功能堆砌，却在&#34;扫描时就能预览&#34;这一件事上把同行甩了一条街。从最初只支持图片恢复的小工具，到如今覆盖 Windows、macOS、Linux、Android 四大平台的完整产品线，DiskDigger 的迭代轨迹藏着一个独立开发者对&#34;够用&#34;的执念。</p>
+  </header>
+  <div class="prose">
+<h2>现在这版，最亮眼的是什么？</h2>
+<p>上周朋友找我恢复硬盘上误删的 Word 文档，我去<a href="https://diskdigger.xnyx.quest" target="_blank" rel="noopener">diskdigger官网</a>装了 DiskDigger 给他，扫完他指着界面说："等等，你这工具怎么直接显示出文档内容了？其他恢复工具不都得先恢复出来才能打开？"</p>
+<p>这就是 DiskDigger 到今天最让我服气的地方——<strong>预览不消耗磁盘空间</strong>。它直接从原始扇区读取数据块加载到内存里，图片能看完整分辨率加 EXIF，文档能显示纯文本前几行，音频能直接播放还带 ID3 标签，连 ZIP/RAR 压缩包都能列出内部文件列表。其他同类工具要么要恢复出来才能看内容，要么只给个缩略图敷衍了事。这种"在扫的过程中就能判断哪些值得恢复"的体验，在我用过的所有数据恢复软件里，DiskDigger 是做得最彻底的。</p>
+<p><img src="../images/diskdigger/android-app-cover.jpg" alt="DiskDigger Android 版启动界面" loading="lazy"></p>
+<h2>来路：从 Windows 单平台到 Avalonia 跨平台</h2>
+<p>样本文档里没有版本号，没有 changelog，甚至没有一个清晰的"v1.0 是什么时候发的"——这本身就是一种信号：DiskDigger 不是那种会做版本发布会的大厂产品，它是一个独立开发者攒出来的实用工具。从现有功能的组合关系里，我们能反推它的进化路径。</p>
+<p><strong>第一阶段：只做 Windows，只做图片恢复</strong>。这应该是 DiskDigger 最开始的样子。那个年代 U 盘、SD 卡还在大容量普及的前夕，误删照片是最高频的恢复场景。Dig Deep（文件系统感知扫描）和 Dig Deeper（逐扇区雕刻）两种扫描模式的分层设计，大概率就是在这个阶段定下来的基调——先快扫，不行再慢扫，这个逻辑到今天没变。</p>
+<p><strong>第二阶段：从图片扩展到全文件类型</strong>。文档、音频、压缩包的恢复支持应该是后来加的。这个阶段最重要的迭代不是"支持了新格式"，而是<strong>预览功能跟了上来</strong>——恢复图片能预览不稀奇，但恢复文档能显示纯文本、恢复音频能直接播放、恢复压缩包能列内部文件列表，这就把"预览"从一个辅助功能提升成了产品核心差异化。后来翻了翻<a href="https://diskdigger.pages.dev/" target="_blank" rel="noopener">diskdigger文档</a>，它专门花了一整页讲这个预览特性的实现细节，说明这个能力在产品内部被视为标志性能力。</p>
+<p><strong>第三阶段：Android 版的分化</strong>。Android 版启动后直接暴露两种身份——Basic scan 免 Root 也能用，但只能从缩略图缓存里捡低分辨率图片；Full scan 只有 Root 设备才有，能扫原始扇区恢复完整分辨率照片甚至文档。这个分化设计很聪明：免费版解决"我大概能恢复出点什么"的心理预期，Root 后的 Pro 版提供真正的核心价值。这里有个值得注意的时间点——如果 Android 版是在 Android 6.0 之后开发的，那 SELinux 安全策略的限制就是它必须分叉的原因，不是产品设计上故意留的坎。</p>
+<p><strong>第四阶段：跨平台重写</strong>。这是我认为最关键的转折点——macOS 版和 Linux 版都提到了基于 <strong>Avalonia UI</strong> 这个跨平台框架。意味着开发团队（或独立开发者）放弃了为每个平台单独写原生界面的路线，选择了一套代码多端部署。Windows 版自然是最成熟的，macOS 版还标着 Beta，但功能与 Windows 版一致，去<a href="https://diskdigger.xnyx.quest/download.html" target="_blank" rel="noopener">官方下载</a>页面能看到 Apple Silicon 和 Intel 两个版本的选择。这个决策直接把 DiskDigger 从"Windows 上好用的工具"拉到了"真正跨平台的数据恢复全家桶"的位置。</p>
+<h2>迭代节奏里藏着什么规律？</h2>
+<p>把这些阶段串起来看，我觉得 DiskDigger 的开发者有两个长期执念：</p>
+<p><strong>第一，死磕预览，而且是"扫描时预览"</strong>。不是恢复出来再看，是在扫描结果里选中文件的那一刻，内容就出现在右侧面板。这个功能的实现难度其实很高——它需要直接从扇区里读取数据块、在内存里解析格式、处理各种损坏情况。但一旦做成了，用户体验上的差距就是质的。其他工具不是做不到，而是没把这件事放到足够高的优先级上。DiskDigger 一直在这件事上加料：先是图片 EXIF，然后是文档纯文本，然后是音频播放，然后是压缩包内部列表，现在连可执行文件图标和 Outlook PST 邮件列表都能预览。</p>
+<p><strong>第二，什么一直没动？</strong> 没有云恢复、没有 AI 自动分类、没有社区分享、没有订阅制——商业上走的是"免费版有限制 + Pro 版一次性买断/内购"的路子。Windows 版免费恢复带广告弹窗，Pro 版解锁更多功能；Android 版免费只能恢复照片，Pro 版解锁文档、音频、FTP 上传。这说明开发团队对产品定位很清晰：<strong>它是一个工具，不是一个平台</strong>。用户用它的核心诉求就是"把我丢的文件找回来"，其他花哨的东西不往里面塞。</p>
+<p>还有一个细节值得提——Dig Deep 和 Dig Deeper 的分层设计从第一天起就有，到现在没改过。扫描速度和恢复完整度的平衡，用两个按钮直接呈现给用户，这种产品决策在"功能越多越好"的大环境里其实挺少见的。</p>
+<h2>照这个路线，下一步大概率是什么？</h2>
+<p>这纯属我从迭代规律推的，不当官方口径传。</p>
+<p>第一，macOS 和 Linux 版脱离 Beta。既然 Avalonia UI 已经搞定了跨平台的技术底座，功能上又跟 Windows 版对齐了，那正式发布应该只是时间问题。特别是 macOS 的 Apple Silicon 原生支持已经到位，Gatekeeper 拦截的问题也只是用户侧的小麻烦，不是产品层面的障碍。</p>
+<p>第二，Android 版的 Pro 版可能会继续扩展。目前免费版（Root）只能恢复完整分辨率照片，Pro 版解锁文档、音频、压缩包。但 Android 手机内部存储的特殊性让它在恢复体验上跟桌面版还有差距——比如扫描速度慢（手机 CPU 和存储速度限制）、恢复文件的保存位置受限。如果能在 Pro 版里针对 Android 场景做一些优化（比如自动区分内部存储和 SD 卡、更智能的文件类型分组），应该会更有竞争力。</p>
+<p>第三，有没有可能支持更多文件系统？样本文档里提到了 APFS 的快照特性会让恢复变得更复杂（Time Machine 开启时其实不需要 DiskDigger），也提到了不能恢复被 APFS 清空快照后真正删除的文件。如果 Avalonia 跨平台架构能让它在文件系统支持上更灵活，这会是一个值得投入的方向——但考虑到 DiskDigger 一直以来"够用就行"的调性，这个优先级可能不高。</p>
+<h2>写在最后</h2>
+<p>我手头没有版本号，没有发布日期，没有产品路线图。但只用了不到一周，DiskDigger 帮我和朋友恢复了三张 SD 卡、一块移动硬盘和一次清空回收站的意外。在数据恢复这个品类里，它不是功能最全的，也不是界面最漂亮的，但它在"预览"这一件事上做的比谁都狠。这种把一件小事做到极致的产品，在今天其实挺少见的。</p>
+<p>如果你也有过"文件误删然后花几个小时等恢复工具扫完、结果恢复出来一堆没用的东西"的经历，不妨试试 DiskDigger。想深入了解的话，相关资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/diskdigger" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/diskdigger" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/diskdigger" target="_blank" rel="noopener">GitCode</a> 上都能拿到，按你习惯选就行。它可能不会让你惊艳，但会让你觉得"哦，原来数据恢复还可以这么顺手"。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xmol.html">我把每周追文献的三步走流程压成了一条自动链</a></h2>
+  <p class="card-desc">以前要手动刷十几本期刊、翻 Google Scholar、邮箱里翻 alert，现在一条链走完。讲怎么把 xmol 嵌进科研周更工作流，从盯文献到选刊投稿全打通。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/walkplay.html">凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了</a></h2>
+  <p class="card-desc">用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/usagi-zh-docs.html">Usagi 用了半年才踩明白的 5 个坑，第一个就差点让我放弃</a></h2>
+  <p class="card-desc">Usagi 看着是个清爽的阅读器 app，实际上手才发现里面藏着不少容易踩的小陷阱——授权失败、匹配不准、显示调伤眼，每一个都能把新人劝退。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/dippy.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Dippy 新手入门：从零开始拥有一个会主动找你说话的 AI 朋友</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/dislike-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了五款待办 App 之后，我为什么把 Dislike 留在了手机上</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

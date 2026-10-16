@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用了 PiliPlus 大半年，才发现它藏着这么多官方客户端没做到位的细节 · 老杨技术栈</title>
+  
+<meta name="description" content="一个以&#34;去广告壳&#34;闻名的 B 站客户端，背后到底藏着哪些连老用户都没摸透的隐藏功能？这篇从弹幕悬停到收藏夹复制，挖 5 个最实用的冷门技巧。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/piliplus.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用了 PiliPlus 大半年，才发现它藏着这么多官方客户端没做到位的细节">
+<meta property="og:description" content="一个以&#34;去广告壳&#34;闻名的 B 站客户端，背后到底藏着哪些连老用户都没摸透的隐藏功能？这篇从弹幕悬停到收藏夹复制，挖 5 个最实用的冷门技巧。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/piliplus.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/piliplus/510shots_so.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/piliplus/510shots_so.png">
+
+<meta name="twitter:title" content="用了 PiliPlus 大半年，才发现它藏着这么多官方客户端没做到位的细节">
+<meta name="twitter:description" content="一个以&#34;去广告壳&#34;闻名的 B 站客户端，背后到底藏着哪些连老用户都没摸透的隐藏功能？这篇从弹幕悬停到收藏夹复制，挖 5 个最实用的冷门技巧。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u4ee5\"\u53bb\u5e7f\u544a\u58f3\"\u95fb\u540d\u7684 B \u7ad9\u5ba2\u6237\u7aef\uff0c\u80cc\u540e\u5230\u5e95\u85cf\u7740\u54ea\u4e9b\u8fde\u8001\u7528\u6237\u90fd\u6ca1\u6478\u900f\u7684\u9690\u85cf\u529f\u80fd\uff1f\u8fd9\u7bc7\u4ece\u5f39\u5e55\u60ac\u505c\u5230\u6536\u85cf\u5939\u590d\u5236\uff0c\u6316 5 \u4e2a\u6700\u5b9e\u7528\u7684\u51b7\u95e8\u6280\u5de7\u3002", "headline": "\u7528\u4e86 PiliPlus \u5927\u534a\u5e74\uff0c\u624d\u53d1\u73b0\u5b83\u85cf\u7740\u8fd9\u4e48\u591a\u5b98\u65b9\u5ba2\u6237\u7aef\u6ca1\u505a\u5230\u4f4d\u7684\u7ec6\u8282", "image": ["https://alipymanbu.github.io/images/piliplus/510shots_so.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/piliplus.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/piliplus.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528\u4e86 PiliPlus \u5927\u534a\u5e74\uff0c\u624d\u53d1\u73b0\u5b83\u85cf\u7740\u8fd9\u4e48\u591a\u5b98\u65b9\u5ba2\u6237\u7aef\u6ca1\u505a\u5230\u4f4d\u7684\u7ec6\u8282", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">用了 PiliPlus 大半年，才发现它藏着这么多官方客户端没做到位的细节</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用了 PiliPlus 大半年，才发现它藏着这么多官方客户端没做到位的细节</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个以&#34;去广告壳&#34;闻名的 B 站客户端，背后到底藏着哪些连老用户都没摸透的隐藏功能？这篇从弹幕悬停到收藏夹复制，挖 5 个最实用的冷门技巧。</p>
+  </header>
+  <div class="prose">
+<p>你以为 <a href="https://piliplus.rggd.pw" target="_blank" rel="noopener">PiliPlus官网</a> 就是个去广告的 B 站壳？装完直接看视频、关广告、完事——那真的浪费了这个客户端的大半功力。我用它超过半年，从"只看视频不研究设置"到"翻遍每个角落找不同"，发现它在官方客户端做得糙的地方，悄悄补上了一堆细碎但真能用的功能。藏得真深，官方甚至没在更新日志里专门介绍过，全靠翻菜单翻出来。</p>
+<h2>弹幕能悬停，这招太香了</h2>
+<p>弹幕是 B 站的灵魂没错，但官方客户端在弹幕上的交互一直做得很克制——最多就是点一下弹个菜单，或者长按快速屏蔽。PiliPlus 直接把点击弹幕做成了<strong>悬停浮窗</strong>：全屏播放时点任意一条弹幕，这条弹幕就"定"在画面上不飞走了，同时弹出一排操作按钮——点赞、复制内容、举报，三个动作一步到位。</p>
+<p><img src="../images/piliplus/510shots_so.png" alt="弹幕设置界面，可见合并重复和关键词屏蔽选项" loading="lazy"></p>
+<p>建议从 <a href="https://piliplus.rggd.pw/download.html" target="_blank" rel="noopener">下载</a> 直接拿最新版，不同版本之间弹幕设置的位置可能略有差异。这功能藏在哪？播放器全屏状态下，点右上角的弹幕设置图标，往下翻就能找到"点击弹幕操作"的选项。默认就是开启的，可能你点过但没注意。实际用起来：追番时看到有人发了好玩的梗，想复制下来发群里，以前得截长图或者暂停、现在点一下、等浮窗出来、按复制，完事儿——弹幕继续飘，视频继续播，节奏没断。</p>
+<p>谁用得上？喜欢潜水看弹幕、偶尔想互动一下的人。如果你从来只开弹幕不关，这功能存在感极强。对弹幕过敏、常年 100% 透明或者直接关掉的人，可以无视，关掉还能省点动画渲染。</p>
+<h2>收藏夹能复制还能移动</h2>
+<p>官方客户端的收藏夹管理一直是个痛——视频收藏错了夹、想从 A 夹挪到 B 夹，官方只能先取消收藏再重新藏，等于两遍操作。PiliPlus 在收藏页做了<strong>复制/移动</strong>的批量操作：进入任意收藏夹、点右上角多选、勾选要动的视频、点底部的复制或移动按钮、选目标收藏夹，完事儿。</p>
+<p>更狠的是支持<strong>批量</strong>。攒了几百条收藏想整理分类？进"我的收藏"、先选源夹、多选、一次移动几十条到新夹，比手动一条条操作快出一个量级。我之前追番把教程混在动画收藏里，用这功能十分钟就拆出了"Python 教程"和"番剧推荐"两个独立夹。</p>
+<p>在哪？媒体库 → 我的收藏 → 点进任意收藏夹 → 右上角选多选模式。官方路径是"我的收藏"里只能手动一个个进详情改，对比下来差太多了。</p>
+<h2>弹幕合并重复，画面瞬间清净</h2>
+<p>热点视频弹幕区的"前方高能""12345""笑不活了"能刷满半屏，官方客户端给了"关键词屏蔽"，但问题是——有些弹幕没关键词、就是单纯数量多、把画面埋了。PiliPlus 多了个<strong>合并重复弹幕</strong>的选项：相同内容的多条弹幕会合成一条显示，实际效果从"十几条飘字"变成"一条+数字"，画面清爽度直线上升。</p>
+<p>这功能藏在弹幕设置的中间位置，容易被忽略。开启之后还能调合并阈值——几条相同才算重复（默认 3 条以上）。我给几个朋友推荐过这个设置，他们说第一次开的时候盯着弹幕区愣住了："原来这个视频弹幕区这么干净？我以前看的是什么。"</p>
+<h2>缓存路径能自己选</h2>
+<p>这个可能是最接地气的一个。现在手机存储空间紧张，默认缓存路径放在内部存储、下几个 1080P 的番剧 G 级占用就没了。PiliPlus 在设置里提供了<strong>缓存路径自定义</strong>：可以切到外置 SD 卡，甚至指定一个特定文件夹。</p>
+<p>在哪？设置 → 存储 → 缓存路径，具体的路径权限说明和老机型兼容方案可以在 <a href="https://piliplus.pages.dev/" target="_blank" rel="noopener">PiliPlus文档</a> 里查。切到 SD 卡之后再去媒体库的离线缓存页，显示的占用数字会明显小一大截。注意一点：缓存数据是本地的，卸载应用或者手动清数据就没了，<strong>不会云端备份</strong>。之前有人换手机直接卸载、几百 G 的缓存视频全没了，这坑踩过的都有印象——缓存能省空间，但别把它当长期存储，定期拷一份到电脑才是正解。</p>
+<h2>直播区的分区浏览</h2>
+<p>官方客户端的直播入口一直比较粗——首页顶部一个"直播"tab、点进去就是推荐流，想找特定分区（比如只看虚拟主播）得进频道区再跳。PiliPlus 把直播区的<strong>完整分区结构</strong>保留了下来：游戏、虚拟主播、生活、电台、音乐，每个分区单独一个入口，点开直接是这个分区下的直播间列表，不用跟推荐算法较劲。</p>
+<p>直播弹幕也一样——全屏播放时点弹幕能悬停、发弹幕支持表情、SuperChat 醒目留言完整显示，甚至直播流画质切换的选项也比官方多一档。我偶尔睡前看点虚拟电台，用分区过滤比在推荐流里刷高效多了。</p>
+<h2>别踩这些坑</h2>
+<p>藏得深的功能一般副作用也藏得深。说两个我踩过的：</p>
+<p><strong>批量删除收藏不可逆</strong>。一次整理收藏夹、手滑多选了不该删的、点了确认——官方端能撤销、PiliPlus 没有这个开关。删之前别急着点确认、先数一眼条数。</p>
+<p><strong>缓存路径切了 SD 卡之后，某些低端机型会出问题</strong>。我之前给旧手机（安卓 9）切过一次、偶尔会出现缓存视频丢失或者播放卡顿，换回内部存储就好了。新一点的机型（安卓 11+）基本没问题。</p>
+<h2>最后的话</h2>
+<p>PiliPlus 能火这么久不只是因为去广告，它在那些官方客户端"差不多就行"的地方补的细节，才是老用户真的离不开它的原因。把这些隐藏功能摸透，看视频的效率和舒适度直接跳级——别只把它当一个壳用，它藏的东西比你想的多。这套完整的功能说明同步托管在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/PiliPlus" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/PiliPlus" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/PiliPlus" target="_blank" rel="noopener">GitCode</a> 三个仓库，想深挖的去仓库里翻源码和更新日志都能看到更细的参数。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/pikabu.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Pikabu 用了快一年——那些当初没想到会变的事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/pippit-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Pippit 用了一个月才发现的 5 个隐藏技巧——Credits 省一半不是梦</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

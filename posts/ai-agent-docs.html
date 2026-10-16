@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>你以为 AI Agent 只是个聊天机器人？我翻到底朝天挖出 5 个藏得真深的冷门玩法 · 老杨技术栈</title>
+  
+<meta name="description" content="从 Automations 定时任务到 Telegram Agent 连接器，再到 Alchemy 创意总监模式——这些功能藏在层层设置深处，官方几乎不宣传。翻完这篇，你对 AI Agent 的使用姿势至少升一级。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/ai-agent-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你以为 AI Agent 只是个聊天机器人？我翻到底朝天挖出 5 个藏得真深的冷门玩法">
+<meta property="og:description" content="从 Automations 定时任务到 Telegram Agent 连接器，再到 Alchemy 创意总监模式——这些功能藏在层层设置深处，官方几乎不宣传。翻完这篇，你对 AI Agent 的使用姿势至少升一级。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/ai-agent-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/ai-agent-docs/manus-mobile-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/ai-agent-docs/manus-mobile-1.jpg">
+
+<meta name="twitter:title" content="你以为 AI Agent 只是个聊天机器人？我翻到底朝天挖出 5 个藏得真深的冷门玩法">
+<meta name="twitter:description" content="从 Automations 定时任务到 Telegram Agent 连接器，再到 Alchemy 创意总监模式——这些功能藏在层层设置深处，官方几乎不宣传。翻完这篇，你对 AI Agent 的使用姿势至少升一级。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece Automations \u5b9a\u65f6\u4efb\u52a1\u5230 Telegram Agent \u8fde\u63a5\u5668\uff0c\u518d\u5230 Alchemy \u521b\u610f\u603b\u76d1\u6a21\u5f0f\u2014\u2014\u8fd9\u4e9b\u529f\u80fd\u85cf\u5728\u5c42\u5c42\u8bbe\u7f6e\u6df1\u5904\uff0c\u5b98\u65b9\u51e0\u4e4e\u4e0d\u5ba3\u4f20\u3002\u7ffb\u5b8c\u8fd9\u7bc7\uff0c\u4f60\u5bf9 AI Agent \u7684\u4f7f\u7528\u59ff\u52bf\u81f3\u5c11\u5347\u4e00\u7ea7\u3002", "headline": "\u4f60\u4ee5\u4e3a AI Agent \u53ea\u662f\u4e2a\u804a\u5929\u673a\u5668\u4eba\uff1f\u6211\u7ffb\u5230\u5e95\u671d\u5929\u6316\u51fa 5 \u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u51b7\u95e8\u73a9\u6cd5", "image": ["https://alipymanbu.github.io/images/ai-agent-docs/manus-mobile-1.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/ai-agent-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/ai-agent-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4f60\u4ee5\u4e3a AI Agent \u53ea\u662f\u4e2a\u804a\u5929\u673a\u5668\u4eba\uff1f\u6211\u7ffb\u5230\u5e95\u671d\u5929\u6316\u51fa 5 \u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u51b7\u95e8\u73a9\u6cd5", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">你以为 AI Agent 只是个聊天机器人？我翻到底朝天挖出 5 个藏得真深的冷门玩法</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">你以为 AI Agent 只是个聊天机器人？我翻到底朝天挖出 5 个藏得真深的冷门玩法</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 Automations 定时任务到 Telegram Agent 连接器，再到 Alchemy 创意总监模式——这些功能藏在层层设置深处，官方几乎不宣传。翻完这篇，你对 AI Agent 的使用姿势至少升一级。</p>
+  </header>
+  <div class="prose">
+<p>说出来你可能不信，我把 AI Agent 的设置面板翻到最后一个子菜单才发现——它根本不只是一个接了大模型的聊天框。如果你也想这样挖一遍，先从<a href="https://ai-agent.bpfl.quest" target="_blank" rel="noopener">官网</a>上去看看它到底有哪些功能入口。</p>
+<p>大部分人用它的方式大概是：先从<a href="https://ai-agent.bpfl.quest/download.html" target="_blank" rel="noopener">官方下载</a>装好 App → 输入一句需求 → 等它跑完 → 拿结果走人。积分每天 0 点刷新 300，偶尔感叹一句「今天积分怎么又没了」，然后继续下一个任务。我自己也曾是这芸芸众生之一，直到上个月账号里的积分连续三天在凌晨莫名消失，才硬着头皮去翻设置面板排雷——这一翻不要紧，五个官方几乎不宣传的隐藏功能直接砸在脸上。</p>
+<h2>隐藏一：Automations 定时任务——你可能忘了自己设过</h2>
+<p>我那三天凌晨积分蒸发的罪魁祸首就是它。</p>
+<p>Automations 藏在「设置 → Automations 管理」里，入口真的不太好找。你可以设定定时触发（比如每天早上 8 点自动跑一个任务）或者事件触发（比如新邮件来了就启动某个智能体）。我之前为了测试一个「每天汇总邮件」的脚本，随手设了一个凌晨 2 点的定时任务，测完就忘了关。结果它每天准时跑，消耗的积分我在手机端根本看不到——因为任务历史和客户端共享，但只会在 Studio 端显示明细。</p>
+<p><img src="../images/ai-agent-docs/manus-mobile-1.jpg" alt="Automations 设置界面藏得真深" loading="lazy"></p>
+<p>什么人用得上：需要每日/每周自动跑固定流程的人——比如每天下班前自动汇总当天的 Notion 笔记、每周一早上自动生成上一周的数据周报。什么人可以无视：纯手动偶尔用用的，记得关掉默认开启的 Automations 就行。</p>
+<h2>隐藏二：Telegram Agent 连接器——你在 Telegram 发的任务也扣积分</h2>
+<p>这个藏得更深，在「设置 → Agents」里。</p>
+<p>如果你连了 Telegram Agent，在 Telegram 里给它发的任何智能体任务都会扣积分，而且两边的任务历史是共享的。我有段时间习惯在 Telegram 里随手丢一些轻量任务，比如「帮我总结一下这条推文」，结果几天后才反应过来——这些小任务在 Telegram 里跑掉的积分，比我在 Studio 里正经跑任务的还多。更坑爹的是，Telegram 里跑完的任务不会回到 Studio 的任务列表里，所以你很难一眼看出积分到底花在哪了。</p>
+<p>排查方法：打开 Telegram → 找 Manus Agent 对话 → 往上翻最近发过什么。不需要的时候，进 Agents 设置里点「断开」就行。</p>
+<h2>隐藏三：Alchemy 模式——Max 独有的创意总监</h2>
+<p>Manus 2.0 上线时官方只提了一嘴「视频编辑器」，几乎没说里面藏了个叫 Alchemy 的高级模式。</p>
+<p>普通模式下，视频编辑器会自动帮你写脚本、拆场景、生成画面、选音乐。Alchemy 则是另一个量级——它同时调用视频生成和代码生成两种能力，创意方向更大胆，视觉细节更精致，甚至会根据内容的重要性动态调整节奏，而不是机械地等长分配。代价是积分消耗翻倍，但出来的东西确实像有人当过创意总监审过一遍。</p>
+<p>入口在 Studio 里选 Video Editor 之后，界面上有个不太显眼的「Alchemy」按钮，点进去之后就像进了一个单独的模式。写好创意方向，剩下的交给它。Alchemy 模式的完整参数和进阶用法，去<a href="https://ai-agent-docs.pages.dev/" target="_blank" rel="noopener">ai agent文档</a>里搜就有更详细的步骤。</p>
+<p><img src="../images/ai-agent-docs/manus-mobile-3.jpg" alt="Alchemy 模式入口在视频编辑器里藏着" loading="lazy"></p>
+<h2>隐藏四：聊天模式 0 消耗——轻量需求别走任务通道</h2>
+<p>这个严格来说不算隐藏，但 80% 的人不知道什么时候该切模式。</p>
+<p>AI Agent 有两个模式：任务模式（消耗积分，适合需要调工具、跑代码、产出文件的重任务）和聊天模式（0 消耗，就是纯对话）。但坏就坏在，很多人写坏指令的时候混了轻量需求进去——比如「帮我润色一下这段话」，明明聊天模式 30 秒搞定，结果走了任务模式，AI 反复确认三轮，积分花了小一百。</p>
+<p>快速判断标准：要不要产出文件、要不要调用外部工具（搜索、代码执行、视频生成）——都不要就切聊天模式。指令提交前再过一遍这个自检清单：目标说清了吗？范围圈定了吗？格式指定了吗？有没有可以走聊天模式的轻量内容混进来？</p>
+<h2>隐藏五：积分消耗明细——藏在三级菜单里的破案神器</h2>
+<p>很多人抱怨「积分消失了」，但没人知道去哪查。</p>
+<p>入口路径是：设置 → 账单 / 用量 → 消耗明细。每一笔消耗对应哪个任务、扣了多少积分、时间戳精确到秒，全部列在这里。你那笔「凭空消失」的 200 积分，大概率能在这里找到——是 Automations 凌晨跑的，还是你在 Telegram 里发的一条「帮我搜点资料」，或者是多设备同步时手机端后台悄悄触发的 Lite 模型重试。</p>
+<h2>一个提醒：别碰登录方式切换</h2>
+<p>这不是隐藏功能，是我专门给踩过坑的人提的醒。</p>
+<p>AI Agent 的账号<strong>永久绑定登录方式</strong>——你当初用手机号注册的，现在习惯性用邮箱登，它就把你当成新账号了。而且它当前不支持绑定备用登录方式，也不支持切换。如果哪天忘了当初用什么注册的，只能把手机号、邮箱、Google、Apple 挨个试。所以注册时选好一个你长期不会变的方式，记在密码管理器的备注里。</p>
+<hr>
+<p>把 AI Agent 用透，关键不在于把每个功能都摸一遍，而在于知道哪些功能是「默认藏起来的」——Automations 可能帮你省掉每天重复的手工活，Telegram Agent 能让你在通勤路上随手跑任务，Alchemy 模式能让你几秒钟出一个像样的广告视频。前提是你得先知道它们存在。本文提到的功能细节和更完整的设置项，我同步整理到了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/ai%20agent" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/ai%20agent" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/ai%20agent" target="_blank" rel="noopener">GitCode</a>，哪个方便你访问哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/accubattery.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">电池到底剩多少健康？装了 AccuBattery 我才知道之前都被系统骗了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ai-dungeon-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AI Dungeon 入门指南——和 AI 一起写属于你的冒险故事</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

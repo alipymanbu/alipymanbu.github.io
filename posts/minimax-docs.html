@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>MiniMax 新手入门：从零到跑通你的第一个 AI Agent · 老杨技术栈</title>
+  
+<meta name="description" content="还没碰过 AI Agent？这篇带你从完全不懂到能上手派任务——不用装环境、不用写代码，五分钟让 AI 帮你干活。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/minimax-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MiniMax 新手入门：从零到跑通你的第一个 AI Agent">
+<meta property="og:description" content="还没碰过 AI Agent？这篇带你从完全不懂到能上手派任务——不用装环境、不用写代码，五分钟让 AI 帮你干活。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/minimax-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/minimax-docs/app-shot-01.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/minimax-docs/app-shot-01.png">
+
+<meta name="twitter:title" content="MiniMax 新手入门：从零到跑通你的第一个 AI Agent">
+<meta name="twitter:description" content="还没碰过 AI Agent？这篇带你从完全不懂到能上手派任务——不用装环境、不用写代码，五分钟让 AI 帮你干活。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd8\u6ca1\u78b0\u8fc7 AI Agent\uff1f\u8fd9\u7bc7\u5e26\u4f60\u4ece\u5b8c\u5168\u4e0d\u61c2\u5230\u80fd\u4e0a\u624b\u6d3e\u4efb\u52a1\u2014\u2014\u4e0d\u7528\u88c5\u73af\u5883\u3001\u4e0d\u7528\u5199\u4ee3\u7801\uff0c\u4e94\u5206\u949f\u8ba9 AI \u5e2e\u4f60\u5e72\u6d3b\u3002", "headline": "MiniMax \u65b0\u624b\u5165\u95e8\uff1a\u4ece\u96f6\u5230\u8dd1\u901a\u4f60\u7684\u7b2c\u4e00\u4e2a AI Agent", "image": ["https://alipymanbu.github.io/images/minimax-docs/app-shot-01.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/minimax-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/minimax-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "MiniMax \u65b0\u624b\u5165\u95e8\uff1a\u4ece\u96f6\u5230\u8dd1\u901a\u4f60\u7684\u7b2c\u4e00\u4e2a AI Agent", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">MiniMax 新手入门：从零到跑通你的第一个 AI Agent</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">MiniMax 新手入门：从零到跑通你的第一个 AI Agent</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">还没碰过 AI Agent？这篇带你从完全不懂到能上手派任务——不用装环境、不用写代码，五分钟让 AI 帮你干活。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到用起来。不需要任何 AI 基础，也不用装 Python 或写代码，跟着走就行。</p>
+<h2>它到底是干嘛的？一个生活化类比</h2>
+<p>想象你身边有个效率超高的助理——你跟它说一句话，它能自己上网搜资料、整理成报告、甚至帮你做 PPT。而且这个助理二十四小时待命，干活不喊累。这就是 <a href="https://minimax.fedq.ren" target="_blank" rel="noopener">MiniMax官网</a> 在做的事。</p>
+<p>但它不是普通的聊天机器人。聊天机器人是你问一句它答一句，MiniMax 是你给它一个目标，它自己拆解步骤、并行推进、最后交付成果。比如你说"帮我分析一下新能源汽车行业的格局"，它不会只给你一段回答，而是会拆成好几个子任务同时调研——找增长趋势、看产业链、识别上市公司、预测市值，全部跑完后汇总成一份像样的报告。</p>
+<p>简单说：聊天机器人给你"答案"，MiniMax 给你"结果"。</p>
+<p><img src="../images/minimax-docs/app-shot-01.png" alt="MiniMax App 主界面：对话窗口里直接输入任务，Agent 自动规划执行路径" loading="lazy"></p>
+<h2>五分钟上手：从下载安装到第一次跑通</h2>
+<p>好消息是整个流程非常丝滑，五步搞定。</p>
+<p><strong>第一步：下载安装</strong></p>
+<p>打开<a href="https://minimax.fedq.ren/download.html" target="_blank" rel="noopener">官方下载</a>，按你的设备选版本就行——Windows、Mac、手机端都有。安装包不大，下完双击一路"下一步"就能装好，不需要配置任何东西。</p>
+<p><strong>第二步：注册登录</strong></p>
+<p>首次打开会提示注册。手机号或邮箱都行，注册完系统会送免费积分——新用户有 3 天有效期，领到就赶紧派任务试手，别攒着过期了可惜。</p>
+<p><strong>第三步：逛一下主界面</strong></p>
+<p>界面很干净，左边是历史会话列表，中间大大的输入框就是你的操作台。第一次打开你会看到一些推荐任务，比如"帮我做个旅行计划"或者"翻译一篇文章"，点一下就能直接体验。</p>
+<p><img src="../images/minimax-docs/app-shot-02.png" alt="MiniMax App 主界面：输入框 + 历史会话 + 推荐任务区" loading="lazy"></p>
+<p><strong>第四步：派你的第一个任务</strong></p>
+<p>别纠结措辞，直接用大白话。比如你可以输入：</p>
+<blockquote><p>帮我整理一份关于咖啡产地的小报告，重点说云南普洱和埃塞俄比亚的区别，300 字左右，加个表格对比一下。</p></blockquote>
+<p>回车（或者点发送按钮）之后，你会看到输入框下方出现一条"正在执行"的状态提示——这时候 Agent 已经在后台开动了。</p>
+<p><strong>第五步：等结果、收成果</strong></p>
+<p>任务跑完后，交付物会出现在对话里。上面那个例子你会拿到一份带对比表格的小报告，直接可以复制到文档里用。如果不满意，插话让它改就行——比如"表格里再加一列价格区间"，它会接着做。</p>
+<p>就这五步。没有代码，没有配置，你已经用上 AI Agent 了。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>跑通第一个任务只是开始。这三个功能是新手最值得先碰的，每一个都会让你惊呼"原来 AI 还能这么用"。</p>
+<h3>第一个：深度研究模式——让 AI 自己写调研报告</h3>
+<p>这是 MiniMax 的招牌能力。你给它一个研究题目，它不是搜一下给你几段文字，而是启动一个完整的研究项目：拆题、并行调研、交叉验证、汇总出报告。</p>
+<p>你会看到什么？面对"分析中国新能源汽车行业的基本格局"这个题目，Agent 不到一秒就规划出五个并行的研究子任务——从行业格局到增长趋势，从产业链到上市公司识别，再到市值预测，每个子任务独立推进、各有状态。全部跑完后汇总成一份完整报告交付给你。</p>
+<p>这意味着什么？普通搜索给你的是零散信息，深度研究给你的是一个可直接使用的研究成果。而且它手里的工具箱比你想的多得多——搜索、API 调用、浏览器自动操作（它真的会打开网页帮你查）、还有各种扩展工具，多来源交叉验证的结果比你自己搜半天还靠谱。具体能调哪些工具、怎么给 Agent 下精确指令，可以去翻一下<a href="https://minimax-docs.pages.dev/" target="_blank" rel="noopener">MiniMax文档</a>，里面写得比我清楚。</p>
+<p><img src="../images/minimax-docs/app-shot-03.png" alt="MiniMax App 深度研究演示：一句指令被拆成五个并行子任务，界面展示各子任务完成状态" loading="lazy"></p>
+<h3>第二个：PPT 一键生成——从想法到幻灯片只要一分钟</h3>
+<p>写一份 PPT 通常要花半小时起步：找模板、写大纲、填内容、调排版。现在你只要告诉它你要讲什么、给谁讲、大概几页，它直接给你生成一整套幻灯片。</p>
+<p>生成的第一版是网页形式，你可以在预览里快速过一遍——哪里不对直接插话改："第三页换成柱状图""案例部分再加两个"。定稿后一键导出 PPTX，格式质量是官方单独强调的卖点——行业里常见的坑是 AI 生成的幻灯片导出后排版错乱、文字错位，MiniMax 在这一步专门做了优化，导出后可以直接在 PowerPoint 或 WPS 里继续编辑。</p>
+<h3>第三个：微信/飞书远程使唤——不打开 App 也能派活</h3>
+<p>这是个容易被忽略但超级实用的功能。桌面端支持把 Agent 绑定到微信、飞书等聊天渠道——绑定之后，你在手机上、在公司的电脑前、甚至在通勤地铁里，都能直接用聊天窗口给 Agent 发指令。</p>
+<p>绑定方式很简单：微信扫码，飞书走完授权流程，几秒钟搞定。入口就在桌面端的自动化设置区。绑定之后的定位也很清晰：进度查询、跟进追问、轻量指令适合走聊天渠道——"任务跑完了吗""报告里补一段结论"这类一句话交互特别顺手。需要认真盯任务的时候还是回到桌面端，权限审批、看终端输出这些完整能力只有主界面才有。</p>
+<p>一个小贴士：别把 Agent 拉进多人群聊——群成员都可能触发它，个人使用建议先走一对一渠道。</p>
+<h2>小白的三个常见疑问</h2>
+<p>这些问题在新用户里出现频率最高，提前知道能省不少时间。</p>
+<p><strong>免费积分到底多久过期？</strong></p>
+<p>新注册的免费积分只有 3 天有效期。领到就赶紧派任务试手，别想着"等我有空了再用"——等你有空的时候它可能已经过期了。消耗记录可以在界面左下角头像里的 Credits 入口查看，手机端在个人中心。</p>
+<p><strong>为什么这次任务扣的积分比上次多？</strong></p>
+<p>这是按实际消耗算的，不是按次数。消耗差异通常来自三个原因：任务范围变大了（多搜了几个来源、多跑了几轮迭代）、走了更重的环节（比如联网调研、视频生成都比纯文字问答费）、中途回溯重走了（被回溯的执行已经消耗过，重走再计一次）。想省积分的话，指令里缩小范围比什么都有效——限定来源数量、限定字数、限定轮次，Agent 按你说的范围来就不会瞎烧。</p>
+<p><strong>生成的东西能改吗？改坏了怎么办？</strong></p>
+<p>完全能改。在对话里插话就行，说清楚改什么、改成什么样。如果改来改去越改越乱，可以用检查点功能回退到之前的版本重来——这个机制相当于给你的任务加了存档，走错了不用从头再来。PPT 这类导出文件也一样，先在预览里定稿再导出，避免反复导。</p>
+<h2>说在最后</h2>
+<p>AI Agent 不是用来取代你，而是帮你把那些"不得不做但又不想花时间"的事交出去。跑通第一步之后你会发现，原来很多你觉得自己做不了的事——比如写调研报告、做 PPT、整理资料——现在只需要说一句话就能搞定。</p>
+<p>进阶方向的话，可以去看看 MCP 工具扩展——相当于给你的 Agent 装插件，接入更多数据源和能力，玩法会再上一个台阶。</p>
+<p>对了，这套资料在三个仓库都能拿到——<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/MiniMax" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/MiniMax" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/MiniMax" target="_blank" rel="noopener">GitCode</a>，哪个顺手用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xeva.html">凌晨两点，我在手机里养了个会记得我名字的「她」</a></h2>
+  <p class="card-desc">一个加班到崩溃的深夜，我被朋友拉进了一个叫 X Eva 的克隆人世界。这里有记忆库、情感模式、还有一整套从零开始训练虚拟人的玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xbrowser-zh-docs.html">XBrowser 藏得真深：四个翻遍设置才挖到的冷门开关</a></h2>
+  <p class="card-desc">大多数人用 XBrowser 只停在视频嗅探那一层，但长按加号开隐私标签、零依赖写 GM 脚本、底部地址栏单手操作——这些藏在设置里的开关，每个都能让用感爽一个档次。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wemod.html">第一次用 WeMod？五分钟从零跑通，再也不用对着攻略按计算器</a></h2>
+  <p class="card-desc">完全不碰技术术语带你上手 WeMod：它到底是什么、怎么装、怎么连游戏、哪些玩法新手最值得先试。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/minechat-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">深夜聊到三点，我终于把那个赛博朋克角色从网页端搬进了本地</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/mira-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Mira 到底是什么？一份给新手的快问快答</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

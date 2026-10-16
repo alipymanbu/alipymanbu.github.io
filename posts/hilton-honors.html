@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我把希尔顿荣誉客会嵌进了出差工作流，从预订到保级一套链跑通 · 老杨技术栈</title>
+  
+<meta name="description" content="以前每次住希尔顿都是临时抱佛脚：积分够不够、晚数还差多少、退房忘确认——现在用一套固定节奏把这件事自动化了，看看具体怎么接。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hilton-honors.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我把希尔顿荣誉客会嵌进了出差工作流，从预订到保级一套链跑通">
+<meta property="og:description" content="以前每次住希尔顿都是临时抱佛脚：积分够不够、晚数还差多少、退房忘确认——现在用一套固定节奏把这件事自动化了，看看具体怎么接。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hilton-honors.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hilton-honors/room-checkin.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hilton-honors/room-checkin.png">
+
+<meta name="twitter:title" content="我把希尔顿荣誉客会嵌进了出差工作流，从预订到保级一套链跑通">
+<meta name="twitter:description" content="以前每次住希尔顿都是临时抱佛脚：积分够不够、晚数还差多少、退房忘确认——现在用一套固定节奏把这件事自动化了，看看具体怎么接。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u6bcf\u6b21\u4f4f\u5e0c\u5c14\u987f\u90fd\u662f\u4e34\u65f6\u62b1\u4f5b\u811a\uff1a\u79ef\u5206\u591f\u4e0d\u591f\u3001\u665a\u6570\u8fd8\u5dee\u591a\u5c11\u3001\u9000\u623f\u5fd8\u786e\u8ba4\u2014\u2014\u73b0\u5728\u7528\u4e00\u5957\u56fa\u5b9a\u8282\u594f\u628a\u8fd9\u4ef6\u4e8b\u81ea\u52a8\u5316\u4e86\uff0c\u770b\u770b\u5177\u4f53\u600e\u4e48\u63a5\u3002", "headline": "\u6211\u628a\u5e0c\u5c14\u987f\u8363\u8a89\u5ba2\u4f1a\u5d4c\u8fdb\u4e86\u51fa\u5dee\u5de5\u4f5c\u6d41\uff0c\u4ece\u9884\u8ba2\u5230\u4fdd\u7ea7\u4e00\u5957\u94fe\u8dd1\u901a", "image": ["https://alipymanbu.github.io/images/hilton-honors/room-checkin.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hilton-honors.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hilton-honors.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6211\u628a\u5e0c\u5c14\u987f\u8363\u8a89\u5ba2\u4f1a\u5d4c\u8fdb\u4e86\u51fa\u5dee\u5de5\u4f5c\u6d41\uff0c\u4ece\u9884\u8ba2\u5230\u4fdd\u7ea7\u4e00\u5957\u94fe\u8dd1\u901a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">我把希尔顿荣誉客会嵌进了出差工作流，从预订到保级一套链跑通</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我把希尔顿荣誉客会嵌进了出差工作流，从预订到保级一套链跑通</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前每次住希尔顿都是临时抱佛脚：积分够不够、晚数还差多少、退房忘确认——现在用一套固定节奏把这件事自动化了，看看具体怎么接。</p>
+  </header>
+  <div class="prose">
+<p>我每个月大概要出差三到四次，住希尔顿系的酒店居多。以前这件事在我的待办里永远是个"无头苍蝇"状态：出门前才想起查积分够不够换免费房，住完才记起来这个晚数算不算进保级考核，季度末翻 App 才发现有一批积分快过期了——少的时候损失几百，多的时候大几千分直接归零。</p>
+<p>后来我去 <a href="https://hilton-honors.wxhp.skin" target="_blank" rel="noopener">Hilton Honors官网</a> 注册后，把它当成了工作流里一个正式的节点，和行程安排、报销、甚至笔记软件串成了一条链。现在每次出差前、入住中、退房后、季度末，都有固定的动作，不用再临时想。这篇就讲这套流程具体怎么拼起来，每个环节卡在哪、有什么坑。</p>
+<h2>旧流程：散兵游勇的问题</h2>
+<p>先说说以前的问题，你对照一下自己中了几条：</p>
+<ul><li><strong>预订靠感觉</strong>：不知道自己账户里有多少积分，也不知道这家酒店积分兑换值不值——有时候现金订了才发现全额积分房只需要 8,000 分，亏了一半</li><li><strong>晚数算不清</strong>：荣誉客会的考核周期是"会籍年度"（从你注册的那个月开始算），不是自然年。我以前一直按 12 月 31 日算，结果某次差了 2 晚没保上金会籍</li><li><strong>入住效率低</strong>：要额外毛巾、问早餐几点、延迟退房——要么打电话（前台忙的时候等十分钟），要么自己跑一趟（穿拖鞋下楼很狼狈）</li><li><strong>积分过期无预警</strong>：24 个月没活动就过期，我有一次发现 12,000 分过了期才想起这个规则</li><li><strong>转账操作忘记</strong>：想和老婆合并积分，不知道是用积分转账还是积分池，两个功能搞混了好一阵</li></ul>
+<p>这些问题单看都不大，但每次出差都要重新想一遍，积起来就是很多精力。现在的流程把它们都固化了。</p>
+<h2>新流程：四个节点串起来</h2>
+<p>整套流程我分成四个固定节点：<strong>出差前 → 入住中 → 退房后 → 季度复盘</strong>。每个节点用希尔顿荣誉客会 App / 官网作为核心，外围接几个我日常已经在用的工具——不需要装新东西。</p>
+<h3>节点一：出差前（预订决策 + 保级追踪）</h3>
+<p>这一步解决两个问题：<strong>用积分还是现金订</strong>、<strong>这个晚数进不进保级考核</strong>。</p>
+<p>我的做法是把自己的会籍年度和保级门槛记在 Excel 里，每次出差前拉行程表的时候顺手做两件事：</p>
+<ol><li>打开从 <a href="https://hilton-honors.wxhp.skin/download.html" target="_blank" rel="noopener">Hilton Honors下载</a> 拿的 App，进入预订页面搜要住的酒店，对比"现金价"和"积分价"。如果积分兑换的价值超过每分 0.01 美元（行业常用的一个参考线），就用积分订；否则现金。这个判断不用算数——App 里直接显示两种价格，肉眼一看就知道</li><li>算一下这次入住后，当前会籍年度的晚数累积到多少了。比如我金会籍保级需要 25 晚，现在已经 21 晚了，这次住 3 晚就到 24——那下次出差只要再 1 晚就稳了。这个数我存在 Excel 一个固定格子里，每次出差前看一眼就行</li></ol>
+<p>这里有个容易断的地方：<strong>会籍年度不是自然年</strong>。如果你是 6 月注册的，考核周期就是 6 月 1 日到次年 5 月 31 日。很多人在 12 月底以为"快到年度结束了"其实离真正的考核截止还有半年。我会把自己的会籍年度截止日用红色标在 Excel 里，防止搞混。</p>
+<p><img src="../images/hilton-honors/room-checkin.png" alt="用 App 数字入住，前台不用排队" loading="lazy"></p>
+<h3>节点二：入住中（App 聊天当前台传话器）</h3>
+<p>以前要额外毛巾得打电话，现在我直接在 App 里发消息。这个功能叫"酒店聊天"，在你的当前预订页面有个对话气泡图标，点进去就能向前台发文字消息，和微信聊天一模一样。</p>
+<p>适合用聊天搞定的事我列了个清单，每次住店碰到直接发：</p>
+<table><thead><tr><th>需求</th><th>消息模板</th></tr></thead><tbody><tr><td>额外毛巾</td><td>"麻烦给 1203 房送两条额外毛巾，谢谢"</td></tr><tr><td>早餐时间</td><td>"请问早餐几点到几点？在几层？"</td></tr><tr><td>延迟退房</td><td>"我今天能延迟退房到下午 2 点吗？（金会籍）"</td></tr><tr><td>叫车</td><td>"能帮我叫一辆出租车到机场吗？我 3 点要出发"</td></tr><tr><td>报修</td><td>"房间洗手间灯坏了，麻烦来看一下"</td></tr></tbody></table>
+<p>技巧有两个：<strong>消息里一定带房间号</strong>（系统虽然自动关联了但写上更保险），<strong>急的事别等聊天</strong>——如果是房间安全问题直接打电话或跑前台。聊天适合不急的便利请求，前台通常几分钟到一小时内会回复。</p>
+<p>这个功能完全免费，所有会员等级都能用。我第一次用的时候还有点不好意思，现在已经躺床上发消息成习惯了，少了两次穿拖鞋跑前台的尴尬。</p>
+<h3>节点三：退房后（晚数登记 + 积分确认）</h3>
+<p>退房这件事最容易漏确认。我退房当天会做两个固定动作：</p>
+<ol><li><strong>在 App 里确认合格晚数到账</strong>。荣誉客会的合格晚数是自动累积的，通常退房后 24~72 小时内更新。我会在退房后的第三天打开 App 看一眼晚数有没有加上——没加的话可以联系客服补登（偶尔会有系统延迟）</li><li><strong>把晚数同步到 Excel 的保级追踪表</strong>。这个动作我在 Excel 里留了个专门的"本次新增晚数"格子，填上之后自动算出累计。这样出差多的时候不用自己心算，打开 Excel 就知道还差几晚</li></ol>
+<p>积分方面，全额积分兑换的房晚也算合格晚数——这一点很多人不知道。所以积分房晚既能帮你省现金，又能攒保级晚数，是优先级最高的用法。</p>
+<h3>节点四：季度复盘（积分过期 + 转账救急）</h3>
+<p>每三个月我会花十分钟做一次积分健康检查，重点看两个东西：</p>
+<p><strong>第一，有没有快过期的积分</strong>。荣誉客会的积分规则是 24 个月内没有任何积分活动（赚取或消耗）就会过期归零。我会在 Excel 里给积分余额旁边加一列"最后活动日期"，季度复盘时算一下离 24 个月还有多久。如果只剩两三个月了，就找最便宜的方式做一次积分活动：</p>
+<ul><li>最简单的：捐赠 1,000 分给慈善组织——在官网积分兑换页面直接操作，既是公益又能重置 24 个月倒计时</li><li>和老婆互救急：双方各转给对方 1,000 分，转出和接收都算积分活动，两边的过期倒计时都重置了。这个操作完全免费，即时生效</li></ul>
+<p><strong>第二，要不要做积分转账</strong>。荣誉客会有积分转账功能（和积分池是两个独立功能），一个人直接把积分转给另一个人，去 <a href="https://hilton-honors.pages.dev/" target="_blank" rel="noopener">Hilton Honors文档</a> 翻了下限额，年度上限 500,000 分转出 / 2,000,000 分接收。我和老婆偶尔会做一次把积分合并到一个账户，这样换免费房的时候积分池更大。</p>
+<p>这里踩过一个坑：积分转账是<strong>永久性转移</strong>，不能撤回。我第一次转的时候没确认接收方信息，输错了一个数字，虽然对方账户不存在转账失败没扣积分，但还是吓了一跳。所以转账前务必核对会员号和姓名——系统会自动验证但最好自己也再看一遍。</p>
+<p><img src="../images/hilton-honors/app-hero.jpg" alt="荣誉客会 App 主界面" loading="lazy"></p>
+<h2>效果和边界</h2>
+<p>这套流程跑了半年，体感上最明显的变化是<strong>少了很多"想起来才去做"的事</strong>：</p>
+<ul><li>保级晚数以前靠手机备忘录记，现在 Excel 自动算，每次出差前打开就知道进度</li><li>积分过期清零的事没再发生过，季度复盘时提前两三个月就能看到预警</li><li>入住期间的便利请求不用打电话也不用跑前台，App 聊天发了就等</li><li>预订时不用纠结现金还是积分，App 里对比一下就有结论</li></ul>
+<p>当然这套流程也有边界，不是万能的：</p>
+<ul><li>如果一个季度一次希尔顿都不住，那保级肯定没指望——这不是流程能解决的，是出差频次的问题</li><li>积分兑换航空里程的性价比很低（1 分 ≈ 0.5~0.7 航司里程），我从来不转，快过期了要么捐赠要么转给老婆重置倒计时</li><li>曜钻会籍是邀请制，普通人不用想，我这套流程主要针对普通到钻石会籍的升级和保级</li></ul>
+<p>另外，希尔顿的系统偶尔会有延迟——晚数 72 小时没更新、聊天功能某家酒店没开、转账几分钟没到账——这些都不是流程的问题，重跑或联系客服就行。App 和官网的信息以官网为准，有些活动只在网页端有。</p>
+<p>这套资料覆盖了会籍等级、积分赚取消费、合作伙伴兑换、App 使用这些常用场景。<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Hilton%20Honors" target="_blank" rel="noopener">GitHub</a> 上是主仓库，国内访问慢的可以走 <a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Hilton%20Honors" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Hilton%20Honors" target="_blank" rel="noopener">GitCode</a> 的镜像。我平时用到的时候直接搜关键词就行，比翻官方资料快。具体到哪个环节不确定了，就对着看一下参数和操作步骤——毕竟希尔顿的规则偶尔也会调一下，有个统一的参考源挺省心的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/heavens-above.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">卫星过境速查 8 问 8 答</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/hipaint.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从基础涂鸦到专业创作：HiPaint 迭代五年来的进化轨迹</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

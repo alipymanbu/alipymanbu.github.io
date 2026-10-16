@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从 Omofun 遗珠到 v1.4.2：Lanerc 三年迭代里藏着的产品取舍 · 老杨技术栈</title>
+  
+<meta name="description" content="从 v0.8 到 v1.4.2，这款追番应用在底部导航、频道划分、播放器三件事上反复调整，我们把分散在各渠道的版本记录拼起来，看看它究竟在死磕什么。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/lanerc-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 Omofun 遗珠到 v1.4.2：Lanerc 三年迭代里藏着的产品取舍">
+<meta property="og:description" content="从 v0.8 到 v1.4.2，这款追番应用在底部导航、频道划分、播放器三件事上反复调整，我们把分散在各渠道的版本记录拼起来，看看它究竟在死磕什么。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/lanerc-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/lanerc-docs/shot-home-japan.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/lanerc-docs/shot-home-japan.jpg">
+
+<meta name="twitter:title" content="从 Omofun 遗珠到 v1.4.2：Lanerc 三年迭代里藏着的产品取舍">
+<meta name="twitter:description" content="从 v0.8 到 v1.4.2，这款追番应用在底部导航、频道划分、播放器三件事上反复调整，我们把分散在各渠道的版本记录拼起来，看看它究竟在死磕什么。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece v0.8 \u5230 v1.4.2\uff0c\u8fd9\u6b3e\u8ffd\u756a\u5e94\u7528\u5728\u5e95\u90e8\u5bfc\u822a\u3001\u9891\u9053\u5212\u5206\u3001\u64ad\u653e\u5668\u4e09\u4ef6\u4e8b\u4e0a\u53cd\u590d\u8c03\u6574\uff0c\u6211\u4eec\u628a\u5206\u6563\u5728\u5404\u6e20\u9053\u7684\u7248\u672c\u8bb0\u5f55\u62fc\u8d77\u6765\uff0c\u770b\u770b\u5b83\u7a76\u7adf\u5728\u6b7b\u78d5\u4ec0\u4e48\u3002", "headline": "\u4ece Omofun \u9057\u73e0\u5230 v1.4.2\uff1aLanerc \u4e09\u5e74\u8fed\u4ee3\u91cc\u85cf\u7740\u7684\u4ea7\u54c1\u53d6\u820d", "image": ["https://alipymanbu.github.io/images/lanerc-docs/shot-home-japan.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/lanerc-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/lanerc-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece Omofun \u9057\u73e0\u5230 v1.4.2\uff1aLanerc \u4e09\u5e74\u8fed\u4ee3\u91cc\u85cf\u7740\u7684\u4ea7\u54c1\u53d6\u820d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">从 Omofun 遗珠到 v1.4.2：Lanerc 三年迭代里藏着的产品取舍</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从 Omofun 遗珠到 v1.4.2：Lanerc 三年迭代里藏着的产品取舍</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 v0.8 到 v1.4.2，这款追番应用在底部导航、频道划分、播放器三件事上反复调整，我们把分散在各渠道的版本记录拼起来，看看它究竟在死磕什么。</p>
+  </header>
+  <div class="prose">
+<p>我手里装着 Lanerc 的 v1.1.6，是去年夏天更的。最近想补几部老番，翻到它的经典番剧频道发现频道标签跟半年前不一样了——原来精选、日漫、剧场版、经典番剧四栏，现在第四栏换成了欧美。这个小改动让我好奇：Lanerc 这两三年到底在怎么长？</p>
+<p>刚好社区里有人把各渠道见过的版本号整理了一张表，从电视猫条目、游戏鸟下载页到七匣子的历史记录，拉出来一看，版本号跨度从 v0.8 一路到 v1.4.2，中间还夹着一个命名风格完全不同的 vrelease-0.3。光这些零散的记录就够有意思——不是每个应用都能在公开渠道留下这么多版本痕迹。后来去<a href="https://lanerc-docs.pages.dev/" target="_blank" rel="noopener">Lanerc文档</a>翻了一下，发现站点上有更系统的版本号对照表，连不同渠道的版本号命名差异都做了标注。</p>
+<h2>起步：带着 Omofun 包袱的 v0.8</h2>
+<p>最早能查到的版本是 v0.8，出处是电视猫条目，标题上还带着「原 Omofun」四个字。这四个字不是装饰——说明 Lanerc 不是从零开始的，它接过了 Omofun 的一部分底子。那段时间追番圈子里 Omofun 停更的消息传得沸沸扬扬，有人在论坛贴出来这个换了壳的应用，评论区一片「终于有接班的了」。它的<a href="https://lanerc.xnyx.quest" target="_blank" rel="noopener">官网</a>上有一段简短说明，提到了接手时的一些数据处理细节。</p>
+<p>然后冒出一个 vrelease-0.3。命名方式完全跳脱，既不是 v0.x 也不是 v1.x，像是某个内部测试分支突然流出来。我手头没有这版的截图，但能确定它是 v0.8 之后的过渡产物——从 Omofun 旧架构往新架构迁的中间态，还没来得及统一版本号规则。</p>
+<p><img src="../images/lanerc-docs/shot-home-japan.jpg" alt="v1.1.6 的首页频道布局" loading="lazy"></p>
+<h2>v1.0 时代：把四件事钉死</h2>
+<p>到 v1.0.6（游戏鸟、七匣子的下载页都能查到，也是本文整理者手头的基线版本），版本号终于归一了。这一代界面有几个明显特征，我后来跟 v1.1.6 对比时发现这些特征恰好是迭代的锚点——自己拿安装包也尽量从<a href="https://lanerc.xnyx.quest/download.html" target="_blank" rel="noopener">官方下载</a>走，不要乱找二次打包的：</p>
+<ul><li>底部导航四键：首页、排期表、排行榜、我的——排期和排行是独立 tab；</li><li>频道标签：精选、日漫、剧场版、经典番剧四栏；</li><li>播放器里画质档位和倍速控件在同一区域；</li><li>离线缓存入口藏在「我的」页。</li></ul>
+<p>v1.0 到 v1.1 之间应该隔了好几个小版本，因为 1.0.8 在部分发布页的「当前版本」位出现过，截图和 v1.0.6 基本一致，说明这段时间是在做小修小补——源站适配、播放稳定性、首页推荐算法，这类你每天用但不一定察觉的东西。</p>
+<h2>v1.1.6：一个分水岭</h2>
+<p>2026 年 8 月 11 日，电视猫条目更新到 v1.1.6，记录的体积是 28.45M。我手头这版的底部导航还是四键，但频道标签已经是精选、日漫、剧场版、欧美——把经典番剧换成了欧美。这不是简单的换名，背后是内容策略的转向：团队不再把「经典老番」当一个独立品类推，而是用「欧美番」来拓宽覆盖。</p>
+<p>28.45M 的体积也值得留意——比 v1.0 时代大概涨了三分之一。涨的不是代码，是内置的源站适配和离线缓存相关的资源文件。这段时间播放器也有明显变化：倍速档位从固定几档变灵活了，画质选择增加了一个「自适应」的中间档，弱网下会自动降一档而不是卡死缓冲。</p>
+<p>另一个细节：v1.1.6 里「排期表」和「排行榜」从底部导航挪到了首页上的卡片入口。这个改动很有意思——团队意识到多数用户打开应用就是刷首页，排期和排行虽然高频但没必要占据底部 tab 的固定位置。减少 tab 数量等于降低了认知负担，首页变成了真正的信息聚合页。</p>
+<p><img src="../images/lanerc-docs/shot-player-gundam.jpg" alt="播放器画质与倍速控件" loading="lazy"></p>
+<h2>v1.4.2：目前能查到的最高点</h2>
+<p>再往上就是 v1.4.2，同样来自电视猫的「官方正版」条目。我手里还没更到这版，但从版本号跨度（1.1 → 1.4，中间跳了好几个 minor）和各渠道收集的反馈看，v1.2 到 v1.4 之间应该塞了一些大改动。</p>
+<p>社区反馈里提到过的几个点：离线缓存的存储空间管理做了专门的预算方法——不再是简单的「占了多少」，而是按你常看的画质给一个预估；投屏功能加入了专用画质档位，自动识别外接设备分辨率；账户登录和跨设备同步终于做扎实了，之前的版本换设备收藏会丢条目，v1.4 之后这类反馈基本消失。</p>
+<h2>迭代规律：他们在死磕什么</h2>
+<p>把这些版本串起来看，我能摸到三条清晰的主线，还有一条始终没动的底线：</p>
+<p><strong>死磕的第一件事：播放器体验。</strong> 从 v1.0 到 v1.4 每一代都在动画质选择、倍速、缓冲策略、弹幕联动。播放器是追番应用的心脏，这块团队没停过。v1.0 的倍速是固定 1.25/1.5/2.0，v1.1 加了自适应，v1.2 之后有了更多自定义档位，到 v1.4 投屏画质还能单独调——这是他们投入精力最多的模块，没有之一。</p>
+<p><strong>死磕的第二件事：首页信息密度。</strong> v1.0 四个底部 tab 各管一块，v1.1 把排期和排行收回到首页，频道标签从四栏四变四——本质是在找一个平衡点：既要让追新番的人一打开就能看到更新，又要让补老番的人有明确入口，还要给偶尔来看一眼的人一个能停留下来的理由。</p>
+<p><strong>死磕的第三件事：离线缓存与存储。</strong> 从早期藏在「我的」页到后来专门做预算方法，团队知道通勤路上看番是核心场景，而手机空间紧张是硬伤。这块的迭代虽然不显眼但每次都戳在用户痛点上。</p>
+<p><strong>始终没动的底线：不碰付费。</strong> 从 v0.8 到 v1.4.2 公开渠道记录里标注的都是「免费、简体中文」，没见过任何付费订阅、广告植入、会员解锁的痕迹。这跟同类应用走的路线不太一样——追番圈子里很多应用靠广告或会员变现，但 Lanerc 到目前为止保持了纯免费的形态。从迭代节奏看，团队一直在做体验优化而不是商业化试水，这条底线很稳。</p>
+<h2>下一步会怎么走</h2>
+<p>从 v0.8 到 v1.4 这三年，Lanerc 的迭代节奏不是匀速的——有跳版本的爆发期，也有连续小版本的打磨期。按这个规律推，v1.4 之后大概率不会立刻跳 v2.0，而是再做一轮播放器和离线缓存的细化：投屏可能支持更多设备协议，跨设备同步可能加入观看历史的精细同步（现在收藏能同步但播放历史还是部分同步），离线缓存可能会引入智能推荐——根据你常看的类型自动预载几集。</p>
+<p>有一点不太好猜：底部导航会不会彻底砍成三键？v1.1 已经把排期和排行撤了，但「排期表」这个功能本身没消失，只是入口换了。如果团队继续往「首页全聚合」的方向走，也许排期表会变成首页的一个可折叠模块。但这只是从迭代规律推的，不当官方口径传。</p>
+<h2>版本号差异怎么核对</h2>
+<p>各渠道更新节奏不一样，你手里的版本号可能跟电视猫或游戏鸟的条目对不上。最简单的核对动作就是在「我的」页里点「检测更新」，走应用内升级，别随便去二次打包的渠道找安装包。升级前顺手清一下看过的离线缓存、确认账号能正常登录——这三件事在版本跳得比较大的升级里尤其重要。</p>
+<p>还有一件事值得提：不同版本的界面差异有时候不是功能加没加的问题，是团队对「什么放显眼位置」的判断变了。频道标签从经典番剧到欧美，底部导航从四键到三键，都是这类判断的结果。理解了这一点，看到界面变化就不会急着说「怎么把 X 砍了」——大概率只是挪了个位置。</p>
+<p>Lanerc 的迭代史有意思就在这里：它不是一个完美的应用，但它每次动刀的地方都很明确——不是眉毛胡子一把抓的大改版，而是盯着几个核心痛点反复磨。从 Omofun 遗珠走到现在，三年了，它还在稳步往前走。整理这篇文章时对照的版本号对照表，也同步存了一份到几个常用的代码仓库里，<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Lanerc" target="_blank" rel="noopener">GitHub</a> 主站、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Lanerc" target="_blank" rel="noopener">Gitee</a> 镜像、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Lanerc" target="_blank" rel="noopener">GitCode</a> 那边都能直接查阅，省得每次跨渠道翻来翻去。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/kwgt.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Kustom 进化史：从桌面小组件到 Android 个性化基础设施</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/langster.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">把 Langster 嵌进我的跨境电商每周英语工作流</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

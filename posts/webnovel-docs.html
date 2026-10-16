@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>WebNovel 上指北：从零搭建你的追更日常 · 老杨技术栈</title>
+  
+<meta name="description" content="装包、登录、书架管理、每日任务全流程实操，看完就能在 WebNovel 上稳住追更节奏，不再迷路。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/webnovel-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebNovel 上指北：从零搭建你的追更日常">
+<meta property="og:description" content="装包、登录、书架管理、每日任务全流程实操，看完就能在 WebNovel 上稳住追更节奏，不再迷路。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/webnovel-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/webnovel-docs/shot-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/webnovel-docs/shot-01.jpg">
+
+<meta name="twitter:title" content="WebNovel 上指北：从零搭建你的追更日常">
+<meta name="twitter:description" content="装包、登录、书架管理、每日任务全流程实操，看完就能在 WebNovel 上稳住追更节奏，不再迷路。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u88c5\u5305\u3001\u767b\u5f55\u3001\u4e66\u67b6\u7ba1\u7406\u3001\u6bcf\u65e5\u4efb\u52a1\u5168\u6d41\u7a0b\u5b9e\u64cd\uff0c\u770b\u5b8c\u5c31\u80fd\u5728 WebNovel \u4e0a\u7a33\u4f4f\u8ffd\u66f4\u8282\u594f\uff0c\u4e0d\u518d\u8ff7\u8def\u3002", "headline": "WebNovel \u4e0a\u6307\u5317\uff1a\u4ece\u96f6\u642d\u5efa\u4f60\u7684\u8ffd\u66f4\u65e5\u5e38", "image": ["https://alipymanbu.github.io/images/webnovel-docs/shot-01.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/webnovel-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/webnovel-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "WebNovel \u4e0a\u6307\u5317\uff1a\u4ece\u96f6\u642d\u5efa\u4f60\u7684\u8ffd\u66f4\u65e5\u5e38", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">WebNovel 上指北：从零搭建你的追更日常</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">WebNovel 上指北：从零搭建你的追更日常</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">装包、登录、书架管理、每日任务全流程实操，看完就能在 WebNovel 上稳住追更节奏，不再迷路。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程带你用 <a href="https://webnovel.bmww.store" target="_blank" rel="noopener">webnovel官网</a> 上的 WebNovel 应用完成从装包到稳定追更的完整闭环，四步走下来你应该能独立搞定应用安装、书架管理、每日免费资源领取和投票应援。全程不绕弯，每一步说清要点在哪、容易卡在哪。</p>
+<h2>准备：你需要什么</h2>
+<ul><li>一台手机（安卓或 iOS 都行，下面以安卓为例），存储空间至少留 200MB 给安装包和缓存；</li><li>一个 WebNovel 账号，邮箱注册即可，国内手机号也支持；</li><li>能联网就行，下载和登录都需要 Wi-Fi 或蜂窝网络。</li></ul>
+<p>如果你在应用商店搜不到这个 App（部分地区 Google Play 没有上架），用安装包离线装也没问题，后面会讲。</p>
+<h2>第一步：装包，一次搞定</h2>
+<p>安卓端安装包体积大约 100MB，去<a href="https://webnovel.bmww.store/download.html" target="_blank" rel="noopener">官方下载</a>拿就行，建议 Wi-Fi 环境下载。安装过程里有几个容易卡的点，提前有个底：</p>
+<ol><li>下载完成点击 APK，系统大概率会弹「出于安全考虑，手机当前不允许安装此来源的应用」——别慌，进去给浏览器或网盘客户端开一个「允许安装未知应用」的权限，回来继续装就行。</li><li>等待安装走完，整个过程大概半分钟，别清后台。</li><li>装完可以核对一下包名（进系统应用信息里看），WebNovel 的包名是 <code>com.qidian.Int.reader</code>，防止装到套壳的仿冒应用。</li></ol>
+<p><img src="../images/webnovel-docs/shot-01.jpg" alt="安装完成后核对包名，确认是官方版本" loading="lazy"></p>
+<p>iOS 用户更简单，直接去 App Store 搜就行，国内区和海外区都能找到。</p>
+<h2>第二步：登录与底部导航速认</h2>
+<p>首次打开会弹出登录界面，邮箱注册一下，或者用第三方登录。登录完成后你会看到应用的主界面——底部一排五个入口，这五个入口认全，就不会出现「某个功能不知道在哪」的困扰：</p>
+<ul><li><strong>Library（书架）</strong>：你追的所有书都在这，更新红点、离线下载、追更提醒都挂在书架上，使用频率最高。</li><li><strong>Featured（精选）</strong>：编辑推荐流，每周精选封面墙、榜单、活动横幅都在这。</li><li><strong>中间创作位</strong>：底部导航正中间一个显眼的「开一本书」按钮——纯读者可以永远不点，留给想写作的人。</li><li><strong>Explore（探索）</strong>：分类、排行榜、专题合集的集合地，想按题材系统性翻书库就来这。</li><li><strong>Profile（我的）</strong>：账号信息、金币余额、签到、设置、客服入口全在这。</li></ul>
+<p><img src="../images/webnovel-docs/shot-02.jpg" alt="底部导航五个入口一眼认全" loading="lazy"></p>
+<h2>第三步：加书进书架，开启追更</h2>
+<p>在 Featured 或 Explore 里翻到感兴趣的书，点进去进入书籍详情页。WebNovel 的详情页信息挺全：更新时间、最新章节、评分、字数都能看到，比网页版主站精简但够用。</p>
+<p>加书架的按钮就在详情页显眼位置，一般是「Add to Library」或类似的按钮。加完之后回 Library 标签，就能在书架里看到了。</p>
+<p>一个典型的日常动线是：早上打开应用 → 先看 Library 有没有更新红点 → 没更新就去 Featured 或 Explore 扫一圈新书 → 看到感兴趣的加书架 → 退出前顺手进 Profile 签到领免费金币。金币能用来解锁付费章节，每天签到 + 十分钟阅读任务大约能攒够一两个免费章，积少成多。书架里的追更提醒设置、离线下载这些更细的操作，想深挖的话可以看<a href="https://webnovel-docs.pages.dev/" target="_blank" rel="noopener">webnovel文档</a>里书架分组的章节。</p>
+<h2>第四步：免费资源领起来</h2>
+<p>WebNovel 有一整套免费资源体系，每天刷新一次：</p>
+<ul><li><strong>金币</strong>：签到、看视频广告、完成阅读时长任务都能拿，用来解锁付费章节。</li><li><strong>力量石</strong>：每天给读者发的投票券，用来给书投票，影响书籍在榜单上的位置。</li><li><strong>荧光棒</strong>：每天免费的应援道具，专门投给角色的，和力量石是两套体系互不影响。</li><li><strong>黄金票</strong>：付费读者才有，和金币不一样，黄金票是真金白银买的应援资源。</li></ul>
+<p>所有免费资源当天用掉就好，留到第二天会刷新。领的入口主要在 Profile → Daily Missions（每日任务）里，力量石投票在章节正文末尾右下角，荧光棒在角色页里送。</p>
+<h2>三个新手最容易翻车的卡点</h2>
+<p><strong>卡点一：找不到投票在哪。</strong> 很多新读者找遍 Profile 都没找到投票入口，其实设计在章节正文末尾——往下翻到章节最后，右下角有个投票按钮，点进去就能用力量石投票了。</p>
+<p><strong>卡点二：想改字号却改错了地方。</strong> 设置有两层，容易混：Profile 里的设置管账号和全局，比如通知开关、语言切换；而阅读界面中间点一下屏幕会呼出另一个面板，管字号、背景色、翻页方式这些阅读体验。找「改字体」去后者，找「关通知」去前者。</p>
+<p><strong>卡点三：安装后被系统杀后台。</strong> 部分国产 ROM（小米、华为这类）会激进地杀后台进程，导致追更推送收不到。解决办法是进电池设置，给 WebNovel 开个「无限制」或者「锁后台」，它就不会被系统随手干掉了。</p>
+<h2>进阶：想写点东西？</h2>
+<p>WebNovel 的写作工具 Inkstone 是纯网页端的，不需要装任何额外应用。底部导航中间那个「开一本书」按钮点进去就能开始创建作品，写作、章节管理、发布全在浏览器里完成，移动站（m. 开头的域名）还能改书籍封面——封面只能在浏览器里改，App 内改不了，这点要注意。</p>
+<hr>
+<p>如果你更喜欢在电脑上摸鱼看书，WebNovel 有完整的网页版阅读器，桌面和手机浏览器都能直接访问。同一个账号登录，书架和阅读进度双向同步，网页版负责挑书和作者后台，App 负责日常追更，两边分工清晰。不过网页版离线阅读、追更推送和每日任务的入口不全，这些还是得靠 App。</p>
+<p>这套资料我分别同步到了 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/webnovel" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/webnovel" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/webnovel" target="_blank" rel="noopener">GitCode</a> 三个仓库，方便你随时查阅或下载。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zepp-app.html">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</a></h2>
+  <p class="card-desc">把 Amazfit 手表生态从连接、健康监测到个性化改造的能力面完整铺开，哪些是真亮点、哪些藏着短板、哪类人最值得入手这套组合。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wispr-docs.html">Wispr v1.3.3：一个加密通讯应用在&#34;安全优先&#34;路上的四年迭代</a></h2>
+  <p class="card-desc">从 VOBP 协议到 P2P 直连，从手机号免费层到 Matrix ID 付费身份，CryptoDATA 的 Wispr 用一个个小版本慢慢拼凑出它对&#34;加密通讯该怎么做&#34;的答案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wibu-docs.html">给 wibu 算一笔付费账：Wibu+ 订阅到底值不值得掏这 $9.99</a></h2>
+  <p class="card-desc">从定价拆解到按使用强度算账，把 Wibu+ 订阅的每一项权益换算成你实际能省的时间和赚到的钱，看完你就知道自己该不该付。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/webcat-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">WebCat 离线开发的底层设计：为什么它能在地铁里把代码写完</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/webview-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

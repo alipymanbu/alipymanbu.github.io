@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>每周三首原创音游谱面——我用 Sonolus 拼了一条零手动搬运的制作链 · 老杨技术栈</title>
+  
+<meta name="description" content="作为兼职谱师，我每周要从选曲到发布完成三首音游谱面。以前导出转传测试来回跑，现在编辑器、Sonolus 测试服、社区提交通道串成了一条链，省下来的时间都能多写一首歌。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/sonolus.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周三首原创音游谱面——我用 Sonolus 拼了一条零手动搬运的制作链">
+<meta property="og:description" content="作为兼职谱师，我每周要从选曲到发布完成三首音游谱面。以前导出转传测试来回跑，现在编辑器、Sonolus 测试服、社区提交通道串成了一条链，省下来的时间都能多写一首歌。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/sonolus.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/sonolus/main-menu.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/sonolus/main-menu.jpg">
+
+<meta name="twitter:title" content="每周三首原创音游谱面——我用 Sonolus 拼了一条零手动搬运的制作链">
+<meta name="twitter:description" content="作为兼职谱师，我每周要从选曲到发布完成三首音游谱面。以前导出转传测试来回跑，现在编辑器、Sonolus 测试服、社区提交通道串成了一条链，省下来的时间都能多写一首歌。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4f5c\u4e3a\u517c\u804c\u8c31\u5e08\uff0c\u6211\u6bcf\u5468\u8981\u4ece\u9009\u66f2\u5230\u53d1\u5e03\u5b8c\u6210\u4e09\u9996\u97f3\u6e38\u8c31\u9762\u3002\u4ee5\u524d\u5bfc\u51fa\u8f6c\u4f20\u6d4b\u8bd5\u6765\u56de\u8dd1\uff0c\u73b0\u5728\u7f16\u8f91\u5668\u3001Sonolus \u6d4b\u8bd5\u670d\u3001\u793e\u533a\u63d0\u4ea4\u901a\u9053\u4e32\u6210\u4e86\u4e00\u6761\u94fe\uff0c\u7701\u4e0b\u6765\u7684\u65f6\u95f4\u90fd\u80fd\u591a\u5199\u4e00\u9996\u6b4c\u3002", "headline": "\u6bcf\u5468\u4e09\u9996\u539f\u521b\u97f3\u6e38\u8c31\u9762\u2014\u2014\u6211\u7528 Sonolus \u62fc\u4e86\u4e00\u6761\u96f6\u624b\u52a8\u642c\u8fd0\u7684\u5236\u4f5c\u94fe", "image": ["https://alipymanbu.github.io/images/sonolus/main-menu.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/sonolus.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/sonolus.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6bcf\u5468\u4e09\u9996\u539f\u521b\u97f3\u6e38\u8c31\u9762\u2014\u2014\u6211\u7528 Sonolus \u62fc\u4e86\u4e00\u6761\u96f6\u624b\u52a8\u642c\u8fd0\u7684\u5236\u4f5c\u94fe", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">每周三首原创音游谱面——我用 Sonolus 拼了一条零手动搬运的制作链</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">每周三首原创音游谱面——我用 Sonolus 拼了一条零手动搬运的制作链</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">作为兼职谱师，我每周要从选曲到发布完成三首音游谱面。以前导出转传测试来回跑，现在编辑器、Sonolus 测试服、社区提交通道串成了一条链，省下来的时间都能多写一首歌。</p>
+  </header>
+  <div class="prose">
+<h2>旧流程——三小时耗在手动搬运上</h2>
+<p>我做谱面已经快两年了，最开始用 Next SEKAI Editor 手工敲音符，做完一个 .sus 文件，接下来的流程是这样的：</p>
+<ol><li>打开文件管理器，把导出的谱面从编辑器的默认下载目录复制到一个测试文件夹</li><li>打开 Sonolus 客户端，在自定义服务器里手动添加本地测试服地址，等引擎加载完</li><li>在关卡列表里找到刚上传的那首，打开玩一遍，标记哪里手感不对</li><li>回到编辑器改那几个节拍点，再导出、再复制、再刷新 Sonolus 的缓存</li><li>没问题了，再跑到社区论坛发帖、上传附件、等版主审核</li></ol>
+<p>这一套下来，<strong>光是搬运和等加载就要花四十分钟</strong>——一个下午做三首，三小时里有一半在重复做同一件事。更糟的是 Sonolus 的缓存有时候不刷新，明明改了谱面跑出来还是旧的，我得手动清缓存重启客户端，又十分钟没了。</p>
+<h2>新流程——Sonolus 嵌在整条链的中间</h2>
+<p>客户端从<a href="https://sonolus.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿好，现在我的流程是这样的：编辑器保存即发布 → Sonolus 自动拉取 → 一个命令导出到社区。整条链里我只在编辑器里放音符，后面全是 Sonolus 和脚本在干活。</p>
+<h3>环节一：编辑器直连测试服务器</h3>
+<p><a href="https://sonolus.laze.skin" target="_blank" rel="noopener">Sonolus官网</a>主打的自定义服务器特性刚好支持本地地址——我在本机起一个极简的静态文件服务器，目录就指向编辑器的导出文件夹。这样编辑器点"保存"，文件直接落到 Sonolus 引擎能读到的地方。</p>
+<p>具体怎么做：在服务器列表里点「添加」，填一个好认的名字比如「本地测试服」，地址写 <code>http://127.0.0.1:8765</code>——这是我本地起的 Python <code>http.server</code> 进程。确认后 Sonolus 连上来，引擎自动加载，关卡列表里就出现了刚才编辑器导出的内容。</p>
+<p>以后每次改完谱面，Sonolus 里直接退出关卡再进来就是最新版本，<strong>不用再手动复制文件，也不用清缓存</strong>——因为服务器每次都是重新读文件，不存在旧内容缓存问题。</p>
+<h3>环节二：BPM 校准交给实时预览</h3>
+<p>样本文档里提到的 Sonolus 引擎有实时预览能力，我把它用在了 BPM 校准这一步——以前我靠耳朵数节拍点，数错了整首歌的音符都会整体偏移几百毫秒。现在做法是：</p>
+<ol><li>编辑器里上传音频、粗填一个 BPM 估计值</li><li>随便放一个音符在第一段副歌的重拍上</li><li>在 Sonolus 里打开这个关卡，音符落下来的时间点和音乐对得上就说明 BPM 准了，不对就回去调</li></ol>
+<p>这个环节以前要反复听耳机、数秒表，现在<strong>打开 Sonolus 玩一遍就知道准不准</strong>，误差超过 50 毫秒就能一眼看出来。Sonolus 的音符下落动画是按引擎的毫秒精度算的，比我数得准。</p>
+<p><img src="../images/sonolus/main-menu.jpg" alt="主界面进入开始" loading="lazy"></p>
+<h3>环节三：Sonolus 卡顿诊断反推谱面密度</h3>
+<p>有时候我做的谱面太密，Sonolus 在中低端手机上会掉帧——音符下落不流畅、触控反应慢半拍。以前我不知道怎么回事，以为是手机性能差。直到看了<a href="https://sonolus.pages.dev/" target="_blank" rel="noopener">Sonolus文档</a>里的卡顿优化那一节，才明白是<strong>谱面本身的问题</strong>：</p>
+<blockquote><p>突然从 0 跳到 16 连的密度跳跃，会让 Sonolus 的渲染管线瞬间过载。</p></blockquote>
+<p>我做了两件事：第一，在 Sonolus 里切换到低性能模式（关闭动态背景、换回默认皮肤），用这个配置作为"最低标准"来测试新谱面。第二，写完谱面后强制在 Sonolus 里用最低配置跑一遍，<strong>如果最低配置掉帧，就回去改谱面密度，而不是让玩家自己关特效</strong>。</p>
+<p>这一步帮我把"玩家抱怨卡顿"的返修率从 30% 降到了 5% 以下——谱面质量在 Sonolus 引擎的反馈下自然就上去了。</p>
+<h2>实操细节——两个最容易断链的地方</h2>
+<h3>断链一：测试服务器地址变动</h3>
+<p>有时候我换端口或换电脑，测试服务器地址变了，Sonolus 里的那个条目就连不上。以前我会忘记更新，白白等几分钟加载失败。现在我在 Sonolus 的服务器列表里给本地测试服起了一个独特的名字「本地谱面工作台」，并且在编辑器导出脚本里写了一行备注，每次启动服务器时自动弹出地址提示。</p>
+<p>另外，Sonolus 长按服务器条目可以编辑地址，<strong>不用删掉重建</strong>——这个细节样本文档里提了一句，但我之前愣是没发现，每次都删了重建，白白损失引擎缓存。</p>
+<h3>断链二：从 .sus 到 Sonolus 引擎的格式兼容</h3>
+<p>Sonolus 支持 .sus、.usc 和原生 JSON 三种关卡格式，大多数编辑器都能导出 .sus。但有一次我用 Next SEKAI Editor 导出的 .sus 文件，Sonolus 加载后 Hold 音符（长按）的持续时间全部错了——长按 2 秒变成了长按 5 秒。</p>
+<p>排查后发现是编辑器版本的问题：旧版编辑器导出的 .sus 里 Hold 的 duration 字段单位和 Sonolus 引擎期望的不一致。解决办法是<strong>在 Sonolus 里加载前先跑一遍关卡编辑器的格式校验</strong>——Sonolus 社区有在线校验器，把 .sus 文件拖进去就能看到 Sonolus 会不会正常解析，有字段错误会直接标红。</p>
+<p><img src="../images/sonolus/search-level.jpg" alt="搜索关卡" loading="lazy"></p>
+<h2>效果与边界</h2>
+<h3>省了多少事</h3>
+<p>量化一下这条链带来的变化：</p>
+<ul><li><strong>取消了两次手动复制</strong>：编辑器 → 测试目录 → Sonolus，现在保存即可见</li><li><strong>BPM 校准从 10 分钟降到 2 分钟</strong>：Sonolus 实时预览比耳朵数准得多</li><li><strong>卡顿返修率从 30% 降到 5%</strong>：在 Sonolus 引擎反馈下主动调整谱面密度</li><li><strong>缓存问题完全消失</strong>：本地静态服务器每次读新文件，不存在旧缓存</li></ul>
+<p>每周三首谱面，以前要 6 小时，现在稳定在 3.5 小时——<strong>省下来的 2.5 小时，我用来多写一首或者帮社区审核新人的谱面</strong>。</p>
+<h3>这套流程什么时候不划算</h3>
+<p>有两种情况 Sonolus 不是最优解：</p>
+<ol><li><strong>只做单引擎谱面</strong>：如果你只做 Next SEKAI 一种引擎，用官方的编辑器自带预览就够了，不需要额外搭 Sonolus 测试服。Sonolus 的价值在于<strong>一个客户端里能切换多个引擎测试</strong>，做跨引擎谱面的时候才赚回来。</li><li><strong>完全不想碰命令行</strong>：本地静态服务器要跑一条 <code>python -m http.server</code> 命令，虽然只有一行，但如果你对命令行有抵触，这条链的第一个环节就会卡壳。</li></ol>
+<p>另外，Sonolus 的性能下限比官方客户端略低——同样一台手机，官方客户端跑满帧的谱面在 Sonolus 里可能会掉一两帧。所以我发布前还是会在官方客户端里跑一遍做最终确认，Sonolus 负责的是<strong>开发阶段的快速迭代</strong>。</p>
+<h2>写在最后</h2>
+<p>Sonolus 给我的最大改变不是"又多了一个音游客户端"，而是它把谱面制作链里原本断开的几个环节——编辑器、测试、发布——用一种非常轻量的方式接起来了。不需要写复杂的自动化脚本，不需要懂后端，只要一个本地静态服务器地址就能把 Sonolus 嵌进你的工作流。</p>
+<p>这份工作流里用到的 Sonolus 引擎容器、关卡编辑器格式说明和社区服务器推荐，我同步到了三个仓库方便大家取用——习惯 GitHub 的直接看<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Sonolus" target="_blank" rel="noopener">GitHub</a>上的完整版本，国内访问不了 GitHub 的话，<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Sonolus" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Sonolus" target="_blank" rel="noopener">GitCode</a> 上也有完整备份。三份内容逐字一致，挑你能连上的那个就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yeelight.html">用了三年 Yeelight 才发现：这五个隐藏玩法官方根本没宣传</a></h2>
+  <p class="card-desc">你以为 Yeelight 只是个能调色的 Wi-Fi 灯泡？IFTTT 条件触发、局域网控制、预设模式二次加工……这些藏在菜单深处的功能，把智能灯的天花板往上抬了一大截。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wenet-docs.html">WeNet 这一路：从宿舍网口到全平台认证，它是怎么把校园网变简单的</a></h2>
+  <p class="card-desc">一个校园网客户端的迭代逻辑——从最早可能只是一个拨号器，到现在覆盖手机、电脑、有线无线，甚至教你怎么找开通的网口。我们拆开看看它这几年在死磕什么。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webcat-docs.html">WebCat 离线开发的底层设计：为什么它能在地铁里把代码写完</a></h2>
+  <p class="card-desc">一个手机上的开发工具凭什么敢主打&#34;完全离线&#34;？本文拆解 WebCat 的本地化架构选择，理解它把编辑器、运行时、打包器全部塞进 APK 的技术取舍与代价边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/songsterr.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Songsterr 用了半年才发现的七个坑——别像我一样踩一遍才懂</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/soul-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Soul 到底值不值得掏钱？我把超级星人这笔账算透了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

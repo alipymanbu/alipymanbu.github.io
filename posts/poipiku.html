@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>poipiku 的三道设计选择题：为什么它同时做了发现流、隐私矩阵和标签筛选 · 老杨技术栈</title>
+  
+<meta name="description" content="poipiku 不是简单的插画社区——它的发现流、隐私矩阵、标签筛选三套系统看似独立，实则是对用户怎么逛、创作者怎么发、内容怎么分类三个根本问题的系统性回答。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/poipiku.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="poipiku 的三道设计选择题：为什么它同时做了发现流、隐私矩阵和标签筛选">
+<meta property="og:description" content="poipiku 不是简单的插画社区——它的发现流、隐私矩阵、标签筛选三套系统看似独立，实则是对用户怎么逛、创作者怎么发、内容怎么分类三个根本问题的系统性回答。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/poipiku.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/poipiku/interface-discover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/poipiku/interface-discover.jpg">
+
+<meta name="twitter:title" content="poipiku 的三道设计选择题：为什么它同时做了发现流、隐私矩阵和标签筛选">
+<meta name="twitter:description" content="poipiku 不是简单的插画社区——它的发现流、隐私矩阵、标签筛选三套系统看似独立，实则是对用户怎么逛、创作者怎么发、内容怎么分类三个根本问题的系统性回答。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "poipiku \u4e0d\u662f\u7b80\u5355\u7684\u63d2\u753b\u793e\u533a\u2014\u2014\u5b83\u7684\u53d1\u73b0\u6d41\u3001\u9690\u79c1\u77e9\u9635\u3001\u6807\u7b7e\u7b5b\u9009\u4e09\u5957\u7cfb\u7edf\u770b\u4f3c\u72ec\u7acb\uff0c\u5b9e\u5219\u662f\u5bf9\u7528\u6237\u600e\u4e48\u901b\u3001\u521b\u4f5c\u8005\u600e\u4e48\u53d1\u3001\u5185\u5bb9\u600e\u4e48\u5206\u7c7b\u4e09\u4e2a\u6839\u672c\u95ee\u9898\u7684\u7cfb\u7edf\u6027\u56de\u7b54\u3002", "headline": "poipiku \u7684\u4e09\u9053\u8bbe\u8ba1\u9009\u62e9\u9898\uff1a\u4e3a\u4ec0\u4e48\u5b83\u540c\u65f6\u505a\u4e86\u53d1\u73b0\u6d41\u3001\u9690\u79c1\u77e9\u9635\u548c\u6807\u7b7e\u7b5b\u9009", "image": ["https://alipymanbu.github.io/images/poipiku/interface-discover.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/poipiku.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/poipiku.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "poipiku \u7684\u4e09\u9053\u8bbe\u8ba1\u9009\u62e9\u9898\uff1a\u4e3a\u4ec0\u4e48\u5b83\u540c\u65f6\u505a\u4e86\u53d1\u73b0\u6d41\u3001\u9690\u79c1\u77e9\u9635\u548c\u6807\u7b7e\u7b5b\u9009", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">poipiku 的三道设计选择题：为什么它同时做了发现流、隐私矩阵和标签筛选</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">poipiku 的三道设计选择题：为什么它同时做了发现流、隐私矩阵和标签筛选</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">poipiku 不是简单的插画社区——它的发现流、隐私矩阵、标签筛选三套系统看似独立，实则是对用户怎么逛、创作者怎么发、内容怎么分类三个根本问题的系统性回答。</p>
+  </header>
+  <div class="prose">
+<p>我第一次打开 <a href="https://poipiku.ggcd.uno" target="_blank" rel="noopener">poipiku官网</a> 时，首页让我愣了一下。不是"信息流"——不是那种单调地往下刷、靠算法推内容的时间线。它更像一张地图：顶部有搜索框当指南针，中间是今日新作、热门发现流、标签热榜三条岔路，底部还有五个 Tab 随时可以切换去别的方向。界面比描述的直观，想自己体验的话可以从<a href="https://poipiku.ggcd.uno/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包。</p>
+<p>一个问题冒了出来：为什么它不选一条路走到底？</p>
+<p>大多数同类社区的做法很干脆——要么像 Pixiv 那样以标签和排行榜为骨架，要么像某几个日系匿名站那样完全依赖关注和时间线。poipiku 偏偏两边都做了，还在中间插入了一套完整的逐作品隐私权限矩阵。三套系统并行，界面复杂度明显更高，发布流程也更长——这到底是产品经理没想清楚，还是有意为之？</p>
+<h2>第一道题：发现流为什么是"地图"而不是"河流"</h2>
+<p>先看发现流。后来去 <a href="https://poipiku.pages.dev/" target="_blank" rel="noopener">poipiku文档</a> 翻了一下，它把这个设计叫"浏览地图"，我觉得这个比喻很准。</p>
+<p>典型的信息流是一条河流——你顺着往下漂，算法决定往哪个方向拐、在哪块石头停。河流模型假设用户心态是单一的："我就是来随便看看的"。但 poipiku 的设计者显然不信这个假设。它把用户在一个插画社区里的行为拆成了<strong>三种独立心态</strong>，然后给每种心态单独铺了入口：</p>
+<table><thead><tr><th>浏览模式</th><th>背后的用户心态</th></tr></thead><tbody><tr><td>关注更新</td><td>"我想看看那几个人更了没有"——目标明确、范围狭小</td></tr><tr><td>热门发现流</td><td>"不知道看什么，随便逛逛"——无目的、靠算法引导</td></tr><tr><td>标签组合搜索</td><td>"我想看同人厚涂完成稿"——意图强烈、维度清晰</td></tr></tbody></table>
+<p>这三种心态是互斥的。一个人在追更时不会去看热榜推荐，在漫无目的地逛时也不会想"我要找线稿状态标签下的 BL 同人"。如果用单一信息流来覆盖这三种心态，要么追更被无关信息淹没，要么探索被关注列表限制住。</p>
+<p>所以 poipiku 的发现流不是一条河，而是一张有多个入口的地图。每个入口对应一种浏览心态，互不干扰。底部五个 Tab 则是地图的快速切换按钮——从首页逛累了，跳到标签台精准定位，或者回到关注列表只看更新。</p>
+<p><img src="../images/poipiku/interface-discover.jpg" alt="发现流界面" loading="lazy"></p>
+<p>这套设计的代价是<strong>选择成本</strong>。新用户第一次打开会看到很多入口，需要几分钟才能搞清楚"我到底该点哪里"。对比之下，纯信息流首页只给一个"刷"的动作，门槛极低。但 poipiku 的目标用户显然不是"随手刷一下"的路人——能在一个插画社区里停留、持续使用的人，大多有明确的偏好，要么追特定画师，要么找特定题材。地图模型对他们来说是高效的。</p>
+<h2>第二道题：隐私为什么是"矩阵"而不是"开关"</h2>
+<p>如果说发现流的设计解决了"用户怎么逛"的问题，那隐私矩阵解决的就是完全相反的一端——"创作者怎么发"。</p>
+<p>我见过很多社区的隐私设置是<strong>全局开关</strong>——设成私密后所有作品都只有自己能看，设成公开后全部裸奔。这个模型的问题在于：创作者不可能对自己的所有作品一视同仁。</p>
+<p>poipiku 把隐私拆成了四种独立机制，可以<strong>逐作品组合使用</strong>：</p>
+<table><thead><tr><th>机制</th><th>逻辑</th><th>背后的创作场景</th></tr></thead><tbody><tr><td>公开</td><td>全网可见</td><td>完成稿、想获得新粉丝的作品</td></tr><tr><td>仅关注者可见</td><td>只有关注你的人能看</td><td>进度稿、还在打磨不想让路人看到的半成品</td></tr><tr><td>密码查看</td><td>输入密码才能解锁</td><td>私设定、想定向分享给某几个人的内容</td></tr><tr><td>内容遮罩</td><td>先隐藏再主动展开</td><td>含剧透、需要年龄提示的作品</td></tr></tbody></table>
+<p>这四种机制不是互斥的——你可以同时设"公开 + 遮罩"让所有人都看到封面但主动展开才能看内容，也可以设"仅关注者 + 密码"做双重保护。样本文档里有一句话我印象很深："poipiku 把合理的组合直接做成了选项，不需要自己猜能不能叠加"。</p>
+<p>这个细节很重要。它说明设计者不是把这四种机制当作几个独立的开关堆在那里，而是<strong>提前想清楚了哪些组合在真实的创作场景里有意义</strong>。公开加密码、仅关注者加密码，这些都是真实存在的创作需求——比如想让作品出现在发现流里吸引关注，但又不想让陌生人直接看到完整内容。</p>
+<p><img src="../images/poipiku/visibility-settings.png" alt="隐私设置界面" loading="lazy"></p>
+<p>逐作品设置的代价是<strong>发布流程变长</strong>。你选完图、标完状态、填完标签，还要再想一遍"这张作品设什么可见范围"。如果是从全局开关过来的用户，第一次可能会觉得"发一张图怎么这么麻烦"。但这个额外的几秒思考时间换回来的是：你的进度稿不会被路人嘲笑、你的私设定不会意外外泄、你的公开稿也不会被密码挡住——每一种作品都能在它最该被看到的场景下被看到。</p>
+<h2>第三道题：标签为什么是"筛选器"而不是"目录"</h2>
+<p>第三套系统是标签搜索——它解决的是前两套都没覆盖的问题：<strong>当我既不想追更也不想随便逛，而是有一个明确的搜索意图时，怎么快速定位到想看的东西</strong>。</p>
+<p>很多社区的标签本质上是目录——点"线稿"进去，看到所有带线稿标签的作品。这没问题，但它只解决了"单条件筛选"。poipiku 的标签系统是<strong>多层筛选器</strong>——你可以同时选"同人"（题材）+ "厚涂"（风格）+ "完成稿"（状态），得到的是同时满足三个条件的结果集。组合越多，筛选越精准。</p>
+<p>为什么这很重要？因为插画社区的内容天然是<strong>多维度的</strong>。一张同人厚涂完成稿，同时属于同人、厚涂、完成稿三个标签。如果标签是目录模型，你在"厚涂"目录里会看到草稿、进度稿、线稿混在一起，找到想看的那张需要往下翻很久。组合搜索直接帮你把不需要的维度排除了。</p>
+<p>标签热榜则是筛选器的<strong>反向入口</strong>——当你不知道想看什么时，逛热榜能快速发现当前社区里最活跃的题材和风格。热榜按不同时间窗口和类型分层（24 小时、本周、本月；热门、新作、完成稿），本质上是把"社区此刻在关注什么"这件事可视化了。</p>
+<h2>三道题背后的同一条线</h2>
+<p>发现流、隐私矩阵、标签筛选——乍一看这三套系统完全不相关，一个管用户怎么逛，一个管创作者怎么发，一个管内容怎么找。但把它们放在一起看，你会发现它们遵循同一条设计原则：<strong>尊重用户的具体意图，而不是强行套用统一的模型</strong>。</p>
+<p>发现流尊重的是用户在社区里的不同心态——追更、探索、精准搜索，三种心态用三套入口。隐私矩阵尊重的是创作者对不同作品的不同期许——完成稿要曝光、进度稿要私密、私设定要定向分享，四种机制自由组合。标签筛选尊重的是内容天然的多维度属性——一张作品同时属于题材、风格、状态三个维度，组合搜索帮你同时筛选。</p>
+<p>这条原则听起来简单，但做起来很难。因为每多一层选择，界面就多一层复杂度，发布流程就多一个步骤，用户上手成本就高一分。poipiku 选择承担了这些代价——它放弃了极简，换来了精准；放弃了统一模型，换来了对具体场景的适配。</p>
+<h2>那它适合谁</h2>
+<p>这套设计哲学决定了 poipiku 的适用边界。</p>
+<p>如果你是一个有明确偏好的插画爱好者——追几个特定画师、找特定题材的作品、偶尔想逛热榜发现新东西——poipiku 的地图模型刚好能同时满足这三种需求。</p>
+<p>如果你是一个创作者，同时在画完成稿、进度稿、私设定，希望不同类型的作品有不同的曝光策略——逐作品的隐私矩阵就是为你设计的。</p>
+<p>但如果你只是想"随手刷一下"，不想花时间理解三个 Tab 和四种隐私机制——poipiku 可能会显得太重了。纯信息流的社区会更适合你，因为那个模型假设你没有明确的意图，只需要一个无限滚动的动作。</p>
+<p>这其实是产品设计里一个永恒的选择题：<strong>简单和精准之间，你选哪一边</strong>。poipiku 选了精准——用更多的设计、更多的选项、更多的思考成本，换来对用户具体行为和具体需求的更精确匹配。这个选择不一定对所有人都好，但对需要它的人来说，这就是它存在的理由。写这篇文章时参考的整套文档资料，在 <a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/poipiku" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/poipiku" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/poipiku" target="_blank" rel="noopener">GitCode</a> 上都有完整副本，国内网络直接走 Gitee 或 GitCode 就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/planner5d.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Planner5D 的版本进化史：从画平面图到用 LiDAR 扫房间</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/pokedex-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">200MB 换来了什么——PokeDex 全量离线架构的设计取舍</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

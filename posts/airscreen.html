@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>AirScreen 投屏踩坑实录：那些让你以为电视坏了的小问题 · 老杨技术栈</title>
+  
+<meta name="description" content="AirScreen 看着就是个装完点开就能收投屏的 App，实际上有好几个暗坑等着你。这篇整理了我半年来遇到的四类典型问题——从找不到设备到切出去就断，每个坑都给你症状、原因和解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/airscreen.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AirScreen 投屏踩坑实录：那些让你以为电视坏了的小问题">
+<meta property="og:description" content="AirScreen 看着就是个装完点开就能收投屏的 App，实际上有好几个暗坑等着你。这篇整理了我半年来遇到的四类典型问题——从找不到设备到切出去就断，每个坑都给你症状、原因和解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/airscreen.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/airscreen/airscreen-airplay.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/airscreen/airscreen-airplay.png">
+
+<meta name="twitter:title" content="AirScreen 投屏踩坑实录：那些让你以为电视坏了的小问题">
+<meta name="twitter:description" content="AirScreen 看着就是个装完点开就能收投屏的 App，实际上有好几个暗坑等着你。这篇整理了我半年来遇到的四类典型问题——从找不到设备到切出去就断，每个坑都给你症状、原因和解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "AirScreen \u770b\u7740\u5c31\u662f\u4e2a\u88c5\u5b8c\u70b9\u5f00\u5c31\u80fd\u6536\u6295\u5c4f\u7684 App\uff0c\u5b9e\u9645\u4e0a\u6709\u597d\u51e0\u4e2a\u6697\u5751\u7b49\u7740\u4f60\u3002\u8fd9\u7bc7\u6574\u7406\u4e86\u6211\u534a\u5e74\u6765\u9047\u5230\u7684\u56db\u7c7b\u5178\u578b\u95ee\u9898\u2014\u2014\u4ece\u627e\u4e0d\u5230\u8bbe\u5907\u5230\u5207\u51fa\u53bb\u5c31\u65ad\uff0c\u6bcf\u4e2a\u5751\u90fd\u7ed9\u4f60\u75c7\u72b6\u3001\u539f\u56e0\u548c\u89e3\u6cd5\u3002", "headline": "AirScreen \u6295\u5c4f\u8e29\u5751\u5b9e\u5f55\uff1a\u90a3\u4e9b\u8ba9\u4f60\u4ee5\u4e3a\u7535\u89c6\u574f\u4e86\u7684\u5c0f\u95ee\u9898", "image": ["https://alipymanbu.github.io/images/airscreen/airscreen-airplay.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/airscreen.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/airscreen.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "AirScreen \u6295\u5c4f\u8e29\u5751\u5b9e\u5f55\uff1a\u90a3\u4e9b\u8ba9\u4f60\u4ee5\u4e3a\u7535\u89c6\u574f\u4e86\u7684\u5c0f\u95ee\u9898", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">AirScreen 投屏踩坑实录：那些让你以为电视坏了的小问题</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">AirScreen 投屏踩坑实录：那些让你以为电视坏了的小问题</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">AirScreen 看着就是个装完点开就能收投屏的 App，实际上有好几个暗坑等着你。这篇整理了我半年来遇到的四类典型问题——从找不到设备到切出去就断，每个坑都给你症状、原因和解法。</p>
+  </header>
+  <div class="prose">
+<p>AirScreen 这东西，从它的<a href="https://www.bmww.store" target="_blank" rel="noopener">官网</a>介绍来看表面上简单得不行——装在电视盒子上，iPhone AirPlay 一搜就连上，Mac 镜像屏幕也能直接切过去。但我用了大半年，踩过的坑说出来能绕电视柜三圈，每一次都让我怀疑是不是电视坏了或者盒子要换了。其实都不是，就是几个小设置没对齐。下面按出现频率从高到低说。</p>
+<h2>坑一：iPhone/Mac 死活搜不到 AirScreen 设备</h2>
+<p><strong>症状</strong>：AirScreen 在电视上好好地显示着"等待连接"，你掏出 iPhone 打开控制中心点 AirPlay，设备列表里就是空空如也。Mac 那边 Screen Mirroring 也转了半天小菊花，最后告诉你没有可用设备。第一反应通常是"这 App 有问题"——然后你卸载重装、去<a href="https://www.bmww.store/download.html" target="_blank" rel="noopener">官方下载</a>了个新包重新装、重启盒子，一套操作下来还是没解决。</p>
+<p><strong>原因</strong>：八成不是 AirScreen 的事，是你的家庭网络。AirPlay、Cast、DLNA 这三种协议全靠局域网发现，路由器但凡在中间做了一点点隔离，设备就互相看不见。常见的坑包括：</p>
+<ul><li>手机连的是 Guest Wi-Fi（很多路由器默认隔离访客网络和主网络）</li><li>2.4G 和 5G 频段被分开成了两个 SSID，手机连 5G、盒子连 2.4G</li><li>路由器开了 AP 隔离或者客户端隔离</li><li>不同的路由器在同一个房子里，手机和盒子各连了一个</li></ul>
+<p><strong>解法</strong>：最有效的办法不是逐个排查上面这些，而是直接做手机热点隔离测试。开个手机热点，电视盒子连上去，手机也切到这个热点，再搜一次。如果热点下能找到——那就是你家路由器的问题，回去调路由器设置或者换个统一 SSID 就行。如果热点下也找不到——那就要往下看了。</p>
+<p><img src="../images/airscreen/airscreen-airplay.png" alt="AirPlay 连接状态示意" loading="lazy"></p>
+<h2>坑二：Android 12+ 位置权限拒绝，设备扫描直接歇菜</h2>
+<p><strong>症状</strong>：这个坑我栽过两次，第一次栽了半小时才反应过来。现象和坑一完全一样——AirScreen 在运行，设备就是搜不到。热点测试也搜不到，重启手机重启盒子全没用，一度以为盒子不支持。</p>
+<p><strong>原因</strong>：Android 12 引入了新的安全策略——<strong>位置权限是发现局域网设备的必要条件</strong>。这不是 AirScreen 要定位你在哪，是 Android 系统自己的机制变化。如果你装 AirScreen 的时候不小心把位置权限设成了"仅在使用时允许"或者直接拒绝了，那即使 AirScreen 在前台，它也没权限扫描局域网设备。FireTV 用户注意了——FireOS 8 以上（Android 11 等价）还有额外的后台权限要求，要单独在系统里手动打开。</p>
+<p><strong>解法</strong>：进系统设置，找到 AirScreen 的应用详情页，把位置权限改成"始终允许"。FireTV 的用户要多走一步：Settings → Applications → Manage Installed Applications → AirScreen → Allow in background，这个开关如果没开，后台服务也白搭。更完整的 FireOS 后台权限设置步骤在<a href="https://airscreen.pages.dev/" target="_blank" rel="noopener">airscreen文档</a>里有专门章节。</p>
+<p><img src="../images/airscreen/airscreen-connection.png" alt="设备连接状态" loading="lazy"></p>
+<h2>坑三：一切出去投屏就断了</h2>
+<p><strong>症状</strong>：投屏投到一半，想在电视上开个别的 App 查点东西，按一下 Home 键切走 AirScreen——画面立刻黑了。切回来重新发起投屏，再切走，又断。反复几次之后你会觉得这设计太反人类了。</p>
+<p><strong>原因</strong>：AirScreen 默认是前台运行的，一切到后台，Android TV 和盒子的 Doze 省电模式就开始杀它的网络监听。国产定制系统更狠——小米、当贝、极光这些盒子的后台清理策略比原生 Android 激进得多，切出去几分钟就直接把进程干掉了。这个问题 AirScreen 本身有后台服务功能能解决，但很多人不知道要手动开。</p>
+<p><strong>解法</strong>：AirScreen 应用内设置里有个 Background Service 开关，打开之后再去系统层面把电池优化设为"不限制"。国产系统额外要做两件事：把 AirScreen 锁定在最近任务列表里防止被清理，还有在自启动管理里加白名单。设置完之后，你想怎么切出去看别的 App 都行，投屏画面会一直叠加在上面。</p>
+<h2>坑四：免费版的广告和一些小限制</h2>
+<p><strong>症状</strong>：如果你用的是免费版 AirScreen，投屏的时候会不定时弹出全屏广告，体验确实打折扣。另外某些高级功能——比如自定义设备名、录屏、后台服务——可能要 Pro 版才能用。还有人反映 Cast 按钮在某些 App 里找不到，不知道是 App 不支持还是 AirScreen 的问题。</p>
+<p><strong>原因</strong>：免费版靠广告维持，这是 Ionitech 的商业模式。Cast 按钮的问题多半是 App 本身没实现 Cast 协议——这跟 AirScreen 无关，原生 Cast 接收器也找不到这个按钮。Chrome 浏览器的 Cast 标签页和桌面 Cast 是另外一回事，那个只要 Chrome 正常就能用。</p>
+<p><strong>解法</strong>：如果你真需要自定义设备名和录屏，升级 Pro 版是正解。免费版够用的话忍一下广告就行——Cast 按钮找不到的 App，用屏幕镜像替代，效果差不多。</p>
+<h2>防坑清单</h2>
+<ul><li><strong>先查网络</strong>：搜不到设备的第一反应不是卸载重装，是开手机热点隔离测试</li><li><strong>权限别漏</strong>：Android 12+ 位置权限设成"始终允许"，FireOS 8+ 单独开后台权限</li><li><strong>后台服务必开</strong>：切出去要投屏不断，这个开关和电池优化设"不限制"是标配</li><li><strong>国产盒子额外锁定</strong>：小米、当贝用户记得锁进程 + 自启动白名单</li><li><strong>免费版就别要求太多</strong>：广告忍忍，Cast 按钮找不到用屏幕镜像兜底</li></ul>
+<p>其实知道这些坑之后，AirScreen 用起来相当省心——一台设备同时收 AirPlay、Cast、DLNA 三种协议，iPhone、安卓手机、Mac、Chrome 浏览器全通，不用来回换接收器。我现在家里手机投电视基本就走它，一年多没出过什么大问题。</p>
+<p>资料整理方面，这套使用指南同步放在了<a href="https://github.com/alipymanbu/APK/tree/main/APP/airscreen" target="_blank" rel="noopener">GitHub</a>仓库，国内访问慢的话可以直接看<a href="https://gitee.com/manbu1103/APK/tree/main/APP/airscreen" target="_blank" rel="noopener">Gitee</a>的镜像，还有一份备份在<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/airscreen" target="_blank" rel="noopener">GitCode</a>。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/airportalapp.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">空投快传到底值不值得掏钱？算笔明白账</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/alarmy.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Alarmy 这十年：从一个&#34;暴力闹钟&#34;到睡眠生态的进化史</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

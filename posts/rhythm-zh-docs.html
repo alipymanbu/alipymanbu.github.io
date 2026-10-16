@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Rhythm 上手三天：插件化播放器的自由与代价 · 老杨技术栈</title>
+  
+<meta name="description" content="想找一个能同时管本地音乐、挂网盘、还能听听书的播放器，翻来翻去最后装了 Rhythm。插件化架构给了我前所未有的自由度，也给了我实实在在的坑——三天用下来，聊聊真实感受。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/rhythm-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rhythm 上手三天：插件化播放器的自由与代价">
+<meta property="og:description" content="想找一个能同时管本地音乐、挂网盘、还能听听书的播放器，翻来翻去最后装了 Rhythm。插件化架构给了我前所未有的自由度，也给了我实实在在的坑——三天用下来，聊聊真实感受。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/rhythm-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/rhythm-zh-docs/shot-plugin-manager.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/rhythm-zh-docs/shot-plugin-manager.png">
+
+<meta name="twitter:title" content="Rhythm 上手三天：插件化播放器的自由与代价">
+<meta name="twitter:description" content="想找一个能同时管本地音乐、挂网盘、还能听听书的播放器，翻来翻去最后装了 Rhythm。插件化架构给了我前所未有的自由度，也给了我实实在在的坑——三天用下来，聊聊真实感受。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u60f3\u627e\u4e00\u4e2a\u80fd\u540c\u65f6\u7ba1\u672c\u5730\u97f3\u4e50\u3001\u6302\u7f51\u76d8\u3001\u8fd8\u80fd\u542c\u542c\u4e66\u7684\u64ad\u653e\u5668\uff0c\u7ffb\u6765\u7ffb\u53bb\u6700\u540e\u88c5\u4e86 Rhythm\u3002\u63d2\u4ef6\u5316\u67b6\u6784\u7ed9\u4e86\u6211\u524d\u6240\u672a\u6709\u7684\u81ea\u7531\u5ea6\uff0c\u4e5f\u7ed9\u4e86\u6211\u5b9e\u5b9e\u5728\u5728\u7684\u5751\u2014\u2014\u4e09\u5929\u7528\u4e0b\u6765\uff0c\u804a\u804a\u771f\u5b9e\u611f\u53d7\u3002", "headline": "Rhythm \u4e0a\u624b\u4e09\u5929\uff1a\u63d2\u4ef6\u5316\u64ad\u653e\u5668\u7684\u81ea\u7531\u4e0e\u4ee3\u4ef7", "image": ["https://alipymanbu.github.io/images/rhythm-zh-docs/shot-plugin-manager.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/rhythm-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/rhythm-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "Rhythm \u4e0a\u624b\u4e09\u5929\uff1a\u63d2\u4ef6\u5316\u64ad\u653e\u5668\u7684\u81ea\u7531\u4e0e\u4ee3\u4ef7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">Rhythm 上手三天：插件化播放器的自由与代价</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Rhythm 上手三天：插件化播放器的自由与代价</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">想找一个能同时管本地音乐、挂网盘、还能听听书的播放器，翻来翻去最后装了 Rhythm。插件化架构给了我前所未有的自由度，也给了我实实在在的坑——三天用下来，聊聊真实感受。</p>
+  </header>
+  <div class="prose">
+<h2>为什么是 Rhythm</h2>
+<p>我手机里攒了大概七八百首歌，从虾米时代一路存下来的，还有几十本听书存在阿里云盘里。之前用过不少播放器：Poweramp 声音好但只能管本地；Alist 能挂网盘但不能离线；专门的听书 App 又各占一个图标。一直想找一个能把这几件事串起来的。</p>
+<p>刷论坛的时候看到有人提一个叫 Rhythm 的播放器，它的<a href="https://rhythm.yoan.quest" target="_blank" rel="noopener">官网</a>上写得很清楚——插件化架构，本体是空壳，想加什么功能装什么插件。说实话一开始有点犹豫，毕竟这种架构听起来就有点「折腾」，但架不住描述太诱人：一个 App 搞定本地音乐、网盘挂载、听书、甚至在线电台。那就试试吧。</p>
+<h2>初印象：干净到有点懵</h2>
+<p>安装过程没什么特别的——APK 从<a href="https://rhythm.yoan.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿的，装完点开，界面干干净净，连一首歌都没有。我当时以为是扫描没跑，等了半分钟才反应过来：哦对，这是空壳设计，得先给权限、再装插件。</p>
+<p>设置里翻了一下，权限还好，就是常规的存储访问和网络。语言切换也在设置里，但默认是英文，找了一会儿才切到中文——这个小细节倒是让我对后面的本地化有点担心。</p>
+<p>第一次启动的引导做得挺简洁，没有啰嗦的新手教程，选完语言、给完权限就直接进主界面了。我扫了一眼，主界面有音乐、听书、视频三个标签，现在都是空的。接下来才是正题——装插件。</p>
+<p><img src="../images/rhythm-zh-docs/shot-plugin-manager.png" alt="插件管理界面" loading="lazy"></p>
+<h2>实际用下来：自由是真的，坑也是真的</h2>
+<p>插件化的好处立竿见影。我装了两个网盘插件挂阿里云盘和夸克网盘，一个听书插件，还有一个在线电台。整个过程就是在扩展管理里点几下，装完配置一下地址和账号，就能用了。音乐标签里自动多了网盘里的歌，听书标签里出现了阿里云盘里存的那几十本有声书。</p>
+<p>但很快也踩了第一个坑。我先装了一个下载类插件，用了半天觉得功能和另一个有点重叠，想卸掉重装。结果在扩展管理里根本找不到卸载按钮——点了三个点的菜单，只有禁用和配置。我以为是版本问题，去<a href="https://rhythm-zh-docs.pages.dev/" target="_blank" rel="noopener">Rhythm文档</a>翻了一下才确认——这是早期插件化架构的已知 bug，卸载功能在当前版本还没做好。</p>
+<p>这件事让我有点意外。说实话，插件装了删不掉，这是很基础的功能吧？但文档里明确说了「目前没有干净卸载的办法，清除应用数据是唯一退路」。清除数据意味着所有插件、所有配置、所有歌单、所有收藏一起丢。我那时候才装了半天，清一次数据损失不大，但想想如果用了几个月再装错一个插件……</p>
+<blockquote><p>现在装插件我都很谨慎了——想清楚再装，特别是下载类和网盘类，权限多、装了又卸不掉。</p></blockquote>
+<p>第二个体验是本地音乐扫描。扫描速度很快，七八百首歌几秒钟就列出来了。但我发现它不识别我建的文件夹分层——所有歌都摊在一个列表里，想按专辑或歌手找得自己在设置里调排序。调完之后好一点，但还是没有 Poweramp 那种精细的分类过滤。</p>
+<p>听书功能倒是让我有点惊喜。之前一直用专门的听书 App，现在直接在同一个界面里切换，不用在两个 App 之间跳来跳去。而且听书插件能记住播放进度，续播很顺畅。我常用的在线电台也能用，切换过来之后整个使用习惯没被打乱太多。</p>
+<p><img src="../images/rhythm-zh-docs/shot-audiobook-tab.png" alt="听书标签页" loading="lazy"></p>
+<h2>适合谁，不适合谁</h2>
+<p>说一下我的判断。</p>
+<p>适合的人：第一，手机里本地音乐多、还想挂网盘的——一个 App 搞定真的很爽，不用来回切。第二，喜欢折腾、愿意花半小时研究插件配置的——插件化意味着你可以把它定制成自己想要的样子，缺什么装什么。第三，听书和播放器需求想合并的人，听书标签做得比我预期好用。</p>
+<p>不太适合的人：第一，希望装完就能立刻用的小白用户——空壳设计需要你自己装插件、自己配，门槛确实比传统播放器高。第二，对播放器音质、分类管理有极致要求的——Rhythm 的播放引擎够用但不惊艳，分类过滤也还有提升空间。第三，插件卸载 bug 还没解决的版本用户——这个坑太实了，只能指望后续版本修复。</p>
+<p>还有一件事得提：Rhythm 没有账号体系，也没有云端同步。换设备或者重装，所有插件配置、歌单、收藏都得手动重建。这对我来说倒不是大问题，歌单本来就是本地文件组成的，手动重新扫一下就行，但依赖网盘挂载的同学得记得把配置信息自己记一份。</p>
+<h2>最后说几句</h2>
+<p>用了三天，Rhythm 给我的感觉是：架构上它确实做到了「一个 App 当多个 App 用」，自由度很高；但工程上还在早期阶段，插件卸载这种基础功能都还没搞定，空壳设计也提高了新用户的上手门槛。</p>
+<p>如果你愿意花点时间研究一下，Rhythm 是目前我用过能同时管本地音乐、挂网盘、听听书的最顺手的选择。但别像我一样随便装插件——想清楚再动手，不然清数据那天会哭。</p>
+<p>这套资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Rhythm" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Rhythm" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Rhythm" target="_blank" rel="noopener">GitCode</a> 三个仓库都有同步，主要是考虑国内不同地区的访问速度，选一个你能连上的就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/revo-uninstaller.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Revo Uninstaller 到底值不值得掏钱？一份算账清单</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/rikkahub.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">RikkaHub 在手机上跑 AI 客户端——它为什么要做&#34;无锁定&#34;架构</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

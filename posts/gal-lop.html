@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Gal Lop 嵌进我的周更视觉小说流程：从四步折腾到一条链打穿 · 老杨技术栈</title>
+  
+<meta name="description" content="业余写手每周要出短篇视觉小说一章，以前素材处理、剧情编排、结局测试、发布分散在四套工具两个设备上。Gal Lop 把手机端的创作-调试-发布打通后，整个流程被压成了一条链，省掉了两次手动搬运和一整晚的分支测试。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/gal-lop.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gal Lop 嵌进我的周更视觉小说流程：从四步折腾到一条链打穿">
+<meta property="og:description" content="业余写手每周要出短篇视觉小说一章，以前素材处理、剧情编排、结局测试、发布分散在四套工具两个设备上。Gal Lop 把手机端的创作-调试-发布打通后，整个流程被压成了一条链，省掉了两次手动搬运和一整晚的分支测试。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/gal-lop.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/gal-lop/pchome-6.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/gal-lop/pchome-6.jpg">
+
+<meta name="twitter:title" content="Gal Lop 嵌进我的周更视觉小说流程：从四步折腾到一条链打穿">
+<meta name="twitter:description" content="业余写手每周要出短篇视觉小说一章，以前素材处理、剧情编排、结局测试、发布分散在四套工具两个设备上。Gal Lop 把手机端的创作-调试-发布打通后，整个流程被压成了一条链，省掉了两次手动搬运和一整晚的分支测试。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e1a\u4f59\u5199\u624b\u6bcf\u5468\u8981\u51fa\u77ed\u7bc7\u89c6\u89c9\u5c0f\u8bf4\u4e00\u7ae0\uff0c\u4ee5\u524d\u7d20\u6750\u5904\u7406\u3001\u5267\u60c5\u7f16\u6392\u3001\u7ed3\u5c40\u6d4b\u8bd5\u3001\u53d1\u5e03\u5206\u6563\u5728\u56db\u5957\u5de5\u5177\u4e24\u4e2a\u8bbe\u5907\u4e0a\u3002Gal Lop \u628a\u624b\u673a\u7aef\u7684\u521b\u4f5c-\u8c03\u8bd5-\u53d1\u5e03\u6253\u901a\u540e\uff0c\u6574\u4e2a\u6d41\u7a0b\u88ab\u538b\u6210\u4e86\u4e00\u6761\u94fe\uff0c\u7701\u6389\u4e86\u4e24\u6b21\u624b\u52a8\u642c\u8fd0\u548c\u4e00\u6574\u665a\u7684\u5206\u652f\u6d4b\u8bd5\u3002", "headline": "Gal Lop \u5d4c\u8fdb\u6211\u7684\u5468\u66f4\u89c6\u89c9\u5c0f\u8bf4\u6d41\u7a0b\uff1a\u4ece\u56db\u6b65\u6298\u817e\u5230\u4e00\u6761\u94fe\u6253\u7a7f", "image": ["https://alipymanbu.github.io/images/gal-lop/pchome-6.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/gal-lop.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/gal-lop.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Gal Lop \u5d4c\u8fdb\u6211\u7684\u5468\u66f4\u89c6\u89c9\u5c0f\u8bf4\u6d41\u7a0b\uff1a\u4ece\u56db\u6b65\u6298\u817e\u5230\u4e00\u6761\u94fe\u6253\u7a7f", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">Gal Lop 嵌进我的周更视觉小说流程：从四步折腾到一条链打穿</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Gal Lop 嵌进我的周更视觉小说流程：从四步折腾到一条链打穿</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">业余写手每周要出短篇视觉小说一章，以前素材处理、剧情编排、结局测试、发布分散在四套工具两个设备上。Gal Lop 把手机端的创作-调试-发布打通后，整个流程被压成了一条链，省掉了两次手动搬运和一整晚的分支测试。</p>
+  </header>
+  <div class="prose">
+<h2>开头：我以前每周要做这件事</h2>
+<p>我是个在 Gal Lop 社区连载短篇视觉小说的业余写手，每周六下午固定出一章。内容不长，30 分钟到 1 小时通关的量级，三到四个结局。以前这件事要拆散在四套工具、两个设备上折腾：</p>
+<p>素材在电脑上用 PS 和 Audition 处理格式 → PC 版编辑器写剧情节点和变量分支 → 导出到手机看实际效果 → 手动打存档点反复测每个结局能不能触发 → 最后用另一个 App 发社区。整条链的断点多到什么程度？单素材搬运就要经历"云盘→手机文件管理器→编辑器素材库"两次中转，多结局测试那一晚更是枯燥——我得把好感度变量从 0 调到 100，每条路线都走一遍才能放心发布。</p>
+<h2>Gal Lop 插进流程的哪一环</h2>
+<p>把 <a href="https://gal-lop.usea.quest" target="_blank" rel="noopener">Gal Lop官网</a> 当作整条链的唯一工作台之后，流程被压扁了：</p>
+<p><strong>素材云盘</strong> → <strong>Gal Lop 素材库</strong> → <strong>节点编辑器（含变量分支）</strong> → <strong>App 内测试</strong> → <strong>社区发布</strong></p>
+<p>砍掉了四件事：PC 端的格式预处理、两次设备间的素材搬运、手动存档点打桩、第三方发布工具。下面说每一环具体怎么接。</p>
+<h3>素材云盘 → Gal Lop 素材库：一次整理终身复用</h3>
+<p>以前我在电脑上处理好所有立绘、背景、BGM，然后用 USB 传到手机，再逐个导入编辑器。现在换了做法：在云盘里维护一个规范化的素材文件夹，按 <code>角色/立绘/角色名-表情.png</code>、<code>场景/背景/地点-时段.jpg</code>、<code>音效/音效名.ogg</code> 这样的结构和命名。手机上打开 Gal Lop 的素材库，点"自定义素材"分类里的上传按钮，直接从云盘 App 选文件。一次把一整批素材导进去，Gal Lop 会根据文件名自动给素材打标签，后续写节点时 AI 能帮我快速匹配立绘。</p>
+<h3>节点编辑器 + 变量分支：把剧情和结局写死在同一条时间线</h3>
+<p>Gal Lop 的时间线编辑器让我把整个故事拆成节点串：对话节点承载每一句角色对白，选项目点插入关键选择，变量系统在节点切换时自动累加好感度或事件标记。以前我在 PC 编辑器里写完剧情，还得在脑子里另开一张表记每个选择对应哪个结局、要检查哪些变量值——现在条件分支节点可以直接挂在时间线上（Gal Lop 的<a href="https://gal-lop.pages.dev/" target="_blank" rel="noopener">文档</a>里变量系统那章讲得比我详细），写结局判定那段逻辑的时候，把最终的好感度检查节点拖到时间线末尾，条件写 <code>好感度 &gt;= 80</code> 就进真结局、<code>&lt; 20</code> 就进坏结局，Gal Lop 帮我自动走分支。</p>
+<h2>最容易断链的两个环节怎么处理</h2>
+<p>流程压成一条链之后，有两个地方我一开始踩过坑，现在成了固定的前检查项。</p>
+<h3>结局测试：极端值法跳过逐点存档</h3>
+<p>从<a href="https://gal-lop.usea.quest/download.html" target="_blank" rel="noopener">Gal Lop下载</a>装上它之后发现，Gal Lop 有个很实用的调试手段——我可以在测试模式下直接把任何变量的值手动设成 0 或 100，然后从故事中段某个关键节点开始跑。以前我得手动打四五个存档点分别加载，现在把好感度变量拖到极值，按一次"从这里测试"就能确认真结局和坏结局能不能正常触发。这个小功能帮我把结局测试从一两个小时缩到 20 分钟。</p>
+<p><img src="../images/gal-lop/pchome-6.jpg" alt="对话节点编辑界面" loading="lazy"></p>
+<h3>素材格式：先在素材库看一眼缩略图再开始写</h3>
+<p>Gal Lop 上传素材时会自动压缩图片和音频，我以前传了一张 4K 的背景图，压缩后在手机上糊成了马赛克。后来固定做法是：素材从云盘导完、写节点之前，先在 Gal Lop 的自定义素材库逐个点开看一眼缩略图，模糊的就换成 WebP 格式的高分辨率原图重新传。音频也是同样道理，OGG 格式比 MP3 压缩温和，BGM 优先传 OGG。</p>
+<h2>AI 辅助帮我省掉的那一步</h2>
+<p>如果说 Gal Lop 的创作和发布打通了我整条链的骨架，那 AI 辅助功能就是帮我省掉了最不愿意干的那一环——旁白配音。以前我要自己录或者找配音外包，每句旁白都是个事。现在在对话节点里直接点 AI 语音生成，选好音色和语速，Gal Lop 几秒钟就出成品，不满意再调一次就行。声音不追求完美，够用就行，我写的是短篇连载，读者更在意剧情能不能跟上节奏。</p>
+<h2>这套流程省了什么、什么时候不划算</h2>
+<p>每周六下午我现在从三点坐到五点就能出一章，以前要从两点坐到六点。具体省的事：素材搬运少了两次、格式预处理完全砍掉、结局测试少了 1 小时多。但这套流程有边界——如果是做长篇（3 小时以上、10 个结局那种），节点数量会把手机时间线撑得很长，变量逻辑复杂到 Gal Lop 的手机编辑器会有点卡。那种体量我还是得回到 PC 端先把时间线搭好、变量逻辑捋顺，再导回手机上做最后打磨。短篇和中篇（5 个结局以内），Gal Lop 一条链完全够用。</p>
+<p>另外要提一句隐私和版权的事——Gal Lop 允许导入任意素材，但我只用自己画的、CC0 或者买了商用授权的素材。以前有朋友图省事从其他作品里剪音频和立绘，被 Gal Lop 平台下架了作品，这个坑千万别踩。Gal Lop 素材库的规则写得很清楚，侵权素材零容忍。</p>
+<p>如果你也在做视觉小说连载，想把创作-调试-发布压成一条不换设备的链，这套流程跑下来的体验值得试试——只要你的项目体量不超过五个结局，Gal Lop 一条链完全够用。</p>
+<p>我这套工作流跑了两个月没换过工具链，每个周六下午坐下来直接开干，写完就发社区，再也没出过"素材没传全""结局走不通"这种低级问题。</p>
+<p>素材同步备份的事我在 GitHub、Gitee、GitCode 三个仓库都挂了一份，换设备丢了也不怕，哪天 Gal Lop 社区想不起我了，至少代码和故事逻辑还在。可以分别去 <a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Gal%20Lop" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Gal%20Lop" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Gal%20Lop" target="_blank" rel="noopener">GitCode</a> 逛逛，国内访问 Gitee 和 GitCode 通常比 GitHub 顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/fusionapp-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">期末复习周，我把B站改造成了只有视频的专属播放器</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/gamejolt.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Game Jolt 安卓从 0 到 1：找游戏、玩社区、攒贴纸一条龙</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

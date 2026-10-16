@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从 Hamachi 到 Astral：虚拟局域网工具这十五年的进化逻辑 · 老杨技术栈</title>
+  
+<meta name="description" content="从 Hamachi 的笨重时代到 Astral 的轻量跨平台，虚拟局域网联机工具的迭代节奏里藏着一条清晰的主线——让联机这件事越来越像&#34;本来就该这么简单&#34;。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/astral-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 Hamachi 到 Astral：虚拟局域网工具这十五年的进化逻辑">
+<meta property="og:description" content="从 Hamachi 的笨重时代到 Astral 的轻量跨平台，虚拟局域网联机工具的迭代节奏里藏着一条清晰的主线——让联机这件事越来越像&#34;本来就该这么简单&#34;。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/astral-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/astral-zh-docs/home-connected.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/astral-zh-docs/home-connected.png">
+
+<meta name="twitter:title" content="从 Hamachi 到 Astral：虚拟局域网工具这十五年的进化逻辑">
+<meta name="twitter:description" content="从 Hamachi 的笨重时代到 Astral 的轻量跨平台，虚拟局域网联机工具的迭代节奏里藏着一条清晰的主线——让联机这件事越来越像&#34;本来就该这么简单&#34;。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece Hamachi \u7684\u7b28\u91cd\u65f6\u4ee3\u5230 Astral \u7684\u8f7b\u91cf\u8de8\u5e73\u53f0\uff0c\u865a\u62df\u5c40\u57df\u7f51\u8054\u673a\u5de5\u5177\u7684\u8fed\u4ee3\u8282\u594f\u91cc\u85cf\u7740\u4e00\u6761\u6e05\u6670\u7684\u4e3b\u7ebf\u2014\u2014\u8ba9\u8054\u673a\u8fd9\u4ef6\u4e8b\u8d8a\u6765\u8d8a\u50cf\"\u672c\u6765\u5c31\u8be5\u8fd9\u4e48\u7b80\u5355\"\u3002", "headline": "\u4ece Hamachi \u5230 Astral\uff1a\u865a\u62df\u5c40\u57df\u7f51\u5de5\u5177\u8fd9\u5341\u4e94\u5e74\u7684\u8fdb\u5316\u903b\u8f91", "image": ["https://alipymanbu.github.io/images/astral-zh-docs/home-connected.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/astral-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/astral-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece Hamachi \u5230 Astral\uff1a\u865a\u62df\u5c40\u57df\u7f51\u5de5\u5177\u8fd9\u5341\u4e94\u5e74\u7684\u8fdb\u5316\u903b\u8f91", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">从 Hamachi 到 Astral：虚拟局域网工具这十五年的进化逻辑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从 Hamachi 到 Astral：虚拟局域网工具这十五年的进化逻辑</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 Hamachi 的笨重时代到 Astral 的轻量跨平台，虚拟局域网联机工具的迭代节奏里藏着一条清晰的主线——让联机这件事越来越像&#34;本来就该这么简单&#34;。</p>
+  </header>
+  <div class="prose">
+<h2>现状：现在这版 Astral 长什么样</h2>
+<p>我第一次打开 Astral 的时候愣了几秒——不是因为它有什么惊艳的新功能，而是因为它<strong>什么都没有</strong>。没有广告横幅，没有强制登录弹窗，没有一堆让人填的配置项。底部三栏：服务器、房间、我的。点进服务器页，公共列表一拉就是十几台，勾上 TCP 和 UDP，启用，等三秒，状态变绿。就完了。</p>
+<p><img src="../images/astral-zh-docs/home-connected.png" alt="Astral 主页连接成功状态" loading="lazy"></p>
+<p>这就是 2020 年代的虚拟局域网工具该有的样子：你连想都不用想，它就帮你把虚拟网卡建好、把服务器挑好、把路由配好。连接成功之后，游戏里刷一下局域网列表，朋友就在那儿。没有中间步骤，没有"请先阅读以下免责声明"。</p>
+<p>但这个"什么都没有"的体验，其实是 Astral 团队用了好几个版本才挤出来的。早期的 Astral 不是这样的。</p>
+<h2>来路：它从哪起步</h2>
+<p>虚拟局域网这个赛道不是 Astral 发明的。2009 年 Hamachi 就已经在做同样的事——通过中心化服务器帮两端打洞，把各自的局域网拼成一个。那个时代 Hamachi 是王者，也是笑话：免费版限制节点数、不支持跨平台、连接动不动就断一次，排障要翻三个论坛帖子。之后 ZeroTier、Tailscale 接力上来，把打洞这件事做得更稳、更快。</p>
+<p>Astral 是这个赛道里比较晚的入场者，去<a href="https://astral.gkhf.beer" target="_blank" rel="noopener">astral官网</a>看一眼功能列表就能确认这个判断。样本文档里没有提它的早期版本，我翻了一圈也没找到 changelog 归档，但从它现在的界面和功能组合来推，它起步的时候应该已经踩过了前辈们踩过的坑——或者说，它根本没打算从头造轮子。</p>
+<p>它选了一条和 Tailscale、ZeroTier 不太一样的路线：<strong>不做通用组网，只做游戏联机</strong>。这个定位决定了它后面所有版本的取舍——把那些工程师觉得"酷"但玩家用不上的功能全砍了，只留联机链路最核心的三件事：服务器连接、房间管理、虚拟网卡。</p>
+<p>这个决策看起来简单，但执行起来磨了好几个版本。我记得早期 Astral 连"一键启用公共服务器"这个按钮都没有，用户得自己填服务器地址、自己勾协议、自己试 TCP 还是 UDP。后来某个版本才把"公共列表+一键启用"做了出来，一下就把新用户的上手时间从五分钟砍到了三十秒。</p>
+<p>房间管理这条线也值得说道。Astral 的房间是它区别于前辈的另一个关键设计——Hamachi 和 ZeroTier 里是没有"房间"这个概念的，你要么在同一个网络里，要么不在。Astral 把"临时联机局"这件事产品化了：创建房间、设密码、加保护（分享码才进得去），然后把房间号甩给朋友就行。保护房这个功能我印象特别深，早期版本里它只是个开关，后来才演化出"房间号不可见"这一层，等于是给小圈子联机加了一道真正的门。</p>
+<p><img src="../images/astral-zh-docs/protected-room.png" alt="保护房：只有分享码才能加入" loading="lazy"></p>
+<p>跨平台是 Astral 迭代的另一个主轴。样本文档里我能看到 Windows 版的完整指南——<a href="https://astral.gkhf.beer/download.html" target="_blank" rel="noopener">下载</a>页上 exe 安装包和 zip 便携版两种形态都有，防火墙放行规则、虚拟网卡排查也写得很细——这些内容说明 Windows 端是 Astral 最早也最成熟的平台。而它的分类是"安卓版"，移动端显然是后来才补上的。跨平台这件事在虚拟局域网工具里并不容易，因为每个平台的网络栈权限模型完全不同：Windows 需要管理员权限来创建 TAP 虚拟网卡，Android 需要 VPN Service 权限，iOS 的限制又更多。Astral 能把这些端统一到同一套交互逻辑里，背后应该花了不少版本在调试各平台的底层适配。</p>
+<h2>规律：从迭代节奏看团队的优先级</h2>
+<p>把这些碎片拼起来，Astral 的迭代规律就很清晰了——<strong>他们一直在死磕新用户的上手体验，对老用户的高级需求始终不感冒</strong>。</p>
+<p>证据一：公共服务器列表。这是 Astral 最核心的功能之一，也是它和前辈最大的分水岭。Hamachi 里用户得自己找朋友开的服务器、自己填地址；ZeroTier 和 Tailscale 更极端，你得自己建一个网络、把每个人的设备 ID 加进去。Astral 直接给了一个公共列表，一选就用。这个功能看起来"理所当然"，但它背后的运营成本并不低——服务器要持续维护、列表要定期清理、坏节点要及时换掉。Astral 团队愿意在这件事上投入资源，说明他们的优先级不是"做一个纯技术工具"，而是"让普通人第一次打开就能用"。</p>
+<p>证据二：防火墙排障指南。Windows 版的文档里专门有一大节讲防火墙怎么拦 Astral、怎么临时关掉测试、怎么加放行规则。能把这些写这么细，说明团队反复收到过"我连不上"的反馈，而且这些反馈里很大一部分是新用户——老用户早就知道该关防火墙或者加规则了。他们没把这些排障信息藏在 FAQ 里，而是直接放在了主文档的显眼位置，这是另一种优先级信号。</p>
+<p>那什么是"一直不管"的？自定义服务器节点。Astral 允许用户添加自己的服务器，但入口藏得很深，文档里也只是提了一句"可以添加私有服务器"，没有展开怎么配、怎么维护、怎么选节点。对一个做虚拟局域网的工具来说，这其实是个挺核心的能力——想自己掌控链路的高级用户肯定会问"我能不能用自己的服务器"。但 Astral 团队显然觉得这件事不在当前阶段的优先级里，或者说他们有意把 Astral 定位成"用就完了，别管底层"的产品。</p>
+<p>另一个"一直不管"的：多房间并行。我翻了<a href="https://astral-zh-docs.pages.dev/" target="_blank" rel="noopener">中文文档</a>确认，文档里明确说"一次只需要启用一台服务器""不需要同时开多台"，换服务器会断开原来的连接。这在一些场景下会不方便——比如你同时在 MC 和泰拉瑞亚里都有朋友在等——但 Astral 就是不做。为什么？因为做了之后交互复杂度会翻倍，而大部分用户根本不需要。</p>
+<p>这些取舍加起来，Astral 的产品画像就出来了：<strong>一个不取悦任何人、只服务"第一次打开就能联机"这个核心场景的工具</strong>。</p>
+<h2>预判：照这个路线，下一步大概率的走向</h2>
+<p>说预判前先声明：这是从迭代规律推的，不是官方路线图。</p>
+<p>第一个大概率的方向：移动端的完善。Astral 有安卓版但我没在样本文档里看到移动端的详细使用指南，说明移动端可能还在快速迭代阶段。跨平台体验统一是他们一直在做的事，Windows 端已经很成熟了，下一个重心大概率是把安卓端的体验拉齐——虚拟网卡的创建权限、房间创建和加入的流程、和桌面端的互通，这些都还有打磨空间。</p>
+<p>第二个方向：公共服务器的分层。现在的公共列表是扁平的，十几台服务器一拉到底。如果用户量起来了，这个列表一定会膨胀，到时候需要按区域、按延迟、按游戏类型做筛选。但 Astral 团队对"把底层隐藏起来"这件事有执念，所以我猜他们不会做复杂的筛选器，而是会让服务器列表自动排序——延迟最低的排最上面、负载最轻的标个小绿点，用户还是"选第一个就行"。</p>
+<p>第三个方向：游戏特定优化的试探。样本文档里列了一堆"支持局域网的游戏"，但 Astral 本身并没有对任何一款游戏做专门适配。不过如果团队收到了足够多的某款游戏的反馈——比如 MC 玩家特别多、Stardew Valley 的联机特别受欢迎——会不会加一个"进入房间后自动检测到游戏并推荐设置"的小功能？这个方向和他们"让联机更简单"的核心主线是吻合的，但具体做不做要看数据说话。</p>
+<p>有一件事我觉得他们大概率不会做：商业化。Hamachi 免费版限制节点数、ZeroTier 免费版限制设备数、Tailscale 做团队版收费。Astral 到现在为止没有收费端口，也没有内购入口。这可能是因为它的目标用户量还没到需要考虑变现的时候，也可能是团队的定位里根本就没打算靠这个赚钱。如果未来 Astral 出现了 Pro 版、出现了高级功能墙、出现了广告——那一定是团队优先级发生了质变，不是简单的版本迭代。</p>
+<p>回头看这十五年，虚拟局域网工具的进化线其实很简单：<strong>从"工程师给工程师做的工具"，到"产品经理给玩家做的服务"</strong>。Hamachi 属于前者，你得懂点网络知识才能用好它；Astral 属于后者，你连虚拟网卡这个概念都不需要知道。这条线还在往下走，Astral 能走到多远，取决于他们能不能在"简单"这条路上一直克制。如果想自己翻 Astral 的完整资料，三个仓库里都有现成的——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/astral" target="_blank" rel="noopener">GitHub</a> 上的版本最全，<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/astral" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/astral" target="_blank" rel="noopener">GitCode</a> 适合国内网络更稳的时候查。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/assetstudio.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">AssetStudio 用了两年：从&#34;提个 BGM 当铃声&#34;到每天都开的工具</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/astrobox-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用 iPhone 连 REDMI Watch 装快应用？我差点把手表退了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Kotatsu 停服之后，一个开源漫画阅读器的七年迭代在想什么 · 老杨技术栈</title>
+  
+<meta name="description" content="2025 年 10 月官方突然宣布停服，但已发布的 APK 还能正常跑、漫画源解析由社区接手。回头看它这些年的版本进化，能摸到一支小团队在&#34;多源并行&#34;这条线上死磕的完整脉络。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/kotatsu-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotatsu 停服之后，一个开源漫画阅读器的七年迭代在想什么">
+<meta property="og:description" content="2025 年 10 月官方突然宣布停服，但已发布的 APK 还能正常跑、漫画源解析由社区接手。回头看它这些年的版本进化，能摸到一支小团队在&#34;多源并行&#34;这条线上死磕的完整脉络。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/kotatsu-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/kotatsu-docs/mobile-1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/kotatsu-docs/mobile-1.png">
+
+<meta name="twitter:title" content="Kotatsu 停服之后，一个开源漫画阅读器的七年迭代在想什么">
+<meta name="twitter:description" content="2025 年 10 月官方突然宣布停服，但已发布的 APK 还能正常跑、漫画源解析由社区接手。回头看它这些年的版本进化，能摸到一支小团队在&#34;多源并行&#34;这条线上死磕的完整脉络。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "2025 \u5e74 10 \u6708\u5b98\u65b9\u7a81\u7136\u5ba3\u5e03\u505c\u670d\uff0c\u4f46\u5df2\u53d1\u5e03\u7684 APK \u8fd8\u80fd\u6b63\u5e38\u8dd1\u3001\u6f2b\u753b\u6e90\u89e3\u6790\u7531\u793e\u533a\u63a5\u624b\u3002\u56de\u5934\u770b\u5b83\u8fd9\u4e9b\u5e74\u7684\u7248\u672c\u8fdb\u5316\uff0c\u80fd\u6478\u5230\u4e00\u652f\u5c0f\u56e2\u961f\u5728\"\u591a\u6e90\u5e76\u884c\"\u8fd9\u6761\u7ebf\u4e0a\u6b7b\u78d5\u7684\u5b8c\u6574\u8109\u7edc\u3002", "headline": "Kotatsu \u505c\u670d\u4e4b\u540e\uff0c\u4e00\u4e2a\u5f00\u6e90\u6f2b\u753b\u9605\u8bfb\u5668\u7684\u4e03\u5e74\u8fed\u4ee3\u5728\u60f3\u4ec0\u4e48", "image": ["https://alipymanbu.github.io/images/kotatsu-docs/mobile-1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/kotatsu-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/kotatsu-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "Kotatsu \u505c\u670d\u4e4b\u540e\uff0c\u4e00\u4e2a\u5f00\u6e90\u6f2b\u753b\u9605\u8bfb\u5668\u7684\u4e03\u5e74\u8fed\u4ee3\u5728\u60f3\u4ec0\u4e48", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">Kotatsu 停服之后，一个开源漫画阅读器的七年迭代在想什么</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Kotatsu 停服之后，一个开源漫画阅读器的七年迭代在想什么</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">2025 年 10 月官方突然宣布停服，但已发布的 APK 还能正常跑、漫画源解析由社区接手。回头看它这些年的版本进化，能摸到一支小团队在&#34;多源并行&#34;这条线上死磕的完整脉络。</p>
+  </header>
+  <div class="prose">
+<p>我看到 Kotatsu 停服公告的那天，正在地铁上翻它追了半截的一部漫画。弹窗跳出来的时候我以为是解析器挂了，退出重进才发现是官方仓库的声明——2025 年 10 月，Kakao Entertainment 的法律纠纷加上 Google 即将收紧的侧载政策，让这个开源漫画阅读器的主应用开发正式画上句号。</p>
+<p>但有意思的是，我的应用本身没出任何问题。漫画照更、章节照下、连追踪服务的同步都还在走。这不是那种一停服就整个死掉的 SaaS——<a href="https://kotatsu.hfdk.space/download.html" target="_blank" rel="noopener">Kotatsu下载</a>页面上的 APK 是完整离线的，漫画源解析走的是独立维护的库，追踪同步靠各家平台的公开 OAuth。官方停的是更新，不是已经跑在我手机里的那个东西。</p>
+<p><img src="../images/kotatsu-docs/mobile-1.png" alt="Kotatsu 阅读器主界面" loading="lazy"></p>
+<p>这个"停服但没死"的状态，其实就是 Kotatsu 这些年迭代逻辑的缩影——去<a href="https://kotatsu.hfdk.space" target="_blank" rel="noopener">Kotatsu官网</a>翻了一圈才确认，它从一开始就没把自己绑在单一服务上。</p>
+<h2>来路：从单源工具到多源并行框架</h2>
+<p>样本里没有给早期版本号，但从现有的功能倒推，能拼出它一路走过来的轮廓。</p>
+<p>最早那批开源漫画阅读器解决的问题很朴素：给 Android 上一个能本地看漫画的壳子。但漫画这个品类的特殊性在于——没有哪一个源站能覆盖所有人。有人追日漫、有人看国漫、有人只扫英化组，单源意味着大量空白。Kotatsu 第一个明确的转折点，应该就是把"多漫画源并行"当成了核心架构而不是附加功能。</p>
+<p>这个决定在后来的版本里不断被强化。去<a href="https://kotatsu-docs.pages.dev/" target="_blank" rel="noopener">Kotatsu文档</a>翻了一下，漫画源管理页支持拖拽排序，排在前面的源会被优先搜索——细节到这种程度，说明团队真的在追用户每天实际打开它的场景：有人只追三个更新频率稳定的源，排序置顶之后搜索结果直接就是想看的；有人装了十几个源但大部分不稳定，把靠谱的排前面就能减少翻页和等待。这种功能不痛不痒，但一个漫画阅读器能活到七年，拼的就是这些"用户愿意留下"的小地方。</p>
+<p>追踪服务的集成也是同样的路数。早期的漫画阅读器要么不带追踪，要么只绑一个主流平台。Kotatsu 走的是全接入路线——AniList、MyAnimeList、Kitsu 都支持，而且可以同时连。一部漫画的阅读进度会同步到所有连接的服务上。Kitsu 作为走开源路线的平台被专门适配，API 友好、社区硬核，但选择它本身也说明 Kotatsu 的用户画像——这批人不在乎主流平台的社交功能，更在意数据能不能自己控制。</p>
+<p>隐私功能藏在迭代的深处。清除阅读历史这个功能做得很细：可以一键清空，也可以选择性删除，而且明确告诉你哪些东西不受影响——收藏、下载、书签、追踪服务上的记录各自独立。隐身模式下阅读的内容本来就不会进历史。这些功能不是什么大版本的核心特性，但团队把它做全了，说明他们一直在想一个问题：用这个应用读漫画的人，会不会有"我不想留下痕迹"的需求？</p>
+<h2>规律：一支小团队一直在死磕什么</h2>
+<p>从这些功能的分布能看出节奏——Kotatsu 的迭代重心始终围绕两个方向转：<strong>多源并行</strong>和<strong>用户控制权</strong>。</p>
+<p>漫画源可以自由排序、追踪可以全平台同时连、隐私可以精细清除、解析器独立于主应用存在——这一整套设计的底层逻辑是：不让用户被任何单一环节锁死。源站挂了？还有别的。追踪平台 API 变了？打个补丁就行。主应用停更了？解析器库社区接过去继续跑。这个架构选择在停服那天拿到了最好的检验。</p>
+<p>但一直没被好好照顾的部分也很明显。样本里提到，旧版 Android 设备上的兼容性问题可能不再被修复——其实这不只是停服后的问题，回看之前的版本节奏，Android 7.0 以下的适配就一直在延期。团队的人力很有限，能把多源并行这条线做扎实已经不容易，兼容性这种"覆盖长尾用户但不直接影响核心体验"的事情自然排在后面。</p>
+<p>追踪服务的 API 变更同样是这个逻辑。Kitsu 被专门适配是因为 API 开放、改起来方便；但如果某个追踪平台突然收紧 API，打补丁的优先级就取决于社区有没有人提需求、有没有人能帮忙写代码——小团队能做的有限。</p>
+<p>还有一些细节能看出迭代节奏的变化。最近几个版本的 changelog 里，新功能越来越少，修 bug 的比例越来越高。解析器库的提交频率倒是一直稳定——因为那部分交给了社区，主应用本身已经进入维护模式。停服不是突然发生的，它是一个慢慢减速的过程，只是法律纠纷给了一个明确的终点。</p>
+<p><img src="../images/kotatsu-docs/mobile-3.png" alt="漫画源管理与排序界面" loading="lazy"></p>
+<h2>预判：社区接手之后会怎么走</h2>
+<p>从 Kotatsu 官方宣布停服到现在快半年了，社区的反应基本印证了之前的推断——<strong>解析器库继续跑，主应用不再发版</strong>。</p>
+<p><code>kotatsu-parsers</code> 这个库独立于主应用维护，它的更新不需要主应用同步发版。新的漫画源来了，社区贡献者直接在这个库里提交解析代码，用户手动更新就能用。这个设计在架构上就把"源站适配"从主应用的发布节奏里解耦出来了——官方停服但解析不停，这不是巧合，是之前迭代时就埋下的伏笔。</p>
+<p>但主应用本身不会再往前走了。追踪服务的 OAuth 流程、界面的细微调整、Android 新系统的适配——这些需要主应用发版才能推进的事情，大概率会卡在一个稳定的状态。除非社区有人 fork 出来一个分支继续维护，但从目前的情况看，大多数用户只是继续用已有的 APK，没有人真的牵头做这件事。</p>
+<p>我自己的用法是：继续每天打开它追那部连载中的漫画，遇到新漫画源就等社区适配，每隔一段时间核对一下证书指纹确保 APK 没被动过。它现在的状态就像一台保养得当的老车——厂家不生产了，但零件还能买到，日常开着完全没问题。</p>
+<p>从版本进化的角度回头看，Kotatsu 这支小团队做对了一件事：<strong>从架构上把自己和外部依赖解耦</strong>。这让它在停服那一刻没有灰飞烟灭，而是变成了一个还能跑的东西留在用户手里。七年的迭代，核心逻辑从来没变过——多源并行、用户控制、不把自己绑死。剩下的，交给社区和时间。好消息是社区没有散，<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Kotatsu" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Kotatsu" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Kotatsu" target="_blank" rel="noopener">GitCode</a>上都有维护中的镜像和解析器库，不用担心哪天彻底找不到。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yeelight.html">用了三年 Yeelight 才发现：这五个隐藏玩法官方根本没宣传</a></h2>
+  <p class="card-desc">你以为 Yeelight 只是个能调色的 Wi-Fi 灯泡？IFTTT 条件触发、局域网控制、预设模式二次加工……这些藏在菜单深处的功能，把智能灯的天花板往上抬了一大截。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wenet-docs.html">WeNet 这一路：从宿舍网口到全平台认证，它是怎么把校园网变简单的</a></h2>
+  <p class="card-desc">一个校园网客户端的迭代逻辑——从最早可能只是一个拨号器，到现在覆盖手机、电脑、有线无线，甚至教你怎么找开通的网口。我们拆开看看它这几年在死磕什么。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webcat-docs.html">WebCat 离线开发的底层设计：为什么它能在地铁里把代码写完</a></h2>
+  <p class="card-desc">一个手机上的开发工具凭什么敢主打&#34;完全离线&#34;？本文拆解 WebCat 的本地化架构选择，理解它把编辑器、运行时、打包器全部塞进 APK 的技术取舍与代价边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/komoot-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">komoot 路线引擎拆解：为什么一个户外导航能把&#34;没路&#34;的地方也规划成路线</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ksuwebui.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">KsuWebUI 从零上手：一次搞定 root 模块管理</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

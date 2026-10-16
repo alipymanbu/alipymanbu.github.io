@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零上手 AiLink：体脂秤到家人健康档案的完整实战 · 老杨技术栈</title>
+  
+<meta name="description" content="AiLink 能把体脂秤、血压计等设备的数据全部收进一个 App，还能给家人建档案、跟好友共享部分数据。这篇教程带你从装 App、绑设备到配隐私，一次走通。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/ailink-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零上手 AiLink：体脂秤到家人健康档案的完整实战">
+<meta property="og:description" content="AiLink 能把体脂秤、血压计等设备的数据全部收进一个 App，还能给家人建档案、跟好友共享部分数据。这篇教程带你从装 App、绑设备到配隐私，一次走通。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/ailink-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/ailink-docs/app-home.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/ailink-docs/app-home.png">
+
+<meta name="twitter:title" content="从零上手 AiLink：体脂秤到家人健康档案的完整实战">
+<meta name="twitter:description" content="AiLink 能把体脂秤、血压计等设备的数据全部收进一个 App，还能给家人建档案、跟好友共享部分数据。这篇教程带你从装 App、绑设备到配隐私，一次走通。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "AiLink \u80fd\u628a\u4f53\u8102\u79e4\u3001\u8840\u538b\u8ba1\u7b49\u8bbe\u5907\u7684\u6570\u636e\u5168\u90e8\u6536\u8fdb\u4e00\u4e2a App\uff0c\u8fd8\u80fd\u7ed9\u5bb6\u4eba\u5efa\u6863\u6848\u3001\u8ddf\u597d\u53cb\u5171\u4eab\u90e8\u5206\u6570\u636e\u3002\u8fd9\u7bc7\u6559\u7a0b\u5e26\u4f60\u4ece\u88c5 App\u3001\u7ed1\u8bbe\u5907\u5230\u914d\u9690\u79c1\uff0c\u4e00\u6b21\u8d70\u901a\u3002", "headline": "\u4ece\u96f6\u4e0a\u624b AiLink\uff1a\u4f53\u8102\u79e4\u5230\u5bb6\u4eba\u5065\u5eb7\u6863\u6848\u7684\u5b8c\u6574\u5b9e\u6218", "image": ["https://alipymanbu.github.io/images/ailink-docs/app-home.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/ailink-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/ailink-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u4e0a\u624b AiLink\uff1a\u4f53\u8102\u79e4\u5230\u5bb6\u4eba\u5065\u5eb7\u6863\u6848\u7684\u5b8c\u6574\u5b9e\u6218", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">从零上手 AiLink：体脂秤到家人健康档案的完整实战</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零上手 AiLink：体脂秤到家人健康档案的完整实战</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">AiLink 能把体脂秤、血压计等设备的数据全部收进一个 App，还能给家人建档案、跟好友共享部分数据。这篇教程带你从装 App、绑设备到配隐私，一次走通。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇教程，你应该能做到：在手机上装好 AiLink、把家里的体脂秤或血压计连上、给自己和家人建好档案、让数据自动同步，并且把想看的指标开放给关心的人。整个过程不需要折腾 WiFi 配置，界面上也藏着几个容易踩的小坑，我在后面专门说了。</p>
+<p><img src="../images/ailink-docs/app-home.png" alt="AiLink 首页与健康数据概览" loading="lazy"></p>
+<h2>准备工作：你需要什么</h2>
+<p>三个条件，缺一个都走不通：</p>
+<ul><li>一台 Android 或 iOS 手机，蓝牙功能正常</li><li>至少一台 AiLink 支持的设备（体脂秤、血压计、血氧仪、心率带都行）</li><li>设备有电、并且还没被别的手机绑定过——如果是二手的，先在原持有人那边解绑</li></ul>
+<p>这里注意：AiLink 打开时默认跟随手机系统的语言设置，简中、繁中、英、日、韩、法、德、西、葡、意、俄等 20 种语言全覆盖。想手动固定一种语言（比如系统是中文但想把 AiLink 固定成英文），进「设置」页面找「语言」选项手动切就行，手动选了之后就不再跟随系统变化。切语言只改界面显示，不影响任何测量数据或家人档案。</p>
+<h2>第一步：安装并登录</h2>
+<p>应用市场搜「AiLink」<a href="https://ailink.qhah.skin/download.html" target="_blank" rel="noopener">下载</a>安装包，或者直接从<a href="https://ailink.qhah.skin" target="_blank" rel="noopener">官网</a>拿。装好之后打开，跟着引导走完注册登录。主账户就是你自己，这个账户的档案会作为默认数据入口。</p>
+<h2>第二步：绑定第一台设备</h2>
+<p>点底部的「设备」标签，右上角有个「+」按钮，扫描附近的蓝牙设备。</p>
+<ol><li>把体脂秤放在平整硬地面上，踩一下唤醒它——秤会发出"嘟"的一声，表示进入配对模式</li><li>回到手机 App，扫到体脂秤型号后点一下选中，等待 5~10 秒完成配对</li><li>绑完之后在设备详情页确认一下设备名，可以改成自己认得出来的，比如"家用体脂秤"</li></ol>
+<p>别急着点下一步，这里有个新手常踩的坑：<strong>如果 App 一直扫不到设备</strong>，先确认蓝牙没被系统省电策略杀掉，然后走出房间到秤旁边试一次。某些旧款手机的蓝牙 5.0 和秤的蓝牙 4.2 之间有兼容性问题，多试两三次通常能连上。</p>
+<h2>第三步：给自己和家人建档案</h2>
+<p>设备绑定完不会自动测——你需要人站上去它才开始。但在测之前，先把档案填完整。</p>
+<p>体脂秤的换算依赖性别、生日（年龄）、身高这三项参数。主账户和每个家人的档案都要确保这几项填对——少一个或填错，读数就只有参考意义。</p>
+<p>点底部「我的」，进「家人档案」，你会看到主账户已经在列表里了，后面还能继续加。每新建一个家人，都要填性别、生日、身高、体重这些基础信息。以后所有测量数据都会自动归到对应的家人档案下。</p>
+<h2>第四步：测一次，看数据怎么流</h2>
+<p>站上去，脚沾湿一点（皮肤干燥会影响电极信号），等秤发出"嘟"的一声就下来。</p>
+<p>回 App 的「数据」页面，你应该能看到刚刚那次测量已经进去了。体脂秤单次测量通常包含：体重、BMI、体脂率、肌肉率、水分率、内脏脂肪指数、基础代谢率、身体年龄、标准体重和肥胖等级。血压计单次测量显示收缩压、舒张压、心率。血氧仪显示血氧饱和度和心率。</p>
+<p>数据页面按时间轴排列，可以拖动起止点选时间段——只看最近一个月、或上半年都行。点时间轴上的某个测量点，直接跳转到那次的详情页。各种指标的详细含义可以翻一下<a href="https://ailink-docs.pages.dev/" target="_blank" rel="noopener">ailink文档</a>，那里比 App 里说的清楚。</p>
+<p><img src="../images/ailink-docs/body-stats.png" alt="体脂秤测量数据详情页" loading="lazy"></p>
+<h2>第五步：跟好友共享数据（可选）</h2>
+<p>这一步不少人会配错——我第一次用的时候也踩了。</p>
+<p>进「我的 → 隐私保护」，你会看到一个家人档案列表（左边列出所有家人档案，右边列出你添加的所有好友）。<strong>主账户默认对外是开放的，但这不等于好友能看到所有家人的数据</strong>。实际生效需要你手动勾选：点"开放"或"不开放"按钮，把某个人开放给某个好友。灵活一点：让好友 A 看你自己的数据，但不让他看孩子的；让好友 B 只看父母的数据，不看自己的。一个都不勾的话，对方什么都看不到。</p>
+<p>关闭某个家人对某个好友的开放后，对方那边这条数据立刻消失，这一点很贴心。好友看不到你的设备列表、设置、账户信息，只能看到你主动开放的家人数据。</p>
+<h2>常见卡点</h2>
+<h3>1. 出差忘带体脂秤，想补一条数据</h3>
+<p>某些设备类型支持手动录入。进对应设备的详情页（比如体脂秤的详情页），点右上角「…」更多按钮，找「手动录入」选项。体脂秤可以手动录入体重、体脂率、肌肉率等多项；血压计可以手动录入收缩压、舒张压、心率。手动录入的记录和设备自动测的记录在历史列表里混排显示，但在详情页会有一个"手动录入"的标记，方便区分哪些是自动测的、哪些是人工填的。手动录入的数据不会触发设备侧的任何动作，它只是往云端档案里加一条记录。</p>
+<h3>2. 秤上测完 App 里没数据</h3>
+<p>先等 10 秒——蓝牙同步有延迟。如果还没出来，走回设备详情页手动点一次同步按钮。再不行的话，检查一下手机系统是不是把 AiLink 的后台刷新关掉了。</p>
+<h3>3. 好友说看不到我开放的数据</h3>
+<p>大概率是你只勾了主账户，但没勾到具体的家人档案。回到隐私保护页面，确认一下每个家人档案右边的开关。</p>
+<h2>进阶：往下还能玩什么</h2>
+<p>AiLink 支持多台设备同时接入——体脂秤、血压计、血氧仪可以全部挂在同一个账户下。如果家里老人也在用，可以给他们建一个独立的家人档案，这样他们自己测的数据会自动归到他们那份档案里，方便你随时远程查看。</p>
+<p>想深入研究某个指标的长期趋势，数据页面的时间轴可以配合家人档案切换——比如想看看父亲最近三个月的血压变化，切到他的档案然后拖动时间轴就行。</p>
+<p>AiLink 的开源资料在 GitHub、Gitee、GitCode 三个平台都维护着同一份，想直接翻源码或提 issue 选你方便的那一个就行：<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/AiLink" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/AiLink" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/AiLink" target="_blank" rel="noopener">GitCode</a>。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zoomearth.html">ZoomEarth 零基础上手：四步学会用它看风、体感温度和野火</a></h2>
+  <p class="card-desc">从下载安装到叠加三层关键图层，跟着教程一步步搞定，出门前看一眼比查三个天气 App 还省心。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xrecorder.html">XRecorder：我每周移动端教程工作流里那块被严重低估的拼图</a></h2>
+  <p class="card-desc">从手机录屏到飞书交付的四步变两步——聊聊怎么把 XRecorder 的静音录制、通知栏截屏和内置合并嵌进一条不绕路的移动端内容生产链。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vocalremover-docs.html">VocalRemover 迭代观察：从一个去人声小工具到九件套音频工作室</a></h2>
+  <p class="card-desc">这款在线音频工具一路走来，从单纯的&#34;去人声&#34;扩展成涵盖分离、剪辑、变调、录音的完整工作流。我从样本文档里能摸到的迭代规律。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ai-max.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Ai Max 这一路：从工具箱到电商创作引擎的三年迭代</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/aimi-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Aimi 看着简单？这五个坑我踩过，你绕着走</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

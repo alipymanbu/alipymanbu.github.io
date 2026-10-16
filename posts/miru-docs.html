@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Miru 网页版完整上手教程——从打开页面到装好第一个扩展 · 老杨技术栈</title>
+  
+<meta name="description" content="这篇实操教程带你从零走完 Miru 网页版的完整流程：访问实例、启用官方仓库、安装扩展、搜索内容、追更检查，以及新手最容易踩的 CORS 坑和解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/miru-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Miru 网页版完整上手教程——从打开页面到装好第一个扩展">
+<meta property="og:description" content="这篇实操教程带你从零走完 Miru 网页版的完整流程：访问实例、启用官方仓库、安装扩展、搜索内容、追更检查，以及新手最容易踩的 CORS 坑和解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/miru-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/miru-docs/main-screenshot.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/miru-docs/main-screenshot.webp">
+
+<meta name="twitter:title" content="Miru 网页版完整上手教程——从打开页面到装好第一个扩展">
+<meta name="twitter:description" content="这篇实操教程带你从零走完 Miru 网页版的完整流程：访问实例、启用官方仓库、安装扩展、搜索内容、追更检查，以及新手最容易踩的 CORS 坑和解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd9\u7bc7\u5b9e\u64cd\u6559\u7a0b\u5e26\u4f60\u4ece\u96f6\u8d70\u5b8c Miru \u7f51\u9875\u7248\u7684\u5b8c\u6574\u6d41\u7a0b\uff1a\u8bbf\u95ee\u5b9e\u4f8b\u3001\u542f\u7528\u5b98\u65b9\u4ed3\u5e93\u3001\u5b89\u88c5\u6269\u5c55\u3001\u641c\u7d22\u5185\u5bb9\u3001\u8ffd\u66f4\u68c0\u67e5\uff0c\u4ee5\u53ca\u65b0\u624b\u6700\u5bb9\u6613\u8e29\u7684 CORS \u5751\u548c\u89e3\u6cd5\u3002", "headline": "Miru \u7f51\u9875\u7248\u5b8c\u6574\u4e0a\u624b\u6559\u7a0b\u2014\u2014\u4ece\u6253\u5f00\u9875\u9762\u5230\u88c5\u597d\u7b2c\u4e00\u4e2a\u6269\u5c55", "image": ["https://alipymanbu.github.io/images/miru-docs/main-screenshot.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/miru-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/miru-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "Miru \u7f51\u9875\u7248\u5b8c\u6574\u4e0a\u624b\u6559\u7a0b\u2014\u2014\u4ece\u6253\u5f00\u9875\u9762\u5230\u88c5\u597d\u7b2c\u4e00\u4e2a\u6269\u5c55", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">Miru 网页版完整上手教程——从打开页面到装好第一个扩展</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Miru 网页版完整上手教程——从打开页面到装好第一个扩展</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">这篇实操教程带你从零走完 Miru 网页版的完整流程：访问实例、启用官方仓库、安装扩展、搜索内容、追更检查，以及新手最容易踩的 CORS 坑和解法。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇教程，你就能在浏览器里用 Miru 网页版搜片子、看漫画、读小说了——不需要装任何客户端，也不用懂任何技术细节。我们一步一步来。</p>
+<h2>准备：你需要知道的几件事</h2>
+<p>先澄清几个容易搞混的点，免得你打开页面一脸懵。</p>
+<p>Miru 是一个聚合类阅读器/播放器——它的<a href="https://miru.fewf.click" target="_blank" rel="noopener">官网</a>上有更完整的功能概览，核心机制是"扩展"。官方仓库里的扩展负责把各个媒体源接进来——视频源、漫画源、小说源都由不同的扩展处理。网页版是 Miru 的浏览器形态，跟桌面客户端相比有功能缩水，但拿来快速体验、临时应急完全够用。</p>
+<p><strong>前置条件只有一个</strong>：能访问社区实例。目前社区维护的现成地址是 miru.0u0.ren，直接在浏览器里打开就行。官方自己的 Web 版还在重构，所以你现在看到的基本都是社区实例。</p>
+<p><img src="../images/miru-docs/main-screenshot.webp" alt="Miru 主界面一览" loading="lazy"></p>
+<p>至于浏览器选哪个，Chrome / Edge / Firefox 都行。但有一点要记牢——浏览器的同源策略就是后续所有功能限制的根因，翻到第三节的时候你就懂了。</p>
+<h2>第一步：打开页面、浏览默认内容</h2>
+<p>直接访问社区实例地址。加载完之后你看到的界面大概长这样：左侧是分类标签（视频 / 漫画 / 小说），中间是内容卡片流，右侧是仓库管理区。</p>
+<p>刚打开的时候，中间区域应该已经能看到一批内容了——这是官方仓库里已经装好的扩展返回的 <code>latest()</code> 结果。如果中间一片空白、只有卡片框在加载，那大概率是 CORS 被拦了，我们第三节再说。</p>
+<p>先随便点一张卡片进去，看看详情页长什么样。详情页会显示简介、封面和列表——视频扩展显示分集、漫画扩展显示章节、小说扩展显示长篇章节目录。页面能正常打开、内容能正常显示，说明你的浏览器和这台社区实例的通信是畅通的。</p>
+<h2>第二步：启用官方仓库、安装第一个扩展</h2>
+<p>能看默认内容只是起步。真正好玩在"自己装扩展"这一步。</p>
+<p>切换到右侧的<strong>仓库管理</strong>区域，你会看到官方仓库的条目。它应该是默认存在的（URL 内置在 Miru 里），如果没有就手动添加一下，仓库地址通常写在应用设置里。找到后，点一下它右侧的<strong>启用</strong>按钮。</p>
+<p><img src="../images/miru-docs/add-repo.jpg" alt="扩展仓库管理界面" loading="lazy"></p>
+<p>启用之后，官方仓库下面会展开一个列表，里面按 bangumi（视频）、manga（漫画）、fikushon（小说）分类展示它收录的所有扩展。扩展数量会随社区贡献变化，失效的会被移除、新写好的会加进来。</p>
+<p>挑一个你感兴趣的点一下<strong>安装</strong>——比如"某动漫站扩展"或"某小说站扩展"。等几秒钟，安装好的扩展会出现在"已安装扩展"列表里，状态变成绿色。</p>
+<p>装完之后回到中间区域，刷新一下（或者关掉标签页重进），你应该能看到新加的扩展也开始返回内容了。顶栏搜索框在视频标签下会并行调用所有 bangumi 扩展的搜索方法，所以装得越多、搜到想要内容的概率越大。</p>
+<h2>第三步：搜索、详情、播放/阅读</h2>
+<p>现在内容齐了，我们走一遍完整的消费链路——至于扩展背后是怎么被 Mirv 调起的，比如 <code>latest</code> / <code>search</code> / <code>detail</code> 这些生命周期方法，具体在<a href="https://miru-docs.pages.dev/" target="_blank" rel="noopener">Miru文档</a>里有更细的解释，先专注体验再说。</p>
+<p>顶部搜索框输入关键词，比如"进击的巨人"。所有已安装的同类型扩展会并发执行搜索，结果以卡片形式返回。点开一张卡片，进入详情页，浏览简介和列表，再点击具体那一集或那一章。</p>
+<ul><li>视频类：Mirv 会接管播放，支持 HLV / MP4 流。如果你的浏览器打不开视频，通常是目标站点没开 CORS；</li><li>漫画类：点击章节后会加载图片列表，受图片源 CORS 影响；</li><li>小说类：点击章节后 Mirv 小说阅读器接管，提供字号、行距、背景色等设置。</li></ul>
+<p>如果你只想快速扫一眼内容能不能搜到、能不能打开，到这一步其实就够了——网页版定位就是快速试玩通道，确认扩展正常之后，长期使用建议还是换桌面或 Android 客户端，可以直接从<a href="https://miru.fewf.click/download.html" target="_blank" rel="noopener">官方下载</a>获取安装包。</p>
+<h2>第四步：追更检查（可选但好用）</h2>
+<p>装好扩展、看过几集之后，有一个功能值得顺手试一下——追更。</p>
+<p>Mirv 的扩展可以实现 <code>checkUpdate()</code> 方法，用来主动检查某个条目有没有新集或新章节。你在详情页或消费页应该能看到类似"追更"的按钮，点一下、选中之后，Mirv 会定期比对上次记录的最新章节标识。如果返回值变了，就说明有更新。</p>
+<p>不是所有扩展都实现了这个方法。如果某个扩展装上后追更功能是灰的，说明扩展本身没写这部分逻辑，不是你的问题。</p>
+<h2>新手最容易翻车的三个卡点</h2>
+<p>到这里基本流程走完了，但有三个地方几乎是每个新手都会踩一遍的坑，提前说清楚省得你反复怀疑自己操作错了。</p>
+<h3>卡点一：打开页面中间一片空白</h3>
+<p><strong>症状</strong>：左侧标签能切，但中间区域只有骨架没有卡片。</p>
+<p><strong>原因</strong>：浏览器 CORS 拦了扩展发起的跨域请求。Mirv 的扩展通过 <code>this.request</code> 代理来绕过同源策略，但 Web 端这层代理本身也受浏览器约束——遇到严格的目标站点，代理也绕不过去。</p>
+<p><strong>解法</strong>：换个扩展试试，或者干脆别在网页版纠结，直接下客户端。社区实例 miru.0u0.ren 上跑不通的扩展，在桌面端大概率是正常的。</p>
+<h3>卡点二：视频源一直转圈、加载不出来</h3>
+<p><strong>症状</strong>：卡片能搜到、详情页能打开，但点进播放页就是一片黑或者无限 loading。</p>
+<p><strong>原因</strong>：视频流源的 CORS 配置问题。MP4 格式通常还好，HLV 流如果目标站点没开跨域就是没法在浏览器里播。</p>
+<p><strong>解法</strong>：还是那个结论——Web 版的视频播放能力就是受 CORS 限制的。能在 Web 端播说明运气好、源配置宽松；播不了是正常现象，换客户端就解决。</p>
+<h3>卡点三：装了漫画/小说扩展但搜不出内容</h3>
+<p><strong>症状</strong>：扩展状态显示绿色、安装成功，但切到漫画或小说标签后中间没有任何新内容。</p>
+<p><strong>原因</strong>： fikushon 和 manga 类型扩展比 bangumi 晚加入，官方仓库收录最少。很多漫画/小说站扩展来自第三方仓库或社区分享文件，这些扩展的 CORS 问题更普遍。</p>
+<p><strong>解法</strong>：手动添加一个社区分享的自定义仓库，或者直接导入单个扩展 JS 文件。如果还是不行，考虑自己写一个——fikushon 扩展只需要处理文本请求、不需要视频流也不需要图片防盗链，是三种扩展里最好写的。</p>
+<h2>进阶：什么时候该换客户端</h2>
+<p>讲完了 Web 版能做什么，也该说说什么时候 Web 版就不够用了。</p>
+<ul><li>想稳定长期使用：社区实例的稳定性和维护状况不是官方承诺的，哪天宕了没人担着；</li><li>想写或调试扩展：桌面客户端能直接看到扩展日志，Android 端也能用 adb 看，Web 端调试体验最差——扩展输出的错误日志在浏览器沙箱里你看不到；</li><li>Web 版搜索不出任何结果或视频源加载失败：大概率是 CORS 问题，直接换客户端能解决。</li></ul>
+<p>总结一下 Web 版的正确打开方式——把它当作快速试玩通道，先在浏览器里确认扩展能正常搜到内容，再装客户端做主力。这是最省心、也最符合 Mirv 设计初衷的使用流程。</p>
+<p>至于更深入的玩法——比如自己写一个 fikushon 扩展、用桌面端的代理设置让所有扩展都能跑、或者追踪扩展的生命周期方法——那些内容放在专门的开发向文章里说会更合适。作为终端用户，你现在已经能顺畅地用 Mirv 网页版搜到想看的视频、漫画和小说了。</p>
+<p>这套资料在三个仓库都能拿到，从文档维护角度保持多地备份也方便不同网络环境下的访问：<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Miru" target="_blank" rel="noopener">GitHub 主仓库</a>是最原始的来源，<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Miru" target="_blank" rel="noopener">Gitee</a>适合国内网络直接浏览，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Miru" target="_blank" rel="noopener">GitCode</a>作为额外备份确保任何单一平台的波动都不会影响你取到完整的文档和扩展文件。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yeelight.html">用了三年 Yeelight 才发现：这五个隐藏玩法官方根本没宣传</a></h2>
+  <p class="card-desc">你以为 Yeelight 只是个能调色的 Wi-Fi 灯泡？IFTTT 条件触发、局域网控制、预设模式二次加工……这些藏在菜单深处的功能，把智能灯的天花板往上抬了一大截。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wenet-docs.html">WeNet 这一路：从宿舍网口到全平台认证，它是怎么把校园网变简单的</a></h2>
+  <p class="card-desc">一个校园网客户端的迭代逻辑——从最早可能只是一个拨号器，到现在覆盖手机、电脑、有线无线，甚至教你怎么找开通的网口。我们拆开看看它这几年在死磕什么。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webcat-docs.html">WebCat 离线开发的底层设计：为什么它能在地铁里把代码写完</a></h2>
+  <p class="card-desc">一个手机上的开发工具凭什么敢主打&#34;完全离线&#34;？本文拆解 WebCat 的本地化架构选择，理解它把编辑器、运行时、打包器全部塞进 APK 的技术取舍与代价边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/miraimind-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">我把 MiraiMind 接进每周 AI 角色创作流程后，少了两次手动复制</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/mixplorer.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从零上手 MiXplorer：双面板、云存储、WebDAV 一路打通</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

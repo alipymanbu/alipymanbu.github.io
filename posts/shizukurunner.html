@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>ShizukuRunner 深度解析：一个无 root 应用如何拿到 shell 权限 · 老杨技术栈</title>
+  
+<meta name="description" content="ShizukuRunner 没有 root、没有 Magisk，却能以 shell 身份执行 pm、am 等系统命令。本文拆解它通过 Shizuku Binder 通道和 Android 无线调试信任链绕过沙箱隔离的完整技术路径，以及这套设计的安全代价。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/shizukurunner.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ShizukuRunner 深度解析：一个无 root 应用如何拿到 shell 权限">
+<meta property="og:description" content="ShizukuRunner 没有 root、没有 Magisk，却能以 shell 身份执行 pm、am 等系统命令。本文拆解它通过 Shizuku Binder 通道和 Android 无线调试信任链绕过沙箱隔离的完整技术路径，以及这套设计的安全代价。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/shizukurunner.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/shizukurunner/wireless-debug.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/shizukurunner/wireless-debug.png">
+
+<meta name="twitter:title" content="ShizukuRunner 深度解析：一个无 root 应用如何拿到 shell 权限">
+<meta name="twitter:description" content="ShizukuRunner 没有 root、没有 Magisk，却能以 shell 身份执行 pm、am 等系统命令。本文拆解它通过 Shizuku Binder 通道和 Android 无线调试信任链绕过沙箱隔离的完整技术路径，以及这套设计的安全代价。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "ShizukuRunner \u6ca1\u6709 root\u3001\u6ca1\u6709 Magisk\uff0c\u5374\u80fd\u4ee5 shell \u8eab\u4efd\u6267\u884c pm\u3001am \u7b49\u7cfb\u7edf\u547d\u4ee4\u3002\u672c\u6587\u62c6\u89e3\u5b83\u901a\u8fc7 Shizuku Binder \u901a\u9053\u548c Android \u65e0\u7ebf\u8c03\u8bd5\u4fe1\u4efb\u94fe\u7ed5\u8fc7\u6c99\u7bb1\u9694\u79bb\u7684\u5b8c\u6574\u6280\u672f\u8def\u5f84\uff0c\u4ee5\u53ca\u8fd9\u5957\u8bbe\u8ba1\u7684\u5b89\u5168\u4ee3\u4ef7\u3002", "headline": "ShizukuRunner \u6df1\u5ea6\u89e3\u6790\uff1a\u4e00\u4e2a\u65e0 root \u5e94\u7528\u5982\u4f55\u62ff\u5230 shell \u6743\u9650", "image": ["https://alipymanbu.github.io/images/shizukurunner/wireless-debug.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/shizukurunner.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/shizukurunner.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "ShizukuRunner \u6df1\u5ea6\u89e3\u6790\uff1a\u4e00\u4e2a\u65e0 root \u5e94\u7528\u5982\u4f55\u62ff\u5230 shell \u6743\u9650", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">ShizukuRunner 深度解析：一个无 root 应用如何拿到 shell 权限</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">ShizukuRunner 深度解析：一个无 root 应用如何拿到 shell 权限</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">ShizukuRunner 没有 root、没有 Magisk，却能以 shell 身份执行 pm、am 等系统命令。本文拆解它通过 Shizuku Binder 通道和 Android 无线调试信任链绕过沙箱隔离的完整技术路径，以及这套设计的安全代价。</p>
+  </header>
+  <div class="prose">
+<p>一个没有 root 的普通 Android 应用，凭什么能执行 <code>pm disable-user</code>、<code>am force-stop</code> 这些只有系统 shell 身份才能跑的命令？ShizukuRunner 给了一个干净得让人意外的答案，它的<a href="https://shizukurunner.qjxz.skin" target="_blank" rel="noopener">官网</a>上对此有完整说明：它根本不绕过沙箱，而是<strong>从系统本身的信任机制里借了一条路</strong>。这条路就是 Android 的无线调试。</p>
+<h2>问题：Runner 的 shell 权限到底从哪来</h2>
+<p>Android 的权限模型设计里，普通 App 的 UID 是应用专属的 10000 段，shell UID 是 2000，root 是 0——三道墙把进程隔离得死死的。Runner 既不申请 root，也不注入 Magisk 模块，但它每次执行命令时，Shizuku 主应用顶部都会显示「SHIZUKU 已运行 已授权」，命令的退出码和输出也是标准 shell 权限下的结果。</p>
+<p>这个权限不是 Runner 自己拿到的，是 <strong>Shizuku 主应用通过 Android 无线调试机制向系统「借」来的</strong>，然后通过 Binder 通道转发给 Runner。</p>
+<h2>拆解：从无线调试到命令执行的完整链路</h2>
+<p>整条权限传递链可以拆成四个环节，每个环节都是刻意设计的：</p>
+<p><strong>环节一：配对——让系统信任 Shizuku 服务进程</strong></p>
+<p>Android 11 引入了无线调试的配对码机制。当你在开发者选项里打开无线调试、用配对码在 Shizuku 主应用里完成配对后，系统内部实际上做了一件事：<strong>把 Shizuku 的服务进程加入了 shell 权限组</strong>。这不是 root，只是让它能以 shell UID 执行命令——但对大部分自动化场景来说已经够用了。</p>
+<p>配对码本身是 IP:Port 绑定、约 60 秒过期的，这意味着系统不会随便让任何进程拿到 shell 权限，必须经过一次明确的、用户手动参与的配对流程。Runner 的设计选择了<strong>不在这一步做额外加固</strong>——它信任 Shizuku 已经帮它把好了权限入口。</p>
+<p><img src="../images/shizukurunner/wireless-debug.png" alt="无线调试配对页面显示配对码和地址" loading="lazy"></p>
+<p><strong>环节二：Binder 通道——Shizuku 到 Runner 的权限转发</strong></p>
+<p>配对成功后，Shizuku 主应用启动一个服务进程，这个进程持有 shell 权限。你从<a href="https://shizukurunner.qjxz.skin/download.html" target="_blank" rel="noopener">官方下载</a>安装的 Runner 作为客户端，通过 Android Binder IPC 连上 Shizuku 服务，把要执行的命令字符串传过去。Shizuku 服务以 shell 身份执行命令，把 stdout、退出码、执行权限信息打包回传给 Runner。</p>
+<p>这个设计的巧妙之处在于：<strong>Runner 本身永远不持有 shell 权限</strong>——它只是个命令分发器，真正干活的是 Shizuku 的服务进程。如果 Runner 被卸载、被冻结，shell 权限不会泄露，因为权限始终挂在 Shizuku 服务进程上。</p>
+<p><strong>环节三：Exec Activity——暴露给外部的远程调用接口</strong></p>
+<p>Runner 做了一个很多同类工具不做的决定：它暴露了一个名为 <code>Exec</code> 的 Activity，接受来自任何 App 的 Intent，从 Intent extra 里读出命令字符串就直接执行。包名是 <code>com.shizuku.uninstaller/.Exec</code>，调用方式是：</p>
+<pre><code>adb shell am start -n com.shizuku.uninstaller/.Exec --es content &quot;echo hello-runner&quot;</code></pre>
+<p>这个接口的设计意图很明确：让 Tasker、MacroDroid、甚至你自己写的小工具都能远程触发 Runner 执行命令，形成自动化生态。</p>
+<p><img src="../images/shizukurunner/main-ui.jpg" alt="Runner 主界面显示已授权状态" loading="lazy"></p>
+<p><strong>环节四：pm/am 命令——系统级操作的载体</strong></p>
+<p>Runner 不实现任何具体功能——它不做冻结、不做卸载、不做权限管理。它做的事只有一件：<strong>把你给的命令原样交给 shell 执行</strong>。冻结用的是 <code>pm disable-user --user 0</code>，解冻用 <code>pm enable</code>，强制停止用 <code>am force-stop</code>。这种「零功能、纯通道」的设计让 Runner 本身保持极简，任何系统支持的命令它都能跑，包括 <code>sh</code> 脚本。</p>
+<h2>取舍：这套设计的代价是什么</h2>
+<p>每条路都有代价，Runner 选择的这条路代价集中在两个维度：<strong>安全信任链的脆弱性</strong>和 <strong>Android 版本的硬限制</strong>。</p>
+<h3>安全：谁能发 Intent，谁就能执行</h3>
+<p>Runner 对 Exec Activity 不做任何权限检查。只要一个 App 能通过 <code>startActivity</code> 启动 <code>com.shizuku.uninstaller/.Exec</code>，它就能让 Runner 执行任意 shell 命令——效果等同于拿到 shell 权限。这意味着：</p>
+<ul><li>安全性完全取决于「你的手机上装了什么 App」。如果某个你不信任的 App 有能力启动 Exec Activity，Runner 的整条权限链就对它敞开了。</li><li>配对码的 60 秒有效期和手动输入是目前唯一的「硬门槛」，但一旦配对完成，后续的安全就交给了 Android 本身的 Intent 分发机制。</li><li><a href="https://shizukurunner.pages.dev/" target="_blank" rel="noopener">shizukurunner文档</a>里也明确写了「只在你信任的自动化场景里用」——这不是免责声明，而是这套架构的客观边界。</li></ul>
+<h3>兼容性：Android 11 是最低门槛</h3>
+<p>无线调试配对码模式是 Android 11（API 30）才引入的。Android 10 及以下的设备只能走 USB adb 方式，需要用电脑连一次来启动 Shizuku 服务。而部分定制系统（MIUI、ColorOS、鸿蒙）对无线调试做了额外的安全策略——有的自动关闭、有的拦截配对弹窗、有的需要在通知中心手动确认。Runner 本身绕过不了这些系统级限制，只能依赖用户正确配置系统设置。</p>
+<h3>执行边界：shell 不是 root</h3>
+<p>shell 权限能做的事很多——pm/am 命令、应用冻结/解冻、查询包列表、执行 sh 脚本——但它不能修改 system 分区，不能读写 <code>/data/misc</code>，不能执行需要 root 的 <code>su</code>。如果你需要真正的 root 操作（比如修改 hosts 文件、替换系统字体），Runner 这条路走不通，还是得 Magisk 或 KernelSU。</p>
+<h2>判断：这套原理意味着什么</h2>
+<p>Runner 的设计哲学是<strong>把系统给的能力用到极致，不额外造轮子</strong>。它不发明新的权限获取方法，而是老老实实站在 Android 无线调试这条信任链上，做一个纯粹的命令执行通道。这个定位让它在自动化场景下极其好用——配合 Tasker 写一条任务就能定时冻结社交全家桶，写个批处理就能批量清理预装应用——但也让它的安全模型完全依赖用户的自觉和设备环境的纯净。</p>
+<p>适合谁：自动化重度玩家、喜欢用 Tasker/MacroDroid 搭建工作流的人、想要无 root 精简系统的玩家。这些场景下，Runner 提供的 shell 权限刚好够用，而且不会像 root 那样破坏系统完整性。</p>
+<p>不适合谁：装了大量来源不明 App 的用户、需要修改 system 分区的深度定制需求、对安全模型要求极高的场景。Runner 的信任链太干净了——干净到任何能启动它的 App 都能借到权限，这在复杂环境下是个风险点。</p>
+<p>从原理层面看，Runner 是一个教科书级的「用系统能力解决系统问题」的例子。它没有破解、没有注入、没有 hook——它只是让两个合法的应用通过合法的 Binder 通道连接起来，借了系统本来就有的 shell 权限。这条思路本身，比工具本身更值得记住。</p>
+<p>这套社区维护的源码和资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/shizukurunner" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/shizukurunner" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/shizukurunner" target="_blank" rel="noopener">GitCode</a>三个仓库都能拿到，方便不同网络环境下的开发者查阅和贡献。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/setlog-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了半年 setlog，分屏 Vlog 到底有没有留住我</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/shotcut.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Shotcut 深度盘点：一个开源视频剪辑工具到底能扛多少活</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

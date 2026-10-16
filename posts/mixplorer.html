@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零上手 MiXplorer：双面板、云存储、WebDAV 一路打通 · 老杨技术栈</title>
+  
+<meta name="description" content="MiXplorer 是 Android 上被低估的全能文件管理器——支持双面板、云盘直连、WebDAV 服务器、内置 PDF 阅读器。这篇教程带你从零把它装起来、把常用的三个核心场景跑通。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/mixplorer.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零上手 MiXplorer：双面板、云存储、WebDAV 一路打通">
+<meta property="og:description" content="MiXplorer 是 Android 上被低估的全能文件管理器——支持双面板、云盘直连、WebDAV 服务器、内置 PDF 阅读器。这篇教程带你从零把它装起来、把常用的三个核心场景跑通。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/mixplorer.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/mixplorer/main-explorer.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/mixplorer/main-explorer.jpg">
+
+<meta name="twitter:title" content="从零上手 MiXplorer：双面板、云存储、WebDAV 一路打通">
+<meta name="twitter:description" content="MiXplorer 是 Android 上被低估的全能文件管理器——支持双面板、云盘直连、WebDAV 服务器、内置 PDF 阅读器。这篇教程带你从零把它装起来、把常用的三个核心场景跑通。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "MiXplorer \u662f Android \u4e0a\u88ab\u4f4e\u4f30\u7684\u5168\u80fd\u6587\u4ef6\u7ba1\u7406\u5668\u2014\u2014\u652f\u6301\u53cc\u9762\u677f\u3001\u4e91\u76d8\u76f4\u8fde\u3001WebDAV \u670d\u52a1\u5668\u3001\u5185\u7f6e PDF \u9605\u8bfb\u5668\u3002\u8fd9\u7bc7\u6559\u7a0b\u5e26\u4f60\u4ece\u96f6\u628a\u5b83\u88c5\u8d77\u6765\u3001\u628a\u5e38\u7528\u7684\u4e09\u4e2a\u6838\u5fc3\u573a\u666f\u8dd1\u901a\u3002", "headline": "\u4ece\u96f6\u4e0a\u624b MiXplorer\uff1a\u53cc\u9762\u677f\u3001\u4e91\u5b58\u50a8\u3001WebDAV \u4e00\u8def\u6253\u901a", "image": ["https://alipymanbu.github.io/images/mixplorer/main-explorer.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/mixplorer.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/mixplorer.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u4e0a\u624b MiXplorer\uff1a\u53cc\u9762\u677f\u3001\u4e91\u5b58\u50a8\u3001WebDAV \u4e00\u8def\u6253\u901a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">从零上手 MiXplorer：双面板、云存储、WebDAV 一路打通</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零上手 MiXplorer：双面板、云存储、WebDAV 一路打通</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">MiXplorer 是 Android 上被低估的全能文件管理器——支持双面板、云盘直连、WebDAV 服务器、内置 PDF 阅读器。这篇教程带你从零把它装起来、把常用的三个核心场景跑通。</p>
+  </header>
+  <div class="prose">
+<p>看完这篇教程，你能用<a href="https://mixplorer.bmww.store" target="_blank" rel="noopener">官网</a>上这款 MiXplorer 在手机上同时操作两个存储位置、把文件直接从内部存储拖到 OneDrive、甚至让你的笔记 App 通过 WebDAV 直接读写手机上的文件夹。整个过程不需要 root，也不需要额外装别的 App。</p>
+<p><img src="../images/mixplorer/main-explorer.jpg" alt="主界面" loading="lazy"></p>
+<h2>准备工作</h2>
+<p><strong>版本与平台</strong></p>
+<ul><li>设备：Android 5.0 及以上手机或平板</li><li>推荐版本：免费版已经够用，Silver 版（付费解锁）多了 HTTPS、XPS 支持等进阶功能，但本文演示的所有操作免费版都能跑</li><li>PDF / EPub 阅读器需要单独装一个 PDF 插件（Play Store 搜 <code>com.mixplorer.addon.pdf</code>，免费），如果不打算用内置阅读器可以跳过</li></ul>
+<p><strong>前置条件</strong></p>
+<ul><li>一台能上网的 Android 设备</li><li>如果要连云存储，提前准备好对应账号（Google Drive、OneDrive、Dropbox 等都行）</li><li>如果要启用 WebDAV 服务器，手机和客户端设备要在同一个局域网</li></ul>
+<h2>第一步：安装并打通你的第一个云盘</h2>
+<p>MiXplorer 的安装包从<a href="https://mixplorer.bmww.store/download.html" target="_blank" rel="noopener">下载</a>拿下来装上，第一次打开会问你要不要开启侧边抽屉、要不要显示隐藏文件——全部勾"允许"就行，后面随时能在设置里改。</p>
+<p>装好之后先别急着探索界面，先把你最常用的云存储连上。点左上角的汉堡菜单，侧边抽屉拉到底部，找到"添加存储"——这里列了一长串协议：Google Drive、OneDrive、Dropbox、Box、MEGA、WebDAV、SMB、FTP、SFTP……挑你手上有账号的那个。</p>
+<p>举个例子，加 OneDrive：</p>
+<ol><li>侧边抽屉 → 添加存储 → 选 OneDrive</li><li>浏览器自动弹出登录页，授权完跳回 MiXplorer</li><li>侧栏多了一个 OneDrive 入口，点进去就是你云端的文件</li></ol>
+<p><img src="../images/mixplorer/cloud-storage.jpg" alt="云存储连接" loading="lazy"></p>
+<p>连好之后你会发现侧栏里内部存储、SD 卡、各个云盘、甚至 SMB NAS 都在同一层级——这意味着后面双面板里你可以左边是内部存储、右边是云盘，直接拖文件过去，不用先下载再上传。</p>
+<h2>第二步：横屏开双面板，告别来回切标签</h2>
+<p>云盘连好了，现在把手机横过来。屏幕会自动一分为二：左边内部存储，右边默认还是内部存储，你可以在右面板的侧栏里切到刚才连好的 OneDrive。按住中间那条分割线左右拖一拖，两个面板的宽窄比例可以自由调。</p>
+<p>两个面板是<strong>完全独立</strong>的——左边在 Download 文件夹、右边在 OneDrive 的 Documents，各走各的路。现在长按左边一个 PDF 文件，拖到右边，松手，弹出菜单选"复制"，然后后台就开始跑了。</p>
+<p>这个场景我每天都在用：手机截的图在内部存储/Pictures/Screenshots，要同步到 OneDrive 的 Screenshots 文件夹，以前是"打开文件选择器 → 切到 OneDrive → 找到目标文件夹 → 确认上传"四步，现在就是"长按 → 拖 → 松手"。</p>
+<p><strong>几个好用的搭配</strong></p>
+<table><thead><tr><th>左面板</th><th>右面板</th><th>场景</th></tr></thead><tbody><tr><td>内部存储 / Download</td><td>Google Drive</td><td>上传 APK、文档到云盘归档</td></tr><tr><td>SD 卡 / Movies</td><td>SMB NAS</td><td>备份电影到家里的 NAS</td></tr><tr><td>OneDrive</td><td>Dropbox</td><td>两个云盘之间互传，不用绕电脑</td></tr><tr><td>EncFS 加密卷</td><td>内部存储</td><td>解密后把文件导出到本地</td></tr></tbody></table>
+<p><strong>竖屏怎么办？</strong> 默认竖屏是单面板。如果你真的想在竖屏也开双面板（比如平板竖持），可以进设置 → Display → 打开"Force dual pane"，但手机竖屏开两个面板实际字太小不太实用，建议只在横屏用。</p>
+<p><img src="../images/mixplorer/dual-pane-view.jpg" alt="双面板视图" loading="lazy"></p>
+<h2>第三步：开启 WebDAV 服务器，让其他 App 直接读写你手机</h2>
+<p>这一步是 MiXplorer 最被低估的功能。你可以把手机开成一台 WebDAV 服务器——任何支持 WebDAV 的 App（Joplin、Obsidian、GoodReader、甚至 Windows 资源管理器和 macOS Finder）都能直接读写你手机上的文件，不需要通过 USB 数据线、不需要通过第三方云盘中转。</p>
+<p><strong>启动步骤</strong></p>
+<ol><li>右上角三点菜单 → Servers → WebDAV Server</li><li>启动开关打开</li><li>设置根目录——默认是当前浏览目录，建议改成你专门用来同步的文件夹（比如 <code>/storage/emulated/0/Notes</code>），这样权限范围清晰</li><li>默认端口是 8080，如果你同时还开了 HTTP 服务器记得把其中一个改到别的端口（比如 8081）</li><li>设置里开启用户名密码认证，别留空——局域网里任何能访问你手机 IP 的设备都能读写文件，不留密码等于裸奔</li></ol>
+<p>启动后 MiXplorer 会显示一个地址，格式是 <code>http://手机的局域网IP:端口</code>。记下这个地址。</p>
+<p><strong>接入一个具体客户端试试——Obsidian</strong></p>
+<ol><li>打开 Obsidian，安装 "WebDAV Sync" 插件</li><li>填服务器 URL：<code>http://刚才记下的IP:端口</code></li><li>填用户名密码（就是刚才在 MiXplorer 里设的那个）</li><li>选一个本地 Obsidian 仓库作为同步源</li><li>点测试连接，通了之后就能双向同步了</li></ol>
+<p>同样的流程可以套到 Joplin（设置 → 同步 → WebDAV）、GoodReader（连接 → WebDAV → 填 URL）、甚至 macOS Finder（按 Command+K → 填 <code>http://IP:端口</code>）。Windows 资源管理器的话，在地址栏直接输入那个 WebDAV 地址就能打开。遇到端口冲突或者根目录配置拿不准的地方，去看<a href="https://mixplorer.pages.dev/" target="_blank" rel="noopener">mixplorer文档</a>上的详细参数表就行。</p>
+<p><strong>几个安全提醒</strong></p>
+<ul><li>只在需要同步的时候开启 WebDAV 服务器，用完关掉——长期开着白白耗电，也增加风险面</li><li>根目录尽量限制在同步专用文件夹，别把整个内部存储都暴露出去</li><li>Silver 版支持 HTTPS 模式，局域网里用 HTTPS 比纯 HTTP 更安全（虽然局域网里被窃听的概率不高，但开 HTTPS 成本很低）</li></ul>
+<h2>常见卡点</h2>
+<h3>卡点一：横屏不自动开双面板</h3>
+<p>进设置 → Display → 确认"Dual pane"开关是打开的。有些机型的自动旋转被锁了，先下拉通知栏把自动旋转打开再横屏。</p>
+<h3>卡点二：WebDAV 地址别的设备访问不了</h3>
+<p>90% 的情况是手机和客户端设备不在同一个 Wi-Fi 下。另外 10% 是路由器开了 AP 隔离（客人 Wi-Fi 和主 Wi-Fi 互不相通）——把两台设备都连主 Wi-Fi 就行。确认手机 IP 用的是内网地址（192.168.x.x 或 10.x.x.x），不是公网 IP。</p>
+<h3>卡点三：内置 PDF 阅读器打不开大文件</h3>
+<p>免费版的 PDF 插件对 500MB 以上的扫描件 PDF 容易内存不足闪退。这种情况建议直接用 Adobe Reader 或 MuPDF 打开——MiXplorer 本身只是文件管理器，阅读器是附赠功能，专业 PDF 还是交给专业 App。</p>
+<h2>进阶玩法（一句话）</h2>
+<p>高级搜索里可以组合条件搜"3 个月没动过的 100MB 以上大文件排除 .zip 和 .7z"，找到直接决定删不删；EncFS 加密卷挂载后能在双面板里解密导出；任务队列可以把一堆复制移动操作排队后台执行不用盯屏幕。</p>
+<p>到这里你已经把 MiXplorer 最有生产力的三个场景跑通了：云存储直连、双面板互传、WebDAV 服务器。本文涉及到的配置样例和测试素材，开源分别放在了<a href="https://github.com/alipymanbu/APK/tree/main/APP/mixplorer" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/mixplorer" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/mixplorer" target="_blank" rel="noopener">GitCode</a>，Gitee 和 GitCode 对国内用户来说 clone 起来更顺手。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/miru-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Miru 网页版完整上手教程——从打开页面到装好第一个扩展</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/miyu-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从零在 miyu 捏一个能聊剧情的 AI 角色：世界书 + 角色卡实战</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

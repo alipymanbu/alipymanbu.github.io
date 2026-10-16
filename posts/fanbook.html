@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我用 Fanbook 搭了一条社区运营流水线——从创作者投稿到 AI 客服全自动 · 老杨技术栈</title>
+  
+<meta name="description" content="一个独立开发者怎么把 Fanbook 嵌入每周必做的社区运营流程：旧流程三步走手动搬运，现在一条链自动流转，少了两次手动复制不说，还顺便把 AI 客服训了。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/fanbook.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我用 Fanbook 搭了一条社区运营流水线——从创作者投稿到 AI 客服全自动">
+<meta property="og:description" content="一个独立开发者怎么把 Fanbook 嵌入每周必做的社区运营流程：旧流程三步走手动搬运，现在一条链自动流转，少了两次手动复制不说，还顺便把 AI 客服训了。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/fanbook.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/fanbook/ai-feature.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/fanbook/ai-feature.png">
+
+<meta name="twitter:title" content="我用 Fanbook 搭了一条社区运营流水线——从创作者投稿到 AI 客服全自动">
+<meta name="twitter:description" content="一个独立开发者怎么把 Fanbook 嵌入每周必做的社区运营流程：旧流程三步走手动搬运，现在一条链自动流转，少了两次手动复制不说，还顺便把 AI 客服训了。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u72ec\u7acb\u5f00\u53d1\u8005\u600e\u4e48\u628a Fanbook \u5d4c\u5165\u6bcf\u5468\u5fc5\u505a\u7684\u793e\u533a\u8fd0\u8425\u6d41\u7a0b\uff1a\u65e7\u6d41\u7a0b\u4e09\u6b65\u8d70\u624b\u52a8\u642c\u8fd0\uff0c\u73b0\u5728\u4e00\u6761\u94fe\u81ea\u52a8\u6d41\u8f6c\uff0c\u5c11\u4e86\u4e24\u6b21\u624b\u52a8\u590d\u5236\u4e0d\u8bf4\uff0c\u8fd8\u987a\u4fbf\u628a AI \u5ba2\u670d\u8bad\u4e86\u3002", "headline": "\u6211\u7528 Fanbook \u642d\u4e86\u4e00\u6761\u793e\u533a\u8fd0\u8425\u6d41\u6c34\u7ebf\u2014\u2014\u4ece\u521b\u4f5c\u8005\u6295\u7a3f\u5230 AI \u5ba2\u670d\u5168\u81ea\u52a8", "image": ["https://alipymanbu.github.io/images/fanbook/ai-feature.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/fanbook.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/fanbook.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6211\u7528 Fanbook \u642d\u4e86\u4e00\u6761\u793e\u533a\u8fd0\u8425\u6d41\u6c34\u7ebf\u2014\u2014\u4ece\u521b\u4f5c\u8005\u6295\u7a3f\u5230 AI \u5ba2\u670d\u5168\u81ea\u52a8", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">我用 Fanbook 搭了一条社区运营流水线——从创作者投稿到 AI 客服全自动</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我用 Fanbook 搭了一条社区运营流水线——从创作者投稿到 AI 客服全自动</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个独立开发者怎么把 Fanbook 嵌入每周必做的社区运营流程：旧流程三步走手动搬运，现在一条链自动流转，少了两次手动复制不说，还顺便把 AI 客服训了。</p>
+  </header>
+  <div class="prose">
+<p>我维护一个小而活跃的游戏 Mod 社区，每周要做的事情说穿了就三件：收创作者的稿子、把优质内容分发出去、回答社区里反复出现的那十几个问题。以前这三件事分散在三个工具里——QQ 群发通知、飞书文档收稿、Discord 当讨论区——每到周日下午就像打地鼠，这边刚把评测贴到 QQ 群，那边 Discord 又有人问"这个 Mod 怎么装"，飞书里还躺着两篇没审核的插画稿。</p>
+<p>更头疼的是数据不流动。Discord 里有人聊出了好点子，我得手动复制到飞书任务列表里跟进；QQ 群里的创作者发了新作品，我得跑三个平台通知他们可以来领任务。信息搬运这件事，看起来不重，但每周耗掉我至少两小时，而且搬着搬着就漏了。</p>
+<h3>旧流程卡在哪</h3>
+<p>说出来都是小事，但小事堆起来就是堵点：</p>
+<ul><li><strong>消息碎片</strong>：QQ 群没有频道分类，讨论 Mod 安装的、求邀请码的、闲聊的全堆在一个时间流里，重要消息半小时就被刷没了。Discord 好一点，但国内成员连不上，得专门给他们开 QQ 群。</li><li><strong>AI 是摆设</strong>：我试过接一个通用聊天机器人到 Discord，但它对我的社区一无所知——有人问"最新版 Mod 兼容哪个游戏版本"，它能编出三个互相矛盾的答案。关掉之后还是靠人工回答，每周固定花三小时在 FAQ 上。</li><li><strong>创作者激励没闭环</strong>：以前靠打赏和红包，发完就完事，没有持续的结算机制，创作者来了几次就走了。</li></ul>
+<h3>把 Fanbook 插进流程</h3>
+<p>我去年年底迁到 <a href="https://fanbook.hfdk.space" target="_blank" rel="noopener">Fanbook官网</a>，不是因为它新，而是它能把这三件事塞进一条流水线里。现在我的每周社区运营流程是这样的：</p>
+<p><strong>周一晚上</strong>：Fanbook 自动把上一周创作者提交的内容整理成周报（用 Bot API 写的一个小脚本，扫描指定圈子里的新动态），发到管理员频道。我只需要过一遍清单，挑出要给发现广场推荐的稿子。</p>
+<p><strong>周二上午</strong>：在 Fanbook 的创作任务系统里发布本周任务——比如"写一篇 Mod 兼容性评测"或者"画一张角色同人"。设置好预算（乐豆结算）、截止时间、投稿数量，然后就不用管了。创作者自己报名、提交、审核，通过后乐豆自动到账。这个环节以前我得在 QQ 群手动 @ 所有人问"有没有人接这个活"，现在发一次任务就结束。</p>
+<p><strong>周三到周五</strong>：AI 客服在频道里自动回答常见问题。我花了一个下午把社区的 FAQ、Mod 安装指南、版本说明整理成知识库，上传到 Fanbook 的 AI 训练功能里，训练了一个专属客服 BOT。有人 @ 它问"怎么装 Mod"或者"最新版本号是多少"，它直接从知识库里找答案，答不了的才转给我。而且它会把答不了的问题每天汇总推给我——这个功能我特别喜欢，等于 AI 帮我做了一周的社区洞察。</p>
+<p><strong>周末</strong>：把发现广场上表现好的社区动态（点赞、评论数据前 10 的）转到精选频道，然后 AI 客服的周报里会自动附上这一周社区讨论的热点话题，我据此调整下周的任务方向——如果大家都在问某个 Mod 的兼容性，下周就多发布几个兼容性评测任务。</p>
+<p><img src="../images/fanbook/ai-feature.png" alt="AI 客服训练界面" loading="lazy"></p>
+<h3>实操里最容易断链的两个环节</h3>
+<p>这条流水线跑起来之后，我发现有两个地方容易掉链子，调整之后就稳了。</p>
+<p><strong>第一个是知识库的持续更新</strong>。AI 客服的回答质量完全取决于知识库。我试过一次忘了更新版本号，结果有人问"最新版是多少"，AI 还在说三个月前的版本，被人截图发到圈子里吐槽。现在我设了个规矩：每次更新 Mod 或者社区规则，第一件事就是更新知识库的对应条目，然后在 AI 训练面板里点一下"重新索引"——不需要重新训练，几秒钟就生效。具体参数和训练技巧可以去<a href="https://fanbook.pages.dev/" target="_blank" rel="noopener">Fanbook文档</a>翻一下，里面把每个步骤都写得很细。Fanbook 的 AI 训练面板里有个测试框，输入问题就能看到 AI 现在会怎么答，我每次更新完都会测两三个问题确认。</p>
+<p><strong>第二个是从旧社区迁过来的成员不适应</strong>。我的老成员都是从 QQ 群过来的，习惯了一个群什么都聊。刚迁过来的时候好多人说"太复杂了还要分频道"。我的做法是不要一次搬所有人——先让 50 个核心成员过来，给他们版主权限，让他们在新社区里活跃起来。QQ 群继续留着，但不再发新通知，只在有人问问题时回复"我们在 Fanbook 上讨论，App 从<a href="https://fanbook.hfdk.space/download.html" target="_blank" rel="noopener">下载</a>拿就行"。两周之后 QQ 群基本就安静了，老成员自己也过来了。过渡期不要超过两周，太长两边都养不活。</p>
+<h3>效果与边界</h3>
+<p>跑了三个月，实际效果：每周花在社区运营上的时间从 8 小时降到 3 小时——少了两次手动搬运内容，AI 客服吃掉了 80% 的 FAQ，创作任务系统自动完成了创作者对接。更重要的是信息不再碎片了，所有事情都在一个地方流转。</p>
+<p><img src="../images/fanbook/discovery-feature.png" alt="发现广场：内容分发的核心入口" loading="lazy"></p>
+<p>但这套流程也有边界。如果你的社区只有一两百个活跃成员，Fanbook 的频道系统和创作任务机制就显得过重——QQ 群加个机器人反而更简单。另外 Bot API 和 Discord 不兼容，我以前在 Discord 上写的签到机器人得重写，Fanbook 的 Bot API 是 HTTPS + JSON 风格，逻辑差不多但端点和参数不一样，花了大概三天适配。还有国内成员连不上 Discord，所以迁到 Fanbook 之后我就把 Discord 当海外成员的渠道，主要精力放在 Fanbook。</p>
+<p>如果你正在被"三个工具来回切"搞得头疼，或者想给社区搭一套能自我运转的运营流水线，可以先从 Fanbook 的 AI 客服和创作任务系统入手——这两个功能上手最快，先把 FAQ 和创作者对接这两件事自动化，再慢慢把旧社区迁过来。整套流程拼起来大概需要一到两周，但跑通之后你会发现以前每周花在"搬消息"上的时间，现在可以用来做真正有价值的事。</p>
+<p>我维护的 Mod 社区的完整资料都在三个仓库里，方便不同网络环境的成员查阅和贡献：<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Fanbook" target="_blank" rel="noopener">GitHub</a>上有完整的知识库和工具脚本，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Fanbook" target="_blank" rel="noopener">Gitee</a>镜像了相同内容供国内访问，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Fanbook" target="_blank" rel="noopener">GitCode</a>则放了社区规则和 FAQ 的最新版本。三个仓库同步更新，有错误或补充欢迎提 Issue。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/fakku.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">FAKKU 漫画这几年：从单功能阅读器到全球资源聚合平台的进化之路</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/fatsecret-app.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">上手 FatSecret 食物追踪：从注册到记第一顿饭的完整教程</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

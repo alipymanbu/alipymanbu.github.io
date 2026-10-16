@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Planner5D 的版本进化史：从画平面图到用 LiDAR 扫房间 · 老杨技术栈</title>
+  
+<meta name="description" content="Planner5D 这几年到底迭代了什么？从手动拖拽到 AI 帮你摆家具、从尺量到手机扫描、从草稿纸到 CAD 导出——梳理这款软件的成长轨迹和团队的产品哲学。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/planner5d.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Planner5D 的版本进化史：从画平面图到用 LiDAR 扫房间">
+<meta property="og:description" content="Planner5D 这几年到底迭代了什么？从手动拖拽到 AI 帮你摆家具、从尺量到手机扫描、从草稿纸到 CAD 导出——梳理这款软件的成长轨迹和团队的产品哲学。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/planner5d.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/planner5d/mobile-screenshot-01.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/planner5d/mobile-screenshot-01.png">
+
+<meta name="twitter:title" content="Planner5D 的版本进化史：从画平面图到用 LiDAR 扫房间">
+<meta name="twitter:description" content="Planner5D 这几年到底迭代了什么？从手动拖拽到 AI 帮你摆家具、从尺量到手机扫描、从草稿纸到 CAD 导出——梳理这款软件的成长轨迹和团队的产品哲学。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Planner5D \u8fd9\u51e0\u5e74\u5230\u5e95\u8fed\u4ee3\u4e86\u4ec0\u4e48\uff1f\u4ece\u624b\u52a8\u62d6\u62fd\u5230 AI \u5e2e\u4f60\u6446\u5bb6\u5177\u3001\u4ece\u5c3a\u91cf\u5230\u624b\u673a\u626b\u63cf\u3001\u4ece\u8349\u7a3f\u7eb8\u5230 CAD \u5bfc\u51fa\u2014\u2014\u68b3\u7406\u8fd9\u6b3e\u8f6f\u4ef6\u7684\u6210\u957f\u8f68\u8ff9\u548c\u56e2\u961f\u7684\u4ea7\u54c1\u54f2\u5b66\u3002", "headline": "Planner5D \u7684\u7248\u672c\u8fdb\u5316\u53f2\uff1a\u4ece\u753b\u5e73\u9762\u56fe\u5230\u7528 LiDAR \u626b\u623f\u95f4", "image": ["https://alipymanbu.github.io/images/planner5d/mobile-screenshot-01.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/planner5d.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/planner5d.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "Planner5D \u7684\u7248\u672c\u8fdb\u5316\u53f2\uff1a\u4ece\u753b\u5e73\u9762\u56fe\u5230\u7528 LiDAR \u626b\u623f\u95f4", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">Planner5D 的版本进化史：从画平面图到用 LiDAR 扫房间</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Planner5D 的版本进化史：从画平面图到用 LiDAR 扫房间</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Planner5D 这几年到底迭代了什么？从手动拖拽到 AI 帮你摆家具、从尺量到手机扫描、从草稿纸到 CAD 导出——梳理这款软件的成长轨迹和团队的产品哲学。</p>
+  </header>
+  <div class="prose">
+<p>现在打开<a href="https://planner5d.hhdc.tech" target="_blank" rel="noopener">Planner5D官网</a>，Feed 页最显眼的入口不是"新建项目"，而是三个 AI 驱动的选项——Scan Room、Home Scan、AI 户型识别。Copilot AI 悬浮在右下角，随时能用自然语言下指令："把这幅画挂到南墙上"、"餐桌旋转 90 度"。 Professional 版的用户还能直接导出 DWG/DXF，把草稿丢给 AutoCAD 继续深化。</p>
+<p>如果三年前有人说一款面向普通用户的装修工具会长成这样，我是不信的。那时候我对 Planner5D 的印象还停留在"网页上画个平面图、拖几件家具进去看个大概"——够用，但不惊艳。现在回头看，Planner5D 的版本进化史其实是一部很典型的"工具软件如何接住 AI 浪潮"的样本。</p>
+<h2>来路：从 2D 到 3D，再到 AI 接管</h2>
+<p>样本文档里没有给出明确的版本号时间线，这本身就能说明一些事——Planner5D 的迭代不是靠大版本号划线，而是一层一层往上叠功能。如果从今天能看到的功能倒推，它的成长轨迹大概是这样的：</p>
+<p>最早的 Planner5D 应该就是一个纯 2D 的平面绘制工具。在网页上画墙、标尺寸、拖家具，仅此而已。那时候它解决的核心问题是"不想用 AutoCAD 的普通人怎么画自己家的户型图"——把专业软件的门槛拉到了浏览器里。</p>
+<p>然后它长出了 3D。这一步不难想，几乎所有室内设计工具都会往这个方向走，但 Planner5D 的 3D 做得挺克制——它不追求照片级渲染，而是让你在摆家具的时候随时切 3D 看一眼"会不会撞门"、"吊灯会不会太低"。这个定位一直保留到现在，最新的 4K 渲染功能也是给需要展示的用户准备的，核心交互还是 2D 画布 + 按需 3D 检查。</p>
+<p>移动端跟进得早。从<a href="https://planner5d.hhdc.tech/download.html" target="_blank" rel="noopener">官方下载</a>渠道能看到 iOS 和 Android 都有完整的 App，而且手机端不仅是"看项目"——Home Scan 功能直接要求你举着手机在房间里录视频，这是纯移动端才有的使用场景。能走到这一步，说明团队很早就想清楚了"装修这件事不是坐在电脑前能完成的"。</p>
+<p>真正的转折点是 AI 能力的接入。而且不是一步到位，是分层递进的：</p>
+<p>第一层是<strong>输入自动化</strong>——AI 户型识别。给一张户型图照片或 PDF，自动抽出墙体和门窗。这一步替用户省了最耗时的"量房 → 手动画墙"环节，但用户仍然是"纠正者"，AI 识别完之后得手动核对尺寸、修正偏差。</p>
+<p>第二层是<strong>空间感知</strong>——Scan Room 和 Home Scan。LiDAR 扫描直接把真实房间变成 3D 模型，误差能控制在 ±5cm 以内；没有 LiDAR 的手机也能用 Home Scan 环绕录制一段视频，AI 反推空间结构。这一层比户型识别又往前走了一步：用户不再需要一张"干净的图纸"当输入源，真实空间本身就是输入。</p>
+<p>第三层是<strong>交互自动化</strong>——Copilot AI。直接说"把沙发转一下让它不挡门"，它就帮你摆好；说"恢复刚才删掉的家具"，它就找回来。这一层最有意思，因为它不是帮你"输入"，而是帮你"操作"——把原来需要 10 次拖拽微调的动作压缩成一句话。</p>
+<p>这个分层逻辑很清晰：先帮用户省输入的事，再帮用户省操作的事，未来大概率会帮用户省"想"的事（自动优化布局、生成多套方案让你挑）。</p>
+<p><img src="../images/planner5d/mobile-screenshot-01.png" alt="手机端扫描房间" loading="lazy"></p>
+<h2>团队一直在死磕什么</h2>
+<p>从功能叠加点上能看出团队的优先级：</p>
+<p><strong>第一优先级永远是"降低启动成本"。</strong> 手动画墙 → 户型 AI 识别 → LiDAR/视频扫描，用户从"需要一张干净图纸"到"什么都不需要，带手机就行"，这个方向贯穿了所有版本。为什么？因为 Planner5D 面对的不是专业设计师，而是"我想在装修前看看效果"的普通用户——这群人的最大痛点不是功能不够，是"懒得动手量房画图"。</p>
+<p><strong>第二优先级是"让移动端真正能用"。</strong> 很多设计工具的移动端只是个预览器，Planner5D 不一样——Home Scan、Scan Room 这两个核心输入功能只在手机上有（或者说手机上才好用）。样本文档里提到的 ARKit/ARCore 支持也是移动端专属的。这说明团队把移动端当成主战场之一，而不是附庸。</p>
+<p><strong>第三优先级是"分层付费，把最狠的功能锁在高等级订阅"。</strong> 户型识别是 Premium 以上才有的，Professional 版才能导出 DWG/DXF。Copilot AI 在免费版也能用，但高级指令和响应速度可能有差别。这种分层对普通用户来说其实是好事——免费版足够画个简单户型看看，真要深挖功能细节可以翻<a href="https://planner5d.pages.dev/" target="_blank" rel="noopener">Planner5D文档</a>再考虑升级，不会一开始就被付费墙挡住。</p>
+<p>那什么一直不管？样本文档里完全没提多人实时协作、没提跟家居品牌的生态对接（比如"在家具目录里直接买到你拖进去的沙发"）、没提装修预算自动计算（虽然备份文档里提到了"预算清单"可以导出图片，但没说有专门的预算功能）。这可能是因为团队目前的资源还集中在"让单个用户的单次设计体验足够流畅"，生态化的事得等核心体验跑通了再说。</p>
+<h2>预判：下一步大概率往哪走</h2>
+<p>从迭代规律推，有几个方向概率很高：</p>
+<p><strong>AI 会更深地介入设计决策。</strong> 现在 Copilot AI 还只是"帮你执行指令"，下一步应该是"帮你出方案"——比如输入"客厅 30 平米、北欧风、预算 4 万"，AI 直接生成两三套完整布局让你挑，然后你再微调。这个功能如果做出来，会把 Planner5D 的门槛再降一大截。</p>
+<p><strong>LiDAR 扫描的精度和兼容性会继续提高。</strong> 现在 Scan Room 只支持带 LiDAR 的苹果设备，Home Scan 精度只有 ±10-20cm。未来 Android 阵营越来越多机型带深度传感器，Home Scan 的识别模型也会迭代，手机扫描可能会变成默认的量房方式，手动画墙彻底变成"老派操作"。</p>
+<p><strong>Professional 版的专业格式支持会扩展。</strong> 现在有 DWG/DXF，下一步可能是 IFC（建筑信息模型标准格式），那样 Planner5D 就能跟真正的 BIM 工具链打通，从"给业主看的效果图"往"给施工队用的技术图"跨一步。</p>
+<p>当然这些都是从迭代规律推的，不当官方口径传。</p>
+<h2>对普通用户来说意味着什么</h2>
+<p>如果你只是想在装修前看看效果，其实免费版已经够用了——手动画墙 + 拖家具 + 3D 视图，这个组合十年前就有了，Planner5D 的基础能力一直没丢。真正有价值的是那些 AI 功能：户型识别能替你省一两个小时的量房和画图，LiDAR 扫描能让你在收房当天就把新家的 3D 模型建出来，Copilot AI 能让"把床头从西墙换到东墙再调整一下"这种事从 5 分钟变成 5 秒钟。</p>
+<p>这不是"多了几个按钮"的升级，是一个工具软件接住了 AI 浪潮之后自然发生的形态变化。Planner5D 没有跟风做"AI 生成整栋房子"那种噱头功能，而是在它最擅长的事——"把一个真实空间数字化，然后让你在里面摆东西看效果"——上一层一层地用 AI 替用户省时间。</p>
+<p><img src="../images/planner5d/4k-render.webp" alt="4K 渲染效果" loading="lazy"></p>
+<p>这套设计思路和完整操作都整理在 Planner5D 的中文资料里了，文档、图片、项目结构这些内容分别放在几个仓库里，<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Planner5D" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Planner5D" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Planner5D" target="_blank" rel="noopener">GitCode</a> 都同步了一份，方便不同环境下访问。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zepp-app.html">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</a></h2>
+  <p class="card-desc">把 Amazfit 手表生态从连接、健康监测到个性化改造的能力面完整铺开，哪些是真亮点、哪些藏着短板、哪类人最值得入手这套组合。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wispr-docs.html">Wispr v1.3.3：一个加密通讯应用在&#34;安全优先&#34;路上的四年迭代</a></h2>
+  <p class="card-desc">从 VOBP 协议到 P2P 直连，从手机号免费层到 Matrix ID 付费身份，CryptoDATA 的 Wispr 用一个个小版本慢慢拼凑出它对&#34;加密通讯该怎么做&#34;的答案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wibu-docs.html">给 wibu 算一笔付费账：Wibu+ 订阅到底值不值得掏这 $9.99</a></h2>
+  <p class="card-desc">从定价拆解到按使用强度算账，把 Wibu+ 订阅的每一项权益换算成你实际能省的时间和赚到的钱，看完你就知道自己该不该付。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/plainapp.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">PlainApp付费账本：免费已够用，剩下那点值不值掏钱？</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/poipiku.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">poipiku 的三道设计选择题：为什么它同时做了发现流、隐私矩阵和标签筛选</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

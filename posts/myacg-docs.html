@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 myacg 搭一条零摩擦的追漫流水线——从搜漫到离线缓存再到换机迁移全打通 · 老杨技术栈</title>
+  
+<meta name="description" content="把 myacg 当核心工具串起搜索源管理、离线缓存、夜间模式定时切换和换机迁移，一套流程覆盖日常追漫到设备搬迁的所有环节，少装三个 App，换机省两小时手动配置。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/myacg-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 myacg 搭一条零摩擦的追漫流水线——从搜漫到离线缓存再到换机迁移全打通">
+<meta property="og:description" content="把 myacg 当核心工具串起搜索源管理、离线缓存、夜间模式定时切换和换机迁移，一套流程覆盖日常追漫到设备搬迁的所有环节，少装三个 App，换机省两小时手动配置。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/myacg-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/myacg-docs/comic-reader.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/myacg-docs/comic-reader.jpg">
+
+<meta name="twitter:title" content="用 myacg 搭一条零摩擦的追漫流水线——从搜漫到离线缓存再到换机迁移全打通">
+<meta name="twitter:description" content="把 myacg 当核心工具串起搜索源管理、离线缓存、夜间模式定时切换和换机迁移，一套流程覆盖日常追漫到设备搬迁的所有环节，少装三个 App，换机省两小时手动配置。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u628a myacg \u5f53\u6838\u5fc3\u5de5\u5177\u4e32\u8d77\u641c\u7d22\u6e90\u7ba1\u7406\u3001\u79bb\u7ebf\u7f13\u5b58\u3001\u591c\u95f4\u6a21\u5f0f\u5b9a\u65f6\u5207\u6362\u548c\u6362\u673a\u8fc1\u79fb\uff0c\u4e00\u5957\u6d41\u7a0b\u8986\u76d6\u65e5\u5e38\u8ffd\u6f2b\u5230\u8bbe\u5907\u642c\u8fc1\u7684\u6240\u6709\u73af\u8282\uff0c\u5c11\u88c5\u4e09\u4e2a App\uff0c\u6362\u673a\u7701\u4e24\u5c0f\u65f6\u624b\u52a8\u914d\u7f6e\u3002", "headline": "\u7528 myacg \u642d\u4e00\u6761\u96f6\u6469\u64e6\u7684\u8ffd\u6f2b\u6d41\u6c34\u7ebf\u2014\u2014\u4ece\u641c\u6f2b\u5230\u79bb\u7ebf\u7f13\u5b58\u518d\u5230\u6362\u673a\u8fc1\u79fb\u5168\u6253\u901a", "image": ["https://alipymanbu.github.io/images/myacg-docs/comic-reader.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/myacg-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/myacg-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 myacg \u642d\u4e00\u6761\u96f6\u6469\u64e6\u7684\u8ffd\u6f2b\u6d41\u6c34\u7ebf\u2014\u2014\u4ece\u641c\u6f2b\u5230\u79bb\u7ebf\u7f13\u5b58\u518d\u5230\u6362\u673a\u8fc1\u79fb\u5168\u6253\u901a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">用 myacg 搭一条零摩擦的追漫流水线——从搜漫到离线缓存再到换机迁移全打通</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 myacg 搭一条零摩擦的追漫流水线——从搜漫到离线缓存再到换机迁移全打通</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 5 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">把 myacg 当核心工具串起搜索源管理、离线缓存、夜间模式定时切换和换机迁移，一套流程覆盖日常追漫到设备搬迁的所有环节，少装三个 App，换机省两小时手动配置。</p>
+  </header>
+  <div class="prose">
+<h2>我以前追漫画要跳三个 App</h2>
+<p>说出来挺丢人的，半年前我手机上同时装着三个漫画阅读器——A 专门看某台连载、B 画质好但更新慢、C 广告少但搜索源不全。每周追番日晚上的流程是：先在 A 刷某台更新、跳 B 补漏、跳 C 去广告版缓存，翻页切 App 至少七八次。更烦的是每月一次的换机焦虑：源库全靠手敲、阅读进度各存各的、缓存目录散落在三个文件夹里，每次迁移都是半小时以上的体力活。</p>
+<p>那时候我以为"漫画阅读器就是这个水平"，直到朋友给我推了<a href="https://myacg.gltd.quest" target="_blank" rel="noopener">myacg官网</a>，说它能把所有源站统一进来、换源不丢进度、源库能导出 JSON 直接搬。说实话一开始我半信半疑，抱着从<a href="https://myacg.gltd.quest/download.html" target="_blank" rel="noopener">myacg下载</a>装了试试不行就卸的心态，现在三个旧阅读器全卸了，myacg 是我每天打开次数前五的 App。</p>
+<h2>新流程：myacg 串起了哪几环</h2>
+<p>现在我的追漫流水线是这样的：主界面搜索框一次搜遍所有启用的搜索源 → 进入详情页先切换源看看哪个章节最全、更新最快 → 选定主力源后点击"缓存"批量下载 → 晚上九点自动切夜间模式翻页 → 每周五检查一次源站有没有失效、失效的从在线仓库更一下。换机那天把源库导出的 JSON 从旧手机拷到新手机 → 新机器安装 myacg → 搜索源管理页一键导入 → 从完整备份恢复书架和进度，前后不到二十分钟。</p>
+<p>这条线里 myacg 是核心节点，但上下游接了几个东西：在线源仓库提供持续更新的搜索源配置、本地文件管理器用来导出导入 JSON、系统定时设置只管夜间模式触发时间这一件事。没有复杂脚本，没有云同步账户，全靠 myacg 自带的能力串起来。</p>
+<p><img src="../images/myacg-docs/comic-reader.jpg" alt="myacg 阅读器界面" loading="lazy"></p>
+<h2>最容易断链的两个环节</h2>
+<h3>换源时章节对齐不准</h3>
+<p>myacg 会尽量把当前章节位置对齐到新源的章节列表，但不同源的章节编号偶尔会对不上——比如 A 源把番外算在正篇里排到第 102 话，B 源番外单独分组只排到第 98 话，切过去之后阅读器可能跳到番外而不是我该看的那一话。我的做法是：切换源之后先快速扫一眼章节列表头部和尾部，确认当前高亮的章节就是我应该继续看的那一话，不对就手动拖一下章节列表点进去。这个检查只需要两三秒，但能避免翻了好几章才发现看串了的尴尬。</p>
+<h3>导出导入的源会不会重复</h3>
+<p>如果你在新手机上已经装了一些搜索源，然后再导入旧手机的 JSON，两套源会合并在一起。同名的源可能出现两个、一个启用一个禁用，或者干脆规则冲突导致失效。我的处理是：换机时先把新手机上 myacg 里所有搜索源清到零，再装旧机器导出的 JSON——这样进来的源全都是我原来配好的那套，没有冲突。如果是给朋友分享源库，我会先问清楚他手机上有没有自己加过源，有的话让他先手动清一遍再导入。关于导出导入的完整参数和版本兼容说明，去<a href="https://myacg-docs.pages.dev/" target="_blank" rel="noopener">myacg文档</a>翻一下就能找到。</p>
+<h2>效果和边界</h2>
+<p>实话说省下来的时间量出来的：旧流程每周追漫日在三个 App 之间跳七八次，现在一次搜索直接覆盖所有源；换机从半小时缩减到二十分钟（其中 JSON 拷贝其实只是两秒，主要是完整备份恢复书架和进度）；夜间模式不用每晚手动按两次，设一次时间就再也不用管。</p>
+<p>但这套流程也有边界。如果某个漫画只有一个可用源，换源环节就省了——画质差、加载慢也只能扛着；不同大版本之间的搜索源规则可能有格式变化，v1.4.8 导出的 JSON 在 v1.5.1.2 上导入大概率没问题，但跨三四个版本的话部分源可能失效，失效了从在线仓库手动更一下就行，不是批量失效；如果你用的是冷门机型，偶尔会遇到夜间模式文字显示异常，这个和 myacg 本身无关，是机型适配的问题。</p>
+<p>总的来说这条流水线跑下来三个月没出过什么大问题，唯一一次是某源站突然整站挂了，我就在阅读器里切到另一个源继续看，前后五秒钟。这就是我想要的追漫体验：源站多了不用装新 App、某个源挂了切到下一个、换机不用重新配置一遍、晚上翻页眼睛不累，其他的事交给 myacg 自己处理。想自己搭这套流程的话，相关的源配置和使用笔记我同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/myacg" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/myacg" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/myacg" target="_blank" rel="noopener">GitCode</a> 上，按需取用就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/mureka.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Mureka上手一周：AI做歌这件事，我终于信了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/myboy-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MyBoy 使用速查：9 个问题把这款 GBA 模拟器讲透</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

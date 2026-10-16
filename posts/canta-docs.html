@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Canta 避坑指南：四个容易翻车的场景和应对办法 · 老杨技术栈</title>
+  
+<meta name="description" content="Canta 看着就是个系统应用卸载工具，其实藏着几个容易踩的坑：Android 16 配对失败、恢复不了应用、跨设备同步漏应用、bootloop 风险。踩过一轮总结的实战经验。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/canta-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canta 避坑指南：四个容易翻车的场景和应对办法">
+<meta property="og:description" content="Canta 看着就是个系统应用卸载工具，其实藏着几个容易踩的坑：Android 16 配对失败、恢复不了应用、跨设备同步漏应用、bootloop 风险。踩过一轮总结的实战经验。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/canta-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/canta-docs/shizuku-setup.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/canta-docs/shizuku-setup.webp">
+
+<meta name="twitter:title" content="Canta 避坑指南：四个容易翻车的场景和应对办法">
+<meta name="twitter:description" content="Canta 看着就是个系统应用卸载工具，其实藏着几个容易踩的坑：Android 16 配对失败、恢复不了应用、跨设备同步漏应用、bootloop 风险。踩过一轮总结的实战经验。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Canta \u770b\u7740\u5c31\u662f\u4e2a\u7cfb\u7edf\u5e94\u7528\u5378\u8f7d\u5de5\u5177\uff0c\u5176\u5b9e\u85cf\u7740\u51e0\u4e2a\u5bb9\u6613\u8e29\u7684\u5751\uff1aAndroid 16 \u914d\u5bf9\u5931\u8d25\u3001\u6062\u590d\u4e0d\u4e86\u5e94\u7528\u3001\u8de8\u8bbe\u5907\u540c\u6b65\u6f0f\u5e94\u7528\u3001bootloop \u98ce\u9669\u3002\u8e29\u8fc7\u4e00\u8f6e\u603b\u7ed3\u7684\u5b9e\u6218\u7ecf\u9a8c\u3002", "headline": "Canta \u907f\u5751\u6307\u5357\uff1a\u56db\u4e2a\u5bb9\u6613\u7ffb\u8f66\u7684\u573a\u666f\u548c\u5e94\u5bf9\u529e\u6cd5", "image": ["https://alipymanbu.github.io/images/canta-docs/shizuku-setup.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/canta-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/canta-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "Canta \u907f\u5751\u6307\u5357\uff1a\u56db\u4e2a\u5bb9\u6613\u7ffb\u8f66\u7684\u573a\u666f\u548c\u5e94\u5bf9\u529e\u6cd5", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">Canta 避坑指南：四个容易翻车的场景和应对办法</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Canta 避坑指南：四个容易翻车的场景和应对办法</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Canta 看着就是个系统应用卸载工具，其实藏着几个容易踩的坑：Android 16 配对失败、恢复不了应用、跨设备同步漏应用、bootloop 风险。踩过一轮总结的实战经验。</p>
+  </header>
+  <div class="prose">
+<h2>开头：这工具看着简单，其实有几个坑</h2>
+<p>第一次在 <a href="https://canta.laze.skin" target="_blank" rel="noopener">canta官网</a> 看到 Canta 的时候觉得这东西能有多难——不就是帮你卸个预装应用吗？界面干干净净，一个回收站图标摆在那儿，Shizuku 配对完授权就行。结果真跑起来，接连踩了好几个不显眼但足够闹心的坑。</p>
+<p>不是说 Canta 设计得不好，恰恰相反，它的安全机制做得挺扎实——只动 user 0 不碰系统分区，最坏情况恢复出厂就能救。但有些问题不在 Canta 本身，而是 Android 版本、设备差异、以及我们用它的姿势不对造成的。</p>
+<p>挑四个我实打实踩过的坑，逐个说清楚。</p>
+<hr>
+<h2>坑一：Android 16 上 Shizuku 死活配不上</h2>
+<p><strong>症状</strong>：Shizuku 装好了，开发者选项里无线调试也开了，扫完配对码之后 Shizuku 界面显示"正在启动"然后就卡住，或者显示配对成功但 Canta 打开说拿不到 shell 权限，操作按钮全灰的。</p>
+<p>我第一次遇到的时候以为是 Shizuku 没装好，卸载重装了三次，又换了个老版本 APK，还是一样。甚至怀疑是不是手机系统坏了，差点恢复出厂。</p>
+<p><strong>原因</strong>：Android 16（API 36）对 Wireless Debugging 的安全模型做了改动，增加了额外的认证检查。原版 Shizuku 的配对流程在部分 Android 16 设备上会失败——不是 Canta 的问题，是 Shizuku 和新系统对不上。Rikka 本人对 Android 16 适配进展也不明确，官方仓库没跟进。</p>
+<p><strong>解法</strong>：换社区维护的兼容分支。thedjchi/Shizuku 这个 fork 适配了新的认证流程，配对步骤和 Android 11+ 的无线配对完全一样，就是换个 APK 装。卸载原版、装 fork 版、重新配对——三分钟搞定。挑 fork 的时候注意看 GitHub Release 是否活跃、有没有人反馈 Android 16 配对成功的记录。</p>
+<p><img src="../images/canta-docs/shizuku-setup.webp" alt="Shizuku 配对界面" loading="lazy"></p>
+<hr>
+<h2>坑二：已卸载的应用突然恢复不了</h2>
+<p><strong>症状</strong>：切到"已卸载"标签页，找到想恢复的应用，点恢复按钮，弹出一个错误提示就没下文了。应用还躺在已卸载列表里，恢复不了。</p>
+<p>这个坑我是在一台旧三星上碰的——之前用 Canta 卸了一个 Samsung Pay，后来想装回来，恢复按钮点了没反应。</p>
+<p><strong>原因</strong>：有三种常见情况。第一种是应用属于特殊类型，比如 overlay、device admin 这类有特殊权限的应用，Canta 调的 <code>pm install-existing</code> 命令搞不定，需要用 adb 手动执行。第二种是 APK 真被删了——如果这台手机 root 过、或者你手动改过系统分区，APK 本体不在了，Canta 报"找不到包"。第三种最简单——Shizuku 掉线了，配对状态丢了，操作发不出去。</p>
+<p><strong>解法</strong>：先查 Shizuku 状态，确认在线再说。如果还是不行，用 adb 手动试一下 <code>pm install-existing 包名</code>。adb 也不行的话，大概率是 APK 真没了，只能从 <a href="https://canta.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a> 重新拿安装包。</p>
+<hr>
+<h2>坑三：Preset 跨设备同步后发现漏了一堆应用</h2>
+<p><strong>症状</strong>：旧手机上辛辛苦苦建了一个 Preset，里面列了 30 个要卸的包名。新手机导入、Apply Preset，结果实际只卸了 22 个——8 个应用漏掉了。</p>
+<p>一开始我以为是 Canta 匹配出 bug 了，去翻了 Preset JSON 确认包名没错，新旧两台手机都是同一个品牌的。</p>
+<p><strong>原因</strong>：同一厂商不同型号的预装应用不完全一样，甚至同型号不同系统版本都有差异。旧设备 Preset 里记录的某些包名，新设备上根本不存在——Canta 的设计就是自动过滤掉设备上没有的应用，这不是 bug 是 feature，防止你卸不存在的东西时报错。所以漏掉的那 8 个，是新设备上压根没装的。</p>
+<p>还有一种情况更隐蔽：新设备上这个包名存在，但包签名和旧设备不一样——比如同一款应用，一个是系统预装版一个是应用商店版，包名一样但版本号和签名不同。Canta 只按包名匹配，签名不同的也会被选中，但恢复的时候可能出问题。</p>
+<p><strong>解法</strong>：Apply Preset 完成后别直接点卸载，先切到"已卸载"标签页核对一下。对比 Preset JSON 里的包名列表和实际选中的应用，设备上有但没被选中的（可能是新版本预装的），手动搜一下包名看看能不能加进 Preset。用一段时间之后，把新发现的预装应用补充进原 Preset，合并成一个更全的版本——跨设备同步和 Preset 导入导出的详细步骤去 <a href="https://canta-docs.pages.dev/" target="_blank" rel="noopener">canta文档</a> 翻。</p>
+<hr>
+<h2>坑四：不小心卸了关键组件导致 Bootloop</h2>
+<p><strong>症状</strong>：卸完一批应用重启手机，卡在开机 Logo 界面无限重启，等了十分钟也进不了桌面。</p>
+<p>这个坑我没自己踩过，但社区里不少人中过招。典型场景是：Canta 开了"允许选择不安全项"开关，然后 Universal Debloater 清单里某个标了 🟣 Unsafe 的应用被误选中了——SystemUI、Launcher、Settings 的核心 service、vulkan 驱动这些，随便卸一个都可能让 Android 启动流程卡住。</p>
+<p><strong>原因</strong>：Canta 默认不让你选不安全项，但这个开关藏在设置里，开了之后就能选所有应用。很多人看到"Unsafe"标签不以为然，觉得反正卸载到 user 0 也不是物理删除——没错，APK 确实没删，但 Android 启动时找不到这些应用记录就会卡住。</p>
+<p><strong>解法</strong>：关了"允许选择不安全项"这个开关。保持默认设置，Universal Debloater 清单里紫色 🟣 标注的一律别碰。万一真 bootloop 了也不用慌——因为 APK 还在系统分区，<strong>恢复出厂设置就能救回来</strong>。恢复出厂会清空所有用户数据但重新挂载系统分区，被移除的 user 0 应用记录会被重建。比刷回系统镜像简单得多，也不需要电脑。</p>
+<hr>
+<h2>防坑清单（记住这几条基本不会翻）</h2>
+<ul><li>Android 16 用户别用原版 Shizuku，换社区兼容分支，省得反复配对浪费时间</li><li>恢复应用失败先查 Shizuku 在线状态，再试 adb 手动执行，最后才怀疑 APK 真没了</li><li>Preset 跨设备 Apply 完务必核对一遍已卸载列表，设备差异一定会导致漏项</li><li>永远别开"允许选择不安全项"开关，紫色 🟣 标注的应用一律跳过</li><li>就算 bootloop 了也别慌，恢复出厂能救——Canta 不会真砖</li></ul>
+<h2>收尾</h2>
+<p>知道这些坑之后，这软件其实相当省心。Canta 的设计哲学就是安全优先——只动 user 0、APK 留在分区里、随时可以恢复，再加上社区维护的 Universal Debloater 清单帮你挡了大部分危险项。把 Shizuku 配对好、保持默认设置、不手欠开那个开关，日常用基本不会翻船。顺带提一句，完整的资料和 APK 备份我在三个仓库都留了份——国际访问走 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/canta" target="_blank" rel="noopener">GitHub</a> 方便，国内用户直接上 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/canta" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/canta" target="_blank" rel="noopener">GitCode</a> 速度更稳。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/candy-ai-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Candy AI 从零上手：注册、建角色、聊到上头的完整实战</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/carcarekiosk.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">自己动手保养爱车，这个视频库让我省了至少一顿火锅钱</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

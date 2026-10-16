@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把 After Effects 动画直接搬到 App 和网页？我试了 Lottie 一周 · 老杨技术栈</title>
+  
+<meta name="description" content="前端和移动端开发绕不开的动效方案，设计师用 AE 导出 JSON，开发者嵌入 SDK 就能播。上手实测它的安装、嵌入和跨平台体验，聊聊好在哪、坑在哪。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/lottie-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把 After Effects 动画直接搬到 App 和网页？我试了 Lottie 一周">
+<meta property="og:description" content="前端和移动端开发绕不开的动效方案，设计师用 AE 导出 JSON，开发者嵌入 SDK 就能播。上手实测它的安装、嵌入和跨平台体验，聊聊好在哪、坑在哪。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/lottie-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/lottie-zh-docs/bodymovin-export.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/lottie-zh-docs/bodymovin-export.png">
+
+<meta name="twitter:title" content="把 After Effects 动画直接搬到 App 和网页？我试了 Lottie 一周">
+<meta name="twitter:description" content="前端和移动端开发绕不开的动效方案，设计师用 AE 导出 JSON，开发者嵌入 SDK 就能播。上手实测它的安装、嵌入和跨平台体验，聊聊好在哪、坑在哪。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u524d\u7aef\u548c\u79fb\u52a8\u7aef\u5f00\u53d1\u7ed5\u4e0d\u5f00\u7684\u52a8\u6548\u65b9\u6848\uff0c\u8bbe\u8ba1\u5e08\u7528 AE \u5bfc\u51fa JSON\uff0c\u5f00\u53d1\u8005\u5d4c\u5165 SDK \u5c31\u80fd\u64ad\u3002\u4e0a\u624b\u5b9e\u6d4b\u5b83\u7684\u5b89\u88c5\u3001\u5d4c\u5165\u548c\u8de8\u5e73\u53f0\u4f53\u9a8c\uff0c\u804a\u804a\u597d\u5728\u54ea\u3001\u5751\u5728\u54ea\u3002", "headline": "\u628a After Effects \u52a8\u753b\u76f4\u63a5\u642c\u5230 App \u548c\u7f51\u9875\uff1f\u6211\u8bd5\u4e86 Lottie \u4e00\u5468", "image": ["https://alipymanbu.github.io/images/lottie-zh-docs/bodymovin-export.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/lottie-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/lottie-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u628a After Effects \u52a8\u753b\u76f4\u63a5\u642c\u5230 App \u548c\u7f51\u9875\uff1f\u6211\u8bd5\u4e86 Lottie \u4e00\u5468", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">把 After Effects 动画直接搬到 App 和网页？我试了 Lottie 一周</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把 After Effects 动画直接搬到 App 和网页？我试了 Lottie 一周</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">前端和移动端开发绕不开的动效方案，设计师用 AE 导出 JSON，开发者嵌入 SDK 就能播。上手实测它的安装、嵌入和跨平台体验，聊聊好在哪、坑在哪。</p>
+  </header>
+  <div class="prose">
+<h2>为什么我会去装 Lottie</h2>
+<p>事情起因挺简单的：上周产品经理甩过来一个需求，App 首页加载态要换个「有点质感」的动画。之前用的 GIF 动图体积大不说，在不同分辨率的手机上还经常糊成一团。我本来打算自己用 CSS 重写一个 loading，结果去设计那边拿素材的时候，发现他们已经在用 After Effects 做好了一套动画，而且导出了 Lottie 格式的 JSON 文件。</p>
+<p>说实话我之前对 Lottie 的认知停留在「设计师导 JSON，开发嵌入就行」这个层面——听起来像是个零成本的东西。实际跑了一圈才发现，它确实把设计端和开发端之间那条最头疼的交付缝给填上了，但也不是说拿过来就能无缝跑。Lottie 是什么？简单说就是 Airbnb 开源的一套跨平台动画方案，设计端用 AE 加 Bodymovin 插件导出 JSON，开发端在 Web、Android、iOS、Flutter 等各个平台引入 SDK 就能播放。它的<a href="https://lottie.fedq.ren" target="_blank" rel="noopener">官网</a>目前被国内墙得厉害，想直接访问得挂梯子，这点挺闹心的。</p>
+<h2>第一眼：嵌入比想象中简单</h2>
+<p>我先从 Web 端试起的，毕竟改个 HTML 文件就能跑，不用装 IDE。官方的 Web SDK 叫 lottie-web，CDN 直接引一行 <code>&lt;script&gt;</code> 就行，然后页面上放个空的 <code>div</code> 容器，一段 JS 调用 <code>lottie.loadAnimation()</code> 就搞定了。</p>
+<pre><code class="language-javascript">lottie.loadAnimation({
+  container: document.getElementById(&#x27;lottie-container&#x27;),
+  renderer: &#x27;svg&#x27;,
+  loop: true,
+  autoplay: true,
+  path: &#x27;loading.json&#x27;,
+});</code></pre>
+<p>整个过程不到十分钟，动画就在浏览器里转起来了。说实话这是我没想到的——之前写 CSS keyframe 动画，调位置、调缓动、调循环，一个 loading 折腾半小时都正常。现在一个 JSON 文件解决了。</p>
+<p>不过这里有个小坑：容器必须设明确的宽高，动画会填满容器。我一开始忘了给 <code>div</code> 加样式，结果动画直接缩成一个小点。还有两个参数值得留意——<code>renderer</code> 选 <code>svg</code> 还是 <code>canvas</code>，以及 JSON 是用 <code>path</code> 外部加载还是 <code>animationData</code> 内联。我的经验是，简单动效用 SVG 渲染、小文件直接内联，省一个请求；复杂动效或者需要远程更新的，走外部 JSON + CDN 托管更灵活。</p>
+<h2>iOS 和 Android 也想跑？各有各的脾气</h2>
+<p>Web 端跑通之后，我又去 iOS 项目里试了下。从<a href="https://lottie.fedq.ren/download.html" target="_blank" rel="noopener">下载</a>拿到 SDK 之后，lottie-ios 支持 iOS 11 以上，安装方式有 SPM、CocoaPods、Carthage 三种。我用的是 Swift Package Manager，Xcode 里 <code>File → Add Packages...</code> 加一下仓库地址就完了。这里有个细节要注意，Lottie 团队现在推荐用一个叫 <code>lottie-spm</code> 的瘦身仓库而不是主仓库——主仓库体积超过 300MB，SPM 每次拉取会非常慢，瘦身仓库只有几百 KB，是预编译好的 XCFramework。</p>
+<p>Android 那边用的是 lottie-android，Gradle 里加个依赖就能用。不过我没实际在 Android Studio 里跑完整流程，就不多说了——两边的 API 命名和参数各有各的风格，但核心思路和 Web 端一致：创建容器 View，设置动画文件，然后播放。</p>
+<p>让我印象最深的是跨平台一致性。同一份 JSON 文件，我在 Chrome、Safari、iPhone 真机、Android 模拟器上都跑了一遍，视觉效果几乎一模一样。这在之前用 PNG 序列帧或者 GIF 的时候是根本不敢想的——每个平台的像素密度、渲染引擎都不一样，出来的效果参差不齐。</p>
+<p><img src="../images/lottie-zh-docs/bodymovin-export.png" alt="设计端用 Bodymovin 插件导出 JSON 的界面" loading="lazy"></p>
+<h2>不想把 JSON 打包进 App？CDN 托管解决</h2>
+<p>第二个让我挺惊喜的功能是 LottieFiles 的 CDN 托管。动效 JSON 虽然小，一般几十 KB 撑死了，但如果每个运营活动都加一个、每个节日主题都加一个，攒起来 APK/IPA 的体积还是会蹭蹭涨。而且更麻烦的是，打包进 App 的动效要更新就得重新发版。</p>
+<p>LottieFiles 提供了文件托管和全球 CDN 加速——你把 JSON 上传上去，它给你一个永久的 CDN URL，各平台 SDK 通过 URL 远程加载就行。Web 端直接把 <code>path</code> 参数换成 CDN 地址，iOS 用 <code>animationView.load(url:)</code>，Android 用 <code>setAnimationFromUrl()</code>，几行代码的事。</p>
+<p>这里有个我觉得挺合理的建议：常驻功能的核心动效（比如品牌 Logo 动画）打包进本地资源，保证首屏不闪；运营活动、节日主题这些临时性的动效走 CDN，随时可以换。我按这个策略改了一下首页的加载动画，上线后运营那边说效果不错，而且后面想改动画内容也不用我重新发版了。更多远程加载和托管的进阶玩法，在<a href="https://lottie-zh-docs.pages.dev/" target="_blank" rel="noopener">Lottie文档</a>里写得挺详细的。</p>
+<h2>和 GIF、CSS、AVD 对比一下</h2>
+<p>试了这几天之后，我也忍不住跟之前用过的方案比了比。</p>
+<p>GIF 动图体积大（一段 5 秒的动效通常 500KB 起步）、最多 256 色、不能缩放、没有交互——基本是表情包和社交平台小动图的专属了。PNG 序列帧质量好但体积是 Lottie JSON 的 30 到 50 倍，适合那种矢量表达不了的逐帧手绘动画。CSS 动画在纯 Web 端做简单 loading 和 hover 动效其实挺不错，零依赖，但复杂动效写 keyframe 会很痛苦，而且 Android/iOS 原生不支持。Android 自己的 AVD 在纯 Android 项目里表现优秀，但只能 Android 用。</p>
+<p>综合下来，Lottie 在跨平台品牌动效、引导动画、状态切换这些场景里几乎是最好的选择——矢量可缩放、JSON 体积小、设计到开发一条链到底、API 能控制播放暂停跳转、还能远程热更新。当然也有边界：复杂的 AE 表达式需要预烘焙，3D 层不支持，SDK 本身也要引入（Web 端 gzip 后约 40KB）。</p>
+<h2>适合谁，不适合谁</h2>
+<p>如果你是前端或移动端开发，项目里需要跨平台一致的动效，而且设计师用 After Effects 做东西——Lottie 基本上是必学的。它解决了一个长期存在的痛点：设计端的动画之前只能导出 GIF 或视频，糊、大、没法交互；现在直接导出 JSON，各平台原生渲染，效果对得上，开发量还小。</p>
+<p>如果你的动效需求很简单，就是一个网页的 loading spinner 或者按钮 hover 效果，那用 CSS/SVG 动画更轻——毕竟引入 Lottie SDK 也有成本。社交平台的表情包场景 Lottie 也进不去，那是 GIF 的地盘。还有那种超复杂的逐帧手绘动画，矢量格式表达不了，得用 PNG 序列帧。</p>
+<h2>写在最后</h2>
+<p>Lottie 不是万能的，但它确实把设计师和开发者之间的协作效率拉高了一大截。我这一周从安装到嵌入到跨平台测试，整体体验比预想中顺畅，踩的几个小坑也都是文档里说过的——只要照着做就不会翻车。</p>
+<p>这套 Lottie 相关的资料我在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Lottie" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Lottie" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Lottie" target="_blank" rel="noopener">GitCode</a> 三个仓库都同步了一份，方便不同网络环境下访问。海外网络优先 GitHub，国内访问选 Gitee，GitCode 那边也放了一份作为备份兜底。三个仓库的内容完全一致，选哪个都行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zepp-app.html">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</a></h2>
+  <p class="card-desc">把 Amazfit 手表生态从连接、健康监测到个性化改造的能力面完整铺开，哪些是真亮点、哪些藏着短板、哪类人最值得入手这套组合。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wispr-docs.html">Wispr v1.3.3：一个加密通讯应用在&#34;安全优先&#34;路上的四年迭代</a></h2>
+  <p class="card-desc">从 VOBP 协议到 P2P 直连，从手机号免费层到 Matrix ID 付费身份，CryptoDATA 的 Wispr 用一个个小版本慢慢拼凑出它对&#34;加密通讯该怎么做&#34;的答案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wibu-docs.html">给 wibu 算一笔付费账：Wibu+ 订阅到底值不值得掏这 $9.99</a></h2>
+  <p class="card-desc">从定价拆解到按使用强度算账，把 Wibu+ 订阅的每一项权益换算成你实际能省的时间和赚到的钱，看完你就知道自己该不该付。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/longcat-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">LongCat 深度对比：当 AI 助手遇上免费无广告的狠角色</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/lovemaniac-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">期末周的夜晚，我被一个独立游戏卡了六个小时</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

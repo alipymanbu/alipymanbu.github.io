@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我把 RayLink 嵌进每周远程巡检流水线后，省了三次手动开关机 · 老杨技术栈</title>
+  
+<meta name="description" content="每周要远程连四台机器巡检、传日志、调配置，以前用 TeamViewer 加网盘中转要一个半小时。现在 RayLink 接进脚本和飞书提醒，一条链跑完。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/raylink-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我把 RayLink 嵌进每周远程巡检流水线后，省了三次手动开关机">
+<meta property="og:description" content="每周要远程连四台机器巡检、传日志、调配置，以前用 TeamViewer 加网盘中转要一个半小时。现在 RayLink 接进脚本和飞书提醒，一条链跑完。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/raylink-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/raylink-docs/file-transfer.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/raylink-docs/file-transfer.webp">
+
+<meta name="twitter:title" content="我把 RayLink 嵌进每周远程巡检流水线后，省了三次手动开关机">
+<meta name="twitter:description" content="每周要远程连四台机器巡检、传日志、调配置，以前用 TeamViewer 加网盘中转要一个半小时。现在 RayLink 接进脚本和飞书提醒，一条链跑完。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6bcf\u5468\u8981\u8fdc\u7a0b\u8fde\u56db\u53f0\u673a\u5668\u5de1\u68c0\u3001\u4f20\u65e5\u5fd7\u3001\u8c03\u914d\u7f6e\uff0c\u4ee5\u524d\u7528 TeamViewer \u52a0\u7f51\u76d8\u4e2d\u8f6c\u8981\u4e00\u4e2a\u534a\u5c0f\u65f6\u3002\u73b0\u5728 RayLink \u63a5\u8fdb\u811a\u672c\u548c\u98de\u4e66\u63d0\u9192\uff0c\u4e00\u6761\u94fe\u8dd1\u5b8c\u3002", "headline": "\u6211\u628a RayLink \u5d4c\u8fdb\u6bcf\u5468\u8fdc\u7a0b\u5de1\u68c0\u6d41\u6c34\u7ebf\u540e\uff0c\u7701\u4e86\u4e09\u6b21\u624b\u52a8\u5f00\u5173\u673a", "image": ["https://alipymanbu.github.io/images/raylink-docs/file-transfer.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/raylink-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/raylink-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6211\u628a RayLink \u5d4c\u8fdb\u6bcf\u5468\u8fdc\u7a0b\u5de1\u68c0\u6d41\u6c34\u7ebf\u540e\uff0c\u7701\u4e86\u4e09\u6b21\u624b\u52a8\u5f00\u5173\u673a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">我把 RayLink 嵌进每周远程巡检流水线后，省了三次手动开关机</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我把 RayLink 嵌进每周远程巡检流水线后，省了三次手动开关机</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">每周要远程连四台机器巡检、传日志、调配置，以前用 TeamViewer 加网盘中转要一个半小时。现在 RayLink 接进脚本和飞书提醒，一条链跑完。</p>
+  </header>
+  <div class="prose">
+<p>每周一下午三点，我有一条固定的远程巡检流水线要跑完：连四台机器——两台 Windows 工作站、一台 Mac mini、一台 Android 测试机——逐个看进程、拉日志、改配置、传产物。以前这条链上挂了 TeamViewer、坚果云、飞书、一个自研的 Python 脚本，还有两次因为没人开电脑卡壳超时。换成 RayLink 嵌进去之后，整条链稳了三个月。它的<a href="https://raylink.yoan.quest" target="_blank" rel="noopener">官网</a>在设计上强调跨端一致性——Windows、Mac、Android 三个平台的客户端从主界面到快捷键都差不多，这也是我当初选它当主入口的原因之一。</p>
+<h2>旧流程：四台机器、三套连接方式、两个中转网盘</h2>
+<p>先讲以前是怎么干的。TeamViewer 负责 Windows 和 Mac 的远控，但我那台 Android 测试机它连不上，得另外装一个专门的远控 App。现在换成 RayLink 之后，Android 端的安装包从<a href="https://raylink.yoan.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿就行，装完登录同账号就能直接连。文件传输走坚果云——因为 TeamViewer 自带的传输限速到 2MB/s，一份 500MB 的日志包要等十分钟。Android 端更糟，App 内置的传输通道只支持小文件，大的就得从电脑传到网盘、再从网盘下载到手机，两次手动复制。</p>
+<p>还有开机的问题。Mac mini 在公司机房里，以前没人的时候它自动休眠，远程过去先得找人帮着点一下唤醒键，或者自己 SSH 上去敲命令——但 SSH 有时候因为系统更新端口被封掉。两台 Windows 工作站装了 TeamViewer 的无人值守，但有一次系统更新后开机自启被关掉了，我白等了半小时才发现是客户端没起来。</p>
+<p>整条流程卡在三个节点：<strong>Android 端的文件传递</strong>、<strong>休眠机器的唤醒</strong>、<strong>日志导出后的中转存储</strong>。每个节点都要手动介入，一介入就要切换工具、复制路径、确认权限——三个节点加起来多了大概二十分钟的手动开销，还不算等网盘同步的时间。</p>
+<h2>新流程：RayLink 当主入口，上下游各接一层</h2>
+<p>现在这条链的骨架是：RayLink 作为所有设备的统一远控入口 → 自研脚本跑巡检命令并把日志直接写进 RayLink 文件传输面板 → 飞书机器人自动收完包发提醒 → 我在主控端用 RayLink 的传输面板把日志拖到本地归档。</p>
+<p>核心变化是<strong>把文件从「网盘中转」改成了「RayLink 直传」</strong>。RayLink 自带的传输引擎有两种速度档位——免费版限速 5MB/s，开了会员就不限速——我两台机器都在千兆局域网里，实测能跑到 40MB/s 往上，一份 500MB 的日志包二十秒就过了。更关键的是它跨端一致，Windows、Mac、Android 三个平台传起来都是同一套拖拽逻辑，不用因为设备不同切工具。</p>
+<p><img src="../images/raylink-docs/file-transfer.webp" alt="文件拖拽传输示意，实时速率约 60MB/s" loading="lazy"></p>
+<p>上下游怎么接？脚本跑在 Windows 工作站上，它先通过 SSH 连 Mac mini 和 Android 的 adb shell，把各端的巡检结果汇总成一个 tar 包，然后直接放进 RayLink 的共享文件夹里——RayLink 的文件传输面板有个双栏界面，左边是主控端磁盘，右边是被控端，脚本写好后我只需要把远端那个 tar 包从右栏拖到左栏的归档目录就行。飞书机器人这层在文件落盘后触发一个 webhook，发一条带文件路径的消息到我的巡检群里，我不用盯着屏幕等。</p>
+<h2>容易断链的两个环节，怎么补</h2>
+<p>流程里最容易出问题的两个点，我花了两周才摸清楚怎么稳下来。</p>
+<p>第一个是<strong>休眠唤醒</strong>。Mac mini 以前老是在没人的时候休眠，我试过在系统设置里把睡眠全关了——包括"不活动时启动屏幕保护程序""使用电池供电且不活跃时关闭显示器""使用电源适配器且不活跃时关闭显示器"，三项全设成"永不"——结果还是有一次因为机房断电重启后，系统默认把睡眠改回去了。现在的做法是在 RayLink 的无人值守配置里把开机自启勾上，同时让脚本每次巡检前先跑一个 Wake-on-LAN 的魔法包，用 RayLink 传过去——相当于两层保险。Windows 那两台更简单，RayLink 的无人值守本身就支持开机自启和禁用休眠，设置在"基础设置"和"电源与睡眠"里，改一次就再也没出过问题。</p>
+<p>第二个是<strong>Android 端的大文件传输</strong>。以前所有远控 App 在 Android 上的文件通道都做小了，RayLink 刚换过去的时候我也担心——结果它 Android 端的文件传输和桌面端是同一套引擎，我直接把一个 300MB 的安装包拖进去，它分块传、实时显示进度条，中途断了还能续传。现在 Android 测试机上的 APK 和日志，我全靠 RayLink 传，不再走网盘。</p>
+<p><img src="../images/raylink-docs/unattended-access.png" alt="RayLink 无人值守设置说明配图" loading="lazy"></p>
+<p>还有一个细节值得提——4:4:4 真彩模式。Mac mini 上我跑了一套代码生成器，会输出彩色语法高亮的预览页，以前用 TeamViewer 看的时候颜色总有点发灰，调了好几遍参数还是不对。换成 RayLink 后，在工具栏的色彩菜单里切到 4:4:4，那个颜色一下就正了。我当初配置的时候参数调不出来，后来去<a href="https://raylink-docs.pages.dev/" target="_blank" rel="noopener">RayLink文档</a>翻了一下才弄明白——这个模式要求被控端是 NVIDIA 显卡、驱动 445.87 以上，还要会员档位。</p>
+<h2>效果和边界</h2>
+<p>这条链跑了三个月，我统计过数据：以前一次巡检从登录到归档完要 1 小时 20 分钟，现在是 45 分钟——主要省在文件传输和不用等人开机器这两块，少了两次手动复制、一次切工具、一次等网盘同步。脚本自动化那部分以前也有，但因为远端连接总不稳定，脚本经常跑到一半就卡在 SSH 握手阶段，现在 RayLink 保持着连接，脚本跑完就能直接通过文件面板把结果拖回来，整个链路闭环了。</p>
+<p>但这套流程也有它的边界。首先是跨公网的场景——如果被控端不在同一个局域网，RayLink 走的是 P2P 穿透，带宽受两端上行限制，这时候它的传输速度就不一定比网盘快了，我那个 5MB/s 的限速在公网场景下其实也够（因为上行本来就到不了那么快）。其次是企业安全审计的场景，公司有内网管控的话，文件传输行为要留记录——RayLink 企业版有传输日志和控制台审计，但我自己用的是个人版，这一层覆盖不到。</p>
+<p>另外会员费的取舍。免费版传输限速 5MB/s，画质最高到 4:2:0，对我这种每周才传几个包的人其实也够用——但 4:4:4 真彩和不限速这两个权益我当时用得着，就开了会员。如果只是偶尔远程一次、不传大文件，免费版完全能打。</p>
+<p>总的来说，这条流程的核心改动就一个：把所有远端连接和文件搬运统一收口到 RayLink，让它当"单一远控入口"和"替代网盘的传输通道"。脚本、飞书、SSH 这些上下游工具一个都没丢，只是把它们原来各自对接的连接方式换成了 RayLink 这一层。下次换软件或者加设备，也是先接到 RayLink 上，再往下游接——而不是每个新设备都去找一套新的连接方案。RayLink 本身是商业软件，但我整理的配套安装包、无人值守配置脚本和完整参数文档，在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/RayLink" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/RayLink" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/RayLink" target="_blank" rel="noopener">GitCode</a> 三个仓库都能拿到——国外用 GitHub 主仓库，国内 Gitee 和 GitCode 做加速镜像。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/quik-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Quik 快问快答：GoPro 用户到底该不该装这个 AI 剪辑神器</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/readify-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">地铁通勤救星：Readify 听书 APP 上手一周真实体验</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

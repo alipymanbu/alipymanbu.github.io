@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Venera 漫画阅读器用了半年才搞清楚的几个大坑 · 老杨技术栈</title>
+  
+<meta name="description" content="从格式兼容到漫画源安装、从本地库维护到换机恢复，盘点我踩过的那些让人抓狂又容易被忽略的操作陷阱。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/venera-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Venera 漫画阅读器用了半年才搞清楚的几个大坑">
+<meta property="og:description" content="从格式兼容到漫画源安装、从本地库维护到换机恢复，盘点我踩过的那些让人抓狂又容易被忽略的操作陷阱。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/venera-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/venera-docs/ui-import.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/venera-docs/ui-import.jpg">
+
+<meta name="twitter:title" content="Venera 漫画阅读器用了半年才搞清楚的几个大坑">
+<meta name="twitter:description" content="从格式兼容到漫画源安装、从本地库维护到换机恢复，盘点我踩过的那些让人抓狂又容易被忽略的操作陷阱。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u683c\u5f0f\u517c\u5bb9\u5230\u6f2b\u753b\u6e90\u5b89\u88c5\u3001\u4ece\u672c\u5730\u5e93\u7ef4\u62a4\u5230\u6362\u673a\u6062\u590d\uff0c\u76d8\u70b9\u6211\u8e29\u8fc7\u7684\u90a3\u4e9b\u8ba9\u4eba\u6293\u72c2\u53c8\u5bb9\u6613\u88ab\u5ffd\u7565\u7684\u64cd\u4f5c\u9677\u9631\u3002", "headline": "Venera \u6f2b\u753b\u9605\u8bfb\u5668\u7528\u4e86\u534a\u5e74\u624d\u641e\u6e05\u695a\u7684\u51e0\u4e2a\u5927\u5751", "image": ["https://alipymanbu.github.io/images/venera-docs/ui-import.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/venera-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/venera-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Venera \u6f2b\u753b\u9605\u8bfb\u5668\u7528\u4e86\u534a\u5e74\u624d\u641e\u6e05\u695a\u7684\u51e0\u4e2a\u5927\u5751", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">Venera 漫画阅读器用了半年才搞清楚的几个大坑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Venera 漫画阅读器用了半年才搞清楚的几个大坑</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从格式兼容到漫画源安装、从本地库维护到换机恢复，盘点我踩过的那些让人抓狂又容易被忽略的操作陷阱。</p>
+  </header>
+  <div class="prose">
+<p>半年前第一次接触 <a href="https://venera.rggd.pw" target="_blank" rel="noopener">venera官网</a> 介绍的这个软件，我以为就是个看漫画的小工具——打开、找源、开读，能有什么复杂的？结果断断续续踩了好几个坑，有的让我白白折腾半小时，有的差点把攒了大半年的本地库搞乱。这篇把我遇到的几个典型问题按真实经历捋一遍，用过的人可以对照自己有没有中招，刚上手的也能提前避开。</p>
+<h2>第一个坑：压缩包格式不是你想得那么宽泛</h2>
+<p>刚从 <a href="https://venera.rggd.pw/download.html" target="_blank" rel="noopener">venera下载</a> 装完的时候，手里有一批 RAR 格式的漫画包，兴致勃勃地往进导，结果一个都没成功。界面不报错也不提示，就是悄悄跳过了，让我以为文件坏了，又重新下了一遍。</p>
+<p><strong>症状</strong>：导入 RAR 或 PDF 文件时，应用静默忽略，导入列表里看不到任何新增，也没有任何错误提示。</p>
+<p><strong>原因</strong>：Venera 对压缩包格式的支持是硬编码的——只认 <code>.cbz</code>、<code>.zip</code>、<code>.cb7</code>、<code>.7z</code> 这四种。网上很多老教程和论坛帖子会说"支持常见格式"，但不同版本间实际支持的范围有出入，RAR 和 PDF 在当前版本里就是不支持。更隐蔽的是分卷压缩包（<code>.z01</code>、<code>.z02</code> 这种），即使是 zip 格式，分卷了也不认。</p>
+<p><strong>解法</strong>：导之前先用解压工具把 RAR 转成 zip，或者直接用在线转换工具批量处理。分卷包一定要先合并成一个完整文件再导入。这一步说起来简单，但我当时在"是不是文件损坏"和"是不是应用 bug"之间来回纠结了快半小时，才反应过来是格式问题。</p>
+<p><img src="../images/venera-docs/ui-import.jpg" alt="导入格式选择界面" loading="lazy"></p>
+<h2>第二个坑：本地库的失效条目越积越多，你根本没注意</h2>
+<p>Venera 的本地库有个机制——你手动删掉磁盘上的漫画文件，应用里的条目<strong>不会自动消失</strong>。我之前整理过一次磁盘，把一些不想留的压缩包移到了别的文件夹，结果打开本地库还是能看到那些条目，点进去读的时候才发现文件不存在，体验贼糟。</p>
+<p><strong>症状</strong>：本地页面里存在一些漫画条目，点进去提示无法加载内容，或者阅读时直接黑屏跳出。</p>
+<p><strong>原因</strong>：本地库的定位是"文件层面的存在性管理"，应用只记录"这里曾经有过什么"，不会定时校验磁盘上文件的真实状态。这和收藏分组是两套独立系统——删收藏不删文件，删本地文件也不自动同步条目。</p>
+<p><strong>解法</strong>：定期清理一次失效条目。本地库页面顶部一般有清理入口，跑一遍就能把账实不符的条目筛出来。我现在养成习惯，每次整理完磁盘之后就去点一下清理按钮，也就几秒钟的事。如果本地库条目特别多（上百本那种），建议在排序里用"失效优先"把有问题的堆到一起，集中处理。</p>
+<h2>第三个坑：漫画源脚本——别什么都往里面塞</h2>
+<p>Venera 的扩展体系很大一个特色就是"漫画源脚本"——装一个 <code>.js</code> 脚本文件，就能解锁新的漫画资源源。但自由度大了，坑也来了。我在某个论坛看到有人分享了一个"聚合 50 个源"的大包，顺手就装了，结果打开之后发现搜索结果里混了一堆来源不明的源，有的还弹窗要授权。</p>
+<p><strong>症状</strong>：装了来源可疑的脚本后，源列表里出现大量陌生条目，或者搜索时跳转异常、加载缓慢。</p>
+<p><strong>原因</strong>：漫画源脚本本质上就是在应用沙箱里运行的第三方 JavaScript 代码。理论上有沙箱隔离，但来路不明的脚本可能有各种奇奇怪怪的行为——有的偷偷请求外部接口，有的强制弹窗引导，还有的会影响其他已装源的稳定性。官方维护的源列表是经过审核的，但论坛分享、私人分享的脚本就没有这层保障了。</p>
+<p><strong>解法</strong>：只从两个可信入口装源——一是应用内置的"漫画源列表"，那是官方维护的仓库；二是自己确认来源可信的朋友直接分享的脚本文件。装完之后如果某个源行为异常，及时进源管理页停掉或者删掉。管理入口在主界面的漫画源管理里，每个源都可以独立停用或卸载，不用怕装错了救不回来。</p>
+<p><img src="../images/venera-docs/shot-07.png" alt="漫画源管理界面" loading="lazy"></p>
+<h2>第四个坑：换机搬数据，别只搬漫画文件夹</h2>
+<p>上个月换手机，我把旧设备的漫画文件夹完整拷贝过去了，结果打开 Venera 一看——本地库是空的，下载记录也一条都没了。当时以为拷贝过程丢了文件，又折腾重新下了好几本，后来才发现根本不是文件的问题。</p>
+<p><strong>症状</strong>：换机后漫画文件夹在，Venera 本地库和下载记录全部丢失，需要重新导入。</p>
+<p><strong>原因</strong>：下载记录和本地库的索引信息存在应用自己的数据库里，和漫画文件是两套东西。你只搬了文件，数据库没搬，应用自然认不出这些是"自己下载过的"。下载完成的漫画虽然归入本地管理，但"这条记录存在过"这个事实是存在应用数据库里的，不是存在文件上。</p>
+<p><strong>解法</strong>：按 <a href="https://venera-docs.pages.dev/" target="_blank" rel="noopener">venera文档</a> 里的指引，换机时要么<strong>整包迁移</strong>——用 WebDAV 同步功能把收藏、阅读进度、下载记录全都同步过去，在新设备上登录同一个同步账号就能完整恢复；要么先在旧设备上把本地漫画导出备份，新设备上重新导入。如果文件特别多，重新导入虽然有点费时间，但至少能保住内容。</p>
+<h2>第五个坑：压缩包改名乱序了都不知道</h2>
+<p>有一次下了一个多章节的压缩包，解压之后图片文件名杂乱无章，比如 <code>1.jpg</code>、<code>10.jpg</code>、<code>2.jpg</code> 这种。我以为 Venera 会按创建时间或者其他方式排序，结果打开漫画看到的页序是乱的，第 10 页跑到第 2 页前面去了。</p>
+<p><strong>症状</strong>：多章节或多页漫画打开后页序错乱，不是按实际章节顺序呈现的。</p>
+<p><strong>原因</strong>：Venera 内部对压缩包内的图片只有一个排序规则——<strong>按文件名字符串排序</strong>。不是数字大小，不是创建时间，就是纯字符串的字典序。<code>1.jpg</code> 之后是 <code>10.jpg</code> 还是 <code>2.jpg</code>，完全看字符串比较结果。同理，文件夹形式的漫画导入也遵循这个规则。</p>
+<p><strong>解法</strong>：压缩包里的图片文件名必须做零填充——<code>01.jpg</code>、<code>02.jpg</code>、……<code>10.jpg</code>、<code>11.jpg</code>，这样字符串排序才和数字顺序一致。我现在下载新漫画包的第一件事就是打开解压工具检查一下文件命名，乱的话用批量重命名工具（比如 Bulk Rename Utility）一键改成规范格式，省得导进去之后一页页翻错。</p>
+<p><img src="../images/venera-docs/shot-02.png" alt="Venera 阅读器主界面" loading="lazy"></p>
+<h2>防坑清单（3 条速查）</h2>
+<ul><li><strong>格式先过滤</strong>：RAR、PDF、分卷压缩包一律先转成 zip 或 7z 再导入，省得导完才发现白折腾</li><li><strong>漫画源宁缺勿滥</strong>：只用内置漫画源列表的官方仓库，论坛脚本谨慎对待</li><li><strong>定期清失效</strong>：本地库每次整理完磁盘就点一下清理按钮，别让僵尸条目越积越多</li></ul>
+<h2>最后说一句</h2>
+<p>用了半年下来，Venera 其实相当省心——搜索聚合多源、下载队列管理、收藏分组这些核心功能都很顺。上面列的五个坑都是我自己踩出来的教训，有的是设计上的"硬规矩"，有的是没养成好习惯。这篇涉及的几个常见问题，我顺手整理了一份排查思路，在 <a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/venera" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/venera" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/venera" target="_blank" rel="noopener">GitCode</a> 都有同步，国内访问哪家方便就去哪家看。知道这些之后，这软件其实相当省心。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/usagi-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Usagi 用了半年才踩明白的 5 个坑，第一个就差点让我放弃</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/videodownloader-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Video Downloader 到底值不值得装？九个问答把它说清楚</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

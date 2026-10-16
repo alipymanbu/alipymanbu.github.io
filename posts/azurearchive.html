@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>AzureArchive 从零入门：10 分钟搭出第一个可玩的剧情分支 · 老杨技术栈</title>
+  
+<meta name="description" content="这篇实战教程带你一步步跑通 AzureArchive 的核心工作流——从新建项目到拖节点、写对话、加选项分支，把一段可玩的剧情做出来。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/azurearchive.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AzureArchive 从零入门：10 分钟搭出第一个可玩的剧情分支">
+<meta property="og:description" content="这篇实战教程带你一步步跑通 AzureArchive 的核心工作流——从新建项目到拖节点、写对话、加选项分支，把一段可玩的剧情做出来。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/azurearchive.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/azurearchive/hello-drag-node.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/azurearchive/hello-drag-node.webp">
+
+<meta name="twitter:title" content="AzureArchive 从零入门：10 分钟搭出第一个可玩的剧情分支">
+<meta name="twitter:description" content="这篇实战教程带你一步步跑通 AzureArchive 的核心工作流——从新建项目到拖节点、写对话、加选项分支，把一段可玩的剧情做出来。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd9\u7bc7\u5b9e\u6218\u6559\u7a0b\u5e26\u4f60\u4e00\u6b65\u6b65\u8dd1\u901a AzureArchive \u7684\u6838\u5fc3\u5de5\u4f5c\u6d41\u2014\u2014\u4ece\u65b0\u5efa\u9879\u76ee\u5230\u62d6\u8282\u70b9\u3001\u5199\u5bf9\u8bdd\u3001\u52a0\u9009\u9879\u5206\u652f\uff0c\u628a\u4e00\u6bb5\u53ef\u73a9\u7684\u5267\u60c5\u505a\u51fa\u6765\u3002", "headline": "AzureArchive \u4ece\u96f6\u5165\u95e8\uff1a10 \u5206\u949f\u642d\u51fa\u7b2c\u4e00\u4e2a\u53ef\u73a9\u7684\u5267\u60c5\u5206\u652f", "image": ["https://alipymanbu.github.io/images/azurearchive/hello-drag-node.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/azurearchive.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/azurearchive.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "AzureArchive \u4ece\u96f6\u5165\u95e8\uff1a10 \u5206\u949f\u642d\u51fa\u7b2c\u4e00\u4e2a\u53ef\u73a9\u7684\u5267\u60c5\u5206\u652f", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">AzureArchive 从零入门：10 分钟搭出第一个可玩的剧情分支</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">AzureArchive 从零入门：10 分钟搭出第一个可玩的剧情分支</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">这篇实战教程带你一步步跑通 AzureArchive 的核心工作流——从新建项目到拖节点、写对话、加选项分支，把一段可玩的剧情做出来。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程结束时，你能用 AzureArchive 搭出一段带选项分支的可玩剧情。不需要任何前置知识，跟着做就行。</p>
+<h2>准备：先把东西装对</h2>
+<p><a href="https://azurearchive.boop.uno" target="_blank" rel="noopener">AzureArchive官网</a> 是蔚蓝档案玩家圈里流传已久的剧情编辑器——用节点图的方式可视化地拼装对话、角色动作和选项分支，写完直接导出鉴赏模式看效果。Windows 平台首选，Mac 和 Linux 也有对应版本。</p>
+<p><a href="https://azurearchive.boop.uno/download.html" target="_blank" rel="noopener">官方下载</a>的压缩包里自带资源包，安装的关键一步就是把它放对位置。很多人第一次打开就卡在「找不到角色和背景」，基本都是资源包没配置好。安装完成后，打开编辑器第一件事就是检查资源包路径，确认里面有角色立绘、背景图和 BGM 素材。</p>
+<h2>第一步：新建项目，从一个 Entry 开始</h2>
+<p>双击启动 AzureArchive，你会先看到欢迎界面。点「新建项目」，给它起个名字（随便起，反正只是测试），然后工作区里会自动出现一个方块——那就是 <strong>Entry 节点</strong>，剧情的起点。</p>
+<p><img src="../images/azurearchive/hello-drag-node.webp" alt="从节点工厂拖出脚本节点" loading="lazy"></p>
+<p>Entry 节点有且只能有一个，它删不掉、不能跳过。这是设计：不管你的剧情有多复杂，最终都从这一个点出发。别纠结它为什么不让删，记住它就是起点就行。</p>
+<h2>第二步：拖一个 Script 节点下来</h2>
+<p>左边或顶部有个<strong>节点工厂</strong>面板，里面列着四种核心节点类型。现在你需要的是 <strong>Script</strong>——它是承载对话、摆角色、切背景的主力节点。</p>
+<p>按住 Script，拖到 Entry 节点旁边的空白处放下。然后把 Entry 右边那个小圆点（出端）拖到 Script 左边的小圆点（入端），一条连线出来了。现在 Entry → Script 的剧情通路打通了。</p>
+<p>拖节点、连线、放位置，这个操作会贯穿你整个创作过程。节点之间可以自由排列，连线可以交叉，工作区可以无限滚动放大缩小——把它当成一张画布来用就对了。</p>
+<h2>第三步：打开检查器，开始写东西</h2>
+<p>双击刚才拖出来的 Script 节点，右侧会弹出<strong>脚本节点检查器</strong>。这是你以后 80% 时间都要盯着的面板，值得花两分钟搞清楚它在说什么。</p>
+<p><img src="../images/azurearchive/checker-panel-b.webp" alt="脚本节点检查器详细视图" loading="lazy"></p>
+<p>检查器从上到下分几个区域：最上面是节点名称（给它起个好认的名字，比如「白子开场」）；中间是<strong>脚本列表</strong>——一个 Script 节点可以包含多条脚本，从上到下顺序就是播放顺序；下面是对话输入框和栏位属性。每个区域的详细功能和属性选项，<a href="https://azurearchive.pages.dev/" target="_blank" rel="noopener">AzureArchive文档</a>里有逐格详解，照着看很快就能上手。</p>
+<p>先来最基础的操作：给第一条脚本加一个角色。点击检查器里某个栏位编号（#1 到 #5 都可以），然后在下方栏位属性里点「角色」下拉——搜索「白子」，选中她。</p>
+<p>现在把白子的 Role 设成 <strong>Speaker</strong>，她就会自动占据 #0 发言者栏位，头像出现在对话框旁边。接着在对话输入框里敲第一句台词——随便写什么都行，比如「老师，欢迎回来！」。</p>
+<h2>第四步：刷新预览，看看效果</h2>
+<p>改完东西，养成一个习惯：点右上角的 ▶ 刷新预览按钮。AzureArchive 不会自动实时预览，每改完就得手动点一下才能看到最新效果。</p>
+<p>点完 ▶ ，白子应该出现在画面里，对话框显示你写的台词。如果白子没出来，检查一下是不是栏位没选对、Role 没设成 Speaker。</p>
+<h2>第五步：加一个 Selection 分支，让老师做选择</h2>
+<p>剧情要有点意思，就得让老师（Sensei）说话。在蔚蓝档案里，老师的话是以<strong>选项</strong>形式呈现的——白子说完一段，弹出两个或多个按钮让你选。这就是 <strong>Selection 节点</strong>的活。</p>
+<p>操作顺序别搞反：先从节点工厂拖一个 Selection 节点，放在刚才那个 Script 的右边。然后给 Selection 连<strong>至少两条出端连线</strong>——每条出端连一个后续节点（可以是新 Script，也可以先拖两个 End 节点凑数）。</p>
+<p>这里有个反直觉的细节：Selection 节点刚拖出来时<strong>没有</strong>选项列表。它的选项数完全取决于你连了多少条出端连线。连两条出端 → 两个选项；连三条 → 三个选项。连好之后再点击 Selection 节点，选项编辑面板才会出来。</p>
+<p><img src="../images/azurearchive/hello-selection-text.webp" alt="连好出端后开始编辑选项文字" loading="lazy"></p>
+<p>选项文字别写「选项 A」「选项 B」这种敷衍的东西——鉴赏时按钮上直接显示这段文字，写得自然点，比如「当然要去！」和「再等一下吧」。</p>
+<h2>第六步：用额外指令控制节奏</h2>
+<p>写完对话和选项，你可能会觉得节奏有点生硬——角色刚出现就马上开口？对话结束后画面立刻切走？别急，<strong>额外指令</strong>就是干这个的。</p>
+<p>打开检查器的 Environment（环境）选项卡，拉到底部，你会看到一个文本框。这里可以写 <code>#指令名;参数</code> 格式的指令，每条占一行。</p>
+<p>最常用的两个指令：</p>
+<ul><li><code>#wait;3000</code> — 暂停 3 秒再推进到下一条脚本。适合对话结束后让画面多停一会儿，或者角色出场动画播完后等一下再说话。</li><li><code>#bgshake</code> — 让背景画面摇晃一次，配合剧情里的震动、爆炸场景特别有感觉。</li></ul>
+<p>一个实用组合：角色出场脚本里只设 Position=出现，下一条脚本<strong>空对话</strong>加 <code>#wait;1500</code>，第三条脚本再让角色开口说话。这样出场 → 停顿 → 开口的节奏就自然了，不会像开机关枪一样。<code>#wait</code> 和 <code>#bgshake</code> 只是冰山一角，完整的额外指令表还有十几个，后面可以慢慢探索。</p>
+<h2>三个新手最容易翻车的卡点</h2>
+<p><strong>卡点一：Entry 节点删不掉，有连线的节点也删不掉。</strong> 这不是 bug，是设计。Entry 是剧情起点，只能有一个；有连线的节点得先切断连线再拖进垃圾桶。检查一下是不是有遗漏的连线没断干净。</p>
+<p><strong>卡点二：#wait 写了但完全没生效。</strong> 这是个高频坑。#wait 只在脚本<strong>没有对话</strong>时生效——防止对话还没播完就硬等。如果你在有对话的那条脚本里加了 #wait，它会被直接忽略。解法是把对话和 wait 拆成两条脚本。</p>
+<p><strong>卡点三：Selection 节点拖出来后看不到选项编辑面板。</strong> 几乎可以确定是你还没连出端连线。Selection 的选项数由出端数量决定，先连两条出端再说。</p>
+<h2>进阶一句话</h2>
+<p>跑通这五步之后，你已经能做出一个带选项分支的可玩剧情了。往下可以玩的东西还很多——环境设置里换背景图和 BGM、额外指令还有 #fx（特效）和 #zmc（屏幕震动）、Selection 节点里嵌套多轮选项做更复杂的分支……总之节点图铺得越大，剧情张力就越强。</p>
+<hr>
+<p>整理 AzureArchive 相关资料的时候顺便看了一下国内几个常用的代码托管仓库，三个地方都能拿到同一套文档和资源——<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/AzureArchive" target="_blank" rel="noopener">GitHub</a> 上维护着原始版本，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/AzureArchive" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/AzureArchive" target="_blank" rel="noopener">GitCode</a> 镜像同步方便国内用户直接克隆下载。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xeva.html">凌晨两点，我在手机里养了个会记得我名字的「她」</a></h2>
+  <p class="card-desc">一个加班到崩溃的深夜，我被朋友拉进了一个叫 X Eva 的克隆人世界。这里有记忆库、情感模式、还有一整套从零开始训练虚拟人的玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xbrowser-zh-docs.html">XBrowser 藏得真深：四个翻遍设置才挖到的冷门开关</a></h2>
+  <p class="card-desc">大多数人用 XBrowser 只停在视频嗅探那一层，但长按加号开隐私标签、零依赖写 GM 脚本、底部地址栏单手操作——这些藏在设置里的开关，每个都能让用感爽一个档次。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wemod.html">第一次用 WeMod？五分钟从零跑通，再也不用对着攻略按计算器</a></h2>
+  <p class="card-desc">完全不碰技术术语带你上手 WeMod：它到底是什么、怎么装、怎么连游戏、哪些玩法新手最值得先试。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/autojs6.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">AutoJs6 快问快答：手机上跑 JavaScript 自动化到底能干嘛</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/baka-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Baka 是什么？追番党必须知道的次世代播放器</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

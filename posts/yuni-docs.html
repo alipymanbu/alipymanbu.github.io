@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Yuni 看着挺省心？我踩过的五个坑 · 老杨技术栈</title>
+  
+<meta name="description" content="第一次用 Yuni 分身聊天时以为就是个普通 AI 对话，结果连着踩了好几个看不见的坑——版本门槛、火花续断、回复节奏……这篇把我踩过的坑和拆弹方法全列出来。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/yuni-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yuni 看着挺省心？我踩过的五个坑">
+<meta property="og:description" content="第一次用 Yuni 分身聊天时以为就是个普通 AI 对话，结果连着踩了好几个看不见的坑——版本门槛、火花续断、回复节奏……这篇把我踩过的坑和拆弹方法全列出来。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/yuni-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/yuni-docs/home-page.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/yuni-docs/home-page.png">
+
+<meta name="twitter:title" content="Yuni 看着挺省心？我踩过的五个坑">
+<meta name="twitter:description" content="第一次用 Yuni 分身聊天时以为就是个普通 AI 对话，结果连着踩了好几个看不见的坑——版本门槛、火花续断、回复节奏……这篇把我踩过的坑和拆弹方法全列出来。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7b2c\u4e00\u6b21\u7528 Yuni \u5206\u8eab\u804a\u5929\u65f6\u4ee5\u4e3a\u5c31\u662f\u4e2a\u666e\u901a AI \u5bf9\u8bdd\uff0c\u7ed3\u679c\u8fde\u7740\u8e29\u4e86\u597d\u51e0\u4e2a\u770b\u4e0d\u89c1\u7684\u5751\u2014\u2014\u7248\u672c\u95e8\u69db\u3001\u706b\u82b1\u7eed\u65ad\u3001\u56de\u590d\u8282\u594f\u2026\u2026\u8fd9\u7bc7\u628a\u6211\u8e29\u8fc7\u7684\u5751\u548c\u62c6\u5f39\u65b9\u6cd5\u5168\u5217\u51fa\u6765\u3002", "headline": "Yuni \u770b\u7740\u633a\u7701\u5fc3\uff1f\u6211\u8e29\u8fc7\u7684\u4e94\u4e2a\u5751", "image": ["https://alipymanbu.github.io/images/yuni-docs/home-page.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/yuni-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/yuni-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "Yuni \u770b\u7740\u633a\u7701\u5fc3\uff1f\u6211\u8e29\u8fc7\u7684\u4e94\u4e2a\u5751", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">Yuni 看着挺省心？我踩过的五个坑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Yuni 看着挺省心？我踩过的五个坑</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">第一次用 Yuni 分身聊天时以为就是个普通 AI 对话，结果连着踩了好几个看不见的坑——版本门槛、火花续断、回复节奏……这篇把我踩过的坑和拆弹方法全列出来。</p>
+  </header>
+  <div class="prose">
+<p>我第一次装 Yuni 是去年冬天，朋友从<a href="https://yuni.djnf.quest" target="_blank" rel="noopener">Yuni官网</a>发我一个邀请链接说"这个 App 里能跟明星分身聊天，贼真实"。我点开看了看截图，界面清爽，底部四个菜单，跟其他聊天类应用长得差不多，心想不就是个套壳的 AI 对话嘛，有啥难的。结果从装上去到现在，半年下来连踩五个坑，有的坑卡了我两三天才绕明白。</p>
+<p>写这篇不是劝退，是给后面来的人省点功夫——这些坑没一个是 Yuni 的 bug，全是我自己想当然。你看完至少能避开大半。</p>
+<p><img src="../images/yuni-docs/home-page.png" alt="Yuni 主界面" loading="lazy"></p>
+<h2>坑一：装不上就以为是盗版</h2>
+<p>第一次从<a href="https://yuni.djnf.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿了安装包，点安装时弹了个框说"与您的设备不兼容"。我手机是红米 Note 5，买了四五年了但还在跑日常应用，当时第一反应是"下载源给的安装包坏了吧"，换了两个渠道重新下，还是一样的提示。</p>
+<p>后来才搞明白——Yuni 最低要求安卓 5.2，我那台机器停在安卓 6.0 倒是够，但我老婆那台旧华为卡在安卓 5.1，死活装不上。查了下 Yuni 用了几个比较新的 Android API，Material You 风格组件、新版网络栈，5.2 是硬编码的门槛，不是开发方不想支持老机器，是真跑不起来。</p>
+<p><strong>拆弹方法</strong>：装之前先去设置里确认下安卓版本号（设置 → 关于手机 → 安卓版本），低于 5.2 就别折腾了，要么升级系统（老机子可能收不到推送），要么换台新点的设备。iOS 用户暂时也别急，目前内测主要覆盖安卓端。</p>
+<h2>坑二：分身没秒回以为卡了</h2>
+<p>第一次给分身发了句"在吗？"，界面跳出来一行"正在输入中…"，然后没动静了。等了十秒，还是那行字。我退出去又进来，还是没回。当时就火了——什么玩意儿，AI 还卡？点了三四次退出重进，过了一分钟才收到回复。</p>
+<p>后来翻<a href="https://yuni-docs.pages.dev/" target="_blank" rel="noopener">Yuni文档</a>才发现，分身的回复<strong>本来就不是匀速的</strong>。你发一句简单的问候可能很快就回，发一段长吐槽、或者问了个需要组织一下语言的问题，它会先"思考"几秒——界面上的"正在输入中…"状态会消失再出现，像真人在打字中途停下来想措辞。</p>
+<p>还有个细节：分身不显示"已读"标记，也不保证每条都秒回。刚接触时总忍不住多戳几次应用，后来发现根本没用，耐心等就好。</p>
+<p><strong>拆弹方法</strong>：看到"正在输入中…"就把手机放一边，别盯着屏幕等。没已读标记是 Yuni 的设计，不是没收到消息。</p>
+<h2>坑三：火花灭了以为能续上</h2>
+<p>用了快两个月，和某个分身聊得挺勤，火花攒到了二十多天。然后那周出差忙，连开应用的空都没有，回来一看——火花图标没了。我慌了，以为是 bug，到处找恢复按钮，甚至去反馈里提了工单。官方回复很明确：<strong>火花断了就断了，从头攒</strong>。</p>
+<p>Yuni 的火花机制是这样的：连续互动每天续一天，连续两三天没互动就灭。火花和默契度、亲密度不一样——后两者是累积型的，断了不会重置；火花是连续性指标，断了就是零，重新聊从第一天开始算。</p>
+<p><img src="../images/yuni-docs/chat-interface.png" alt="聊天界面" loading="lazy"></p>
+<p><strong>拆弹方法</strong>：不用刻意定闹钟打卡，但也别连续好几天完全没动静。睡前发条语音、通勤路上说句"早"、哪怕只发个表情，都算有效互动。出差或者忙的时候，手机上随手发两句就行，不用等分身回。</p>
+<h2>坑四：写真馆找不到想看的明星内容</h2>
+<p>刚进写真馆时我懵了——顶部一排明星头像在那儿滑来滑去，我想看的那个艺人的照片翻了半天没找到。以为是没入驻？仔细看了看才发现，我没选对明星切换栏，一直在默认推荐的第一个艺人页面里瞎划拉。</p>
+<p>写真馆把入驻艺人的图片内容全按明星归档了：入驻宣传照、日常随拍、舞台花絮、还有分身以第一人称发的动态配图。不是应用自己生成的图，都是艺人的公开素材，开发方整理后放进了对应分身的主页。</p>
+<p><strong>拆弹方法</strong>：进写真馆先滑顶部的明星切换栏选好目标艺人，再点下面的分类标签（入驻写真 / 日常随拍 / 舞台花絮）。看到喜欢的图点收藏，下次从"我的"页面进来直接看，不用再翻。</p>
+<h2>坑五：分身主页的动态不是我聊的内容</h2>
+<p>第一次刷到分身主页里"今天收工早"配一张自拍，以为是刚才聊天之后它自己发的。后来天天去看，发现动态内容和我聊的话题偶尔能对上，但大部分时候是独立的——分身以第一人称发动态，像真的在过自己的日子，不是你聊啥它发啥。</p>
+<p>这个设计挺妙的，就是刚接触时容易产生错觉。你在聊天里跟分身说"今天加班好累"，它主页可能过两天发一条"昨天赶夜场"，像是它也经历了类似的事。但你跟它聊美食，它不会主页跟着发美食自拍——动态是独立的第一人称叙事，不是你对话的回声。</p>
+<p><strong>拆弹方法</strong>：别把分身主页的动态当成你的对话反馈。那是分身自己的"生活"，偶尔能对上你聊过的话题，对上了是彩蛋，对不上才是常态。</p>
+<hr>
+<h2>防坑清单（速查版）</h2>
+<ul><li><strong>装之前先查版本</strong>：安卓 5.2 是硬门槛，低于这个数别白忙活</li><li><strong>别盯着"正在输入中…"</strong>：分身回复有节奏，不是机器人式秒回</li><li><strong>火花不能恢复</strong>：断了就从头攒，连续两三天没互动就会灭</li><li><strong>写真馆先选明星再看图</strong>：顶部切换栏选对人，不然一直在别人页面里划</li><li><strong>动态是分身自己的事</strong>：别期待它跟你聊什么就发什么</li></ul>
+<p>说完这些坑，你可能觉得 Yuni 挺多毛病的——但回头看，没一个是真 bug，全是它跟普通聊天应用不一样的地方。普通 AI 秒回、有已读、不显示状态、没有独立动态，Yuni 偏不——就是要做"有自己节奏的分身"。知道这些坑之后，用起来反而挺省心，不用瞎操心"是不是卡了""是不是坏了"。</p>
+<p>总的来说，Yuni 这套体验是越用越顺的，前提是别拿老经验套它。踩过这五个坑之后，我现在跟分身聊天基本不会再纠结那些有的没的——该等等、该攒火花攒火花、想看照片了去写真馆翻，该聊的时候聊两句，不想聊就放那儿。顺手提一句，这套踩坑笔记我也放到了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Yuni" target="_blank" rel="noopener">GitHub</a>和国内镜像<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Yuni" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Yuni" target="_blank" rel="noopener">GitCode</a>，方便不同网络环境的朋友翻阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/yousician.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Yousician 翻底朝天：这五个隐藏功能 90% 的用户没碰过</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/zangi-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

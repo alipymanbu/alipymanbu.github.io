@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 iPhone 连 REDMI Watch 装快应用？我差点把手表退了 · 老杨技术栈</title>
+  
+<meta name="description" content="新入手的 REDMI Watch 5 配上 iPhone，想装个番茄钟快应用死活装不上，蓝牙配对反复断、界面全是英文报错。直到有人甩给我 AstroBox——然后我才知道，iOS 连小米系手表装快应用，根本不是「配对就行」那么简单。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/astrobox-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 iPhone 连 REDMI Watch 装快应用？我差点把手表退了">
+<meta property="og:description" content="新入手的 REDMI Watch 5 配上 iPhone，想装个番茄钟快应用死活装不上，蓝牙配对反复断、界面全是英文报错。直到有人甩给我 AstroBox——然后我才知道，iOS 连小米系手表装快应用，根本不是「配对就行」那么简单。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/astrobox-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/astrobox-docs/mi-login-page.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/astrobox-docs/mi-login-page.png">
+
+<meta name="twitter:title" content="用 iPhone 连 REDMI Watch 装快应用？我差点把手表退了">
+<meta name="twitter:description" content="新入手的 REDMI Watch 5 配上 iPhone，想装个番茄钟快应用死活装不上，蓝牙配对反复断、界面全是英文报错。直到有人甩给我 AstroBox——然后我才知道，iOS 连小米系手表装快应用，根本不是「配对就行」那么简单。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u65b0\u5165\u624b\u7684 REDMI Watch 5 \u914d\u4e0a iPhone\uff0c\u60f3\u88c5\u4e2a\u756a\u8304\u949f\u5feb\u5e94\u7528\u6b7b\u6d3b\u88c5\u4e0d\u4e0a\uff0c\u84dd\u7259\u914d\u5bf9\u53cd\u590d\u65ad\u3001\u754c\u9762\u5168\u662f\u82f1\u6587\u62a5\u9519\u3002\u76f4\u5230\u6709\u4eba\u7529\u7ed9\u6211 AstroBox\u2014\u2014\u7136\u540e\u6211\u624d\u77e5\u9053\uff0ciOS \u8fde\u5c0f\u7c73\u7cfb\u624b\u8868\u88c5\u5feb\u5e94\u7528\uff0c\u6839\u672c\u4e0d\u662f\u300c\u914d\u5bf9\u5c31\u884c\u300d\u90a3\u4e48\u7b80\u5355\u3002", "headline": "\u7528 iPhone \u8fde REDMI Watch \u88c5\u5feb\u5e94\u7528\uff1f\u6211\u5dee\u70b9\u628a\u624b\u8868\u9000\u4e86", "image": ["https://alipymanbu.github.io/images/astrobox-docs/mi-login-page.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/astrobox-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/astrobox-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u7528 iPhone \u8fde REDMI Watch \u88c5\u5feb\u5e94\u7528\uff1f\u6211\u5dee\u70b9\u628a\u624b\u8868\u9000\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">用 iPhone 连 REDMI Watch 装快应用？我差点把手表退了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 iPhone 连 REDMI Watch 装快应用？我差点把手表退了</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">新入手的 REDMI Watch 5 配上 iPhone，想装个番茄钟快应用死活装不上，蓝牙配对反复断、界面全是英文报错。直到有人甩给我 AstroBox——然后我才知道，iOS 连小米系手表装快应用，根本不是「配对就行」那么简单。</p>
+  </header>
+  <div class="prose">
+<h2>那块表，我差点退了</h2>
+<p>事情从上周六下午开始。我在京东下单的 REDMI Watch 5 送到家，包装比想象中小一圈，灰色表带摸起来意外柔软——这是我第一次买穿戴设备，之前用了三年的机械表，觉得手机上的时间够看了，直到同事在茶水间晃着他的手环说「你知道吗，睡觉也能监测心率」。</p>
+<p>冲动消费。拆开后第一件事，打开小米运动健康，点「添加设备」，选 REDMI Watch 5，蓝牙配对，手表震了一下，点勾，连上了。一切都很顺。</p>
+<p>然后我想装个番茄钟快应用——小米手表自带的运动记录还行，但专注计时功能太简陋。于是我打开手表里的应用中心，找了一圈，发现免费的番茄钟没几个，而且有的图标上还打了个小锁。我不死心，上网搜「REDMI Watch 5 第三方快应用」，结果出来一堆「用 AstroBox 安装」的教程。</p>
+<p>教程写得很简单：连接设备，导入 <code>.rpk</code> 文件，点安装。我按步骤来——连接这步用小米账号倒是一把就成了，账号下只有这一块设备，扫码登录后自动识别出来了。但到了安装阶段，进度条走到三分之一就卡住，然后弹一个英文错误框，大意是「无法建立安装通道」。我换了三个快应用试，结果一模一样。</p>
+<p>那天下午我折腾了四个小时。重启手表、删了小米运动健康重装、换路由器的 WiFi、用手机流量——连手表都恢复出厂设置了两次。最后一次装完又失败，我盯着那个英文弹窗，认真地打开了京东的退换货页面，填好了退货申请。</p>
+<h2>朋友甩来的不是安装包，是一条链接</h2>
+<p>周日早上本来打算寄快递，刷朋友圈的时候看到大学同学发了一张手表截图——正是 REDMI Watch 5，而且表盘上赫然显示着一个叫「Forest」的第三方专注应用。我直接私信：「你快应用哪装的？我 iPhone 连的，死活装不上。」</p>
+<p>他回得很快：「用 AstroBox 啊。iOS 连小米手表装快应用要开个安卓伪装开关，你不知道？」</p>
+<p>两个信息砸过来。第一，原来还有个叫 AstroBox 的东西，它的<a href="https://astrobox.fedq.quest" target="_blank" rel="noopener">官网</a>上写得很清楚——不是小米官方的，但专门做穿戴设备的资源管理。第二，iOS 连小米系手表装快应用要开什么伪装。我之前搜的那些教程没一个提这事——要么是安卓用户写的，要么是没写全。</p>
+<p>我问他要了 AstroBox 的下载方式，从<a href="https://astrobox.fedq.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿了 iOS 安装包，装在我 iPhone 上。打开后界面挺清爽，先登录小米账号同步了手表——这次是在 AstroBox 里登，不是在小米运动健康里，扫码、完成二次验证，三十秒搞定。</p>
+<p><img src="../images/astrobox-docs/mi-login-page.png" alt="小米账号登录" loading="lazy"></p>
+<h2>那个藏得挺深的开关</h2>
+<p>同步完手表，我没急着装快应用。先翻了翻设置——毕竟朋友说有个开关要开。找了大概两分钟，在设备的详细设置里看到一个叫「安卓伪装」的选项，开关默认是灰的。</p>
+<p>开启它，断开手表连接，重新连回来。这步花了大概三分钟——断开要等手表提示「已断开」，重新连接又要在手表上点两次蓝色的勾。连上之后回到资源安装页面，选了之前那个番茄钟快应用。</p>
+<p>进度条动了。三分之一——之前卡的位置——过了。二分之一。四分之三。安装完成。手表震了一下，主界面多了个红色的小番茄图标。</p>
+<p>那一刻我盯着手表屏幕，感觉这四个小时的折腾值了。我还以为是自己哪里操作有问题，原来是 iOS 连接协议和快应用之间有个天生的兼容性障碍，需要这么一个中间层来「伪装」一下才能打通。</p>
+<h2>顺手又装了几个</h2>
+<p>既然开关开了，我又装了两个快应用——一个白噪音助眠的，一个看天气的——都顺利装上了。顺便发现 AstroBox 还有个 CDN 测速功能，打开后自动选最快的下载节点，五级颜色标识快慢程度，北京的节点显示绿色，广州是黄色，自动选最快那条。看了<a href="https://astrobox-docs.pages.dev/" target="_blank" rel="noopener">AstroBox文档</a>才知道这个测速功能是 2.1 版本重构的，之前是用 HEAD 请求探测不准，现在改成真实图片下载耗时，还能后台静默切换。我之前在小区 WiFi 下装不上，可能也跟这个有关——测速选了个慢节点，安装包下载超时了。</p>
+<p>另外还发现，表盘也是 AstroBox 能装的东西。官方表盘大多是免费的，但第三方创意表盘要在小米商店付费，而 AstroBox 的资源中心里有很多爱好者分享的免费表盘，拖动 <code>.rpk</code> 文件就能装，不用越狱也不用改系统。</p>
+<h2>那块表我没退</h2>
+<p>现在我的 REDMI Watch 5 主界面上，番茄钟、白噪音、天气三个快应用并排，每天上下班路上我会开番茄钟刷几页书，晚上睡觉前开白噪音。同事问我怎么装这么多应用，我随口说「用 AstroBox 开个伪装就行」，他一脸茫然。</p>
+<p>后来我又去翻了 AstroBox 的文档，才知道不仅 REDMI Watch 5 和小米 Watch S3 需要这个伪装，REDMI Watch 6 以及未来的小米手表系列，iOS 连接装快应用都要开这个开关——因为快应用最初是为安卓环境设计的，iOS 上的连接协议略有差异，AstroBox 就是在通信时假装自己是一台安卓设备，绕过这个限制。小米手环 9 系列反而不用，因为手环的快应用机制和手表不一样。</p>
+<p>还有个有意思的细节：2.1 版本之后，AstroBox 打开时会自动测试所有 CDN 节点，选最快那条线路，如果上次选中的节点还是最快的，直接沿用，不用每次都测速。后台还能静默切换，网络波动的时候自动换线路，不打断下载。</p>
+<p>我甚至没把退货申请撤掉——让它自己超时失效吧，权当给那天的坏心情留个纪念。那块灰色表带的表，现在每天戴在手上，屏幕亮着的时候，是我用 iPhone 折腾四个小时才换来的番茄钟倒计时。</p>
+<hr>
+<p>顺便提一下，AstroBox 的这套资料我在三个仓库都存了一份——<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/AstroBox" target="_blank" rel="noopener">GitHub</a> 是主仓库，<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/AstroBox" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/AstroBox" target="_blank" rel="noopener">GitCode</a> 各同步一份——主要是怕 GitHub 偶尔抽风访问不了，国内用 Gitee 快一些，GitCode 做个备份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/astral-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从 Hamachi 到 Astral：虚拟局域网工具这十五年的进化逻辑</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/audiolab-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AudioLab 这三年：从录音小工具到全链路音频工作台</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

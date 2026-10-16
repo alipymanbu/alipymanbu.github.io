@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Armoury Crate 避坑指南：这几个地方我踩过了，你别再踩 · 老杨技术栈</title>
+  
+<meta name="description" content="用 Armoury Crate 调灯效、控风扇、超频看起来很简单，但几个暗坑能让你调半小时白忙活，甚至把系统拖慢。这篇把我踩过的坑逐个拆开说清楚。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/armoury-crate-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Armoury Crate 避坑指南：这几个地方我踩过了，你别再踩">
+<meta property="og:description" content="用 Armoury Crate 调灯效、控风扇、超频看起来很简单，但几个暗坑能让你调半小时白忙活，甚至把系统拖慢。这篇把我踩过的坑逐个拆开说清楚。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/armoury-crate-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/armoury-crate-docs/scenario-profile-settings.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/armoury-crate-docs/scenario-profile-settings.jpg">
+
+<meta name="twitter:title" content="Armoury Crate 避坑指南：这几个地方我踩过了，你别再踩">
+<meta name="twitter:description" content="用 Armoury Crate 调灯效、控风扇、超频看起来很简单，但几个暗坑能让你调半小时白忙活，甚至把系统拖慢。这篇把我踩过的坑逐个拆开说清楚。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528 Armoury Crate \u8c03\u706f\u6548\u3001\u63a7\u98ce\u6247\u3001\u8d85\u9891\u770b\u8d77\u6765\u5f88\u7b80\u5355\uff0c\u4f46\u51e0\u4e2a\u6697\u5751\u80fd\u8ba9\u4f60\u8c03\u534a\u5c0f\u65f6\u767d\u5fd9\u6d3b\uff0c\u751a\u81f3\u628a\u7cfb\u7edf\u62d6\u6162\u3002\u8fd9\u7bc7\u628a\u6211\u8e29\u8fc7\u7684\u5751\u9010\u4e2a\u62c6\u5f00\u8bf4\u6e05\u695a\u3002", "headline": "Armoury Crate \u907f\u5751\u6307\u5357\uff1a\u8fd9\u51e0\u4e2a\u5730\u65b9\u6211\u8e29\u8fc7\u4e86\uff0c\u4f60\u522b\u518d\u8e29", "image": ["https://alipymanbu.github.io/images/armoury-crate-docs/scenario-profile-settings.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/armoury-crate-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/armoury-crate-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Armoury Crate \u907f\u5751\u6307\u5357\uff1a\u8fd9\u51e0\u4e2a\u5730\u65b9\u6211\u8e29\u8fc7\u4e86\uff0c\u4f60\u522b\u518d\u8e29", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">Armoury Crate 避坑指南：这几个地方我踩过了，你别再踩</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Armoury Crate 避坑指南：这几个地方我踩过了，你别再踩</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用 Armoury Crate 调灯效、控风扇、超频看起来很简单，但几个暗坑能让你调半小时白忙活，甚至把系统拖慢。这篇把我踩过的坑逐个拆开说清楚。</p>
+  </header>
+  <div class="prose">
+<p>Armoury Crate 是 ROG 和华硕游戏本用户绕不开的工具——它的<a href="https://armoury-crate.xnyx.quest" target="_blank" rel="noopener">官网</a>上把灯效同步、风扇曲线、屏幕模式切换、资源监控全都集中在一个窗口里管着。但它的设置界面看着规整，背后的坑真不少。我第一次装机时折腾了整整两天，才发现有几处地方如果没人提醒，纯靠自己摸根本摸不透。</p>
+<h2>坑一：Aura Wallpaper 悄悄吃掉了你的开机速度</h2>
+<p><strong>症状</strong>：开启 Aura Wallpaper 之后，开机进入桌面的时间明显变慢了——机械硬盘的老机器能多等十好几秒，NVMe 也得慢个两三秒。更气人的是，你在系统壁纸设置里换了一张图，重启之后又变回了那张带 RGB 光效的 Aura 壁纸。</p>
+<p><strong>原因</strong>：Aura Wallpaper 本质上是在你的显卡驱动层注入了一个虚拟的"显示设备"，把壁纸变成了 Aura Sync 灯效网络里的一环。它需要开机后抢在桌面环境加载之前启动，跟主板灯效、显卡灯效做同步握手。这层钩子对资源的额外开销说大不大，但老机器本来开机链路就长，加这一步就触发了瓶颈。</p>
+<p><strong>解法</strong>：如果你不是那种盯着桌面壁纸的 RGB 效果就能发呆半小时的玩家，直接关掉就好。路径在「设置 → 主题」面板里把 Aura Wallpaper 的开关拉到 off。关掉之后系统壁纸设置立刻恢复正常，开机速度也会回来。真喜欢 RGB 的话，主板灯效和键盘灯效留在 Aura Sync 里就够了。</p>
+<h2>坑二：风扇曲线改了半天，温度曲线纹丝不动</h2>
+<p><strong>症状</strong>：在风扇曲线编辑器里把 70℃ 那档的风扇转速从 2000 RPM 拉到了 4000 RPM，保存重启之后跑压力测试，GPU 温度到 70℃ 那一刻风扇还是慢悠悠的 2000 转。改了跟没改一样。</p>
+<p><strong>原因</strong>：很多人不知道 Armoury Crate 有一个「场景配置文件」的概念。你在风扇曲线编辑器里的修改，默认只对「自定义」场景生效，但如果当前激活的场景是「性能」或者「静音」，这些场景各自有一套独立的风扇曲线，会覆盖你在「自定义」里改的东西。我当时就是卡在这——改了半天自定义曲线，结果机器一直跑在「性能」场景下，那边的曲线根本没碰过。</p>
+<p><strong>解法</strong>：先看一眼 Armoury Crate 首页右上角的场景配置文件标签，确认当前激活的是哪个。然后进到「设置 → 场景配置文件」，找到那个激活的场景，点进去改它对应的风扇曲线。或者简单粗暴点，直接激活「自定义」场景，这样全局都用你手调的那套曲线。<img src="../images/armoury-crate-docs/scenario-profile-settings.jpg" alt="风扇曲线和场景配置文件一起调才生效" loading="lazy"></p>
+<h2>坑三：资源监视器记录了一堆数据，到用的时候找不到</h2>
+<p><strong>症状</strong>：上次 GPU 温度爆了黑屏，赶紧点开资源监视器点「记录」，跑了一遍压力测试。结果第二天想导出 CSV 给售后看，找不到文件在哪。点软件里的「导入」按钮，目录里一片乱，根本分不清哪个是昨天那次。</p>
+<p><strong>原因</strong>：Armoury Crate 默认把记录文件扔在 <code>%USERPROFILE%\AppData\Local\ASUS\Armoury Crate\ResourceLog\</code> 下面，文件按时间戳命名（比如 <code>20261016_143201.armouryrc</code>），而且它<strong>不会自动清理旧记录</strong>。跑个压力测试生成的记录大概几十 MB，几个月攒下来就是好几百 MB，而且时间戳格式对人不友好，肉眼根本看不出来哪条对应哪次故障。</p>
+<p><strong>解法</strong>：每次录完就立刻导入回放、导出 CSV，把文件复制到你自己的故障排查目录里，然后回去把 ResourceLog 目录清空。或者干脆养成习惯——录完导出完就删，别让垃圾堆着。</p>
+<h2>坑四：通知灯效开了，但 Slash Lighting 完全不闪</h2>
+<p><strong>症状</strong>：背盖灯条明明支持通知灯效，微信消息来了、邮件到了，背盖 Slash Lighting 纹丝不动。灯条本身的主题切换正常，就是通知提示没反应。</p>
+<p><strong>原因</strong>：Slash Lighting 是独立于 Aura Sync 的灯效区域，它的通知功能需要单独授权。Windows 设置里有一个「允许应用访问通知」的权限开关，Armoury Crate 如果没拿到这个权限，就读不到系统通知事件，自然不会触发灯效。我第一次遇到时以为要重装软件，结果就是 Windows 的一个权限设置没开。</p>
+<p><strong>解法</strong>：打开「Windows 设置 → 系统 → 通知」，往下滚找到「允许 Armoury Crate 访问通知」的开关，拉到 on。然后回到 Armoury Crate 里重新选一下通知应用，发一条测试消息，应该就闪起来了。其他灯效相关的排查思路可以去<a href="https://armoury-crate-docs.pages.dev/" target="_blank" rel="noopener">armoury crate文档</a>翻一下，覆盖面很全。</p>
+<h2>坑五：待机唤醒后设备灯效乱成一锅粥</h2>
+<p><strong>症状</strong>：笔记本合盖待机一晚上，第二天掀开屏幕，键盘灯、主板灯、Slash Lighting 背盖灯条全亮着，各自跑着各自的默认效果，跟你待机前设好的不一样。关掉再打开 Armoury Crate，它自己会重新同步，但总不能每次唤醒都手动点开一次吧。</p>
+<p><strong>原因</strong>：这是 Armoury Crate 比较老的一个 bug——合盖待机属于 S3/S0ix 混合休眠，设备在这个过程中会断联再重连，Aura Sync 的同步状态有可能丢失，导致每个设备回退到固件里写死的默认灯效。新版 Armoury Crate 已经修复了大部分机型，但老款 ROG 笔记本还是会偶尔碰到。</p>
+<p><strong>解法</strong>：第一，确认你用的是最新版 Armoury Crate——设置里有「检查更新」，别省这一步。更新通道有时会延迟推送，等不及的直接去<a href="https://armoury-crate.xnyx.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿安装包覆盖装一遍也行。第二，如果还是会乱，在「设备 → 主板」里找到「关机后灯效持续」这个选项，如果开着就关掉。持续亮灯的功能本意是关机后保持氛围感，但它在待机唤醒的过渡阶段会干扰同步，关掉之后情况会好很多。</p>
+<h2>防坑清单</h2>
+<p>最后列几条速查，下次碰到问题先过一遍：</p>
+<ul><li><strong>Aura Wallpaper 能关就关</strong>：除非你真的盯着桌面 RGB 能开心，否则它就是纯额外开销。</li><li><strong>改风扇曲线先看场景</strong>：确认当前激活的场景是你正在改的那一个，别改了半天改了个寂寞。</li><li><strong>资源记录录完立刻导出</strong>：默认目录自动清理是不存在的，攒多了找起来自己头疼。</li><li><strong>通知灯效不闪先查权限</strong>：Windows 通知权限没开 = Armoury Crate 看不到通知事件。</li><li><strong>待机灯效乱先更版本</strong>：新版修了不少唤醒同步的 bug，顺手更一下就好。</li></ul>
+<p>说起来，Armoury Crate 作为一个要把十几种不同硬件的控制界面塞进一个窗口里的软件，能做到现在这个程度已经不容易了。坑都是在各种边角场景里藏着的，知道它们在那里，日常用起来其实相当省心。</p>
+<p>这份避坑笔记同时存了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/armoury%20crate" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/armoury%20crate" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/armoury%20crate" target="_blank" rel="noopener">GitCode</a>三份副本，国内外访问都不卡壳，感兴趣的可以自己翻翻看细节。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xmol.html">我把每周追文献的三步走流程压成了一条自动链</a></h2>
+  <p class="card-desc">以前要手动刷十几本期刊、翻 Google Scholar、邮箱里翻 alert，现在一条链走完。讲怎么把 xmol 嵌进科研周更工作流，从盯文献到选刊投稿全打通。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/walkplay.html">凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了</a></h2>
+  <p class="card-desc">用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/usagi-zh-docs.html">Usagi 用了半年才踩明白的 5 个坑，第一个就差点让我放弃</a></h2>
+  <p class="card-desc">Usagi 看着是个清爽的阅读器 app，实际上手才发现里面藏着不少容易踩的小陷阱——授权失败、匹配不准、显示调伤眼，每一个都能把新人劝退。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/aria2-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">aria2 上手测评：命令行下载工具凭什么让我把迅雷卸了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/artflow.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">ArtFlow 这几年在忙什么——从一个画板到 GPU 引擎的进化史</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

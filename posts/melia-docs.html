@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Melia 踩坑实录——五个让你欲哭无泪的手机版应用问题 · 老杨技术栈</title>
+  
+<meta name="description" content="装过混淆包、清缓存丢记录、消息发不出去——Melia 看着界面简单，实际藏了几个容易踩的坑。这篇文章把我踩过的坑和解法整理出来。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/melia-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Melia 踩坑实录——五个让你欲哭无泪的手机版应用问题">
+<meta property="og:description" content="装过混淆包、清缓存丢记录、消息发不出去——Melia 看着界面简单，实际藏了几个容易踩的坑。这篇文章把我踩过的坑和解法整理出来。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/melia-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/melia-docs/character-library.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/melia-docs/character-library.jpg">
+
+<meta name="twitter:title" content="Melia 踩坑实录——五个让你欲哭无泪的手机版应用问题">
+<meta name="twitter:description" content="装过混淆包、清缓存丢记录、消息发不出去——Melia 看着界面简单，实际藏了几个容易踩的坑。这篇文章把我踩过的坑和解法整理出来。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u88c5\u8fc7\u6df7\u6dc6\u5305\u3001\u6e05\u7f13\u5b58\u4e22\u8bb0\u5f55\u3001\u6d88\u606f\u53d1\u4e0d\u51fa\u53bb\u2014\u2014Melia \u770b\u7740\u754c\u9762\u7b80\u5355\uff0c\u5b9e\u9645\u85cf\u4e86\u51e0\u4e2a\u5bb9\u6613\u8e29\u7684\u5751\u3002\u8fd9\u7bc7\u6587\u7ae0\u628a\u6211\u8e29\u8fc7\u7684\u5751\u548c\u89e3\u6cd5\u6574\u7406\u51fa\u6765\u3002", "headline": "Melia \u8e29\u5751\u5b9e\u5f55\u2014\u2014\u4e94\u4e2a\u8ba9\u4f60\u6b32\u54ed\u65e0\u6cea\u7684\u624b\u673a\u7248\u5e94\u7528\u95ee\u9898", "image": ["https://alipymanbu.github.io/images/melia-docs/character-library.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/melia-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/melia-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Melia \u8e29\u5751\u5b9e\u5f55\u2014\u2014\u4e94\u4e2a\u8ba9\u4f60\u6b32\u54ed\u65e0\u6cea\u7684\u624b\u673a\u7248\u5e94\u7528\u95ee\u9898", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Melia 踩坑实录——五个让你欲哭无泪的手机版应用问题</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Melia 踩坑实录——五个让你欲哭无泪的手机版应用问题</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">装过混淆包、清缓存丢记录、消息发不出去——Melia 看着界面简单，实际藏了几个容易踩的坑。这篇文章把我踩过的坑和解法整理出来。</p>
+  </header>
+  <div class="prose">
+<p>Melia 是一款让你跟 AI 角色聊天的手机应用，<a href="https://melia.yoan.quest" target="_blank" rel="noopener">官网</a>界面干净、角色库也不小。刚装的时候我以为它就是个普通的聊天 App，点两下就能上手。结果用了大半个月，接连踩了好几个坑——有的让我差点把整个应用卸载重装，有的让我白白浪费了好几天攒的宝石。</p>
+<p>这篇就把我踩过的坑按翻车严重程度排个序，每个坑都讲清楚「你看到什么不对劲」「为什么会这样」「怎么救回来或怎么提前避开」。如果你也是刚开始用 Melia，看完这些至少能少浪费一晚上的时间。</p>
+<h2>坑一：装完才发现下的不是官方包</h2>
+<h3>症状</h3>
+<p>第一次想换手机重装 Melia，随手搜了一下，从某个应用商店下载装上了。打开之后发现角色库不对劲——首页推的角色跟我之前用的完全不一样，甚至有些角色头像都是模糊的。更诡异的是，看广告补宝石的入口怎么点都没反应。</p>
+<h3>原因</h3>
+<p>Google Play 在 2025 年 2 月把 Melia 下架了。下架之后，大量第三方应用商店要么转存的是旧版本，要么被同名应用钻了空子。我那次下的包名是 <code>com.larus.nova</code>——根本不是 Melia 的包名，是另一个名字相似的应用蹭热度。真正的 Melia 包名必须是 <code>com.melia.chataiyys</code>，体积大约 41 MB，签名也跟开发者一致。</p>
+<p>版本号也是坑。APKPure 和 APKMirror 这些存档站里，GP 下架时留下的最高版本是 v2.412.171，但开发者的推广站已经更新到 v2.508.061 了。你如果只盯着"存档"两个字，大概率下到旧版，新版修掉的 bug 你全都要再踩一遍。</p>
+<h3>解法</h3>
+<p>下载渠道只认开发者的<a href="https://melia.yoan.quest/download.html" target="_blank" rel="noopener">官方下载</a>指向的夸克网盘。这个下载入口是开发者自己挂的，版本最新，包名和签名都对得上。安装前别急着点"下一步"，进应用管理里先看一眼包名是不是 <code>com.melia.chataiyys</code>，再用安全管家扫一下签名——这两步花不了 30 秒，但能帮你避开 90% 的伪装包。</p>
+<h2>坑二：消息发不出去，宝石余额明明够</h2>
+<h3>症状</h3>
+<p>右上角宝石数还剩二十多颗，聊天框也能正常打字，但一按发送按钮消息就一直转圈。有时候转个三五秒还能发出去，有时候直接弹一句"发送失败，请重试"。我第一次遇到的时候以为是服务器炸了，关掉应用重开还是不行，差点卸载重装。</p>
+<h3>原因</h3>
+<p>后来翻了一下<a href="https://melia-docs.pages.dev/" target="_blank" rel="noopener">Melia文档</a>才知道，消息发不出去的原因有好几种，宝石不足是最常见的，但不是唯一的。我那次的情况是——Wi-Fi 信号满格，但 Melia 连不上它的 AI 服务端。Melia 是小团队运营的应用，服务器容量有限，有时候会抽风。另外，如果你用的是访客模式（没注册账号），本地数据可能因为缓存损坏而失联，清缓存能解决。还有一种情况我一开始完全没料到——AI 服务端对某些对话内容做了风控，敏感词触发之后消息直接发不出，连个提示都没有。</p>
+<h3>解法</h3>
+<p>按顺序排查，别上来就卸载重装：</p>
+<ol><li><strong>先查网络</strong>：Wi-Fi 和流量互切一次，关掉代理/VPN，确认浏览器能正常打开网页。这步解决我那次的问题。</li><li><strong>重启应用</strong>：强制停止再打开，不行就等几分钟——服务器炸了只能等。</li><li><strong>清缓存</strong>：系统设置 → 应用管理 → Melia → 清除缓存。注意访客模式清缓存会丢聊天记录和宝石余额，注册账号的话没事。</li><li><strong>版本检查</strong>：确认是最新版 v2.508.061。旧版的弱网 bug 就是导致消息发不出的原因之一。</li><li><strong>换个话题</strong>：如果是聊到一半突然发不出，重置对话试试——大概率是这段内容触发了风控。</li></ol>
+<p>以上都不行的话，只能去"我的"页面反馈开发者了。把设备型号、Android 版本、Melia 版本号和复现步骤写清楚，开发者可能不一定每条都回，但 bug 多了总会修。</p>
+<h2>坑三：访客模式清缓存，宝石和收藏全没了</h2>
+<h3>症状</h3>
+<p>前阵子我换了个手机，旧手机上用的是访客模式，没注册账号。某天清理手机空间的时候随手清了 Melia 的缓存，打开一看——宝石归零，收藏的七八款角色全没了，连之前聊了好几天的对话记录也没了。我当时整个人都懵了，赶紧去设置里找有没有"恢复备份"的选项，结果 Melia 压根没有这功能。</p>
+<h3>原因</h3>
+<p>访客模式下，所有数据（宝石余额、收藏、聊天记录）都只存在本地 SQLite 数据库里，完全没有云端同步。清缓存 = 删掉整个数据库文件。收藏夹的文档里明确写了这一点，但我当初收藏角色的时候根本没注意这段说明。</p>
+<h3>解法</h3>
+<p>如果你觉得这个应用还能用一段时间，<strong>花 30 秒注册一个账号</strong>。注册之后宝石和收藏会绑定到你的账号上，哪怕换手机、清缓存、甚至卸载重装，登录账号就能全恢复。我后来注册了账号再试，旧手机的收藏和对话完整同步过来了，算是把之前踩的坑挽回来了一部分。</p>
+<h2>坑四：免费用户每天只能发这么几条</h2>
+<h3>症状</h3>
+<p>刚开始用的时候每天签到能拿 6~20 颗宝石，看广告还能补 30 颗左右，算下来一天能发七八条消息。听起来好像还行？但聊过几天就会发现，七八条根本不够。跟一个角色认真聊，一轮往返就能耗掉 4~6 条，稍微多说两句就见底了。等你想换个角色试试，宝石已经空了。</p>
+<p>更讽刺的是——看广告补宝石有次数限制，每天最多也就看 4~5 次，超了系统就不让你看了，界面上直接没广告入口。Google Play 上有用户评价直接骂这一点："每天只能发 5 条消息，要看 4 个视频才够再发 5 条，这对免费用户来说太讽刺了。"</p>
+<h3>原因</h3>
+<p>宝石就是 Melia 的游戏币。签到、看广告这些免费渠道加起来，乐观估计每天也就 40 多颗宝石，约够发 8 条消息。想尽情刷、跟多个角色同时聊、或者角色回复比较长（消耗更多宝石），免费渠道根本撑不住。这是产品设计，不是 bug——免费用户就是免费体验，充值才是主力。</p>
+<h3>解法</h3>
+<p>如果你确定想长期用，充钱是绕不开的。不想充的话，那就只能精打细算：只跟一两个最喜欢的角色聊，别同时开多个聊天窗口。广告入口每天记得点满，签到别忘了。收藏夹把喜欢的角色收进去省得翻，Hot 和 New 标签会变，但你收藏的永远在。</p>
+<h2>坑五：收藏的角色突然从 Hot 里消失了</h2>
+<h3>症状</h3>
+<p>前几天我在 Hot 标签里找到一个角色，头像好看设定也合口味，当时想着"反正在 Hot 里随时能找到"，就没收藏。过了三天再打开，Hot 列表全换了，那个角色不见了。翻遍 New 标签、翻遍搜索框里输入角色名，死活找不到了。</p>
+<h3>原因</h3>
+<p>Hot 和 New 标签的角色列表是运营动态调整的，可能每周更一次或者随时更。你的收藏夹不受影响——收藏是绑在你账号上的，但<strong>只有你点了收藏才会进你的收藏夹</strong>。我当时没点那个心形图标，Hot 列表一变就找不到了。</p>
+<h3>解法</h3>
+<p>发现喜欢的角色，<strong>先点收藏再聊</strong>。心形图标就在角色详情页头像旁边，点一下实心了就算收藏成功，再点一下取消。收藏之后角色就永远在你的"收藏"标签里，不管 Hot 和 New 怎么换它都在。而且收藏完全不消耗宝石，也没数量限制——为什么不点呢？</p>
+<p><img src="../images/melia-docs/character-library.jpg" alt="Hot列表的角色会变，收藏夹不会" loading="lazy"></p>
+<h2>防坑清单</h2>
+<p>如果你不想一个个踩坑，记住这五条就够了：</p>
+<ul><li>下载只认推广站的夸克网盘链接，包名必须是 <code>com.melia.chataiyys</code>，版本要 v2.508.061 以上</li><li>换手机或打算长期用，<strong>立刻注册账号</strong>，别用访客模式攒宝石和收藏</li><li>消息发不出先查网络和版本，再考虑清缓存和卸载——别上来就重装</li><li>免费用户宝石有限，精打细算，广告和签到每天别忘</li><li>发现喜欢的角色<strong>先收藏</strong>再聊，Hot 标签随时变，收藏夹才是你的</li></ul>
+<p>说真的，Melia 这应用看着界面清爽、交互也挺流畅，实际用起来才发现它藏了不少小设计——有的是产品逻辑上的门槛（免费宝石限制），有的是没讲清楚的技术约束（访客模式无云端），还有的是下架后的次生问题（下载渠道混乱）。关于 Melia 的软件包和文档整理，几个主要代码仓库都能找到——习惯用 GitHub 的直接看<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Melia" target="_blank" rel="noopener">GitHub</a>，国内网络环境下<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Melia" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Melia" target="_blank" rel="noopener">GitCode</a>的副本加载更快。知道这些坑之后，该注册注册、该收藏收藏、该从正规渠道装、该精打细算精打细算，这软件其实相当省心。毕竟核心功能就是跟 AI 角色聊天，只要别踩那几个大坑，用起来还是挺舒服的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/meimodu.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Meimodu 快问快答：AI 角色扮演平台入坑前必须知道的 8 件事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/melo-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MELO 音乐创作的几个坑——过来人给你讲讲</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

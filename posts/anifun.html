@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>每周追番两小时压缩到二十分钟：我用 AniFun 搭了一条季度追番流水线 · 老杨技术栈</title>
+  
+<meta name="description" content="从季度榜筛选到跨设备同步、从标签推送消噪到问答解惑，把 AniFun 嵌进一套固定动作里，追番这件事从每周两小时砍到二十分钟。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/anifun.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周追番两小时压缩到二十分钟：我用 AniFun 搭了一条季度追番流水线">
+<meta property="og:description" content="从季度榜筛选到跨设备同步、从标签推送消噪到问答解惑，把 AniFun 嵌进一套固定动作里，追番这件事从每周两小时砍到二十分钟。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/anifun.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/anifun/home-screen.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/anifun/home-screen.png">
+
+<meta name="twitter:title" content="每周追番两小时压缩到二十分钟：我用 AniFun 搭了一条季度追番流水线">
+<meta name="twitter:description" content="从季度榜筛选到跨设备同步、从标签推送消噪到问答解惑，把 AniFun 嵌进一套固定动作里，追番这件事从每周两小时砍到二十分钟。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u5b63\u5ea6\u699c\u7b5b\u9009\u5230\u8de8\u8bbe\u5907\u540c\u6b65\u3001\u4ece\u6807\u7b7e\u63a8\u9001\u6d88\u566a\u5230\u95ee\u7b54\u89e3\u60d1\uff0c\u628a AniFun \u5d4c\u8fdb\u4e00\u5957\u56fa\u5b9a\u52a8\u4f5c\u91cc\uff0c\u8ffd\u756a\u8fd9\u4ef6\u4e8b\u4ece\u6bcf\u5468\u4e24\u5c0f\u65f6\u780d\u5230\u4e8c\u5341\u5206\u949f\u3002", "headline": "\u6bcf\u5468\u8ffd\u756a\u4e24\u5c0f\u65f6\u538b\u7f29\u5230\u4e8c\u5341\u5206\u949f\uff1a\u6211\u7528 AniFun \u642d\u4e86\u4e00\u6761\u5b63\u5ea6\u8ffd\u756a\u6d41\u6c34\u7ebf", "image": ["https://alipymanbu.github.io/images/anifun/home-screen.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/anifun.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/anifun.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6bcf\u5468\u8ffd\u756a\u4e24\u5c0f\u65f6\u538b\u7f29\u5230\u4e8c\u5341\u5206\u949f\uff1a\u6211\u7528 AniFun \u642d\u4e86\u4e00\u6761\u5b63\u5ea6\u8ffd\u756a\u6d41\u6c34\u7ebf", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">每周追番两小时压缩到二十分钟：我用 AniFun 搭了一条季度追番流水线</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">每周追番两小时压缩到二十分钟：我用 AniFun 搭了一条季度追番流水线</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从季度榜筛选到跨设备同步、从标签推送消噪到问答解惑，把 AniFun 嵌进一套固定动作里，追番这件事从每周两小时砍到二十分钟。</p>
+  </header>
+  <div class="prose">
+<p>每周一早高峰地铁上，我固定有一件事要做——花二十分钟处理这一季度的追番清单。这件事以前要耗两小时起步：翻 B 站新番列表、Anilist 查评分、Excel 记进度、换手机再手动同步一遍。自从把 <a href="https://anifun.fedq.ren" target="_blank" rel="noopener">AniFun官网</a> 提供的这套工具嵌进这条链，整套动作被压成了一套固定流程，不用再东翻西找。</p>
+<h2>旧流程的三个卡点</h2>
+<p>先说说以前怎么干的。每季度新番开播那一周，我会同时打开 B 站新番导视页、Anilist 当前季榜单、Bangumi 评分页三个标签页，一部一部过。问题出在三个地方：</p>
+<p><strong>第一，信息源之间对不上号。</strong> B 站新番列表更不全，很多独播番没列进去；Anilist 评分倒是快，但那时候评分只有几十条，参考价值有限；Bangumi 数据滞后两周才跟上。三页来回切，还得手动记录哪些看了哪些没看。</p>
+<p><strong>第二，追番进度要手动维护。</strong> 看番大多在手机上，但偶尔会在电脑上看两集。以前用 Excel 记「追了几集、是否完结、下周要不要继续」，换手机就得把文件拷过去更新，或者干脆凭印象记得不准。</p>
+<p><strong>第三，找同类番没有固定出口。</strong> 看完一部喜欢的想找类似的，要么在 B 站评论区翻，要么去 Bangumi 论坛搜，问个问题还要等好几天才有答主理。</p>
+<p>这三个点凑在一起，一季度下来光筛选和同步就要耗掉好几个晚上。</p>
+<h2>新流程：AniFun 嵌在哪一环</h2>
+<p>我现在的季度追番流水线是这样的，一共四步，全在 AniFun 里完成：</p>
+<p><strong>第一步，季度开播两周后，进 AniFun 的季度榜。</strong> 这是我摸出来的时间窗口——开播一周的时候评分还没积累起来，季度榜里的数据噪声大；开播两周后，一部番的口碑基本定型，前十五名基本就是本季的质量梯队。我打开季度榜，拉到前二十，把已经决定追的点一下加入追番列表，剩下的看一眼题材和海报，不确定的就先放着过两天再看。</p>
+<p><img src="../images/anifun/home-screen.png" alt="季度榜实时口碑追踪" loading="lazy"></p>
+<p><strong>第二步，用个性化标签做信息过滤。</strong> 我在 AniFun 的标签订阅里把「治愈日常」「异世界奇幻」「科幻悬疑」设成强烈偏好，把「后宫」「机战」设成排除——具体怎么设置优先级、哪些标签可以排除，我是对着<a href="https://anifun.pages.dev/" target="_blank" rel="noopener">AniFun文档</a>里的标签说明一步步调的。这样首页资讯流推过来的就都是我真正感兴趣的内容，季度导视面板里偏好类型的番还会被单独标出来，不用在一堆新番里一个个辨认。这一步的好处是减少了无意义的信息流翻阅——以前刷 B 站新番推荐页，十部里可能只有两部和我口味接近，现在打开 AniFun 首页，排前面的基本都是可以直接决策的。</p>
+<p><strong>第三步，追番进度自动同步到云端。</strong> 这步最省心。手机 App 里标记追了几集、看完了就完结标记，网页端刷新一下立即显示同样的状态。我试过晚上在手机上标记《葬送的芙莉莲》追完了最后一集，第二天早上打开电脑浏览器版 AniFun，追番列表里它自动移到了已完结分组。中间没有任何手动操作。但这里有个坑必须说清楚：<strong>未登录状态下的追番操作只保存在本地设备</strong>。我之前换手机没登录就先追了十几部，结果登了账号发现都没了。所以现在的动作是：先从<a href="https://anifun.fedq.ren/download.html" target="_blank" rel="noopener">官方下载</a>装好 AniFun，登录后再开始追番。</p>
+<p><strong>第四步，拿不准的问题直接去问答板块。</strong> 比如想找类似《药屋少女的呢喃》的古风番、或者《Fate》系列观看顺序、或者某部番的 B 站版权情况——这些以前要搜半天或者问朋友的问题，现在我在 AniFun 问答板块提，通常几小时内就有人答。而且回答质量意外的高，提问技巧里有一条是「越具体答案越准」，我试了一次提「2024 年治愈系日常番，最好有女主角」，不到一小时就收到了三条推荐，每条都附了评分和观看建议。</p>
+<p><img src="../images/anifun/community-screen.png" alt="问答板块：提问后数小时内就能收到回答" loading="lazy"></p>
+<h2>两个容易断链的环节，我是怎么处理的</h2>
+<p><strong>第一个环节：季度榜什么时候开始看。</strong> 刚开播一周的新番，评分只有几十条，季度榜里的名次波动很大。比如去年春番有部开局评分 9.2 的番，开播第五周掉到了 6.8。所以我给自己定了一个规矩：开播不到两周的番，不管海报多诱人，先标记「观察中」，等满两周再去季度榜核对一次。</p>
+<p><strong>第二个环节：跨设备切换时的数据刷新。</strong> AniFun 用的是最后写入胜出的同步策略，对追番场景来说是合理的——两个设备同时操作不会丢数据，但偶尔会有云端同步延迟。比如我在手机上刚标记完结了一部，电脑端打开还没更新。解决方法很简单：下拉刷新一下追番列表，立即拿到最新状态。我现在的习惯是每次打开新设备用 AniFun 的时候，先手动下拉刷一下再操作。</p>
+<h2>效果和边界</h2>
+<p>这套流程跑下来，对比一下：以前一季度追番筛选加同步要花六到八小时，现在压到两个小时以内——季度榜选番二十分钟、标签设置半小时（每季开始调一次就行）、日常同步完全不用管、偶尔一个问答十几分钟出结果。少了三次手动跨设备复制 Excel、少了十几小时在三个信息源之间来回切、少了无数次在 B 站评论区翻楼。</p>
+<p>但有两个边界得说清楚。第一，AniFun 本身不是视频播放器，看正片还是要跳 B 站或 Netflix。它的定位更像是追番这件事的「中台」——筛选、追踪、答疑，最后一公里的播放还是交给专业播放器。第二，个性化标签的权重需要定期调整。去年底我感觉信息过载了，偏好标签加了十几个，结果首页又开始推杂七杂八的。后来收敛到五个最核心的，信息流又恢复了干净。每季度开播前花五分钟调整一下标签优先级，效果立竿见影。</p>
+<p>整体来说，这套工作流的核心逻辑是：<strong>把筛选、追踪、答疑三个独立的散点动作，收进 AniFun 这一个入口</strong>，然后让云端同步和标签订阅替你做掉那些机械重复的事。我是从一个朋友那听说 AniFun 后自己试出来这套流程的，如果你的追番习惯和我类似，可以试试看拼出自己的版本。怕哪天某个仓库访问不稳定，我顺手把相关资料做了三处备份——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/anifun" target="_blank" rel="noopener">GitHub</a> 是主源，<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/anifun" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/anifun" target="_blank" rel="noopener">GitCode</a> 同步镜像，国内用户走后两个通常更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zoomearth.html">ZoomEarth 零基础上手：四步学会用它看风、体感温度和野火</a></h2>
+  <p class="card-desc">从下载安装到叠加三层关键图层，跟着教程一步步搞定，出门前看一眼比查三个天气 App 还省心。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xrecorder.html">XRecorder：我每周移动端教程工作流里那块被严重低估的拼图</a></h2>
+  <p class="card-desc">从手机录屏到飞书交付的四步变两步——聊聊怎么把 XRecorder 的静音录制、通知栏截屏和内置合并嵌进一条不绕路的移动端内容生产链。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vocalremover-docs.html">VocalRemover 迭代观察：从一个去人声小工具到九件套音频工作室</a></h2>
+  <p class="card-desc">这款在线音频工具一路走来，从单纯的&#34;去人声&#34;扩展成涵盖分离、剪辑、变调、录音的完整工作流。我从样本文档里能摸到的迭代规律。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/amls-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">AMLS 零基础入门：手机上也能做 After Effects 级别的动画</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/animeko.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了 Animeko 两年才挖透——那些藏得真深的追番体验彩蛋</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

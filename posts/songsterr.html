@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Songsterr 用了半年才发现的七个坑——别像我一样踩一遍才懂 · 老杨技术栈</title>
+  
+<meta name="description" content="从收藏丢失到订阅跨端失效，从调弦对不上音到混音器找不到轨，七个真实踩坑经历一一拆解，附速查清单。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/songsterr.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Songsterr 用了半年才发现的七个坑——别像我一样踩一遍才懂">
+<meta property="og:description" content="从收藏丢失到订阅跨端失效，从调弦对不上音到混音器找不到轨，七个真实踩坑经历一一拆解，附速查清单。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/songsterr.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/songsterr/shot-ipad-player.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/songsterr/shot-ipad-player.png">
+
+<meta name="twitter:title" content="Songsterr 用了半年才发现的七个坑——别像我一样踩一遍才懂">
+<meta name="twitter:description" content="从收藏丢失到订阅跨端失效，从调弦对不上音到混音器找不到轨，七个真实踩坑经历一一拆解，附速查清单。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u6536\u85cf\u4e22\u5931\u5230\u8ba2\u9605\u8de8\u7aef\u5931\u6548\uff0c\u4ece\u8c03\u5f26\u5bf9\u4e0d\u4e0a\u97f3\u5230\u6df7\u97f3\u5668\u627e\u4e0d\u5230\u8f68\uff0c\u4e03\u4e2a\u771f\u5b9e\u8e29\u5751\u7ecf\u5386\u4e00\u4e00\u62c6\u89e3\uff0c\u9644\u901f\u67e5\u6e05\u5355\u3002", "headline": "Songsterr \u7528\u4e86\u534a\u5e74\u624d\u53d1\u73b0\u7684\u4e03\u4e2a\u5751\u2014\u2014\u522b\u50cf\u6211\u4e00\u6837\u8e29\u4e00\u904d\u624d\u61c2", "image": ["https://alipymanbu.github.io/images/songsterr/shot-ipad-player.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/songsterr.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/songsterr.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Songsterr \u7528\u4e86\u534a\u5e74\u624d\u53d1\u73b0\u7684\u4e03\u4e2a\u5751\u2014\u2014\u522b\u50cf\u6211\u4e00\u6837\u8e29\u4e00\u904d\u624d\u61c2", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Songsterr 用了半年才发现的七个坑——别像我一样踩一遍才懂</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Songsterr 用了半年才发现的七个坑——别像我一样踩一遍才懂</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从收藏丢失到订阅跨端失效，从调弦对不上音到混音器找不到轨，七个真实踩坑经历一一拆解，附速查清单。</p>
+  </header>
+  <div class="prose">
+<h2>开头：这个应用看着简单，其实有几个坑</h2>
+<p>去年换了 iPad 想找个跟练工具，随手搜到 Songsterr——它的<a href="https://songsterr.boop.uno" target="_blank" rel="noopener">官网</a>打开就能搜歌、直接出谱、播放器会自己弹，我当时觉得这东西能有多难？结果前前后后踩了好几个坑，有的还挺烦人的。</p>
+<p>现在练琴离不开它了，写这篇就是把我踩过的坑摊开说说，省得你也像我一样重装应用重找收藏、对着谱子纳闷为什么声音不对。</p>
+<h2>坑一：收藏没了——而且根本找不回来</h2>
+<p><strong>症状</strong>：换了手机或者重装应用之后，之前收藏的几十首歌全没了。</p>
+<p><strong>原因</strong>：Songsterr 默认不登录也能用，而且你在登录之前的所有收藏<strong>只存在本机</strong>——就是说这些数据绑在你那台设备上，换设备就跟着没了。官方帮助中心把这点写在了注册页的最开头，但我当时根本没看，直接用了两个月才发现。</p>
+<p><strong>解法</strong>：第一条歌还没收藏的时候就顺手注册。免费账号就能自动把收藏和播放列表同步到云端，换任何设备登录同一账号，收藏列表直接拉下来。</p>
+<h2>坑二：订阅跨端失效——在哪买的就在哪先注册</h2>
+<p><strong>症状</strong>：在 App Store 买了 Plus 订阅，Android 手机登录同一个账号，结果显示还是免费版；反过来也是一样。</p>
+<p><strong>原因</strong>：我一开始以为 Songsterr 的账号就是全球通用的，后来才看明白——<strong>必须在你买订阅的那个应用里先注册账号</strong>，官方 FAQ 明确写了这一条。这个动作相当于把你的账户标记为付费用户，之后其他端登录才能识别到。</p>
+<p>我当时是先在网页上随便填邮箱注册了一个，然后才在 iOS 应用里内购，结果 iOS 那边认的是另一个注册态，白买了一次。</p>
+<p><strong>解法</strong>：决定在哪端付费之后，先打开那个应用注册账号，再完成订阅。之后其他端登录同一个邮箱，Plus 权限会自动同步。</p>
+<h2>坑三：谱子能听到吉他声但谱面上没对应音符</h2>
+<p><strong>症状</strong>：跟着谱子弹，耳朵里吉他在响，但低头看谱面根本没标这个乐句的音符——完全对不上。</p>
+<p><strong>原因</strong>：你当前查看的音轨<strong>不是正在播放的那一条</strong>。Songsterr 的混音器里列出了一首歌的全部乐器轨（主音吉他、节奏吉他、贝斯、鼓、人声……），你切换查看的是其中某一轨，但播放器默认会把所有轨一起放出来。声音是主音吉他，你看的却是节奏吉他的谱，那当然对不上。</p>
+<p><strong>解法</strong>：打开混音器面板切换音轨。移动端点屏幕上的乐器图标就能调出混音器，当前显示的那一轨会高亮，切换到和你正在弹的乐器对应上就对了。顺便说一下，<strong>独奏和静音是 Plus 功能</strong>，但切换查看哪一轨本身是免费的，别搞错了。</p>
+<p><img src="../images/songsterr/shot-ipad-player.png" alt="iPad 端播放器的混音器面板" loading="lazy"></p>
+<h2>坑四：吉他弹着弹着音高不对——忘了检查调弦</h2>
+<p><strong>症状</strong>：弹到某一段突然觉得声音特别别扭，像整个谱子慢了半拍或者快了半拍，反复核对音名没错但耳朵就是听着不对。</p>
+<p><strong>原因</strong>：这首歌用了<strong>非标准调弦</strong>，而你一直在按标准调弦（EADGBE）弹。Songsterr 的谱子在<strong>第一小节开头附近</strong>会标注调弦方式——比如 Drop D、Open G 之类的，但这个标注非常小，而且就在密集的音符旁边，很容易被忽略。</p>
+<p><strong>解法</strong>：拿到一首新歌先扫一眼谱子的第一行，看看有没有调弦标注。有就先调弦再弹，别硬跟，硬跟永远弹不齐。</p>
+<h2>坑五：延音总是弹不长——右手在偷偷碰弦</h2>
+<p><strong>症状</strong>：谱子上明明标了延音记号（虚线末端之前不要制音），但实际弹出来声音特别短，断断续续的，跟合成音色演示差远了。</p>
+<p><strong>原因</strong>：不是左手没按稳——是右手的小指或者掌缘在扫拨、分解之后不小心又碰到了弦，把延音给制掉了。我练 Metallica 的 Enter Sandman 那段延音，一开始怎么弹都不对，录了视频慢放才发现是右手掌缘不自觉地扫过了低音弦。</p>
+<p><strong>解法</strong>：延音段落右手要刻意悬空，拨完弦之后手就别再往下压了。可以配合独奏模式只听吉他轨，怎么开混音器切换轨道在<a href="https://songsterr.pages.dev/" target="_blank" rel="noopener">songsterr文档</a>里有图解，延音的起伏听得特别清楚，一断就知道哪手碰了弦。</p>
+<p><img src="../images/songsterr/shot-iphone-player.png" alt="iPhone 端播放器跟练界面" loading="lazy"></p>
+<h2>坑六：Plus 功能搞混了——独奏静音要付费，换轨免费</h2>
+<p><strong>症状</strong>：听说 Songsterr 有混音器功能可以静音伴奏带练，兴冲冲打开应用点了静音，结果弹出来一个订阅弹窗。</p>
+<p><strong>原因</strong>：混音器里三个操作的权限不一样。切换查看哪一轨是<strong>免费</strong>的，但<strong>独奏（Solo）和静音（Mute）</strong>属于 Plus 付费功能。我一开始以为混音器整套都要付费，后来才发现原来换轨就够了——选到自己要弹的那一轨，跟着其余伴奏弹，本质上就是伴奏带效果，只是少了个一键静音按钮而已。</p>
+<p><strong>解法</strong>：先试试免费的换轨能不能满足需求——应用从<a href="https://songsterr.boop.uno/download.html" target="_blank" rel="noopener">官方下载</a>渠道获取就行——不满意再考虑付费。Plus 还带来调速循环、离线谱库、半音阶调音器这些功能，但如果你只是想弹一首歌，免费版够用了。</p>
+<h2>坑七：竖屏横屏切换之后谱面错位</h2>
+<p><strong>症状</strong>：iPad 上从横屏切到竖屏，谱面突然拉大、音符挤成一团，或者干脆只显示了半行，翻页翻到天荒地老。</p>
+<p><strong>原因</strong>：Songsterr 10 大更新之后才加了竖屏支持，老版本上横竖屏切换会触发布局 bug。而且某些复杂的多轨谱面在竖屏下本身就会拥挤，这不是你设备的问题。</p>
+<p><strong>解法</strong>：先确保应用更新到 Songsterr 10 之后的版本。iPad 上练琴我建议还是横屏——屏幕宽、谱面分得开，跟练体验真的好很多。竖屏适合快速查和弦、出门在路上扫一眼的场景。</p>
+<h2>防坑清单（速查）</h2>
+<ul><li><strong>第一条歌就注册账号</strong>：免费、快、不亏，收藏直接上云</li><li><strong>付费端先注册后订阅</strong>：iOS 内购就先在 iOS 应用里注册，反之亦然</li><li><strong>对不上音先看调弦标注</strong>：谱子里第一小节有写，别硬跟</li><li><strong>听不到对应音轨开混音器换轨</strong>：不是谱子错了，是你没看到那一轨</li><li><strong>延音短先自查右手姿势</strong>：悬空就好，别碰弦</li></ul>
+<h2>最后</h2>
+<p>知道这些坑之后，Songsterr 其实相当省心。曲库够大、谱子质量够准、播放器的合成音色也够用，踩过这几个点之后日常练琴基本没出过别的问题。我现在每天开 iPad 第一件事就是开 Songsterr，找一首歌跟着弹半小时，顺得很。最近整理练琴资料顺手把这套心得分别传到了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/songsterr" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/songsterr" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/songsterr" target="_blank" rel="noopener">GitCode</a>，国内访问走 Gitee 最顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/snackvideo.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">SnackVideo 深度实测：当短视频赛道进入「赚钱激励」阶段，它走了一条什么路</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/sonolus.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">每周三首原创音游谱面——我用 Sonolus 拼了一条零手动搬运的制作链</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

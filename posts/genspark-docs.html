@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Genspark 避坑四连：从免费积分到 AI 秘书，我踩过的那些真问题 · 老杨技术栈</title>
+  
+<meta name="description" content="用了 Genspark 半年，从免费套餐切到 Plus，Office 插件和 AI 秘书都跑过一遍。这里整理了四个真实遇到的坑，附症状、原因和解法，帮你少走弯路。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/genspark-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Genspark 避坑四连：从免费积分到 AI 秘书，我踩过的那些真问题">
+<meta property="og:description" content="用了 Genspark 半年，从免费套餐切到 Plus，Office 插件和 AI 秘书都跑过一遍。这里整理了四个真实遇到的坑，附症状、原因和解法，帮你少走弯路。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/genspark-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/genspark-docs/ai-chat.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/genspark-docs/ai-chat.jpg">
+
+<meta name="twitter:title" content="Genspark 避坑四连：从免费积分到 AI 秘书，我踩过的那些真问题">
+<meta name="twitter:description" content="用了 Genspark 半年，从免费套餐切到 Plus，Office 插件和 AI 秘书都跑过一遍。这里整理了四个真实遇到的坑，附症状、原因和解法，帮你少走弯路。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528\u4e86 Genspark \u534a\u5e74\uff0c\u4ece\u514d\u8d39\u5957\u9910\u5207\u5230 Plus\uff0cOffice \u63d2\u4ef6\u548c AI \u79d8\u4e66\u90fd\u8dd1\u8fc7\u4e00\u904d\u3002\u8fd9\u91cc\u6574\u7406\u4e86\u56db\u4e2a\u771f\u5b9e\u9047\u5230\u7684\u5751\uff0c\u9644\u75c7\u72b6\u3001\u539f\u56e0\u548c\u89e3\u6cd5\uff0c\u5e2e\u4f60\u5c11\u8d70\u5f2f\u8def\u3002", "headline": "Genspark \u907f\u5751\u56db\u8fde\uff1a\u4ece\u514d\u8d39\u79ef\u5206\u5230 AI \u79d8\u4e66\uff0c\u6211\u8e29\u8fc7\u7684\u90a3\u4e9b\u771f\u95ee\u9898", "image": ["https://alipymanbu.github.io/images/genspark-docs/ai-chat.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/genspark-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/genspark-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "Genspark \u907f\u5751\u56db\u8fde\uff1a\u4ece\u514d\u8d39\u79ef\u5206\u5230 AI \u79d8\u4e66\uff0c\u6211\u8e29\u8fc7\u7684\u90a3\u4e9b\u771f\u95ee\u9898", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">Genspark 避坑四连：从免费积分到 AI 秘书，我踩过的那些真问题</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Genspark 避坑四连：从免费积分到 AI 秘书，我踩过的那些真问题</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用了 Genspark 半年，从免费套餐切到 Plus，Office 插件和 AI 秘书都跑过一遍。这里整理了四个真实遇到的坑，附症状、原因和解法，帮你少走弯路。</p>
+  </header>
+  <div class="prose">
+<p>Genspark 看着就是个"喊一声就能帮你干活"的智能体工具——它的<a href="https://genspark.gerw.hair" target="_blank" rel="noopener">官网</a>上直接注册就能用。但我实际用下来发现，几个环节的设计和官方没说清的地方，很容易让人踩坑。这些坑不是什么高深的技术 bug，就是日常使用中一步没注意就卡住的那种。</p>
+<h2>坑一：免费积分突然不进账了——原来有终身额度上限</h2>
+<p><strong>症状</strong>：某天打开 Genspark，发现昨天剩下的 23 积分还在，但今天应该补充的 100 积分没到账。等了一整天还是没有，跑去设置页一看，提示"已达到每日免费积分的终身上限"。</p>
+<p>我当时第一反应是账号出问题了——卸载重装、换浏览器清缓存，甚至重新注册了一个小号，小号正常但老号就是不进账。浪费了快半小时才反应过来，这不是 bug，是官方规则。</p>
+<p><strong>原因</strong>：免费套餐的每日 100 积分不是无限循环发的。后来去<a href="https://genspark-docs.pages.dev/" target="_blank" rel="noopener">Genspark文档</a>翻了一下才发现，官方规则写得很隐晦——"每日补充持续到免费积分的终身额度上限为止"，说白了就是这个账号一辈子能白嫖的总积分有个天花板，到了之后每天不再自动补充，剩余余额用完就真没了。</p>
+<p>我后来帮朋友算过，按照正常轻度使用，大概两三个月就能摸到这个上限。官方把这个上限数值藏得很深，估计是不想让免费用户看到数字就直接走了。</p>
+<p><strong>解法</strong>：</p>
+<ul><li>用免费套餐的人，自己在心里算个账——如果每天消耗稳定在 30~40 积分，那剩余积分大概还能撑多久要有个数。别突然有一天没积分了正好赶着出活；</li><li>触顶后两个选项：要么升级付费套餐（月度配额取代每日补充，彻底摆脱终身上限），要么精打细算把余额用完；</li><li>如果你还在免费期但已经常用了，不如早点看看付费套餐的性价比——Plus 档起步 10,000 积分/月，对于每周要出 1~2 份调研的人来说其实不算贵。</li></ul>
+<p><img src="../images/genspark-docs/ai-chat.jpg" alt="免费账户的积分界面" loading="lazy"></p>
+<h2>坑二：年付套餐付了 240 刀，积分却按月慢慢发</h2>
+<p><strong>症状</strong>：我贪"年付约省两成"的优惠，一次性付了 239.99 美元升级 Plus。想着应该一次性到账全年 120,000 积分，结果账户里只多了 10,000——起步的月度积分，剩下 11 个月的要每个月到点自动给。</p>
+<p>我当时差点提交退款申请，以为系统少发了。后来翻到官方那行小字"积分按月发放、不提前给全年"，才知道这是设计如此，不是 bug。</p>
+<p><strong>原因</strong>：年付是一次性收全年费用，但积分配额还是按月释放。官方没在显眼位置说清楚这点，页面上只标了"年付约省两成"，让人自然而然以为积分跟着一起到账。</p>
+<p><strong>解法</strong>：</p>
+<ul><li>别急着冲年付。如果你当前月份正好需要大量积分（比如要跑视频生成这种重任务），月付反而更灵活——下个月按需再决定续不续；</li><li>已经付了年付也没关系，积分虽然按月给，但每月 10,000 起步再加每周免费额度，日常使用完全够。只是别指望一次性拿到全部；</li><li>如果你是重度用户，可以看看更高积分档位，Plus 支持随时切换档位。</li></ul>
+<h2>坑三：Office 插件找不到加载项入口——不同版本差很多</h2>
+<p><strong>症状</strong>：照着文档的步骤"文件 → 获取加载项"去找 Office 插件，结果 Word 和 Excel 里根本找不到这个入口。翻了半小时设置，最后是在"选项 → 自定义功能区"里才勾出来的。</p>
+<p>更糟的是，我用的是 Office 2019 家庭版，加载项入口藏得比订阅版深得多。还有一次在公司电脑上，IT 策略直接禁用了加载项商店，根本装不上。</p>
+<p><strong>原因</strong>：不同 Office 版本（订阅版 / 永久授权版 / 教育版）的加载项入口位置不同，有些甚至不支持第三方加载项直接安装。官方文档写的是最理想情况，没给版本差异说明。</p>
+<p><strong>解法</strong>：</p>
+<ul><li>插件安装包从<a href="https://genspark.gerw.hair/download.html" target="_blank" rel="noopener">官方下载</a>拿，装之前先确认你的 Office 版本——订阅版（Microsoft 365）入口最直接，永久版需要手动开启；</li><li>如果企业电脑被 IT 锁了加载项，别硬装——先用网页版三件套生成草稿，再导出到本地 Office 里精修，这是官方推荐的替代路径；</li><li>插件面板在 Office 右侧，安装好之后以侧栏形式工作，和网页版界面风格一致。</li></ul>
+<p><img src="../images/genspark-docs/office-plugins.png" alt="Office 插件在三件套里的样子" loading="lazy"></p>
+<h2>坑四：AI 秘书授权了 Gmail 之后想撤回——入口藏很深</h2>
+<p><strong>症状</strong>：授权 AI 秘书接管 Gmail 后，发现它的委托能力比想象中激进——"按你的口吻回复邮件"这句话，有时候理解得不太对，回复的内容让人看了想删。我想撤回授权，结果找了五分钟才找到入口。</p>
+<p>更微妙的是，AI 秘书的授权是 OAuth 一次性授权，但授权范围默认给得很宽——读取、发送、整理邮件，全都勾上了。你授权的时候没细看，之后它就真的能操作你的真实邮箱。</p>
+<p><strong>原因</strong>：授权流程里权限选项挤在一起，默认勾选了全部，用户很容易一路点"允许"就过去。撤回入口在账号设置的深层路径里，官方没在 AI 秘书界面放直接链接。</p>
+<p><strong>解法</strong>：</p>
+<ul><li>第一次授权时慢下来——只给必要的最小权限，比如先只允许读取邮件，确认没问题再逐步开放发送和整理；</li><li>定期去账号设置里检查授权范围，不常用的连接器及时撤回；</li><li>如果担心安全，让 AI 秘书发邮件前先给你过目草稿——"审批点留给关键动作"是官方文档里明确建议的，别省去这一步；</li><li>企业版用户有管理员统一管控连接器的功能，团队用的话记得让管理员集中治理。</li></ul>
+<h2>防坑清单（3 秒速查）</h2>
+<ul><li><strong>免费套餐</strong>：关注你的免费积分余额，触顶后不会自动补充，提前规划升级或精打细算；</li><li><strong>年付陷阱</strong>：积分按月发，不是一次性到账，重度用用户月付反而灵活；</li><li><strong>Office 插件</strong>：先确认 Office 版本，企业电脑被锁加载项就先用网页版；</li><li><strong>AI 秘书</strong>：授权只给最小权限，发邮件前要求过目草稿，定期检查授权范围。</li></ul>
+<p>这些坑说穿了都不是什么大问题，但就是那种"差一点踩中就卡壳半小时"的烦人细节。知道这些之后，Genspark 其实相当省心——把坑绕过去，该干活干活。怕你哪天又踩回这些老坑，对应的规则细节和归档资料我分别整理在了<a href="https://github.com/alipymanbu/APK/tree/main/APP/Genspark" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/Genspark" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/Genspark" target="_blank" rel="noopener">GitCode</a>上，随时能翻。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/geminiai-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了三个月 GeminiAI，这七个坑我踩了至少一半</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/girigiri.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Girigiri 值不值掏钱？一个追番党的算账笔记</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

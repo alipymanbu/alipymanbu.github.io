@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Kustom 进化史：从桌面小组件到 Android 个性化基础设施 · 老杨技术栈</title>
+  
+<meta name="description" content="kwgt 走过的路线，是一条把 Android 桌面&#34;可玩性&#34;逐层挖掘的路线——从最初的静态皮肤编辑器，演变成今天带函数引擎、插件生态、Pack 分发体系的完整平台。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/kwgt.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kustom 进化史：从桌面小组件到 Android 个性化基础设施">
+<meta property="og:description" content="kwgt 走过的路线，是一条把 Android 桌面&#34;可玩性&#34;逐层挖掘的路线——从最初的静态皮肤编辑器，演变成今天带函数引擎、插件生态、Pack 分发体系的完整平台。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/kwgt.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/kwgt/andro-home-1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/kwgt/andro-home-1.png">
+
+<meta name="twitter:title" content="Kustom 进化史：从桌面小组件到 Android 个性化基础设施">
+<meta name="twitter:description" content="kwgt 走过的路线，是一条把 Android 桌面&#34;可玩性&#34;逐层挖掘的路线——从最初的静态皮肤编辑器，演变成今天带函数引擎、插件生态、Pack 分发体系的完整平台。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "kwgt \u8d70\u8fc7\u7684\u8def\u7ebf\uff0c\u662f\u4e00\u6761\u628a Android \u684c\u9762\"\u53ef\u73a9\u6027\"\u9010\u5c42\u6316\u6398\u7684\u8def\u7ebf\u2014\u2014\u4ece\u6700\u521d\u7684\u9759\u6001\u76ae\u80a4\u7f16\u8f91\u5668\uff0c\u6f14\u53d8\u6210\u4eca\u5929\u5e26\u51fd\u6570\u5f15\u64ce\u3001\u63d2\u4ef6\u751f\u6001\u3001Pack \u5206\u53d1\u4f53\u7cfb\u7684\u5b8c\u6574\u5e73\u53f0\u3002", "headline": "Kustom \u8fdb\u5316\u53f2\uff1a\u4ece\u684c\u9762\u5c0f\u7ec4\u4ef6\u5230 Android \u4e2a\u6027\u5316\u57fa\u7840\u8bbe\u65bd", "image": ["https://alipymanbu.github.io/images/kwgt/andro-home-1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/kwgt.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/kwgt.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "Kustom \u8fdb\u5316\u53f2\uff1a\u4ece\u684c\u9762\u5c0f\u7ec4\u4ef6\u5230 Android \u4e2a\u6027\u5316\u57fa\u7840\u8bbe\u65bd", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">Kustom 进化史：从桌面小组件到 Android 个性化基础设施</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Kustom 进化史：从桌面小组件到 Android 个性化基础设施</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">kwgt 走过的路线，是一条把 Android 桌面&#34;可玩性&#34;逐层挖掘的路线——从最初的静态皮肤编辑器，演变成今天带函数引擎、插件生态、Pack 分发体系的完整平台。</p>
+  </header>
+  <div class="prose">
+<h2>现状：它现在是什么样</h2>
+<p>如果你把时间倒回几年前，在桌面小组件还只是"系统时钟 + 天气卡片"这种层级的时候，有人说要做一个能让用户自己画小组件、写函数逻辑、甚至加载第三方皮肤包的东西——那听起来像个玩具项目。</p>
+<p>但 kwgt 现在就是这个玩具长成的样子。<a href="https://kwgt.wrwq.fun" target="_blank" rel="noopener">kwgt官网</a>上能看到它的完整功能清单：它不是一个单功能的"小组件 App"，更接近一个运行在 Android 桌面上的小型创作平台：你可以用 Shape、Text、Image 这些基础元素自由排布布局，用 Weather、通知、日历等数据源喂动态内容，用函数控制透明度、颜色、刷新逻辑，还能让小组件的某个区域在触摸时打开任意 App、触发系统快捷方式，甚至通过 Unread 这样的插件拿到指定应用的未读数做角标。</p>
+<p><img src="../images/kwgt/andro-home-1.png" alt="kwgt 桌面效果" loading="lazy"></p>
+<p>我手上这台 Android 设备上的 kwgt 是从<a href="https://kwgt.wrwq.fun/download.html" target="_blank" rel="noopener">下载</a>渠道拿到的，桌面上四个角落的小组件全是自己拉的：左上角是天气卡片，背景色跟着天气代码自动切换——晴天暖黄、雨天蓝；左下角是微信和 Telegram 的未读角标，没消息时角标透明隐藏；右侧是一个大时钟，上面叠了个触摸区域，点一下直接进系统设置。这些没有一个是系统原生能做到的。</p>
+<p>但 kwgt 刚出来的时候不是这样。样本文档里没提早期版本——没有版本号、没有 changelog 时间轴。这本身就是个有意思的信号：kwgt 的文档体系更偏向"功能怎么用"，而不是"这是哪个版本加的"。也许是因为它的迭代一直在同一个方向上稳步推进，没有过那种"推倒重来"的大版本切换，所以版本边界反而变得模糊了。</p>
+<h2>来路：从皮肤编辑器到函数引擎</h2>
+<p>我能从当前功能全景反推它走过的路。</p>
+<p>第一阶段应该是最朴素的：一个所见即所得的桌面小组件编辑器。拖拖元素、改改文字、选个背景色——这时候它本质上就是个"皮肤工具"，给那些觉得系统桌面不够好看的人一个改外观的口子。如果止步于此，kwgt 可能就淹没在 Play 商店里几十款主题 App 里了。</p>
+<p>但它没有止步。接下来加的是<strong>动态数据源</strong>。Weather 函数能直接拉实时天气、ne 函数拿通知、日历数据、电池状态——这些是让静态皮肤"活"起来的关键。你不再只是摆好看的字和图形，而是能让小组件根据外部状态变：电池低于 15% 时颜色变红、收到新通知时某个 Shape 闪烁一次。</p>
+<p>然后是<strong>函数引擎</strong>。这一步是质变。有了 <code>$if()$</code>、<code>$gv()$</code>（Global 变量）、<code>$isConnected()$</code> 这类函数，kwgt 从"展示数据"变成了"处理数据"。你可以写逻辑：如果未读数大于 0 就显示角标，否则透明。甚至可以用 Global 变量做状态传递——同一个按钮今天打开设置，明天改成打开日历，由外部控制。这已经不是"编辑小组件"，是在写小程序了。</p>
+<p><img src="../images/kwgt/ifanr-formula.png" alt="kwgt 公式函数" loading="lazy"></p>
+<p>再往后加的是<strong>触摸与交互</strong>。Launch App 动作让小组件不再是"只能看"的东西——你点它，它打开另一个 App 或系统快捷方式。这相当于给桌面加了一层自定义快捷按钮，而且位置、大小、触发逻辑全由你定。到这一步，kwgt 已经不仅仅是个个性化工具，它开始改变 Android 桌面的使用方式。</p>
+<p>最近的几波迭代集中在<strong>生态扩张</strong>上：插件体系（Unread、Booster 这类扩展能力的独立 App）让核心引擎保持轻量；Pack 皮肤包机制让创作者可以把一整套预设打包成 APK 在 Play 商店分发；Pro Key 作为付费解锁点，把"能加载第三方 Pack"这件事单独拎出来——既没让免费版缺核心功能，又给创作者留了变现通道。</p>
+<h2>规律：从迭代节奏看它的优先级</h2>
+<p>样本文档里有几个模式反复出现，拼起来就是 kwgt 团队的优先级画像。</p>
+<p>第一，<strong>函数和逻辑能力始终是第一驱动力</strong>。Weather 函数、ne 函数、Global 变量、if 条件判断、Unread 插件……每一个大功能的核心都是"能写更复杂的逻辑"。视觉表现再好看，如果底层不能表达逻辑，那它就是个静态皮肤工具。kwgt 团队一直在往引擎里塞更多数据源、更多函数、更多组合可能性——去<a href="https://kwgt.pages.dev/" target="_blank" rel="noopener">kwgt文档</a>翻一下会发现，函数列表远不止四个样本里提到的那些。</p>
+<p>第二，<strong>生态而非功能</strong>。Pack 皮肤包、插件机制、Pro Key 的付费设计——这些都不是"给单个用户加功能"，而是在搭平台。让创作者有东西卖、让用户有现成的东西装、让两边都离不开它。样本文档里专门有一节讲 Pack 分发、讲 Pro 和 Free 的边界，这个位置安排本身就说明了优先级。</p>
+<p>第三，<strong>不急的东西永远不急</strong>。样本文档里提到 Launch Activity（打开 App 内特定页面）时，语气是"绝大多数场景 Launch App 就够了"——这说明它们不会为了少数高级玩家的需求去增加核心复杂度。同样，天气刷新频率默认 30 分钟、不建议太频繁——这是在帮用户做"够用就行"的选择，而不是把所有参数都甩给用户自己调。</p>
+<p>反过来看，什么东西一直没动？原生 Android 的小组件 API 限制。kwgt 能做到的一切都要在 Android 框架允许的范围内——某些 ROM 会杀后台、某些厂商定制系统对通知权限有限制——这些是 kwgt 团队改不了的硬约束。样本文档里 Unread 插件那节专门提醒"某些 ROM 杀掉后台后会失效"，语气里能听出那种"不是我们的问题但我们得告诉你"的无奈。</p>
+<h2>预判：照这个路线下一步怎么走</h2>
+<p>从上面的规律推，下一步大概有几个方向值得期待。</p>
+<p>函数引擎大概率会继续深挖——更多数据源、更多组合函数，或者把现有的函数体系做得更"可视化"（现在全是手敲表达式，对新手不友好）。插件生态会扩张，现在只有 Unread、Booster 这少数几个，未来可能出现更多垂直场景的插件（比如专门读 fitness 数据的、专门控制智能家居的）。Pack 分发体系可能会从 Play 商店扩展到更开放的渠道，让创作者不需要走 Google 审核就能直接分发。</p>
+<p>但我不觉得 kwgt 会变成一个"完整的桌面启动器"——它的定位一直是"在原生桌面之上加一层自定义"，而不是替代原生启动器。这层边界感过去几年一直没破，未来破的概率也不大。</p>
+<p>说到底，kwgt 这一路的成长逻辑可以浓缩成一句话：它没有追求"做一个更好的桌面"，而是在原生桌面的框架内，把"让用户自己定义桌面"这件事从 1 做到了 100。这个方向还没走到头。</p>
+<p>这套资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/kwgt" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/kwgt" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/kwgt" target="_blank" rel="noopener">GitCode</a> 三个仓库都有同步维护，国内用户可以根据网络情况自选访问入口，更新节奏基本保持一致。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yeelight.html">用了三年 Yeelight 才发现：这五个隐藏玩法官方根本没宣传</a></h2>
+  <p class="card-desc">你以为 Yeelight 只是个能调色的 Wi-Fi 灯泡？IFTTT 条件触发、局域网控制、预设模式二次加工……这些藏在菜单深处的功能，把智能灯的天花板往上抬了一大截。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wenet-docs.html">WeNet 这一路：从宿舍网口到全平台认证，它是怎么把校园网变简单的</a></h2>
+  <p class="card-desc">一个校园网客户端的迭代逻辑——从最早可能只是一个拨号器，到现在覆盖手机、电脑、有线无线，甚至教你怎么找开通的网口。我们拆开看看它这几年在死磕什么。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webcat-docs.html">WebCat 离线开发的底层设计：为什么它能在地铁里把代码写完</a></h2>
+  <p class="card-desc">一个手机上的开发工具凭什么敢主打&#34;完全离线&#34;？本文拆解 WebCat 的本地化架构选择，理解它把编辑器、运行时、打包器全部塞进 APK 的技术取舍与代价边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ktown4u-app.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Ktown4u 到底值不值得掏钱？一个 K-POP 粉丝的账本</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/lanerc-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从 Omofun 遗珠到 v1.4.2：Lanerc 三年迭代里藏着的产品取舍</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

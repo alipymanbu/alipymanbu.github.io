@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>APlayer 从入门到上手：5 分钟把音乐播放器嵌进你的网页 · 老杨技术栈</title>
+  
+<meta name="description" content="第一次接触网页音乐播放器？APlayer 是最轻量、文档最友好的选择。本文带你从零开始，从引入文件到跑通第一个播放列表，再到学会最实用的三个功能点。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/aplayer-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APlayer 从入门到上手：5 分钟把音乐播放器嵌进你的网页">
+<meta property="og:description" content="第一次接触网页音乐播放器？APlayer 是最轻量、文档最友好的选择。本文带你从零开始，从引入文件到跑通第一个播放列表，再到学会最实用的三个功能点。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/aplayer-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/aplayer-docs/player-normal.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/aplayer-docs/player-normal.jpeg">
+
+<meta name="twitter:title" content="APlayer 从入门到上手：5 分钟把音乐播放器嵌进你的网页">
+<meta name="twitter:description" content="第一次接触网页音乐播放器？APlayer 是最轻量、文档最友好的选择。本文带你从零开始，从引入文件到跑通第一个播放列表，再到学会最实用的三个功能点。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7b2c\u4e00\u6b21\u63a5\u89e6\u7f51\u9875\u97f3\u4e50\u64ad\u653e\u5668\uff1fAPlayer \u662f\u6700\u8f7b\u91cf\u3001\u6587\u6863\u6700\u53cb\u597d\u7684\u9009\u62e9\u3002\u672c\u6587\u5e26\u4f60\u4ece\u96f6\u5f00\u59cb\uff0c\u4ece\u5f15\u5165\u6587\u4ef6\u5230\u8dd1\u901a\u7b2c\u4e00\u4e2a\u64ad\u653e\u5217\u8868\uff0c\u518d\u5230\u5b66\u4f1a\u6700\u5b9e\u7528\u7684\u4e09\u4e2a\u529f\u80fd\u70b9\u3002", "headline": "APlayer \u4ece\u5165\u95e8\u5230\u4e0a\u624b\uff1a5 \u5206\u949f\u628a\u97f3\u4e50\u64ad\u653e\u5668\u5d4c\u8fdb\u4f60\u7684\u7f51\u9875", "image": ["https://alipymanbu.github.io/images/aplayer-docs/player-normal.jpeg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/aplayer-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/aplayer-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "APlayer \u4ece\u5165\u95e8\u5230\u4e0a\u624b\uff1a5 \u5206\u949f\u628a\u97f3\u4e50\u64ad\u653e\u5668\u5d4c\u8fdb\u4f60\u7684\u7f51\u9875", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">APlayer 从入门到上手：5 分钟把音乐播放器嵌进你的网页</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">APlayer 从入门到上手：5 分钟把音乐播放器嵌进你的网页</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">第一次接触网页音乐播放器？APlayer 是最轻量、文档最友好的选择。本文带你从零开始，从引入文件到跑通第一个播放列表，再到学会最实用的三个功能点。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到用起来，而且不需要任何前端基础——连 HTML 是什么都不知道也没关系，跟着步骤走就能把 APlayer 跑起来。</p>
+<h2>它到底是干嘛的？一个生活化类比讲明白</h2>
+<p>想象一下：你自己做了一个个人博客，想在侧边栏放一个背景音乐。如果只贴一个 <code>&lt;audio&gt;</code> 标签，出来的是浏览器原生播放器，长相粗糙，没有歌词，也不能点下一首。APlayer 就是给网页做的「专业音乐播放器皮肤 + 播放管理引擎」——它帮你把一堆音乐文件排成歌单、显示封面、滚动歌词、循环或随机播放，而且长得还挺好看。它的<a href="https://aplayer.fewf.ren" target="_blank" rel="noopener">官网</a>上有完整的产品介绍和演示，先去感受一下它的界面风格也挺好。</p>
+<p>你不需要安装任何软件，也不需要编译。整个 APlayer 就是两个文件：一个 JS 一个 CSS，加起来压缩后不到 70KB，比一张中等分辨率的手机照片还小。把它们丢进网页就能用。</p>
+<h2>五分钟上手：从引入到第一次跑通</h2>
+<p>好，我们开始。全程只需要三步，复制粘贴就行。</p>
+<h3>第一步：引入文件</h3>
+<p>在你的 HTML 页面的 <code>&lt;head&gt;</code> 标签里加上一行 CSS 引入，在 <code>&lt;/body&gt;</code> 前加上 JS 引入。文件从<a href="https://aplayer.fewf.ren/download.html" target="_blank" rel="noopener">官方下载</a>拿——<code>APlayer.min.css</code> 和 <code>APlayer.min.js</code> 两个文件，放到你网站的静态资源目录里。</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;APlayer.min.css&quot;&gt;
+&lt;!-- ... 页面其他内容 ... --&gt;
+&lt;script src=&quot;APlayer.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+<h3>第二步：放一个容器</h3>
+<p>在你想让播放器出现的地方，写一个空的 <code>&lt;div&gt;</code>，给它起个 id：</p>
+<pre><code class="language-html">&lt;div id=&quot;aplayer&quot;&gt;&lt;/div&gt;</code></pre>
+<h3>第三步：初始化播放器</h3>
+<p>在 JS 引入之后，写一段初始化代码。最小可用版本长这样：</p>
+<pre><code class="language-javascript">const ap = new APlayer({
+    container: document.getElementById(&#x27;aplayer&#x27;),
+    audio: [
+        {
+            name: &#x27;歌曲名&#x27;,
+            artist: &#x27;艺术家&#x27;,
+            url: &#x27;music/song1.mp3&#x27;,
+            cover: &#x27;music/cover1.jpg&#x27;
+        },
+        {
+            name: &#x27;第二首&#x27;,
+            artist: &#x27;还是那个艺术家&#x27;,
+            url: &#x27;music/song2.mp3&#x27;,
+            cover: &#x27;music/cover2.jpg&#x27;
+        }
+    ]
+});</code></pre>
+<p>保存，用浏览器打开你的页面——一个带封面、带播放列表、可以点播放的播放器就出现了。恭喜你，APlayer 跑通了。</p>
+<p><img src="../images/aplayer-docs/player-normal.jpeg" alt="默认形态的 APlayer 播放器" loading="lazy"></p>
+<h2>上手后先玩这三个功能</h2>
+<p>跑通之后别急着堆功能。新手最值得先碰的三个点：歌词、三种显示形态、动态切歌。这三个搞明白，其他参数看一眼<a href="https://aplayer-docs.pages.dev/" target="_blank" rel="noopener">APlayer文档</a>就懂。</p>
+<h3>功能一：加滚动歌词</h3>
+<p>每首歌都可以传一个 <code>lrc</code> 字段，值可以是 LRC 文件的 URL，也可以直接把 LRC 格式的字符串写进去。LRC 格式就是每行以时间戳开头的纯文本，比如：</p>
+<pre><code>[00:15.00]第一句歌词
+[00:20.50]第二句歌词</code></pre>
+<p>有了这个，播放时歌词会逐行高亮并自动滚动到可视区域。你会发现这是 APlayer 最「酷」的功能之一，也是同类播放器里原生支持的少数派——Plyr 和 Video.js 都要靠插件。</p>
+<h3>功能二：切换显示形态</h3>
+<p>APlayer 原生支持三种外观：</p>
+<ul><li><strong>正常模式</strong>：完整展示封面、控件、歌词、列表，适合放在文章页或独立页面。</li><li><strong>吸底模式</strong>：固定在页面底部，只保留一行精简控件，适合长页面想让背景音乐一直响着的场景。设置 <code>fixed: true</code> 就行。</li><li><strong>迷你模式</strong>：更紧凑，只显示封面缩略图和进度条，适合侧边栏小挂件。设置 <code>mini: true</code>。</li></ul>
+<p><img src="../images/aplayer-docs/player-fixed.jpeg" alt="吸底模式：固定在页面底部" loading="lazy"></p>
+<p>三种形态不需要额外引入任何 CSS，改一个参数就自动切换。这也是 APlayer 相比其他播放器省心的地方。</p>
+<h3>功能三：动态切歌与列表管理</h3>
+<p>播放器实例 <code>ap</code> 上有一个 <code>ap.list</code> 命名空间，专门管理歌单。你可以随时往列表里加歌、删歌、切歌：</p>
+<pre><code class="language-javascript">// 往末尾加一首新歌
+ap.list.add({ name: &#x27;新歌&#x27;, artist: &#x27;某人&#x27;, url: &#x27;new.mp3&#x27;, cover: &#x27;new.jpg&#x27; });
+
+// 直接跳到第 3 首（下标从 0 开始，所以是 index 2）
+ap.list.switch(2);
+
+// 按下标移除一首歌
+ap.list.remove(0);
+
+// 清空整个播放列表
+ap.list.clear();</code></pre>
+<p>添加、移除、切换都会触发对应的事件（<code>listadd</code>、<code>listremove</code>、<code>listswitch</code>），你可以在这些事件里做自己的逻辑，比如加一首就往日志里写一条。</p>
+<h2>小白的三个常见疑问</h2>
+<h3>为什么手机上打开页面不自动播放？</h3>
+<p>移动端浏览器（iOS Safari、Android Chrome、微信内置浏览器）<strong>全部默认禁止无用户交互的音频自动播放</strong>。这是浏览器层面的硬性策略，不是 APlayer 的 bug。</p>
+<p>可行的思路有三个：监听页面第一次点击或触摸，在回调里调用 <code>ap.play()</code>；在播放器旁边放一个显眼的「点击开始播放」按钮；或者初始静音 + 首次交互取消静音。微信内置浏览器尤其严格，几乎禁止一切自动播放，面向微信用户的页面最好直接让用户自己点。</p>
+<h3>主题色能换吗？每首歌用不同颜色行不行？</h3>
+<p>当然可以。全局设置一个 <code>theme</code> 参数，播放器的进度条、音量条、列表标记色都会跟着变。更酷的是——你可以为每首歌单独设置 <code>theme</code>，切歌时主题色自动切换。运行时也能通过 <code>ap.theme(&#x27;#FF0000&#x27;)</code> 动态改当前歌曲的主题色。这些用法在 APlayer 文档的主题色 API 章节里有完整示例。</p>
+<h3>能播放 m3u8 直播流吗？</h3>
+<p>APlayer 本身不直接支持 HLS（m3u8），但可以配合 hls.js 实现。初始化时传入一个 <code>customAudio</code> 或类似的扩展配置就能接住直播流。不过对新手来说，先把 MP3/WAV 这些浏览器原生支持的格式跑通再说，HLS 是进阶玩法。</p>
+<h2>小结</h2>
+<p>APlayer 是目前最轻量、API 设计最干净的网页音乐播放器。20KB 左右的 gzip 体积、原生支持播放列表和 LRC 歌词、三种显示形态一键切换，这些放在一起让它在「只想把音乐播好、不想折腾视频播放器冗余逻辑」这个场景下几乎没有对手。</p>
+<p>进阶方向：把 APlayer 放进项目里和 MetingJS 配合，可以直接接入网易云等音乐平台自动生成歌单；或者配合 Vue/React 组件化集成到 SPA 项目里。完整的项目仓库我分别推到了 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/APlayer" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/APlayer" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/APlayer" target="_blank" rel="noopener">GitCode</a>，国内外访问都方便。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/apksigner.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Apksigner 上手：小白也能在手机上给 APK 签名的五分钟教程</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/appblock-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AppBlock 深度盘点——从基础拦截到防破防严格模式，一套能让你真正放下手机的工具链</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

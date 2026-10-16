@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>aria2 上手测评：命令行下载工具凭什么让我把迅雷卸了 · 老杨技术栈</title>
+  
+<meta name="description" content="一个用惯了图形下载器的人转向 aria2 的真实体验：多连接提速、RPC 远程控制、守护进程挂机，这些命令行特性到底香不香，又有哪些地方让人挠头。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/aria2-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="aria2 上手测评：命令行下载工具凭什么让我把迅雷卸了">
+<meta property="og:description" content="一个用惯了图形下载器的人转向 aria2 的真实体验：多连接提速、RPC 远程控制、守护进程挂机，这些命令行特性到底香不香，又有哪些地方让人挠头。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/aria2-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/aria2-docs/aria2-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/aria2-docs/aria2-logo.png">
+
+<meta name="twitter:title" content="aria2 上手测评：命令行下载工具凭什么让我把迅雷卸了">
+<meta name="twitter:description" content="一个用惯了图形下载器的人转向 aria2 的真实体验：多连接提速、RPC 远程控制、守护进程挂机，这些命令行特性到底香不香，又有哪些地方让人挠头。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u7528\u60ef\u4e86\u56fe\u5f62\u4e0b\u8f7d\u5668\u7684\u4eba\u8f6c\u5411 aria2 \u7684\u771f\u5b9e\u4f53\u9a8c\uff1a\u591a\u8fde\u63a5\u63d0\u901f\u3001RPC \u8fdc\u7a0b\u63a7\u5236\u3001\u5b88\u62a4\u8fdb\u7a0b\u6302\u673a\uff0c\u8fd9\u4e9b\u547d\u4ee4\u884c\u7279\u6027\u5230\u5e95\u9999\u4e0d\u9999\uff0c\u53c8\u6709\u54ea\u4e9b\u5730\u65b9\u8ba9\u4eba\u6320\u5934\u3002", "headline": "aria2 \u4e0a\u624b\u6d4b\u8bc4\uff1a\u547d\u4ee4\u884c\u4e0b\u8f7d\u5de5\u5177\u51ed\u4ec0\u4e48\u8ba9\u6211\u628a\u8fc5\u96f7\u5378\u4e86", "image": ["https://alipymanbu.github.io/images/aria2-docs/aria2-logo.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/aria2-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/aria2-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "aria2 \u4e0a\u624b\u6d4b\u8bc4\uff1a\u547d\u4ee4\u884c\u4e0b\u8f7d\u5de5\u5177\u51ed\u4ec0\u4e48\u8ba9\u6211\u628a\u8fc5\u96f7\u5378\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">aria2 上手测评：命令行下载工具凭什么让我把迅雷卸了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">aria2 上手测评：命令行下载工具凭什么让我把迅雷卸了</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个用惯了图形下载器的人转向 aria2 的真实体验：多连接提速、RPC 远程控制、守护进程挂机，这些命令行特性到底香不香，又有哪些地方让人挠头。</p>
+  </header>
+  <div class="prose">
+<p>说实话，我装 aria2 的契机挺尴尬的——去年年底折腾一台迷你主机当家用服务器，想找个能 24 小时挂着跑下载、还能远程管理的工具。迅雷服务器版试过，广告越来越多还偷偷上传；qBittorrent 倒是安静，但 HTTP 直链下载表现一般，而且俩家伙都是图形界面，在没显示器的服务器上跑着总觉得别扭。</p>
+<p>搜了一圈最后落到 aria2 头上。这个开源命令行工具我早就听过名字，<a href="https://aria2.rggd.pw" target="_blank" rel="noopener">aria2官网</a>上常年挂着完整的参数手册——但一直没真正用过——总觉得命令行下载是极客玩具，跟我这种习惯了"点一下就好"的用户不搭。抱着试试看的心态装了，结果用了一周就把迅雷卸了。</p>
+<p><img src="../images/aria2-docs/aria2-logo.png" alt="aria2 的标志很简洁，一个大写的 A 配上两条弧线" loading="lazy"></p>
+<h2>初印象：就一条命令？</h2>
+<p>安装过程没什么好说的，包管理器一行搞定，Windows 用户去<a href="https://aria2.rggd.pw/download.html" target="_blank" rel="noopener">下载</a>页拿预编译二进制也很方便。装好打开终端，我对着文档敲出第一条命令的时候愣了一下：就这？</p>
+<pre><code class="language-bash">aria2c &quot;https://example.com/somefile.zip&quot;</code></pre>
+<p>给个地址，回车，进度条直接在终端里刷起来，下载完自动退出，文件就在当前目录。没有弹窗、没有广告、没有"要不要设为默认下载器"的询问——干净得让人有点不习惯。</p>
+<p>第一次用的时候我还傻乎乎地把链接拆开来敲，结果带 <code>&amp;</code> 符号的磁力链接直接报错。后来才知道 shell 里 URL 必须用引号包起来，不然 <code>&amp;</code> 会被当成后台执行符截断。这个小坑踩过一次就记住了，不算什么大问题。</p>
+<h2>真正让我留下来的几个点</h2>
+<h3>多连接提速是真的猛</h3>
+<p>以前用单连接下载器碰到限速服务器，速度就卡在几百 KB 上不去。aria2 默认就开 5 条连接，一条命令把 <code>--max-connection-per-server=16</code> 加上，直接把一条下载任务拆成 16 条并发连接。说实话第一次看到速度从 300KB/s 飙到 8MB/s 的时候，我盯终端盯了好一会儿——这速度比我家宽带理论上限还快，aria2 到底是怎么做到的？</p>
+<p>后来才搞明白，不是 aria2 突破了物理限制，而是很多服务器对单连接有限速、但总带宽没满。多连接相当于绕过了单连接限速，把服务器的剩余带宽吃满。这个特性对我这种经常从海外服务器拉大文件的人来说，简直是刚需。</p>
+<p>而且多任务并行也很省心。<code>-j3</code> 同时跑三个任务，每个任务各自开自己的连接池，互不干扰。终端进度行里 <code>CN:16 DL:8.2MiB</code> 那几个数字每次看都有种跑满带宽的快感。</p>
+<h3>断点续传比我想的还靠谱</h3>
+<p>Ctrl-C 停掉一个下载，过两天在同一个目录重跑同一条命令，aria2 会自动从断点继续——连文件都不用删。换成同一个文件的不同镜像地址也行，它会自动合并进度。这个特性我之前在别的下载器上也见过，但 aria2 的实现明显更稳，从来没出现过"续传失败要重下"的情况。</p>
+<h3>RPC + 守护进程：把服务器变成下载机</h3>
+<p>这是 aria2 最让我惊喜的玩法，也是我把它装到迷你主机上的真正原因。</p>
+<p>以前想让下载器 24 小时挂着跑，要么开着一个桌面环境占内存，要么用 VNC 远程看个图形界面——都不够优雅。aria2 有个 <code>-D</code> 参数，加上之后进程直接转后台，终端关掉也不影响。再配一个 <code>--save-session</code>，每 60 秒把当前任务清单存进文件，服务器重启之后用 <code>-i</code> 读回来接着跑，断电也不丢。</p>
+<p>然后开 RPC 接口，整个下载机就活了：任何设备上装个 AriaNg 这样的前端，浏览器打开就能看到下载列表、加新任务、改参数。我在公司摸鱼的时候用手机把晚上要下的种子塞进家里的下载机，下班回家电影已经躺在硬盘里了。</p>
+<p>说实话这套玩法的组合拳我之前在 qBittorrent 上也见过，但 aria2 的优势在于轻量——整个进程常驻内存也就十几 MB，比跑个完整桌面环境省太多。</p>
+<p><img src="../images/aria2-docs/ariang-desktop.png" alt="AriaNg 桌面端界面，左侧下载列表、右侧任务详情，布局很清爽" loading="lazy"></p>
+<h2>也说说让我挠头的地方</h2>
+<p>命令行上手确实有门槛。不是说难，而是"你得先知道有哪些参数"。比如 <code>--file-allocation=falloc</code> 能让大文件预分配快很多，但如果你不知道这个参数，默认的预分配模式在机械硬盘上会卡好几分钟，看起来像死机了一样。再比如 BT 下载的 <code>--bt-trackers</code>、<code>--peer-limit-per-torrent</code> 这些调优参数，全靠翻文档才能搞明白。</p>
+<p>配置文件那一套也有点让人头大。虽然支持把常用参数写进 <code>aria2.conf</code> 里省得每次敲长命令，但文件里的注释全是英文，有些参数之间还有依赖关系——比如开了 <code>--enable-rpc</code> 但忘了加 <code>--rpc-secret</code>，等于把下载机的控制权敞开给局域网里任何能扫到端口的人。我第一次配置的时候就踩了这个坑，后来翻到<a href="https://aria2-docs.pages.dev/" target="_blank" rel="noopener">aria2文档</a>里 RPC 密钥那篇才补上。</p>
+<p>还有个小毛病：终端进度行默认每秒刷新一次，跑多任务的时候屏幕刷得眼花缭乱。这个可以用 <code>--summary-interval</code> 调大间隔或者设 0 关掉，但又是一个"你得知道有这个参数"的问题。</p>
+<h2>适合谁，不适合谁</h2>
+<p>如果你跟我一样有一台 24 小时在线的小机器想当下载机，或者经常从限速服务器拉大文件，aria2 非常值得上手。它轻量、稳定、功能全，而且完全开源没有广告——装一次就能忘了它的存在，安安静静在后台跑。</p>
+<p>但如果你只是偶尔下个文件、习惯了图形界面点来点去，那 aria2 可能没必要。命令行的学习成本、参数文档的阅读门槛，对 casual 用户来说确实不如直接用浏览器自带下载器或者 IDM 来得顺手。它不是"更好的图形下载器"，而是"换了一条路解决下载问题"的工具。</p>
+<h2>最后说一句</h2>
+<p>用了一个多月，aria2 已经替我接管了家里所有下载任务。从最开始对着参数文档一脸懵，到现在能闭着眼敲出挂机命令，中间踩过的那些小坑反而让我对"下载"这件事本身理解得更深了——原来一个看似简单的"下载"动作，背后可以拆出这么多层：连接管理、磁盘预分配、断点续传、peer 交换。</p>
+<p>如果你也在找一个能长期挂机、远程可控的下载方案，或者单纯想试试命令行工具的味道，aria2 值得花一个下午摸一摸。</p>
+<p>我整理的 aria2 中文参数参考也同步到了三个代码仓库：<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/aria2" target="_blank" rel="noopener">GitHub</a> 为主，<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/aria2" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/aria2" target="_blank" rel="noopener">GitCode</a> 做国内镜像，打开哪个方便看哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/arcore-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">ARCore 版本进化史：Google 这八年死磕的那件事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/armoury-crate-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Armoury Crate 避坑指南：这几个地方我踩过了，你别再踩</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Emby 串流播放的三种模式到底在耍什么花招 · 老杨技术栈</title>
+  
+<meta name="description" content="为什么同一部电影在手机上流畅 Direct Play，在老电视盒子上却 CPU 飙高转码？深挖 Emby 播放链路的架构设计与技术取舍。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/emby-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Emby 串流播放的三种模式到底在耍什么花招">
+<meta property="og:description" content="为什么同一部电影在手机上流畅 Direct Play，在老电视盒子上却 CPU 飙高转码？深挖 Emby 播放链路的架构设计与技术取舍。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/emby-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/emby-docs/transcoding-settings.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/emby-docs/transcoding-settings.png">
+
+<meta name="twitter:title" content="Emby 串流播放的三种模式到底在耍什么花招">
+<meta name="twitter:description" content="为什么同一部电影在手机上流畅 Direct Play，在老电视盒子上却 CPU 飙高转码？深挖 Emby 播放链路的架构设计与技术取舍。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e3a\u4ec0\u4e48\u540c\u4e00\u90e8\u7535\u5f71\u5728\u624b\u673a\u4e0a\u6d41\u7545 Direct Play\uff0c\u5728\u8001\u7535\u89c6\u76d2\u5b50\u4e0a\u5374 CPU \u98d9\u9ad8\u8f6c\u7801\uff1f\u6df1\u6316 Emby \u64ad\u653e\u94fe\u8def\u7684\u67b6\u6784\u8bbe\u8ba1\u4e0e\u6280\u672f\u53d6\u820d\u3002", "headline": "Emby \u4e32\u6d41\u64ad\u653e\u7684\u4e09\u79cd\u6a21\u5f0f\u5230\u5e95\u5728\u800d\u4ec0\u4e48\u82b1\u62db", "image": ["https://alipymanbu.github.io/images/emby-docs/transcoding-settings.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/emby-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/emby-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Emby \u4e32\u6d41\u64ad\u653e\u7684\u4e09\u79cd\u6a21\u5f0f\u5230\u5e95\u5728\u800d\u4ec0\u4e48\u82b1\u62db", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Emby 串流播放的三种模式到底在耍什么花招</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Emby 串流播放的三种模式到底在耍什么花招</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">为什么同一部电影在手机上流畅 Direct Play，在老电视盒子上却 CPU 飙高转码？深挖 Emby 播放链路的架构设计与技术取舍。</p>
+  </header>
+  <div class="prose">
+<h2>为什么 Emby 不直接全都转码得了</h2>
+<p>我第一次在 Emby <a href="https://emby.fewz.tech" target="_blank" rel="noopener">官网</a> 注册账号时很好奇——为什么它要搞出 Direct Play、Direct Stream、Transcode 三种播放模式？用户点个播放按钮，你后台全转码完了发过去不就完了，省得一堆兼容性问题。</p>
+<p>后来在不同设备上折腾了一圈，又去 <a href="https://emby-docs.pages.dev/" target="_blank" rel="noopener">Emby文档</a> 翻了一下播放原理章节才理清：<strong>转码是资源消耗最大的操作，能不转就不转</strong>。Emby 的整套播放链路，本质上就是一个「能省则省」的分层决策系统——每一层都在试图跳过昂贵的转码步骤，只有实在跳不过才硬着头皮上。</p>
+<h2>三层决策：从理想形态到无奈妥协</h2>
+<p>Emby 的播放请求进来后，Server 端走的是一条严格的降级链。每一层检查完就知道"这条路径走不通，换下一层"，直到找到能跑的为止。</p>
+<h3>Direct Play：零消耗的理想态</h3>
+<p>Direct Play 是整个播放链路的「白嫖模式」——Server 端只负责把磁盘上的文件原封不动地读出来，通过网络流式传给客户端。不做任何编码、不做任何封装、CPU 占用为零。</p>
+<p>但它的触发条件也最苛刻，得同时满足四个维度的兼容：</p>
+<ul><li><strong>视频编码</strong>必须是客户端原生硬解支持的（H.264 最保险；H.265/HEVC 在新设备上还行但老盒子容易翻车；AV1 目前普及度还低）</li><li><strong>音频编码</strong>同理——DTS 和 Dolby TrueHD 在 iOS / Apple TV 上是禁区，AAC 和 AC3 几乎全平台通吃</li><li><strong>容器格式</strong>客户端能打开（MP4 是万金油，MKV 在部分平台上会被拒收）</li><li><strong>码率</strong>不超过客户端设的 Max streaming bitrate</li></ul>
+<p>字幕是额外变量——如果要在浏览器 Web Client 里显示 PGS 蓝光字幕，也会直接打断 Direct Play 流程，因为浏览器没法原生 overlay 这种图片型字幕。</p>
+<h3>Direct Stream：几乎零消耗的折衷补丁</h3>
+<p>当容器格式对不上但视频音频编码都没问题时，Direct Stream 出场救场。它的操作很简单——比如客户端不支持 MKV 但支持里面那路 H.264 + AAC，Emby 就把 MKV 重封装成 MP4 流，视频音频比特流一字不动。</p>
+<p>重封装的本质就是换了个"壳"，里面的内容全没碰。CPU 占用几乎可以忽略不计，画质也没有任何损失。它是 Direct Play 之外的第二道防线——大部分人把媒体库从 MKV 换成 MP4 就能减少很多不必要的转码，但 Direct Stream 让你不必全换也能享受到接近 Direct Play 的体验。</p>
+<h3>Transcode：万能但昂贵的兜底</h3>
+<p>前两层都走不通时，Emby 只能祭出 ffmpeg + 硬件加速/软解的实时转码。这是资源消耗最大的模式——Server 得边解码边编码边推流，整个过程是实时的，不能提前做好缓存。</p>
+<p>触发转码的场景千奇百怪：</p>
+<ul><li>H.265 视频 + 老款 Android TV 盒子（HEVC 硬解缺失）→ 转 H.264</li><li>DTS-HD 音轨 + iOS → 转 AAC</li><li>原片码率 80Mbps + 远程 4G 带宽 15Mbps → 降码率</li><li>Web Client 播 PGS 字幕 → 字幕烧录进画面</li></ul>
+<p>最后这个字幕烧录特别有意思——为了让浏览器能显示一张图片型字幕，Emby 必须把整段视频解码、把字幕合成进每一帧、再编码回去。原本 Direct Play 只需要几十 Mbps 的带宽，烧录字幕后 CPU 可能直接 100%。从<a href="https://emby.fewz.tech/download.html" target="_blank" rel="noopener">下载</a>页拿个安装包装好就能体验这套机制。</p>
+<h2>硬件加速才是转码不崩溃的救命稻草</h2>
+<p>如果纯靠 CPU 软解转码，一台普通家用 PC 同时跑两路 1080p 转码就已经开始掉帧。Emby 支持的硬件加速方案覆盖了几乎所有主流平台：</p>
+<ul><li>Intel Quick Sync（核显，性价比最高，建议用 Quick Sync Video 模式）</li><li>NVIDIA NVENC/NVDEC（独显，支持的编码器最多，包括 HEVC 和 AV1）</li><li>AMD AMF（相对小众但性能也不错）</li><li>Raspberry Pi VideoCore（ARM 平台专属）</li></ul>
+<p>硬件加速的本质是把视频编解码这件事从通用计算核心（CPU）剥离到专用硬件单元——这些单元就是为视频编解码量身打造的，吞吐能力比 CPU 快一个数量级。开启硬件加速后，Server CPU 占用从 100% 降到几个百分点，同时能扛的并发转码路数也翻了几倍。</p>
+<h2>为什么这套分层设计值得折腾</h2>
+<p>看到这里你可能会想：我换个全兼容的媒体库格式不就行了，搞这么复杂干嘛？</p>
+<p>这套设计的价值恰恰在于<strong>不用折腾媒体库也能跑</strong>。你从网上下的片源五花八门——有的是 Remux 的蓝光 MKV 带 DTS-HD 音轨，有的是 H.265 编码的 HEVC 压缩版，有的码率高到离谱——你总不能为了 Emby 去一部部重新编码。</p>
+<p>分层决策让 Emby 对媒体库的宽容度极高：好片源直接 Direct Play 白嫖性能，差片源走转码兜底也能看。代价是 Server 硬件不能太弱——如果你的 PC 只有双核 CPU 还没有独显，远程看 4K HEVC 片时就得做好卡顿的准备。</p>
+<p>另一个隐藏代价是<strong>远程带宽的硬瓶颈</strong>。哪怕转码开了硬件加速，Server 也得把转好的视频流推给你——你家宽带上行如果只有 20Mbps，那么远程访问时码率上限就是 20Mbps，画质不可能超过这个物理上限。Emby 在 Playback → Bitrate Limits 里提供了全局和每个用户单独的带宽限制，本质就是在转码之前先给一个上限目标，让 ffmpeg 只需要降到这个码率就行，不必纠结"到底该降到多少才不卡"。</p>
+<p><img src="../images/emby-docs/transcoding-settings.png" alt="Dashboard 转码设置页面" loading="lazy"></p>
+<h2>怎么把这套原理用起来</h2>
+<p>理解了三种模式的决策逻辑后，优化播放体验的方向就很清晰了：</p>
+<p><strong>第一步，统一音频编码</strong>。视频编码暂时不动没关系（H.264 和 H.265 目前都能在大多数设备上硬解），但音频一定要统一成 AAC 或 AC3。DTS 在 iOS / Apple TV 上是强制转码触发项，改掉能直接减少一大半转码场景。</p>
+<p><strong>第二步，客户端比特率设合理值</strong>。局域网千兆设 Unlimited，远程 4G 设 5~10Mbps，家里 WiFi 设 20~30Mbps。别偷懒设 Auto——虽然 Emby Connect 会根据网络情况自动切换，但手动设好基准值能避免它探测不准时的尴尬。</p>
+<p><strong>第三步，开硬件加速</strong>。在 Dashboard → Advanced → Playback → Transcoding 里选好你的硬件加速方案。如果不确定选哪个，先跑一次硬件检测，让 Emby 自己识别。</p>
+<h2>写在最后</h2>
+<p>Emby 的播放链路设计给我的印象是<strong>务实</strong>——它没有追求"完美 Direct Play"的理想态，也没有做"全部转码兜底"的偷懒选择，而是在两者之间搭了一条渐进降级的通路。每一层决策都在回答一个问题："这次能不能不花那笔 CPU 钱？"</p>
+<p>这种务实设计的好处是用户门槛很低——你把乱七八糟的片源丢进去，它总能找到能跑的方式。坏处是 Server 硬件、带宽、媒体库格式这三者之间存在微妙的三角平衡，打破任一边都会影响体验。</p>
+<p>想看看这套设计的细节和配置教程，不妨多折腾几下不同设备观察它们的播放模式变化，慢慢就能摸到规律。</p>
+<p>这套资料我同时维护在三个仓库里方便大家查阅：<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Emby" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Emby" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Emby" target="_blank" rel="noopener">GitCode</a> 都有完整的文档目录，clone 下来就能本地浏览。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/eightsleep-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">出差第五天，我在飞机上提前把被窝焐热了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/enpass-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Enpass 为什么把密码库做成一个文件——从架构源头看它的安全与代价</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

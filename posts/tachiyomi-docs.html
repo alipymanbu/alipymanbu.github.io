@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我用 Tachiyomi 搭了条漫画追更流水线——从分散刷站到全自动同步 · 老杨技术栈</title>
+  
+<meta name="description" content="以前追三十多本漫画要开十个源站、手动改 Bangumi 进度、换手机还丢书架。现在一条链串起聚合、更新、追踪、备份，每周省出三小时。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/tachiyomi-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我用 Tachiyomi 搭了条漫画追更流水线——从分散刷站到全自动同步">
+<meta property="og:description" content="以前追三十多本漫画要开十个源站、手动改 Bangumi 进度、换手机还丢书架。现在一条链串起聚合、更新、追踪、备份，每周省出三小时。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/tachiyomi-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/tachiyomi-docs/library-grid.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/tachiyomi-docs/library-grid.jpg">
+
+<meta name="twitter:title" content="我用 Tachiyomi 搭了条漫画追更流水线——从分散刷站到全自动同步">
+<meta name="twitter:description" content="以前追三十多本漫画要开十个源站、手动改 Bangumi 进度、换手机还丢书架。现在一条链串起聚合、更新、追踪、备份，每周省出三小时。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u8ffd\u4e09\u5341\u591a\u672c\u6f2b\u753b\u8981\u5f00\u5341\u4e2a\u6e90\u7ad9\u3001\u624b\u52a8\u6539 Bangumi \u8fdb\u5ea6\u3001\u6362\u624b\u673a\u8fd8\u4e22\u4e66\u67b6\u3002\u73b0\u5728\u4e00\u6761\u94fe\u4e32\u8d77\u805a\u5408\u3001\u66f4\u65b0\u3001\u8ffd\u8e2a\u3001\u5907\u4efd\uff0c\u6bcf\u5468\u7701\u51fa\u4e09\u5c0f\u65f6\u3002", "headline": "\u6211\u7528 Tachiyomi \u642d\u4e86\u6761\u6f2b\u753b\u8ffd\u66f4\u6d41\u6c34\u7ebf\u2014\u2014\u4ece\u5206\u6563\u5237\u7ad9\u5230\u5168\u81ea\u52a8\u540c\u6b65", "image": ["https://alipymanbu.github.io/images/tachiyomi-docs/library-grid.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/tachiyomi-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/tachiyomi-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6211\u7528 Tachiyomi \u642d\u4e86\u6761\u6f2b\u753b\u8ffd\u66f4\u6d41\u6c34\u7ebf\u2014\u2014\u4ece\u5206\u6563\u5237\u7ad9\u5230\u5168\u81ea\u52a8\u540c\u6b65", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">我用 Tachiyomi 搭了条漫画追更流水线——从分散刷站到全自动同步</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我用 Tachiyomi 搭了条漫画追更流水线——从分散刷站到全自动同步</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前追三十多本漫画要开十个源站、手动改 Bangumi 进度、换手机还丢书架。现在一条链串起聚合、更新、追踪、备份，每周省出三小时。</p>
+  </header>
+  <div class="prose">
+<h2>旧流程：每天花四十分钟，还经常漏更</h2>
+<p>我手机里常年挂着三十多本追更漫画，分布在不同的源站。两年前的日常是这样的：早上起来先刷 A 站那几本，再开 B 站刷一遍，遇到某站 App 崩了还要切到浏览器。三十本漫画分散在十来个源里，想查某本有没有更新，得一本一本点进去看——粗略算下来，每天大概花四十分钟在"找新章"这件事上。</p>
+<p>更烦的是进度记录。我在 Bangumi 上有个漫画追更清单，以前每次读完新章都要手动打开 Bangumi App，找到对应条目，把已读章节数手动加一。这件事极其容易忘——读的时候爽，读完就关，等过了一周 Bangumi 上的进度和实际已经差了五六章，补起来格外痛苦。</p>
+<p>换手机是另一个噩梦。去年换了台新安卓，旧手机上装了七八个漫画 App，每个 App 的书架都要单独导出、再单独导入。其中两个 App 根本没导出功能，我只能凭着记忆一本本搜回来。那折腾了一个晚上。</p>
+<p>这三件事——分散刷站、手动追踪、换设备丢书架——构成了我看漫画的全部摩擦。我一直在找一个能串起这整条链的工具，直到朋友给我推荐了 Tachiyomi。</p>
+<h2>新流程：把 Tachiyomi 当流水线的中枢</h2>
+<p>Tachiyomi 是一个开源的漫画阅读器，它的<a href="https://tachiyomi.usea.quest" target="_blank" rel="noopener">官网</a>上把自己定位成"Android 上最通用的漫画阅读器"。但对我来说，它真正的价值不在阅读器本身，而在它能把上面三个痛点一次解决。</p>
+<p>我现在的工作流是这样的：<strong>多扩展聚合 → 自动更新检查 → 追踪服务同步 → 每周备份导出</strong>。整个链条里我唯一需要主动做的事就是打开 Tachiyomi 读新章，其他全都自动跑。</p>
+<h3>第一步：扩展聚合——十个源站收进一个书架</h3>
+<p>Tachiyomi 本身是个空壳，所有漫画源通过"扩展"接入。社区维护的扩展仓库里有几百个源，国内常见的几个漫画站基本都覆盖了。安装扩展的流程很简单：在浏览页添加一个社区仓库地址，Tachiyomi 会拉取扩展列表，点哪一个就装哪一个。</p>
+<p>我现在装了七个扩展，覆盖了常看的所有源。每个源里搜到的漫画都可以加到同一个书架里，按分类打标签——"热血漫""日常番""完结待补"。书架变成了我所有漫画的单一入口，不用再切 App。</p>
+<p><img src="../images/tachiyomi-docs/library-grid.jpg" alt="书架网格视图" loading="lazy"></p>
+<h3>第二步：自动更新检查——每天帮我刷十遍源站</h3>
+<p>设置里开了自动更新，频率选的是每六小时一次，仅限 Wi-Fi 下。排除了"完结待补"分类——那些已经完结了不用再刷。更新检查的逻辑就是：Tachiyomi 依次请求我书架里每本漫画对应的源站接口，拿到最新章节列表，和本地记录对比，有差异就推到更新页顶部。</p>
+<p>这样我早上起来打开 Tachiyomi，点底部的"更新"标签，所有有新章的漫画已经排好了。不用开十个源站逐个刷——Tachiyomi 在后台已经替我跑完了。</p>
+<h3>第三步：追踪服务同步——读完一章自动报 Bangumi</h3>
+<p>这是整条链最爽的环节。Tachiyomi 支持六七个追踪平台，我绑了 Bangumi 和 AniList。绑定过程是 OAuth 授权，在设置里选追踪 → 点 Bangumi → 浏览器弹出登录页 → 授权就行，凭证存在本地备份里。</p>
+<p>绑定之后，任何时候我读完一章的最后一页，Tachiyomi 自动调用追踪服务的 API，把该漫画的已读章节数加一。不用我手动打开 Bangumi 改了。而且它是<strong>双向同步</strong>——如果我在 Bangumi 上手动改了进度，也可以让 Tachiyomi 拉回来覆盖本地。</p>
+<p>自动同步的触发条件也不止"读完最后一页"：手动标记某章已读、在阅读器里跳到更靠后的章节号，这些行为都会触发同步。这套机制基本覆盖了我所有正常操作。</p>
+<h3>第四步：每周备份导出——换手机只需要五分钟</h3>
+<p>Tachiyomi 有内建的备份功能：设置 → 备份和还原 → 创建备份。备份文件是一个 JSON，包含所有书架条目、分类、阅读进度、扩展列表、追踪绑定凭证。我现在每周日晚上手动导一次，然后传到夸克网盘存一份。</p>
+<p>上次换手机，我只需要在新手机上装 Tachiyomi——安装包从<a href="https://tachiyomi.usea.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿 → 从网盘下载备份文件 → 还原，整个过程不到五分钟。书架、进度、分类全回来了，连追踪绑定都不用重新授权——凭证跟着备份走的。</p>
+<h2>实操细节：最容易断链的两个环节</h2>
+<p>跑了这条流水线大半年，遇到过两个反复出现的问题。摸清楚怎么修之后，整个流程再也没卡过壳。</p>
+<h3>扩展加载失败：五步排查法</h3>
+<p>偶尔会遇到扩展列表空了、或者某个源的目录加载不出来。<a href="https://tachiyomi-docs.pages.dev/" target="_blank" rel="noopener">Tachiyomi文档</a>里有一个五步排查流程，我按这个来没失手过。</p>
+<p>第一步先查网络——社区仓库托管在 GitHub Raw，国内网络有时会慢。用手机浏览器打开仓库地址，如果浏览器也打不开就是网络问题，开代理或者换流量。第二步核对仓库 URL 有没有抄错——多一个空格少一个字母都不行，正确地址要和文档里的逐字对。第三步看 Tachiyomi 版本，太旧的版本对新扩展仓库格式不兼容。第四步更新 Android System WebView 组件，有些源站页面要靠它渲染。以上都没解决才走最后一步：清应用数据——但一定要先导出备份。</p>
+<p>这套流程走一遍基本能定位问题。我把它截图存在手机备忘录里，每次遇到直接对照。</p>
+<h3>夜间阅读的亮度控制</h3>
+<p>睡前看漫画是我多年的习惯，但旧流程里每个漫画 App 的亮度调节都不一样，有的没有夜间模式，有的夜间模式做得很粗糙。Tachiyomi 在这块做得比我用过的所有漫画 App 都细。</p>
+<p>它有三种全局主题：浅色、深色、AMOLED 纯黑。我用的深色主题，因为我手机是 LCD 屏，AMOLED 纯黑在我这没效果。但阅读器内部有独立的背景色设置——可以让 Tachiyomi 自动分析当前漫画页面的主色调，把阅读器背景调到协调的颜色。比如一本老漫画的页面是米黄色，阅读器背景自动变成相近的色调，不会在白底上显得突兀。</p>
+<p>亮度方面，Tachiyomi 提供了独立于系统的"覆盖层亮度"——阅读器里侧边滑条可以直接调，只在 Tachiyomi 内部生效，退出就恢复系统亮度。我设成右侧滑条，睡前看漫画时拉一下就行，不用再拉 Android 的下拉栏。</p>
+<p><img src="../images/tachiyomi-docs/reader-view.jpg" alt="阅读器自动跟随背景色" loading="lazy"></p>
+<h2>效果与边界：省了三小时，但也不是万能</h2>
+<p>算一下时间账：以前每天四十分钟刷站，现在打开 Tachiyomi 直接进更新页读，这个动作压缩到五分钟以内。手动同步 Bangumi 的时间完全省了——每周大概能省四十分钟。换手机从一晚上变成五分钟。加起来每周省大概三小时，这个量级我是满意的。</p>
+<p>但这套流程也有边界。首先，社区仓库在 GitHub Raw 上，国内网络不稳定时扩展加载会超时——这时候要么开代理，要么等网络好的时候再同步。其次，自动更新检查是轮询不是推送，六小时一次意味着理论上有六个小时的延迟——但漫画更新频率本身就低，这个延迟我完全可以接受。第三，原版 Tachiyomi 0.15.x 已经停更了，后续如果要跟新得迁到分支版本。</p>
+<p>对我来说，这条流水线的真正好处不是"省了多少时间"，而是<strong>消除了心理负担</strong>。以前总记挂着"某本漫画今天有没有更新""Bangumi 进度是不是又忘改了"，这些碎片式的焦虑现在全部消失了。Tachiyomi 替我盯着所有源站、替我报进度、替我存着书架数据——我只需要打开它，读就好。</p>
+<p>如果你也是一个同时追十本以上漫画的人，这套流程值得搭一次。扩展聚合、自动更新、追踪同步、定时备份，四个环节各自独立又互相咬合，任何一个断了都能单独修，不会拖垮整条链。整条流水线用到的配置和排障要点，我同步到了几个仓库——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Tachiyomi" target="_blank" rel="noopener">GitHub</a>为主源，<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Tachiyomi" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Tachiyomi" target="_blank" rel="noopener">GitCode</a>做国内镜像，方便不同网络环境取用。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zoomearth.html">ZoomEarth 零基础上手：四步学会用它看风、体感温度和野火</a></h2>
+  <p class="card-desc">从下载安装到叠加三层关键图层，跟着教程一步步搞定，出门前看一眼比查三个天气 App 还省心。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xrecorder.html">XRecorder：我每周移动端教程工作流里那块被严重低估的拼图</a></h2>
+  <p class="card-desc">从手机录屏到飞书交付的四步变两步——聊聊怎么把 XRecorder 的静音录制、通知栏截屏和内置合并嵌进一条不绕路的移动端内容生产链。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vocalremover-docs.html">VocalRemover 迭代观察：从一个去人声小工具到九件套音频工作室</a></h2>
+  <p class="card-desc">这款在线音频工具一路走来，从单纯的&#34;去人声&#34;扩展成涵盖分离、剪辑、变调、录音的完整工作流。我从样本文档里能摸到的迭代规律。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/tabula-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/talki-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">把 Talki 嵌进创意工作流——一个人也能跑完整的角色扮演迭代</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

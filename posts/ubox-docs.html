@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>uboX 为什么不做全时录像？低功耗摄像头的架构取舍 · 老杨技术栈</title>
+  
+<meta name="description" content="从 PIR 被动红外触发、TF 卡循环覆盖到云端事件推送，拆解 uboX 如何在不做全时录像也不标配云存储的前提下，让电池款摄像头撑过数月续航，以及这套设计的边界在哪里">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/ubox-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uboX 为什么不做全时录像？低功耗摄像头的架构取舍">
+<meta property="og:description" content="从 PIR 被动红外触发、TF 卡循环覆盖到云端事件推送，拆解 uboX 如何在不做全时录像也不标配云存储的前提下，让电池款摄像头撑过数月续航，以及这套设计的边界在哪里">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/ubox-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/ubox-docs/feature-tf-cloud.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/ubox-docs/feature-tf-cloud.png">
+
+<meta name="twitter:title" content="uboX 为什么不做全时录像？低功耗摄像头的架构取舍">
+<meta name="twitter:description" content="从 PIR 被动红外触发、TF 卡循环覆盖到云端事件推送，拆解 uboX 如何在不做全时录像也不标配云存储的前提下，让电池款摄像头撑过数月续航，以及这套设计的边界在哪里">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece PIR \u88ab\u52a8\u7ea2\u5916\u89e6\u53d1\u3001TF \u5361\u5faa\u73af\u8986\u76d6\u5230\u4e91\u7aef\u4e8b\u4ef6\u63a8\u9001\uff0c\u62c6\u89e3 uboX \u5982\u4f55\u5728\u4e0d\u505a\u5168\u65f6\u5f55\u50cf\u4e5f\u4e0d\u6807\u914d\u4e91\u5b58\u50a8\u7684\u524d\u63d0\u4e0b\uff0c\u8ba9\u7535\u6c60\u6b3e\u6444\u50cf\u5934\u6491\u8fc7\u6570\u6708\u7eed\u822a\uff0c\u4ee5\u53ca\u8fd9\u5957\u8bbe\u8ba1\u7684\u8fb9\u754c\u5728\u54ea\u91cc", "headline": "uboX \u4e3a\u4ec0\u4e48\u4e0d\u505a\u5168\u65f6\u5f55\u50cf\uff1f\u4f4e\u529f\u8017\u6444\u50cf\u5934\u7684\u67b6\u6784\u53d6\u820d", "image": ["https://alipymanbu.github.io/images/ubox-docs/feature-tf-cloud.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/ubox-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/ubox-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "uboX \u4e3a\u4ec0\u4e48\u4e0d\u505a\u5168\u65f6\u5f55\u50cf\uff1f\u4f4e\u529f\u8017\u6444\u50cf\u5934\u7684\u67b6\u6784\u53d6\u820d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">uboX 为什么不做全时录像？低功耗摄像头的架构取舍</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">uboX 为什么不做全时录像？低功耗摄像头的架构取舍</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 PIR 被动红外触发、TF 卡循环覆盖到云端事件推送，拆解 uboX 如何在不做全时录像也不标配云存储的前提下，让电池款摄像头撑过数月续航，以及这套设计的边界在哪里</p>
+  </header>
+  <div class="prose">
+<h2>一个反常的问题</h2>
+<p>市面上大多数 WiFi 摄像头默认做两件事：全时录像 + 云存储。全时录像保险——任何时刻发生的事都不会漏；云存储省心——TF 卡满了、设备被拆走也不怕丢数据。但代价是续航极短（电池款撑不过一周）、流量巨大、年费订阅压力。</p>
+<p><a href="https://ubox.uerg.quest" target="_blank" rel="noopener">uboX官网</a> 的思路反过来：<strong>默认只在事件触发时录像，云存储是可选增值服务</strong>。</p>
+<p>这个取舍让它的电池款摄像头能够撑过数月续航（官方标称待机可达 6 个月），但也意味着用户必须理解它的"触发逻辑"才能用得好。我花了一段时间拆解这套系统的运作方式，发现它不是简单地"关掉了全时录像开关"——背后是一整套为低功耗目标设计的硬件-固件-云端协同架构。</p>
+<h2>核心触发：PIR 被动红外传感器</h2>
+<p>一切的起点是那颗 PIR 传感器。PIR（Passive Infrared，被动红外）不是摄像头，它不拍画面、不编码，只是感知"前方红外热量有没有突然变化"——简单说就是检测有没有东西在动。</p>
+<p>这颗传感器的价值在于<strong>功耗极低</strong>。一个 WiFi 摄像头的主处理器在编码推流时可能吃几百毫安电流，而 PIR 传感器的待机电流通常只有几微安——差了五个数量级。所以 uboX 的待机策略是：主处理器几乎一直休眠，只有 PIR 检测到"可能有物体移动"时才把主处理器唤醒。</p>
+<p>唤醒之后做什么？先拉一下摄像头的实时画面，跑一遍运动检测算法确认不是误触发（比如树影晃动、飞虫），确认是真的有人或车，才开始录像并推送事件。这个"PIR 粗筛 → 摄像头精判"的两阶段设计是低功耗摄像头的标准套路，但 uboX 在参数上调得比较激进——录像默认只录 8 秒，最长不超过 60 秒，就是为了把单次唤醒的功耗压到最低。这套触发逻辑的参数细节和固件版本差异，可以在 <a href="https://ubox-docs.pages.dev/" target="_blank" rel="noopener">uboX文档</a> 里查到。</p>
+<h2>存储层：TF 卡循环覆盖而非云端中转</h2>
+<p>事件触发的录像最终写到哪里？uboX 的选择是<strong>本地 TF 卡优先</strong>，云存储是可选增值。</p>
+<p>这背后的原理很朴素：写入本地 TF 卡的功耗远低于推流到云端。一次事件录像如果走云端，涉及 WiFi 唤醒、DNS 解析、TLS 握手、上传编码后的视频流——每一步都耗电。本地 TF 卡写入只是一次 SPI 总线操作，几毫瓦就搞定。</p>
+<p>但本地存储有一个经典问题：卡满了怎么办？uboX 用的是<strong>环形覆盖</strong>——和行车记录仪一模一样的策略：TF 卡录满后自动删除最早的文件腾出空间，新事件永远能存进去。官方明确标注最大支持 128G 的 FAT32 格式 TF 卡，Class 10 / U1 速度等级，就是为了保证环形写入时不丢帧、不卡顿。</p>
+<p>环形覆盖的好处是用户永远不用手动清理存储卡；代价是<strong>录像有时间窗口</strong>——16G 卡在事件触发频率中等的情况下只能覆盖 7-14 天，64G 卡能覆盖 30-60 天。如果作案发生在窗口之外，录像已经被覆盖掉了。这就是为什么 uboX 把云存储做成可选——在意"录像留存时间"的用户可以付费延长窗口，在意续航和隐私的用户就用本地卡。</p>
+<p><img src="../images/ubox-docs/feature-tf-cloud.png" alt="TF 卡本地存储与可选云存储的双轨设计" loading="lazy"></p>
+<h2>云端的角色：事件推送而非录像中转</h2>
+<p>很多人以为 uboX 摄像头的核心是那个 APP，其实反过来——<strong>摄像头才是主体，云端只是一个轻量的消息通道</strong>。</p>
+<p>uboX 云端不做全时录像的中转，它只做一件事：把摄像头检测到的事件推送到你的手机。这个设计极大地降低了服务器成本，也让整个系统在弱网环境下更健壮——即使云端偶发故障，本地录像依然在正常写入 TF 卡，摄像头不会"瞎"。</p>
+<p>注册环节的邮箱选择也服务于这套云端架构：邮箱地址比手机号稳定（换手机号不会丢绑定），而且邮箱验证是免费、无国界、不依赖任何运营商基础设施的。对于一款面向全球市场的硬件，这是比短信验证码更可靠的身份标识方案。APP 安装包从<a href="https://ubox.uerg.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿，支持 Android 和 iOS 两端。</p>
+<h2>这套设计的取舍边界</h2>
+<p>uboX 的低功耗架构不是没有代价，理解它的边界才能判断适不适合你：</p>
+<p><strong>适合的场景</strong>：需要长期无人值守的户外监控（庭院、仓库、车位）、对隐私敏感不想把录像上传云端、预算有限不想每年付云存储订阅费。</p>
+<p><strong>不太适合的场景</strong>：需要 24 小时连续录像的固定位置监控（银行、车库入口）、需要留存超过 120 天录像的合规场景、WiFi 信号很差的地方（事件推送会延迟或丢失，虽然本地录像不受影响）。</p>
+<p>还有一个容易忽略的细节：PIR 传感器对小动物（猫、狗、鸟）的触发取决于安装角度和灵敏度设置——如果门口有只猫，你可能每天收到十几条误触发通知。反过来，如果有什么东西完全没有热量变化（比如夜晚的金属物体移动），PIR 可能检测不到，这时候需要手动开白光补光灯让摄像头在光线足够时靠视觉检测补位。</p>
+<h2>我的判断</h2>
+<p>uboX 的设计思路本质上是"摄像头回归硬件本职"——让硬件负责检测和记录，让软件只做通知和查看。它没有尝试把摄像头做成一个小型服务器或一个全时段在线的云节点，而是围绕"电池续航"这个核心目标把每一层的功耗都压到最低。</p>
+<p>这不是一个完美的方案，但它是一个<strong>诚实的方案</strong>：它不承诺"永不丢失任何画面"，也不强制你付费订阅才能正常用。如果你需要一个能装上去就忘了管、半年不用充电的户外摄像头，这套架构比任何全时录像的 WiFi 摄像头都更靠谱。</p>
+<p>安装包拿好后，摄像头连上 WiFi 就能开始用——邮箱注册、填个城市级的地址让 APP 就近连服务器节点、插一张 Class 10 以上的 TF 卡格式化一下。整个过程十分钟搞定，之后你很少会想起它的存在，直到某天手机弹出一条推送：PIR 检测到有物体移动。关于这款摄像头的中文整理资料我也做了开源备份，主源在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/uboX" target="_blank" rel="noopener">GitHub</a>，国内走 <a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/uboX" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/uboX" target="_blank" rel="noopener">GitCode</a> 更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/workbuddy-docs.html">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</a></h2>
+  <p class="card-desc">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/tyranor-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Tyranor 深度盘点：安卓端 KRKR 模拟器到底能跑多远</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/undertale-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">把 Undertale 通关变成一条流水线：我每年必走的三遍流程</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

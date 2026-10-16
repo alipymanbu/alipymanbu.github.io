@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Ai Max 这一路：从工具箱到电商创作引擎的三年迭代 · 老杨技术栈</title>
+  
+<meta name="description" content="一个从单功能 AI 工具起步的应用，如何在三年里长成覆盖图像、视频、数字人全链路的创作平台。从样本文档里的功能模块反推，看看团队到底在死磕什么。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/ai-max.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ai Max 这一路：从工具箱到电商创作引擎的三年迭代">
+<meta property="og:description" content="一个从单功能 AI 工具起步的应用，如何在三年里长成覆盖图像、视频、数字人全链路的创作平台。从样本文档里的功能模块反推，看看团队到底在死磕什么。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/ai-max.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/ai-max/appbao-shot-1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/ai-max/appbao-shot-1.png">
+
+<meta name="twitter:title" content="Ai Max 这一路：从工具箱到电商创作引擎的三年迭代">
+<meta name="twitter:description" content="一个从单功能 AI 工具起步的应用，如何在三年里长成覆盖图像、视频、数字人全链路的创作平台。从样本文档里的功能模块反推，看看团队到底在死磕什么。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u4ece\u5355\u529f\u80fd AI \u5de5\u5177\u8d77\u6b65\u7684\u5e94\u7528\uff0c\u5982\u4f55\u5728\u4e09\u5e74\u91cc\u957f\u6210\u8986\u76d6\u56fe\u50cf\u3001\u89c6\u9891\u3001\u6570\u5b57\u4eba\u5168\u94fe\u8def\u7684\u521b\u4f5c\u5e73\u53f0\u3002\u4ece\u6837\u672c\u6587\u6863\u91cc\u7684\u529f\u80fd\u6a21\u5757\u53cd\u63a8\uff0c\u770b\u770b\u56e2\u961f\u5230\u5e95\u5728\u6b7b\u78d5\u4ec0\u4e48\u3002", "headline": "Ai Max \u8fd9\u4e00\u8def\uff1a\u4ece\u5de5\u5177\u7bb1\u5230\u7535\u5546\u521b\u4f5c\u5f15\u64ce\u7684\u4e09\u5e74\u8fed\u4ee3", "image": ["https://alipymanbu.github.io/images/ai-max/appbao-shot-1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/ai-max.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/ai-max.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Ai Max \u8fd9\u4e00\u8def\uff1a\u4ece\u5de5\u5177\u7bb1\u5230\u7535\u5546\u521b\u4f5c\u5f15\u64ce\u7684\u4e09\u5e74\u8fed\u4ee3", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">Ai Max 这一路：从工具箱到电商创作引擎的三年迭代</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Ai Max 这一路：从工具箱到电商创作引擎的三年迭代</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个从单功能 AI 工具起步的应用，如何在三年里长成覆盖图像、视频、数字人全链路的创作平台。从样本文档里的功能模块反推，看看团队到底在死磕什么。</p>
+  </header>
+  <div class="prose">
+<h2>先看现在这版：它是什么样</h2>
+<p>现在打开 Ai Max，你会发现这个 App 已经不是当初那个"几个 AI 小工具凑在一起"的模样了。去它的<a href="https://ai-max.gltd.quest" target="_blank" rel="noopener">官网</a>看看就知道——首页分了好几块：AI 创作引擎、AI 工具箱、数字人视频，还有一整套电商场景的快捷入口。如果第一次接触，很容易觉得功能太多——从画一张图到生成一段带口播的视频，从给照片换件衣服到去个水印，什么都能做。</p>
+<p>但真正让我觉得它跟别的 AI 工具不一样的，不是功能数量，而是它在电商场景的投入。样本文档里提到的 AI 换衣功能，专门解决的就是"同一张模特图换十件衣服"这种电商卖家天天在碰的事。还有 AI 带货那条链路：脚本生成、模特换装、场景绘画、数字人念口播——四个工具串成一条流水线，这不是给普通用户做的，是给在淘宝、抖店上真金白银卖货的人做的。</p>
+<p><img src="../images/ai-max/appbao-shot-1.png" alt="Ai Max 应用界面一览" loading="lazy"></p>
+<h2>它从哪起步</h2>
+<p>翻了<a href="https://ai-max.pages.dev/" target="_blank" rel="noopener">Ai Max文档</a>发现没有写版本历史，这本身就是一条线索——早期的迭代痕迹大概率已经被后来的功能盖过去了。但从几个功能模块的成熟度差异，还是能拼出一个大概的时间线。</p>
+<p>最早的一批功能应该是 AI 工具箱里那几样：去水印、画质增强、图像上色。这些都是单张图片的处理任务，技术上属于 AI 修复和超分辨率的成熟应用，用户画像也最广——从修自己的老照片到帮公众号处理配图，谁都用得上。这个阶段的 Ai Max，跟市面上其他 AI 修图工具没什么本质区别，靠几个点解决具体痛点来拉第一批用户。</p>
+<p>然后应该是 AI 绘画进来了。文生图、图生图，这个时候产品开始有"创作"属性，不再只是修修补补。但样本文档里 AI 绘画的出现更多是作为其他功能的"辅助角色"——比如 AI 换衣可以搭配 AI 绘画生成场景背景，水印去不掉可以用 AI 绘画重新画一张。这种定位说明 AI 绘画不是独立卖点，而是整个工具链里的一环。</p>
+<h2>关键转折点：从工具到场景</h2>
+<p>真正的转折点，我猜是 AI 换衣功能的加入。为什么说它关键？因为它不是一个通用工具——"给人物照片换衣服"这件事，技术上是图像分割 + 纹理迁移的组合，但产品设计上完全是奔着电商去的。样本文档里写的使用建议：正脸清晰、光线均匀、穿贴身基础款——这些建议的语气，跟给服装设计师写的使用手册一模一样。</p>
+<p>AI 换衣之后，AI 带货那条链路就顺理成章地接上了。先出脚本，再换衣服，再画场景，最后数字人念口播——四步走完直接出一条商品短视频。这不是给创作者锦上添花的功能，是给中小卖家降维打击的：原来请模特实拍、请剪辑做视频的成本，现在几十块会员费就能覆盖。</p>
+<p>会员体系也是这个阶段出来的，直接从<a href="https://ai-max.gltd.quest/download.html" target="_blank" rel="noopener">官方下载</a>装一份就能体验完整功能。样本文档里有周卡、月卡、年卡三档，年卡日均五毛，定价明显是往"长期重度用户"那边靠。如果还是通用工具阶段，会员定价不会这么激进——但当产品开始服务电商卖家这种高频、刚性的使用场景时，年卡就变成合理选项了。</p>
+<p><img src="../images/ai-max/appbao-shot-2.png" alt="AI 换衣效果示例" loading="lazy"></p>
+<h2>团队一直在死磕什么</h2>
+<p>从样本文档的功能覆盖来看，有一件事很清楚：团队一直在把"单次操作"变成"完整链路"。</p>
+<p>去水印是单次操作，但如果去不掉怎么办？样本文档给了方案二——用画质增强工具再处理一遍，给了方案三——用 AI 绘画重新生成。这不是三个独立功能，是一条递进的解决路径。</p>
+<p>AI 生成超时了怎么办？样本文档从网络排查、重启应用、降低难度、检查会员状态四步走，分不同功能还各有专属解法。这种"同一个问题给三四套方案"的写法，说明团队自己踩过这些坑，而且把踩坑经验整理成了产品文档。</p>
+<p>反过来，什么一直没做？样本文档里没有提到的部分其实很多——没有提到社区、没有提到模板市场、没有提到多人协作。这些是很多 AI 创作工具会做的事，但 Ai Max 好像完全没在这上面花心思。连 AI 绘画都没单独做一个"画廊"或"灵感墙"，它就是工具链里的中间环节，用完就走。</p>
+<h2>照这个路线，下一步大概率怎么走</h2>
+<p>如果从迭代规律来推，不是官方口径——我觉得接下来有两个方向值得关注。</p>
+<p>一个是工具链的"最后一公里"。现在 AI 带货链路四步走完出视频，但样本文档里没说视频出来之后怎么分发。是直接导出保存？还是有自动发布到各大平台的入口？如果 Ai Max 真要把电商场景做深，分发环节迟早要碰。</p>
+<p>另一个是会员体系的分层。现在只有三档时间卡，权益上只提到会员有优先队列。但如果重度用户真的是电商卖家群体，他们可能需要的不只是"不用排队"——更高分辨率的导出、更多并发任务、批量处理模式，这些都是可以单独做成增值权益的。年卡 ¥198 的定价，现在看还是偏保守。</p>
+<p>当然也有可能团队会继续在图像和视频的基础能力上死磕。样本文档里 AI 生成超时的排查占了很大篇幅，说明服务器压力一直是问题。如果能在生成速度和成功率上再有一个量级的提升，那比加十个新功能都管用。</p>
+<p>总之，从工具箱到创作引擎，Ai Max 这三年走的是一条很务实的路：不为潮流分心，盯着一个具体场景（电商）往深了挖，把单次操作串成完整链路。这条路能不能走通，还得看他们能不能把最后一公里补上。相关资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Ai%20Max" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Ai%20Max" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Ai%20Max" target="_blank" rel="noopener">GitCode</a>三个平台都能拿到，方便不同网络环境下查阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ai-dungeon-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">AI Dungeon 入门指南——和 AI 一起写属于你的冒险故事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ailink-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从零上手 AiLink：体脂秤到家人健康档案的完整实战</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

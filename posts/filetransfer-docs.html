@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>手机到电脑零流量秒传——Filetransfer 从开机到文件落地完整实战 · 老杨技术栈</title>
+  
+<meta name="description" content="还在靠云盘导手机相册？Filetransfer 用 FTP 直连把局域网速度拉满，10GB 视频三分钟搞定还不吃流量。跟着这篇教程从零把它用起来。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/filetransfer-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机到电脑零流量秒传——Filetransfer 从开机到文件落地完整实战">
+<meta property="og:description" content="还在靠云盘导手机相册？Filetransfer 用 FTP 直连把局域网速度拉满，10GB 视频三分钟搞定还不吃流量。跟着这篇教程从零把它用起来。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/filetransfer-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/filetransfer-docs/shot-main.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/filetransfer-docs/shot-main.jpg">
+
+<meta name="twitter:title" content="手机到电脑零流量秒传——Filetransfer 从开机到文件落地完整实战">
+<meta name="twitter:description" content="还在靠云盘导手机相册？Filetransfer 用 FTP 直连把局域网速度拉满，10GB 视频三分钟搞定还不吃流量。跟着这篇教程从零把它用起来。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd8\u5728\u9760\u4e91\u76d8\u5bfc\u624b\u673a\u76f8\u518c\uff1fFiletransfer \u7528 FTP \u76f4\u8fde\u628a\u5c40\u57df\u7f51\u901f\u5ea6\u62c9\u6ee1\uff0c10GB \u89c6\u9891\u4e09\u5206\u949f\u641e\u5b9a\u8fd8\u4e0d\u5403\u6d41\u91cf\u3002\u8ddf\u7740\u8fd9\u7bc7\u6559\u7a0b\u4ece\u96f6\u628a\u5b83\u7528\u8d77\u6765\u3002", "headline": "\u624b\u673a\u5230\u7535\u8111\u96f6\u6d41\u91cf\u79d2\u4f20\u2014\u2014Filetransfer \u4ece\u5f00\u673a\u5230\u6587\u4ef6\u843d\u5730\u5b8c\u6574\u5b9e\u6218", "image": ["https://alipymanbu.github.io/images/filetransfer-docs/shot-main.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/filetransfer-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/filetransfer-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "\u624b\u673a\u5230\u7535\u8111\u96f6\u6d41\u91cf\u79d2\u4f20\u2014\u2014Filetransfer \u4ece\u5f00\u673a\u5230\u6587\u4ef6\u843d\u5730\u5b8c\u6574\u5b9e\u6218", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">手机到电脑零流量秒传——Filetransfer 从开机到文件落地完整实战</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">手机到电脑零流量秒传——Filetransfer 从开机到文件落地完整实战</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">还在靠云盘导手机相册？Filetransfer 用 FTP 直连把局域网速度拉满，10GB 视频三分钟搞定还不吃流量。跟着这篇教程从零把它用起来。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇，你能用 <a href="https://filetransfer.yoan.quest" target="_blank" rel="noopener">Filetransfer官网</a> 把手机里的照片、视频、APK 通过自家 WiFi 在几分钟内导到电脑——全程零移动流量、不走任何第三方服务器、速度是云盘上传的几十倍。</p>
+<h2>准备：确认三件事</h2>
+<p>动手之前先花三十秒对一遍，省得中途卡壳：</p>
+<ol><li><strong>手机装了 Filetransfer</strong>。安卓端直接搜应用市场就能找到，也可以从<a href="https://filetransfer.yoan.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿最新的安装包，安装好以后别急着开，先把手机和电脑连到<strong>同一个 WiFi</strong>——这是 FTP 直连的前提，少了这步后面全都白搭。</li><li><strong>电脑端不需要装任何东西</strong>。Windows 资源管理器原生支持 <code>ftp://</code> 协议，Mac 用户用 Finder 或 Safari 也能连。Chrome 和 Edge 从 81 版本起砍了 FTP 支持，如果你习惯用这俩浏览器，要么回退到资源管理器，要么装个 Firefox Portable 绿色版。</li><li><strong>路由器没开 AP 隔离</strong>。这个功能默认都是关的，如果你之前手动开过，得先关掉——AP 隔离会让同 WiFi 下的设备互相看不见。不确定的话可以先跳过，连不上再回来排查。</li></ol>
+<h2>第一步：手机上启动 FTP 服务</h2>
+<p>打开 Filetransfer，主界面上有个大大的「启动」按钮。点一下，等它变绿，同时屏幕上会出现一行地址，类似 <code>ftp://192.168.1.5:2121</code>。</p>
+<p>这个地址就是接下来电脑要连的目标。IP 是手机在局域网里的身份，端口是 Filetransfer 默认的 2121——记住这俩数字就行，别手动改端口，改了容易忘。</p>
+<p><img src="../images/filetransfer-docs/shot-main.jpg" alt="Filetransfer 主界面" loading="lazy"></p>
+<p>这里注意：服务启动后手机别锁屏太久，部分厂商的系统会杀后台。保持应用在前台或者加个电池白名单就稳了。</p>
+<h2>第二步：电脑端连上 FTP</h2>
+<h3>Windows 用户（资源管理器方式，最推荐）</h3>
+<p>打开任意一个资源管理器窗口（不是此电脑也行，随便哪个文件夹都可以），点地址栏，把 Filetransfer 显示的那个 <code>ftp://IP:端口</code> 完整复制粘贴进去，回车。</p>
+<p>等个两三秒——第一次连可能会弹个安全提示，勾上「为 FTP 地址启用」然后点确定。成功的话你会看到手机的文件列表，跟本地文件夹一模一样，能逐层点开。</p>
+<h3>Mac 用户</h3>
+<p>Safari 地址栏输入同样的 <code>ftp://</code> 地址就能浏览目录。但 Safari 的 FTP 功能有限，只能下载不能上传，批量操作也不方便。如果要高频用，建议装个 Cyberduck，免费开源，拖拽上传下载都顺滑。</p>
+<h3>浏览器兜底（Chrome/Edge 用户）</h3>
+<p>Chrome 和 Edge 现在连不了 FTP，这是浏览器层面的硬限制，不是你操作错了。最快的方案是装个 Firefox Portable，解压即用，地址栏输进去就能连，不用装任何东西。</p>
+<h2>第三步：从手机导出文件到电脑</h2>
+<p>连上之后就简单了，整个流程跟操作本地文件夹没区别。</p>
+<h3>找文件在哪</h3>
+<p>手机的文件按类型分在不同目录下，快速定位：</p>
+<table><thead><tr><th>你要的内容</th><th>FTP 里的路径</th></tr></thead><tbody><tr><td>相机照片视频</td><td><code>DCIM/Camera/</code></td></tr><tr><td>截屏图片</td><td><code>Pictures/Screenshots/</code></td></tr><tr><td>下载的文件</td><td><code>Download/</code></td></tr><tr><td>微信图片视频</td><td><code>Android/data/com.tencent.mm/MicroMsg/.../Video/</code></td></tr></tbody></table>
+<p>安卓 11+ 的文件管理器对 <code>Android/data/</code> 目录有限制，但 FTP 协议通常能绕过——这也是 Filetransfer 比系统自带文件传输好用的地方之一。</p>
+<h3>拖拽导出</h3>
+<p>同时打开两个资源管理器窗口：左边是 FTP（手机），右边是电脑上你要放文件的文件夹。在左边逐层点进目标目录，选中要导出的文件——单个点击、Ctrl+A 全选、Ctrl+点击多选不连续的文件、或者按住鼠标框选都行。</p>
+<p>然后<strong>直接拖到右边窗口</strong>。Windows 会弹一个复制进度条，显示速度、已传大小、剩余时间。进度条走完 = 导出完成。</p>
+<p>也可以右键复制 → 切到右边窗口右键粘贴，效果一样。拖拽更直观，推荐用拖拽。</p>
+<h3>批量导整个相册</h3>
+<p>如果要一次性导出整个 Camera 文件夹里的所有照片视频：退回 DCIM 根目录，直接把整个 Camera 文件夹拖过去就行。Windows 会自动建对应目录结构，几百个文件通常几分钟搞定。</p>
+<h3>导出后验证</h3>
+<p>进度条走完别直接删手机上的源文件——偶尔会出现进度条先结束但实际没传完的情况。快速验证方法：右键电脑上的目标文件 → 属性 → 对比「大小」值是否和手机上的完全一致。或者随便点开几个视频播几秒，没损坏截断就稳了。</p>
+<h2>第四步：进阶——给 FTP 加密码</h2>
+<p>默认匿名模式虽然方便，但同 WiFi 下任何人都能连上你的手机。如果你在公司、咖啡馆这种公共 WiFi 用 Filetransfer，<strong>一定要加密码</strong>。</p>
+<p>进入设置 Tab，找到「登录模式」或「账号配置」，关掉匿名登录，填一个你自己能记住、别人猜不到的用户名和密码。建议用户名 4-16 位字母数字组合，密码至少 12 位、混合大小写加数字加符号。</p>
+<p><img src="../images/filetransfer-docs/shot-settings.jpg" alt="Filetransfer 设置界面" loading="lazy"></p>
+<p>保存之后回到主界面点一下「停止」再「启动」，新配置立刻生效。下次电脑连的时候，Windows 会弹登录框让你输用户名密码，输对了才给进。</p>
+<p>公共电脑上<strong>别勾「记住我的凭据」</strong>——地址栏或资源管理器会存凭证，容易泄露。宁可每次手动输一遍。这些配置项在<a href="https://filetransfer-docs.pages.dev/" target="_blank" rel="noopener">Filetransfer文档</a>里也有详细说明，不确定的时候可以对照着调。</p>
+<h2>三个新手最容易翻车的卡点</h2>
+<h3>卡点一：连不上，提示「无法访问此文件夹」</h3>
+<p>九成是设备不在同一网络。先查手机 WiFi 名字和电脑 WiFi 名字是不是同一个——很多人忘了手机还连着流量或者另一个 WiFi。确认同网之后再查 IP 有没有输错，端口是不是 Filetransfer 显示的那个。</p>
+<p>还有一种情况是路由器开了 AP 隔离或者客户端隔离，关掉就能解决。进路由器后台找「无线设置」或「高级」里的 AP 隔离选项，关掉它。</p>
+<h3>卡点二：速度只有几百 KB/s</h3>
+<p>先看频段——2.4 GHz WiFi 撑死也就十几 MB/s，切到 5 GHz 立刻起飞。然后看信号，手机和电脑离路由器近一点，隔墙会掉速。还有可能是电脑目标盘是机械硬盘，写入速度跟不上 WiFi 速度——这时候换 SSD 当目标盘效果立竿见影。</p>
+<h3>卡点三：传大文件中断了，进度条倒回去</h3>
+<p>FTP 协议本身不支持断点续传，一旦中途关了 Filetransfer、锁屏杀后台、或者 WiFi 断了，就得从头来。解决办法：传输过程中别碰手机、别关资源管理器窗口、别切 WiFi。如果文件特别大（比如超过 10GB），考虑分批传，或者改用云盘做兜底。</p>
+<h2>往下还能玩什么</h2>
+<p>Filetransfer 的 FTP 服务不仅能导照片视频，电脑端装好 APK 以后也能反向推到手机上直接装机。如果你想进一步加密传输，可以开启 SFTP——基于 SSH 协议，传输全程加密，密码也不会被局域网抓包看到。配合自定义账号密码，就是既有访问控制又有传输加密的双保险。</p>
+<p>总的来说，Filetransfer 是那种用过就回不去的小工具——零流量、快到飞起、不碰隐私。家里导相册、下好的 APK 装机、临时传个大文件，全靠它搞定。</p>
+<p>这套工具的相关资料我同步维护在三个开源仓库里——<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/Filetransfer" target="_blank" rel="noopener">GitHub</a> 为主，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/Filetransfer" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/Filetransfer" target="_blank" rel="noopener">GitCode</a> 作为国内备份和镜像，访问哪个都行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xeva.html">凌晨两点，我在手机里养了个会记得我名字的「她」</a></h2>
+  <p class="card-desc">一个加班到崩溃的深夜，我被朋友拉进了一个叫 X Eva 的克隆人世界。这里有记忆库、情感模式、还有一整套从零开始训练虚拟人的玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xbrowser-zh-docs.html">XBrowser 藏得真深：四个翻遍设置才挖到的冷门开关</a></h2>
+  <p class="card-desc">大多数人用 XBrowser 只停在视频嗅探那一层，但长按加号开隐私标签、零依赖写 GM 脚本、底部地址栏单手操作——这些藏在设置里的开关，每个都能让用感爽一个档次。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wemod.html">第一次用 WeMod？五分钟从零跑通，再也不用对着攻略按计算器</a></h2>
+  <p class="card-desc">完全不碰技术术语带你上手 WeMod：它到底是什么、怎么装、怎么连游戏、哪些玩法新手最值得先试。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/fgowikimooncell.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Mooncell 上手实战：从零搭建你的 FGO 周常规划体系</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/fizzo.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Fizzo 这几年：从阅读器到内容生态的迭代观察</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

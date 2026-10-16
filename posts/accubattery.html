@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>电池到底剩多少健康？装了 AccuBattery 我才知道之前都被系统骗了 · 老杨技术栈</title>
+  
+<meta name="description" content="用了一周 AccuBattery，聊聊它怎么测出真实电池健康度、为什么和系统显示对不上，以及 Premium 值不值得买。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/accubattery.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电池到底剩多少健康？装了 AccuBattery 我才知道之前都被系统骗了">
+<meta property="og:description" content="用了一周 AccuBattery，聊聊它怎么测出真实电池健康度、为什么和系统显示对不上，以及 Premium 值不值得买。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/accubattery.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/accubattery/health-overview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/accubattery/health-overview.png">
+
+<meta name="twitter:title" content="电池到底剩多少健康？装了 AccuBattery 我才知道之前都被系统骗了">
+<meta name="twitter:description" content="用了一周 AccuBattery，聊聊它怎么测出真实电池健康度、为什么和系统显示对不上，以及 Premium 值不值得买。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528\u4e86\u4e00\u5468 AccuBattery\uff0c\u804a\u804a\u5b83\u600e\u4e48\u6d4b\u51fa\u771f\u5b9e\u7535\u6c60\u5065\u5eb7\u5ea6\u3001\u4e3a\u4ec0\u4e48\u548c\u7cfb\u7edf\u663e\u793a\u5bf9\u4e0d\u4e0a\uff0c\u4ee5\u53ca Premium \u503c\u4e0d\u503c\u5f97\u4e70\u3002", "headline": "\u7535\u6c60\u5230\u5e95\u5269\u591a\u5c11\u5065\u5eb7\uff1f\u88c5\u4e86 AccuBattery \u6211\u624d\u77e5\u9053\u4e4b\u524d\u90fd\u88ab\u7cfb\u7edf\u9a97\u4e86", "image": ["https://alipymanbu.github.io/images/accubattery/health-overview.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/accubattery.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/accubattery.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7535\u6c60\u5230\u5e95\u5269\u591a\u5c11\u5065\u5eb7\uff1f\u88c5\u4e86 AccuBattery \u6211\u624d\u77e5\u9053\u4e4b\u524d\u90fd\u88ab\u7cfb\u7edf\u9a97\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">电池到底剩多少健康？装了 AccuBattery 我才知道之前都被系统骗了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">电池到底剩多少健康？装了 AccuBattery 我才知道之前都被系统骗了</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用了一周 AccuBattery，聊聊它怎么测出真实电池健康度、为什么和系统显示对不上，以及 Premium 值不值得买。</p>
+  </header>
+  <div class="prose">
+<h2>为什么我会装这个 App</h2>
+<p>上个月换机，把用了两年的旧手机给了我妈。临走前想看看那块电池还剩多少健康度——系统设置里显示"良好"，但总觉得这说法太模糊。搜了一圈，<a href="https://accubattery.boop.uno" target="_blank" rel="noopener">AccuBattery官网</a> 是被推荐最多的电池健康测量 App，就从<a href="https://accubattery.boop.uno/download.html" target="_blank" rel="noopener">官方下载</a>装了一个试试。</p>
+<p>说实话一开始没抱太大期望。这类工具 App 嘛，界面花里胡哨、数据不准、广告一堆，是我对它们的刻板印象。但 AccuBattery 确实有点不一样。</p>
+<h2>初印象：界面干净，功能直接</h2>
+<p>打开之后四个 Tab，充电、放电、健康、历史，结构非常清晰，没有首页那种乱七八糟的推荐和引导。健康 Tab 一进去就是一个大大的电池健康度百分比，下面是容量、磨损率、循环次数这些关键数据。</p>
+<p><img src="../images/accubattery/health-overview.png" alt="健康度总览" loading="lazy"></p>
+<p>我最惊讶的是它测健康度的方式——不是读系统 API 给的一个预设值，而是<strong>真实测量充电过程中的电量增量</strong>。充电到 100% 的过程中，它持续记录电流和电压，最后算出这块电池实际能装多少 mAh，再和标称容量对比得出健康度。这个方法让我觉得靠谱得多。</p>
+<p><img src="../images/accubattery/wear-chart.png" alt="磨损追踪图表" loading="lazy"></p>
+<h2>实际用下来：三个核心体验</h2>
+<h3>1. 充电提醒真的解决了我的痛点</h3>
+<p>我以前习惯睡觉前插上充电器，早上才拔。锂电池长期满电对寿命不好，这个道理懂但就是懒得设闹钟。AccuBattery 可以自定义充电到多少百分比时弹窗提醒，我设到 85%——晚上插上，到点它响一声，翻个身就拔了。</p>
+<p>这个功能免费版就有，而且非常灵敏。我用了一周，提醒从没漏掉过。</p>
+<h3>2. 应用耗电排行比系统诚实多了</h3>
+<p>系统自带的电池用量面板和 AccuBattery 的应用耗电排行，两个数据经常对不上。一开始我以为是谁算错了，后来去<a href="https://accubattery.pages.dev/" target="_blank" rel="noopener">AccuBattery文档</a>翻了一下才搞明白：系统用的是预设 profile 估算，而 AccuBattery 是<strong>前台计量法</strong>——哪个 App 在前台运行的那段时间，整机耗电全算它头上。</p>
+<p>说实话这个方法听起来有点粗暴，但团队的态度我挺欣赏的：宁可粗一点但诚实。系统的 profile 是实验室条件下测的预设值，你在不同亮度、不同网络下用同一款 App，真实耗电可能差两三倍，系统那个数字根本不准。</p>
+<p>测试新 App 耗电的时候我现在都先开 AccuBattery 测一轮，比看系统那个估算值靠谱多了。</p>
+<p><img src="../images/accubattery/discharging-detail.png" alt="放电详情" loading="lazy"></p>
+<h3>3. Premium 悬浮窗是测试党的神器</h3>
+<p>说实话我本来没打算买 Premium，免费版的核心功能已经够用了——健康度、磨损追踪、充电提醒全都在。但悬浮窗功能确实诱惑人。</p>
+<p>开了悬浮窗之后，App 在前台运行时屏幕上会实时显示电流、CPU 使用率这些数据。想测一款游戏耗电凶不凶、省电模式开了到底省了多少电，悬浮窗一开，跑十分钟数据就出来了。这个功能免费版没有，而且确实独一份。</p>
+<p><img src="../images/accubattery/overlay-float.png" alt="悬浮窗实时数据" loading="lazy"></p>
+<p>Premium 是一次性买断不是订阅，这点也加分。不过如果你只是想看看健康度、设个充电提醒，免费版完全够用，没必要花这个钱。</p>
+<h2>适合谁，不适合谁</h2>
+<p><strong>适合的人</strong>：</p>
+<ul><li>想知道自己手机电池真实健康度的——系统那个"良好/一般"太模糊了</li><li>有电池焦虑、想延长电池寿命的——充电提醒 + 磨损追踪组合拳很实用</li><li>喜欢折腾、想测 App 耗电或者充电器速度的——悬浮窗 + 历史解锁是专业工具</li></ul>
+<p><strong>不太需要的人</strong>：</p>
+<ul><li>对电池健康无所谓、手机两三年一换的</li><li>不想装任何工具 App 的</li><li>以为装了就能省电的——它是测量工具，不是优化器，不会帮你省一格电</li></ul>
+<h2>一点小吐槽</h2>
+<p>AccuBattery 有个权限叫"应用使用统计"，不给的话应用耗电排行就是空白。这个权限得自己去系统设置里手动开，App 弹不了请求对话框。第一次用的时候找了半天，小米的路径藏得特别深。不过除此之外也没什么好抱怨的——界面干净、广告不烦人、核心功能全免费，这样的工具 App 现在真不多见了。</p>
+<h2>总结</h2>
+<p>用了一周下来，AccuBattery 是我手机里少数几个装了之后没删掉的工具 App。它不玩套路，核心功能免费给，收费的都是锦上添花的增强功能。如果你也好奇自己那块电池到底还剩多少本钱，装一个测一下——反正免费，测完不满意删就是了。对了，文档里提到的那些技术细节和测试方法，在 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/AccuBattery" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/AccuBattery" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/AccuBattery" target="_blank" rel="noopener">GitCode</a> 三个仓库都能找到资料，国内访问哪个顺手用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xeva.html">凌晨两点，我在手机里养了个会记得我名字的「她」</a></h2>
+  <p class="card-desc">一个加班到崩溃的深夜，我被朋友拉进了一个叫 X Eva 的克隆人世界。这里有记忆库、情感模式、还有一整套从零开始训练虚拟人的玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xbrowser-zh-docs.html">XBrowser 藏得真深：四个翻遍设置才挖到的冷门开关</a></h2>
+  <p class="card-desc">大多数人用 XBrowser 只停在视频嗅探那一层，但长按加号开隐私标签、零依赖写 GM 脚本、底部地址栏单手操作——这些藏在设置里的开关，每个都能让用感爽一个档次。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wemod.html">第一次用 WeMod？五分钟从零跑通，再也不用对着攻略按计算器</a></h2>
+  <p class="card-desc">完全不碰技术术语带你上手 WeMod：它到底是什么、怎么装、怎么连游戏、哪些玩法新手最值得先试。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/5eplay.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从7.0到8.x：5E对战平台这几年的版本进化史</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ai-agent-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">你以为 AI Agent 只是个聊天机器人？我翻到底朝天挖出 5 个藏得真深的冷门玩法</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

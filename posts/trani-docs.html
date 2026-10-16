@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤 · 老杨技术栈</title>
+  
+<meta name="description" content="从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/trani-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤">
+<meta property="og:description" content="从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/trani-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/trani-docs/dynamic-wallpaper.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/trani-docs/dynamic-wallpaper.jpg">
+
+<meta name="twitter:title" content="我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤">
+<meta name="twitter:description" content="从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece TrAni \u7684\u6d41\u4f53\u6a21\u62df\u58c1\u7eb8\u5207\u5165\uff0c\u62c6\u89e3\u5b83\u5982\u4f55\u7528\u8fd1\u4f3c\u7b97\u6cd5\u5728\u79fb\u52a8\u7aef\u5b9e\u73b0\u771f\u5b9e\u6d41\u4f53\u6548\u679c\u3001\u4e3a\u4f55\u9009\u62e9 Android \u5f00\u653e\u63a5\u53e3\u800c\u975e root \u6539\u7cfb\u7edf\u3001\u4ee5\u53ca\u8fd9\u79cd\"\u591f\u7528\u5c31\u884c\"\u7684\u8bbe\u8ba1\u601d\u8def\u80cc\u540e\u7684\u6280\u672f\u53d6\u820d\u4e0e\u9002\u7528\u8fb9\u754c\u3002", "headline": "\u6211\u5728 TrAni \u91cc\u6478\u5230\u4e86\u624b\u673a\u4e0a\u7684 Navier-Stokes\u2014\u2014\u8fd9\u4e2a\u58c1\u7eb8 App \u7684\u6280\u672f\u5e95\u88e4", "image": ["https://alipymanbu.github.io/images/trani-docs/dynamic-wallpaper.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/trani-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/trani-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "\u6211\u5728 TrAni \u91cc\u6478\u5230\u4e86\u624b\u673a\u4e0a\u7684 Navier-Stokes\u2014\u2014\u8fd9\u4e2a\u58c1\u7eb8 App \u7684\u6280\u672f\u5e95\u88e4", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。</p>
+  </header>
+  <div class="prose">
+<h2>一个不像壁纸 App 的行为</h2>
+<p>我第一次在 TrAni 里点进"流体模拟"模板时愣了好一会儿。手指划过屏幕，画面里的液体会跟着旋转、汇流，甚至会在角落形成小旋涡——这效果我只在 PC 端的桌面演示程序里见过，没想到一个主打壁纸和图标的 Android app，居然敢在手机上算流体力学。</p>
+<p>这不是一个"选张图片当壁纸"就能解决的事。流体模拟要解 Navier-Stokes 偏微分方程组，精确解算需要 GPU 集群跑好几个小时。TrAni 当然做不到精确解，但它让我意识到一件事：<strong>好的移动应用从来不追求"精确"，只追求"够用"——而这个"够用"的边界在哪，就是它的技术选型要解决的核心问题</strong>。</p>
+<p>这篇文章我想拆三个问题：TrAni 怎么在手机上跑出能看的流体效果？它为什么放着"直接改系统图标"的捷径不走，非要绕一圈用 Android 的开放接口？以及，它的自动换壁纸为什么会被系统"吃掉"？想体验这些功能的话，直接去<a href="https://trani.qjxz.skin" target="_blank" rel="noopener">官网</a>就能拿到最新版本。</p>
+<h2>流体模拟：在 CPU 上近似 Navier-Stokes</h2>
+<p>先看最硬核的部分。Navier-Stokes 方程描述的是流体的运动规律——密度、速度、压力随时间和空间的变化。精确求解是不可能的，但 TrAni 做了两个关键的近似：</p>
+<p><strong>离散化</strong>。把屏幕上的画面切成一个二维网格，每个格子存一个速度向量，流体的"流动"就是速度向量在相邻格子之间传递。这就把连续的偏微分方程变成了离散的线性运算，手机的 CPU 能扛住。</p>
+<p><strong>简化边界条件</strong>。真实流体有无数种边界——容器形状、障碍物、温度梯度。TrAni 只处理最简单的情况：手指划过 = 施加速度外力，屏幕边缘 = 固定不动。这样方程组就简化成了 4 个线性方程，可以用 Gauss-Seidel 迭代法几步解完。</p>
+<p><img src="../images/trani-docs/dynamic-wallpaper.jpg" alt="流体模拟动态壁纸" loading="lazy"></p>
+<p>样本文档里给了一个 FPS 对比表：水波纹空闲 60 FPS 触摸也 60，雨滴下落空闲 55 触摸 50，而流体模拟空闲就只有 45 FPS，触摸时掉到 30。官方建议骁龙 855 以上机型开启——骁龙 855 是 2018 年的旗舰芯片，5 年后 TrAni 还在用它当门槛，说明这套算法几乎没做硬件加速。</p>
+<p>这其实是一个挺有意思的选择。如果 TrAni 把流体模拟搬到 GPU 上跑 OpenGL 计算着色器，帧率至少能翻倍，老机型也能开启。但代价是——GPU 计算着色器在不同厂商的 ROM 上表现差异极大，有的厂商会在省电模式下强制降频 GPU。<strong>用 CPU 算虽然慢一点，但在所有 Android 设备上行为一致</strong>，这对一个面向"全机型"的桌面美化工具来说，比极致性能更重要。</p>
+<h2>图标替换：绕开 root 的"后门接口"</h2>
+<p>TrAni 内置了十余套图标包——线性简约、圆角拟物、手绘风、像素复古、渐变霓虹。对很多用户来说，这是它比其他壁纸 App 更有吸引力的地方。但图标替换这件事，技术上有两条完全不同的路：</p>
+<p><strong>路 1：root 之后直接改系统图标</strong>。拿到 root 权限，替换系统目录里的 icon 文件，一行命令搞定，效果完美。但代价是——root 会触发 SafetyNet 检测，银行 App 和支付 App 全部打不开；而且大多数厂商的 bootloader 解锁都要申请，不对外开放。这条路能覆盖的用户不到 10%。</p>
+<p><strong>路 2：用 Android 的 Adaptive Icon 接口</strong>。Android 8.0 引入了 Adaptive Icon 机制，允许 launcher（桌面启动器）通过 ContentProvider 请求应用的图标资源。TrAni 做的是：把自己的图标包挂载成一个 ContentProvider，然后让 launcher 优先从 TrAni 取图标而不是从原应用取。</p>
+<p>这条路的好处是<strong>完全不用 root</strong>，任何 Android 8.0+ 的设备都能跑，直接从<a href="https://trani.qjxz.skin/download.html" target="_blank" rel="noopener">下载</a>拿安装包就能用。坏处也很明显——只有声明了 Adaptive Icon 的应用才支持替换，老应用（比如一些工具类 app）可能仍然用传统的静态图标，TrAni 拿不到它们的资源，只能跳过。样本文档里提到"部分老应用可能不支持图标替换"，这句话翻译一下就是：<strong>你能看到多少图标被美化，不取决于 TrAni 做得好不好，取决于那些被美化的 app 愿不愿意配合</strong>。TrAni 在这件事上没有话语权，这是 Android 生态的结构性限制，不是它的 bug。</p>
+<p><img src="../images/trani-docs/icon-beautify.jpg" alt="图标包美化效果" loading="lazy"></p>
+<h2>自动换壁纸：为什么会被系统"吃掉"</h2>
+<p>自动换壁纸是 TrAni 最实用也最让人抓狂的功能。样本文档里列了它的配置项：30 分钟到 24 小时的间隔可选、可以同时换锁屏、随机或按收藏顺序、来源可以是收藏夹或每日推荐。但几乎每个用户都会碰到一个问题——换了几天之后它就停了，必须手动打开 TrAni 才能恢复。</p>
+<p>原因不在 TrAni，在 Android 本身。Android 从 8.0 开始引入了后台执行限制，禁止普通应用在后台随意开服务。Doze 模式会在屏幕熄灭后一段时间让所有非活跃应用进入"沉睡"状态——网络访问被切断、后台服务被杀、定时器被延迟到下一次 Doze 唤醒窗口。厂商 ROM 更狠，小米的 MIUI 有"省电策略"默认就是"智能限制"，华为的 EMUI 白名单以外的应用后台存活率接近 0。TrAni 作为一个壁纸 App，在系统眼里优先级极低，Doze 和厂商策略会第一时间把它挂起。</p>
+<p>TrAni 的解法其实没什么"技术含量"——它提示用户手动把自己加到电池白名单里，或者关闭"智能省电"。这不是 TrAni 偷懒，而是 Android 不给它别的选择：JobScheduler 有最小 15 分钟的调度精度，AlarmManager 的精确闹钟在 Android 12 之后也被限制了，前台服务需要通知常驻……<strong>一个想低调工作的壁纸 App，在 Android 的后台限制面前没有优雅的解法</strong>。解决这些后台问题、了解更多参数调优，都可以去看<a href="https://trani-docs.pages.dev/" target="_blank" rel="noopener">trani文档</a>。</p>
+<h2>表情包走系统相册：同样是"最大公因数"思路</h2>
+<p>样本里还有一个细节我很在意：TrAni 的表情包下载后保存到相册或专属目录，然后在微信里手动添加。它不直接对接微信的表情面板。</p>
+<p>为什么？因为微信没有开放"添加自定义表情"的 API。TrAni 如果想直接把表情塞进微信面板，要么走无障碍服务模拟用户操作（容易被系统拦截），要么反向破解微信的本地数据库（法律风险）。两种都不是一个正规应用能做的。</p>
+<p>所以 TrAni 选了第三条路：<strong>走系统相册中转</strong>。相册是所有 Android 应用都能访问的公共空间，微信也认。这个方案笨但稳——用户多了一步操作，但 TrAni 没有任何合规风险，也不会因为微信版本更新而突然失效。</p>
+<h2>总结：够用就行的哲学</h2>
+<p>拆到这里，TrAni 的技术选型逻辑就很清晰了：</p>
+<ul><li>用 CPU 近似 Navier-Stokes，不用 GPU 着色器 → 牺牲极致性能，换全机型兼容</li><li>用 Adaptive Icon 接口，不用 root → 牺牲部分老应用覆盖，换零门槛安装</li><li>提示用户加电池白名单，不用黑科技保活 → 牺牲用户体验，换合规安全</li><li>表情包走相册中转，不硬对接微信 → 牺牲操作便捷性，换稳定可靠</li></ul>
+<p>这套哲学的本质是<strong>在 Android 生态的"最大公因数"上做文章</strong>。Android 碎片化严重，不同厂商的 ROM 差异巨大，而 TrAni 的目标用户是"普通 Android 用户"——他们可能用小米、华为、OPPO、三星，也可能用不知名的小众品牌。TrAni 不能假设用户的设备满足某个硬件条件或某个系统版本，所以它只能在最基础、最开放的接口上构建自己的功能。</p>
+<p>这个思路的好处很明显：TrAni 能在超过 95% 的 Android 设备上安装并运行核心功能。坏处也同样明显——流体模拟的 FPS 上不去、部分老应用图标换不了、自动换壁纸偶尔罢工、表情包不能一键发送。它永远做不到"极致"，但对大多数用户来说，"够用"就已经够了。</p>
+<p>这套资料在三个仓库都同步了——<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/trani" target="_blank" rel="noopener">GitHub</a> 是主维护线，<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/trani" target="_blank" rel="noopener">Gitee</a> 适合国内直连，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/trani" target="_blank" rel="noopener">GitCode</a> 作为备份镜像。</p>
+<p>如果 TrAni 有一天能让我在骁龙 660 上也跑出 60 FPS 的流体模拟，或者能直接一键把表情发到微信，那说明 Android 生态变好了——开放了新的接口，或者厂商的 ROM 更统一了。在那之前，TrAni 保持这种"够用就行"的设计哲学，反而是最务实的选择。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yousician.html">Yousician 翻底朝天：这五个隐藏功能 90% 的用户没碰过</a></h2>
+  <p class="card-desc">把 Yousician 从入门到进阶挖透，Practice 循环片段、Wait To Play、Auto-adjust 自动调速、唱歌移调、Vocal Range 校准——每一个都能改变练习效率</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vidhub-docs.html">VidHub 快问快答：多设备影视播放器 9 个最关心的问题一次说清</a></h2>
+  <p class="card-desc">VidHub 是什么人在用、怎么装、同步哪些数据、刮削怎么跑、WebDAV 有什么坑、要不要付费——整理成一篇问答速查，看完直接上手。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/styler-app.html">Styler app 深度横评：当 AI 修图工具箱开始跟大厂全家桶掰手腕</a></h2>
+  <p class="card-desc">AI 修图 App 赛道早已挤成红海——大厂有美图秀秀、醒图的全家桶覆盖，独立工具又各有单点绝活。Styler app 走了一条中间路线：抠图精度怼到发丝级，工具箱密度拉满，连批量处理都做进来了。它到底值不值得装一次？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/torbrowser-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Tor Browser 快问快答——匿名浏览器到底值不值得装</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/tripcom.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Tripcom 深度评测：亚太出行选它还是 Booking？</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>dynamicSpot 原理拆解：Android 上复刻灵动岛的技术代价 · 老杨技术栈</title>
+  
+<meta name="description" content="dynamicSpot 靠三层权限在 Android 上拼出灵动岛体验，但系统级依赖带来了一个绕不开的问题——权限回收。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/dynamicspot.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dynamicSpot 原理拆解：Android 上复刻灵动岛的技术代价">
+<meta property="og:description" content="dynamicSpot 靠三层权限在 Android 上拼出灵动岛体验，但系统级依赖带来了一个绕不开的问题——权限回收。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/dynamicspot.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/dynamicspot/settings-wizard.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/dynamicspot/settings-wizard.webp">
+
+<meta name="twitter:title" content="dynamicSpot 原理拆解：Android 上复刻灵动岛的技术代价">
+<meta name="twitter:description" content="dynamicSpot 靠三层权限在 Android 上拼出灵动岛体验，但系统级依赖带来了一个绕不开的问题——权限回收。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "dynamicSpot \u9760\u4e09\u5c42\u6743\u9650\u5728 Android \u4e0a\u62fc\u51fa\u7075\u52a8\u5c9b\u4f53\u9a8c\uff0c\u4f46\u7cfb\u7edf\u7ea7\u4f9d\u8d56\u5e26\u6765\u4e86\u4e00\u4e2a\u7ed5\u4e0d\u5f00\u7684\u95ee\u9898\u2014\u2014\u6743\u9650\u56de\u6536\u3002", "headline": "dynamicSpot \u539f\u7406\u62c6\u89e3\uff1aAndroid \u4e0a\u590d\u523b\u7075\u52a8\u5c9b\u7684\u6280\u672f\u4ee3\u4ef7", "image": ["https://alipymanbu.github.io/images/dynamicspot/settings-wizard.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/dynamicspot.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/dynamicspot.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "dynamicSpot \u539f\u7406\u62c6\u89e3\uff1aAndroid \u4e0a\u590d\u523b\u7075\u52a8\u5c9b\u7684\u6280\u672f\u4ee3\u4ef7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">dynamicSpot 原理拆解：Android 上复刻灵动岛的技术代价</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">dynamicSpot 原理拆解：Android 上复刻灵动岛的技术代价</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">dynamicSpot 靠三层权限在 Android 上拼出灵动岛体验，但系统级依赖带来了一个绕不开的问题——权限回收。</p>
+  </header>
+  <div class="prose">
+<p>第一次在 Android 手机上看到灵动岛效果时，我脑子里冒出来的第一个问题不是"这东西好用吗"，而是"它是怎么活下来的"。</p>
+<p>iOS 的灵动岛是系统原生的 UI 容器——系统自己管生命周期、自己处理遮挡、自己决定显示时机。但 Android 不一样，Google 到现在也没给过开发者一个类似的"系统级弹窗锚点"。dynamicSpot 要在这样的平台上复刻灵动岛，得自己把 iOS 系统替它做的那些事一件一件补上。补出来的东西能用，但代价藏在日常使用的每个细节里——比如某天早上起来，你发现那个熟悉的小药丸不见了。</p>
+<h2>三层权限，一座孤岛</h2>
+<p>去dynamicSpot的<a href="https://dynamicspot.hhdc.tech" target="_blank" rel="noopener">官网</a>上看一眼产品页就能明白，它的整个架构建立在 Android 的三个系统级 API 之上：通知使用权（Notification Listener）、悬浮窗权限（System Alert Window）和无障碍服务（Accessibility Service）。这三个权限各自负责一件事，缺了谁都不行。</p>
+<p>通知使用权是"眼睛"——它让 dynamicSpot 能读到其他 App 发出的通知。这是灵动岛能弹出内容的前提。没有这个权限，dynamicSpot 就是个摆设，任何 App 的通知都进不来。悬浮窗权限是"画布"——它让 dynamicSpot 能在所有 App 之上绘制那个黑色小药丸。Android 默认不允许应用随便在别人界面上盖东西，这个权限就是专门留的后门。无障碍服务是"手和脚"——它让 dynamicSpot 能识别用户对灵动岛的点击、长按、滑动手势，还能在锁屏状态下显示弹窗内的直接回复框。</p>
+<p>从<a href="https://dynamicspot.hhdc.tech/download.html" target="_blank" rel="noopener">官方下载</a>或者 Google Play 安装时，这三层权限的授予顺序也是有讲究的——先通知使用权，再悬浮窗，最后无障碍。这三层权限叠在一起，刚好拼出了 iOS 灵动岛的功能轮廓：能看通知、能在任何界面显示、能接收用户操作。但这不是什么优雅的架构。我把它比作"借壳上市"——三个权限本来都不是为这个目的设计的，dynamicSpot 硬把它们凑在一起完成了一个系统本不该让第三方完成的任务。</p>
+<p><img src="../images/dynamicspot/settings-wizard.webp" alt="三层权限的设置向导" loading="lazy"></p>
+<h2>药丸背后的数据流</h2>
+<p>dynamicSpot 是怎么让灵动岛"活"起来的？我试着从样本里还原一下它的数据流。</p>
+<p>第一步是"捕获"。通知使用权监听系统的通知事件，一旦有新通知进来，dynamicSpot 先做一层过滤——这个 App 在不在用户允许的列表里？通知内容有没有被标记为"不打扰"？通过过滤后才进入下一步。</p>
+<p>第二步是"渲染"。dynamicSpot 把通知内容映射成灵动岛上的 UI 元素：标题用大号粗体，内容用灰色小字，有图的显示缩略图，音乐类通知特殊处理成带封面的"音乐岛"。渲染完成后，通过悬浮窗权限把这一层 View 加到 WindowManager 上——这就是那个在所有 App 之上飘着的小药丸。</p>
+<p>第三步是"交互"。用户点击灵动岛时，Android 系统先把触摸事件派发给最上层的 Window——也就是 dynamicSpot 的悬浮窗。无障碍服务在这里没有参与事件分发，它的作用是监听手势模式：连续短触记为"点击"，按住超过 500ms 记为"长按"，滑动记为"展开详情"。识别到手势后，dynamicSpot 再决定是展开弹窗、关闭通知还是触发其他快捷操作。</p>
+<p>这整条链路的每一环都依赖系统的合作。通知能不能收到取决于通知使用权有没有被吊销，弹窗能不能显示取决于悬浮窗权限有没有被回收，手势能不能识别取决于无障碍服务有没有在跑。三者环环相扣，任何一个掉链子，灵动岛就会"死掉"。</p>
+<h2>一个绕不开的问题：权限回收</h2>
+<p>这也是我开头那个疑问的答案：dynamicSpot 能活下来，但活得不好。</p>
+<p>Android 的电池优化机制天生就会杀后台进程，而无障碍服务和通知使用权都属于"长期驻留、耗电不明"的权限。厂商 ROM 在后台清理时会优先回收这类权限，尤其是小米澎湃OS 和 vivo OriginOS——样本里明确提到这两个品牌"会在后台清理时自动关闭无障碍服务"。华为 Mate 60 系列还有个专属的 12px 偏移 bug，需要强制开启全屏显示才能修。</p>
+<p>当灵动岛突然消失时，90% 的情况重启 App 就能解决——重新走一遍三个权限的检查，触发系统重新授予。但如果一天消失两次以上，问题就更深了：无障碍服务被回收了、通知使用权被重置了，或者后台进程直接被杀了。这时候光重启不够，得手动去系统设置里把权限重新打开，再把 dynamicSpot 加入电池优化排除列表。具体每一步操作可以翻<a href="https://dynamicspot.pages.dev/" target="_blank" rel="noopener">dynamicSpot文档</a>里的权限排查章节，对不同品牌 ROM 有专门的路径说明。</p>
+<p><img src="../images/dynamicspot/notification-island.png" alt="灵动岛消失的典型场景" loading="lazy"></p>
+<h2>这套设计适合谁</h2>
+<p>聊到这里，判断其实已经很清楚了。dynamicSpot 的设计目标不是给 Android 造一个完美的灵动岛替代品，而是用最小的系统侵入换来一个"能用"的灵动岛体验。它在技术上做了很多妥协：</p>
+<ul><li>依赖三个高权限才能工作，任何一个被回收就失效</li><li>位置记忆不持久，系统重启悬浮窗会重置位置（Pro 版才有锁定功能）</li><li>各品牌 ROM 的兼容性问题需要逐个适配</li></ul>
+<p>但它也有 iOS 灵动岛没有的灵活性——Pro 版的音乐可视化功能可以让波形条跟着封面主色调走，灵敏度可调，样式有 Bar、Wave、Dots 三种。这种自定义能力反过来也说明了 dynamicSpot 的定位：它不是系统功能，它是一个可以被折腾的玩具。</p>
+<p>适合谁呢？如果你就是想要 iOS 那个小药丸的视觉效果、愿意花两分钟排一下权限回收的问题，dynamicSpot 完全够用。但如果你期待一个像 iOS 灵动岛那样稳定、无感、永不消失的系统级体验——那不是 dynamicSpot 能给你的，那是 Android 系统本身还没开放的能力边界。</p>
+<p>dynamicSpot 的开发资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/dynamicSpot" target="_blank" rel="noopener">GitHub</a>主仓以及国内的<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/dynamicSpot" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/dynamicSpot" target="_blank" rel="noopener">GitCode</a>镜像都有同步维护，音乐可视化、电池岛、通话控制这些 Pro 版功能的细节也有完整说明。我自己用下来的感受是：它能活，但活得挺费力；能用，但偶尔得帮它续续命。不过话说回来，在 Android 上能做到这一步，已经挺不容易了。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/duckduckgo-com.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用过十几款搜索引擎后，为什么我还在浏览器里留着 DuckDuckGo</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/dzmm-ai.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">dzmm.ai 用了快一年，踩过的那些让 AI 崩人设的坑</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

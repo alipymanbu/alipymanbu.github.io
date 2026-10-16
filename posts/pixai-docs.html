@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>PixAI 入门实战：三小时从零跑到稳定出图 · 老杨技术栈</title>
+  
+<meta name="description" content="PixAI 是一款主打移动端的 AI 绘画工具，本文带你从注册登录开始，完成提示词三段式写法、点数成本控制、新手最易踩的三个坑排查，跑通第一张能用的图。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/pixai-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PixAI 入门实战：三小时从零跑到稳定出图">
+<meta property="og:description" content="PixAI 是一款主打移动端的 AI 绘画工具，本文带你从注册登录开始，完成提示词三段式写法、点数成本控制、新手最易踩的三个坑排查，跑通第一张能用的图。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/pixai-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/pixai-docs/generate-model-select.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/pixai-docs/generate-model-select.webp">
+
+<meta name="twitter:title" content="PixAI 入门实战：三小时从零跑到稳定出图">
+<meta name="twitter:description" content="PixAI 是一款主打移动端的 AI 绘画工具，本文带你从注册登录开始，完成提示词三段式写法、点数成本控制、新手最易踩的三个坑排查，跑通第一张能用的图。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "PixAI \u662f\u4e00\u6b3e\u4e3b\u6253\u79fb\u52a8\u7aef\u7684 AI \u7ed8\u753b\u5de5\u5177\uff0c\u672c\u6587\u5e26\u4f60\u4ece\u6ce8\u518c\u767b\u5f55\u5f00\u59cb\uff0c\u5b8c\u6210\u63d0\u793a\u8bcd\u4e09\u6bb5\u5f0f\u5199\u6cd5\u3001\u70b9\u6570\u6210\u672c\u63a7\u5236\u3001\u65b0\u624b\u6700\u6613\u8e29\u7684\u4e09\u4e2a\u5751\u6392\u67e5\uff0c\u8dd1\u901a\u7b2c\u4e00\u5f20\u80fd\u7528\u7684\u56fe\u3002", "headline": "PixAI \u5165\u95e8\u5b9e\u6218\uff1a\u4e09\u5c0f\u65f6\u4ece\u96f6\u8dd1\u5230\u7a33\u5b9a\u51fa\u56fe", "image": ["https://alipymanbu.github.io/images/pixai-docs/generate-model-select.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/pixai-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/pixai-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "PixAI \u5165\u95e8\u5b9e\u6218\uff1a\u4e09\u5c0f\u65f6\u4ece\u96f6\u8dd1\u5230\u7a33\u5b9a\u51fa\u56fe", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">PixAI 入门实战：三小时从零跑到稳定出图</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">PixAI 入门实战：三小时从零跑到稳定出图</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">PixAI 是一款主打移动端的 AI 绘画工具，本文带你从注册登录开始，完成提示词三段式写法、点数成本控制、新手最易踩的三个坑排查，跑通第一张能用的图。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇教程，你能在 PixAI 上独立跑完一次完整的生图流程——从选模型、写提示词、调参数到拿到第一张能看的图，不会再因为点数超支、负面词冲突或者主体塞太多而卡壳。整个过程控制在三个小时以内，大部分时间是在等图生成。</p>
+<h2>准备：平台、账号、点数三件事</h2>
+<p>PixAI 同时提供安卓 App 和桌面端，它的<a href="https://pixai.fedq.ren" target="_blank" rel="noopener">官网</a>上把功能和平台说明列得很清楚。新手直接用手机就行，从<a href="https://pixai.fedq.ren/download.html" target="_blank" rel="noopener">官方下载</a>拿 App 装上就能跑，触控操作比桌面面板友好。第一次启动需要注册登录，手机号一键验证，没有门槛。</p>
+<p>登录之后先别急着生成，看一眼你的点数余额。平台每天登录送一万点，还有发布作品、收点赞、看广告这些免费渠道，攒一攒够你连着跑好几百张。点数不过期，攒在那里不会清零，想等攒够了再开大批量也完全可以。</p>
+<p>生图的点数消耗和三个变量直接相关：模型档位、输出尺寸、批量张数。轻量模式一张图起价两千点，旗舰模型会更高，但刚上手先用轻量模式就行，差距主要在细节丰富度和处理速度，先把流程跑通比盯着画质重要。</p>
+<h2>第一步：打开生成面板，挑个模型</h2>
+<p>进入首页，底部栏点中间那个带画笔图标的按钮，直接跳进生成面板。面板分左右两半——左边写提示词，右边调参数和选模型。</p>
+<p>模型列表默认展示平台主推的几款，按档位分轻量、标准、专业、极致四档。轻量档出图快、点数省，适合快速试错；旗舰档画质高但每张消耗可能到一万点以上。第一次跑直接挑轻量档里最新的那个，比如 Haruka 系列的 v2 版本——社区里公认它对新手最友好，风格覆盖面广，出图稳定。</p>
+<p><img src="../images/pixai-docs/generate-model-select.webp" alt="生成面板的模型选择区域" loading="lazy"></p>
+<p>选好模型之后，面板下方会出现输出尺寸和批量张数的选项。尺寸先保持默认，批量设 4 张——一次出四张，你可以从里面挑最满意的一张出来再精修，比每次只出一张效率高得多。</p>
+<h2>第二步：用三段式公式写提示词</h2>
+<p>PixAI 的提示词不需要天赋，有万能骨架。官方给新手的基础公式就一行：</p>
+<blockquote><p><strong>提示词 = 主体外观 + 动作姿势 + 场景元素</strong></p></blockquote>
+<p>三段各管一件事：主体说清楚你要画的是什么角色（性别、发型、服装、气质特征）；动作说清楚这个主体在做什么（不要笼统写"站着"，写具体姿势——回眸、侧身、伸手）；场景说清楚时间、地点、光线。</p>
+<p>现在试着写第一版。举个具体的——你想画一个穿水手服的少女在教室里看书：</p>
+<ul><li>主体：黑长直、水手服、十六岁女生</li><li>动作：坐在书桌前、低头看书、手指夹着书页</li><li>场景：午后阳光、教室窗边、桌上摆着半杯茶</li></ul>
+<p>拼在一起，用中文自由描述就行：「黑长直水手服少女，坐在教室窗边书桌前低头看书，手指夹着书页，午后阳光斜射进来，桌上有半杯绿茶」。别堆砌术语标签，就像你跟画师说清楚你要什么画面那样写。</p>
+<p><img src="../images/pixai-docs/generate-prompt-input.webp" alt="提示词输入框" loading="lazy"></p>
+<p>写完之后扫一遍：主体的关键特征都说了吗？动作是具体姿势还是笼统描述？场景有没有光线和环境细节？三问都能答上来，这版提示词就及格了。</p>
+<h2>第三步：负面提示词只追加不堆料</h2>
+<p>写完正向提示词，下面有一个「负面提示词」输入框。新手最容易犯的错是把负面词堆得密密麻麻，觉得越多过滤越干净。实际上平台模型已经内置了一套默认负面词——错误手指、变形脸、乱入的文字水印这些都在默认里，直接用就好。</p>
+<p>你只需要针对这张图<strong>实际出现的问题</strong>追加几个。比如画面里总多出一双不属于主体的手，就追加 <code>extra limbs, bad hands</code>；总出现奇怪的文字或水印，追加 <code>text, watermark, signature</code>。</p>
+<p>负面词生效有一条反直觉的规则：<strong>只有正向提示词没提到的内容，负面词才能排除</strong>。你正向词写了「水手服」，负面词写「不要水手服」——没用，提示词优先。所以别想着用负面词去覆盖正向词里的内容，那是徒劳的。</p>
+<h2>第四步：参数面板先跑通，微调放后面</h2>
+<p>右侧参数面板第一次用的时候别纠结，先保持默认值跑一次。几个关键参数扫一眼就行：</p>
+<ul><li><strong>模式档位</strong>：你选的模型决定了可用档位，轻量档只能用轻量模式，先别碰专业和极致——点数消耗是轻量的三到五倍，不值得用来试错。</li><li><strong>输出尺寸</strong>：默认是 1024×1024 或接近的比例，正方形适合新手，构图稳定。等熟练了再改竖版 9:16 或横版 16:9。</li><li><strong>插队加速</strong>：High Priority 选项，额外加一千点换排队优先。高峰期可以开，但平时没必要。</li></ul>
+<h2>第五步：跑起来，迭代比空想快</h2>
+<p>所有参数设完，面板底部会显示这次生成预计消耗多少点数——心里有数就行。点生成，等三到五分钟，四张图一次性出现在面板里。</p>
+<p>拿到图之后别急着定。四张图之间会有细微差异，挑一张构图最接近你预期的，然后看差距在哪里——是脸的细节不对？还是光线没到位？还是背景太乱？根据差距改提示词，<strong>一次只改一两个点</strong>，别一整版全推翻。</p>
+<p>第一次跑出来大概率不会完美，这很正常。PixAI 社区里的老手也是靠"写一版、跑四张、改一版、再跑"的节奏迭代，没有谁第一版就出成图。遇到改不动的卡壳，去 PixAI<a href="https://pixai-docs.pages.dev/" target="_blank" rel="noopener">文档</a>里翻对应工具的详细说明，比自己瞎试快得多。</p>
+<h2>新手最容易翻车的三个卡点</h2>
+<h3>卡点一：点数怎么算都不准</h3>
+<p>新手看面板上的点数预估和实际扣的对不上，经常困惑。记住一个逻辑：消耗 = 基础价 × 尺寸系数 × 档位系数 × 批量张数。模型档位是最大的变量，旗舰模型的基础价可能是轻量的三倍多。另外如果开了 High Priority，每张加一千点，批量四张就是额外四千点。</p>
+<h3>卡点二：负面词写了没用</h3>
+<p>大概率是你在正向词里已经写了那个元素。负面词只管"正向词没提到的东西"，不能用来覆盖正向词里的内容。所以觉得负面词失效的时候，先回头看正向提示词里有没有冲突的描述。</p>
+<h3>卡点三：一次塞太多主体</h3>
+<p>第一张图只画<strong>一个主体</strong>。多人构图对提示词要求高出几个量级——你不仅要描述每个主体的外观、动作、位置关系，还要管整体的构图和互动，新手写出来模型会晕。等你单体出图稳定了，再尝试加第二个角色。</p>
+<h2>进阶一句话</h2>
+<p>流程跑通之后，攒够点数可以试试 PixAI 桌面端影像强化里的去背和线稿转换工具——把 AI 图抠成透明立绘，或者转线稿当二次创作底稿，是官方推荐的素材生产链路。再往前一步，LoRA 训练能让模型记住特定风格或角色特征，不过那是另一个完整教程了。</p>
+<p>这份资料我放在三个代码仓库里维护，方便不同网络环境下随时查——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/PixAI" target="_blank" rel="noopener">GitHub</a> 主仓更新最快，<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/PixAI" target="_blank" rel="noopener">Gitee</a> 国内访问更稳，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/PixAI" target="_blank" rel="noopener">GitCode</a> 是我的个人备份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/pippit-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Pippit 用了一个月才发现的 5 个隐藏技巧——Credits 省一半不是梦</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/pixcall.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Pixcall 用了半年——从 Eagle 替代到主力素材库，聊聊这半年的真实感受</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>每周一套 DJ set，从搜歌到导出我只开 rekordbox · 老杨技术栈</title>
+  
+<meta name="description" content="以前准备一套要两天：各处找歌手动数 BPM、标 cue 点、现场前一晚熬夜导 U 盘。现在一条链走完，讲 rekordbox 怎么把散活串成一条可复用的工作流。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/rekordbox.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周一套 DJ set，从搜歌到导出我只开 rekordbox">
+<meta property="og:description" content="以前准备一套要两天：各处找歌手动数 BPM、标 cue 点、现场前一晚熬夜导 U 盘。现在一条链走完，讲 rekordbox 怎么把散活串成一条可复用的工作流。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/rekordbox.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/rekordbox/ver7-workflow.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/rekordbox/ver7-workflow.png">
+
+<meta name="twitter:title" content="每周一套 DJ set，从搜歌到导出我只开 rekordbox">
+<meta name="twitter:description" content="以前准备一套要两天：各处找歌手动数 BPM、标 cue 点、现场前一晚熬夜导 U 盘。现在一条链走完，讲 rekordbox 怎么把散活串成一条可复用的工作流。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u51c6\u5907\u4e00\u5957\u8981\u4e24\u5929\uff1a\u5404\u5904\u627e\u6b4c\u624b\u52a8\u6570 BPM\u3001\u6807 cue \u70b9\u3001\u73b0\u573a\u524d\u4e00\u665a\u71ac\u591c\u5bfc U \u76d8\u3002\u73b0\u5728\u4e00\u6761\u94fe\u8d70\u5b8c\uff0c\u8bb2 rekordbox \u600e\u4e48\u628a\u6563\u6d3b\u4e32\u6210\u4e00\u6761\u53ef\u590d\u7528\u7684\u5de5\u4f5c\u6d41\u3002", "headline": "\u6bcf\u5468\u4e00\u5957 DJ set\uff0c\u4ece\u641c\u6b4c\u5230\u5bfc\u51fa\u6211\u53ea\u5f00 rekordbox", "image": ["https://alipymanbu.github.io/images/rekordbox/ver7-workflow.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/rekordbox.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/rekordbox.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6bcf\u5468\u4e00\u5957 DJ set\uff0c\u4ece\u641c\u6b4c\u5230\u5bfc\u51fa\u6211\u53ea\u5f00 rekordbox", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">每周一套 DJ set，从搜歌到导出我只开 rekordbox</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">每周一套 DJ set，从搜歌到导出我只开 rekordbox</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前准备一套要两天：各处找歌手动数 BPM、标 cue 点、现场前一晚熬夜导 U 盘。现在一条链走完，讲 rekordbox 怎么把散活串成一条可复用的工作流。</p>
+  </header>
+  <div class="prose">
+<h2>我以前怎么"准备一套 set"——说多了都是泪</h2>
+<p>每周六晚上有个固定场，从一百首候选里挑出十五首拼成一套 45 分钟的 set。这个活我断断续续干了三年，前两年全是土方法：</p>
+<ul><li>歌散在三处：Apple Music 订阅里攒了 80%、朋友分享的 Dropbox 文件夹、自己 2TB 硬盘里压了 5 年的老歌。每次开工先开三个窗口手动拖。</li><li>BPM 全靠耳朵数。节拍器 app 开着放，一首一首点，80 首候选数下来眼都花了。调性更别说，靠感觉接歌，现场撞 Key 是家常便饭。</li><li>Cue 点、接歌位置全记在 Notion 表格里——"第 7 首 Outro 倒数 8 小节接第 8 首 Intro"，写着写着自己都忘了记的是哪个版本。</li><li>导出 U 盘是噩梦。俱乐部的 CDJ-3000 吃 FAT32、朋友的 XDJ-RX3 插同一个盘有时候读不出播放列表，换格式重来，反复好几次。</li></ul>
+<h2>现在整条链就靠它撑着</h2>
+<p>我第一次逛<a href="https://rekordbox.fewf.ren" target="_blank" rel="noopener">rekordbox官网</a>是 2023 年底，当时还只当是 Pioneer 的配套软件，没想着能把上面这些碎活全收进去。用了三个月后发现，rekordbox 真正的价值不是"打碟软件"，而是<strong>把一套 DJ 工作流里每一步的产物都留在同一个曲库里</strong>——歌进来、分析完、排好序、导出去、现场打完再把历史拉回来，中间零手工搬运。</p>
+<p>整条链的关键节点是这样的：</p>
+<ol><li><strong>歌源统一进库</strong>：流媒体订阅（Apple Music、Beatport Streaming）直接在软件里搜，本地文件夹拖进去，Dropbox 里朋友发的那批用同步脚本先落到本地再导入——最终所有候选都在一个曲库里，不用切窗口。</li><li><strong>自动分析一次跑完</strong>：BPM、调性、乐句条、人声位置全交给软件扫。云端分析快的话几百首歌十几分钟搞定，本地慢的时候放后台一晚上第二天看结果。</li><li><strong>PREP 模式排歌单</strong>：按调性排个序，乐句条一开，哪首 Intro 在哪段、Outro 剩多少、哪首有人声哪段是纯伴奏，波形上清清楚楚——接歌点直接在波形上打 Cue，不用再开 Notion。</li><li><strong>一键导 U 盘</strong>：插上盘选播放列表，软件自动按机型格式导出，新旧两代机器的库同时写进去，插哪台都能读。</li></ol>
+<p><img src="../images/rekordbox/ver7-workflow.png" alt="从搜歌到导出的完整工作流" loading="lazy"></p>
+<h2>两个最容易断的环节——我踩过的坑</h2>
+<p>这条链跑通不难，但有两个点我栽过好几次，不提前防着就得返工。</p>
+<h3>环节一：U 盘格式不对，现场读不出</h3>
+<p>第一次带新盘去俱乐部，CDJ-3000 直接显示"设备库为空"——我在软件里明明看得到播放列表。排了十分钟才搞明白：新盘默认是 GPT 分区表，老机型不认。重新格式化成 MBR + exFAT，回去重导，才来得及赶上开场。</p>
+<p>更隐蔽的坑是新旧曲库格式的问题。软件从<a href="https://rekordbox.fewf.ren/download.html" target="_blank" rel="noopener">官方下载</a>更新到 7.2.11 以上，导出时会同时写 Device Library 和 OneLibrary 两种格式到同一支 U 盘，因为新一代机型（CDJ-3000X、XDJ-AZ、OPUS-QUAD）读 OneLibrary，老机型读 Device Library。但如果你用旧版本软件导出的盘、再用新版本打开软件里又没重导，会出现"设备库不一致"的提示——多数时候直接整盘重导就完事，不要抠搜索差异。</p>
+<p>排障的核心路径是固定的：分区表 → 格式 → 有没有导出中途拔盘 → 换根线换个口。按顺序走，大概率三五分钟能定位。记不清格式要求时去<a href="https://rekordbox.pages.dev/" target="_blank" rel="noopener">rekordbox文档</a>翻一下，Device Library 和 OneLibrary 章节讲得很细。</p>
+<h3>环节二：Apple Music 曲目突然不放</h3>
+<p>上个月在现场切一首 Apple Music 里的歌，网格出来了但点播放没声音。查了一圈才发现是 Mac 系统设置里的「允许露骨内容」不知道什么时候被关了——系统层禁了，rekorbox 里的开关开着也白搭。还有官方提过 Apple Music 加载机制变更会造成网格和 Cue 点偏移，这种情况重新分析一遍曲目就行，别手动一个个重打。</p>
+<p>另外，连接控制器时先换数据线、再升级固件、最后重装驱动——这三步走完，十有八九能解决识别异常。</p>
+<p><img src="../images/rekordbox/waveform-3band.jpg" alt="波形分析和乐句条" loading="lazy"></p>
+<h2>效果和边界——什么时候这条链不划算</h2>
+<p>量化一下省了多少事：以前 80 首候选要手动数 BPM，现在分析全自动；以前接歌点记 Notion，现在波形上直接打 Cue、人声位置一眼看得到——少了大概三分之一的手动操作。最值钱的不是时间，是<strong>不用重复犯错</strong>：以前换格式、换分区表的坑踩过一次就不想再踩，现在流程固定下来，导出这步我敢放开场前半小时才做，稳得很。</p>
+<p>但这套流程不是万能的。临时接个 10 首歌的暖场 set，用 rekorbox 反而显得重——直接拿手机接蓝牙或者用 VirtualDJ 快速拖一拖更划算。还有只用流媒体订阅、本地没有一首歌的纯新手，自动分析的价值也没那么大，因为没积累到一定量的曲库就体会不到统一管理的好处。</p>
+<p>一句话总结：如果你有至少一两千首歌要管、每个月至少准备两套 set，rekorbox 值得你花一个周末把这条工作流走一遍；如果你只是偶尔打个十分钟的 open deck，那它的功能用不到十分之一。</p>
+<hr>
+<p>这套曲目分析、USB 导出、PERFORMANCE 打碟的完整方案，我同步到了三个仓库，方便不同环境的朋友取用：<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/rekordbox" target="_blank" rel="noopener">GitHub</a> 上有完整的安卓版目录，<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/rekordbox" target="_blank" rel="noopener">Gitee</a> 适合国内访问，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/rekordbox" target="_blank" rel="noopener">GitCode</a> 作为额外备份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zoomearth.html">ZoomEarth 零基础上手：四步学会用它看风、体感温度和野火</a></h2>
+  <p class="card-desc">从下载安装到叠加三层关键图层，跟着教程一步步搞定，出门前看一眼比查三个天气 App 还省心。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xrecorder.html">XRecorder：我每周移动端教程工作流里那块被严重低估的拼图</a></h2>
+  <p class="card-desc">从手机录屏到飞书交付的四步变两步——聊聊怎么把 XRecorder 的静音录制、通知栏截屏和内置合并嵌进一条不绕路的移动端内容生产链。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vocalremover-docs.html">VocalRemover 迭代观察：从一个去人声小工具到九件套音频工作室</a></h2>
+  <p class="card-desc">这款在线音频工具一路走来，从单纯的&#34;去人声&#34;扩展成涵盖分离、剪辑、变调、录音的完整工作流。我从样本文档里能摸到的迭代规律。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/reelshort-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">ReelShort 三年：一部短剧 App 的版本进化史</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/reminder-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Reminder 用了半年，从一个&#34;普通备忘录&#34;变成了我每天都开的东西</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

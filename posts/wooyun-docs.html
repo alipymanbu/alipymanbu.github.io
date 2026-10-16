@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零开始用 wooyun：一个追剧小白的五分钟入门 · 老杨技术栈</title>
+  
+<meta name="description" content="完全不懂也没关系，这篇文章带你从下载安装到第一次投屏、批量下载、创作者检索，把 wooyun 三个最值得新手先碰的功能玩明白。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/wooyun-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始用 wooyun：一个追剧小白的五分钟入门">
+<meta property="og:description" content="完全不懂也没关系，这篇文章带你从下载安装到第一次投屏、批量下载、创作者检索，把 wooyun 三个最值得新手先碰的功能玩明白。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/wooyun-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/wooyun-docs/home-screenshot.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/wooyun-docs/home-screenshot.png">
+
+<meta name="twitter:title" content="从零开始用 wooyun：一个追剧小白的五分钟入门">
+<meta name="twitter:description" content="完全不懂也没关系，这篇文章带你从下载安装到第一次投屏、批量下载、创作者检索，把 wooyun 三个最值得新手先碰的功能玩明白。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5b8c\u5168\u4e0d\u61c2\u4e5f\u6ca1\u5173\u7cfb\uff0c\u8fd9\u7bc7\u6587\u7ae0\u5e26\u4f60\u4ece\u4e0b\u8f7d\u5b89\u88c5\u5230\u7b2c\u4e00\u6b21\u6295\u5c4f\u3001\u6279\u91cf\u4e0b\u8f7d\u3001\u521b\u4f5c\u8005\u68c0\u7d22\uff0c\u628a wooyun \u4e09\u4e2a\u6700\u503c\u5f97\u65b0\u624b\u5148\u78b0\u7684\u529f\u80fd\u73a9\u660e\u767d\u3002", "headline": "\u4ece\u96f6\u5f00\u59cb\u7528 wooyun\uff1a\u4e00\u4e2a\u8ffd\u5267\u5c0f\u767d\u7684\u4e94\u5206\u949f\u5165\u95e8", "image": ["https://alipymanbu.github.io/images/wooyun-docs/home-screenshot.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/wooyun-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/wooyun-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u5f00\u59cb\u7528 wooyun\uff1a\u4e00\u4e2a\u8ffd\u5267\u5c0f\u767d\u7684\u4e94\u5206\u949f\u5165\u95e8", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">从零开始用 wooyun：一个追剧小白的五分钟入门</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零开始用 wooyun：一个追剧小白的五分钟入门</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">完全不懂也没关系，这篇文章带你从下载安装到第一次投屏、批量下载、创作者检索，把 wooyun 三个最值得新手先碰的功能玩明白。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到用起来——不需要任何基础，跟着做就行。</p>
+<h2>它到底是干嘛的</h2>
+<p>你可以把 <a href="https://wooyun.wxhp.skin" target="_blank" rel="noopener">wooyun官网</a> 想象成一个<strong>超级片库</strong>。平时想看个电影、追部剧、补个老番，打开它搜一下，大部分都能找到。它聚合了公开渠道的影视资源，一个 App 覆盖电视剧、电影、动漫、综艺，不用在好几个应用之间来回切换。</p>
+<p>简单说就是：一个地方搜片、一个地方看片、一个地方存片。</p>
+<p><img src="../images/wooyun-docs/home-screenshot.png" alt="wooyun 首页预览" loading="lazy"></p>
+<h2>五分钟上手：从下载到第一次看片</h2>
+<p>别紧张，真的只要五分钟。</p>
+<h3>第一步：下载安装</h3>
+<p>先从<a href="https://wooyun.wxhp.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包就行。安卓手机的用户找到安装包下载安装，全程默认选项点确定就好，不需要 Root，也不用额外设置什么。</p>
+<h3>第二步：打开 App，逛一圈首页</h3>
+<p>打开之后你会看到一个分类清晰的首页——最新热播、热门推荐、分类入口，往下滑就能刷到想看的东西。分类栏一般会有电视剧、电影、动漫、综艺几个大项，点进去可以按类型、地区、年份继续筛选。</p>
+<p><img src="../images/wooyun-docs/category-list.png" alt="分类列表界面" loading="lazy"></p>
+<h3>第三步：搜一部片，点进去播放</h3>
+<p>如果你已经知道想看什么，直接在顶部搜索框输入名字就行。搜出来点进去详情页，里面有剧集列表、评分、简介。随便点一集，播放器就自动开始了——画质一般默认 1080P，网络好的话可以手动切 4K。</p>
+<p>到这里，你已经把 wooyun 跑通了。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>别急着卸载，三个新手最值得先碰的功能，每一个都能显著提升追剧体验。</p>
+<h3>功能一：投屏到投影仪或电视</h3>
+<p>想象一下，手机上看 6 英寸的画面和投影到墙上 100 英寸的感觉，完全是两回事。</p>
+<p><strong>怎么操作</strong>：把手机和投影仪（或电视）连到<strong>同一个 WiFi</strong>，然后在 wooyun 播放页面的右上角点那个投屏小图标，搜到你的投影仪设备，选中就行。第一次投屏可能要等几秒配对，之后每次都是一键连接。</p>
+<p><strong>你会看到什么</strong>：画面和声音直接出现在大屏上，手机变成了遥控器，可以继续用别的 App 或者锁屏，不影响投屏。</p>
+<p><strong>这意味着什么</strong>：在家就能凑出一个家庭影院。不需要买会员、不需要接 HDMI 线，就是手机点一下的事。预算够的话再加个回音壁，效果不比电影院差。</p>
+<p><img src="../images/wooyun-docs/player-screen.png" alt="播放器界面" loading="lazy"></p>
+<h3>功能二：批量下载全集，长途旅行必备</h3>
+<p>一部 40 集的国产剧，逐集点下载要点 40 次——别傻了，wooyun 有<strong>一键下载全集</strong>。</p>
+<p><strong>怎么操作</strong>：打开电视剧详情页，找「下载全集」按钮，选一个画质（下载后不能改，所以想清楚再选），确认之后就可以把 App 切到后台干别的了，下载会自动排队进行。进度随时可以在「我的 → 离线缓存」里看。</p>
+<p><strong>你会看到什么</strong>：下载完成后，离线缓存里整整齐齐排着所有集数，按顺序编号。</p>
+<p><strong>这意味着什么</strong>：飞机上没网、高铁上信号差、回老家的路上想追剧，掏出手机就能看，完全不依赖网络。出发前一两天下载好就行，不用等到上车才着急。</p>
+<h3>功能三：创作者检索——喜欢一个演员，看遍他所有作品</h3>
+<p>这个功能很多人第一次用都会惊呼「原来还能这样」。</p>
+<p><strong>怎么操作</strong>：直接在搜索框里输入演员名或导演名，比如「诺兰」「周迅」「宫崎骏」，搜索结果会自动识别这是人名，然后把这个人参与的全部影视作品列出来——主演的排在前面，客串的在后面，连综艺和声音出演都能搜到。</p>
+<p><strong>你会看到什么</strong>：一个创作者的完整作品清单，支持按类型、年份进一步筛选。</p>
+<p><strong>这意味着什么</strong>：喜欢了张艺谋的《影》？不用一部一部搜他的其他作品，搜「张艺谋」就全出来了，按顺序补片就行。对克里斯托弗·诺兰的烧脑叙事着迷？搜一下，从《追随》到《奥本海默》整个导演生涯一目了然。创作者检索还有一些局限性和别名匹配的小技巧，在 <a href="https://wooyun-docs.pages.dev/" target="_blank" rel="noopener">wooyun文档</a> 里讲得更详细。</p>
+<h2>小白的三个常见疑问</h2>
+<h3>存储空间不够怎么办</h3>
+<p>wooyun 默认把下载的缓存存在手机内部存储，但可以在<strong>设置 → 存储 → 缓存路径</strong>里切换到 SD 卡或者 USB OTG 外接存储。注意两点：一是切换不会自动迁移已有缓存，老内容得手动删了重下；二是选定一个路径就尽量固定，别频繁切换，不然缓存散在不同位置会很混乱。</p>
+<h3>搜不到演员或导演怎么办</h3>
+<p>很多创作者有多个名字——张国荣本名张发宗，英文名 Leslie Cheung；非中文创作者的译名也可能不统一（「克里斯托弗·诺兰」和简称「诺兰」都可以试试）。搜不到就换个拼写方式试试，中文不行换英文简称，大概率能命中。</p>
+<h3>批量下载有一两集失败</h3>
+<p>这挺正常的，40 集里有一两集源文件可能有问题。wooyun 的批量下载是一个队列，失败的集会在离线缓存里标记为「下载失败」，你单独点一下那集重新下载就行，不用全部重来。</p>
+<h2>结语</h2>
+<p>wooyun 不是什么复杂的工具，它的定位很清晰——就是让你追剧这件事变得简单。从五分钟上手到三个进阶功能，再到小白疑问的排查，你已经具备了用它解决大部分追剧场景的能力。</p>
+<p>如果想深入玩法，比如投屏画质怎么调最优、批量下载前怎么估算存储空间，也可以翻一翻 wooyun 的文档。那边有更细的参数说明和场景攻略，是进阶玩家的好帮手。</p>
+<p>最后说一句，wooyun 相关的资料和内容同步维护在三个代码仓库里，<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/wooyun" target="_blank" rel="noopener">GitHub</a> 上能看到最全的资源整理，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/wooyun" target="_blank" rel="noopener">Gitee</a> 对国内访问更友好，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/wooyun" target="_blank" rel="noopener">GitCode</a> 也有一份备份，三个地方选哪个方便用哪个就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/withmuu.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从零上手 WITHMUU：K-Pop 粉丝买专辑、抽签名会完整教程</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/workbuddy-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

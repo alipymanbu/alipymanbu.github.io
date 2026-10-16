@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链 · 老杨技术栈</title>
+  
+<meta name="description" content="以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/workbuddy-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链">
+<meta property="og:description" content="以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/workbuddy-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/workbuddy-docs/automation-example.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/workbuddy-docs/automation-example.png">
+
+<meta name="twitter:title" content="每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链">
+<meta name="twitter:description" content="以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u5468\u4e94\u4e0b\u5348\u8981\u5f00\u4e94\u4e2a\u7a97\u53e3\u624b\u52a8\u62fc\u4e00\u4efd\u884c\u4e1a\u52a8\u6001\u7b80\u62a5\uff0c\u73b0\u5728\u4e00\u6761\u81ea\u52a8\u5316\u94fe\u8def\u4ece\u626b\u90ae\u7bb1\u5230\u53d1\u7fa4\u6d88\u606f\u5168\u90e8\u8dd1\u5b8c\u2014\u2014\u8bb2\u5177\u4f53\u600e\u4e48\u63a5\u7684\u3002", "headline": "\u6bcf\u5468\u884c\u4e1a\u7b80\u62a5\u4ece\u4e09\u5c0f\u65f6\u5230\u4e8c\u5341\u5206\u949f\uff0c\u6211\u628a WorkBuddy \u63d2\u8fdb\u4e86\u4e00\u6761\u5168\u81ea\u52a8\u94fe", "image": ["https://alipymanbu.github.io/images/workbuddy-docs/automation-example.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/workbuddy-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/workbuddy-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6bcf\u5468\u884c\u4e1a\u7b80\u62a5\u4ece\u4e09\u5c0f\u65f6\u5230\u4e8c\u5341\u5206\u949f\uff0c\u6211\u628a WorkBuddy \u63d2\u8fdb\u4e86\u4e00\u6761\u5168\u81ea\u52a8\u94fe", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">每周行业简报从三小时到二十分钟，我把 WorkBuddy 插进了一条全自动链</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前周五下午要开五个窗口手动拼一份行业动态简报，现在一条自动化链路从扫邮箱到发群消息全部跑完——讲具体怎么接的。</p>
+  </header>
+  <div class="prose">
+<p>每周五下午三点，我有一件固定要做的事：整理一份行业动态简报，发到团队企业微信群。内容来源三块——我订阅的技术周报邮箱、团队成员在腾讯文档上提交的本周调研笔记、以及自己零散记在飞书知识库里的想法。</p>
+<p>以前这件事要花将近三小时。流程是这样的：先打开 QQ 邮箱，把这周收到的十几封周报逐封扫一遍，把值得保留的段落复制到一个临时文档；再切到腾讯文档，找到团队周报文件夹，逐个打开看有没有新补充；然后切换到飞书知识库，搜自己之前标记的关键词笔记；最后把三部分内容拼起来、调格式、写一段开场白，手动发到企业微信群里。中间光是切换应用窗口、等文档加载、重复复制粘贴，就占了大半时间。</p>
+<p>真正让我下决心改流程的，是上个月有一次周五人在外地出差，下午三点还在客户会议室里，手机上开邮箱加文档加群聊三个 App 来回切，差点错过发简报的时间。回来之后我开始琢磨：能不能把这条链的每一环都接给一个工具，让它自己跑？正好手头有之前<a href="https://workbuddy.boop.uno/download.html" target="_blank" rel="noopener">下载</a>下来的 WorkBuddy 客户端，先拿它试试。</p>
+<h2>新流程：WorkBuddy 当中间枢纽，五个连接器串起整条链</h2>
+<p>现在的流程是这样的——我在 <a href="https://workbuddy.boop.uno" target="_blank" rel="noopener">WorkBuddy官网</a> 上下载的客户端里开一个自动化任务，每周五下午两点半自动触发。它依次做五件事：</p>
+<ol><li>通过 <strong>QQ 邮箱连接器</strong>扫我那几个技术周报订阅文件夹，把本周未读邮件里出现频率最高的几个关键词摘出来；</li><li>通过 <strong>腾讯文档连接器</strong>打开团队周报文件夹，把所有新提交的调研笔记读一遍；</li><li>通过 <strong>飞书知识库连接器</strong>搜索我之前标记的关键词，把相关的零散片段拉出来；</li><li>三部分内容合并之后，让 WorkBuddy 按固定格式整理成简报——开头一段总述、每块内容分小节、末尾加自己的观察；</li><li>最后通过 <strong>企业微信连接器</strong>，把整理好的简报直接发到团队群里。</li></ol>
+<p>整条链跑完大概二十分钟。我要么在旁边看它执行日志，要么干脆开手机上的微信助理，远程发一句"这周简报帮我盯着发了"就行。</p>
+<p><img src="../images/workbuddy-docs/automation-example.png" alt="WorkBuddy 自动化任务的执行流程示例" loading="lazy"></p>
+<h2>实操中最容易断的两个环节</h2>
+<p>跑了三周之后，发现有两个地方最容易出问题，专门记一下。</p>
+<p><strong>第一个是连接器的授权边界。</strong> 腾讯文档连接器默认只读你自己创建或被分享给你的文档，但团队周报文件夹是共享空间——第一次跑的时候，它告诉我"找不到这个文件夹"，我还以为是路径写错了，后来才弄明白：连接器只认你本人的授权范围，共享空间的文档需要你先在网页端打开过一次，让文档权限跟你的账号绑定，WorkBuddy 才能读到。解决办法很简单，每周一上班先打开团队周报文件夹点一下"标记已读"，后面就不会再断了。</p>
+<p><strong>第二个是循环检测触发时的积分确认。</strong> 有一次我给任务加了一个"如果简报太短就自动多搜一轮关键词"的逻辑，结果那天关键词太偏，WorkBuddy 搜了一个又一个都不够，触发了循环执行检测。我当时选了"终止请求"，那次的模型消耗还进入了退费评估——虽然钱不多，但退费要等系统处理，不如一开始就把循环上限设死。现在我的自动化任务里，每一环都加了明确的"最多执行 N 次"的硬限制，不允许它无限重试。</p>
+<p>记忆功能在这里帮了一个忙。它会自动记住我每周关注的关键词范围——比如这周它发现我搜了"边缘 AI""本地推理"，下周它就会默认把这两个词放进搜索池里，不用我每次手动改任务模板。后来去<a href="https://workbuddy-docs.pages.dev/" target="_blank" rel="noopener">WorkBuddy文档</a>翻了一下才弄明白，记忆是每晚从当周会话里自动提取的，不消耗额外积分，这点我挺喜欢。</p>
+<p><img src="../images/workbuddy-docs/automation-templates.png" alt="自动化任务模板的配置页面" loading="lazy"></p>
+<h2>效果和边界</h2>
+<p>跑了五周之后，实际省下的时间比我预想的多——不是"三小时变二十分钟"这么线性，而是它帮我省掉了好几次手动复制粘贴、等文档加载、切换窗口的碎片化时间，这些碎片加起来其实是最累的部分。</p>
+<p>但这条链也不是什么时候都划算。有两个场景我不会用它：</p>
+<p>一是<strong>简报里需要大量主观判断</strong>的时候。比如团队周报里有好几条冲突的观点，需要我自己拍板选哪条放进简报——这种事连接器能拉数据，但不能替我做判断，手动处理反而更快。</p>
+<p>二是<strong>连接器没有覆盖的数据源</strong>。我有一部分行业情报来自一个收费的 RSS 订阅服务，但 WorkBuddy 官方目前没出这个服务的连接器。WorkBuddy 支持安装自定义的 MCP 服务来扩展连接器列表，我打算这周研究一下，把那个 RSS 源也接进来。</p>
+<p>还有一点要注意：用手机微信助理远程触发任务的时候，电脑得保持开机并运行 WorkBuddy。有一次我出门忘了关电脑，结果助理发消息过去没人接，最后还是靠同事手动发了简报。现在我给电脑设了定时开机脚本，每周五下午两点自动唤醒，就不会再掉链子了。</p>
+<hr>
+<p>这套流程跑起来之后，我才真正体会到"工具链"和"单一工具"的区别——以前是我自己在五个应用之间当搬运工，现在 WorkBuddy 是中间枢纽，连接器是齿轮，每个齿轮各司其职。关键是这条链可以持续加东西进去：下周把 RSS 源接上，下下周试试让它自己生成简报里的插图素材，再下下周加一个"如果简报里出现特定关键词就额外发一条通知到我私人微信"的分支逻辑。不用推翻重来，增量扩展就行。</p>
+<p>WorkBuddy 的连接器和助理功能，加上记忆模块的自动偏好学习，是这套流程能跑起来的核心。对了，这套资料在三个仓库都能拿到，维护起来也不担心丢——<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/WorkBuddy" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/WorkBuddy" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/WorkBuddy" target="_blank" rel="noopener">GitCode</a> 上同步更新，国内访问哪个方便就用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yandexmaps-docs.html">Yandex Maps 免费版够用吗？算一算 Yandex Plus 会员这笔账</a></h2>
+  <p class="card-desc">Yandex Maps 本身免费无广告，但深度绑定的 Plus 会员（299₽/月）在加油等场景有返现。不同使用强度下到底值不值，这篇给你掰扯明白。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/webview-docs.html">Android WebView 内核版本排查与更新实战——解决 App 内嵌网页白屏、扫码失败</a></h2>
+  <p class="card-desc">很多 App 里的网页白屏、按钮点不动、扫码框黑屏，根源是手机上的 WebView 内核版本过旧。本教程带你从零确认当前内核、按厂商走对更新路径、必要时切换实现。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vmos-pro-docs.html">VMOS Pro 装了快一年，那些当初没料到的变化</a></h2>
+  <p class="card-desc">从新鲜感消退到习惯成自然，记录这款安卓虚拟机在长期使用中暴露的真实面貌——哪些功能成了日常，哪些坑至今没填，以及什么时候该考虑换方案。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/wooyun-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从零开始用 wooyun：一个追剧小白的五分钟入门</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/wplace.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

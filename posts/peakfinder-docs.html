@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>PeakFinder 避坑指南——登顶才发现山没名字怎么办 · 老杨技术栈</title>
+  
+<meta name="description" content="用 PeakFinder 认峰看着简单，GPS 一开全景就标满山名；但实际登山用下来有几个坑容易栽，比如山明明在那却不显示名字、换手机快照全没了、望远镜唤不出来。本文用三次踩坑的经历告诉你哪里容易翻车、为什么会这样、怎么提前避开。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/peakfinder-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PeakFinder 避坑指南——登顶才发现山没名字怎么办">
+<meta property="og:description" content="用 PeakFinder 认峰看着简单，GPS 一开全景就标满山名；但实际登山用下来有几个坑容易栽，比如山明明在那却不显示名字、换手机快照全没了、望远镜唤不出来。本文用三次踩坑的经历告诉你哪里容易翻车、为什么会这样、怎么提前避开。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/peakfinder-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/peakfinder-docs/bird-flight.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/peakfinder-docs/bird-flight.png">
+
+<meta name="twitter:title" content="PeakFinder 避坑指南——登顶才发现山没名字怎么办">
+<meta name="twitter:description" content="用 PeakFinder 认峰看着简单，GPS 一开全景就标满山名；但实际登山用下来有几个坑容易栽，比如山明明在那却不显示名字、换手机快照全没了、望远镜唤不出来。本文用三次踩坑的经历告诉你哪里容易翻车、为什么会这样、怎么提前避开。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528 PeakFinder \u8ba4\u5cf0\u770b\u7740\u7b80\u5355\uff0cGPS \u4e00\u5f00\u5168\u666f\u5c31\u6807\u6ee1\u5c71\u540d\uff1b\u4f46\u5b9e\u9645\u767b\u5c71\u7528\u4e0b\u6765\u6709\u51e0\u4e2a\u5751\u5bb9\u6613\u683d\uff0c\u6bd4\u5982\u5c71\u660e\u660e\u5728\u90a3\u5374\u4e0d\u663e\u793a\u540d\u5b57\u3001\u6362\u624b\u673a\u5feb\u7167\u5168\u6ca1\u4e86\u3001\u671b\u8fdc\u955c\u5524\u4e0d\u51fa\u6765\u3002\u672c\u6587\u7528\u4e09\u6b21\u8e29\u5751\u7684\u7ecf\u5386\u544a\u8bc9\u4f60\u54ea\u91cc\u5bb9\u6613\u7ffb\u8f66\u3001\u4e3a\u4ec0\u4e48\u4f1a\u8fd9\u6837\u3001\u600e\u4e48\u63d0\u524d\u907f\u5f00\u3002", "headline": "PeakFinder \u907f\u5751\u6307\u5357\u2014\u2014\u767b\u9876\u624d\u53d1\u73b0\u5c71\u6ca1\u540d\u5b57\u600e\u4e48\u529e", "image": ["https://alipymanbu.github.io/images/peakfinder-docs/bird-flight.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/peakfinder-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/peakfinder-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "PeakFinder \u907f\u5751\u6307\u5357\u2014\u2014\u767b\u9876\u624d\u53d1\u73b0\u5c71\u6ca1\u540d\u5b57\u600e\u4e48\u529e", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">PeakFinder 避坑指南——登顶才发现山没名字怎么办</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">PeakFinder 避坑指南——登顶才发现山没名字怎么办</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用 PeakFinder 认峰看着简单，GPS 一开全景就标满山名；但实际登山用下来有几个坑容易栽，比如山明明在那却不显示名字、换手机快照全没了、望远镜唤不出来。本文用三次踩坑的经历告诉你哪里容易翻车、为什么会这样、怎么提前避开。</p>
+  </header>
+  <div class="prose">
+<h2>先说好：PeakFinder 是什么</h2>
+<p>PeakFinder 是个认峰软件，去<a href="https://peakfinder.wrwq.fun" target="_blank" rel="noopener">peakfinder官网</a>就能看到介绍——打开 GPS 和罗盘，对着远方的山脉，它会在屏幕上把每一座山的名字直接标出来。登山的时候登顶一圈 360°，以前只能凭经验认的山头，现在对着手机一转就全有名字了。行前规划也能用——选好视点位置，提前预览视野里能看到哪些山，拍下来当行程参考。</p>
+<p>但看着简单，我实际用了几次（两次单日徒步、一次周末露营）还是踩了几个坑。有些坑当场能救回来，有些只能自认倒霉。写下来给同样用 PeakFinder 的朋友参考，省得跟我一样踩过才知道。</p>
+<h2>坑一：眼前这座山，名字就是不出来</h2>
+<p><strong>症状</strong>：登顶之后兴奋地掏出手机，对着全景看——最显眼的那座山，旁边居然没有名字标注。我当时以为 GPS 信号飘了，重启软件、关掉重开，来回折腾十分钟还是那副样子。</p>
+<p>后来才慢慢弄明白，软件不是坏了，是有几个硬限制在那卡着。</p>
+<p><strong>原因分四种情况</strong>：</p>
+<p>最常见的是<strong>被前面的山挡住了</strong>。PeakFinder 用高程模型自动判断遮挡关系——近山挡住了山头，那座山就不会出现在全景渲染里，自然也没有名字。这个逻辑是对的，但你站在山顶平视的时候，以为那座山就在你对面，实际上你的视点高度还没越过中间那排山的山脊。</p>
+<p>第二是<strong>超出渲染半径</strong>。PeakFinder 的全景覆盖范围大约三百公里，超出就不渲染了。我那次在川西，远处有座自认为"肯定能看到"的山，算一下直线距离超了三百公里，软件根本不管。罗盘再准、GPS 再精确也没用。</p>
+<p>第三是<strong>山峰目录里还没有</strong>。PeakFinder 的山峰数据来自 OpenStreetMap——这是个"地图维基百科"，任何人都可以往里面加山峰信息。如果那座山 OSM 里没被收录，PeakFinder 也不会凭空给它安个名字。特别小众的山、或者刚被测绘过的新山峰，经常出现这种情况。</p>
+<p>第四是<strong>离线区域没下好</strong>。特别偏远的山区，基础高程模型本身精度就不够，不把对应的离线区域补上，渲染出来的地形轮廓会有偏差。</p>
+<p><strong>解法</strong>：按顺序来。先用纵向飞行把视点升高，看看那座山露出来没有——露出来就是遮挡问题，调视点高度就行。还没露？选个离它更近的视点飞过去再渲染，排除半径限制。再不行？去设置里拉一下更新，OSM 里二十四小时内新增的山峰就能同步进来。最后确认一下离线区域是不是覆盖了你所在的那块山区。</p>
+<pre><code>防漏山峰排查顺序：升高视点 → 飞近重渲染 → 更新目录 → 下离线区域</code></pre>
+<h2>坑二：快照拍了一堆，换手机全没了</h2>
+<p><strong>症状</strong>：去年年底换手机，旧手机上存了二十多张登顶时拍的全景快照——带山名标注的那种，特别有纪念意义。换机的时候只迁移了 App，打开 PeakFinder 新设备上干干净净，一张快照都不剩。</p>
+<p><strong>原因</strong>：PeakFinder 的快照是<strong>纯本地存储</strong>，没有任何云同步或账号绑定。拍的时候没提醒，导出到图库也是个可选操作，默认就是存在 App 自己的数据目录里。我之前以为换手机登录同一个账号就能自动同步，结果发现它根本没账号这回事。真要从头来过的话，安装包从<a href="https://peakfinder.wrwq.fun/download.html" target="_blank" rel="noopener">官方下载</a>拿就行——但快照数据是救不回来的。</p>
+<p><strong>解法只有一个</strong>：拍完就导出。编辑器底部有个导出按钮，可以直接保存到手机图库，也可以分享到微信、邮件、云盘任何地方。养成习惯——拍一张、导出一张、确认图库里有了再拍下一张。别等攒一堆，攒着攒着就忘了。</p>
+<p>顺便说一下，快照比系统截图清晰得多——PeakFinder 会专门生成一张高分辨率全景，所有山名标注、山脊轮廓线都保留，比你按电源键+音量键截出来的清楚多了。值得花两秒导一下。</p>
+<h2>坑三：望远镜找不到入口</h2>
+<p><strong>症状</strong>：有时候全景里名字密密麻麻，想仔细确认某个小山头具体叫什么，文档说有个"望远镜模式"可以放大。但我在界面上摸了半天，找不到入口在哪——菜单里没有、缩放键按着没反应、手势也不对。</p>
+<p><strong>原因很简单</strong>：望远镜的唤出方式太反直觉了——要点<strong>屏幕正中央</strong>那个圆形区域，不是随便点哪个位置都行。它在正常使用时几乎看不见，不像是个可交互的区域。我第一次知道这个触发点是翻了<a href="https://peakfinder-docs.pages.dev/" target="_blank" rel="noopener">peakfinder文档</a>才找到的。</p>
+<p><strong>解法</strong>：对着屏幕正中间戳一下就行。出来之后可以双指缩放，把周围一圈小山头的名字看得更清楚。有陀螺仪的设备上，开了 AR 相机模式之后配合望远镜用效果特别好——把望远镜对准实景里的一座山，全景线稿会跟着旋转，叠加精度能高一截。</p>
+<p><img src="../images/peakfinder-docs/bird-flight.png" alt="望远镜识别小山头" loading="lazy"></p>
+<h2>坑四：偏远山区数据不准，以为软件坏了</h2>
+<p><strong>症状</strong>：在一些特别偏远的地方，PeakFinder 渲染出来的地形轮廓跟实景对不上——明明是个平坦的垭口，全景里显示成了凸起；或者附近一座山被直接渲染没了。我当时跟同行的朋友吐槽这软件果然不行。</p>
+<p>后来才知道不是软件的问题，是我没下离线区域。PeakFinder 的基础高程模型精度是全球通用的，在人口密集的地方够用，但到了偏远山区，基础数据精度就不够了。解决方案不是等软件更新，而是手动补上对应区域的离线数据包——设置里有个离线地图下载，选你要去的那块山区提前下好。</p>
+<h2>防坑清单速查</h2>
+<ul><li>山没名字？按这个顺序排查：升高视点看遮挡 → 飞近排除半径 → 更新目录 → 补离线区域</li><li>快照一定要导出到图库或云盘，PeakFinder 不做云同步，换设备就清空</li><li>望远镜入口藏在屏幕<strong>正中央</strong>，别乱点，对着正中间戳一下就出来</li><li>去偏远山区之前，先在设置里把对应的离线区域下好，不然地形对不上会以为软件坏了</li></ul>
+<p>知道这些坑之后，PeakFinder 其实相当省心——GPS 信号正常的话，绝大部分情况下拿起来就能用，拍下来的带山名快照发朋友圈特别有面。我后来几次登山都按这个清单提前检查过，没再踩过同样的坑。</p>
+<p>这套 PeakFinder 的资料和安装包我同步放在了 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/peakfinder" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/peakfinder" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/peakfinder" target="_blank" rel="noopener">GitCode</a>，国内访问哪个方便选哪个就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xmol.html">我把每周追文献的三步走流程压成了一条自动链</a></h2>
+  <p class="card-desc">以前要手动刷十几本期刊、翻 Google Scholar、邮箱里翻 alert，现在一条链走完。讲怎么把 xmol 嵌进科研周更工作流，从盯文献到选刊投稿全打通。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/walkplay.html">凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了</a></h2>
+  <p class="card-desc">用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/usagi-zh-docs.html">Usagi 用了半年才踩明白的 5 个坑，第一个就差点让我放弃</a></h2>
+  <p class="card-desc">Usagi 看着是个清爽的阅读器 app，实际上手才发现里面藏着不少容易踩的小陷阱——授权失败、匹配不准、显示调伤眼，每一个都能把新人劝退。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/peach-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Peach陪趣用了一年半，聊聊声音社交的日子</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/pendo-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Pendo 速查手册——从&#34;它是什么&#34;到&#34;要不要装&#34;的九问九答</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

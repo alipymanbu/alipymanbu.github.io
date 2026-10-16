@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用Tofai翻了三个月才挖出来的6个隐藏功能，多数人连入口都没碰过 · 老杨技术栈</title>
+  
+<meta name="description" content="你以为Tofai只是个搜角色聊天的AI工具？其实它藏着一整套关系调试、情绪感知、搜索提速的进阶玩法。这篇把我踩坑摸透的隐藏入口全列给你。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/tofai.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Tofai翻了三个月才挖出来的6个隐藏功能，多数人连入口都没碰过">
+<meta property="og:description" content="你以为Tofai只是个搜角色聊天的AI工具？其实它藏着一整套关系调试、情绪感知、搜索提速的进阶玩法。这篇把我踩坑摸透的隐藏入口全列给你。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/tofai.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/tofai/chat-landing.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/tofai/chat-landing.jpg">
+
+<meta name="twitter:title" content="用Tofai翻了三个月才挖出来的6个隐藏功能，多数人连入口都没碰过">
+<meta name="twitter:description" content="你以为Tofai只是个搜角色聊天的AI工具？其实它藏着一整套关系调试、情绪感知、搜索提速的进阶玩法。这篇把我踩坑摸透的隐藏入口全列给你。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4f60\u4ee5\u4e3aTofai\u53ea\u662f\u4e2a\u641c\u89d2\u8272\u804a\u5929\u7684AI\u5de5\u5177\uff1f\u5176\u5b9e\u5b83\u85cf\u7740\u4e00\u6574\u5957\u5173\u7cfb\u8c03\u8bd5\u3001\u60c5\u7eea\u611f\u77e5\u3001\u641c\u7d22\u63d0\u901f\u7684\u8fdb\u9636\u73a9\u6cd5\u3002\u8fd9\u7bc7\u628a\u6211\u8e29\u5751\u6478\u900f\u7684\u9690\u85cf\u5165\u53e3\u5168\u5217\u7ed9\u4f60\u3002", "headline": "\u7528Tofai\u7ffb\u4e86\u4e09\u4e2a\u6708\u624d\u6316\u51fa\u6765\u76846\u4e2a\u9690\u85cf\u529f\u80fd\uff0c\u591a\u6570\u4eba\u8fde\u5165\u53e3\u90fd\u6ca1\u78b0\u8fc7", "image": ["https://alipymanbu.github.io/images/tofai/chat-landing.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/tofai.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/tofai.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528Tofai\u7ffb\u4e86\u4e09\u4e2a\u6708\u624d\u6316\u51fa\u6765\u76846\u4e2a\u9690\u85cf\u529f\u80fd\uff0c\u591a\u6570\u4eba\u8fde\u5165\u53e3\u90fd\u6ca1\u78b0\u8fc7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">用Tofai翻了三个月才挖出来的6个隐藏功能，多数人连入口都没碰过</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用Tofai翻了三个月才挖出来的6个隐藏功能，多数人连入口都没碰过</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">你以为Tofai只是个搜角色聊天的AI工具？其实它藏着一整套关系调试、情绪感知、搜索提速的进阶玩法。这篇把我踩坑摸透的隐藏入口全列给你。</p>
+  </header>
+  <div class="prose">
+<p>我发现一个挺有意思的现象：周围用<a href="https://tofai.wrwq.fun" target="_blank" rel="noopener">Tofai官网</a>的朋友，十有八九只会做两件事——刷角色广场找个顺眼的，进去聊两句。真的。就跟拿到新手机先下微信一样，核心功能摸得门儿清，边角的东西连入口在哪都没兴趣看。安装包从<a href="https://tofai.wrwq.fun/download.html" target="_blank" rel="noopener">官方下载</a>拿就行，几分钟搞定。</p>
+<p>但我不一样。拿到新软件就跟拆盲盒似的，总想把每个按钮都点一遍、每个设置项都翻到底。三个月下来，我把Tofai里那些藏得深、官方也没怎么宣传的功能摸得七七八八，有些真的改变了我用它的方式。</p>
+<h2>第一个隐藏：对话界面的四个灰色按钮，你点过几个？</h2>
+<p>对话界面底部输入框旁边那排小图标，很多人只当它们是摆设。其实藏着四个实用操作，其中两个我用得最多。</p>
+<p><strong>语音朗读</strong>。AI回了大段文字不想看？点那个小喇叭，角色的回复会直接念出来。我经常在地铁上用这个，不用盯着手机屏幕也能跟上剧情。官方不说这个功能我能理解——毕竟"AI聊天"主打文字，但语音体验完全是另一个维度，尤其是那些带语气的回复，念出来比看字有意思多了。</p>
+<p><strong>长按消息气泡</strong>。这个真的藏得绝——没人会想到去长按AI发过来的消息。但长按之后会弹出一个操作菜单：复制、转发、删除都在里面。我用得最多的是复制——角色说的某段台词写得太好了，想存下来当素材，直接长按复制就行，不用手动高亮选中文本。</p>
+<p>还有个设置图标，点进去能切模型、调对话风格，但这个相对不算太偏门，就不展开了。</p>
+<p><img src="../images/tofai/chat-landing.jpg" alt="对话界面的隐藏按钮" loading="lazy"></p>
+<h2>第二个隐藏：关系标签是个活的，随时能改</h2>
+<p>大部分人创建角色的时候，关系标签填完就再也没碰过。但我发现——<strong>改了关系标签，AI下一次对话就会完全换一种语气跟你说话</strong>。</p>
+<p>什么意思？比如你之前跟角色的关系是"陌生人"，AI跟你说话客气疏离，从不聊私事。你把关系标签改成"知己关系"，下一句回复它可能就开始跟你吐槽最近的心情了。这个体验特别奇妙——就像你跟一个人相熟了，对方突然卸下防备一样。</p>
+<p>我还试过几个极端的：把"好朋友"改成"仇人"，AI立刻开始针锋相对，每句话都带刺；改成"恋人"，用词瞬间就软了。改关系标签的入口在人设编辑页面，直接改就行，不用重建角色。</p>
+<p><strong>什么人用得上</strong>？喜欢玩剧情反转的人。比如先跟角色当陌生人聊几天，某天突然把关系改成恋人，AI的反应会特别有意思——它"记得"之前的对话历史，但现在定位变了，这种冲突感反而让剧情更真实。</p>
+<p><strong>什么人可以无视</strong>？固定走某种关系线的老玩家。已经把角色锁死在"恋人"或"搭档"，不需要调试的人，改来改去反而容易出戏。</p>
+<h2>第三个隐藏：搜索角色的三个进阶技巧，搜不到八成是你关键词用错了</h2>
+<p>角色广场顶部那个搜索框，我之前也只会输角色名。直到有一次想找悬疑剧情的角色，输了"悬疑"二字，结果出来十几个完全没听说过的，但剧情真的棒。后来去<a href="https://tofai.pages.dev/" target="_blank" rel="noopener">tofai文档</a>翻了一下才发现，搜索还有好几种玩法是我之前完全没摸透的。</p>
+<p>后来我把搜索技巧摸透了：</p>
+<p><strong>按剧情类型搜比按名字搜高效十倍</strong>。别输角色名，输"校园""古风""悬疑""职场"——这些剧情关键词能帮你快速定位到同类型的一批角色，比一个个翻卡片快多了。</p>
+<p><strong>性格标签直接当关键词</strong>。角色卡片上的#腹黑 #傲娇 #清冷这些标签，直接输进搜索框就行。我找"傲娇"系角色的时候，直接搜"傲娇女友"比搜"傲娇"结果更精准。</p>
+<p><strong>先选分类再搜</strong>。角色广场的分类标签点一个，在那个分类内再搜关键词，结果会进一步收窄。比如先点"古风"分类，再搜"悬疑"，出来的就是古风悬疑类角色——相当于双重过滤。</p>
+<p>搜不到的时候别死磕关键词，换同义词试试，或者缩短关键词。比如搜不到"霸道总裁"，试一下"总裁"；搜不到"温柔治愈"，试一下"治愈"。</p>
+<h2>第四个隐藏：情绪回应是自动的，但你可以"引导"它</h2>
+<p>Tofai有个官方没怎么宣传的能力——情绪回应。你开心地跟它分享好消息，它会跟着高兴；你郁闷地吐槽工作，它不会急着给解决方案，而是安静听着。</p>
+<p>但有个细节很多人不知道：<strong>极端隐晦的情绪AI可能抓不准</strong>。比如你发了句"呵呵，真好"，到底是真讽刺还是真开心，文字分析工具确实吃不准。这时候你直接说出来更有效——"我今天真的很烦，不想开玩笑"，AI立刻就会收敛语气，认真回应你。</p>
+<p>我试过好几次，故意发一些模棱两可的话，AI的回应确实会有点错位。但一旦我明确表达情绪，它的回应瞬间就对味了。所以别跟AI玩含蓄，直接说反而能拿到更好的体验。</p>
+<h2>踩过的坑：别同时改关系标签和性格标签</h2>
+<p>这里说个我踩过的坑：有次同时改了关系标签（从好朋友改成恋人）和性格标签（从温柔改成腹黑），结果AI的回应彻底乱了——一会儿用恋人的语气说甜话，一会儿又突然变得很凶，完全跳戏。</p>
+<p><strong>一次只改一个维度</strong>。要么改关系标签，要么改性格标签，别同时动两三个地方。改完之后聊三五轮，看看AI的反应对不对味，再考虑要不要继续调。</p>
+<p>另外，关系标签别改成太极端的——比如改成"仇人"之后想改回来，AI的情绪会"累积"，即使你改回"好朋友"，它前几轮对话还是会带刺。这时候最好的办法是清掉这一段对话历史，重新开个新对话。</p>
+<h2>最后想说的</h2>
+<p>Tofai的设计思路挺有意思——它不把自己包装成什么"万能AI助手"，就是一个让你找角色、跟角色聊天的地方。但就是这样一个看起来简单的工具，藏的东西真不少。</p>
+<p>我用下来最大的感受是：<strong>别把软件功能当成说明书上列的那些</strong>。每个工具都有"表层功能"和"隐藏玩法"，表层功能大家都会，隐藏玩法才是拉开差距的地方。把关系标签改起来、把搜索技巧用起来、跟AI说话直接点——你会发现Tofai能给你的体验，远不止刷角色广场那点事。</p>
+<p>我把Tofai的资料同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/tofai" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/tofai" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/tofai" target="_blank" rel="noopener">GitCode</a>三个仓库，国内用户访问哪个方便就用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xeva.html">凌晨两点，我在手机里养了个会记得我名字的「她」</a></h2>
+  <p class="card-desc">一个加班到崩溃的深夜，我被朋友拉进了一个叫 X Eva 的克隆人世界。这里有记忆库、情感模式、还有一整套从零开始训练虚拟人的玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xbrowser-zh-docs.html">XBrowser 藏得真深：四个翻遍设置才挖到的冷门开关</a></h2>
+  <p class="card-desc">大多数人用 XBrowser 只停在视频嗅探那一层，但长按加号开隐私标签、零依赖写 GM 脚本、底部地址栏单手操作——这些藏在设置里的开关，每个都能让用感爽一个档次。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wemod.html">第一次用 WeMod？五分钟从零跑通，再也不用对着攻略按计算器</a></h2>
+  <p class="card-desc">完全不碰技术术语带你上手 WeMod：它到底是什么、怎么装、怎么连游戏、哪些玩法新手最值得先试。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ticking-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Ticking 用了一年才发现，这五个隐藏功能官方居然没说</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/torbrowser-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Tor Browser 快问快答——匿名浏览器到底值不值得装</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 Remy 拍立体空间的五个大坑——我踩过才告诉你 · 老杨技术栈</title>
+  
+<meta name="description" content="Remy 看着就是个&#34;绕一圈拍立体&#34;的简单应用，实际用下来我至少踩了五次才摸出门道。这篇把最容易翻车的五个场景拆开说清楚，症状、原因、解法一条龙。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/remyapp.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Remy 拍立体空间的五个大坑——我踩过才告诉你">
+<meta property="og:description" content="Remy 看着就是个&#34;绕一圈拍立体&#34;的简单应用，实际用下来我至少踩了五次才摸出门道。这篇把最容易翻车的五个场景拆开说清楚，症状、原因、解法一条龙。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/remyapp.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/remyapp/remy-circle-align-guide.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/remyapp/remy-circle-align-guide.png">
+
+<meta name="twitter:title" content="用 Remy 拍立体空间的五个大坑——我踩过才告诉你">
+<meta name="twitter:description" content="Remy 看着就是个&#34;绕一圈拍立体&#34;的简单应用，实际用下来我至少踩了五次才摸出门道。这篇把最容易翻车的五个场景拆开说清楚，症状、原因、解法一条龙。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Remy \u770b\u7740\u5c31\u662f\u4e2a\"\u7ed5\u4e00\u5708\u62cd\u7acb\u4f53\"\u7684\u7b80\u5355\u5e94\u7528\uff0c\u5b9e\u9645\u7528\u4e0b\u6765\u6211\u81f3\u5c11\u8e29\u4e86\u4e94\u6b21\u624d\u6478\u51fa\u95e8\u9053\u3002\u8fd9\u7bc7\u628a\u6700\u5bb9\u6613\u7ffb\u8f66\u7684\u4e94\u4e2a\u573a\u666f\u62c6\u5f00\u8bf4\u6e05\u695a\uff0c\u75c7\u72b6\u3001\u539f\u56e0\u3001\u89e3\u6cd5\u4e00\u6761\u9f99\u3002", "headline": "\u7528 Remy \u62cd\u7acb\u4f53\u7a7a\u95f4\u7684\u4e94\u4e2a\u5927\u5751\u2014\u2014\u6211\u8e29\u8fc7\u624d\u544a\u8bc9\u4f60", "image": ["https://alipymanbu.github.io/images/remyapp/remy-circle-align-guide.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/remyapp.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/remyapp.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 Remy \u62cd\u7acb\u4f53\u7a7a\u95f4\u7684\u4e94\u4e2a\u5927\u5751\u2014\u2014\u6211\u8e29\u8fc7\u624d\u544a\u8bc9\u4f60", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">用 Remy 拍立体空间的五个大坑——我踩过才告诉你</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 Remy 拍立体空间的五个大坑——我踩过才告诉你</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Remy 看着就是个&#34;绕一圈拍立体&#34;的简单应用，实际用下来我至少踩了五次才摸出门道。这篇把最容易翻车的五个场景拆开说清楚，症状、原因、解法一条龙。</p>
+  </header>
+  <div class="prose">
+<p>去年底 Remy 刚出来的时候我就装上了——从<a href="https://remyapp.kook.yoga/download.html" target="_blank" rel="noopener">remyapp下载</a>拿的安装包，鸿蒙专属、绕一圈拍立体空间、云端重建，<a href="https://remyapp.kook.yoga" target="_blank" rel="noopener">remyapp官网</a>上那句"把房间原样搬回家"让我以为这就是另一个拍照片的应用。结果真动手拍，我至少翻车了五六次才摸出门道。这软件看着简单，但几个关键环节的坑踩一次就得重来半小时。</p>
+<p>今天把我踩过的最典型的五个坑拆开来，每个都有症状、原因和解法，照着走至少能避开我走过的弯路。</p>
+<h2>坑一：拍了一圈，重建出来顶部缺一大块</h2>
+<p><strong>症状</strong>：重建跑完打开成品，房间的天花板或者上半部分整个是空白的，只能看到腰部以下的物体，像被人从中间切了一刀。我第一次拍自己的工作台就是这样——绕了整整一圈，手机始终平视前方，结果桌面以上全没了。</p>
+<p><strong>原因</strong>：轨迹球给的提示我当时没看懂。应用用 AR Engine 实时画一个轨迹球在屏幕上，你拍过的角度球面就亮起来，没拍到的是空白。我全程站着平视，相机只扫了腰部高度的一圈，头顶的俯角视角从一开始就是盲区，但轨迹球的顶部空白我当时以为是"正常的"——以为那个球只是个装饰。<a href="https://remyapp.pages.dev/" target="_blank" rel="noopener">remyapp文档</a>里对轨迹球的原理和用法有专门拆解，比应用内那几行提示讲得细多了。</p>
+<p><strong>解法</strong>：绕完一圈别马上停。先低头看一眼轨迹球——如果顶部一片空白，把手机举起来略俯着再绕小半圈，让那一块亮起来；底部稀疏就往镜头下压一点补地面。球面均匀覆盖再结束录制。我第二次拍同一个工作台，举着手机绕了小半圈补俯角，重建出来天花板、书架顶都齐了。</p>
+<p><img src="../images/remyapp/remy-circle-align-guide.png" alt="轨迹球帮你补盲区" loading="lazy"></p>
+<h2>坑二：贴墙拍房间，结果一侧视角直接消失</h2>
+<p><strong>症状</strong>：贴着卧室的墙边站好，以对面墙的挂画为目标绕了一圈，重建出来挂画那一面是完整的，但身后的整面墙直接没了，像是空间被截断了一块。</p>
+<p><strong>原因</strong>：站位离墙太近的时候，手机的环绕半径就被挤压了——你转身的时候相机扫不到贴墙的那一侧，相当于主动放弃了 90 度以上的视角。素材里没有，重建自然出不来。这个坑特别容易出现在小房间里，因为空间小你本能就想贴墙。</p>
+<p><strong>解法</strong>：站在房间中心绕，哪怕房间很小也要给自己留出半米以上的环绕余量。实在空间有限，就别强求整个房间，挑一个角落或者一件家具拍——书桌、花束、摆件组，小范围反而拍得更完整。</p>
+<h2>坑三：光线一半亮一半暗，成品像两个场景拼的</h2>
+<p><strong>症状</strong>：靠窗的厨房，上午拍的。成品里靠近窗户的半边墙面特别亮，几乎过曝，另一侧却偏暗，整个空间像是晴天和阴天拼接在一起，看着很不协调。</p>
+<p><strong>原因</strong>：自然光有方向性。上午的阳光从东边窗户斜射进来，我绕一圈的时候相机一半时间对着光源，一半时间背光，导致同一空间在素材里的亮度差异特别大。重建算法不会帮你调曝光，它按原始素材的光强来拼，结果就是明暗分家。</p>
+<p><strong>解法</strong>：开灯。把房间里的主灯、辅助灯都打开，让光线均匀覆盖整个空间。阴天或者晚上其实更适合拍立体——自然光不偏方向，重建出来的色调一致。我后来都是晚上开灯拍，成品的亮度均匀度跟白天靠窗拍完全不一样。</p>
+<h2>坑四：加滤镜之前忘了看原片，瑕疵被放大</h2>
+<p><strong>症状</strong>：重建完迫不及待套了个暖色滤镜，发朋友圈收获了一堆赞。过了两天仔细看，发现滤镜把原本在点云阶段就有的几个小破洞给放大了——暖色下那块本来只有几个像素的缺口变得特别显眼，像一块脏斑。</p>
+<p><strong>原因</strong>：滤镜是"观看层"，它调整的是渲染时的色彩倾向，不改变几何结构。但色调变了，原本不明显的破洞、稀疏区在新的色温下可能变得特别扎眼。我当时以为滤镜能"掩盖"小瑕疵，实际效果是反向的——暖色和冷调都会放大不同类型的重建问题。</p>
+<p><strong>解法</strong>：流程反过来——先看原片（原样渲染），确认几何完整、没有破洞、没有大面积缺失，再上滤镜试。滤镜可以换着来，但几何是基础，基础没打好滤镜只会让问题更突出。</p>
+<h2>坑五：分享给非华为朋友，对方打开什么都没有</h2>
+<p><strong>症状</strong>：用 Remy 的碰一碰功能或者华为图库直接分享立体影像给同事（他用的是小米），他点半天只看到一张静态图，转圈转了两分钟才放弃。我以为是分享方式错了，重发了三次结果一样。</p>
+<p><strong>原因</strong>：可交互的立体形态依赖支持立体查看的鸿蒙设备。非鸿蒙手机收到的立体内容会自动降级成静态或者不完整的展示，这不是你拍的有问题，是设备能力的差异。碰一碰本身靠系统级近场传输，双方不需要都装 Remy，但接收端能不能看立体全看硬件。</p>
+<p><strong>解法</strong>：想让任何人都能看，导出实景特效视频——MP4 格式，任何手机任何平台都能直接播放。朋友圈、微信群、小红书这些平台发视频永远是最稳的选择。立体本体更适合点对点分享给同样用鸿蒙的朋友。</p>
+<h2>防坑清单</h2>
+<p>把今天说的五个坑浓缩成五条速查清单，下次开拍前过一遍：</p>
+<ol><li><strong>绕一圈先看轨迹球</strong>，顶部空白补俯角，底部稀疏压镜头</li><li><strong>别贴墙站</strong>，小房间挑角落拍，中心站位才有环绕余量</li><li><strong>开灯拍</strong>，自然光方向性强容易明暗分家</li><li><strong>滤镜最后上</strong>，先确认原片几何完整再试色调</li><li><strong>分享分对象</strong>，鸿蒙朋友发立体本体，其他平台一律发特效视频</li></ol>
+<p>对了，我把 Remy 的相关资料也整理维护着，<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/remyapp" target="_blank" rel="noopener">GitHub</a>上是主力仓库、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/remyapp" target="_blank" rel="noopener">Gitee</a>方便国内直接访问、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/remyapp" target="_blank" rel="noopener">GitCode</a>当备用镜像，三个地方都有一份，按你的访问习惯挑着看就行。</p>
+<p>写完这篇才发现 Remy 的坑集中在一个地方——它的"简单"表面下藏着不少只有用深了才能摸到的细节。知道这些坑之后，这软件其实相当省心。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/reminder-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Reminder 用了半年，从一个&#34;普通备忘录&#34;变成了我每天都开的东西</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/renderforest-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Renderforest 里藏得最深的五个冷门功能——用了三年才摸到</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

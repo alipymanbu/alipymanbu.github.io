@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Nomad 里藏得最深的五个冷门技巧，翻完菜单才知道它们存在 · 老杨技术栈</title>
+  
+<meta name="description" content="大多数人用 Nomad 就是拿笔刷雕泥、拉个圆头完事。其实它的遮罩手势、提取生成器、屏幕空间平滑、雕画同开这些功能，官方几乎不宣传，却能让你一个人干出三人份的活。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/nomad-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nomad 里藏得最深的五个冷门技巧，翻完菜单才知道它们存在">
+<meta property="og:description" content="大多数人用 Nomad 就是拿笔刷雕泥、拉个圆头完事。其实它的遮罩手势、提取生成器、屏幕空间平滑、雕画同开这些功能，官方几乎不宣传，却能让你一个人干出三人份的活。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/nomad-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/nomad-docs/mask-toolbar.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/nomad-docs/mask-toolbar.webp">
+
+<meta name="twitter:title" content="Nomad 里藏得最深的五个冷门技巧，翻完菜单才知道它们存在">
+<meta name="twitter:description" content="大多数人用 Nomad 就是拿笔刷雕泥、拉个圆头完事。其实它的遮罩手势、提取生成器、屏幕空间平滑、雕画同开这些功能，官方几乎不宣传，却能让你一个人干出三人份的活。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5927\u591a\u6570\u4eba\u7528 Nomad \u5c31\u662f\u62ff\u7b14\u5237\u96d5\u6ce5\u3001\u62c9\u4e2a\u5706\u5934\u5b8c\u4e8b\u3002\u5176\u5b9e\u5b83\u7684\u906e\u7f69\u624b\u52bf\u3001\u63d0\u53d6\u751f\u6210\u5668\u3001\u5c4f\u5e55\u7a7a\u95f4\u5e73\u6ed1\u3001\u96d5\u753b\u540c\u5f00\u8fd9\u4e9b\u529f\u80fd\uff0c\u5b98\u65b9\u51e0\u4e4e\u4e0d\u5ba3\u4f20\uff0c\u5374\u80fd\u8ba9\u4f60\u4e00\u4e2a\u4eba\u5e72\u51fa\u4e09\u4eba\u4efd\u7684\u6d3b\u3002", "headline": "Nomad \u91cc\u85cf\u5f97\u6700\u6df1\u7684\u4e94\u4e2a\u51b7\u95e8\u6280\u5de7\uff0c\u7ffb\u5b8c\u83dc\u5355\u624d\u77e5\u9053\u5b83\u4eec\u5b58\u5728", "image": ["https://alipymanbu.github.io/images/nomad-docs/mask-toolbar.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/nomad-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/nomad-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "Nomad \u91cc\u85cf\u5f97\u6700\u6df1\u7684\u4e94\u4e2a\u51b7\u95e8\u6280\u5de7\uff0c\u7ffb\u5b8c\u83dc\u5355\u624d\u77e5\u9053\u5b83\u4eec\u5b58\u5728", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">Nomad 里藏得最深的五个冷门技巧，翻完菜单才知道它们存在</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Nomad 里藏得最深的五个冷门技巧，翻完菜单才知道它们存在</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">大多数人用 Nomad 就是拿笔刷雕泥、拉个圆头完事。其实它的遮罩手势、提取生成器、屏幕空间平滑、雕画同开这些功能，官方几乎不宣传，却能让你一个人干出三人份的活。</p>
+  </header>
+  <div class="prose">
+<p>你以为 Nomad 只是个 iPad 上能雕泥的 ZBrush 替代品？拿手指戳戳就能捏出个小人头，最多再切个对称画两笔颜色——去它的<a href="https://nomad.laze.skin" target="_blank" rel="noopener">官网</a>看一眼就知道藏了多少东西，安装包从<a href="https://nomad.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿就行。那你跟半年前的我一样，只用了它 30% 的力气。</p>
+<p>这段时间我把它的设置菜单从顶到底翻了三遍，有些功能藏得真深：要么是某个按钮长按才会弹出，要么是某个笔刷的次级设置里塞了个"Relax"小开关，官方手册提了半行字就没了，后来去<a href="https://nomad-docs.pages.dev/" target="_blank" rel="noopener">Nomad文档</a>翻了一下才弄明白全部细节。今天就把五个我用得最爽、但身边很少有人知道的冷门技巧抖出来。</p>
+<h2>遮罩的手势快到离谱</h2>
+<p>遮罩（Mask）这个东西，你肯定见过——灰色蒙一层，被罩住的地方就动不了。但你是不是每次都要切到 SelMask 工具、选个矩形或套索、慢慢描一遍轮廓？我以前也这么干，直到某天按住左下角那个快速遮罩按钮不放，手指在屏幕上随便划了两下，发现它在反转遮罩。</p>
+<p>这一下就打开新世界的门：轻点背景 = 反转、在背景上拖动 = 清空、轻点已遮罩区域 = 模糊、轻点未遮罩区域 = 锐化。四套手势全藏在长按状态里，没任何 UI 提示，完全是 ZBrush 那套肌肉记忆搬过来的。</p>
+<p><img src="../images/nomad-docs/mask-toolbar.webp" alt="遮罩工具栏" loading="lazy"></p>
+<p>遮罩工具栏那一排按钮我也研究了好一阵。Sharpen 和 Blur 不是给你画图用的——它们管的是遮罩<strong>边缘的过渡带</strong>：过渡带宽的地方，雕刻强度从 0 渐变到 100%；过渡带窄的地方，边界就是一刀切。所以做硬表面转折的时候，先拿 Blur 糊一下遮罩边缘，再去刻折痕，出来的边缘就是自然收住的，不会像切蛋糕那样生硬。</p>
+<p>Front 按钮更绝：只罩住朝向镜头的正面顶点。做人物脸部表情的时候我经常用它——正面罩住不动，背面随便雕，拉脖子动嘴的时候脸不会跟着变形。</p>
+<h2>从遮罩能"长出"新几何</h2>
+<p>这个功能我敢说 80% 的人没用过。遮罩设置菜单里藏着三个生成器：Extract、Split、Carve，它们能把遮罩区域直接变成新的物体。</p>
+<p>Extract（提取）是最有用的一个。你在模型上用遮罩圈出一个区域，点 Extract，它就把这个区域拉成一圈带厚度的壳体。高度可以正也可以负——正的向外鼓，负的向内陷。眼睑、护甲、衣领、贴边装饰，这些东西不需要你额外新建几何体再对齐，遮罩圈一下，厚度调一下，直接"长"出来。</p>
+<p>平滑度迭代控制边缘的圆润度，数值低出来就是锋利的金属壳，数值高就是软乎乎的布料边。边循环选项打开之后，壳体侧面还能长出方形布线，方便你后续做细分曲面。</p>
+<p>Split（分割）则是把遮罩区和非遮罩区同时提取成两个独立物体，相当于沿遮罩边界一刀切开。封口方式有三种：None 不封口（像一片叶子）、Fill 直接封平、Shell 封一个带厚度的底。Carve 更狠——按指定深度在表面切一圈，像剥橘子皮那样挖掉一层。</p>
+<p>有个坑：提取预览默认开启，点了 Extract 之后菜单还停在预览状态，你看不见新生成的壳体。关掉菜单它才会突然冒出来——我第一次以为自己操作错了，差点把模型删了重雕。</p>
+<h2>平滑笔刷里还藏着个木槌模式</h2>
+<p>平滑笔刷本身大家都用——抹不平的地方刷两下就好。但它有两个地方值得专门拉出来说。</p>
+<p>第一个是<strong>屏幕空间平滑（Screen Smoothing）</strong>。普通平滑的效果跟多边形密度直接挂钩：面数越多，每个顶点能移动的距离越小，平滑就越"没劲"。高面数模型上，你把强度拉满也像在挠痒痒。开了屏幕空间平滑之后，平滑效果就跟拓扑无关了，不管面数多寡，抹平力度始终一致。代价是计算量更大，低性能设备上可能需要把 Screen samples 调低一些。</p>
+<p>第二个是 <strong>Sub 模式下的 Relax</strong>。你切到 Smooth 笔刷，把笔刷模式从默认的 Add 切到 Sub，再去刷，会发现它不是"抹掉"细节，而是松弛线框——把被拉歪的布线整理顺，尽量保留几何本身的起伏。这个模式我用它搭配体素重拓扑救过好几次场：模型被我雕得布线全扭了，先 Relax 一遍把线理顺，再重拓扑，出来的网格质量直接上一个档次。</p>
+<p>压平笔刷（Flatten）和平面化（Planar）这俩我也经常搞混。简单说：压平朝笔刷覆盖区域的<strong>平均平面</strong>收拢，适合局部找平；平面化以更大范围的<strong>基准平面</strong>为目标，适合切出规整的平面块。做机甲装甲的时候，平面化笔刷是主力——切出来的装甲片平整得像激光切割机出的。</p>
+<p>还有个 Stable smoothing（稳定平滑）选项，让平滑效果跟拓扑密度变化解耦。模型上有粗有细的区域，开了它之后平滑力度均匀了，不会有的地方被抹成纸、有的地方纹丝不动。</p>
+<h2>一边堆泥一边上色，雕画同开</h2>
+<p>传统 3D 上色要先展 UV——把模型摊平成一张平面贴图再画，光展 UV 这一步就能耗掉大半天。Nomad 走了另一条路：绘画信息直接存在顶点里，也就是 PBR 顶点绘画。模型有多少顶点，就有多少个"像素"可画。几百万顶点的模型，表面涂装精度足以刻画毛孔级细节。</p>
+<p>但顶点绘画最爽的不是"不用展 UV"——是它能跟雕刻<strong>同开</strong>。</p>
+<p>任何雕刻工具的设置里都有个"笔触绘画"的勾选项。勾上之后，你就可以一边堆泥一边上色了。绘画有独立的强度滑块，跟雕刻强度分开控制；Alpha、衰减、随机化三个开关决定它们是否影响颜色。我做人体模型的时候常用这个：皮肤底色跟着肌肉走势走，雕哪里就顺便上哪里的色，不用雕完再换工具刷一遍。</p>
+<p>还有个小技巧：Matcap 观察模式下金属度和粗糙度会被忽略，只剩颜色。如果你在雕画同开的时候发现金属质感看着不对，切到 Matcap 就能只看颜色对不对，不被材质属性干扰。</p>
+<p>大面积铺色的时候别急着手刷，整体填充和三平面工具比手刷均匀得多。低面数物体上画金属质感时，记得开启平滑着色——不然高光会断成一小块一小块的。</p>
+<h2>恢复购买别在软件里找，去找商店</h2>
+<p>最后说个跟功能无关但很关键的坑。我有个朋友 iPad 换了新一代，Nomad 装回去发现变成未购买状态，以为开发跑路了。其实完全不是。</p>
+<p>Nomad 的授权绑在<strong>商店账号</strong>上，不是绑在设备上。App Store、Google Play、AppGallery 这三个商店各卖各的，互不通用——你在 Google Play 买的，换 iPad 要在 App Store 重买，反过来亦然。桌面版是另一条路：激活码绑机器 ID，换机前要先去购买门户释放旧设备名额。</p>
+<p>恢复购买的排查顺序是固定的：先在"关于"菜单里点 restore purchase（左上角那个应用图标点进去），确认登录的是购买时用的账号（Google Play 上最容易栽在这，我自己就登错过一次），重启设备，等几个小时——商店的同步有时候不是实时的。实在不行重装，但重装前一定要先备份项目文件。</p>
+<p>开发者能帮你查证的只有"某邮箱是否有购买记录"，账号和支付同步全由商店处理。官方 FAQ 特意提醒：换设备授权问题别发邮件给开发者，直接找商店客服。</p>
+<hr>
+<p>这五个技巧只是冰山一角——Nomad 的设置菜单里还有一堆藏着的东西：遮罩能转面组、面组能转遮罩、隐藏管"暂时不看"跟遮罩管"暂时不动"是两套系统能互相配合……把它用透了，一个人能干出三个人的活。我现在还在翻，翻出新东西再来跟你唠。</p>
+<p>这套资料我平时也维护在三个仓库，方便不同网络环境下的人取用：<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Nomad" target="_blank" rel="noopener">GitHub</a> 是主版本，国内访问慢的可以直接去 <a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Nomad" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Nomad" target="_blank" rel="noopener">GitCode</a> 的镜像。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yousician.html">Yousician 翻底朝天：这五个隐藏功能 90% 的用户没碰过</a></h2>
+  <p class="card-desc">把 Yousician 从入门到进阶挖透，Practice 循环片段、Wait To Play、Auto-adjust 自动调速、唱歌移调、Vocal Range 校准——每一个都能改变练习效率</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vidhub-docs.html">VidHub 快问快答：多设备影视播放器 9 个最关心的问题一次说清</a></h2>
+  <p class="card-desc">VidHub 是什么人在用、怎么装、同步哪些数据、刮削怎么跑、WebDAV 有什么坑、要不要付费——整理成一篇问答速查，看完直接上手。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/trani-docs.html">我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤</a></h2>
+  <p class="card-desc">从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ngl-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">NGL Pro 订阅值不值得掏？我把免费版和 Pro 能用的功能拆给你算</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/noteshelf-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">考研课上老师讲得飞起，我却在平板上把节奏抓回来了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Minecraft 手机版玩家必备：从零学会用 MCPEDL 装模组和地图 · 老杨技术栈</title>
+  
+<meta name="description" content="还在发愁手机版 Minecraft 内容太少？MCPEDL 是目前最火的内容资源库，本文带你从安装到第一次导入全部走一遍，全程零基础。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/mcpedl-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Minecraft 手机版玩家必备：从零学会用 MCPEDL 装模组和地图">
+<meta property="og:description" content="还在发愁手机版 Minecraft 内容太少？MCPEDL 是目前最火的内容资源库，本文带你从安装到第一次导入全部走一遍，全程零基础。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/mcpedl-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/mcpedl-docs/home-main.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/mcpedl-docs/home-main.jpg">
+
+<meta name="twitter:title" content="Minecraft 手机版玩家必备：从零学会用 MCPEDL 装模组和地图">
+<meta name="twitter:description" content="还在发愁手机版 Minecraft 内容太少？MCPEDL 是目前最火的内容资源库，本文带你从安装到第一次导入全部走一遍，全程零基础。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd8\u5728\u53d1\u6101\u624b\u673a\u7248 Minecraft \u5185\u5bb9\u592a\u5c11\uff1fMCPEDL \u662f\u76ee\u524d\u6700\u706b\u7684\u5185\u5bb9\u8d44\u6e90\u5e93\uff0c\u672c\u6587\u5e26\u4f60\u4ece\u5b89\u88c5\u5230\u7b2c\u4e00\u6b21\u5bfc\u5165\u5168\u90e8\u8d70\u4e00\u904d\uff0c\u5168\u7a0b\u96f6\u57fa\u7840\u3002", "headline": "Minecraft \u624b\u673a\u7248\u73a9\u5bb6\u5fc5\u5907\uff1a\u4ece\u96f6\u5b66\u4f1a\u7528 MCPEDL \u88c5\u6a21\u7ec4\u548c\u5730\u56fe", "image": ["https://alipymanbu.github.io/images/mcpedl-docs/home-main.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/mcpedl-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/mcpedl-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Minecraft \u624b\u673a\u7248\u73a9\u5bb6\u5fc5\u5907\uff1a\u4ece\u96f6\u5b66\u4f1a\u7528 MCPEDL \u88c5\u6a21\u7ec4\u548c\u5730\u56fe", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Minecraft 手机版玩家必备：从零学会用 MCPEDL 装模组和地图</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Minecraft 手机版玩家必备：从零学会用 MCPEDL 装模组和地图</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">还在发愁手机版 Minecraft 内容太少？MCPEDL 是目前最火的内容资源库，本文带你从安装到第一次导入全部走一遍，全程零基础。</p>
+  </header>
+  <div class="prose">
+<p>如果你用手机玩过 Minecraft，大概率有过这种感觉：原版的内容玩久了有点单调，想加点新东西又不知道去哪找、怎么装。<a href="https://mcpedl.bpfl.quest" target="_blank" rel="noopener">mcpedl官网</a> 就是为这个问题而生的——你可以把它理解成 Minecraft 手机版的「内容超市」，玩家做的各种模组、材质包、地图、皮肤，都能在这里找到，然后一键导入游戏里。这篇文章不需要你有任何基础，跟着做五分钟，就能把第一个自定义内容放进你的世界。</p>
+<p><img src="../images/mcpedl-docs/home-main.jpg" alt="MCPEDL 首页长这样" loading="lazy"></p>
+<h2>五分钟上手：从下载到第一次导入</h2>
+<p>整个流程分成四步，每一步都很短。你只需要一台装了 Minecraft 基岩版的安卓手机。</p>
+<h3>第一步：装 MCPEDL</h3>
+<p>MCPEDL 有两种装法。如果你手机上有 Google Play 商店，直接搜应用名就能装，开发者显示是 Overwolf。没有 Play 服务的设备也没关系，从<a href="https://mcpedl.bpfl.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿到 APK 安装包，在文件管理器里点开就行。安卓 8 以上第一次装非商店应用会弹窗问你要不要允许这个来源，点允许就好，不用全局放开所有未知来源。装完之后桌面上会出现一个绿色的图标，点开就是了。</p>
+<h3>第二步：首启核对三件事</h3>
+<p>第一次打开应用，先弹协议和权限，一个个点过去就好。进主页之前，花两分钟核对一下：</p>
+<ul><li><strong>Minecraft 本体装了吗？</strong> MCPEDL 只负责找内容和下载文件，真正的导入和游玩全部发生在游戏里。游戏没装的话先去装游戏，装完再回来。</li><li><strong>界面是英文的。</strong> 目前没有中文选项，这个要有心理准备。不过好消息是你找资源不用懂太多英文，常用的几个关键词比如 skin（皮肤）、map（地图）、shaders（光影）搜一下就懂了。</li><li><strong>存储空间够不够？</strong> MCPEDL 本身不大，但下载的内容文件另占地方——材质包、光影从几 MB 到上百 MB 不等，大地图单个可能超过 1G。剩个两三个 G 基本够用。</li></ul>
+<h3>第三步：找一个内容下载</h3>
+<p>主界面底部五个标签，中间那个是搜索。你也可以先在首页信息流里逛，看看别人都在下什么。决定好要哪个之后，点进去详情页，下载按钮就在那。下载进度跑完，底部「Downloads」标签里会多一条记录。</p>
+<p><img src="../images/mcpedl-docs/category-cards.jpg" alt="分类浏览界面" loading="lazy"></p>
+<h3>第四步：导入进游戏</h3>
+<p>这是关键的一步，但其实操作很简单。在 Downloads 标签里，点一下已完成那条的下载图标，系统会弹出一个「选择打开方式」的窗口，选 Minecraft。游戏会自动拉起来，屏幕上方先出现 <code>Import started...</code>，等几秒变成 <code>Successfully imported</code> 就成功了。</p>
+<p>导入完成之后文件去哪了？不同内容类型不一样：材质包和 Addon 进世界设置里激活，地图出现在世界列表里，皮肤进更衣室。打开游戏找一下就能看到。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>MCPEDL 里内容类型很多，但作为新手，优先碰这三个最值。</p>
+<h3>材质包：一秒换脸，零风险</h3>
+<p>材质包只改一件事——方块、物品、界面看起来长什么样。它不动游戏行为、不生成新内容，所以最安全，导入激活立刻见效果，不喜欢随时换回来。你会看到很多材质包标题上带 x16、x32、x64 这样的标签，这是贴图分辨率。x16 就是原版画质，任何设备都无压力；x64 明显精细，中端机扛得住；x128 接近高清贴图，但对手机性能要求高，旗舰机才考虑。如果不确定选哪个，先从 x32 开始试，不会错。关于不同分辨率的实际效果对比和全局激活的设置方法，<a href="https://mcpedl-docs.pages.dev/" target="_blank" rel="noopener">mcpedl文档</a>里有更详细的说明。</p>
+<h3>Addon：给游戏加玩法</h3>
+<p>如果说材质包是给游戏换皮肤，那 Addon 就是给游戏加新玩法。它可以加新的生物、新的工具、新的物品，甚至改游戏规则。比如你想让世界里多出一些奇幻生物，或者想加一套新的科技装备，Addon 就是干这个的。选 Addon 时留意一下描述里写了什么，有些会标注需要搭配特定的材质包或光影。</p>
+<h3>地图：玩别人造的世界</h3>
+<p>这是最适合「拿来主义」的功能。社区里有人花了几十小时造的跑酷地图、解谜地图、生存挑战地图，你下载导入就能直接玩。导入后在游戏的世界列表里找得到，和你自己的世界放一起，打开就进。有些地图还配了专属材质包和规则，体验会完整。</p>
+<p><img src="../images/mcpedl-docs/addon-detail.jpg" alt="Addon 详情页" loading="lazy"></p>
+<h2>小白的三个常见疑问</h2>
+<p><strong>Q：导入时报错怎么办？</strong></p>
+<p>最常见的三种：<code>Duplicate Pack Detected</code> 就是同一个包你已经装过了，不用重复导；<code>Failed to import</code> 多半是下载的包文件缺东西，重新下载一般能解决；<code>Not a Valid Zip Archive</code> 说明文件可能下载损坏了，删掉重下。</p>
+<p><strong>Q：下载好的文件存哪了，能不能手动导入？</strong></p>
+<p>应用会自己管理下载目录，正常情况下你不用管。除非遇到 zip/rar 老式打包需要手动解压，否则建议一律走应用内的 Downloads 标签点导入——这条路走的是系统直达通道，不容易出问题。</p>
+<p><strong>Q：光影和材质包能同时开吗？</strong></p>
+<p>可以叠加，但要看你手机扛不扛得住。很多高清光影假定你在用配套的材质，一起上效果最好，但性能压力也最大。如果叠加之后明显掉帧发热，先关一个试试。</p>
+<h2>写在最后</h2>
+<p>玩到这里，你已经能独立找到内容、下载、导入、激活了——这是 MCPEDL 的核心链路，后面就是靠你自己逛、自己试。进阶一点可以去研究一下全局资源（Global Resources）设置，让某个材质包在所有世界里默认生效，不用每个世界单独激活。MCPEDL 的社区更新很活跃，经常有新东西出来，没事就刷一刷首页信息流，总能挖到好玩的。本文写作用到的资料同步放了三份，<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/mcpedl" target="_blank" rel="noopener">GitHub</a> 上更新最勤，国内网络访问慢的话 <a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/mcpedl" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/mcpedl" target="_blank" rel="noopener">GitCode</a> 上也有同一份，随便挑哪个都行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xhorse.html">Xhorse 全套锁具工具到底值不值得掏钱？一笔一笔给你算清楚</a></h2>
+  <p class="card-desc">从手持编程器到数控配匙机，从云端年费 Token 到同行代算，锁匠圈最常见的品牌 Xhorse 产品线横跨几千到几万，哪档该买、哪档该忍、哪档永远别碰——第一人称亲测算账。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 13 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wan2-2-docs.html">Wan2.2 本地部署避坑指南：从 OOM 到 FlashAttention 编译失败，我踩过的八个坑</a></h2>
+  <p class="card-desc">Wan2.2 是目前开源领域效果最好的视频生成模型之一，但本地部署远没有 README 看起来那么顺利。本文整理了从显存溢出、分辨率配置到 FlashAttention 安装的八个常见翻车点，每个都给出现象、原因和解决方案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voicetra.html">带 VoiceTra 跑了一趟东南亚，这款免费翻译 App 有点东西</a></h2>
+  <p class="card-desc">出行前我在找一款不靠大厂广告轰炸的随身翻译，意外挖到 NICT 做的这款完全免费无广告的语音翻译工具，用了十来天聊聊真实体验。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/mchat-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从零上手 MChat——装好、聊好、守住隐私的完整实操</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/mdict.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MDict 问答速查：从入门到精通的 8 个必问</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>那个蹲在楼道里配网的傍晚，我终于把太阳能摄像机连上了家 · 老杨技术栈</title>
+  
+<meta name="description" content="加班到八点回家，门口躺着一个陌生快递盒——不知道是我自己的还是邻居的，瞬间决定装个 WiFi 摄像机。从选 App 到配网踩坑到终于能远程看家门，整个过程比想象中曲折得多。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/ybox.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="那个蹲在楼道里配网的傍晚，我终于把太阳能摄像机连上了家">
+<meta property="og:description" content="加班到八点回家，门口躺着一个陌生快递盒——不知道是我自己的还是邻居的，瞬间决定装个 WiFi 摄像机。从选 App 到配网踩坑到终于能远程看家门，整个过程比想象中曲折得多。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/ybox.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/ybox/connect-options.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/ybox/connect-options.jpg">
+
+<meta name="twitter:title" content="那个蹲在楼道里配网的傍晚，我终于把太阳能摄像机连上了家">
+<meta name="twitter:description" content="加班到八点回家，门口躺着一个陌生快递盒——不知道是我自己的还是邻居的，瞬间决定装个 WiFi 摄像机。从选 App 到配网踩坑到终于能远程看家门，整个过程比想象中曲折得多。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u52a0\u73ed\u5230\u516b\u70b9\u56de\u5bb6\uff0c\u95e8\u53e3\u8eba\u7740\u4e00\u4e2a\u964c\u751f\u5feb\u9012\u76d2\u2014\u2014\u4e0d\u77e5\u9053\u662f\u6211\u81ea\u5df1\u7684\u8fd8\u662f\u90bb\u5c45\u7684\uff0c\u77ac\u95f4\u51b3\u5b9a\u88c5\u4e2a WiFi \u6444\u50cf\u673a\u3002\u4ece\u9009 App \u5230\u914d\u7f51\u8e29\u5751\u5230\u7ec8\u4e8e\u80fd\u8fdc\u7a0b\u770b\u5bb6\u95e8\uff0c\u6574\u4e2a\u8fc7\u7a0b\u6bd4\u60f3\u8c61\u4e2d\u66f2\u6298\u5f97\u591a\u3002", "headline": "\u90a3\u4e2a\u8e72\u5728\u697c\u9053\u91cc\u914d\u7f51\u7684\u508d\u665a\uff0c\u6211\u7ec8\u4e8e\u628a\u592a\u9633\u80fd\u6444\u50cf\u673a\u8fde\u4e0a\u4e86\u5bb6", "image": ["https://alipymanbu.github.io/images/ybox/connect-options.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/ybox.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/ybox.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u90a3\u4e2a\u8e72\u5728\u697c\u9053\u91cc\u914d\u7f51\u7684\u508d\u665a\uff0c\u6211\u7ec8\u4e8e\u628a\u592a\u9633\u80fd\u6444\u50cf\u673a\u8fde\u4e0a\u4e86\u5bb6", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">那个蹲在楼道里配网的傍晚，我终于把太阳能摄像机连上了家</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">那个蹲在楼道里配网的傍晚，我终于把太阳能摄像机连上了家</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">加班到八点回家，门口躺着一个陌生快递盒——不知道是我自己的还是邻居的，瞬间决定装个 WiFi 摄像机。从选 App 到配网踩坑到终于能远程看家门，整个过程比想象中曲折得多。</p>
+  </header>
+  <div class="prose">
+<p>上周二加班到八点半，推开单元门的时候脚边躺着一个京东快递盒，上面没写名字。我蹲在楼道里盯着那盒子愣了半分钟——最近小区群里在说单元门的门禁坏了好几天，什么人都能进。我租的房子在三楼，正好对着单元门的角度，装个摄像机应该能覆盖到。</p>
+<p>回家翻了两三个 App Store 里的监控类应用，界面花里胡哨的不少，但一看评论全是"连不上""黑屏""云存储要另收费"。正纠结的时候，在一个数码论坛的帖子里看到有人推了 ybox——说他家那款太阳能 WiFi 摄像机就是用这个客户端，配网简单、不强制买云存储。我去 <a href="https://ybox.fewz.tech" target="_blank" rel="noopener">ybox官网</a> 看了下，界面确实干净，支持太阳能板和电池款，还有可视门铃。那就从 <a href="https://ybox.fewz.tech/download.html" target="_blank" rel="noopener">ybox下载</a> 下一个试试。</p>
+<p>下载装好 ybox 之后，第一步是配网。我拿起摄像机说明书才发现，太阳能款还不能直接配网——得先晒十分钟，或者用 Type-C 线临时充一下，不然设备蓝灯不亮。我翻出一根旧的 Type-C 线把摄像机接上电源，等了大概五分钟，蓝灯开始快速闪烁，像心跳一样。</p>
+<p>按 App 里的引导流程，先选"安装 WiFi 设备"，然后弹出二维码扫描界面。这里踩了第一个坑：我手机连着 5G WiFi 扫了半天，App 一直提示"不识别"或者"无法连接"。后来去 <a href="https://ybox.pages.dev/" target="_blank" rel="noopener">ybox文档</a> 翻了一下才明白——<strong>所有户外低功耗摄像设备都只支持 2.4 GHz 频段</strong>，5G 根本连不上。我家路由器是双频合一的，WiFi 名全一样，只能先去路由器后台把 2.4G 和 5G 拆成两个独立名字，手机手动切到 2.4G 那个，再扫一遍就过了。</p>
+<p>扫码成功之后 App 自动读取了我手机当前的 WiFi 名，只需要输入密码——这里又踩了第二个坑，我 WiFi 密码有特殊字符，第一次输错了一个，App 一直在转圈转圈，设备蓝灯也从快闪变成常亮又变回快闪。后来杀掉 App 重开，手机确认连的还是 2.4G，重新扫码重输密码，才终于听到摄像机发出"连接成功"的语音提示，蓝灯长亮。</p>
+<p><img src="../images/ybox/connect-options.jpg" alt="第一次配网连接的界面" loading="lazy"></p>
+<p>这之后用了快一周，ybox 的几个功能是真的顺手。</p>
+<p>最常用的就是实时预览界面的抓图。App 把摄像机装好之后，我每天早上出门前都用手机打开看一眼门口有没有什么异常。上周有天晚上我在公司加班，手机突然弹出推送说门口有人，我点开预览画面——是个快递小哥在放包裹，我点右下角那个相机图标，"咔嚓"一声，画面就存到手机相册了，同时 App 自己的相册 Tab 里也有一份。回家之后我用这张图给快递员发了消息确认他来过，他还挺惊讶的，说"你这摄像机反应挺快啊"。</p>
+<p>不过有天也碰过一次黑屏。那天我在地铁上想看看家附近情况，点开 App 发现画面一直在转圈，转了快二十秒还没出来，设备状态也显示在线但电量信号都在刷新。我差点以为摄像机坏了。后来切了一下分辨率——从 HD 切到 SD，画面居然立刻出来了。估计是地铁里蜂窝信号不够，HD 带宽不够导致卡着。那之后我养成了个习惯，远程看的时候如果 HD 加载慢，先切 SD 试试，大部分情况能立刻恢复。</p>
+<p>录像回放也分两种路径，我一开始没搞清楚。TF 卡本地回放和云存储回放，走的网络通道完全不一样。在家的时候直接点 TF 卡回放，走家里局域网，速度快不耗流量，查刚刚发生的事延迟最低。但上次我出差在外，手机用的是蜂窝网络，TF 卡回放要么耗设备流量要么连不上——因为摄像机和家里 WiFi 相连，我在外网要远程读 TF 卡里的录像，得通过设备的回传通道，走的是设备那边的流量。那次我才明白，出门在外查录像要么订阅云存储，要么干脆回家再看。</p>
+<p>说回那个周二晚上的快递。后来我在 ybox 里开了事件抓拍，只要门口有人经过，自动抓一张图存到云端（我选的是免费的循环存储档位）。第二天早上出门，我用 App 回放了前一天晚上的事件片段——确实是快递小哥放在那的，旁边还站了个邻居在找自己的快递，两个人差点拿错。我截了图发到小区群里问了一声，邻居出来认领，皆大欢喜。</p>
+<p>现在摄像机已经装了快半个月，没再出过配网那种问题。唯一要注意的是太阳能板得定期擦一下灰——上周北京刮了一场大风，我下班发现设备离线，蓝灯不亮电量显示 0%，太阳能板被一层沙尘盖得严严实实，搬到阳台晒了半小时才恢复。</p>
+<p>一个几百块的太阳能摄像机，加一个干净不耍流氓的客户端，解决了我一个上班族看家的核心诉求。配网踩过的那两个坑（5G WiFi、密码输错），现在想想都是设备本身的硬限制，不是 App 的锅。ybox 在这些地方其实做得够实在——不会偷偷让你订阅云存储，不会强制开推送，权限该要的才要。关于这款软件的资料整理，我同步在了 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ybox" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ybox" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ybox" target="_blank" rel="noopener">GitCode</a> 三个平台，国内外访问都方便。如果你也在犹豫要不要装一个户外摄像机，我觉得先把 WiFi 频段的事搞明白，比挑什么品牌更重要。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zeroai-docs.html">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</a></h2>
+  <p class="card-desc">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/yazio.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">体检报告上的箭头，把我逼成了一个扫码控</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/yeelight.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了三年 Yeelight 才发现：这五个隐藏玩法官方根本没宣传</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

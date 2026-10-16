@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>RikkaHub 在手机上跑 AI 客户端——它为什么要做&#34;无锁定&#34;架构 · 老杨技术栈</title>
+  
+<meta name="description" content="一款 Android 端的 AI 对话客户端，不内置任何付费订阅、不绑定任何单一提供商，让你用自己的 API Key 自由切换模型。这背后是一套怎样的设计取舍？">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/rikkahub.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RikkaHub 在手机上跑 AI 客户端——它为什么要做&#34;无锁定&#34;架构">
+<meta property="og:description" content="一款 Android 端的 AI 对话客户端，不内置任何付费订阅、不绑定任何单一提供商，让你用自己的 API Key 自由切换模型。这背后是一套怎样的设计取舍？">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/rikkahub.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/rikkahub/home-main.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/rikkahub/home-main.jpg">
+
+<meta name="twitter:title" content="RikkaHub 在手机上跑 AI 客户端——它为什么要做&#34;无锁定&#34;架构">
+<meta name="twitter:description" content="一款 Android 端的 AI 对话客户端，不内置任何付费订阅、不绑定任何单一提供商，让你用自己的 API Key 自由切换模型。这背后是一套怎样的设计取舍？">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u6b3e Android \u7aef\u7684 AI \u5bf9\u8bdd\u5ba2\u6237\u7aef\uff0c\u4e0d\u5185\u7f6e\u4efb\u4f55\u4ed8\u8d39\u8ba2\u9605\u3001\u4e0d\u7ed1\u5b9a\u4efb\u4f55\u5355\u4e00\u63d0\u4f9b\u5546\uff0c\u8ba9\u4f60\u7528\u81ea\u5df1\u7684 API Key \u81ea\u7531\u5207\u6362\u6a21\u578b\u3002\u8fd9\u80cc\u540e\u662f\u4e00\u5957\u600e\u6837\u7684\u8bbe\u8ba1\u53d6\u820d\uff1f", "headline": "RikkaHub \u5728\u624b\u673a\u4e0a\u8dd1 AI \u5ba2\u6237\u7aef\u2014\u2014\u5b83\u4e3a\u4ec0\u4e48\u8981\u505a\"\u65e0\u9501\u5b9a\"\u67b6\u6784", "image": ["https://alipymanbu.github.io/images/rikkahub/home-main.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/rikkahub.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/rikkahub.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "RikkaHub \u5728\u624b\u673a\u4e0a\u8dd1 AI \u5ba2\u6237\u7aef\u2014\u2014\u5b83\u4e3a\u4ec0\u4e48\u8981\u505a\"\u65e0\u9501\u5b9a\"\u67b6\u6784", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">RikkaHub 在手机上跑 AI 客户端——它为什么要做&#34;无锁定&#34;架构</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">RikkaHub 在手机上跑 AI 客户端——它为什么要做&#34;无锁定&#34;架构</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一款 Android 端的 AI 对话客户端，不内置任何付费订阅、不绑定任何单一提供商，让你用自己的 API Key 自由切换模型。这背后是一套怎样的设计取舍？</p>
+  </header>
+  <div class="prose">
+<p>我一直有个疑问：市面上 AI 客户端那么多，为什么 RikkaHub 这种"什么都不替你决定"的产品反而能活下来？</p>
+<p>主流 AI App 的逻辑是：你用我的，我给你现成的模型、现成的订阅、现成的界面。你不用管背后是哪家提供商、API Key 怎么申请、费率怎么算——省事，但代价是被锁定。换一个模型可能就得换一个 App，不同提供商的上下文和历史对话无法互通。</p>
+<p>RikkaHub 的思路恰恰相反。<a href="https://rikkahub.bpfl.quest" target="_blank" rel="noopener">rikkahub官网</a>上写得很直白——它从第一天就把"自由权"当成核心卖点：你持有的是自己的 API Key，它只是一个客户端壳子。听起来简单，但把这个理念落地到每一个功能点上，背后有不少值得拆开来看的设计。</p>
+<h2>问题：为什么需要一个"不内置模型"的客户端？</h2>
+<p>先把 RikkaHub 的定位说清楚。它是一款 Android 上运行的 AI 对话客户端——从<a href="https://rikkahub.bpfl.quest/download.html" target="_blank" rel="noopener">下载</a>页拿安装包就能装在手机上，也可以通过局域网 HTTP 服务器把界面投到浏览器里。但它不内置任何付费功能或订阅，所有费用由你直接付给模型提供商。</p>
+<p>这个定位带来一个有趣的约束：<strong>它必须能接入尽可能多的提供商</strong>，因为用户的 Key 来自不同地方。RikkaHub 选择的解法不是逐个适配每家的私有协议，而是按接口格式来组织——只要满足四种主流格式之一就能接进来：OpenAI Chat Completions、OpenAI Response API、Google Gemini、Anthropic Claude。</p>
+<p>这个设计的聪明之处在于：它没有试图统一所有协议，而是把"兼容现有生态"作为下限。业界已经形成了几种事实标准，RikkaHub 只需要做好这四种格式的适配，就覆盖了绝大多数可用的端点——包括 SiliconFlow（硅基流动）这类主流中转，支持免配置直接拉取全部可用模型。</p>
+<p><img src="../images/rikkahub/home-main.jpg" alt="手机端界面" loading="lazy"></p>
+<h2>拆解：它内部是怎么把"切换"做顺畅的？</h2>
+<p>多提供商接入只是第一层。真正难的是让用户在同一个对话里顺畅切换不同模型和提供商，而不丢失上下文。</p>
+<p>RikkaHub 的做法是：模型切换是即时的——一个对话的每一段消息（你 → AI）可以来自不同的模型和提供商，但对话历史不会清除。这意味着你可以用 Claude Sonnet 写第一段，然后切到 GPT-4o 改代码，再切到 Gemini Pro 做总结，整个过程 AI 都能看到完整上下文。</p>
+<p>这个特性在跨模型 A/B 测试时特别好用——配合对话分支 Fork 功能，从同一位置分叉、切换模型，就能直接对比两个版本的回答质量。</p>
+<p>RikkaHub 还有一个细节值得提：它支持占位符变量系统。你可以在系统提示词、消息模板、模式注入、知识库中使用 <code>{{变量名}}</code> 语法，发送时自动替换为实时值。比如 <code>{{model_name}}</code> 让模型知道自己用的是什么模型，<code>{{cur_datetime}}</code> 注入当前日期解决训练数据截止问题，<code>{{device_info}}</code> + <code>{{system_version}}</code> 让编程助手知道目标设备环境。甚至有 <code>{{battery_level}}</code>——让助手感知到你的电量状态，低电量时提醒切省电模式。</p>
+<p>这些变量在<strong>发送给模型的瞬间</strong>才被替换，不是打开对话时。这个时间点的选择很重要——如果你在早上打开一个对话、下午才发第一条消息，<code>{{cur_datetime}}</code> 反映的是下午的时间，不是早上打开的时间。在极少数变量无法获取时（比如某些设备 API 不暴露电池电量），RikkaHub 会替换为空字符串而不是报错，提示词可以安全地包含所有变量。</p>
+<h2>取舍：这套设计的代价是什么？</h2>
+<p>"无锁定"听起来很美，但它不是无成本的设计。RikkaHub 的取舍有几个方向：</p>
+<p><strong>第一，用户承担更多配置成本</strong>。你得自己去各家提供商申请 API Key、自己填 Base URL、自己算费率。对于不想折腾的用户，这就是个劝退点。</p>
+<p><strong>第二，提供商端的限制直接暴露给用户</strong>。RikkaHub 本身对提供商没有硬性限制，但如果你用的是某个中转，那个中转的限速、限额、稳定性问题，RikkaHub 兜不住。它只是客户端，不是服务端。</p>
+<p><strong>第三，Android 平台的特殊性带来额外负担</strong>。从<a href="https://rikkahub.pages.dev/" target="_blank" rel="noopener">rikkahub文档</a>里的 Web 服务器配置一节就能看出来——需要持久前台服务、通知权限、Android 15+ 本地网络权限、电池优化白名单。某些厂商的省电策略会直接杀死后台进程，用户还得手动把 RikkaHub 加入白名单才能保证局域网服务器不挂。这不是 RikkaHub 设计不好，而是 Android 生态本身对后台网络服务的态度决定的。</p>
+<p>但这些取舍换来了什么？真正的可移植性和自主权。你不用因为模型变贵、提供商跑路、或者某个 App 换了订阅政策就迁移全部对话历史。只要手里有 Key，换个客户端也能继续。</p>
+<h2>判断：这套原理意味着它适合什么？</h2>
+<p>如果你是下面几类人，RikkaHub 这套设计就是对着你来的：</p>
+<ul><li><strong>技术从业者/重度 AI 用户</strong>：手里同时握着多家的 API Key，需要在不同场景快速切换模型，甚至做跨模型 A/B 测试</li><li><strong>隐私敏感用户</strong>：不愿把对话数据交给某个闭源 App，自己持有 Key 意味着你只和提供商发生直接关系</li><li><strong>爱折腾的玩家</strong>：自建端点、接各种转发中转、需要消息模板/占位符变量这种精细控制能力</li></ul>
+<p>如果你只是想要一个打开就能用、按月付订阅费的聊天界面，RikkaHub 反而不是最优选择——它的自由度对你来说就是不必要的复杂度。</p>
+<p>最后说一句：RikkaHub 的整套设计思路，本质上是"<strong>把决策权还给用户</strong>"这个理念在技术上的落地。它不替你做模型选择、不替你管理账单、不替你绑定任何服务——它只负责把这些选项都摊开在你面前，让你自己选。</p>
+<p>这个思路在 AI 客户端领域并不算主流，但在"自由权"这个维度上，它确实做到了不少竞品没做到的事。想要上手试试的话，前面提到的官网和文档里都有完整指引。顺手提一句，这款应用的资料我在三个代码平台都做了同步归档——<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/rikkahub" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/rikkahub" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/rikkahub" target="_blank" rel="noopener">GitCode</a> 上各有一份，免得某个仓库访问不便。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xmol.html">我把每周追文献的三步走流程压成了一条自动链</a></h2>
+  <p class="card-desc">以前要手动刷十几本期刊、翻 Google Scholar、邮箱里翻 alert，现在一条链走完。讲怎么把 xmol 嵌进科研周更工作流，从盯文献到选刊投稿全打通。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/walkplay.html">凌晨三点剪片时，我终于把那幅塞了半年的耳机救活了</a></h2>
+  <p class="card-desc">用了半年的入耳式耳机高频刺耳、低频发虚，系统 EQ 怎么调都别扭。直到朋友让我试试直接调 DSP 芯片——Walk Play 实时试听加一键写芯片，半小时调出一个自己不想摘的声音。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/usagi-zh-docs.html">Usagi 用了半年才踩明白的 5 个坑，第一个就差点让我放弃</a></h2>
+  <p class="card-desc">Usagi 看着是个清爽的阅读器 app，实际上手才发现里面藏着不少容易踩的小陷阱——授权失败、匹配不准、显示调伤眼，每一个都能把新人劝退。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/rhythm-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Rhythm 上手三天：插件化播放器的自由与代价</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/riliai.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了 RiliAI 半年才发现的五个隐藏玩法，大多数人只停留在基础聊天</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>通勤路上的 B 站工作流——从官方客户端切到 Bilby 后我省了多少事 · 老杨技术栈</title>
+  
+<meta name="description" content="每天早高峰挤地铁时我要追十几个 UP 主的新视频，以前用官方客户端锁屏就断流、耗电还快，现在一套三环节的组合拳把通勤听音频这件事彻底理顺了">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/bilby-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通勤路上的 B 站工作流——从官方客户端切到 Bilby 后我省了多少事">
+<meta property="og:description" content="每天早高峰挤地铁时我要追十几个 UP 主的新视频，以前用官方客户端锁屏就断流、耗电还快，现在一套三环节的组合拳把通勤听音频这件事彻底理顺了">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/bilby-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/bilby-docs/player-page.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/bilby-docs/player-page.jpg">
+
+<meta name="twitter:title" content="通勤路上的 B 站工作流——从官方客户端切到 Bilby 后我省了多少事">
+<meta name="twitter:description" content="每天早高峰挤地铁时我要追十几个 UP 主的新视频，以前用官方客户端锁屏就断流、耗电还快，现在一套三环节的组合拳把通勤听音频这件事彻底理顺了">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6bcf\u5929\u65e9\u9ad8\u5cf0\u6324\u5730\u94c1\u65f6\u6211\u8981\u8ffd\u5341\u51e0\u4e2a UP \u4e3b\u7684\u65b0\u89c6\u9891\uff0c\u4ee5\u524d\u7528\u5b98\u65b9\u5ba2\u6237\u7aef\u9501\u5c4f\u5c31\u65ad\u6d41\u3001\u8017\u7535\u8fd8\u5feb\uff0c\u73b0\u5728\u4e00\u5957\u4e09\u73af\u8282\u7684\u7ec4\u5408\u62f3\u628a\u901a\u52e4\u542c\u97f3\u9891\u8fd9\u4ef6\u4e8b\u5f7b\u5e95\u7406\u987a\u4e86", "headline": "\u901a\u52e4\u8def\u4e0a\u7684 B \u7ad9\u5de5\u4f5c\u6d41\u2014\u2014\u4ece\u5b98\u65b9\u5ba2\u6237\u7aef\u5207\u5230 Bilby \u540e\u6211\u7701\u4e86\u591a\u5c11\u4e8b", "image": ["https://alipymanbu.github.io/images/bilby-docs/player-page.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/bilby-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/bilby-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u901a\u52e4\u8def\u4e0a\u7684 B \u7ad9\u5de5\u4f5c\u6d41\u2014\u2014\u4ece\u5b98\u65b9\u5ba2\u6237\u7aef\u5207\u5230 Bilby \u540e\u6211\u7701\u4e86\u591a\u5c11\u4e8b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">通勤路上的 B 站工作流——从官方客户端切到 Bilby 后我省了多少事</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">通勤路上的 B 站工作流——从官方客户端切到 Bilby 后我省了多少事</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">每天早高峰挤地铁时我要追十几个 UP 主的新视频，以前用官方客户端锁屏就断流、耗电还快，现在一套三环节的组合拳把通勤听音频这件事彻底理顺了</p>
+  </header>
+  <div class="prose">
+<h2>旧流程：通勤听 B 站是一件烦心事</h2>
+<p>我每天的通勤是单程 45 分钟，这段时间固定用来追 B 站 UP 主的视频——不是看画面，是听。但在之前的流程里，这件事的摩擦大到什么程度？</p>
+<p><strong>官方客户端锁屏必断流。</strong> 熄屏后系统省电策略一刀切把后台进程杀了，音频直接停。我试过开应用自带的后台播放开关，没用——应用内开关只是向系统请求"请给我点优先级"，系统层面的电池管理没放行等于白开。每次地铁进站过个闸，屏幕亮一下，音频还能续上两分钟，再过一会儿又断了。</p>
+<p><strong>第二件烦心事是耗电。</strong> 官方客户端哪怕只在后台挂着，一个小时也要吃掉 15% 左右的电量。通勤结束剩下的电不够撑到下班，还得带充电宝。</p>
+<p><strong>第三件是找视频。</strong> 关注列表里攒了二十多个 UP 主，每天刷到首页要一个个点进去看更了没。想搜某个视频时，要么记不住 UP 主全名（老番茄、罗翔说刑法这种还好，那些带特殊符号或英文名的就头疼了），要么标题太长记不住关键词。官方搜索的热搜榜和推荐搜索词也帮不上忙——我追的都是自己关注的，不需要算法推新的。</p>
+<p>这三个痛点叠在一起，导致通勤听音频这件事在旧流程里是一件"能做但做得很别扭"的事。我试过换各种播放器、试过用浏览器标签页挂着 B 站、试过下载缓存到本地再用其他播放器放——要么还是被系统杀进程，要么手动操作太多，要么缓存还得占手机空间。</p>
+<h2>新流程：三个环节把通勤听音频嵌进日常</h2>
+<p>换了 Bilby 之后，我把整个通勤听音频的流程重组成了三个环节，每个环节各司其职、衔接点几乎零摩擦。这套流程跑了快一个月，中间没出现过一次熄屏断流。</p>
+<h3>环节一：出发前五分钟（家里）——准备和同步</h3>
+<p>早上出门前，我打开手机上的 Bilby，花五分钟做三件事：</p>
+<ol><li><strong>扫一遍关注列表的更新。</strong> Bilby 的首页就是干净的订阅时间线，没有算法推荐、没有热搜榜、没有直播入口。每个 UP 主的新视频按时间排列，一眼就能看到。这里也是它的<a href="https://bilby.djnf.quest" target="_blank" rel="noopener">官网</a>和官方客户端差异最大的地方——官方首页是混合流，我的首页只显示我关注的内容。</li><li><strong>用模糊搜索补漏。</strong> 有些 UP 主我记得声音但记不准名字，在搜索框里输入关键词就行——比如输入"刑法"就能匹配到罗翔说刑法，输入"python 入门"就能缩窄到 Python 编程教学相关。模糊匹配的好处是我不用一字不差地记住完整标题或 UP 主名，大概的关键词就能搜到。搜索历史会自动保留，每天重复搜的 UP 主直接点历史记录就行。更多搜索小技巧在<a href="https://bilby-docs.pages.dev/" target="_blank" rel="noopener">Bilby文档</a>里也有整理。</li><li><strong>把想追的视频塞进稍后再看。</strong> 官方客户端的稍后再看和 Bilby 是实时同步的——因为用的是同一个 B 站账号扫码登录，关注列表、收藏夹、稍后再看这几个核心数据是云端同步的。所以如果白天在电脑上刷 B 站时想追某个视频，直接在电脑上点"稍后再看"，早上 Bilby 里就能看到，不用手动搬运。</li></ol>
+<p>这五分钟做完，我就知道今天通勤要听哪几条视频了，进地铁直接点播放。</p>
+<h3>环节二：通勤中（地铁里）——稳定播放和后台保活</h3>
+<p>这是整个流程里最关键的环节，也是 Bilby 替代官方客户端的核心理由。</p>
+<p><strong>后台保活四步必须一次性配齐。</strong> 参考我之前踩过的坑，我在第一天就把四步全部做了，没有偷懒只做前两步：</p>
+<ul><li>应用内"音频后台保活"开关 → 开</li><li>系统电池设置里找到 Bilby → 后台限制改为"无限制"（这一步是核心，应用内开关只是请求，系统权限才是许可）</li><li>多任务界面给 Bilby 加锁 → 下拉卡片出现锁形图标</li><li>省电模式 → 关掉</li></ul>
+<p>做完这四步之后，锁屏播放这件事就再也没断过。地铁进隧道信号差的时候会卡几秒钟缓冲，但不会直接停。</p>
+<p><strong>耗电表现也够用。</strong> 同样音量同样时长，Bilby 一个小时大约 4%~6% 的电量，是官方客户端的三分之一。通勤结束电量还能剩 60% 以上，不需要充电宝了。</p>
+<p>播放过程中偶尔会发几条弹幕，直接在播放器界面点弹幕输入就行，不用切出去——官方客户端发弹幕有时会卡顿一下，Bilby 这里很流畅。</p>
+<h3>环节三：通勤收尾（出地铁）——数据同步和边界切换</h3>
+<p>45 分钟过后要么听完了，要么还有没追完的视频。这时候有两种处理方式：</p>
+<p><strong>如果听完了</strong>，直接退出应用即可。播放进度会自动云端同步，回家用电脑上 B 站继续看画面也是从同一个进度接着走。</p>
+<p><strong>如果没听完</strong>，有两种情况：一是这个视频还想继续追，把它留在稍后再看里，明天通勤接着听；二是需要看画面了（比如教程类视频需要看操作界面），这时<strong>直接切官方客户端</strong>。因为是同一个 B 站账号扫码登录的，稍后再看列表两边实时同步，切过去就能看到。</p>
+<p>这里要讲清楚边界：Bilby 刻意砍掉了直播、充值、创作中心、离线缓存这些功能，它的定位就是"订阅党追动态听音频"，不是另一个全功能的 B 站客户端。需要看直播、需要花钱、需要看番剧的时候，直接切官方客户端就行——两个客户端各干各的，扫码登录用同一个账号，数据不会丢。</p>
+<p><img src="../images/bilby-docs/player-page.jpg" alt="播放器界面" loading="lazy"></p>
+<h2>流程里最容易断链的两个环节</h2>
+<p>上面这套流程跑下来，我发现有两个地方是最容易出问题的，花点时间把它们处理好，整个流程就稳了。</p>
+<p><strong>第一个易断环节：首次安装的未知来源权限。</strong> 安装包从<a href="https://bilby.djnf.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿的，不是应用商店下载，手机第一次会拦截安装请求。不同品牌的安卓设备路径不一样——华为 HarmonyOS 是"设置 → 安全 → 更多安全设置 → 安装未知应用"，小米是"设置 → 隐私保护 → 特殊权限设置 → 安装未知应用"，OPPO、vivo、三星各有各的入口。这个步骤只在首次安装时做一次，装完就可以关掉权限开关保持安全状态。我踩过的坑是：第一次装完没关权限，后来某个应用悄悄装了个乱七八糟的东西，排查了半天才找到根源。</p>
+<p><strong>第二个易断环节：系统更新后电池设置被重置。</strong> 上个月手机系统更新了一次，重启后 Bilby 又开始锁屏断流——进去一看，电池设置的"无限制后台"被系统自动改回了"智能省电"。这个没什么好办法，系统更新后花两分钟检查一下电池管理里的权限就行。如果还是断流，按优先级快速排查六条：应用内开关开了吗、电池设置是无限制吗、有没有开省电模式、后台加锁了吗、锁屏后有没有按一键清理、高清解码要不要关掉。六条都确认了还是不行，可能是设备 ROM 特别激进，换个 WiFi 环境试试，或者直接切官方客户端兜底。</p>
+<p><img src="../images/bilby-docs/playback-settings.jpg" alt="后台播放设置" loading="lazy"></p>
+<h2>效果和边界：这套流程什么时候划算</h2>
+<p><strong>效果是具体可数的：</strong> 通勤听音频从"经常断流的烦心事"变成了"几乎零摩擦的日常动作"；耗电从单程 15%+ 降到 5% 以内；找 UP 主的时间从每次通勤前翻五分钟改成了模糊搜索两个关键词；少了两次手动复制操作——官方客户端的播放进度不能无缝同步到其他设备，现在云端直接连。</p>
+<p><strong>什么时候不划算：</strong> 如果你通勤时间短（15 分钟以内）、或者只追一两个固定 UP 主、或者你离不开 B 站的直播功能和算法推荐流，那这套流程没必要——官方客户端也能凑合用。但如果你每天有 30 分钟以上的固定听音频时间、关注列表超过 10 个 UP 主、对后台播放稳定性有硬需求，那值得花一个下午把这套流程搭好。</p>
+<p>说到底，这套流程的本质是把 Bilby 当成一个"专门负责通勤听音频的轻量管道"，而不是试图用它替代官方客户端。两个客户端并行、各干各的、用同一个 B 站账号串联数据——这才是它的设计者一开始想做的事。</p>
+<hr>
+<p>这套资料我在三个地方都同步维护着，方便不同场景下按需查阅：如果习惯用 GitHub 客户端的直接上<a href="https://github.com/alipymanbu/APK/tree/main/APP/Bilby" target="_blank" rel="noopener">GitHub</a>仓库看，<a href="https://gitee.com/manbu1103/APK/tree/main/APP/Bilby" target="_blank" rel="noopener">Gitee</a>那边国内访问速度更稳，<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/Bilby" target="_blank" rel="noopener">GitCode</a>则是我的一个备份镜像——三个仓库里的文档内容完全一致，挑你顺手的那个就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/bigjpg.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">我用 bigjpg 放大图片快一年了，聊聊哪些地方越用越顺手、哪些越用越烦</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/bilibilias.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">BILIBILIAS 嵌进我的 B 站离线缓存全流程</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

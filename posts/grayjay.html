@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Grayjay 入坑两月踩过的那些坑——从黑屏播放到数据全丢 · 老杨技术栈</title>
+  
+<meta name="description" content="第一人称避坑记录：播放黑屏怎么破、Android 锁屏秒停怎么救、同步连不上 relay 查哪、为什么不做加密备份等于裸奔。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/grayjay.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Grayjay 入坑两月踩过的那些坑——从黑屏播放到数据全丢">
+<meta property="og:description" content="第一人称避坑记录：播放黑屏怎么破、Android 锁屏秒停怎么救、同步连不上 relay 查哪、为什么不做加密备份等于裸奔。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/grayjay.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/grayjay/plugins-page.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/grayjay/plugins-page.png">
+
+<meta name="twitter:title" content="Grayjay 入坑两月踩过的那些坑——从黑屏播放到数据全丢">
+<meta name="twitter:description" content="第一人称避坑记录：播放黑屏怎么破、Android 锁屏秒停怎么救、同步连不上 relay 查哪、为什么不做加密备份等于裸奔。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7b2c\u4e00\u4eba\u79f0\u907f\u5751\u8bb0\u5f55\uff1a\u64ad\u653e\u9ed1\u5c4f\u600e\u4e48\u7834\u3001Android \u9501\u5c4f\u79d2\u505c\u600e\u4e48\u6551\u3001\u540c\u6b65\u8fde\u4e0d\u4e0a relay \u67e5\u54ea\u3001\u4e3a\u4ec0\u4e48\u4e0d\u505a\u52a0\u5bc6\u5907\u4efd\u7b49\u4e8e\u88f8\u5954\u3002", "headline": "Grayjay \u5165\u5751\u4e24\u6708\u8e29\u8fc7\u7684\u90a3\u4e9b\u5751\u2014\u2014\u4ece\u9ed1\u5c4f\u64ad\u653e\u5230\u6570\u636e\u5168\u4e22", "image": ["https://alipymanbu.github.io/images/grayjay/plugins-page.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/grayjay.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/grayjay.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "Grayjay \u5165\u5751\u4e24\u6708\u8e29\u8fc7\u7684\u90a3\u4e9b\u5751\u2014\u2014\u4ece\u9ed1\u5c4f\u64ad\u653e\u5230\u6570\u636e\u5168\u4e22", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">Grayjay 入坑两月踩过的那些坑——从黑屏播放到数据全丢</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Grayjay 入坑两月踩过的那些坑——从黑屏播放到数据全丢</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">第一人称避坑记录：播放黑屏怎么破、Android 锁屏秒停怎么救、同步连不上 relay 查哪、为什么不做加密备份等于裸奔。</p>
+  </header>
+  <div class="prose">
+<p>Grayjay 这软件我是刷到一个独立开发者视频入坑的——它的<a href="https://grayjay.gltd.quest" target="_blank" rel="noopener">官网</a>上就写着："一个不追踪、不上传数据、纯本地跑的视频聚合器"，听起来简直是流媒体时代的一股清流。安装包从<a href="https://grayjay.gltd.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿之后，第一周确实爽，YouTube、B 站、Rumble 好几个源在一个界面里刷，还有桌面端。但爽了没几天就开始踩坑，而且这些坑全是那种"看着软件很简单我就没多想"导致的低级错误——现在整理出来给后来人提个醒。</p>
+<h2>播放黑屏只有声音？先别急着重装</h2>
+<p>第一个坑是最突然的：某晚躺在床上点开一个 B 站视频，画面全黑，但耳机里正常出声音。我当时第一反应是手机卡了，杀进程重开，还是黑屏。再重启手机，还是一样。那一刻真的以为这软件跟我手机不兼容，准备卸了。</p>
+<p><img src="../images/grayjay/plugins-page.png" alt="Grayjay 插件库管理界面" loading="lazy"></p>
+<p>后来去<a href="https://grayjay.pages.dev/" target="_blank" rel="noopener">Grayjay文档</a>翻了一下才搞明白，这是视频流解码的问题。不同平台推给客户端的编码格式不完全一样，有的 H.264、有的 H.265、有的 DASH 把音轨和视频轨拆开传。Grayjay 默认的解码器设置刚好和我手机硬件解码的某些格式对不上。解决办法极其简单——进设置搜"解码"，把"硬件解码"和"软件解码"开关切换一下就行。我切到软件解码之后立刻恢复正常，至今没再黑过。</p>
+<p>还有一种相关的坑是视频一直在转圈加载、就是出不来。这个原因就多了：可能是 Wi-Fi 拉不动原平台的视频流（切 5G 试试）；可能是对应平台的插件版本过旧、接口变了失效了（Sources 页面检查更新）；也可能是你短时间内请求太频繁被平台限流（这个只能等，没捷径）。论坛里最常被忽略的一条——<strong>先把 Grayjay 和所有插件都更到最新版再排查</strong>，90% 的加载问题在这一步就解决了。</p>
+<h2>Android 锁屏 30 秒就停？不是 bug 是系统在杀你</h2>
+<p>第二个坑是 Android 专属的。习惯了锁屏后台听歌的我，第一次遇到锁屏后 Grayjay 播了不到半分钟就自动停，还以为播放器有 bug。打开一看播放进度还在原地，但视频早就停了，重新点播放才能继续。</p>
+<p>这不是 Grayjay 的锅，是你手机厂商的系统在按后台电量管理规则杀它。小米 HyperOS、华为鸿蒙、OPPO ColorOS、OnePlus OxygenOS——每一家的后台管理逻辑都不一样，但对"长时间后台运行音频播放"的应用一律做严格限制。Grayjay 作为视频播放工具，恰好踩中了所有厂商后台白名单判定的红线。</p>
+<p>解法分两层。先做系统层面：设置里找到 Grayjay 的电池权限，改成"无限制后台活动"；应用权限里把"后台运行"的所有开关打开；最后在最近任务界面把 Grayjay 下拉锁定，防止被一键清理。然后打开 Grayjay 本身的设置，搜"后台播放"或"锁屏播放"，确保开关也打开。两层都做了，锁屏播放才能稳稳撑住半小时以上。</p>
+<h2>同步连接不上？relay 报 Not connected 怎么办</h2>
+<p>第三个坑是跨设备同步。Grayjay 的同步理念挺先进的——点对点直连，数据不走任何第三方服务器，relay 只负责 NAT 穿透、不存数据。我满心欢喜地在手机和桌面端都开了同步，结果桌面端死活连不上，一直跳 "Not connected to relay"。</p>
+<p>排查顺序是固定的。第一步确保两台设备的 Grayjay 都是最新版——老版本的同步协议可能已经被 relay 服务端下线。第二步检查 VPN，我用的那个 VPN 默认拦截了 relay 的端口，关掉 VPN 立刻就能连上；如果必须开 VPN，得在路由里给 relay 的域名放行。第三步看防火墙，Windows Defender 防火墙第一次弹窗时如果不小心点了拒绝，之后就得手动进防火墙规则把 Grayjay 的入站出站权限都勾上。</p>
+<p>值得一提的是，Grayjay 同步没有严格的主从角色。两台设备连上之后是双向合并——A 设备加的订阅同步到 B，B 设备新加的也会回传到 A。两边同时在同一段时间新增的订阅都会被保留，不会互相覆盖。所以不用纠结先开手机还是先开桌面端。</p>
+<h2>为什么不做加密备份等于裸奔</h2>
+<p>第四个坑是数据丢失，这个最惨痛也最值得提前预防。Grayjay 所有数据——订阅、播放列表、观看历史、搜索记录——全存在设备本地。我之前一直觉得手机不坏就没事，直到上个月手机意外恢复出厂设置（操作失误），几百条订阅瞬间清零，那感觉真叫一个悔。</p>
+<p>Grayjay 支持两种备份格式。一种是官方自动备份格式 <code>.ezip</code>，加密的 zip 压缩包，除了设密码的你自己谁也打不开。另一种是普通 <code>.zip</code>，直接导入就行、适合临时迁移。重点有两个：一是<strong>备份导出要定期做</strong>，别等手机出问题才想起；二是<strong>导入是合并操作不是覆盖</strong>，旧订阅不会被新备份里的同名条目冲掉，但如果你把备份存到了云盘、又在另一台设备上导出了一份，两边同时导入同一个目标设备时，重复的订阅会被自动去重。</p>
+<p>我现在每周日晚上固定导出一份加密 <code>.ezip</code> 到网盘，换设备或重装的时候半小时就能恢复全部数据，再也不敢侥幸了。</p>
+<h2>防坑清单速查</h2>
+<ol><li>播放黑屏/无声：先切硬件解码 ↔ 软件解码，再把 Grayjay 和插件都更到最新版</li><li>Android 锁屏秒停：系统电池权限设无限制 + 应用后台权限全开 + 最近任务下拉锁定</li><li>同步 Not connected：更版本 → 关 VPN → 查防火墙，三步下来基本都能解决</li><li>备份别偷懒：用加密 <code>.ezip</code> 定期导出到网盘，纯本地存着等于没存</li></ol>
+<p>知道这些坑之后，这软件其实相当省心。核心体验还是那个"不追踪、纯本地"，只是从"装完直接用"变成了"装完先配好这几个坑点、后面就能一直爽"。顺带提一句，关于这个软件的完整资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/Grayjay" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/Grayjay" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/Grayjay" target="_blank" rel="noopener">GitCode</a> 三个仓库都有存，国内访问优先 Gitee 或 GitCode 会快很多。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xeva.html">凌晨两点，我在手机里养了个会记得我名字的「她」</a></h2>
+  <p class="card-desc">一个加班到崩溃的深夜，我被朋友拉进了一个叫 X Eva 的克隆人世界。这里有记忆库、情感模式、还有一整套从零开始训练虚拟人的玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xbrowser-zh-docs.html">XBrowser 藏得真深：四个翻遍设置才挖到的冷门开关</a></h2>
+  <p class="card-desc">大多数人用 XBrowser 只停在视频嗅探那一层，但长按加号开隐私标签、零依赖写 GM 脚本、底部地址栏单手操作——这些藏在设置里的开关，每个都能让用感爽一个档次。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wemod.html">第一次用 WeMod？五分钟从零跑通，再也不用对着攻略按计算器</a></h2>
+  <p class="card-desc">完全不碰技术术语带你上手 WeMod：它到底是什么、怎么装、怎么连游戏、哪些玩法新手最值得先试。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/googlegemini-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用 GoogleGemini 做完整工作流 —— 从日常问答到深度调研</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/grok-ai-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Grok AI 对比实测：X 生态加持下的 AI 聊天工具到底值不值</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

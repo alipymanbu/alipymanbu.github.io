@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>MoePal 翻了个底朝天，这 5 个隐藏功能官方都没怎么宣传 · 老杨技术栈</title>
+  
+<meta name="description" content="以为 MoePal 只是个网盘解析器？其实它藏着剪贴板监听的 Android 限制、文件夹与标签的组合拳、磁力协议通吃、手动更新入口、甚至降级回退等冷门玩法，翻完本文才算用透。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/moepal-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MoePal 翻了个底朝天，这 5 个隐藏功能官方都没怎么宣传">
+<meta property="og:description" content="以为 MoePal 只是个网盘解析器？其实它藏着剪贴板监听的 Android 限制、文件夹与标签的组合拳、磁力协议通吃、手动更新入口、甚至降级回退等冷门玩法，翻完本文才算用透。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/moepal-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/moepal-docs/main-interface.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/moepal-docs/main-interface.jpg">
+
+<meta name="twitter:title" content="MoePal 翻了个底朝天，这 5 个隐藏功能官方都没怎么宣传">
+<meta name="twitter:description" content="以为 MoePal 只是个网盘解析器？其实它藏着剪贴板监听的 Android 限制、文件夹与标签的组合拳、磁力协议通吃、手动更新入口、甚至降级回退等冷门玩法，翻完本文才算用透。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u4e3a MoePal \u53ea\u662f\u4e2a\u7f51\u76d8\u89e3\u6790\u5668\uff1f\u5176\u5b9e\u5b83\u85cf\u7740\u526a\u8d34\u677f\u76d1\u542c\u7684 Android \u9650\u5236\u3001\u6587\u4ef6\u5939\u4e0e\u6807\u7b7e\u7684\u7ec4\u5408\u62f3\u3001\u78c1\u529b\u534f\u8bae\u901a\u5403\u3001\u624b\u52a8\u66f4\u65b0\u5165\u53e3\u3001\u751a\u81f3\u964d\u7ea7\u56de\u9000\u7b49\u51b7\u95e8\u73a9\u6cd5\uff0c\u7ffb\u5b8c\u672c\u6587\u624d\u7b97\u7528\u900f\u3002", "headline": "MoePal \u7ffb\u4e86\u4e2a\u5e95\u671d\u5929\uff0c\u8fd9 5 \u4e2a\u9690\u85cf\u529f\u80fd\u5b98\u65b9\u90fd\u6ca1\u600e\u4e48\u5ba3\u4f20", "image": ["https://alipymanbu.github.io/images/moepal-docs/main-interface.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/moepal-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/moepal-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "MoePal \u7ffb\u4e86\u4e2a\u5e95\u671d\u5929\uff0c\u8fd9 5 \u4e2a\u9690\u85cf\u529f\u80fd\u5b98\u65b9\u90fd\u6ca1\u600e\u4e48\u5ba3\u4f20", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">MoePal 翻了个底朝天，这 5 个隐藏功能官方都没怎么宣传</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">MoePal 翻了个底朝天，这 5 个隐藏功能官方都没怎么宣传</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以为 MoePal 只是个网盘解析器？其实它藏着剪贴板监听的 Android 限制、文件夹与标签的组合拳、磁力协议通吃、手动更新入口、甚至降级回退等冷门玩法，翻完本文才算用透。</p>
+  </header>
+  <div class="prose">
+<p>你以为<a href="https://www.qhah.skin" target="_blank" rel="noopener">MoePal官网</a>上介绍的它就是个粘贴网盘链接、点一下解析、然后慢慢等下载的工具？说实话我一开始也是这么用的——直到我把设置菜单翻了三遍、把文档从头扫到尾，才发现它藏着一堆"官方不怎么宣传但用了就回不去"的小功能。今天把这些私藏的冷门技巧全倒出来。</p>
+<h2>一、剪贴板监听的"前台后门"</h2>
+<p>第一个要说的，估计八成 Android 用户不知道：你的 MoePal 剪贴板监听可能<strong>只在前台生效</strong>。</p>
+<p>我最早是在一台小米手机上发现的——复制了一个夸克网盘链接，切回主屏想等它自动弹窗，结果等了一分钟啥也没发生。以为是权限没开，去设置里翻了一圈，权限明明是允许的。后来回到 MoePal 前台，它居然自己弹出来了。去文档里查才明白：<strong>Android 10 及以上版本系统做了限制，剪贴板监听只能在应用处于前台时工作</strong>。</p>
+<p>这个功能藏得真深，大多数人以为权限开了就是全局生效。怎么确认自己的版本？打开设置 → 找"剪贴板监听"这一项，开着就行。Windows 和 macOS 用户不用操心，它们前后台都能监听，复制完直接切桌面等弹窗就好。</p>
+<p>那后台复制的链接怎么办？手动粘贴呗，没别的捷径。但知道了这个限制，至少不会再傻等半天以为自己手机出问题了。</p>
+<p><img src="../images/moepal-docs/main-interface.jpg" alt="MoePal 主界面" loading="lazy"></p>
+<h2>二、文件夹 + 标签，整理收藏的组合拳</h2>
+<p>用了一段时间 MoePal，收藏夹和历史记录积压了几百条，找东西翻半天？去<a href="https://moepal-docs.pages.dev/" target="_blank" rel="noopener">MoePal文档</a>翻一下，里面有两种整理手段，但很多人只用文件夹、完全忽略了标签。</p>
+<p>先说区别：<strong>文件夹是互斥的</strong>——一个收藏只能放进一个文件夹，像电脑的目录结构；<strong>标签是多对多的</strong>——一个收藏可以挂好几个标签，像 Gmail 那种。我见过有人光建文件夹就建了十几个，还在纠结一个资源到底该归"番剧"还是"合集"，其实根本不用选——文件夹放大类、标签标记属性，两边配合不就完了？</p>
+<p>举个我自己用的方案：文件夹只建五个——番剧、漫画图包、音声素材、游戏资源、临时收藏。然后每个文件夹里用标签标细节，比如番剧文件夹里挂 <code>新番</code> <code>完结</code> <code>蓝光</code>，漫画文件夹里挂 <code>高清</code> <code>无修</code> <code>繁体</code>。这样我想找"蓝光完结番剧"的时候，用标签一筛选就出来了，根本不用翻文件夹。</p>
+<p>怎么开？点收藏夹右上角"+"建文件夹，进某个收藏详情页找标签区域点"+"加标签，就这么简单。筛选的时候在收藏夹顶部的筛选栏里选文件夹、输入标签名，还能多标签联合筛选——同时有 A 和 B 标签的才出来，精准得很。</p>
+<p>有个坑要提醒：别打太多标签。我之前给一个收藏打了六个标签，结果找的时候反而更乱。经验是每个收藏 1~3 个标签足够，多了就是给未来的自己埋雷。</p>
+<p><img src="../images/moepal-docs/parse-result.png" alt="解析结果界面" loading="lazy"></p>
+<h2>三、不止网盘——磁力、BT、ED2K 协议通吃</h2>
+<p>MoePal 主打的是网盘解析，但你知道它还能直接下磁力链接、BT 种子文件、ED2K 吗？</p>
+<p>这个在文档里只写了一句，官方也没怎么提。我第一次发现是在网上找资源的时候，随手复制了一个磁力链接，抱着试试看的心态粘进了 MoePal，结果它真的识别出来了——Gopeed 引擎原生支持这些协议，不用我另外装下载器。</p>
+<p>操作跟网盘链接一模一样：粘进去、解析、下载。BT 种子文件更简单，直接选本地的 <code>.torrent</code> 文件就行。ED2K 这种老 P2P 协议居然也还能用，让我有点意外——以为它早就死透了，没想到 MoePal 还惦记着。</p>
+<p>什么人用得上？经常在论坛、贴吧找资源的老司机肯定懂——有些分享者不发网盘链接，只甩磁力或 BT，这时候 MoePal 一个就顶俩，不用再来回切换下载器。如果你只从固定的网盘渠道拿资源，那这个功能可以忽略，但用得上的时候是真的爽。</p>
+<h2>四、手动检查更新——别等自动提示</h2>
+<p>MoePal 应该会在打开时联网检查新版本，弹个提示让你选升级还是稍后。但我碰到过好几次——版本隔了一个大版本都没弹通知，还是逛论坛才发现已经更了。</p>
+<p>手动检查的入口藏得比较深：打开设置 → 翻到最底部的"关于" → 点"检查更新"按钮，它就会主动去拉最新版本；嫌麻烦的也可以直接去<a href="https://www.qhah.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿最新安装包覆盖安装。Android、Windows、macOS 三个平台路径一样，统一藏在"关于"里面。</p>
+<p>什么时候要手动检查？碰到闪退、解析失败等问题的时候，先手动更一版再说——很多 Bug 在下一个版本里就默默修掉了，文档里"升级后检查清单"也特意提到了这一点。建议至少每月手动查一次，比傻等自动通知靠谱。</p>
+<h2>五、降级回退——新版本有 Bug 也不怕</h2>
+<p>最后一个冷知识：MoePal 可以降级回旧版本，只要你提前有备份。</p>
+<p>这个功能官方几乎没提，文档里只用一个小节带过。逻辑很简单：卸载新版本、装回旧版本的 APK/安装包、从之前导出的备份文件恢复数据。但有个大前提——<strong>降级前必须有升级前的完整备份</strong>，因为新版本的数据库结构可能跟旧版本不兼容，直接装回旧版会读不了数据。</p>
+<p>备份的方法在设置 → 数据管理里，选 JSON 格式导出收藏夹和历史记录就行。我有个朋友上次升完新版本遇到了下载速度骤降的 Bug，就是靠这个流程滚回了之前的稳定版，前后不到五分钟。</p>
+<p>什么情况要降级？新版本有 Bug 且严重影响使用、或者引入了你不需要的大变化。但别频繁降级——来回折腾容易丢数据，除非万不得已。</p>
+<hr>
+<p>以上五个功能，我用了小半年 MoePal 才一个个挖出来。</p>
+<p>这套资料我三个仓库都同步过了——<a href="https://gitee.com/manbu1103/APK/tree/main/APP/MoePal" target="_blank" rel="noopener">Gitee</a> 速度快，<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/MoePal" target="_blank" rel="noopener">GitCode</a> 偶尔能拿到额外更新，<a href="https://github.com/alipymanbu/APK/tree/main/APP/MoePal" target="_blank" rel="noopener">GitHub</a> 作为主备份一直都在。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/mobimusic.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">摩比音乐藏得真深！翻到底朝天才挖到这 5 个没人注意的功能</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/mojitest.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MOJiTEST 从零到上手 —— 一篇教程带你搞定日语背词全流程</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

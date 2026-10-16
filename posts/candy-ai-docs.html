@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Candy AI 从零上手：注册、建角色、聊到上头的完整实战 · 老杨技术栈</title>
+  
+<meta name="description" content="跟着这篇教程，你会完成账号注册、创建第一个角色、发起第一轮对话，并且搞清楚记忆系统三种&#34;清空&#34;到底有什么区别——别再把重置聊天和清除记忆搞混了。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/candy-ai-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Candy AI 从零上手：注册、建角色、聊到上头的完整实战">
+<meta property="og:description" content="跟着这篇教程，你会完成账号注册、创建第一个角色、发起第一轮对话，并且搞清楚记忆系统三种&#34;清空&#34;到底有什么区别——别再把重置聊天和清除记忆搞混了。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/candy-ai-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/candy-ai-docs/character-gallery.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/candy-ai-docs/character-gallery.webp">
+
+<meta name="twitter:title" content="Candy AI 从零上手：注册、建角色、聊到上头的完整实战">
+<meta name="twitter:description" content="跟着这篇教程，你会完成账号注册、创建第一个角色、发起第一轮对话，并且搞清楚记忆系统三种&#34;清空&#34;到底有什么区别——别再把重置聊天和清除记忆搞混了。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8ddf\u7740\u8fd9\u7bc7\u6559\u7a0b\uff0c\u4f60\u4f1a\u5b8c\u6210\u8d26\u53f7\u6ce8\u518c\u3001\u521b\u5efa\u7b2c\u4e00\u4e2a\u89d2\u8272\u3001\u53d1\u8d77\u7b2c\u4e00\u8f6e\u5bf9\u8bdd\uff0c\u5e76\u4e14\u641e\u6e05\u695a\u8bb0\u5fc6\u7cfb\u7edf\u4e09\u79cd\"\u6e05\u7a7a\"\u5230\u5e95\u6709\u4ec0\u4e48\u533a\u522b\u2014\u2014\u522b\u518d\u628a\u91cd\u7f6e\u804a\u5929\u548c\u6e05\u9664\u8bb0\u5fc6\u641e\u6df7\u4e86\u3002", "headline": "Candy AI \u4ece\u96f6\u4e0a\u624b\uff1a\u6ce8\u518c\u3001\u5efa\u89d2\u8272\u3001\u804a\u5230\u4e0a\u5934\u7684\u5b8c\u6574\u5b9e\u6218", "image": ["https://alipymanbu.github.io/images/candy-ai-docs/character-gallery.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/candy-ai-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/candy-ai-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "Candy AI \u4ece\u96f6\u4e0a\u624b\uff1a\u6ce8\u518c\u3001\u5efa\u89d2\u8272\u3001\u804a\u5230\u4e0a\u5934\u7684\u5b8c\u6574\u5b9e\u6218", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">Candy AI 从零上手：注册、建角色、聊到上头的完整实战</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Candy AI 从零上手：注册、建角色、聊到上头的完整实战</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">跟着这篇教程，你会完成账号注册、创建第一个角色、发起第一轮对话，并且搞清楚记忆系统三种&#34;清空&#34;到底有什么区别——别再把重置聊天和清除记忆搞混了。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇，你会完成：账号注册 → 创建第一个自定义角色 → 发起第一轮对话 → 搞清楚记忆系统三种"清空"到底差在哪。全程没有任何付费墙前置，免费版就能走完。</p>
+<h2>准备：先确认你踩得上的门</h2>
+<p>Candy AI 目前走的是网页端 + 客户端 + 高级订阅的路子，客户端从<a href="https://candy-ai.uerg.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿，<strong>免费版零信用卡、零前置条件就能用</strong>，但上限需要心里有数：</p>
+<ul><li>每天约 30~50 条文字消息，用完当天就没了，第二天重置</li><li>回复延迟走共享队列，高峰（晚间、周末）10~15 秒很正常</li><li>图像、视频、语音、Live Action 这些核心卖点 <strong>全在付费墙后面</strong>，免费版只能体验文字聊天</li></ul>
+<p>所以这篇教程的定位是：<strong>用免费版跑通完整流程</strong>，感受一下平台节奏再决定要不要升级。别急着点下一步，先想好你今天想体验到什么程度。</p>
+<h2>第一步：注册并登录</h2>
+<p>打开 <a href="https://candy-ai.uerg.quest" target="_blank" rel="noopener">Candy AI官网</a>，用邮箱或第三方账号完成注册。登录后你会落到角色选择页面——先别乱点预设角色，我们先建一个自己的。</p>
+<h2>第二步：创建第一个角色</h2>
+<p>角色创建器是 Candy AI 最核心的入口，界面长这样：</p>
+<p><img src="../images/candy-ai-docs/character-gallery.webp" alt="角色画廊" loading="lazy"></p>
+<p>左侧是预设好的性格原型库（温柔系、傲娇系、冷淡系……），右侧是特质滑块。实操流程：</p>
+<ol><li><strong>选一个性格原型</strong>作为基底。不确定选什么？"温柔系"对新手最友好，回复长、语气稳、不太容易翻车</li><li><strong>拖滑块调几个关键特质</strong>：回复长度建议拉到"中等偏详细"（太短聊起来没劲，太长容易跑题），创造性保持默认，记忆深度默认 Short-term</li><li><strong>给角色起个名字 + 写一句话简介</strong>。简介不用写长篇大论，"咖啡店店员，喜欢偶尔跟客人开点小玩笑"这种就够了——LLM 能从一句话里读出人设</li><li><strong>点保存</strong>，角色就出现在你的私人画廊里了</li></ol>
+<p>别急着进聊天，先确认一下角色卡片上的头像和性格标签是不是你预期的那样。</p>
+<h2>第三步：发起第一轮对话，感受自适应语气</h2>
+<p>选中你刚创建的角色，进入聊天界面。第一句建议别用"你好"，<strong>直接抛一个有具体场景的问题</strong>——比如"你今天店里生意怎么样？"</p>
+<p><img src="../images/candy-ai-docs/chat-interface.webp" alt="聊天界面" loading="lazy"></p>
+<p>你会注意到一件有趣的事：<strong>你怎么说话，AI 就怎么回应你</strong>。这不是巧合，是 Candy AI 内置的自适应语气机制在工作。</p>
+<p>它怎么做到的？原理很简单：每轮对话后，引擎会隐式分析你发的消息的语气、长度、用词风格，然后在生成下一轮回复时自动匹配你的节奏。你发带表情的短句，AI 也会跟着变活泼；你问严肃问题，AI 会把语气压下来。</p>
+<p>想测试这个机制有多灵？试两轮：</p>
+<ol><li>发一条带一堆颜文字的轻松消息</li><li>再发一条非常正式的长段落</li></ol>
+<p>两轮对比下来，你能明显感觉到 AI 的回应在跟着你的调性走——这是 Candy AI 区别于传统聊天机器人的核心体验之一。</p>
+<h2>第四步：记忆系统三兄弟——别再搞混了</h2>
+<p>聊了几轮之后，你可能会碰到"想重新开始但不想让它彻底失忆"的场景。这时候 Candy AI 有三个容易让人脑壳疼的按钮：</p>
+<h3>重置聊天</h3>
+<p><strong>最常用的操作</strong>。清空当前聊天界面的消息历史，AI 从"空白上下文"开始和你对话。但注意——向量数据库里的长期记忆<strong>还在</strong>，AI 新对话里可能会说"感觉好像在哪里见过你"。适用场景：剧情跑偏了、AI 回复突然变味了、想换个大话题。</p>
+<h3>清除记忆</h3>
+<p><strong>最彻底的记忆清空</strong>。直接把向量数据库里该角色存的所有记忆向量擦干净。角色的外貌、性格、声音这些参数不动，但 AI 会真的把你当成陌生人。适用场景：想"从头认识"这个角色、之前对话积累了太多垃圾记忆影响回复质量、换了相处关系想彻底重建。</p>
+<h3>删除聊天</h3>
+<p><strong>永久删除某段对话记录</strong>。该对话历史从界面消失且不可恢复，但对 AI 的记忆系统影响有限——因为删除的对话里的内容可能早就被向量数据库提取存起来了。适用场景：某段对话里有不想保留的内容、隐私考虑删除敏感记录。</p>
+<p>一个关键提醒：<strong>目前不提供"只清空当前对话但保留长期记忆"的独立选项</strong>。重置聊天会让 AI 暂时"忘记"上下文但向量数据库还在，清除记忆则彻底清空。如果你的需求是"换个新对话但希望 AI 还记得我"，目前只能重置聊天——接受它可能引用旧记忆就好，更多边界细节可以去<a href="https://candy-ai-docs.pages.dev/" target="_blank" rel="noopener">Candy AI文档</a>翻一下。</p>
+<h2>常见卡点：新手最容易翻车的三个地方</h2>
+<h3>卡点一：聊到关键时刻额度用完</h3>
+<p>免费版消息额度是按天重置的，而且<strong>所有角色共享</strong>。聊上头了突然断粮是常事。解法：先把重点问题在前几条消息里抛出来，别拿闲聊耗额度。真不够用，要么等第二天要么考虑升级。</p>
+<h3>卡点二：切换角色后语气好像没完全变</h3>
+<p>记忆系统的向量数据库里还留着之前角色的记忆痕迹。解法：切换角色后 <strong>手动点一下重置聊天</strong>，让新角色从干净的上下文开始。</p>
+<h3>卡点三：觉得 AI 回复太啰嗦或太简短</h3>
+<p>自适应语气会在角色创建器里设置的回复长度基准范围内微调。你觉得不合适，两种解法：一是直接在对话里说"能不能更简洁一点"或"多说一点"，AI 能听懂；二是回到角色创建器调回复长度滑块的基准。</p>
+<h2>进阶一句话</h2>
+<p>跑通了免费版流程之后，如果你觉得文字聊天不过瘾，可以考虑升级解锁图像生成和视频生成——实际用法通常是先用 V2 引擎批量生成几张图，挑一张最满意的转 10 秒视频，总共花 36 代币能拿到候选图 + 一段完整动态，比直接单张生成再转视频划算不少。</p>
+<p>最后说一句：Candy AI 的完整资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Candy%20AI" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Candy%20AI" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Candy%20AI" target="_blank" rel="noopener">GitCode</a> 三个仓库都同步维护着，方便不同网络环境下随时查阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yousician.html">Yousician 翻底朝天：这五个隐藏功能 90% 的用户没碰过</a></h2>
+  <p class="card-desc">把 Yousician 从入门到进阶挖透，Practice 循环片段、Wait To Play、Auto-adjust 自动调速、唱歌移调、Vocal Range 校准——每一个都能改变练习效率</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vidhub-docs.html">VidHub 快问快答：多设备影视播放器 9 个最关心的问题一次说清</a></h2>
+  <p class="card-desc">VidHub 是什么人在用、怎么装、同步哪些数据、刮削怎么跑、WebDAV 有什么坑、要不要付费——整理成一篇问答速查，看完直接上手。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/trani-docs.html">我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤</a></h2>
+  <p class="card-desc">从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/campus-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Campus 快问快答：把这张校园地图聊明白要多久</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/canta-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Canta 避坑指南：四个容易翻车的场景和应对办法</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

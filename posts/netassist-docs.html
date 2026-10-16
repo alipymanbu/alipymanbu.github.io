@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>深夜联调 IoT 设备，4GB 文件静默消失那天我发现了 NetAssist · 老杨技术栈</title>
+  
+<meta name="description" content="连续跑了三天的设备数据突然断掉——没有报错、没有告警，磁盘空间还剩一半，就是 4GB 之后的数据凭空没了。那次深夜排障让我记住了滚动日志和 MQTT 时间戳这两个救命功能。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/netassist-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深夜联调 IoT 设备，4GB 文件静默消失那天我发现了 NetAssist">
+<meta property="og:description" content="连续跑了三天的设备数据突然断掉——没有报错、没有告警，磁盘空间还剩一半，就是 4GB 之后的数据凭空没了。那次深夜排障让我记住了滚动日志和 MQTT 时间戳这两个救命功能。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/netassist-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:title" content="深夜联调 IoT 设备，4GB 文件静默消失那天我发现了 NetAssist">
+<meta name="twitter:description" content="连续跑了三天的设备数据突然断掉——没有报错、没有告警，磁盘空间还剩一半，就是 4GB 之后的数据凭空没了。那次深夜排障让我记住了滚动日志和 MQTT 时间戳这两个救命功能。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fde\u7eed\u8dd1\u4e86\u4e09\u5929\u7684\u8bbe\u5907\u6570\u636e\u7a81\u7136\u65ad\u6389\u2014\u2014\u6ca1\u6709\u62a5\u9519\u3001\u6ca1\u6709\u544a\u8b66\uff0c\u78c1\u76d8\u7a7a\u95f4\u8fd8\u5269\u4e00\u534a\uff0c\u5c31\u662f 4GB \u4e4b\u540e\u7684\u6570\u636e\u51ed\u7a7a\u6ca1\u4e86\u3002\u90a3\u6b21\u6df1\u591c\u6392\u969c\u8ba9\u6211\u8bb0\u4f4f\u4e86\u6eda\u52a8\u65e5\u5fd7\u548c MQTT \u65f6\u95f4\u6233\u8fd9\u4e24\u4e2a\u6551\u547d\u529f\u80fd\u3002", "headline": "\u6df1\u591c\u8054\u8c03 IoT \u8bbe\u5907\uff0c4GB \u6587\u4ef6\u9759\u9ed8\u6d88\u5931\u90a3\u5929\u6211\u53d1\u73b0\u4e86 NetAssist", "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/netassist-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/netassist-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u6df1\u591c\u8054\u8c03 IoT \u8bbe\u5907\uff0c4GB \u6587\u4ef6\u9759\u9ed8\u6d88\u5931\u90a3\u5929\u6211\u53d1\u73b0\u4e86 NetAssist", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">深夜联调 IoT 设备，4GB 文件静默消失那天我发现了 NetAssist</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">深夜联调 IoT 设备，4GB 文件静默消失那天我发现了 NetAssist</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">连续跑了三天的设备数据突然断掉——没有报错、没有告警，磁盘空间还剩一半，就是 4GB 之后的数据凭空没了。那次深夜排障让我记住了滚动日志和 MQTT 时间戳这两个救命功能。</p>
+  </header>
+  <div class="prose">
+<p>那天是周四，凌晨两点十三分，我盯着屏幕上那个停在 4096MB 整的文件窗口，感觉后背发凉。</p>
+<p>我们团队在做一套工业 IoT 网关的稳定性测试，要求设备连续上报至少三天数据不能断。之前选了个老牌串口工具，能收能存，跑了两天半都挺正常，谁知道第三天下午一过那个 4GB 的坎，数据就像凭空掉进了黑洞——磁盘空间明明还剩五十多 GB，工具本身也没弹任何错误，就是后续的数据一行都没再往文件里写。</p>
+<p>甲方明天要看测试报告，这意味着我得连夜重跑。但 48 小时全量采集显然来不及，必须想办法从已经截断的那 4GB 文件里抢救出足够的样本，同时换个靠谱的工具接着跑剩余时段。</p>
+<p>同事微信弹过来一句话：试试 <a href="https://netassist.usea.quest" target="_blank" rel="noopener">NetAssist官网</a>，我之前做 MQTT 联调用过，好像没有这个上限问题。</p>
+<p>我从<a href="https://netassist.usea.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿了一个。装上第一印象就和之前用的那个不一样——界面分左右两区，左边是发送配置，右边是收包区，中间一条分割线可以拖宽拖窄，窗口底部还多了一排协议切换的标签页。TCP Client、TCP Server、UDP、Serial，还有个 MQTT Client 的选项我之前没在同类型工具里见过。</p>
+<h2>先救火：从旧文件抢救数据</h2>
+<p>眼下最紧急的事是确认那 4GB 数据到底丢了多少。我先把旧工具的接收模式切到文件存储，开了 NetAssist，连到设备的同一个端口，选了日志接收模式——这个选项之前没注意过，勾选之后每条接收数据前面多了一串时间戳，精确到毫秒。这样我至少能看清每一条包的到达时刻，和旧文件里残留的时间戳一对比，就能估出断档了多久。</p>
+<p>结果比预想的好。数据其实没有完全消失——旧工具的内部计数器溢出之后，写文件停止了，但设备还在正常发，只是我看不见也存不了。NetAssist 一接上，接收区瞬间刷出了几百条积压的心跳包。</p>
+<p>接着我翻了一下 <a href="https://netassist-docs.pages.dev/" target="_blank" rel="noopener">NetAssist文档</a>，原来它的文件存储不是单文件模式，而是滚动日志。文件到达设定大小（默认 100MB）之后会自动创建新文件继续写，根本不会撞上 4GB 那个 32 位整数的天花板。我赶紧把存储模式切过去，单文件上限也从默认调到 50MB，开始重新采集。同时在接收区右键搜索"ERROR"关键词——对，NetAssist 的接收区自带搜索，大文件里翻查历史数据比我之前用 grep 快多了。</p>
+<h2>顺手解决了一个藏了三个月的 MQTT 联调问题</h2>
+<p>救火的间隙我翻到协议标签里的 MQTT Client，突然想起三个月前另一个项目遗留的问题：我们的设备同时走 TCP 和 MQTT 双通道上报，但只有专门的 MQTT 客户端工具能看 MQTT，只有 TCP 工具能看 TCP，两边数据时间对不上，一直怀疑网关在双通道切换时丢包，但没法实锤。</p>
+<p>NetAssist 让这件事变简单了。我在左边新开一个 Tab 连 MQTT Broker，填好 ClientID（留空它会自动生成随机 ID）、端口 1883，订阅设备上报的那个主题；右边继续开 TCP Server 收 Socket 数据。两个通道同时开着，接收区的时间戳一列排开——TCP 那边每 1.002 秒来一个包，MQTT 那边每 1.000 秒来一个包，间隔稳定得离谱，根本没丢。</p>
+<p>那一瞬间我就明白之前为什么查不到了——用两种工具分别开着，两个窗口的系统时钟各走各的，我手工对齐时间戳至少错了半秒，就这半秒的误差把真正的丢包嫌疑点到了网关头上，白查了两周。</p>
+<h2>转义字符：一个被低估的小功能</h2>
+<p>第二天白天把测试报告补完之后，我又发现一个之前没注意到的细节。公司做硬件的同事最近在调一批蓝牙 AT 模块，每次发指令都要手动打 <code>AT\r\n</code>，复制粘贴倒也不麻烦，但模块默认要求所有指令以回车换行结尾，一次调五六个模块，手就酸了。</p>
+<p>NetAssist 有个 AT 指令自动添加回车换行的开关，勾上之后只需要输入 <code>AT</code>，点发送，它自动补 <code>\r\n</code>——实际发出去的字节是 <code>41 54 0D 0A</code>，和手动写的一模一样。还有转义字符支持，<code>\r</code>、<code>\n</code>、<code>\t</code> 都能解析，甚至能写 <code>\xFF</code> 这种十六进制字节，和 HEX 模式是两套独立的输入层，互不干扰。</p>
+<h2>这次踩坑学到的</h2>
+<p>4GB 文件静默丢失那件事让我意识到，选调试工具不能只看"能收能发"。长时间连续运行的场景下，存储上限、滚动日志、断电续存这些听起来冷门的功能，关键时刻能决定你要不要通宵重跑。时间戳看起来是个锦上添花的小功能，但一旦你需要把多个通道、多个工具的日志对齐分析，它就是刚需里的刚需。</p>
+<p>后来我把那套旧工具卸了。NetAssist 的相关资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/NetAssist" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/NetAssist" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/NetAssist" target="_blank" rel="noopener">GitCode</a> 上都能拿到，哪个访问方便就用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/nebula-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Nebula 图标包快问快答：8845 枚手绘图标到底值不值得装</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/newpipe-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">NewPipe 全能力盘点：从下载到直播，一个开源客户端能做多少事</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

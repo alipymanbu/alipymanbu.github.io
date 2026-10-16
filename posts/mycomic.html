@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>MyComic 全能力域盘点：从多源聚合到自定义扩展的深度梳理 · 老杨技术栈</title>
+  
+<meta name="description" content="把 MyComic 这个开源 Android 漫画/小说/番剧阅读器的能力面完整铺开，从架构设计、阅读体验、数据源扩展到番剧播放的特殊挑战，系统梳理它能解决什么问题、亮点在哪、哪些人该用。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/mycomic.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyComic 全能力域盘点：从多源聚合到自定义扩展的深度梳理">
+<meta property="og:description" content="把 MyComic 这个开源 Android 漫画/小说/番剧阅读器的能力面完整铺开，从架构设计、阅读体验、数据源扩展到番剧播放的特殊挑战，系统梳理它能解决什么问题、亮点在哪、哪些人该用。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/mycomic.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/mycomic/comic-detail.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/mycomic/comic-detail.jpg">
+
+<meta name="twitter:title" content="MyComic 全能力域盘点：从多源聚合到自定义扩展的深度梳理">
+<meta name="twitter:description" content="把 MyComic 这个开源 Android 漫画/小说/番剧阅读器的能力面完整铺开，从架构设计、阅读体验、数据源扩展到番剧播放的特殊挑战，系统梳理它能解决什么问题、亮点在哪、哪些人该用。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u628a MyComic \u8fd9\u4e2a\u5f00\u6e90 Android \u6f2b\u753b/\u5c0f\u8bf4/\u756a\u5267\u9605\u8bfb\u5668\u7684\u80fd\u529b\u9762\u5b8c\u6574\u94fa\u5f00\uff0c\u4ece\u67b6\u6784\u8bbe\u8ba1\u3001\u9605\u8bfb\u4f53\u9a8c\u3001\u6570\u636e\u6e90\u6269\u5c55\u5230\u756a\u5267\u64ad\u653e\u7684\u7279\u6b8a\u6311\u6218\uff0c\u7cfb\u7edf\u68b3\u7406\u5b83\u80fd\u89e3\u51b3\u4ec0\u4e48\u95ee\u9898\u3001\u4eae\u70b9\u5728\u54ea\u3001\u54ea\u4e9b\u4eba\u8be5\u7528\u3002", "headline": "MyComic \u5168\u80fd\u529b\u57df\u76d8\u70b9\uff1a\u4ece\u591a\u6e90\u805a\u5408\u5230\u81ea\u5b9a\u4e49\u6269\u5c55\u7684\u6df1\u5ea6\u68b3\u7406", "image": ["https://alipymanbu.github.io/images/mycomic/comic-detail.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/mycomic.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/mycomic.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "MyComic \u5168\u80fd\u529b\u57df\u76d8\u70b9\uff1a\u4ece\u591a\u6e90\u805a\u5408\u5230\u81ea\u5b9a\u4e49\u6269\u5c55\u7684\u6df1\u5ea6\u68b3\u7406", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">MyComic 全能力域盘点：从多源聚合到自定义扩展的深度梳理</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">MyComic 全能力域盘点：从多源聚合到自定义扩展的深度梳理</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">把 MyComic 这个开源 Android 漫画/小说/番剧阅读器的能力面完整铺开，从架构设计、阅读体验、数据源扩展到番剧播放的特殊挑战，系统梳理它能解决什么问题、亮点在哪、哪些人该用。</p>
+  </header>
+  <div class="prose">
+<p>开源 Android 平台上做「多源聚合阅读器」的项目不少，但能把漫画、小说、番剧三种内容形态放进同一套架构里、还能让有编程能力的用户自己扩展数据源的，MyComic 算是比较有代表性的一个，它的<a href="https://mycomic.laze.skin" target="_blank" rel="noopener">官网</a>上有完整的项目介绍。开发者陆启创把项目的源码在 Gitee 和 GitHub 上完整开放，用腾讯 QMUI_Android 框架打底，TheBaseAndroid 封装常见能力，整个项目按 app/base/common 三层模块化得很清楚。本文尝试把它的能力面完整铺开，从架构到体验、从内置源到自定义扩展，一次说透它能解决什么问题、亮点在哪、短板又是什么。</p>
+<h2>架构设计：为扩展性而生的三层模块</h2>
+<p>MyComic 的代码组织是理解它全部能力的入口。整个项目用 Gradle 构建、Android Studio 开发，不想自己编译的话安装包从<a href="https://mycomic.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿，核心拆成三个模块。app 模块是应用主入口，Activity、Fragment、界面交互逻辑全在这里；base 模块是基础组件层，放通用基类和工具方法；真正的业务核心集中在 common 模块——漫画源、小说源、番剧源的父类定义、枚举注册、测试基类都在这里。</p>
+<p>这种分层的好处是 UI 层和数据源层完全解耦。开发者不需要在 Activity 里写任何具体源的解析逻辑，只需要面向父类接口编程。common 模块里最重要的三个类是 BaseComicSource、BaseNovelSource 和 BaseVideoSource，分别对应三种内容形态的数据源。每个源的实现只需要继承对应的父类、实现基类要求的方法组——搜索方法、详情方法、阅读方法，以及源名称、搜索提示词、分类列表这些辅助信息。</p>
+<p>注册机制也很简洁。CSourceEnum 这个枚举类是所有漫画源的注册表，MyComic 启动时扫描这个枚举就知道要加载哪些源。新增一个漫画源的流程是：在 source 目录下新建类继承 BaseComicSource → 在枚举里加一条 → 解开测试基类的注释跑一遍验证 → 提交 Pull Request。开发者自己也提供了 BaoZi（包子漫画）等完整实现作为参考，新源的 HTTP 请求地址、页面解析逻辑、字段清洗规则各自不同，但整体骨架保持一致。</p>
+<h2>漫画与小说阅读：多源切换的体验细节</h2>
+<p>阅读体验是 MyComic 最直观的能力域。以漫画详情页为例，从画架卡片或搜索列表点进去之后，页面结构分得很清楚：顶部是漫画信息卡片，显示封面、标题、当前源名称（可以点击切换）、最新章节和更新时间；中间是按顺序排列的章节网格，每个格子显示章节编号和标题，点任一格子直接开始阅读；底部有收藏和继续阅读两个按钮——继续阅读特别适合追更场景，跳过中间直接回到上次中断的位置。</p>
+<p>章节列表默认从旧到新排列，长连载漫画可能有几百甚至上千章节，需要上下滑动查看。这里有一个值得注意的细节：不同漫画源的章节编号和划分方式可能不同，在详情页切换源之后，章节列表会重新从新源拉取，某些源可能漏更某些章节或者章节命名不同，切换时要有心理预期。</p>
+<p>小说阅读的基本流程与漫画类似，只是解析对象从图片变成了文本。两者共用同一套画架体系，收藏后都会进入画架 tab。画架本身支持多 tab 管理，收藏漫画、收藏小说可以分开浏览。</p>
+<p><img src="../images/mycomic/comic-detail.jpg" alt="漫画详情页：章节网格列表" loading="lazy"></p>
+<h2>番剧播放：三种内容形态里最复杂的一环</h2>
+<p>漫画是图片、小说是文本，番剧在技术复杂度上明显高出一截。MyComic 内置的番剧源包括樱花动漫、哔哩哔哩、风车动漫、爱云影视等，但其中樱花动漫、米粒、风车动漫原版等多个源目前已经失效。失效原因通常是目标站更换域名、视频加密方式变更或反爬升级，调试难度比图文源高得多。</p>
+<p>视频源需要处理 M3U8 等视频流地址，平台反爬策略也比图文平台激进。目前活跃的番剧源里，哔哩哔哩接入的是 B 站正版动漫资源，画质好、更新及时，但部分地区可能需要登录验证；风车动漫 2 是风车的备用域名源；爱云影视是综合影视源，包含部分动漫内容。</p>
+<p>有编程能力的用户可以参考自定义漫画源的开发思路来写自己的番剧源——区别只在于继承的父类是 BaseVideoSource 而不是 BaseComicSource，解析对象变成视频流。开发者在 README 里也提到，一旦现有源失效，等待后续 release 修复是最稳妥的方案。</p>
+<h2>数据源扩展：让有能力的用户自己动手</h2>
+<p>开源项目最有价值的部分之一就是让社区贡献数据源，MyComic 在这一点上的设计相当友好。common 模块内置了源测试基础设施，BaseSourceTest 是测试基类，具体漫画源的测试继承它。解开注释就能运行搜索、详情、阅读三个阶段的验证，新源写好之后不需要跑完整的 App 就能先在测试层过一遍。</p>
+<p>开发者自己也把这个扩展能力用得很充分——漫画源、小说源、番剧源三套父类接口几乎完全平行，只是解析对象不同。想要写一个新的漫画源，看 BaoZi.java 的实现就够了，结构和方法签名保持一致，填进自己的 HTTP 请求地址和页面解析逻辑即可。更完整的开发步骤可以去<a href="https://mycomic.pages.dev/" target="_blank" rel="noopener">MyComic文档</a>翻一下。</p>
+<h2>短板也要说</h2>
+<p>MyComic 有几个值得提前说明的局限。第一，它只支持 Android 平台，iOS 用户用不了，PC 端也没有对应的客户端或 Web 版本。第二，数据源的稳定性始终是这类阅读器的核心问题——番剧源的失效速度尤其快，依赖开发者持续跟进目标站的域名变更和加密方式升级。第三，部分漫画源和番剧源可能包含灰色资源，使用时需要注意版权边界。第四，画架的数据默认存在本地，没有云同步功能，换设备需要重新收藏。</p>
+<h2>什么样的人该用它</h2>
+<p>如果你是 Android 平台上的漫画重度读者，MyComic 的多源聚合、章节网格浏览、继续阅读这些功能会很对胃口——尤其是追更场景，继续阅读按钮比手动找章节方便得多。如果你同时看漫画和小说，它把两种内容形态放进同一套架构里的设计能省掉装两个阅读器的麻烦。</p>
+<p>如果你有编程能力，MyComic 的价值会再大一层。common 模块的三源父类接口、测试基类、参考实现都齐全，写一个自定义数据源的门槛不高。开发者在 Gitee 和 GitHub 都维护了仓库，社区贡献的路径也比较清晰。</p>
+<p>如果你主要在 iOS 或 PC 上看内容，那 MyComic 可能不在你的设备生态里。但如果你用 Android、有 Android Studio、又对多源聚合这件事感兴趣，它是一个值得认真对待的项目。</p>
+<p>这套资料在<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/MyComic" target="_blank" rel="noopener">Gitee</a>上是主仓库，国内访问最顺畅，<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/MyComic" target="_blank" rel="noopener">GitHub</a>有社区 mirror，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/MyComic" target="_blank" rel="noopener">GitCode</a>也同步了一份便于多网环境的用户获取。三个仓库保持一致更新，开发者也欢迎社区贡献新的漫画源和番剧源。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zlib-docs.html">Z-Library 对比评测：它在免费电子书库里排第几</a></h2>
+  <p class="card-desc">用过 Gutenberg、Internet Archive、Library Genesis 之后，回头看 Z-Library 的差异化到底在哪里——搜索精度、联动体验和补位链，三件事让它在同类里有了自己的位置。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yazio.html">体检报告上的箭头，把我逼成了一个扫码控</a></h2>
+  <p class="card-desc">一个体检亮红灯的上班族，如何靠 YAZIO 用一个月把体脂率降了 2%——不是什么苦行僧式的自律，只是换了个对的工具让记录变得不那么烦。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wuwubox.html">wuwubox V14.9.00：一款盒子应用的十四年迭代到底在忙什么</a></h2>
+  <p class="card-desc">从 2012 年第一个版本到今天的 V14.9.00，wuwubox 在十四年里几乎保持了同样的产品哲学——它没有做 TV 版，没有上应用商店，也没有做付费墙，那它每次更新都在改些什么？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/myboy-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">MyBoy 使用速查：9 个问题把这款 GBA 模拟器讲透</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/nanobanana-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">nanobanana 踩坑小记：看着简单，这几处我第一次用差点卸载</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

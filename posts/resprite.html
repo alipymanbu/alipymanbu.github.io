@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Resprite 全能力盘点：从像素点到关卡地图的一条管线 · 老杨技术栈</title>
+  
+<meta name="description" content="把 Resprite 的能力面完整铺开——绘制管线、调色板治理、瓦片地图、触控适配、导出生态，每一块都讲清楚解决什么问题、亮点在哪、什么场景用得上。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/resprite.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Resprite 全能力盘点：从像素点到关卡地图的一条管线">
+<meta property="og:description" content="把 Resprite 的能力面完整铺开——绘制管线、调色板治理、瓦片地图、触控适配、导出生态，每一块都讲清楚解决什么问题、亮点在哪、什么场景用得上。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/resprite.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/resprite/palette-desktop-overview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/resprite/palette-desktop-overview.png">
+
+<meta name="twitter:title" content="Resprite 全能力盘点：从像素点到关卡地图的一条管线">
+<meta name="twitter:description" content="把 Resprite 的能力面完整铺开——绘制管线、调色板治理、瓦片地图、触控适配、导出生态，每一块都讲清楚解决什么问题、亮点在哪、什么场景用得上。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u628a Resprite \u7684\u80fd\u529b\u9762\u5b8c\u6574\u94fa\u5f00\u2014\u2014\u7ed8\u5236\u7ba1\u7ebf\u3001\u8c03\u8272\u677f\u6cbb\u7406\u3001\u74e6\u7247\u5730\u56fe\u3001\u89e6\u63a7\u9002\u914d\u3001\u5bfc\u51fa\u751f\u6001\uff0c\u6bcf\u4e00\u5757\u90fd\u8bb2\u6e05\u695a\u89e3\u51b3\u4ec0\u4e48\u95ee\u9898\u3001\u4eae\u70b9\u5728\u54ea\u3001\u4ec0\u4e48\u573a\u666f\u7528\u5f97\u4e0a\u3002", "headline": "Resprite \u5168\u80fd\u529b\u76d8\u70b9\uff1a\u4ece\u50cf\u7d20\u70b9\u5230\u5173\u5361\u5730\u56fe\u7684\u4e00\u6761\u7ba1\u7ebf", "image": ["https://alipymanbu.github.io/images/resprite/palette-desktop-overview.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/resprite.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/resprite.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "Resprite \u5168\u80fd\u529b\u76d8\u70b9\uff1a\u4ece\u50cf\u7d20\u70b9\u5230\u5173\u5361\u5730\u56fe\u7684\u4e00\u6761\u7ba1\u7ebf", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">Resprite 全能力盘点：从像素点到关卡地图的一条管线</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Resprite 全能力盘点：从像素点到关卡地图的一条管线</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 10 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">把 Resprite 的能力面完整铺开——绘制管线、调色板治理、瓦片地图、触控适配、导出生态，每一块都讲清楚解决什么问题、亮点在哪、什么场景用得上。</p>
+  </header>
+  <div class="prose">
+<h2>开头：Resprite 是什么，为什么值得认真盘点</h2>
+<p>Resprite 是一款跨平台的像素画创作工具——它的<a href="https://resprite.fedq.quest" target="_blank" rel="noopener">官网</a>上明确列出了 Android、iOS 和桌面端三个版本。它不是那种"打开就能画几笔"的轻量涂鸦应用——Resprite 的设计思路是：<strong>从画第一颗像素点开始，到产出可以直接喂给游戏引擎的瓦片地图和精灵动画，整条链路都在一个工程里闭环</strong>。</p>
+<p>市面上的像素画软件大致分两档：偏"画板"的类型专注绘制体验，偏"工具集"的类型覆盖动画和导出。Resprite 属于后者，而且它的工具集铺得相当完整——我用过它之后最直观的感受是：一个独立开发者从空白文档到关卡可玩，中间不需要频繁切换三四个不同软件。下面按能力域逐一盘点。</p>
+<h2>核心绘制：Pixel Perfect 原则贯穿所有工具</h2>
+<p>Resprite 的所有绘制工具都默认开启 Pixel Perfect，这意味着矩形、椭圆、直线的边缘永远对齐像素网格，不会出现半像素模糊的情况。这个细节对像素画来说不是"锦上添花"——想象一下你花两小时画好的角色轮廓，因为一条半像素的线在缩放后变得毛糙，返工成本极高。</p>
+<p>形状工具组的设计值得单独说一下。矩形、椭圆、直线各支持实心填充或只画轮廓，轮廓线宽可调。桌面端按住 Shift 可以画正方形、正圆、45° 倍数的直线，iOS 端则通过手势停一下触发对齐辅助线——不同平台各有各的适配方式，不是粗暴复制粘贴。画 UI 按钮外框、等距建筑外墙、点状背景装饰，这些场景用形状工具比铅笔逐像素描线快得多。</p>
+<p>形状画出来之后还能跟选区工具配合——在选区里描边（Stroke Selection），对"画一条 3 像素宽的精确矩形边"这类需求来说，比自己数着像素描效率高太多。</p>
+<p><img src="../images/resprite/palette-desktop-overview.png" alt="调色板管理是像素画的隐形效率杠杆" loading="lazy"></p>
+<h2>调色板治理：不只是存颜色，是建立配色语言</h2>
+<p>对像素画来说，调色板的管理往往比"从色盘上随便选个颜色"重要得多。Resprite 在这一块的设计相当认真。</p>
+<p>基础操作之外，Resprite 提供了几个实用管理功能。<strong>锁定调色板</strong>——一旦调好一套色板就锁定它，防止误触删色或重排。<strong>显示颜色名称</strong>——给每个色块起名字（比如 "Shadow Green"、"Base Red"），团队协作或整理复杂项目时特别有用。调色板本身也可以命名，和 <code>.resprite</code> 工程文件一起保存，一个项目多套调色板分开管理。</p>
+<p>动作栏里还有横向插值和纵向插值的快捷入口——选定两个颜色，一键生成中间色渐变。我见过一个推荐的工作习惯：画新项目前先花 5 分钟整理调色板——确定主色调的 5~8 种渐变，加基础明暗色（黑、白、两档灰），再加特殊用途色（UI 按钮色、皮肤色），然后锁定调色板开始画。这样整个项目的色调天然统一，也不会在绘制中途分心去找颜色。</p>
+<h2>瓦片地图全链路：从画瓦片集到导出 Tiled</h2>
+<p>这是 Resprite 和其他像素画软件拉开差距的核心能力域之一。Resprite 支持<strong>矩形、等距菱形、两种六边形</strong>四种网格类型的瓦片地图画布，可以在上面直接画瓦片集、布置地形、定义瓦片动画。</p>
+<p>Resprite 从 v1.32.0 开始支持导出 Tiled 格式（版本更新细节可以查<a href="https://resprite.pages.dev/" target="_blank" rel="noopener">resprite文档</a>）——点击菜单里的「导出 Tiled 地图」，会生成一个 ZIP 包，内含 <code>.tmx</code> 地图文件、<code>.tsx</code> 瓦片集文件和瓦片集 PNG 图片。解压后用 Tiled 打开 <code>.tmx</code> 就能继续编辑关卡。四种网格类型会自动映射到 Tiled 对应的 <code>.tmx</code> 结构：矩形 → Orthogonal，等距 → Isometric，Edge-to-edge 六边形 → Hexagonal staggered，Pointy-top 六边形 → Hexagonal pointy-top，不需要手动配置。</p>
+<p>如果一个 Resprite 文档里同时有不同网格类型的瓦片图层——比如一层矩形地面加一层六边形装饰——导出时会拆成多个 <code>.tmx</code>，因为 Tiled 不支持混排。瓦片动画（水面波纹、火苗跳动那种单瓦片循环）也会保留在 <code>.tsx</code> 里，Tiled 可以直接播放。Resprite 里给瓦片设置的自定义元数据（"这个瓦片是草地类型、碰撞为 Yes"）也能原样导出，Tiled 和游戏引擎可以读取这些元数据做碰撞检测或脚本触发。</p>
+<p><img src="../images/resprite/docs-tilemap-hex.png" alt="六边形瓦片地图：Resprite 支持多种网格类型" loading="lazy"></p>
+<p>反过来，Resprite 也支持导入 <code>.tmx</code> / <code>.tsx</code>，形成一个可以来回迭代的闭环。对独立游戏开发者来说，这个工作流的意义很大——一人兼顾瓦片美术和关卡设计时，Resprite 负责瓦片美术和初版地图，Tiled 负责关卡设计和元数据，中间的文件格式打通了就省很多事。</p>
+<h2>移动端触控深度适配：Pencil 与手指的完美分工</h2>
+<p>Resprite 的 iOS 版可能是目前对 Apple Pencil 适配做得最认真的像素画软件。它不是把桌面 UI 拉伸到触屏上，而是从一开始就围绕"<strong>一只手写 Pencil，一只手操作手势</strong>"来设计。</p>
+<p>分工表很清晰：绘制像素用 Pencil，手指负责填充、切换工具、缩放画布、平移画布——Pencil 一直在画，不用停笔就能用手指快速取色或切工具，回来继续画。压力感应方面，铅笔工具的笔迹粗细会随压力变化（轻画 1 像素细线、重压较粗线条），橡皮擦的擦除范围也响应压力。倾角感应可以实现斜头笔刷的方向性笔触。</p>
+<p>径向菜单（Radial Menu）是 iOS 版的一个独有效率设计——用 Pencil 长按画布某个位置，会弹出一个围绕该点的环形菜单，里面是高频操作（切工具、调笔刷大小、选颜色、开关洋葱皮）。手不用离开画布就能调整，不用跑去点顶部工具栏。菜单内容可以自定义，把自己最常用的操作放进去。</p>
+<p>手势系统也很完整：双指捏合缩放、双指旋转（可选）、单指拖动平移、长按取色、单指左右拖切换帧、单指上下拖切换洋葱皮层——整套手势下来，除了绘制本身，其他操作都不需要用到 Pencil。</p>
+<h2>输出格式生态：不止像素图</h2>
+<p>Resprite 的导出能力相当丰富，除了刚才说的 Tiled，还支持 GIF / APNG 动画序列、视频格式、PSD（可以保留图层）、SpriteSheet（精灵图集）、Bead 串珠模板、Cursor 光标热区设置——基本上覆盖了像素创作者会需要的大多数输出场景。</p>
+<p>一个容易被忽略的细节是 Resprite 的导出可以<strong>按图层分离</strong>——把每个图层单独导出成一张图，方便后期在其他软件里组合使用。对需要做素材拆分的场景来说很实用。如果你想试试 Resprite 自己，安装包从<a href="https://resprite.fedq.quest/download.html" target="_blank" rel="noopener">官方下载</a>获取，三个平台都覆盖。</p>
+<h2>短板也要说</h2>
+<p>公平起见，客观讲几个我觉得 Resprite 目前还不够理想的地方。</p>
+<p>第一，桌面端的触控体验不如 iOS 精致。Android 版的触控手势和 Pencil 适配虽然在持续完善，但相比 iOS 端的深度优化还是有差距。如果你主要在 iPad 上工作，Resprite 的体验会比 Android 或 Windows 平板上明显好一些。</p>
+<p>第二，Tiled 互通有边界。Resprite 特有的某些高级元数据导出 <code>.tmx</code> 后可能无法 100% 反向导回 Resprite，所以 <code>.resprite</code> 工程文件一定要保留作为源文件。反过来，Tiled 独有的功能——对象层、碰撞形状、自定义属性面板——Resprite 目前还不支持，这些只能在 Tiled 里操作。</p>
+<p>第三，Windows 桌面端的某些高级功能迭代速度略慢，某些最新特性可能先在 iOS R 版本上线再下放到桌面。如果你强依赖某个新特性，最好先确认支持平台再决定。</p>
+<h2>什么样的人该用它</h2>
+<p>盘点完能力面之后，总结一下什么样的人会真正从 Resprite 里受益：</p>
+<p><strong>独立游戏开发者，一人兼顾瓦片美术和关卡设计。</strong> Resprite 的瓦片集 → Tiled 地图这条管线打通之后，你不需要在 Aseprite 画瓦片、再切到 Tiled 拼地图、再切到 Unity 调资源——至少瓦片和关卡这两块可以大部分留在 Resprite 里闭环完成，省下来的时间和上下文切换成本相当可观。</p>
+<p><strong>像素风格插画师，追求精确控制每一个像素。</strong> Resprite 的 Pixel Perfect 默认开启、形状工具与选区配合、调色板锁定命名、洋葱皮（Onion Skin）动画预览——这些都是画精细像素插画时的高频刚需，Resprite 把它们都做得很顺手。iPad + Apple Pencil 的组合尤其推荐，压力感应和径向菜单能让绘制过程非常流畅。</p>
+<p><strong>桌游或实体 Bead 串珠爱好者。</strong> Resprite 的 Bead 导出模板功能可以把像素设计稿直接转换成串珠用的点阵图，自动标注每颗珠子的颜色和坐标，相当于软件帮你做了从"数字设计"到"实体材料"的翻译。对喜欢做手工的像素创作者来说，这是一个独特的加分项。</p>
+<hr>
+<p>Resprite 的设计哲学很明确：它不想成为功能堆砌的画板，而是想做一条从"第一个像素点"到"可以投入生产的素材"的完整管线。这套思路对独立开发者和认真的像素画创作者来说，比单独每个工具做得"再好一点"更有价值——时间省下来了，上下文切换少了，工程文件只有一份。如果你需要参照完整的示例项目或想参与改进文档，这套资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/resprite" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/resprite" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/resprite" target="_blank" rel="noopener">GitCode</a> 上都有同步可查。如果你还在像素画 + 关卡设计之间反复切软件，不妨试试看 Resprite 能帮你省多少事。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/replika-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Replika 这几年：从&#34;陪聊机器人&#34;到&#34;有记忆的数字朋友&#34;</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/retroarch-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">RetroArch 用了三年才发现的四个狠活——着色器叠 16 层、观战大厅、按游戏存配置……</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

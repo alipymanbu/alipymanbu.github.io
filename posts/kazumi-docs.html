@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Kazumi 这三年：从三条内置规则到规则驱动的追番框架 · 老杨技术栈</title>
+  
+<meta name="description" content="一个开源追番应用的迭代观察——从出厂示例到社区规则生态，团队到底在死磕什么，又在刻意忽略什么。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/kazumi-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kazumi 这三年：从三条内置规则到规则驱动的追番框架">
+<meta property="og:description" content="一个开源追番应用的迭代观察——从出厂示例到社区规则生态，团队到底在死磕什么，又在刻意忽略什么。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/kazumi-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/kazumi-docs/rule-editor-ui.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/kazumi-docs/rule-editor-ui.png">
+
+<meta name="twitter:title" content="Kazumi 这三年：从三条内置规则到规则驱动的追番框架">
+<meta name="twitter:description" content="一个开源追番应用的迭代观察——从出厂示例到社区规则生态，团队到底在死磕什么，又在刻意忽略什么。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u5f00\u6e90\u8ffd\u756a\u5e94\u7528\u7684\u8fed\u4ee3\u89c2\u5bdf\u2014\u2014\u4ece\u51fa\u5382\u793a\u4f8b\u5230\u793e\u533a\u89c4\u5219\u751f\u6001\uff0c\u56e2\u961f\u5230\u5e95\u5728\u6b7b\u78d5\u4ec0\u4e48\uff0c\u53c8\u5728\u523b\u610f\u5ffd\u7565\u4ec0\u4e48\u3002", "headline": "Kazumi \u8fd9\u4e09\u5e74\uff1a\u4ece\u4e09\u6761\u5185\u7f6e\u89c4\u5219\u5230\u89c4\u5219\u9a71\u52a8\u7684\u8ffd\u756a\u6846\u67b6", "image": ["https://alipymanbu.github.io/images/kazumi-docs/rule-editor-ui.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/kazumi-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/kazumi-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "Kazumi \u8fd9\u4e09\u5e74\uff1a\u4ece\u4e09\u6761\u5185\u7f6e\u89c4\u5219\u5230\u89c4\u5219\u9a71\u52a8\u7684\u8ffd\u756a\u6846\u67b6", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">Kazumi 这三年：从三条内置规则到规则驱动的追番框架</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Kazumi 这三年：从三条内置规则到规则驱动的追番框架</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个开源追番应用的迭代观察——从出厂示例到社区规则生态，团队到底在死磕什么，又在刻意忽略什么。</p>
+  </header>
+  <div class="prose">
+<p>现在从 <a href="https://kazumi.gltd.quest/download.html" target="_blank" rel="noopener">Kazumi下载</a> 拿到安装包装好，打开后进「我的 → 规则管理」，你会看到三条预置的内置规则躺在列表里。它们能跑通一个最小闭环——搜一部番、点开、能播——但仅此而已。想看的大部分番搜不到，这不是应用坏了，是这三条规则从来不是给你「用」的，是给你「验」的。它们是出厂测试件，也是写作模板。</p>
+<p>我第一次注意到 <a href="https://kazumi.gltd.quest" target="_blank" rel="noopener">Kazumi官网</a>，是因为它在追番圈子里的定位很微妙：不是视频播放器，不是番剧数据库，甚至不是番剧聚合站——它是一个<strong>规则引擎</strong>。你给它喂 XPath 规则，它帮你把散落在各个角落的番剧源统一拉进一个界面。这种设计在开源追番软件里不算独创，但 Kazumi 把它推到了一个极端：几乎所有功能都围绕规则展开。</p>
+<h2>它从哪起步：三条规则的骨架</h2>
+<p>样本文档没提的早期历史其实很有意思——恰恰说明它的起点有多朴素。最早版本的 Kazumi，核心逻辑就是「拿 XPath 定位 → 拼结果 → 喂给播放器」。三条内置规则对应三个常见站点，用最短的路径演示完这个链路的每个环节：搜索列表怎么框、番名怎么取、跳转链接指哪、线路和集数怎么扒。</p>
+<p>这个骨架一直没丢。哪怕现在加了时间表、追番标记、云同步这些外围功能，你把它们全关掉，应用仍然能靠三条规则跑起来。这种「核心极简、外围叠层」的设计取向，在版本迭代里反复出现——团队似乎不愿意在核心链路上做任何妥协。</p>
+<p><img src="../images/kazumi-docs/rule-editor-ui.png" alt="规则编辑界面" loading="lazy"></p>
+<h2>关键转折：从「播放器」到「追番框架」</h2>
+<p>真正的转折点大概是在时间表功能加入的那个版本。之前的 Kazumi 是个「找片 → 播放」的单向工具；时间表把它变成了「规划 → 追更 → 归档」的闭环。</p>
+<p>时间表的设计细节暴露了团队的取舍逻辑：数据来自 Bangumi 的放送信息，<strong>与视频源解耦</strong>。它只告诉你「今天有什么更新」，能不能立刻看到、用哪条规则看到，是规则池的事。这个解耦太关键了——把「找片」和「看片」拆成两个独立层，意味着其中一层迭代时另一层不用跟着改。后来追番标记的「想看 → 在看 → 看过」流转，也是建立在这个 Bangumi 资料层之上的。</p>
+<p>近期版本加的「按放送季度切换」，进一步强化了这个框架感：时间表不再只是一个周视图，而是一个季度级的规划面板。新番季开播前先按季度浏览、标记想看，每周按星期栏跟进更新，季末批量整理标记——这个节奏如果不跨三四个版本的迭代，是不可能设计出来的。</p>
+<h2>迭代节奏里藏着的优先级</h2>
+<p>回头看这几年的更新，有一条主线非常清晰：<strong>规则生态是团队一直在死磕的事，而应用内体验的打磨明显慢半拍</strong>。</p>
+<p>死磕的部分：翻 <a href="https://kazumi-docs.pages.dev/" target="_blank" rel="noopener">Kazumi文档</a> 能看到内置规则的字段设计在每个版本都有微调（SearchList、SearchName、SearchResult、ChapterRoads、ChapterResult——这五个字段的命名和层级关系就改了不止一次）；规则仓库的导入、排序、删除、失效检测这些配套功能一直在补；XPath 写法的容错性逐步提升——早期版本 XPath 写错一个节点直接崩，现在会给出具体是哪一步没框到。</p>
+<p>刻意忽略的部分：侧载安装这件事，文档花了大量篇幅讲 Sideloadly 的七天签名、Apple ID 限制、Windows 版 iTunes 的坑——但应用本身没有提供任何简化安装的尝试。iOS 用户的侧载路线有 LiveContainer + SideStore，Windows 用户必须装经典版 iTunes 而不是商店版——这些都是<strong>外部依赖的繁琐，应用本体没有试图解决</strong>。这种选择很有意思：团队不想在分发渠道上花精力，只想把能在规则引擎里解决的问题做到极致。</p>
+<p>规则体系本身也有明显的优先级排序。示例规则始终保持三条，覆盖面极窄，官方从不追求让内置规则能直接用；反而把最复杂的 XPath 写法、最灵活的字段决策、最棘手的失效处理全留给了社区。应用的规则管理页面做得足够好：每条规则在单部番上的搜索结果独立展示、多条规则互补比死磕一条全功能规则更推荐——这些设计都在鼓励社区贡献而不是官方自己扛。</p>
+<p><img src="../images/kazumi-docs/timetable.jpg" alt="时间表界面" loading="lazy"></p>
+<h2>从迭代规律能推的下一步</h2>
+<p>照这个路线走，下一步大概率是<strong>规则生态的进一步平台化</strong>，而不是应用内功能的大幅扩容。几个信号：</p>
+<p>第一，时间表和追番标记都已经建立在 Bangumi 资料层上了，接下来可能会开放更多资料源的接入——比如漫画、小说，逻辑和番剧是一样的：资料层解耦，规则层按需接入。</p>
+<p>第二，规则的失效处理目前还是「自己删掉换新」，但应用已经能检测到规则搜不出结果了——差的就是一个批量检测和社区同步的机制。如果官方做了规则失效的自动标记和社区推荐替换，那整个规则生态的自循环就真正跑起来了。</p>
+<p>第三，多设备同步。文档里完全没提同步，但从云与伙伴这个章节标题来看，团队已经在规划这一块了。一旦规则能跨设备同步，加上 Bangumi 的账号体系，Kazumi 会从一个单端工具变成真正的「规则驱动的追番框架」。</p>
+<p>但我也没太乐观——团队对分发渠道和安装体验的刻意忽略，决定了它永远不会成为大众产品。这种定位很像一个技术爱好者的作品：核心机制做得扎实，外围体验留给用户自己解决。从三条内置规则到今天这套框架，团队的选择始终一致：<strong>把规则引擎打磨到极致，让社区自己长出生态</strong>。</p>
+<p>至于那三条内置规则？它们会一直在那——作为最小验证链路、作为 XPath 写法的活模板，提醒每一个新用户：这个应用的核心，不在它有多少功能，而在你能给它喂出什么样的规则。</p>
+<p>（配套的资料分别同步在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/Kazumi" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/Kazumi" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/Kazumi" target="_blank" rel="noopener">GitCode</a>，按需选用就行。）</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zangi-docs.html">上手 Zangi 三天，这款默认加密的聊天软件让我有点意外</a></h2>
+  <p class="card-desc">一款主打隐私安全的通讯应用，所有消息、通话、文件默认端到端加密且不可关闭。我用了三天，说说它的私密号模型、群语音、文件传输这些核心体验，以及它和主流聊天工具到底有什么不一样。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wplace.html">Wplace 付费账：30秒一颗像素的游戏，到底值不值充钱</a></h2>
+  <p class="card-desc">从电荷机制、升级曲线到付费色与回充加成，把 Wplace 的免费/付费边界拆透——轻度玩家、主力创作者、重度联盟各自该怎么掏这笔钱。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voscreen.html">用 Voscreen 练英语听力——从安装到上手的完整实战</a></h2>
+  <p class="card-desc">Voscreen 是一款基于真实影视片段的英语听力训练应用。这篇教程带你从零开始：选好 Play Mode、适应 ALIVE 动态难度、避开新手最容易踩的三个坑，20 分钟就能进入稳定练习状态。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/kawaks-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">WinKawaks 从零到一：30 分钟把街机模拟器跑起来</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/keep-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Keep 安卓上手教程：从零到第一次跑完一次 AI 教练带练</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

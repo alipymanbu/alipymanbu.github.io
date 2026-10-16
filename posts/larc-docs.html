@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把 Larc 嵌进我每周的 AI 角色测评流水线 · 老杨技术栈</title>
+  
+<meta name="description" content="作为一个每周要体验 5 个新 AI 角色、产出对比测评的写作者，我是怎么把 Larc 接进现有工作流，让选角色、截图、同步、整理这一整条链跑起来的。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/larc-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把 Larc 嵌进我每周的 AI 角色测评流水线">
+<meta property="og:description" content="作为一个每周要体验 5 个新 AI 角色、产出对比测评的写作者，我是怎么把 Larc 接进现有工作流，让选角色、截图、同步、整理这一整条链跑起来的。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/larc-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/larc-docs/character-select.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/larc-docs/character-select.jpg">
+
+<meta name="twitter:title" content="把 Larc 嵌进我每周的 AI 角色测评流水线">
+<meta name="twitter:description" content="作为一个每周要体验 5 个新 AI 角色、产出对比测评的写作者，我是怎么把 Larc 接进现有工作流，让选角色、截图、同步、整理这一整条链跑起来的。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4f5c\u4e3a\u4e00\u4e2a\u6bcf\u5468\u8981\u4f53\u9a8c 5 \u4e2a\u65b0 AI \u89d2\u8272\u3001\u4ea7\u51fa\u5bf9\u6bd4\u6d4b\u8bc4\u7684\u5199\u4f5c\u8005\uff0c\u6211\u662f\u600e\u4e48\u628a Larc \u63a5\u8fdb\u73b0\u6709\u5de5\u4f5c\u6d41\uff0c\u8ba9\u9009\u89d2\u8272\u3001\u622a\u56fe\u3001\u540c\u6b65\u3001\u6574\u7406\u8fd9\u4e00\u6574\u6761\u94fe\u8dd1\u8d77\u6765\u7684\u3002", "headline": "\u628a Larc \u5d4c\u8fdb\u6211\u6bcf\u5468\u7684 AI \u89d2\u8272\u6d4b\u8bc4\u6d41\u6c34\u7ebf", "image": ["https://alipymanbu.github.io/images/larc-docs/character-select.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/larc-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/larc-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "\u628a Larc \u5d4c\u8fdb\u6211\u6bcf\u5468\u7684 AI \u89d2\u8272\u6d4b\u8bc4\u6d41\u6c34\u7ebf", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">把 Larc 嵌进我每周的 AI 角色测评流水线</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把 Larc 嵌进我每周的 AI 角色测评流水线</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">作为一个每周要体验 5 个新 AI 角色、产出对比测评的写作者，我是怎么把 Larc 接进现有工作流，让选角色、截图、同步、整理这一整条链跑起来的。</p>
+  </header>
+  <div class="prose">
+<h2>我的 AI 角色测评流水线，以前卡在哪</h2>
+<p>我每周要做五篇 AI 角色体验的短评，发在自己的公众号和知乎专栏。以前的流程是：在应用里刷到感兴趣的角色 → 聊上十分钟 → 手动截图 → 从手机传到电脑 → 整理到 Notion 里 → 写稿。五个角色轮一遍，光截图和传文件就要花掉四十多分钟——而且经常聊到一半手机没电，换电脑登不上同一个账号，之前的对话记录全丢。</p>
+<p>去年换了新手机，翻应用商店的时候刷到<a href="https://larc.bmww.store" target="_blank" rel="noopener">Larc官网</a>上的3D角色广场。角色的表情和动作不是纯文字描述，有实际的模型在动。我试着把它替换掉原来那套应用，直接接进我的流水线里。结果发现这套接法比我预想的顺，但也有几个环节容易断。</p>
+<h2>新流程：选角色 → 体验 → 截图 → 同步 → 整理，一条链跑通</h2>
+<h3>第一步：角色广场里挑候选</h3>
+<p>Larc 的角色广场有筛选标签，我先按「新上线」和「高互动量」过滤一遍，然后按话题分类挑出三个备选。每个角色点进去先看一下作者写的简介和角色卡，确认话题够新、设定不重复我上周写过的内容。选完直接点「收藏」，后面在收藏夹里可以快速切换。</p>
+<p><img src="../images/larc-docs/character-select.jpg" alt="角色选择界面" loading="lazy"></p>
+<h3>第二步：正式体验，边聊边记</h3>
+<p>开始聊之前，我会先打开手机的屏幕录制开关，而不是事后截图。Larc 的聊天界面支持暂停和恢复快照功能——聊到某个特别有意思的回复时，点一下快照就能把整个场景存下来，包括角色的当前表情和聊天记录片段。这比手动截图高效太多：录屏只在关键节点快照，后期剪辑的时候从快照里挑画面就行，不用在一大堆截图里翻找。</p>
+<p>聊天界面的 3D 模型不是装饰。角色在说话的时候会有对应的口型和小动作，比如聊到开心的话题会歪头笑，聊到严肃的设定会收敛表情。这些细节是我写测评时的重点——竞品大多只有文字和静态头像，Larc 这一点能让我的稿件多出一个比较维度。</p>
+<p><img src="../images/larc-docs/chat-interface.jpg" alt="聊天界面快照" loading="lazy"></p>
+<h3>第三步：换设备继续，不丢数据</h3>
+<p>这是我最在意的环节。以前用别家的应用，手机上聊了一半换到平板上，角色好感度和对话记录经常不同步。Larc 用同一个谷歌账号登录，收藏的角色、好感度进度、快照文件都是云端同步的。我在手机上聊完一个角色，切到平板打开 Larc，直接点同一个角色就能接着上次的进度往下聊——好感度没丢，快照也在。</p>
+<p>但这里有个容易踩的坑：系统时间必须设成自动同步。谷歌账号对时间戳非常敏感，我之前在高铁上手机时间被临时改掉过一次，结果 Larc 登录一直转圈，折腾了十分钟才发现是时间的问题。从此以后我养成了习惯，换设备或换网络后先瞥一眼状态栏的时间对不对。碰到登录问题实在搞不定，翻翻它的<a href="https://larc-docs.pages.dev/" target="_blank" rel="noopener">文档</a>也能找到完整的排查步骤。</p>
+<h3>第四步：素材输出到 Notion</h3>
+<p>每个角色体验完，我把 Larc 里存的快照从应用内导出（Larc 支持把快照保存到本地相册），然后在 Notion 里对应角色的那一页加上这条快照。录屏文件也一并拖进去。这样整理的时候，每个角色都有文字记录、截图、录像素材三件套，比我以前手动收集截图完整得多。</p>
+<h2>流程里最容易断的两个环节，怎么处理</h2>
+<p>第一个环节是<a href="https://larc.bmww.store/download.html" target="_blank" rel="noopener">下载</a>和安装。Larc 安装包大概 29MB，从网盘直接下载分享链接的时候偶尔会断网，导致文件没下全。我现在固定的做法是：先把链接转存到自己的网盘，再从自己的网盘下载，这样能避开分享链接的限流和过期问题。下载完成后先看一下文件大小是不是在 29MB 左右，如果只有几 MB 肯定是没下全，删掉重下。</p>
+<p>第二个环节是登录卡住。Larc 用谷歌账号登录，国内网络环境下如果开着代理有时候会干扰谷歌验证。我的做法是登录的时候先把所有代理和 VPN 关掉，登进去之后再开回来。如果还是一直转圈，就切一下网络——Wi-Fi 不行换移动数据，移动数据不行换 Wi-Fi，通常切两三次就能好。再不行就重启手机，这招十次里能解决八次。</p>
+<h2>这套流程省了多少事，什么时候不划算</h2>
+<p>量化一下效果：以前五篇角色测评从选到写完，平均耗时两个半小时。换成 Larc 之后，选角色和体验环节少了手动截图和传文件的步骤（录屏加快照替代），同步环节少了跨设备的数据搬运，整理环节素材已经自动分类。现在平均耗时一个半小时——<strong>少了一小时</strong>，主要省在素材收集和同步上。</p>
+<p>但这套流程也不是万能的。如果我要写的是纯文字类的 AI 角色对比（不看重 3D 表现），Larc 的 3D 模型反而显得冗余，而且它的角色库目前不如几家老牌应用大，偶尔会出现找不到特定主题角色的情况。另外，如果目标设备没有完整的谷歌框架（比如部分华为国行机型），登录这一关就卡壳了，只能换设备或者换应用。</p>
+<h2>写在最后</h2>
+<p>把一个新应用接进自己的工作流，本质上是在做减法：找到原来流程里最重复、最容易出错的环节，看看这个新应用能不能直接替代。对我来说，Larc 解决的是「跨设备同步」和「3D 角色素材输出」这两个原来最耗时间的痛点，剩下的环节（选角色、写稿）保持原样不动，这样切换成本最低。至于版本更新带来的 BUG 或者新功能，等真正影响到流水线的时候再处理就好——毕竟我跑的是每周一次的内容生产，不是 7x24 小时的服务，偶尔停一次没关系。</p>
+<p>如果想搭自己的这套流水线，可以先看看它的官网了解一下基础功能，下载安装包从官方渠道拿，用到进阶功能或者遇到问题的时候翻翻它的文档。我这套接法也在持续迭代，下周打算试试它的自定义角色功能能不能直接生成我想测的小众题材，要是能用的话又能省掉选角色的十分钟。</p>
+<p>想长期追踪更新的话，我也把这套资料分别同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Larc" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Larc" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Larc" target="_blank" rel="noopener">GitCode</a>上，国内网络访问哪个顺手用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zoomearth.html">ZoomEarth 零基础上手：四步学会用它看风、体感温度和野火</a></h2>
+  <p class="card-desc">从下载安装到叠加三层关键图层，跟着教程一步步搞定，出门前看一眼比查三个天气 App 还省心。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/xrecorder.html">XRecorder：我每周移动端教程工作流里那块被严重低估的拼图</a></h2>
+  <p class="card-desc">从手机录屏到飞书交付的四步变两步——聊聊怎么把 XRecorder 的静音录制、通知栏截屏和内置合并嵌进一条不绕路的移动端内容生产链。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vocalremover-docs.html">VocalRemover 迭代观察：从一个去人声小工具到九件套音频工作室</a></h2>
+  <p class="card-desc">这款在线音频工具一路走来，从单纯的&#34;去人声&#34;扩展成涵盖分离、剪辑、变调、录音的完整工作流。我从样本文档里能摸到的迭代规律。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/langster.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">把 Langster 嵌进我的跨境电商每周英语工作流</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/layout-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Layout 还能这么用——把拼图嵌进每周分享工作流</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>还在手动切横竖屏？Rotation 把自动旋转这件事做对了 · 老杨技术栈</title>
+  
+<meta name="description" content="同类自动方向工具里，Rotation 是少数真正理解用户多场景需求的选手。从事件触发到应用规则，它把方向控制从一个开关变成了一套自动化系统。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/rotation-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="还在手动切横竖屏？Rotation 把自动旋转这件事做对了">
+<meta property="og:description" content="同类自动方向工具里，Rotation 是少数真正理解用户多场景需求的选手。从事件触发到应用规则，它把方向控制从一个开关变成了一套自动化系统。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/rotation-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/rotation-docs/event-conditions.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/rotation-docs/event-conditions.jpg">
+
+<meta name="twitter:title" content="还在手动切横竖屏？Rotation 把自动旋转这件事做对了">
+<meta name="twitter:description" content="同类自动方向工具里，Rotation 是少数真正理解用户多场景需求的选手。从事件触发到应用规则，它把方向控制从一个开关变成了一套自动化系统。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u540c\u7c7b\u81ea\u52a8\u65b9\u5411\u5de5\u5177\u91cc\uff0cRotation \u662f\u5c11\u6570\u771f\u6b63\u7406\u89e3\u7528\u6237\u591a\u573a\u666f\u9700\u6c42\u7684\u9009\u624b\u3002\u4ece\u4e8b\u4ef6\u89e6\u53d1\u5230\u5e94\u7528\u89c4\u5219\uff0c\u5b83\u628a\u65b9\u5411\u63a7\u5236\u4ece\u4e00\u4e2a\u5f00\u5173\u53d8\u6210\u4e86\u4e00\u5957\u81ea\u52a8\u5316\u7cfb\u7edf\u3002", "headline": "\u8fd8\u5728\u624b\u52a8\u5207\u6a2a\u7ad6\u5c4f\uff1fRotation \u628a\u81ea\u52a8\u65cb\u8f6c\u8fd9\u4ef6\u4e8b\u505a\u5bf9\u4e86", "image": ["https://alipymanbu.github.io/images/rotation-docs/event-conditions.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/rotation-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/rotation-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u8fd8\u5728\u624b\u52a8\u5207\u6a2a\u7ad6\u5c4f\uff1fRotation \u628a\u81ea\u52a8\u65cb\u8f6c\u8fd9\u4ef6\u4e8b\u505a\u5bf9\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">还在手动切横竖屏？Rotation 把自动旋转这件事做对了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">还在手动切横竖屏？Rotation 把自动旋转这件事做对了</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 5 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">同类自动方向工具里，Rotation 是少数真正理解用户多场景需求的选手。从事件触发到应用规则，它把方向控制从一个开关变成了一套自动化系统。</p>
+  </header>
+  <div class="prose">
+<h2>这个类目里它排在什么位置</h2>
+<p>自动旋转这个事，系统自带的那个开关显然不够用。想让微信竖屏、B站横屏、导航永远横屏——系统做不到，大厂的定制 ROM 也只是加了个"应用方向锁定"的粗粒度选项。老牌自动化工具可以拼出来，但写 Tasker 配置的门槛已经把大部分人挡在门外了。</p>
+<p><a href="https://rotation.wxhp.skin" target="_blank" rel="noopener">Rotation官网</a>就是在这个空档里冒出来的：它不做全功能自动化，只盯着"屏幕方向"这一件事，把它做到足够细、足够准、足够省心。</p>
+<h2>它的差异化在哪</h2>
+<p>同类工具能做的事大体重叠，但 Rotation 在三个维度上明显领先。</p>
+<h3>事件驱动：不只是按 App 分方向</h3>
+<p>大部分用户对自动方向的理解还停留在"某某 App 用横屏"。Rotation 把这个思路往前推了一步——<strong>按场景分方向</strong>。充电时自动横屏、插耳机时保持竖屏、打电话强制竖屏、接了底座切到横屏模式——这些都是系统自动旋转根本覆盖不到的场景。</p>
+<p>背后用的是安卓系统广播，不需要额外权限，检测充电器插拔、耳机连接状态都是原生能力。我车上装了个廉价的无线车充，插上去手机立刻横屏开导航，拔掉就回到竖屏刷微信——这个切换动作每天要发生好几次，手动切的话早就烦了。</p>
+<p><img src="../images/rotation-docs/event-conditions.jpg" alt="事件条件设置界面" loading="lazy"></p>
+<h3>优先级机制：解决"谁优先"的灵魂拷问</h3>
+<p>当多个事件同时触发时，方向该听谁的？正在充电（想横屏）、同时插着耳机（想竖屏）、还在打一个电话（想竖屏）——系统自动旋转只会一脸懵地选传感器当前的方向。</p>
+<p>Rotation 给了一张可视化的优先级表，每个事件可以上下拖动排顺序。默认通话最优先，锁屏其次，耳机、充电、底座依次往下。大部分人不用改默认，但如果你有特殊需求——比如"我充电比通话重要"——长按拖动就能调整。而且应用规则的优先级永远在事件之上，这一层级关系设计得很合理，不会出现事件条件把应用规则给盖过去的尴尬。</p>
+<h3>强制方向链路：从验证到排障的完整闭环</h3>
+<p>很多工具装完就不管了，出问题才发现根本没生效。Rotation 的文档里有一个"强制横屏验证"环节：关掉系统自动旋转、切强制横屏、看屏幕有没有横过来、再切回默认看能不能恢复——四步走，能进能出才算整条链路通了。</p>
+<p>这个设计挺务实的。安卓碎片化太严重了，厂商改了权限模型、ROM 加了白名单、启动器写死了方向锁定——任何一环都可能让方向切换静默失败。Rotation 先帮你验证链路，再让你配规则，省了很多"配了半天发现根本不生效"的无用功。</p>
+<p><img src="../images/rotation-docs/main-screen.png" alt="主界面强制横屏" loading="lazy"></p>
+<h2>它的取舍：为这些优势付出了什么</h2>
+<p>世界上没有免费的午餐。</p>
+<p>上手门槛比系统自带的开关高不少。你得理解"应用规则"和"事件条件"两套体系，还要搞清楚优先级排序的逻辑。第一次打开看到一堆方向模式（强制横屏、强制竖屏、传感器横屏、反向竖屏、跟随传感器……）和事件类型时，确实容易懵。好消息是它的向导做得还可以，跟着走一遍基本能跑通，<a href="https://rotation-docs.pages.dev/" target="_blank" rel="noopener">rotation文档</a>也覆盖了常见场景的配置示例。</p>
+<p>平台限制方面要提一下小米 MIUI。反向竖屏在部分小米设备上用默认桌面启动器时会被禁用，切过去闪一下又跳回来——这不是 Rotation 的 bug，是 MIUI 自己把反向竖屏在桌面层面给锁死了。解决方法简单但有点膈应：换个第三方启动器就好，Nova、Lawnchair、Microsoft Launcher 都行。其他方向模式不受影响，只是反向竖屏这一个。</p>
+<p>还有一点：它需要"修改系统设置"权限。安装包从<a href="https://rotation.wxhp.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿，这个权限在新系统上要手动去系统设置里开，不在 Rotation 内就能触发。不算麻烦，但第一次用的人容易漏。</p>
+<h2>选购结论：什么样的人选它</h2>
+<p>如果你只用一个方向——比如永远横屏或者永远竖屏——系统自带的自动旋转开关关掉就行，不用额外装东西。Tasker 用户能自己拼出类似的效果，但花的时间和精力跟 Rotation 的价值完全不在一个量级上。</p>
+<p>真正值得装它的人，是那些<strong>在不同场景间频繁切换</strong>的：开车用手机导航、床头充电看视频、桌面支架刷短视频、插耳机听播客还想偶尔看屏幕——场景多了之后手动切方向的摩擦会变得难以忍受。Rotation 把这些切换变成了自动的、事件驱动的、优先级可配的系统。</p>
+<p>我的推荐语很直接：<strong>如果你的手机每天要换三次以上方向，Rotation 是目前同类里最省心的选择。</strong></p>
+<hr>
+<p>这套资料在 <a href="https://github.com/alipymanbu/APK/tree/main/APP/rotation" target="_blank" rel="noopener">GitHub</a> 上维护着完整的文档和安装包备份，方便随时查阅和下载；<a href="https://gitee.com/manbu1103/APK/tree/main/APP/rotation" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/APP/rotation" target="_blank" rel="noopener">GitCode</a> 也同步了同一份内容，给国内访问不太顺畅的朋友备了个份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wallcraft-docs.html">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</a></h2>
+  <p class="card-desc">我把 Wallcraft 免费版和 Pro 版的功能边界摸了个透，算给你看：轻度用户够用、主力用户省心、重度用户爽翻，到底你是哪一类？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tunein-docs.html">三千公里自驾路上，我靠 TuneIn 解决了一个老问题</a></h2>
+  <p class="card-desc">一次跨省自驾的电台焦虑让我认识了 TuneIn——从手机到 CarPlay 再到客厅音箱，一个账号把两百多种设备的收听体验串了起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tabula-zh-docs.html">Tabula 上手：把相册里堆了两年的照片，三天清干净是什么体验</a></h2>
+  <p class="card-desc">手机相册存了六千多张照片不敢动，装了 Tabula 之后用卡片滑动的方式三天清到两千张。这篇讲讲真实上手的感受——好的地方、别扭的地方、适合谁。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/rockbox-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">一台 DAP 的&#34;软件越狱&#34;——Rockbox 凭什么让原厂固件自惭形秽</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/rpcs3.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">RPCS3 入坑前必看的四个翻车现场</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

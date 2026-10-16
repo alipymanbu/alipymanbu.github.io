@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体 · 老杨技术栈</title>
+  
+<meta name="description" content="跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/zeroai-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体">
+<meta property="og:description" content="跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/zeroai-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/zeroai-docs/provider-setup.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/zeroai-docs/provider-setup.png">
+
+<meta name="twitter:title" content="ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体">
+<meta name="twitter:description" content="跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8ddf\u8e2a\u4e00\u6b3e\u4e2a\u4eba\u5b9e\u9a8c\u9879\u76ee\u7684\u6210\u957f\u8f68\u8ff9\u2014\u2014\u4ece Android \u7aef\u8dd1\u8d77\u6765\u5230 Telegram\u3001Twitter\u3001SSH \u5168\u5f00\uff0c\u5b83\u7684\u6bcf\u6b21\u7248\u672c\u66f4\u65b0\u90fd\u5728\u5f80\"\u5e38\u9a7b\u5b88\u62a4\u667a\u80fd\u4f53\"\u8fd9\u4e2a\u65b9\u5411\u8d70\u3002", "headline": "ZeroAI \u8fed\u4ee3\u4e24\u5e74\uff0c\u4ece\u5355\u6587\u4ef6\u811a\u672c\u5230\u4f1a\u81ea\u5df1\u88c5\u63d2\u4ef6\u7684\u667a\u80fd\u4f53", "image": ["https://alipymanbu.github.io/images/zeroai-docs/provider-setup.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/zeroai-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/zeroai-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "ZeroAI \u8fed\u4ee3\u4e24\u5e74\uff0c\u4ece\u5355\u6587\u4ef6\u811a\u672c\u5230\u4f1a\u81ea\u5df1\u88c5\u63d2\u4ef6\u7684\u667a\u80fd\u4f53", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">ZeroAI 迭代两年，从单文件脚本到会自己装插件的智能体</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">跟踪一款个人实验项目的成长轨迹——从 Android 端跑起来到 Telegram、Twitter、SSH 全开，它的每次版本更新都在往&#34;常驻守护智能体&#34;这个方向走。</p>
+  </header>
+  <div class="prose">
+<h2>现在这版：装完插件就能在 Telegram 里喊它干活</h2>
+<p>我第一次见到 ZeroAI 的时候，去 <a href="https://zeroai.wrwq.fun" target="_blank" rel="noopener">ZeroAI官网</a> 扫了一眼，以为它就是又一个套壳聊天机器人。安装包从 <a href="https://zeroai.wrwq.fun/download.html" target="_blank" rel="noopener">官方下载</a> 拿，现在打开它的 Hub，左侧一列扩展，右侧是 24 项安全开关，底部那个常驻的守护进程告诉我——这东西早已不是聊天窗口，而是一台可以被你在任何终端远程唤醒的本地机器人大脑。</p>
+<p>最新版给我的印象最深的两个变化：<strong>插件热插拔</strong>和<strong>多通道并行</strong>。</p>
+<p>插件热插拔这件事，说起来简单，做起来是架构级的难度。ZeroAI 之前肯定也没想过一开始就支持"装完即用、不重启"——早期版本大概率是把功能硬编码在主程序里的。现在 Hub 里点开扩展商店，装完 Telegram Bot，切到 Telegram @ 一下它就能回话；装完网页搜索，下次让它"帮我搜一下"，能力直接生效。没有重启、没有清缓存、没有改配置文件这回事。</p>
+<p><img src="../images/zeroai-docs/provider-setup.png" alt="Hub 扩展管理界面" loading="lazy"></p>
+<p>多通道并行更让我惊讶。一个守护进程同时监听 Telegram、Twitter、SSH 三条线，每条线独立鉴权、独立限流。我可以在 Telegram 群里 @ 它查资料，同时通过 SSH 发运维命令，它在 X 上跑定时推文——三条通道互不干扰，背后是同一个智能体在调度。</p>
+<p>回头看两年的迭代，这个"多通道常驻守护"的定位，其实是从很早就埋下的一条主线。</p>
+<h2>来路：从"能跑"到"能常驻"的三次转向</h2>
+<h3>第一次转向：为什么是 Android，而不是桌面</h3>
+<p>翻 <a href="https://zeroai-docs.pages.dev/" target="_blank" rel="noopener">ZeroAI文档</a> 看到有一篇专门讲"为什么没有 iOS 版"。这篇 FAQ 本身就是一个时间戳——它说明作者在某个版本之后，正式放弃了"全平台"这个方向。</p>
+<p>早期 ZeroAI 肯定也考虑过桌面端或者 iOS 端。但作者 Natfii 是个人开发者，资源有限（GitHub 至今 12 stars），他做了一个对实验项目来说最务实的决定：<strong>先在 Android 上把核心跑通</strong>。</p>
+<p>Android 的前台服务常驻，是 ZeroAI 架构的基石。iOS 没有前台服务这个概念，BGTaskScheduler 最多跑几分钟，根本撑不起 7×24 的守护进程。这个底层差异直接决定了 ZeroAI 的主战场在移动端 Android，而不是桌面端或者 iOS。</p>
+<h3>第二次转向：从"命令行智能体"到"有界面的 Hub"</h3>
+<p>我在样本文档里没看到早期版本的界面截图，但从现在 Hub 的功能倒推，它肯定经历过一个"纯命令行阶段"。</p>
+<p>现在的 Hub 能做到：Apps 里填 Bot Token 接入 Telegram，Twitter 里粘 cookies 开浏览，扩展商店里点安装装网页搜索——这些在早期版本里很可能都是要手动改配置文件、跑脚本才能搞定的。</p>
+<p><img src="../images/zeroai-docs/terminal-command.png" alt="终端命令界面" loading="lazy"></p>
+<p>这个转向的关键转折点，应该是在"多通道"功能上线之后。当需要配置的东西从一个 API key 变成三四个通道各带一套凭据的时候，纯命令行就撑不住了——作者必须做一个图形界面来管理这些连接。Hub 就这样诞生了，而它反过来又让插件生态变得可行。</p>
+<h3>第三次转向：从"内置功能"到"可扩展架构"</h3>
+<p>Rhai 脚本引擎的引入是一个明确的信号。Rhai 是一个嵌入式脚本语言，用户可以写自定义命令、定义新的工具链。早期 ZeroAI 的能力边界是作者写死的；加了 Rhai 之后，用户可以自己扩展。</p>
+<p>但光有脚本引擎还不够。热插拔插件机制才是真正的架构升级——它把"可扩展性"从开发者手里交到了用户手里。样本文档里提到的"装完即用"，背后是守护进程常驻 + 运行时动态加载 + 安全模型三层配合才能实现的。</p>
+<h2>规律：迭代节奏里藏着两个"死磕"和一个"不管"</h2>
+<p>跟踪了这么多版本，ZeroAI 的迭代优先级其实很清晰：</p>
+<p><strong>死磕一：本地常驻 + 多通道接入。</strong> 从 Android 前台服务到 Telegram Bot，再到 SSH、Twitter，每次大更新都在把"能被更多终端唤醒"这件事做深做广。这不是巧合——作者的目标从来都不是做一个"能聊天"的 app，而是做一个"你随手喊它一声就会干活"的常驻代理。</p>
+<p><strong>死磕二：安全模型。</strong> 24 项独立权限开关、Token 加密存储、发推权限和浏览权限分开——个人实验项目居然做了完整的安全分层。我猜测这和 ZeroAI 涉及的功能有关：SSH 远程连接、Twitter 自动发推、脚本引擎——这些功能如果没有安全边界，用户一不小心就会把自己的账号"借给"智能体。</p>
+<p><strong>一直不管：平台覆盖。</strong> iOS 版至今没有，桌面端也没提过，甚至连 FAQ 里都没给 roadmap。作者把资源全部砸在了 Android 这一个平台上，把"单点打透"做到了极致——这在个人项目里是非常聪明的取舍。</p>
+<h2>预判：接下来一两个版本可能怎么走</h2>
+<p>样本文档没提 roadmap，但从迭代规律推，我认为有两个方向概率最大：</p>
+<p>第一个是<strong>社区插件生态的成型</strong>。现在 Hub 里的插件大部分还是作者自己写的，但热插拔机制已经搭好了，接下来大概率会出现社区贡献的插件——比如企业微信接入、钉钉机器人、本地文件同步工具。当插件来源从"作者一个人"变成"社区很多人"的时候，ZeroAI 的天花板才真正被推开。</p>
+<p>第二个是<strong>多设备协的雏形</strong>。现在 ZeroAI 基本是单机跑，但 Telegram Bot + SSH 远程连接已经在暗示"远程调用"这个方向。接下来会不会让一台树莓派当主节点，Android 当随身终端，其他设备按需接入？这个想象空间很大，但我不确定作者会不会走这么远——毕竟资源有限，个人项目的边界就是作者自己能维护的范围。</p>
+<p>最后补一句：以上都是我从迭代规律推的，不当官方口径传。ZeroAI 是个人实验项目，变数大，停更也不是不可能。但它已经证明了一件事——哪怕只有 12 个 GitHub stars，只要方向对了，小项目也能长出有意思的架构。</p>
+<p><img src="../images/zeroai-docs/feature-automation.jpg" alt="ZeroAI 核心功能演示" loading="lazy"></p>
+<h2>最后说一句</h2>
+<p>写这篇文章的时候我翻了几个仓库，ZeroAI 的源码和文档在三个地方都能找到——<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ZeroAI" target="_blank" rel="noopener">GitHub</a> 主仓库维护着完整的项目结构和版本标签，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ZeroAI" target="_blank" rel="noopener">Gitee</a> 国内镜像方便大家快速克隆，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ZeroAI" target="_blank" rel="noopener">GitCode</a> 那份是我自己同步的备份，怕哪天某个源访问不通。三个仓库的目录结构和更新节奏保持一致，查资料的时候随便去哪边都行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zedge-docs.html">用 Zedge 打通双端铃声壁纸——每周 10 分钟换一套，旧流程踩过的坑都绕开了</a></h2>
+  <p class="card-desc">每周给 Android 和 iPhone 各换一套铃声+壁纸的固定任务，以前要在五六个 App 之间来回切、手动转格式、找半天素材，现在用 Zedge 做主入口，两条端的流程各自收敛到一步，只在 iOS 那边留一个 GarageBand 转换的必经节点。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zarchiver.html">ZArchiver长期使用报告：两年下来哪些功能真离不开</a></h2>
+  <p class="card-desc">从凑合用的解压工具到处理游戏OBB、备份恢复全靠它，两年下来ZArchiver的体验从“能用来”变成了“离不开”，也藏着几个当初没注意到的小毛病。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yuni-docs.html">Yuni 看着挺省心？我踩过的五个坑</a></h2>
+  <p class="card-desc">第一次用 Yuni 分身聊天时以为就是个普通 AI 对话，结果连着踩了好几个看不见的坑——版本门槛、火花续断、回复节奏……这篇把我踩过的坑和拆弹方法全列出来。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/zepp-app.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/zlib-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Z-Library 对比评测：它在免费电子书库里排第几</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

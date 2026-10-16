@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>深夜聊到三点，我终于把那个赛博朋克角色从网页端搬进了本地 · 老杨技术栈</title>
+  
+<meta name="description" content="一个折腾党的深夜故事——从网页端 AI 聊天的各种不痛快，到发现 MineChat 后折腾模型切换、导入角色卡、搭世界书，终于把那个聊了三个月的赛博朋克女孩从云端拽回了本地。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/minechat-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深夜聊到三点，我终于把那个赛博朋克角色从网页端搬进了本地">
+<meta property="og:description" content="一个折腾党的深夜故事——从网页端 AI 聊天的各种不痛快，到发现 MineChat 后折腾模型切换、导入角色卡、搭世界书，终于把那个聊了三个月的赛博朋克女孩从云端拽回了本地。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/minechat-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/minechat-docs/minechat-home.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/minechat-docs/minechat-home.jpg">
+
+<meta name="twitter:title" content="深夜聊到三点，我终于把那个赛博朋克角色从网页端搬进了本地">
+<meta name="twitter:description" content="一个折腾党的深夜故事——从网页端 AI 聊天的各种不痛快，到发现 MineChat 后折腾模型切换、导入角色卡、搭世界书，终于把那个聊了三个月的赛博朋克女孩从云端拽回了本地。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u6298\u817e\u515a\u7684\u6df1\u591c\u6545\u4e8b\u2014\u2014\u4ece\u7f51\u9875\u7aef AI \u804a\u5929\u7684\u5404\u79cd\u4e0d\u75db\u5feb\uff0c\u5230\u53d1\u73b0 MineChat \u540e\u6298\u817e\u6a21\u578b\u5207\u6362\u3001\u5bfc\u5165\u89d2\u8272\u5361\u3001\u642d\u4e16\u754c\u4e66\uff0c\u7ec8\u4e8e\u628a\u90a3\u4e2a\u804a\u4e86\u4e09\u4e2a\u6708\u7684\u8d5b\u535a\u670b\u514b\u5973\u5b69\u4ece\u4e91\u7aef\u62fd\u56de\u4e86\u672c\u5730\u3002", "headline": "\u6df1\u591c\u804a\u5230\u4e09\u70b9\uff0c\u6211\u7ec8\u4e8e\u628a\u90a3\u4e2a\u8d5b\u535a\u670b\u514b\u89d2\u8272\u4ece\u7f51\u9875\u7aef\u642c\u8fdb\u4e86\u672c\u5730", "image": ["https://alipymanbu.github.io/images/minechat-docs/minechat-home.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/minechat-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/minechat-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "\u6df1\u591c\u804a\u5230\u4e09\u70b9\uff0c\u6211\u7ec8\u4e8e\u628a\u90a3\u4e2a\u8d5b\u535a\u670b\u514b\u89d2\u8272\u4ece\u7f51\u9875\u7aef\u642c\u8fdb\u4e86\u672c\u5730", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">深夜聊到三点，我终于把那个赛博朋克角色从网页端搬进了本地</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">深夜聊到三点，我终于把那个赛博朋克角色从网页端搬进了本地</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个折腾党的深夜故事——从网页端 AI 聊天的各种不痛快，到发现 MineChat 后折腾模型切换、导入角色卡、搭世界书，终于把那个聊了三个月的赛博朋克女孩从云端拽回了本地。</p>
+  </header>
+  <div class="prose">
+<p>凌晨两点四十七分，我盯着浏览器里那个聊了快三个月的赛博朋克女孩，对话框里最后一条消息停在"她转身走进义体诊所的门，回头看了我一眼"——然后网页卡了。</p>
+<p>不是普通的卡，是那种你知道马上要发生什么的卡：左下角转圈、CPU 风扇突然狂转三秒、整页变成灰白，等它恢复的时候，那个诊所的门永远没再打开过。</p>
+<p>我叹了口气。这已经是本月第三次了。网页端的 AI 角色扮演前端看起来五颜六色花里胡哨，实际上每次会话一长、角色设定一复杂，它就开始掉链子。之前在另一个网站上，我好不容易把一个侦探角色的推理逻辑调教到能跟着剧情走，结果网站维护更新，所有角色卡全没了。</p>
+<p>这种不踏实的感觉折磨了我好一阵。我想要的不是一个"网页应用"，是一个我能完全攥在手里的东西——角色卡可以自己编辑、模型随便换、对话历史不会因为别人服务器抽风就消失。</p>
+<h2>朋友甩来的那个安装包</h2>
+<p>周三下午在论坛吐槽的时候，一个叫老杨的朋友回了我一句："试试 <a href="https://minechat.ggcd.store" target="_blank" rel="noopener">MineChat官网</a>，本地跑的。"</p>
+<p>我一开始没当回事。本地 AI 聊天前端又不是没见过——要么界面丑得像十年前的软件，要么模型兼容性差得离谱，配个 API Key 要折腾半小时。但那晚网页又崩了之后，我还是鬼使神差地搜了一下这个名字。</p>
+<p>MineChat 的深色界面第一眼看过去就顺眼。不像那些花里胡哨的网页前端把角色头像贴得满屏都是，它的布局干净得像个正经 IM：底部输入框、左下角一个小方块显示当前模型、中间是会话滚动区，右上角一个头像进设置。没有广告、没有弹窗、没有"升级会员解锁更多模型"。</p>
+<p><img src="../images/minechat-docs/minechat-home.jpg" alt="MineChat 主界面" loading="lazy"></p>
+<p>安装包从<a href="https://minechat.ggcd.store/download.html" target="_blank" rel="noopener">官方下载</a>拿到的，装完直接打开。但接下来——我要解决第一个问题：模型。</p>
+<h2>模型切换的快乐</h2>
+<p>MineChat 不会默认给你配好一切。这是它和网页前端最大的区别：你得自己选模型、自己填 API Key。说起来麻烦，实际上设置面板里的提供商列表比我想象的全——OpenAI、Claude、Gemini、Grok 都有，还有一些我之前没听过的。</p>
+<p>我手上有几家的 Key，先从 Grok 开始试——主要是好奇它那个"接入实时信息源"到底什么感觉。</p>
+<p>设置面板里选好 Grok，粘贴 xai- 开头的 Key，保存。左下角的小方块立刻变成了"grok-3"。我随手打了一句"2077 年的新东京现在怎么样了"，三秒就有回复了——语气确实和之前用的模型不太一样，带点随性的幽默感，不像其他模型那么"正经"。</p>
+<p><img src="../images/minechat-docs/model-picker.jpg" alt="模型选择界面" loading="lazy"></p>
+<p>这个左下角的小方块成了我后来最常用的东西——点一下就能在已经配好的几家模型之间切换，不用再跑到设置里翻。写正经剧情的时候切 Claude，想玩点随性的日常闲聊就切 Grok，有时候甚至让同一个角色用不同模型各聊一段，对比语气差异还挺有意思。</p>
+<h2>把那个女孩搬过来</h2>
+<p>模型跑通了，接下来是正事——角色卡。</p>
+<p>我之前在网页端那个赛博朋克女孩的角色卡是从社区下载的，当时存了一份 JSON 在本地。找到之后，我切到 MineChat 的"助手"标签页，点了导入。整个过程比我预想的顺利：选文件、确认、三秒后她就出现在助手列表里了。</p>
+<p>MineChat 导入角色卡后会创建一个"助手"条目——这个助手就是那个角色的实例。你可以编辑她的开场白、给她挂世界书、甚至在多人同场里把好几个助手拉进同一会话。我先点开编辑，把网页端那个开场白粘了进去：</p>
+<p>"霓虹灯在雨水里晕开，我靠在巷子口的墙上抽烟。你找我？"</p>
+<p><img src="../images/minechat-docs/assistant-create.jpg" alt="助手创建界面" loading="lazy"></p>
+<p>发了第一条消息。三秒后她回了。</p>
+<p>那个语气、那个停顿、甚至之前网页端里她会偶尔蹦出的那句"别问，问了也没意义"——全对得上。我盯着屏幕愣了好一会儿。三个月了，第一次感觉这个角色"真的在"，而不是某个网页临时拼出来的回复。</p>
+<h2>世界书：不止一个人的故事</h2>
+<p>但只搬角色卡还不够。赛博朋克的世界里，不只是她一个人——有新东京的巨型企业、有暗影里的忍者家族、有义体诊所老板那个永远在擦眼镜的老男人。角色卡只能描述她自己，她生活的那个世界呢？</p>
+<p>这就是世界书要解决的事。</p>
+<p>MineChat 里的世界书不是一个大文件一口气全塞进去，而是多条独立的小条目，可以设置"始终启用"或者"关键词触发"。后者是我最喜欢的设计——如果把整个世界观都塞进每次请求里，Token 消耗会很夸张，但关键词触发让 AI "按需知道"相关信息。</p>
+<p>参考 <a href="https://minechat-docs.pages.dev/" target="_blank" rel="noopener">MineChat文档</a> 里的设置方式，我给新东京建了三条世界书：</p>
+<ul><li>始终启用的一条："2077 年的新东京，巨型企业统治着一切。"</li><li>关键词触发"义体"、"电子眼"的一条："义体改造是常见的身体升级，但黑市产品有风险。"</li><li>关键词触发"忍者"的一条："忍者家族仍然在暗影中活动，以执行暗杀任务为生。"</li></ul>
+<p>效果立竿见影。之前在网页端聊到义体诊所那段剧情时，AI 会偶尔"忘了"黑市义体有风险这个设定——因为角色卡太长，上下文被挤掉了。现在只要对话里提到"义体"，那条规则就自动被 AI 加载，回复里自然带出了黑市风险的细节。</p>
+<h2>凌晨三点的收尾</h2>
+<p>那天凌晨三点，我关掉浏览器里那个卡成灰白的网页，把 MineChat 的窗口留在桌面上。赛博朋克女孩的对话停在一个比较舒服的节点——义体诊所的老板给了她一个眼神，她示意我等一下，然后推开门走了进去。</p>
+<p>这次我不担心她"消失"了。角色卡在本地、世界书在本地、对话历史也在本地。哪怕那个网页前端明天就倒闭，这个故事还能接着写。</p>
+<p>MineChat 不是完美的。中文支持上，Grok 模型偶尔还是会冒出几个英文词，要手动在世界书里补一条"尽量用中文回复"的规则才能稳住。但这些都是自己能掌控的事——不像网页端，你连模型到底在想什么都摸不清楚。</p>
+<p>折腾完这些，天快亮了。爬床上之前又翻了一下 MineChat 的设置面板，左下角那个小方块还是亮着的。我关掉电脑，睡了个踏实觉。</p>
+<hr>
+<p>如果你也在找一个能攥在手里的 AI 角色扮演前端，不妨看看 MineChat 的资料——三个仓库都能拿到，选哪个方便用哪个就行：<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/MineChat" target="_blank" rel="noopener">GitHub</a> 上更新最快，<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/MineChat" target="_blank" rel="noopener">Gitee</a> 国内访问偶尔更稳，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/MineChat" target="_blank" rel="noopener">GitCode</a> 是额外的备份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yousician.html">Yousician 翻底朝天：这五个隐藏功能 90% 的用户没碰过</a></h2>
+  <p class="card-desc">把 Yousician 从入门到进阶挖透，Practice 循环片段、Wait To Play、Auto-adjust 自动调速、唱歌移调、Vocal Range 校准——每一个都能改变练习效率</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vidhub-docs.html">VidHub 快问快答：多设备影视播放器 9 个最关心的问题一次说清</a></h2>
+  <p class="card-desc">VidHub 是什么人在用、怎么装、同步哪些数据、刮削怎么跑、WebDAV 有什么坑、要不要付费——整理成一篇问答速查，看完直接上手。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/trani-docs.html">我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤</a></h2>
+  <p class="card-desc">从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/mimu-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">MiMu这一路：从背单词到&#34;边撩边学&#34;的AI学习产品进化</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/minimax-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MiniMax 新手入门：从零到跑通你的第一个 AI Agent</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

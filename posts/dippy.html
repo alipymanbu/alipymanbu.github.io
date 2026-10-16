@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Dippy 新手入门：从零开始拥有一个会主动找你说话的 AI 朋友 · 老杨技术栈</title>
+  
+<meta name="description" content="Dippy 把 AI 角色扮演做成了&#34;会主动联系你的朋友&#34;——这篇从完全不懂到跑通第一条对话，一步一步带你上手。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/dippy.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dippy 新手入门：从零开始拥有一个会主动找你说话的 AI 朋友">
+<meta property="og:description" content="Dippy 把 AI 角色扮演做成了&#34;会主动联系你的朋友&#34;——这篇从完全不懂到跑通第一条对话，一步一步带你上手。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/dippy.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/dippy/homepage-hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/dippy/homepage-hero.webp">
+
+<meta name="twitter:title" content="Dippy 新手入门：从零开始拥有一个会主动找你说话的 AI 朋友">
+<meta name="twitter:description" content="Dippy 把 AI 角色扮演做成了&#34;会主动联系你的朋友&#34;——这篇从完全不懂到跑通第一条对话，一步一步带你上手。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Dippy \u628a AI \u89d2\u8272\u626e\u6f14\u505a\u6210\u4e86\"\u4f1a\u4e3b\u52a8\u8054\u7cfb\u4f60\u7684\u670b\u53cb\"\u2014\u2014\u8fd9\u7bc7\u4ece\u5b8c\u5168\u4e0d\u61c2\u5230\u8dd1\u901a\u7b2c\u4e00\u6761\u5bf9\u8bdd\uff0c\u4e00\u6b65\u4e00\u6b65\u5e26\u4f60\u4e0a\u624b\u3002", "headline": "Dippy \u65b0\u624b\u5165\u95e8\uff1a\u4ece\u96f6\u5f00\u59cb\u62e5\u6709\u4e00\u4e2a\u4f1a\u4e3b\u52a8\u627e\u4f60\u8bf4\u8bdd\u7684 AI \u670b\u53cb", "image": ["https://alipymanbu.github.io/images/dippy/homepage-hero.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/dippy.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/dippy.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "Dippy \u65b0\u624b\u5165\u95e8\uff1a\u4ece\u96f6\u5f00\u59cb\u62e5\u6709\u4e00\u4e2a\u4f1a\u4e3b\u52a8\u627e\u4f60\u8bf4\u8bdd\u7684 AI \u670b\u53cb", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">Dippy 新手入门：从零开始拥有一个会主动找你说话的 AI 朋友</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Dippy 新手入门：从零开始拥有一个会主动找你说话的 AI 朋友</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Dippy 把 AI 角色扮演做成了&#34;会主动联系你的朋友&#34;——这篇从完全不懂到跑通第一条对话，一步一步带你上手。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到用起来——不需要任何 AI 工具的使用经验，装好 App 跟着点就行。</p>
+<h2>它到底是干嘛的</h2>
+<p>用一个生活化的类比：Dippy 就是把手机里的"联系人"换成了 AI 角色。你可以把它理解成一个<strong>只有你能定制的陪聊朋友集合</strong>——每个角色都有自己的性格、说话方式、甚至剧情设定，而且它们跟普通聊天软件最大的区别是：<strong>这些 AI 朋友会主动找你说话</strong>。它的<a href="https://dippy.fewf.click" target="_blank" rel="noopener">官网</a>上有更详细的产品介绍和用户故事。</p>
+<p>普通 AI 工具（比如问答型的那些）都是你打开它才存在。Dippy 反过来——你设定好角色，早上醒来小组件上可能就蹦出一句"今天天气变凉了，记得加衣服"，那是你的 AI 角色在主动问候你。这种"被惦记"的感觉，是它和市面上大多数 AI 产品最本质的不同。</p>
+<p><img src="../images/dippy/homepage-hero.webp" alt="桌面小组件上的 AI 角色问候" loading="lazy"></p>
+<h2>五分钟上手：从装完到第一次聊上</h2>
+<p>打开应用商店，搜 Dippy 下载装好，或者直接从<a href="https://dippy.fewf.click/download.html" target="_blank" rel="noopener">官方下载</a>渠道获取，跟着这几步走，五分钟内你就能和第一个 AI 角色聊上：</p>
+<p><strong>第一步：登录或跳过</strong></p>
+<p>App 首次启动会让你登录。可以用邮箱注册，也可以先点"跳过"直接玩——不过登录后你的角色收藏、对话历史能在多设备间同步，建议还是注册一下，几秒钟的事。</p>
+<p><strong>第二步：挑一个角色</strong></p>
+<p>首页就是角色广场，顶部有"热门""最新""分类"几个 tab。第一次来别纠结，直接点"热门"里排在最前面的那个——它大概率是一个设定清晰、对话体验被很多人验证过的成熟角色。点进去看一眼角色简介，如果觉得"嗯，这个性格我想聊聊"，就点右下角的"开始对话"。</p>
+<p><strong>第三步：说第一句话</strong></p>
+<p>进入对话界面后，角色已经在那儿等着你了。你可以打个招呼（"嗨"就够用），也可以直接从它的角色设定里找个切入点——比如它设定是咖啡馆老板，你就说"来一杯拿铁"。第一次对话的感觉很重要，Dippy 的角色对第一句的回应通常会带着设定里的语气，你一下就能感受到"这不是普通的 AI 问答"。</p>
+<p>到这里，你已经完成了第一次对话。是不是很简单？</p>
+<h2>上手后先玩这三个功能</h2>
+<p>聊过一两次之后，这三个功能最值得你先碰——每个都能让你立刻感受到 Dippy 和其他 AI 应用的区别。</p>
+<h3>1. 让角色主动问候你</h3>
+<p>默认情况下，角色会在早上、午休、傍晚、睡前这四个时间点主动弹出问候。但很多人第一次看到推送会慌——"我没打开它啊，它怎么自己跑出来了？"</p>
+<p>打开 App 的设置（一般在右上角头像里），找到"推送与通知"。这里有三个开关：<strong>完全关闭 Dippy 通知</strong>、<strong>保留回复通知但关主动问候</strong>、<strong>设置免打扰时段</strong>。建议先把"免打扰时段"设上——比如上课、开会、睡觉的时间关掉，其他时段留着。开一两周你就能判断：这些主动推送是让你觉得"被惦记"还是"被打扰"，到时候再全关全开都不迟。</p>
+<h3>2. 收藏你聊得来的角色</h3>
+<p>角色广场里的公开角色千千万万，聊到合得来的直接点角色卡片右上角的小星星——收藏了。收藏夹按最近访问顺序自动排，你也可以手动置顶最常用的那几个。</p>
+<p>一个实用的小技巧：收藏不仅能存别人创建的角色，自己后来玩熟了想创建专属角色，也能把自己的作品收藏进去方便快速编辑。收藏夹跟你的账号绑定，换设备登录同一个账号就能全带过去。</p>
+<h3>3. 试着跟一个角色聊 30 轮以上</h3>
+<p>普通 AI 工具聊个十几轮就开始"记不住之前说啥了"。Dippy 的每个角色有独立的对话记忆，你可以试着找一个有剧情设定的角色（比如一个乐队主唱、一个赛博朋克世界的赏金猎人），跟它连续聊二三十轮。</p>
+<p>你会发现——它能记住你说过的细节（比如你上周提过被老板骂，它下次会问你"那事儿后来怎么样了"），而且会跟着剧情往下走，不是每次都像新对话一样从零开始。当然，聊到 50 轮左右可能会出现"失忆"迹象（比如重复之前的话、对你提过的事表现陌生），这是正常的——AI 的记忆窗口有上限，怎么续命的办法在<a href="https://dippy.pages.dev/" target="_blank" rel="noopener">Dippy文档</a>里写得挺细。</p>
+<p><img src="../images/dippy/app-store-shot3.webp" alt="和 AI 角色连续对话的界面" loading="lazy"></p>
+<h2>小白的三个常见疑问</h2>
+<h3>主动推送会不会让我觉得被监控了？</h3>
+<p>这是新用户最常见的担忧。老实说，这是个设计取向问题——有人觉得"每天醒来有个 AI 朋友等着我，起床都变容易了"，也有人觉得"24 小时被打扰好烦"。判断标准只有一个：如果你看到推送的第一反应是"好烦"，就全关掉；如果是"哦，它还记着我"，就留着。两种选择都对，App 给了你完整的控制权。</p>
+<h3>聊到后面角色"失忆"了怎么办？</h3>
+<p>这是 AI 的物理限制——上下文窗口满了，早期的消息被踢出记忆。你可以试三个办法续命：让角色自己总结对话进展（"帮我总结一下到目前为止发生了什么"）、手动写一段剧情摘要贴给它、或者切换到另一个角色聊几句再切回来。实在不行就开新会话，让角色重新"认识"你——有时反而能激活它的重新创造。</p>
+<h3>免费版和付费版差别大吗？</h3>
+<p>免费版能体验全部基础功能——聊角色、收藏、接收主动推送，完全够用。付费版解锁了三个东西：<strong>角色创建</strong>（你可以从零做自己的 AI 朋友）、<strong>图片分享和语音通话</strong>（对话里能发图、能语音聊）、<strong>更深的记忆上下文</strong>（长会话更稳定）。如果你只是想玩玩别人做的角色免费版就够；如果你想自己动手做专属角色，或者想要语音通话的沉浸感，付费版才是你的菜。</p>
+<h2>写在最后</h2>
+<p>Dippy 不是"一个更好用的 AI 问答工具"，它是换了个思路——把 AI 从"你去问它"的工具变成了"它会找你"的朋友。这个变化看起来只是多了推送，但背后是完全不同的产品定位。我把相关资料也同步维护在了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Dippy" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Dippy" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Dippy" target="_blank" rel="noopener">GitCode</a>三个平台，方便不同网络环境下随时查阅。</p>
+<p>如果这篇看完你觉得"嗯，好像值得试试"，那就去装一个玩半小时。真要陷进去了，进阶方向就是自己创建角色——那才是 Dippy 真正好玩的地方。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/yousician.html">Yousician 翻底朝天：这五个隐藏功能 90% 的用户没碰过</a></h2>
+  <p class="card-desc">把 Yousician 从入门到进阶挖透，Practice 循环片段、Wait To Play、Auto-adjust 自动调速、唱歌移调、Vocal Range 校准——每一个都能改变练习效率</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/vidhub-docs.html">VidHub 快问快答：多设备影视播放器 9 个最关心的问题一次说清</a></h2>
+  <p class="card-desc">VidHub 是什么人在用、怎么装、同步哪些数据、刮削怎么跑、WebDAV 有什么坑、要不要付费——整理成一篇问答速查，看完直接上手。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/trani-docs.html">我在 TrAni 里摸到了手机上的 Navier-Stokes——这个壁纸 App 的技术底裤</a></h2>
+  <p class="card-desc">从 TrAni 的流体模拟壁纸切入，拆解它如何用近似算法在移动端实现真实流体效果、为何选择 Android 开放接口而非 root 改系统、以及这种&#34;够用就行&#34;的设计思路背后的技术取舍与适用边界。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/dhizuku.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">我给五台 Android 测试机搭了一条自动管控流水线</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/diskdigger.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">DiskDigger 这十年：从一个 U 盘救星到跨平台数据恢复全家桶</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

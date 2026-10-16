@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Wallhaven 隐藏功能深挖：搜壁纸十年才发现的 5 个冷门玩法 · 老杨技术栈</title>
+  
+<meta name="description" content="每天被无数人刷的壁纸站，除了「搜一下、存一下」，其实还藏着搜索操作符、六类过滤位码、随机翻页去重、密钥双传法，以及一个官方都不承认存在的安卓客户端。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/wallhaven-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wallhaven 隐藏功能深挖：搜壁纸十年才发现的 5 个冷门玩法">
+<meta property="og:description" content="每天被无数人刷的壁纸站，除了「搜一下、存一下」，其实还藏着搜索操作符、六类过滤位码、随机翻页去重、密钥双传法，以及一个官方都不承认存在的安卓客户端。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/wallhaven-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/wallhaven-docs/home-main.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/wallhaven-docs/home-main.jpg">
+
+<meta name="twitter:title" content="Wallhaven 隐藏功能深挖：搜壁纸十年才发现的 5 个冷门玩法">
+<meta name="twitter:description" content="每天被无数人刷的壁纸站，除了「搜一下、存一下」，其实还藏着搜索操作符、六类过滤位码、随机翻页去重、密钥双传法，以及一个官方都不承认存在的安卓客户端。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6bcf\u5929\u88ab\u65e0\u6570\u4eba\u5237\u7684\u58c1\u7eb8\u7ad9\uff0c\u9664\u4e86\u300c\u641c\u4e00\u4e0b\u3001\u5b58\u4e00\u4e0b\u300d\uff0c\u5176\u5b9e\u8fd8\u85cf\u7740\u641c\u7d22\u64cd\u4f5c\u7b26\u3001\u516d\u7c7b\u8fc7\u6ee4\u4f4d\u7801\u3001\u968f\u673a\u7ffb\u9875\u53bb\u91cd\u3001\u5bc6\u94a5\u53cc\u4f20\u6cd5\uff0c\u4ee5\u53ca\u4e00\u4e2a\u5b98\u65b9\u90fd\u4e0d\u627f\u8ba4\u5b58\u5728\u7684\u5b89\u5353\u5ba2\u6237\u7aef\u3002", "headline": "Wallhaven \u9690\u85cf\u529f\u80fd\u6df1\u6316\uff1a\u641c\u58c1\u7eb8\u5341\u5e74\u624d\u53d1\u73b0\u7684 5 \u4e2a\u51b7\u95e8\u73a9\u6cd5", "image": ["https://alipymanbu.github.io/images/wallhaven-docs/home-main.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/wallhaven-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/wallhaven-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "Wallhaven \u9690\u85cf\u529f\u80fd\u6df1\u6316\uff1a\u641c\u58c1\u7eb8\u5341\u5e74\u624d\u53d1\u73b0\u7684 5 \u4e2a\u51b7\u95e8\u73a9\u6cd5", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">Wallhaven 隐藏功能深挖：搜壁纸十年才发现的 5 个冷门玩法</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Wallhaven 隐藏功能深挖：搜壁纸十年才发现的 5 个冷门玩法</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">每天被无数人刷的壁纸站，除了「搜一下、存一下」，其实还藏着搜索操作符、六类过滤位码、随机翻页去重、密钥双传法，以及一个官方都不承认存在的安卓客户端。</p>
+  </header>
+  <div class="prose">
+<p>你以为 Wallhaven 就是个搜壁纸的网站？输个关键词、点两下、右键另存——十年老用户大概率也没翻过这层表皮。我把它的公开 API 翻了个底朝天，还参考了一份<a href="https://wallhaven-docs.pages.dev/" target="_blank" rel="noopener">wallhaven文档</a>，比官方站的说明细得多。再加上社区里藏着的安卓客户端一起摸了一遍，发现了五个官方文档写了但几乎没人照着玩的冷门功能。每一个都够你从「搜壁纸」进化到「用壁纸」。</p>
+<p><img src="../images/wallhaven-docs/home-main.jpg" alt="首页的随机图流" loading="lazy"></p>
+<h2>搜索框里能写操作符，不是只有关键词</h2>
+<p>最容易被忽略的功能：Wallhaven 的搜索框不是普通的文本匹配，它兼容一套简洁的操作符语法。<a href="https://wallhaven.ggcd.uno" target="_blank" rel="noopener">wallhaven官网</a>搜索框和 API 的 <code>q</code> 参数走同一套逻辑，网页上的高级筛选面板只是它的子集。</p>
+<p>常用的几个：<code>q=-city</code> 排除包含 city 的结果，<code>q=+space +minimal</code> 强制同时包含两个词，<code>q=@用户名</code> 直接搜某个上传者的全部作品。但真正好用的是三个精确匹配操作符——<code>q=id:12345</code> 按壁纸 ID 精确查一张、<code>q=type:png</code> 按文件类型过滤、<code>q=like:壁纸ID</code> 找相似图。</p>
+<p>举个例子，你看到一张不错的 4K 极简风景，想找同款风格但不想一个个刷：直接 <code>q=like:那张图的ID</code>，Wallhaven 会按颜色和构图推一批近似的。这比翻标签页高效太多。</p>
+<p>这里埋了一个坑：<code>id:</code> 精确标签<strong>不能跟别的操作符混用</strong>，混用直接无效。官方没说为啥，实测就是这样——想精确查一张就只写 <code>id:</code>，别再加别的。</p>
+<h2>六个位码组合，一次筛出你要的纯度和类型</h2>
+<p>搜索接口有两组看似枯燥的三位数参数：<code>categories</code> 和 <code>purity</code>。前者三位对应 General / Anime / People，后者三位对应 SFW / Sketchy / NSFW。每一位是 1 开 0 关，可自由组合。</p>
+<p>多数人用默认的 <code>111</code>（全开），但当你只想要动漫壁纸、完全不想看到真人摄影时，<code>categories=010</code> 一键切换。反过来，找摄影大片时用 <code>categories=100</code> 把动漫排除掉。<code>purity</code> 的组合更细——<code>110</code> 是 SFW + Sketchy（半擦边），<code>111</code> 全开时必须带 API 密钥，否则游客身份按纯 SFW 执行。</p>
+<p>这组参数在网页版的「高级搜索」里有复选框，但 API 里可以直接拼到 URL。对做壁纸轮换脚本的人来说，这比网页操作方便十倍——一条 GET 请求就能精准拿到你要的图池。</p>
+<p><img src="../images/wallhaven-docs/search-results.jpg" alt="搜索结果的六分类筛选" loading="lazy"></p>
+<h2>随机排序的 seed 参数，翻一辈子都能去重</h2>
+<p>Wallhaven 的排序里有一个 <code>random</code> 选项——点击后图片顺序每次刷新都不同。但 API 里随机排序有个隐藏参数 <code>seed</code>：六位字母数字串，同 seed 同页的结果固定。</p>
+<p>这意味着你可以给壁纸轮换器写这样的逻辑：每次启动生成一个新 seed，然后 <code>page=1,2,3…</code> 顺着翻，确保一段时间内不会重复命中同一张图。官方每页固定 24 张，<code>meta</code> 里会告诉你总页数和当前页码，翻页逻辑直接照抄就行。</p>
+<p>对比一下没 seed 的 random：每次请求都是独立的随机序列，你循环翻 100 页，重复率极高。有 seed 之后，同一轮内顺序确定，翻完换个 seed 就能重新洗牌。这个细节官方文档只提了一句，几乎没人留意。</p>
+<h2>密钥两种传法，工具开发别用错</h2>
+<p>Wallhaven 的 API 是免费的，但免费不等于无限制。官方写死了两个数字：<strong>每分钟 45 次</strong>限流、NSFW 内容必须带密钥。超过限流返回 429，密钥不对返回 401。</p>
+<p>密钥有两种传递方式。第一种是查询串：<code>?apikey=你的密钥</code>——简单直接，但 URL 会进服务器日志，把带密钥的链接分享给别人等于把账号拱手让人。第二种是 HTTP 请求头 <code>X-API-Key</code>：密钥不落到 URL 里，适合工具开发。</p>
+<p>401 错误有两种完全不同的含义。一种是「你没资格看这个」——请求了 NSFW 内容却没带密钥，补上就行。另一种是「你的密钥本身坏了」——带了无效密钥，需要去账号设置里重新生成。排查时先看 purity 参数和请求头，别上来就重试把限流撞了。</p>
+<p><img src="../images/wallhaven-docs/toplist.jpg" alt="官方榜单的时间范围选择" loading="lazy"></p>
+<h2>官方没出 App，但社区藏着一个安卓客户端</h2>
+<p>这个最有意思：Wallhaven 官方明确说过「没有出过 App」，但社区里一直有第三方安卓客户端在流传。它读的还是同一个公开 API，中文界面，安装包可以从<a href="https://wallhaven.ggcd.uno/download.html" target="_blank" rel="noopener">wallhaven下载</a>转到自己的网盘再取。</p>
+<p>能搜到的版本要求安卓 5.2 以上，安装后直接进壁纸大厅，不需要注册登录。唯一跟账号有关的功能就是填 API 密钥——填了之后搜索会套用你账号的默认筛选，能看到更多内容级别。</p>
+<p>安装有三个前置检查：系统版本够不够、存储预留几百 MB（原图 4K 的话一张就十几 MB）、给浏览器开「安装未知应用」权限。装完建议校验一下 MD5 身份，社区有专门的核对页。</p>
+<p><img src="../images/wallhaven-docs/wallpaper-detail.jpg" alt="壁纸详情页的原图和颜色信息" loading="lazy"></p>
+<h2>踩过才知道的两个坑</h2>
+<p>最后说两个容易忽略的问题。一个是 API 限流——45 次/分钟对人来说绰绰有余，但写脚本时很容易撞线。一个「每 3 秒翻一页」的轮换工具贴着限额跑没问题，「每秒翻 10 页」必然被掐。收到 429 直接指数退避（等 30 秒再 60 秒），别立即重试火上浇油。</p>
+<p>另一个是版权。Wallhaven 社区从 Wallbase 时代起就对版权特别敏感——官方没有广告收入，没有对抗版权方的动机，撤侵权图的优先级很高。个人收藏下载设壁纸没问题，但把图拿去商用或二次分发，权利归属看的是原作者不是这个站。上传时裁掉签名、传禁传来源是侵权纠纷的最高发区。</p>
+<p>Wallhaven 不是只能搜搜存存的壁纸站——它更像一个接口完全公开的图片社区平台。把这五个隐藏玩法吃透，你就能从刷图的用户变成真正驾驭它的人。关于 API 参数和客户端安装的完整笔记，我顺手同步到了 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/wallhaven" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/wallhaven" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/wallhaven" target="_blank" rel="noopener">GitCode</a> 三个仓库，国内外不同网络环境下都能取到。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/zepp-app.html">Zepp App 全维度盘点：从配对到健康生态，一款手表伴侣能做到什么程度</a></h2>
+  <p class="card-desc">把 Amazfit 手表生态从连接、健康监测到个性化改造的能力面完整铺开，哪些是真亮点、哪些藏着短板、哪类人最值得入手这套组合。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wispr-docs.html">Wispr v1.3.3：一个加密通讯应用在&#34;安全优先&#34;路上的四年迭代</a></h2>
+  <p class="card-desc">从 VOBP 协议到 P2P 直连，从手机号免费层到 Matrix ID 付费身份，CryptoDATA 的 Wispr 用一个个小版本慢慢拼凑出它对&#34;加密通讯该怎么做&#34;的答案。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wibu-docs.html">给 wibu 算一笔付费账：Wibu+ 订阅到底值不值得掏这 $9.99</a></h2>
+  <p class="card-desc">从定价拆解到按使用强度算账，把 Wibu+ 订阅的每一项权益换算成你实际能省的时间和赚到的钱，看完你就知道自己该不该付。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/wallcraft-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Wallcraft 到底值不值得掏钱——一笔壁纸订阅的精细账</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/wallpaperengine-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">第一次装 Wallpaper Engine？五分钟让你的 Windows 桌面活起来</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>
