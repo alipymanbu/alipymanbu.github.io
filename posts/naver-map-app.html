@@ -7,12 +7,12 @@
   <title>Naver Map 版本进化史：从韩国版百度地图到内容聚合平台的十年 · 老杨技术栈</title>
   
 <meta name="description" content="从 v5.x 的多语言破冰到 v6.x 的 Discover 发现页和 Booking 预订，Naver Map 正在把地图做成一个生活入口。">
-<link rel="canonical" href="https://alipymanbu.github.io/posts/naver-map-docs.html">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/naver-map-app.html">
 <meta property="og:site_name" content="老杨技术栈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Naver Map 版本进化史：从韩国版百度地图到内容聚合平台的十年">
 <meta property="og:description" content="从 v5.x 的多语言破冰到 v6.x 的 Discover 发现页和 Booking 预订，Naver Map 正在把地图做成一个生活入口。">
-<meta property="og:url" content="https://alipymanbu.github.io/posts/naver-map-docs.html">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/naver-map-app.html">
 <meta property="og:locale" content="zh_CN">
 
 <meta property="og:image" content="https://alipymanbu.github.io/images/naver-map-docs/be-local-bubble.png">
@@ -29,7 +29,7 @@
   <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
   <link rel="stylesheet" href="../style.css">
   
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece v5.x \u7684\u591a\u8bed\u8a00\u7834\u51b0\u5230 v6.x \u7684 Discover \u53d1\u73b0\u9875\u548c Booking \u9884\u8ba2\uff0cNaver Map \u6b63\u5728\u628a\u5730\u56fe\u505a\u6210\u4e00\u4e2a\u751f\u6d3b\u5165\u53e3\u3002", "headline": "Naver Map \u7248\u672c\u8fdb\u5316\u53f2\uff1a\u4ece\u97e9\u56fd\u7248\u767e\u5ea6\u5730\u56fe\u5230\u5185\u5bb9\u805a\u5408\u5e73\u53f0\u7684\u5341\u5e74", "image": ["https://alipymanbu.github.io/images/naver-map-docs/be-local-bubble.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/naver-map-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/naver-map-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece v5.x \u7684\u591a\u8bed\u8a00\u7834\u51b0\u5230 v6.x \u7684 Discover \u53d1\u73b0\u9875\u548c Booking \u9884\u8ba2\uff0cNaver Map \u6b63\u5728\u628a\u5730\u56fe\u505a\u6210\u4e00\u4e2a\u751f\u6d3b\u5165\u53e3\u3002", "headline": "Naver Map \u7248\u672c\u8fdb\u5316\u53f2\uff1a\u4ece\u97e9\u56fd\u7248\u767e\u5ea6\u5730\u56fe\u5230\u5185\u5bb9\u805a\u5408\u5e73\u53f0\u7684\u5341\u5e74", "image": ["https://alipymanbu.github.io/images/naver-map-docs/be-local-bubble.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/naver-map-app.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/naver-map-app.html"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Naver Map \u7248\u672c\u8fdb\u5316\u53f2\uff1a\u4ece\u97e9\u56fd\u7248\u767e\u5ea6\u5730\u56fe\u5230\u5185\u5bb9\u805a\u5408\u5e73\u53f0\u7684\u5341\u5e74", "position": 3}]}</script>
 
 
@@ -89,7 +89,7 @@
 <p>从 v5 到 v6 的这条线看下来，Naver Map 的团队有两个很清晰的优先级：</p>
 <p><strong>第一，外国人友好度。</strong> 从 v5 的多语言，到 v6 Discover 里的多语言内容、步行导航的多语言语音、评论一键翻译——他们一直在补这个口子，而且补得比谁都认真。Kakao 到现在还没跟上，Google 则根本不在乎韩国本地市场的语言细节。</p>
 <p><strong>第二，做深地图本身的核心能力。</strong> 地铁车厢拥挤度、3D 街景、步行语音导航、矢量地图——这些是"地图"该有的东西。Naver 在这方面的投入很务实，不是先喊口号，而是先把精度做上去。</p>
-<p>但他们也有谨慎的一面。AR 导航目前还只是基础功能，没完全展开；和 Naver 电商、Naver Music 的联动有了但还不深；Booking 也还没覆盖酒店、演出、运动课程这些品类。更新日志写得极其克制——"Bug 修复和性能优化"是最常见的一句，很少详细列小改动。如果想知道具体变了什么，中文用户可以先翻一翻<a href="https://naver-map-docs.pages.dev/" target="_blank" rel="noopener">naver map文档</a>，覆盖的细节比 Play 商店那行克制的更新日志多得多，看不懂的再去 Naver 官方博客（韩文版）扒源码。</p>
+<p>但他们也有谨慎的一面。AR 导航目前还只是基础功能，没完全展开；和 Naver 电商、Naver Music 的联动有了但还不深；Booking 也还没覆盖酒店、演出、运动课程这些品类。更新日志写得极其克制——"Bug 修复和性能优化"是最常见的一句，很少详细列小改动。如果想知道具体变了什么，中文用户可以先翻一翻<a href="https://naver-map-app.pages.dev/" target="_blank" rel="noopener">naver map文档</a>，覆盖的细节比 Play 商店那行克制的更新日志多得多，看不懂的再去 Naver 官方博客（韩文版）扒源码。</p>
 <p>还有个很有意思的细节：离线地图 v6 里还是有限支持，Kakao 则根本不做。这说明 Naver 想过这个事，但没完全下决心。可能是韩国境内的移动网络覆盖太好，大部分用户感受不到离线的刚需？</p>
 <h2>预判：照这个路线，下一步大概率是什么</h2>
 <p>从迭代规律推，我猜接下来 Naver Map 会在三个方向发力：</p>
