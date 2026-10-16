@@ -3,29 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
   <title>关于老杨 · 老杨技术栈</title>
+  
   <meta name="description" content="折腾软件这件事，我是认真的">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="/atom.xml">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="canonical" href="https://alipymanbu.github.io/about.html">
+  <meta property="og:site_name" content="老杨技术栈">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="老杨技术栈">
+  <meta property="og:description" content="折腾软件这件事，我是认真的">
+  <meta property="og:url" content="https://alipymanbu.github.io/about.html">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="author" content="老杨">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="atom.xml">
+  <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
+<a class="skip" href="#main">跳到正文</a>
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="site-title" href="/">老杨技术栈</a>
-    <nav class="site-nav">
+    <a class="logo" href="/"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
       <a href="/">首页</a>
       <a href="/archive.html">归档</a>
-      <a href="/about.html">关于</a>
+      <a href="/about.html" class="active" aria-current="page">关于</a>
+      <a href="/atom.xml" class="rss">RSS</a>
     </nav>
   </div>
-  <p class="site-subtitle wrap">折腾软件这件事，我是认真的</p>
 </header>
-<main class="wrap">
+<main id="main" class="wrap">
 
 <div class="about-page">
   <h1 class="page-title">关于老杨</h1>
-  <div class="post-body">
+  <div class="term-card">
+    <div class="term-bar">
+      <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+      <span class="term-title">老杨技术栈 — zsh</span>
+    </div>
+    <div class="term-body">
+      <p><span class="prompt">$</span><span>whoami</span></p>
+      <p class="term-out">老杨</p>
+      <p><span class="prompt">$</span><span>cat motto.txt</span></p>
+      <p class="term-out">折腾软件这件事，我是认真的</p>
+      <p><span class="prompt">$</span><span class="caret" aria-hidden="true"></span></p>
+    </div>
+  </div>
+  <div class="prose">
 <p>大家好，我是老杨。</p>
 <p>这些年一直泡在各类软件的第一线：安卓上的冷门工具、桌面端的专业软件、开发者向的命令行玩意儿，基本都逃不过我的折腾清单。这个博客就是我的折腾台账——每一篇都是一个我真正用过、查过资料、踩过坑的应用。</p>
 <p>这里没有营销号式的功能罗列，也没有复制粘贴的官方文档。每篇文章都建立在实际体验之上：它解决什么问题、哪里好用、哪里反人类、值不值得装，我都会给出直接的答案。</p>
@@ -35,9 +62,45 @@
 
 </main>
 <footer class="site-footer">
-  <div class="wrap">
-    <p>老杨技术栈 · 记录每一个用过的软件</p>
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 分类</h3>
+      <ul>
+        
+        <li><a href="/category/web/">网页版<span class="n">1</span></a></li>
+        
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="/archive.html">归档</a></li>
+        <li><a href="/about.html">关于</a></li>
+        <li><a href="/atom.xml">RSS 订阅</a></li>
+        <li><a href="/sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
   </div>
 </footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
 </body>
 </html>
