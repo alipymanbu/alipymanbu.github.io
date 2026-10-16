@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>ServerBox 这一路：从单服务器面板到集群运维控制台 · 老杨技术栈</title>
+  
+<meta name="description" content="ServerBox 几年间从一个&#34;SSH 图形化替代品&#34;成长为覆盖监控、容器、跳板机的全栈运维工具，迭代节奏里藏着团队的产品逻辑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/serverbox-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ServerBox 这一路：从单服务器面板到集群运维控制台">
+<meta property="og:description" content="ServerBox 几年间从一个&#34;SSH 图形化替代品&#34;成长为覆盖监控、容器、跳板机的全栈运维工具，迭代节奏里藏着团队的产品逻辑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/serverbox-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/serverbox-docs/serverbox-overview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/serverbox-docs/serverbox-overview.png">
+
+<meta name="twitter:title" content="ServerBox 这一路：从单服务器面板到集群运维控制台">
+<meta name="twitter:description" content="ServerBox 几年间从一个&#34;SSH 图形化替代品&#34;成长为覆盖监控、容器、跳板机的全栈运维工具，迭代节奏里藏着团队的产品逻辑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "ServerBox \u51e0\u5e74\u95f4\u4ece\u4e00\u4e2a\"SSH \u56fe\u5f62\u5316\u66ff\u4ee3\u54c1\"\u6210\u957f\u4e3a\u8986\u76d6\u76d1\u63a7\u3001\u5bb9\u5668\u3001\u8df3\u677f\u673a\u7684\u5168\u6808\u8fd0\u7ef4\u5de5\u5177\uff0c\u8fed\u4ee3\u8282\u594f\u91cc\u85cf\u7740\u56e2\u961f\u7684\u4ea7\u54c1\u903b\u8f91\u3002", "headline": "ServerBox \u8fd9\u4e00\u8def\uff1a\u4ece\u5355\u670d\u52a1\u5668\u9762\u677f\u5230\u96c6\u7fa4\u8fd0\u7ef4\u63a7\u5236\u53f0", "image": ["https://alipymanbu.github.io/images/serverbox-docs/serverbox-overview.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/serverbox-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/serverbox-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "ServerBox \u8fd9\u4e00\u8def\uff1a\u4ece\u5355\u670d\u52a1\u5668\u9762\u677f\u5230\u96c6\u7fa4\u8fd0\u7ef4\u63a7\u5236\u53f0", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">ServerBox 这一路：从单服务器面板到集群运维控制台</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">ServerBox 这一路：从单服务器面板到集群运维控制台</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">ServerBox 几年间从一个&#34;SSH 图形化替代品&#34;成长为覆盖监控、容器、跳板机的全栈运维工具，迭代节奏里藏着团队的产品逻辑。</p>
+  </header>
+  <div class="prose">
+<h2>开头：现在这版的 ServerBox 是什么样</h2>
+<p>我最近在一台云 GPU 服务器上折腾的时候，才第一次认真把 ServerBox 从头到尾摸了一遍。最让我意外的是 GPU 监控面板——不是那种凑数的占位页，是真的能读到 nvidia-smi 的每一个指标：使用率、显存总量、温度、功耗，甚至运行中的 CUDA 进程列表。对于跑 LLM 推理的人来说，这东西放在 SSH 终端旁边，省得我每次都开个新 tab 手动敲命令。</p>
+<p><img src="../images/serverbox-docs/serverbox-overview.png" alt="GPU 面板的实际效果" loading="lazy"></p>
+<p>然后我又翻到了 Docker 容器管理部分——批量多选、一键 Recreate（用相同参数重建容器）、容器内执行终端命令、实时日志跟踪。这些功能放在一起，意味着我不用再记 docker run 的那一大串参数，改了 docker-compose.yml 之后也不用手动 rm 加 run。最狠的是那个跳板机链式连接：可以添加多层 ProxyJump，ServerBox 自动处理整条链路，我只需要点目标服务器的卡片，底层的 <code>ssh -J jump-1 -J jump-2 target</code> 是透明的。</p>
+<p>老实说，刚摸到这些功能的时候我有点震惊——这哪里是个在<a href="https://serverbox.fewz.tech" target="_blank" rel="noopener">ServerBox官网</a>上还只主打"SSH图形化替代品"的东西，这已经是个迷你运维控制台了。但转头想想它刚出来时的样子，这个跨度其实挺有意思。</p>
+<h2>来路：文档没提的部分恰恰说明什么</h2>
+<p>我去翻了 <a href="https://serverbox-docs.pages.dev/" target="_blank" rel="noopener">ServerBox文档</a>，能找到的最早的功能描述是基础的 SSH 终端、SFTP 文件浏览和简单的资源监控。但文档没有讲版本号——没有说 1.0 是什么样、2.0 加了什么、3.0 又改了什么。这本身就是个信号：团队不想把产品包装成"大版本跳跃"，而是更在意"每次迭代都让常用场景更顺手"。</p>
+<p>从文档的章节结构倒推功能的加入顺序大概是这样的：</p>
+<p>第一阶段是把最痛的那个点解决——SSH 终端图形化。命令行对新手不友好，SFTP 又需要额外装 FileZilla 之类的工具。ServerBox 把这两件事捏在一起，从<a href="https://serverbox.fewz.tech/download.html" target="_blank" rel="noopener">官方下载</a>装完打开 App 就能连服务器、看文件、跑命令。这部分现在看起来平平无奇，但在当时应该是最大的卖点。</p>
+<p>然后进入第二阶段，开始加"眼睛"——监控面板。先是 CPU、内存、磁盘这些基础指标，后来加了网络流量（而且是多网卡分别展示，虚拟网卡和物理网卡颜色区分），再后来就是 GPU。网络监控这块我印象挺深的：它不会替代专业工具，而是做日常巡检——打开 App 扫一眼就知道哪个网卡在跑、流量有没有冲到上限。真要查具体进程还是要回到 SSH 跑 iftop，但"一眼看到总览"这件事本身就很有价值。</p>
+<p>第三阶段是最激进的——容器管理。从文档的详细程度来看，这部分应该是投入了不少精力：单个容器的生命周期操作（启动、停止、重启、强制停止、删除）、进入容器详情后的完整操作集（重新创建、执行终端、实时日志、环境变量、挂载卷）、桌面版才有的批量多选操作。尤其是那个 Recreate 功能，对应 <code>docker rm + docker run</code> 的组合拳，但自动保留原始参数。这个设计让我想起了 Portainer 的容器管理部分——但 ServerBox 把它做得更轻、更嵌入日常工作流。</p>
+<p>最新加的，按文档位置判断是跳板机链式连接。这个功能从"需要 SSH config 里写 ProxyJump"变成了图形化下拉选择，而且支持多层链路、支持导入 SSH config 自动解析。对于有内网环境的人来说，这是从"能连"到"好连"的质变。</p>
+<h2>规律：团队一直在死磕什么</h2>
+<p>把这几个阶段串起来看，有一条很清晰的产品逻辑线：<strong>降低运维的心智负担</strong>。</p>
+<p>他们一直在做的事，本质上是把"你需要知道的命令行知识"转化成"你需要知道的操作意图"。你不需要知道 <code>docker stop</code> 先发 SIGTERM 等 10 秒再 SIGKILL——ServerBox 在按钮旁边写了"优雅停止"，然后做了正确的事。你不需要记住 <code>ssh -J user@jump user@target</code> 的语法——填好跳板机，选一下就行。你不需要手动算网卡流量差——打开面板直接看实时速率。</p>
+<p>另一个持续在做的事是<strong>覆盖面的扩张但不做深度工具</strong>。GPU 监控能读 NVIDIA、AMD、Intel 三家的指标，但不替代 nvidia-smi 做深入排查。网络监控能看到每个网卡的状态，但不做流量分析。容器管理能做批量重启，但不替代 docker-compose 或 k8s 做编排。这不是能力不够，是他们有意识地在"够用就好"和"做专业工具"之间选了前者。</p>
+<p>那什么一直没做呢？我注意到文档里没有提到集群编排、监控告警、日志聚合这些"更上层"的需求。也没有提到纯 CLI 用户的场景——所有功能都是图形化的，没有提供命令行接口或 API。这说明团队的目标用户很明确：<strong>需要管服务器但不想变成运维专家的开发者和小型团队</strong>。</p>
+<h2>预判：照这个路线，下一步大概率的走向</h2>
+<p>从 ServerBox 的迭代节奏来看，有几件事是很可能要发生的。</p>
+<p>第一，监控面板会继续扩张，但还是保持"够用就好"的定位。现在 GPU 已经有了，下一个会不会是硬件层面的——比如服务器的电源状态、RAID 卡健康、主板温度？这些东西在企业级数据中心是靠 IPMI 或 iDRAC 看的，但如果能在 ServerBox 里也读到，对自建机房的小团队来说就是个加分项。</p>
+<p>第二，容器管理可能会向 docker-compose 靠拢。现在有了单个容器的 Recreate，下一步如果能直接导入 compose 文件、在 ServerBox 里启动整个 stack，那 Portainer Lite 这个定位就坐实了。但我赌他们不会做 k8s——那是另一个量级的产品复杂度，不符合"降低心智负担"的核心逻辑。</p>
+<p>第三，跳板机功能可能会延伸到更多认证方式。现在支持 SSH 密钥和密码，后面会不会加 SSO、或者与云厂商的临时凭证集成？这取决于他们想覆盖多少企业级内网场景。</p>
+<p>但这些都只是猜测。ServerBox 到目前为止的每一步，都是在用户最痛的那个点上精准补一刀，而不是画好大蓝图一步步填。这种迭代方式的好处是每一步都有明确的价值，坏处是很难预测下一步——你得先知道下一批用户最痛的是什么。</p>
+<h2>收尾</h2>
+<p>写这篇的时候我翻了自己的笔记，从第一次装 ServerBox 到现在，断断续续也用了快两年了。每次回去看都发现有新功能，但每次都没觉得它变复杂了。这大概就是好的工具产品的样子——功能在变多，但你和它对话的方式一直没变：打开 App，点卡片，看结果。</p>
+<p>这套资料在三个仓库都能拿到，维护起来也方便。<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ServerBox" target="_blank" rel="noopener">GitHub</a>上是主仓库，国内访问慢的时候 <a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ServerBox" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/ServerBox" target="_blank" rel="noopener">GitCode</a> 各自有同步的副本，哪个顺手用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gprinter.html">开水果店那阵我才知道，标签打印APP能省这么多事</a></h2>
+  <p class="card-desc">开了半年水果店，打价签和保质期标签是每天的烦心事。试了佳博配套的 Gprinter 之后，原来标签设计这件事可以在手机上 5 分钟搞定，还能语音输入、自动算日期。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/autox-js.html">Autox.js 到底强在哪？和同类自动化工具的横向对比</a></h2>
+  <p class="card-desc">在安卓自动化脚本引擎这个品类里，Autox.js 用 JavaScript + 无障碍服务的组合走出了一条不一样的路。用过按键精灵、Auto.js、Tasker 之后，我为什么最终留在了 Autox.js。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/kshare-docs.html">装KShare大半年后：那些当初没注意到的好用与糟心</a></h2>
+  <p class="card-desc">从v1.5用到v1.7，从凑活投屏到开会离不开，说说这八个月里KShare让我惊喜和头疼的地方。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/lspatch.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">LSPatch 用了一年半：从&#34;终于不用解锁 BL&#34;到&#34;它替我挡了多少麻烦&#34;</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/nrfr.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Nrfr 上手实战：从零改 SIM 国家码，一次就能跑通</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

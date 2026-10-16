@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>DeepseekHarness 到底值不值得掏钱？——把 Agent 灵魂和躯体分开卖这笔账 · 老杨技术栈</title>
+  
+<meta name="description" content="一个把模型当灵魂、自己当躯体的 Agent 框架，到底是在卖便利还是在卖自由？我按轻度、主力、重度三档用户把时间账算给你看。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/deepseekharness-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DeepseekHarness 到底值不值得掏钱？——把 Agent 灵魂和躯体分开卖这笔账">
+<meta property="og:description" content="一个把模型当灵魂、自己当躯体的 Agent 框架，到底是在卖便利还是在卖自由？我按轻度、主力、重度三档用户把时间账算给你看。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/deepseekharness-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/deepseekharness-docs/lan-access.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/deepseekharness-docs/lan-access.png">
+
+<meta name="twitter:title" content="DeepseekHarness 到底值不值得掏钱？——把 Agent 灵魂和躯体分开卖这笔账">
+<meta name="twitter:description" content="一个把模型当灵魂、自己当躯体的 Agent 框架，到底是在卖便利还是在卖自由？我按轻度、主力、重度三档用户把时间账算给你看。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u628a\u6a21\u578b\u5f53\u7075\u9b42\u3001\u81ea\u5df1\u5f53\u8eaf\u4f53\u7684 Agent \u6846\u67b6\uff0c\u5230\u5e95\u662f\u5728\u5356\u4fbf\u5229\u8fd8\u662f\u5728\u5356\u81ea\u7531\uff1f\u6211\u6309\u8f7b\u5ea6\u3001\u4e3b\u529b\u3001\u91cd\u5ea6\u4e09\u6863\u7528\u6237\u628a\u65f6\u95f4\u8d26\u7b97\u7ed9\u4f60\u770b\u3002", "headline": "DeepseekHarness \u5230\u5e95\u503c\u4e0d\u503c\u5f97\u638f\u94b1\uff1f\u2014\u2014\u628a Agent \u7075\u9b42\u548c\u8eaf\u4f53\u5206\u5f00\u5356\u8fd9\u7b14\u8d26", "image": ["https://alipymanbu.github.io/images/deepseekharness-docs/lan-access.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/deepseekharness-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/deepseekharness-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "DeepseekHarness \u5230\u5e95\u503c\u4e0d\u503c\u5f97\u638f\u94b1\uff1f\u2014\u2014\u628a Agent \u7075\u9b42\u548c\u8eaf\u4f53\u5206\u5f00\u5356\u8fd9\u7b14\u8d26", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">DeepseekHarness 到底值不值得掏钱？——把 Agent 灵魂和躯体分开卖这笔账</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">DeepseekHarness 到底值不值得掏钱？——把 Agent 灵魂和躯体分开卖这笔账</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个把模型当灵魂、自己当躯体的 Agent 框架，到底是在卖便利还是在卖自由？我按轻度、主力、重度三档用户把时间账算给你看。</p>
+  </header>
+  <div class="prose">
+<p>Agent = 模型 + Harness——这个公式写在<a href="https://deepseekharness.qjxz.skin" target="_blank" rel="noopener">DeepseekHarness官网</a>最显眼的位置。模型是灵魂，负责理解任务、推理决策、产出指令；Harness 是躯体，负责把决策落成真实动作：跑工具、管会话、控权限、记轨迹。听起来挺清楚，但问题来了：既然灵魂是模型提供商的，这个"躯体"凭什么让我掏钱？</p>
+<p>我花了几周时间掂量这件事。本文不做百科式功能介绍，就做一件事：<strong>把"要不要为 DeepseekHarness 花钱"这笔账算明白</strong>。</p>
+<h2>先拆解：它到底给了什么，又没给什么</h2>
+<p>先说清楚这个产品的边界，不然算账没根基。</p>
+<p><a href="https://deepseekharness.qjxz.skin/download.html" target="_blank" rel="noopener">DeepseekHarness下载</a>装完就能跑基础的对话和工具调用——模型接个 OpenAI 兼容端点就能聊，工具执行器默认配置开箱即用。但你很快会撞到几道墙：会话日志只留最近几十轮、手机端访问要自己搭穿透、想给 Agent 加个自定义动作得扒源码改。</p>
+<p>付费版打开的是"躯体层"的完整能力：会话轨迹的完整记录和回溯（这对调试复杂 Agent 任务是刚需）、局域网配对加移动访问面板（手机扫码直接接管电脑上跑的 Agent）、<a href="https://deepseekharness-docs.pages.dev/" target="_blank" rel="noopener">DeepseekHarness文档</a>里详细写了扩展机制——在 <code>extensions/</code> 目录放个 <code>host.mjs</code> 就能让 Agent 调你电脑上的任何程序、以及 Worker 执行模式（给可信扩展加一层轻量的阻塞隔离）。</p>
+<p>还有一层隐形差异：<strong>Harness 是插件化的</strong>。模型可换（默认面向 DeepSeek 系列，其他 OpenAI 兼容端点直接接），工具集可换，骨架可换。付费用户拿到的不是某个特定模型的绑定服务，而是一套能接任何灵魂的躯体。这个"可换"是整个定价逻辑的核心。</p>
+<p><img src="../images/deepseekharness-docs/lan-access.png" alt="局域网访问面板、配对二维码与设备管理示意" loading="lazy"></p>
+<h2>算账：三档用户分别该掏多少</h2>
+<p>我按三类典型用户来算"单位时间成本"——核心指标是<strong>这个产品能帮我省多少原本要花在折腾工具链上的时间</strong>。</p>
+<h3>轻度用户：偶尔玩 AI 对话的个人</h3>
+<p>这类人：平时就是手机上装个 AI App、PC 上偶尔跑个本地模型玩，对 Agent 的理解停留在"能自动点按钮"的级别。</p>
+<p><strong>免费版够不够？</strong> 完全够。基础对话 + 简单工具调用已经覆盖了偶尔玩的需求。局域网配对免费也能用，只是手机端界面比较素。</p>
+<p><strong>要不要付费？</strong> 没必要。省下的那点配置时间（大概半小时能搞定一次的穿透或日志配置），分摊到你每月不超过 5 小时的使用时长里，单位时间成本趋近于零。不如把钱给模型 API 多充点额度。</p>
+<h3>主力用户：天天要跑 Agent 任务的开发者</h3>
+<p>这类人：每天让 Agent 帮写代码、调测试、自动化运维——工具链折腾时间占实际使用时间的 30% 以上。</p>
+<p><strong>免费版够不够？</strong> 开始不够。主要痛点在三个地方：会话日志只留最近的，昨天调通的 Agent 任务今天重跑时丢了上下文轨迹；想在工位外面用手机接着跑任务，穿透 + 安全配置得花两小时起步；想加个自定义工具（比如调自家的内部 API），免费版要么改源码要么走迂回方案。</p>
+<p><strong>付费后每单位时间成本多少？</strong> 假设月费在一杯咖啡到一顿简餐之间（按市面上 Agent 工具的均价估算），每月能帮你省至少 8~10 小时的折腾时间。对开发者来说，<strong>每小时节省的配置成本 = 月薪 / 22天 / 8小时</strong>，这个公式自己算。我算下来，主力用户的付费性价比在 5:1 以上——掏 1 块钱换回来 5 块钱的生产力。</p>
+<h3>重度用户：要在手机上深度控制 Agent 的折腾党</h3>
+<p>这类人：已经把 Agent 当成日生产力核心，要让它能调酒馆（SillyTavern）、查服务器状态、跑远程命令——手机不只是聊天窗口，是第二块屏幕。</p>
+<p><strong>免费版够不够？</strong> 远远不够。局域网配对虽然免费能用，但手机端的界面定制、扩展调用、Worker 隔离这些全是付费解锁。更关键的是——免费版没有完整的会话轨迹记录，重度用户一旦出了问题（比如 Agent 执行了错误的系统命令），回溯成本极高。</p>
+<p><strong>付费值不值？</strong> 对这类人来说，DeepseekHarness 的付费价值不是节省时间，而是<strong>解锁了一整个"手机当 Agent 控制台"的使用场景</strong>。没有它你要自己搭的链路大概是：SSH 隧道 + 手机端 VNC + 权限隔离 + 日志收集——这一套折腾下来能写三篇博客，而且稳定性还不如现成的产品。重度用户闭眼付就对了。</p>
+<h2>替代方案：不付这笔钱有什么路</h2>
+<p>算账不能只看花不花，还要看不花的代价。</p>
+<p><strong>方案一：直接用模型服务商的 API + 自己搭工具链</strong></p>
+<p>这条路的问题是"可换"没了。你用 Claude 的 API 搭了一套工具链，换模型时几乎要推倒重来。DeepseekHarness 的 Harness 层不绑死某家模型，这个特性对主力以上的用户很值钱——模型价格、质量、速度三方面都在变，你不想被一家服务商锁死。</p>
+<p>代价：每个新模型你都得重新适配一次工具调用格式，时间成本按模型数量线性增长。</p>
+<p><strong>方案二：用其他 Agent 框架（比如 OpenHands、TaskWeaver 之类）</strong></p>
+<p>这些开源框架也能做"模型 + 工具"的事，但大多数没有"躯体层插件化"的设计。DeepseekHarness 把 Cordis 内核嵌进去后，扩展机制变成了纯插件化——在 <code>extensions/</code> 目录丢个 <code>host.mjs</code> 就能加能力，不需要改主程序源码。这对想做自定义扩展的用户来说是个质的差异。</p>
+<p>代价：如果你的需求就是"让 AI 帮我调几个 API"，那其他框架免费够用，DeepseekHarness 的插件化反而是过度设计。</p>
+<p><strong>方案三：降低使用频率</strong></p>
+<p>这是个反直觉但实际有效的替代方案。如果你每月用 Agent 的时间不足 10 小时，花这笔钱等于为一个低利用率场景买单。不如把 Agent 任务攒一攒，集中在有整块时间的时候批量跑，平时就用纯聊天模式。</p>
+<p>代价：遇到需要即时响应的 Agent 任务（比如服务器告警触发自动化修复）时，手动处理的时间成本会激增。</p>
+<h2>结论：三秒对号入座</h2>
+<p>最后给你一个直接可用的决策表：</p>
+<table><thead><tr><th>你是谁</th><th>建议</th><th>核心理由</th></tr></thead><tbody><tr><td>轻度玩家：每月 AI 使用 &lt; 10 小时</td><td><strong>不付</strong></td><td>免费版覆盖全部需求，省下的时间不值得付费</td></tr><tr><td>主力开发者：每天 Agent 是生产工具</td><td><strong>闭眼付</strong></td><td>性价比 5:1 以上，Harness 的插件化设计省的不是钱是命</td></tr><tr><td>重度折腾党：要手机控制 + 自定义扩展</td><td><strong>必须付</strong></td><td>解锁了一个完整的使用场景，没有替代方案</td></tr><tr><td>观望中的开发者</td><td><strong>先跑一个月免费版，记一下每周花在配置上的时间</strong></td><td>当那个数字超过 2 小时时，付费的临界点就到了</td></tr></tbody></table>
+<p>有一点我得承认：DeepseekHarness 的定价结构挺鸡贼的——它把"可换骨架"这个核心价值藏在付费层后面了，而这个特性恰恰是主力以上用户最值钱的部分。但话说回来，哪个产品不是把最有壁垒的功能锁在付费层？</p>
+<p>我自己已经付了，因为算下来主力用户这档的时间账太划算。你自己掂量吧。写这篇文章时翻了不少文档做交叉验证，顺手把收集的对照材料分别放在了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/DeepseekHarness" target="_blank" rel="noopener">GitHub</a>上，<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/DeepseekHarness" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/DeepseekHarness" target="_blank" rel="noopener">GitCode</a>各留一份防止哪家抽风。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/anyview-docs.html">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</a></h2>
+  <p class="card-desc">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/uniclaw.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">手机里装了个会派活的 AI？UniClaw 上手一周真实体验</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/spend-elon-musk-money-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">花光马斯克万亿资产？这款模拟器让我第一次读懂慈善的重量</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

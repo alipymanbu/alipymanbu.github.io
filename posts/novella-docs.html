@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用了八个月 Novella，我对开源阅读器的几个真实感受 · 老杨技术栈</title>
+  
+<meta name="description" content="从当初为了摆脱闭源书架的广告推送，到现在每天睡前都在打开它，这八个月里对它的预期变了不少——有些功能越用越顺手，有些问题慢慢暴露，还有几个当初没在意的设计如今成了离不开的依赖。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/novella-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用了八个月 Novella，我对开源阅读器的几个真实感受">
+<meta property="og:description" content="从当初为了摆脱闭源书架的广告推送，到现在每天睡前都在打开它，这八个月里对它的预期变了不少——有些功能越用越顺手，有些问题慢慢暴露，还有几个当初没在意的设计如今成了离不开的依赖。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/novella-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/novella-docs/novella-library.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/novella-docs/novella-library.png">
+
+<meta name="twitter:title" content="用了八个月 Novella，我对开源阅读器的几个真实感受">
+<meta name="twitter:description" content="从当初为了摆脱闭源书架的广告推送，到现在每天睡前都在打开它，这八个月里对它的预期变了不少——有些功能越用越顺手，有些问题慢慢暴露，还有几个当初没在意的设计如今成了离不开的依赖。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u5f53\u521d\u4e3a\u4e86\u6446\u8131\u95ed\u6e90\u4e66\u67b6\u7684\u5e7f\u544a\u63a8\u9001\uff0c\u5230\u73b0\u5728\u6bcf\u5929\u7761\u524d\u90fd\u5728\u6253\u5f00\u5b83\uff0c\u8fd9\u516b\u4e2a\u6708\u91cc\u5bf9\u5b83\u7684\u9884\u671f\u53d8\u4e86\u4e0d\u5c11\u2014\u2014\u6709\u4e9b\u529f\u80fd\u8d8a\u7528\u8d8a\u987a\u624b\uff0c\u6709\u4e9b\u95ee\u9898\u6162\u6162\u66b4\u9732\uff0c\u8fd8\u6709\u51e0\u4e2a\u5f53\u521d\u6ca1\u5728\u610f\u7684\u8bbe\u8ba1\u5982\u4eca\u6210\u4e86\u79bb\u4e0d\u5f00\u7684\u4f9d\u8d56\u3002", "headline": "\u7528\u4e86\u516b\u4e2a\u6708 Novella\uff0c\u6211\u5bf9\u5f00\u6e90\u9605\u8bfb\u5668\u7684\u51e0\u4e2a\u771f\u5b9e\u611f\u53d7", "image": ["https://alipymanbu.github.io/images/novella-docs/novella-library.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/novella-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/novella-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u7528\u4e86\u516b\u4e2a\u6708 Novella\uff0c\u6211\u5bf9\u5f00\u6e90\u9605\u8bfb\u5668\u7684\u51e0\u4e2a\u771f\u5b9e\u611f\u53d7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">用了八个月 Novella，我对开源阅读器的几个真实感受</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用了八个月 Novella，我对开源阅读器的几个真实感受</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从当初为了摆脱闭源书架的广告推送，到现在每天睡前都在打开它，这八个月里对它的预期变了不少——有些功能越用越顺手，有些问题慢慢暴露，还有几个当初没在意的设计如今成了离不开的依赖。</p>
+  </header>
+  <div class="prose">
+<p>去年春天换手机的时候把所有预装应用都清理了一遍，原本用的那款老牌阅读 App 也在卸载名单里——不是它不好用，是它最近几个版本开始在首页塞广告位，还时不时弹个会员续费提醒。在它的<a href="https://novella.fedq.ren" target="_blank" rel="noopener">官网</a>上简单看了下介绍后装的，抱着试试看的心态，毕竟开源阅读器在书架生态里算不上什么新东西。</p>
+<p>八个月过去，我对它的感受已经从"试试"变成了"每天都开"。这种变化不是发生在第一次启动的时候，而是时间磨出来的。有些当初觉得别扭的地方越用越顺手，有些当初没在意的细节后来成了每天依赖的习惯，还有几个我一开始高估了的功能，实际体验并没有想象中那么好。</p>
+<h2>插件仓库：从"太麻烦"到"这才对"</h2>
+<p>刚装上 Novella 最懵的是它<strong>默认没有任何书源</strong>。之前用过的阅读器，打开就有一长串书源列表等着选。Novella 的设置页里只有一个空荡荡的插件管理入口，你得自己找插件仓库 URL 加进去，再从仓库里挑书源安装。后来去<a href="https://novella-docs.pages.dev/" target="_blank" rel="noopener">Novella文档</a>翻了一下才弄明白，这是它的安全设计——让每个用户自己决定信任哪些来源。</p>
+<p>说实话第一次用的时候我还真有点不耐烦——一个阅读器，打开不能直接搜书，还得让我折腾什么仓库管理？但这八个月用下来，我反倒觉得这个设计是它最聪明的地方。</p>
+<p>Novella 把书源做成了 Lua 插件，每个书源是一个独立脚本，维护者可以独立更新。仓库更新默认每天检查一次，有新版本会通知你。我加了两个社区推荐的仓库，一个 LNReader 官方维护的，更新最及时；一个第三方的，有几本小众资源。后来有个第三方仓库停更了，我直接从插件页面长按移除，它下面的书源插件也一起卸掉了——但已经下载到本地的章节还在，只是这本书以后更新不会自动拉取了。</p>
+<p><img src="../images/novella-docs/novella-library.png" alt="插件仓库管理" loading="lazy"></p>
+<p>这套机制给我的安全感比闭源书架强太多。闭源书架的书源是它自己说了算，哪天某本书源被删了或者某本小说被下架了，你一点办法没有。Novella 把选择权完全交给用户，你信任哪个维护者就加哪个仓库，觉得不靠谱随时移除。当初我觉得麻烦，现在反而觉得这才是阅读器应该有的样子。</p>
+<h2>云同步：一个 Gist 解决了我所有换机焦虑</h2>
+<p>Novella 不用邮箱注册，它用 GitHub 账号登录。一开始我觉得这设计有点怪——一个阅读 App 为什么要绑 GitHub？后来才明白，它的云同步整个就是基于 GitHub Gist 做的。</p>
+<p>登录流程走标准的 OAuth 2.0，它只请求两个权限：读取公开资料和 Gist 读写。授权后你随时可以在 GitHub 设置里撤回。我去年换手机的时候，就是在新设备上重新登了一下 GitHub 账号，书架、阅读进度、甚至书签都完整同步过来了。整个过程不到一分钟。</p>
+<p>Novella 不会拿我的 GitHub 密码，也不会请求仓库读写或组织管理这些敏感权限。我平时用 GitHub 也不用担心，Gist 同步数据是私有的，别人看不到。这套设计虽然不那么"大众友好"，但对我这种本来就有 GitHub 账号的人来说，是最干净的同步方案——不用记住又一个账号密码，不用给任何平台存储邮箱。</p>
+<p>不过话说回来，要是你没有 GitHub 账号或者不想授权，Novella 的本地书架完全不受影响，只是没有云同步而已。这点我觉得它做得挺克制的，不像有些 App 强迫你登录才能用核心功能。</p>
+<h2>书架更新：那些当初没注意的细节</h2>
+<p>书架更新这块是我后来越用越依赖的部分。Novella 的书架刷新是<strong>并发请求</strong>——不是一本书检查完再检查下一本，而是同时发出去。我书架上现在有三十多本书，下拉刷新一次完整检查大概三五秒就完成了。之前用的那款闭源阅读器，同样的书架规模刷新要等十几秒，而且经常卡着不动。</p>
+<p>自动更新的调度也让我挺惊喜。设置里可以选更新频率、时间窗口、是否仅 Wi-Fi。我设的是每天凌晨两点只在 Wi-Fi 下更新。Novella 用的是 Android 的 WorkManager 调度后台任务，系统会把更新检查约束在允许的时间窗口内——比如待机充电的时候。实测下来耗电完全可以忽略，八个月了没因为这个掉电异常过。</p>
+<p>当然也不是没踩过坑。有段时间我发现某本书在其他平台都更新了好几天了，Novella 里还是没反应。排查下来是四个原因：书源脚本本身很久没更新了、当前书源选了个滞后的来源、书架级批量刷新被书源端限速跳过了、或者书源直接挂了。Novella 在书籍详情页有个单本书下拉刷新的功能，强制让这个书源 API 返回最新列表，这招解决了大半问题。书源真挂了就只能换一个，或者去插件仓库的 Issue 区反馈维护者。</p>
+<p><img src="../images/novella-docs/novella-home.png" alt="书架首页" loading="lazy"></p>
+<h2>那些慢慢暴露的问题</h2>
+<p>说点不那么好听的。安装包从<a href="https://novella.fedq.ren/download.html" target="_blank" rel="noopener">下载</a>拿没问题，但 Android 的未知来源拦截是每次装 APK 都要面对的——点开 APK，系统弹出禁止安装未知来源，得点"设置"去给浏览器放行。国行机型更麻烦，小米有纯净模式要临时关一下，OPPO、vivo、华为还有安装守护安全检测，Novella 因为不是大厂出品可能会报"风险"，得手动点"仍要安装"。这些都是系统级的安全提示，不是 Novella 本身有问题，但每次装确实有点烦。</p>
+<p>还有一个我没想到的问题是书源的维护稳定性。社区推荐的 LNReader 官方仓库更新最及时，第三方仓库就不一定了。我加的某个小仓库维护者大概半年没更过，有几个书源脚本还是老版本，适配不了目标网站的新结构。后来干脆把它移除了，换了另一个还在活跃维护的仓库。这就是开源生态的现实——每个用户自己判断信任度，自己承担选择的后果。</p>
+<h2>八个月后的观感修正</h2>
+<p>说实话刚开始用 Novella 的时候，我对它的预期是一个轻量级的阅读工具，能打开文件、能搜书就行。但八个月用下来，我发现自己当初低估了它几个设计：</p>
+<p><strong>Gist 云同步</strong> 我一开始觉得是个花哨功能，实际换机的时候才发现，能一键把三十多本书的进度和书签同步过来，比手动备份恢复强太多。</p>
+<p><strong>WorkManager 调度的自动更新</strong> 我一开始设了个 30 分钟的频率，后来改成每天凌晨，担心会不会漏更新。实际下来完全没必要——WorkManager 会把任务安排在系统空闲的时候，而且 Novella 有未读章节的角标提醒，真漏掉了手动下拉一下也很快。</p>
+<p><strong>插件仓库的安全设计</strong> 我一开始觉得麻烦，现在觉得这是它最有价值的特点。闭源书架的书源被删被改你完全没主动权，Novella 把这个权力还给了用户。</p>
+<h2>会不会卸载</h2>
+<p>八个月了，我没有卸载 Novella 的打算。它不是完美的——安装流程对国行机型不够友好，书源维护靠社区自觉，同步只绑定 GitHub。但它也没有让我动过换回去的念头：Gist 同步解决了换机焦虑，并发刷新和 WorkManager 调度让书架更新这件事几乎不占时间，插件仓库机制给了我闭源书架给不了的控制权。</p>
+<p>什么信号出现我会考虑换？可能是某一天 LNReader 官方仓库也停更了，或者我书架上的主力书源集体失效。但在那之前，睡前刷两页书的习惯已经跟这个 App 绑在一起了。</p>
+<p>这套资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Novella" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Novella" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Novella" target="_blank" rel="noopener">GitCode</a> 三个仓库都能拿到，国内访问可以优先选 Gitee 镜像。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/e621-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">e621客户端避坑指南：那些年我踩过的五个让网格空白的坑</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/cubox-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Cubox 深度盘点：从收藏到沉淀，一款稍后阅读工具的完整能力地图</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

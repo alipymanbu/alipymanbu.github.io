@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>&#34;MediBang Paint 踩坑指南：免费版看着简单，几个地方真的会翻车&#34; · 老杨技术栈</title>
+  
+<meta name="description" content="&#34;作为一款主打漫画与插画的免费绘画工具，MediBang Paint 上手门槛不高，但云端容量、画布尺寸、账号绑定这几个地方如果一开始没注意，画到一半才发现问题就很被动。&#34;">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/medibang.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#34;MediBang Paint 踩坑指南：免费版看着简单，几个地方真的会翻车&#34;">
+<meta property="og:description" content="&#34;作为一款主打漫画与插画的免费绘画工具，MediBang Paint 上手门槛不高，但云端容量、画布尺寸、账号绑定这几个地方如果一开始没注意，画到一半才发现问题就很被动。&#34;">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/medibang.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/medibang/cloud-use.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/medibang/cloud-use.jpg">
+
+<meta name="twitter:title" content="&#34;MediBang Paint 踩坑指南：免费版看着简单，几个地方真的会翻车&#34;">
+<meta name="twitter:description" content="&#34;作为一款主打漫画与插画的免费绘画工具，MediBang Paint 上手门槛不高，但云端容量、画布尺寸、账号绑定这几个地方如果一开始没注意，画到一半才发现问题就很被动。&#34;">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\"\u4f5c\u4e3a\u4e00\u6b3e\u4e3b\u6253\u6f2b\u753b\u4e0e\u63d2\u753b\u7684\u514d\u8d39\u7ed8\u753b\u5de5\u5177\uff0cMediBang Paint \u4e0a\u624b\u95e8\u69db\u4e0d\u9ad8\uff0c\u4f46\u4e91\u7aef\u5bb9\u91cf\u3001\u753b\u5e03\u5c3a\u5bf8\u3001\u8d26\u53f7\u7ed1\u5b9a\u8fd9\u51e0\u4e2a\u5730\u65b9\u5982\u679c\u4e00\u5f00\u59cb\u6ca1\u6ce8\u610f\uff0c\u753b\u5230\u4e00\u534a\u624d\u53d1\u73b0\u95ee\u9898\u5c31\u5f88\u88ab\u52a8\u3002\"", "headline": "\"MediBang Paint \u8e29\u5751\u6307\u5357\uff1a\u514d\u8d39\u7248\u770b\u7740\u7b80\u5355\uff0c\u51e0\u4e2a\u5730\u65b9\u771f\u7684\u4f1a\u7ffb\u8f66\"", "image": ["https://alipymanbu.github.io/images/medibang/cloud-use.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/medibang.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/medibang.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/22e8bdafe4bbb6e4b88be8bdbd22/", "name": "\"\u8f6f\u4ef6\u4e0b\u8f7d\"", "position": 2}, {"@type": "ListItem", "name": "\"MediBang Paint \u8e29\u5751\u6307\u5357\uff1a\u514d\u8d39\u7248\u770b\u7740\u7b80\u5355\uff0c\u51e0\u4e2a\u5730\u65b9\u771f\u7684\u4f1a\u7ffb\u8f66\"", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/22e8bdafe4bbb6e4b88be8bdbd22/index.html">&#34;软件下载&#34;</a><span>/</span>
+    <span class="crumb-cur">&#34;MediBang Paint 踩坑指南：免费版看着简单，几个地方真的会翻车&#34;</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">&#34;MediBang Paint 踩坑指南：免费版看着简单，几个地方真的会翻车&#34;</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/22e8bdafe4bbb6e4b88be8bdbd22/index.html">&#34;软件下载&#34;</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">&#34;作为一款主打漫画与插画的免费绘画工具，MediBang Paint 上手门槛不高，但云端容量、画布尺寸、账号绑定这几个地方如果一开始没注意，画到一半才发现问题就很被动。&#34;</p>
+  </header>
+  <div class="prose">
+<p>MediBang Paint 我用了快一年，从手机上随手涂鸦到正经画同人志原稿，一路走来该踩的坑基本都踩过了。它的<a href="https://medibang.gkhf.beer" target="_blank" rel="noopener">官网</a>对外主打漫画与插画创作，表面上就是个免费画图工具，下载装上就能开画，但几个隐性限制如果没提前摸清楚，等作品堆到一定规模才发现不对劲，补救成本会相当高。下面几个坑是我真金白银换回来的教训。</p>
+<h2>第一个坑：云端看着无限用，其实 3GB 说满就满</h2>
+<p>我第一次用云端保存时根本没注意容量限制，心想反正免费的存几张图能多大。结果一个 16 页的短篇漫画存进去，加上之前零散的插画，有一天突然就存不进去了——应用提示「云端容量已用尽」，我当时以为是网络问题，反复卸载重装折腾了半小时。</p>
+<p>症状是新作品再也无法保存到云端，已存的云端作品在应用里也打不开，点进去直接报加载失败。原因其实很简单，免费版只给 3GB 云端容量，而且这个容量的消耗比你想的要快得多。素材包里提到的一个关键点我后来才搞明白：云端账单里的「储存使用量」不等于文件大小本身，版本历史会叠加消耗。你保存一次就多一个历史版本，版本留得越久、保存越频繁，使用量涨得越快，远不止 mdg 文件本身的大小。</p>
+<p>解法有两层。提前预防的话，重要作品尽量本地和云端双存，不要只押一端。超容之后也别慌，超出的数据不会立刻被清掉，有一定期限让你处理——去云端管理页面删掉不需要的旧版本和废弃作品就行，版本历史在免费版只保留最近 3 代，没必要囤太多。真急着用的话，可以手动把旧作品移到本地文件夹，腾出空间再回来。</p>
+<p><img src="../images/medibang/cloud-use.jpg" alt="云端容量管理" loading="lazy"></p>
+<h2>第二个坑：画布尺寸和 DPI 选错，后面想改几乎不可能</h2>
+<p>刚上手时我以为新建画布随便选一个就行，反正画的过程中可以调。结果画了半本同人志、准备导出印刷时才发现 DPI 只有 150，导出的图放大就糊得厉害。我在应用里找了一圈，没找到「修改画布 DPI」的入口——新建画布时的尺寸和分辨率设定，确定后基本就锁死了。</p>
+<p>症状就是画了一半想改成印刷用的 350dpi，找不到哪里调，导出后放大糊成马赛克。原因是 MediBang 把画布的物理参数在创建时就固化了，dpi 决定的是每英寸的像素密度，事后改 dpi 本质上是重采样，画质损失不可逆。如果一开始选了 72dpi 的屏幕画布，后期硬拉到 350dpi 只会把像素放大，不会凭空增加细节。</p>
+<p>解法就是新建画布时想清楚用途再动手。<a href="https://medibang.pages.dev/" target="_blank" rel="noopener">medibang文档</a>里说得很清楚：网上发布用 72～150dpi 足够，印刷和投稿原稿必须 350dpi 或 600dpi。拿不准的话直接用漫画模板里的预设，比如「同人志 A5 成品 350dpi」这类，预设本身就带好漫画导引线（基本框和裁切框），出错率最低。别嫌麻烦，新建时多看一眼下拉菜单比画完重画要省事得多。</p>
+<h2>第三个坑：漫画功能全要登录，不注册等于半残废</h2>
+<p>第一次用漫画项目功能时我没登录，点「新建漫画项目」按钮没反应，以为是应用 bug，去应用商店重新下载了一遍还是不行。后来才知道，漫画项目、云端协作、跨设备同步这些核心功能，全部需要登录 MediBang 账号才能用——账号本身免费，但不注册等于只能用最简单的单张画布模式。</p>
+<p>症状就是点漫画相关的按钮没有任何反馈，新建漫画项目、加入团队这些操作全部静默失败，也不弹提示。原因是漫画项目本质上是云端工程管理功能，需要账号来归属项目。素材里的提示也明确写了「漫画项目管理功能需要登录 MediBang 账号（免费注册）后使用」，但第一次看到的人很容易忽略这个前置条件。</p>
+<p>解法很简单，装完应用第一件事就注册登录，别等用到相关功能时才发现卡壳。账号注册不花钱，邮箱或第三方登录都行，登录之后漫画项目、跨设备接力、云端版本回溯这些功能才能正常解锁。我现在的习惯是每次在新设备上从<a href="https://medibang.gkhf.beer/download.html" target="_blank" rel="noopener">官方下载</a>拿安装包、装完 MediBang，先登录再开画。</p>
+<p><img src="../images/medibang/multi-device.png" alt="多设备接力作画" loading="lazy"></p>
+<h2>第四个坑：免费版版本回溯只有 3 代，手滑涂毁大面积就找不回来</h2>
+<p>有一次画到最后一格线稿时手滑，用大尺寸橡皮涂掉了整个人物的头发层。我想着回退几步应该能恢复，结果撤销次数有限，往回溯也只找到最近的 3 个历史版本——关键那次保存刚好在改头发之前，但版本回溯只能看到更晚的，中间那版在我后续几次保存中被挤掉了。</p>
+<p>症状就是撤销次数用完后，想从云端历史找回更早的版本，发现免费版只保留最近 3 代，之前的版本已经被覆盖。原因免费版和 Premium 在版本管理上的差异：免费版版本回溯限最近 3 代，Premium 不限。如果你在创作过程中频繁保存，版本号涨得快，关键的中间版本很容易被新的历史版本顶掉。</p>
+<p>解法是养成关键节点手动「存备份」的习惯。画完一个阶段（比如草稿完成、线稿完成、上色完成），手动把当前作品导出一份本地副本，不要只靠云端自动版本。真的手滑搞砸了，本地备份就是你的保险绳。如果作品本身很重要，也可以考虑订阅 Premium，但对大多数个人作者来说，定时手动备份这个动作比花钱实在。</p>
+<h2>防坑清单</h2>
+<ul><li>新建画布时 DPI 和尺寸一次想对，印刷用途别低于 350dpi</li><li>装完应用先注册登录，漫画功能和云端功能不登录等于用不了</li><li>云端只存不超过容量的成品，废稿和旧版本及时清理</li><li>每个创作阶段结束手动导出一份本地备份，别依赖云端版本回溯</li><li>免费版版本回溯只有 3 代，关键节点自己多留一手</li></ul>
+<p>知道这些坑之后，这软件其实相当省心——免费、功能全、跨设备接力方便，尤其是配合漫画项目管理多页原稿的时候，省的精力不是一点半点。只是入门的时候别被「免费」两个字麻痹了，几个隐性的限制提前摸清楚，后面用起来就顺了。</p>
+<p>本文涉及的作品示例、配置参考和操作截图整理了一份完整清单，托管在三个开源仓库里，国内访问时可以根据网络情况选择镜像：<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/medibang" target="_blank" rel="noopener">GitHub</a> 仓库的 medibang 目录维护着最完整的英文与日文资料同步版本，<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/medibang" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/medibang" target="_blank" rel="noopener">GitCode</a> 上各有一份镜像副本供国内用户快速拉取，三个仓库保持同一份目录结构，内容同步更新。</p>
+  </div>
+</article>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/mangatoon-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">MangaToon 能力面全梳理：从内容生态到免费通路的深度盘点</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/deepthink-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">DeepThink 付费账本：这笔 AI 聚合的钱到底值不值</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

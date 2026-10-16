@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把 Home Assistant 嵌进我的每周设备巡检流程 · 老杨技术栈</title>
+  
+<meta name="description" content="以前每周花半小时逐个检查家里二十多台智能设备的电量、信号、自动化触发情况，现在一条命令链搞定——Home Assistant 是这条链的核心，但要接好上下游工具才省时间。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/home-assistant-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把 Home Assistant 嵌进我的每周设备巡检流程">
+<meta property="og:description" content="以前每周花半小时逐个检查家里二十多台智能设备的电量、信号、自动化触发情况，现在一条命令链搞定——Home Assistant 是这条链的核心，但要接好上下游工具才省时间。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/home-assistant-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/home-assistant-docs/assist-voice.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/home-assistant-docs/assist-voice.jpg">
+
+<meta name="twitter:title" content="把 Home Assistant 嵌进我的每周设备巡检流程">
+<meta name="twitter:description" content="以前每周花半小时逐个检查家里二十多台智能设备的电量、信号、自动化触发情况，现在一条命令链搞定——Home Assistant 是这条链的核心，但要接好上下游工具才省时间。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u6bcf\u5468\u82b1\u534a\u5c0f\u65f6\u9010\u4e2a\u68c0\u67e5\u5bb6\u91cc\u4e8c\u5341\u591a\u53f0\u667a\u80fd\u8bbe\u5907\u7684\u7535\u91cf\u3001\u4fe1\u53f7\u3001\u81ea\u52a8\u5316\u89e6\u53d1\u60c5\u51b5\uff0c\u73b0\u5728\u4e00\u6761\u547d\u4ee4\u94fe\u641e\u5b9a\u2014\u2014Home Assistant \u662f\u8fd9\u6761\u94fe\u7684\u6838\u5fc3\uff0c\u4f46\u8981\u63a5\u597d\u4e0a\u4e0b\u6e38\u5de5\u5177\u624d\u7701\u65f6\u95f4\u3002", "headline": "\u628a Home Assistant \u5d4c\u8fdb\u6211\u7684\u6bcf\u5468\u8bbe\u5907\u5de1\u68c0\u6d41\u7a0b", "image": ["https://alipymanbu.github.io/images/home-assistant-docs/assist-voice.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/home-assistant-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/home-assistant-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "\u628a Home Assistant \u5d4c\u8fdb\u6211\u7684\u6bcf\u5468\u8bbe\u5907\u5de1\u68c0\u6d41\u7a0b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">把 Home Assistant 嵌进我的每周设备巡检流程</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把 Home Assistant 嵌进我的每周设备巡检流程</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前每周花半小时逐个检查家里二十多台智能设备的电量、信号、自动化触发情况，现在一条命令链搞定——Home Assistant 是这条链的核心，但要接好上下游工具才省时间。</p>
+  </header>
+  <div class="prose">
+<h2>旧流程：一台一台翻设备</h2>
+<p>我家二十多台智能设备，分布在客厅、主卧、厨房、阳台四个区域。每个周五晚上例行巡检是这样的：打开每个传感器的详情页看电池电量、打开 ZHA 的 Diagnostics 看 LQI 值、手动触发一次每个自动化看能不能跑通、翻一下 energy dashboard 看本周有没有异常耗电。</p>
+<p>最烦的是电池类设备——门窗传感器、人体感应器、温湿度计，各品牌低电量阈值不一样，有些到 20% 才报警，有些 40% 就跳红。以前我得对着手机备忘录逐台勾，半小时能搞定就算快的。中间还穿插着"哎这个设备今天没触发自动化，是自动化逻辑变了还是信号掉了"这种排查，一卡就是十分钟。</p>
+<p>有一次 Z-Wave 门窗传感器掉了三个，我巡检到一半发现，手动跑一遍 Inclusion 花了二十多分钟——距离没控制好贴脸配了两次才成。那次之后我就想，能不能把这些步骤串成一条链，让 Home Assistant 自动跑完、给我一份报告就行。</p>
+<h2>新流程：Home Assistant 居中，上下游接两样东西</h2>
+<p>这条链的核心是 <a href="https://home-assistant.gltd.quest" target="_blank" rel="noopener">Home Assistant官网</a>，它本身就是为这种"自动跑完给报告"的场景设计的，但要省时间得接好两个东西：上游是一个 Python 脚本从 ZHA/Z-Wave JS 里拉原始数据，下游是飞书机器人把报告推到工作群里。中间不需要我点开任何卡片、不需要手动跑任何服务。</p>
+<h3>第一步：Home Assistant 侧的前置准备</h3>
+<p>在 Home Assistant 里要做三件事，否则脚本拉不到数据：</p>
+<ol><li><strong>每个区域建好</strong>。区域是 Home Assistant 把设备分组的基本单位，传感器、开关、灯都归到对应区域。脚本按区域拉实体状态，没归区域的设备会被跳过。</li><li><strong>ZHA 打开 Diagnostics 视图</strong>。ZHA 的 Diagnostics → Network topology 里能看到每个设备的 <code>last_seen</code> 和 <code>lqi</code>（Link Quality Indicator，越低越好），脚本就是从这里拉的。</li><li><strong>所有实体开启历史记录</strong>。默认 Home Assistant 会记，但如果你之前关过，Settings → Devices &amp; services → History 里重新打开就行。</li></ol>
+<h3>第二步：Python 脚本从 Home Assistant API 拉数据</h3>
+<p>脚本跑在我家的 N100 小主机上——Home Assistant OS 的安装包从<a href="https://home-assistant.gltd.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿，装完直接在 Settings → Apps 里拉 ZHA 和 Ollama，和脚本在同一台机器上跑，用 <code>localhost:8123/api</code> 直接拉。脚本做三件事：</p>
+<ul><li>扫所有电池类实体，找 <code>battery_level &lt; 25</code> 的设备，记下列表</li><li>扫所有 Zigbee/Z-Wave 设备的 <code>lqi</code>，找 <code>&gt; 100</code> 的，记为信号差</li><li>扫最近 7 天的 automation 事件，找 <code>state = &quot;failed&quot;</code> 的自动化，记下来</li></ul>
+<p>脚本跑完吐出一份 JSON，然后：</p>
+<h3>第三步：飞书机器人推送报告</h3>
+<p>脚本把 JSON 格式化后 POST 到飞书机器人的 Webhook URL。群里收到的消息长这样：</p>
+<blockquote><p><strong>本周设备巡检报告</strong></p>
+<p>⚠️ 低电量设备（3 台）</p>
+<ul><li>阳台门窗传感器：18%</li><li>主卧人体感应器：12%</li><li>厨房温湿度计：22%</li></ul>
+<p>🔴 信号差设备（2 台）</p>
+<ul><li>主卧 Zigbee 插座：LQI 127（考虑加路由节点）</li><li>阳台人体感应器：LQI 142</li></ul>
+<p>❌ 失败自动化（1 条）</p>
+<ul><li>夜间窗帘自动关闭（连续 3 天触发失败，疑似窗帘电机离线）</li></ul></blockquote>
+<p>整个过程不超过 3 分钟。我收到报告后，该换电池的换电池，该排查信号的排查，该重配的重配。报告没东西的时候我直接忽略——这是这条链最大的好处：<strong>只有有问题才打扰我</strong>。</p>
+<h2>实操细节：两个最容易断链的环节</h2>
+<h3>环节一：Z-Wave 首次配对的距离控制</h3>
+<p>Z-Wave 的 Inclusion 要求设备距离适配器 <strong>1 米以内</strong>，这是硬规矩。我脚本里特意加了一条警告逻辑：如果某台 Z-Wave 设备的 lqi 连续 3 天 &gt; 150，报告里会额外加一条提醒"设备可能未在最佳位置配对，建议重配"。</p>
+<p>重配时的操作步骤：先在 Z-Wave JS UI 里做 Exclusion（移除设备），然后把设备拿到适配器旁边、按重置按钮、等 Z-Wave JS 弹出 Inclusion 模式就立刻按设备触发。整个过程别把设备放回原位——等 Inclusion 完成再拿回去。具体适配器选型和配对注意事项，翻一下 <a href="https://home-assistant-docs.pages.dev/" target="_blank" rel="noopener">Home Assistant文档</a> 里的 Z-Wave 章节讲得很细。我之前就是因为设备拿到 2 米外配的，配完信号一直差，重配后 lqi 从 120 降到 45。</p>
+<h3>环节二：低电量阈值的统一</h3>
+<p>各品牌电池设备的默认低电量阈值不一样。Aqara 门窗传感器 20% 报警，Philips Hue 接近 10% 才报警，我之前小米 MIoT 的设备更离谱——有些到 5% 才跳出来。脚本里我硬编码了一个 25% 的全局阈值，但 Home Assistant 里可以在每个实体的 Settings → Generic sensor 里改单独的 <code>low_battery_threshold</code>。我现在把所有设备都设成 25%，这样脚本逻辑不用变。</p>
+<p><img src="../images/home-assistant-docs/assist-voice.jpg" alt="飞书机器人推送的巡检报告界面" loading="lazy"></p>
+<h2>效果与边界</h2>
+<p>这条链我跑了三个月，原来的半小时巡检现在变成"收到报告 → 10 分钟处理"。最明显的变化：<strong>少了两次手动复制</strong>——以前要把低电量设备名抄到换电池的袋子里、要把信号差的设备名字写到 Z-Wave JS 里去配对，现在脚本直接把设备名和所在区域打在报告里。</p>
+<p>但这套流程什么时候不划算？两种情况：<strong>设备少于 5 台</strong> 或者 <strong>所有设备都是 WiFi 直连、不用 Zigbee/Z-Wave Mesh</strong>。前者手动看看也就 5 分钟，不值得搭链；后者 ZHA Diagnostics 那块跳过了，脚本只能拉电池数据，信号差的问题靠脚本查不出来。</p>
+<p>还有一个边界：<strong>自动化失败事件</strong>脚本目前只扫 <code>state = &quot;failed&quot;</code>，不扫"应该触发但没触发"——后者是个更难的问题，要对比触发时间和实际执行时间的差，我暂时没加这条。</p>
+<p>另外，配对反复失败的时候别硬扛。ZHA 配不上就试试 Zigbee2MQTT（Z2M 支持的设备比 ZHA 多不少），Z-Wave 反复掉线就换个口碑好的 USB 适配器。我之前用的适配器固件维护跟不上，换了之后 lqi 整体降了 30~40。</p>
+<p>Home Assistant 不是一个开箱即用的"万能中控"——它是个骨架，你得往里面接数据、往外推通知。我这条链跑通之后，现在每周五晚上刷一下飞书群就行，剩下的时间该干嘛干嘛。</p>
+<p>我把这套流程用到的 Home Assistant 配置片段、Python 脚本和飞书 Webhook 模板都整理好了，在三个仓库都能拿到——国内访问走 <a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Home%20Assistant" target="_blank" rel="noopener">Gitee</a> 更快，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Home%20Assistant" target="_blank" rel="noopener">GitCode</a> 那边同步的是纯备份版。<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Home%20Assistant" target="_blank" rel="noopener">GitHub</a> 上那份包含了完整的自动化 YAML，想直接抄的去那边看。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gamma-zh-docs.html">Gamma 到底值不值得掏钱？一份按月度重算的付费决策账本</a></h2>
+  <p class="card-desc">我把 Gamma 的免费版和 Pro 版每个功能的实际使用频率、能省的时间、替代方案成本全部拉出来算一遍，帮你三秒决定要不要开年卡。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/halihali-docs.html">哈哩哈哩藏得真深——10 个冷门技巧让你追番效率翻倍</a></h2>
+  <p class="card-desc">哈哩哈哩大家都用来看番，但你知道搜导演名能批量找作品、追番列表能按更新状态筛选、推送没收到可能是电池优化拦了吗？这 10 个隐藏设置翻出来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/poweramp.html">Poweramp 用了两年，从&#34;音质神器&#34;到我通勤路上的默认播放器</a></h2>
+  <p class="card-desc">装 Poweramp 到现在快两年了。从 v3 初期一路更到现在的 build-909，当初冲着&#34;安卓最强音质&#34;来的，现在却发现真正离不开的不是音质，是那些当初没在意的小功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/azahar-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Azahar 用了八个月：从&#34;又一个模拟器&#34;到 3DS 怀旧日常</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/g-shock.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了四年 G-SHOCK Connected，我为什么还没卸载</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

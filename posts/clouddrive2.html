@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>CloudDrive2 实测：把网盘变成本地盘，它在同类里排第几 · 老杨技术栈</title>
+  
+<meta name="description" content="对比 rclone、各网盘客户端自带挂载和系统方案，分析 CloudDrive2 在 NAS 支持、WebDAV 服务、直链播放三个维度的差异化与取舍。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/clouddrive2.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CloudDrive2 实测：把网盘变成本地盘，它在同类里排第几">
+<meta property="og:description" content="对比 rclone、各网盘客户端自带挂载和系统方案，分析 CloudDrive2 在 NAS 支持、WebDAV 服务、直链播放三个维度的差异化与取舍。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/clouddrive2.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/clouddrive2/core-features.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/clouddrive2/core-features.webp">
+
+<meta name="twitter:title" content="CloudDrive2 实测：把网盘变成本地盘，它在同类里排第几">
+<meta name="twitter:description" content="对比 rclone、各网盘客户端自带挂载和系统方案，分析 CloudDrive2 在 NAS 支持、WebDAV 服务、直链播放三个维度的差异化与取舍。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5bf9\u6bd4 rclone\u3001\u5404\u7f51\u76d8\u5ba2\u6237\u7aef\u81ea\u5e26\u6302\u8f7d\u548c\u7cfb\u7edf\u65b9\u6848\uff0c\u5206\u6790 CloudDrive2 \u5728 NAS \u652f\u6301\u3001WebDAV \u670d\u52a1\u3001\u76f4\u94fe\u64ad\u653e\u4e09\u4e2a\u7ef4\u5ea6\u7684\u5dee\u5f02\u5316\u4e0e\u53d6\u820d\u3002", "headline": "CloudDrive2 \u5b9e\u6d4b\uff1a\u628a\u7f51\u76d8\u53d8\u6210\u672c\u5730\u76d8\uff0c\u5b83\u5728\u540c\u7c7b\u91cc\u6392\u7b2c\u51e0", "image": ["https://alipymanbu.github.io/images/clouddrive2/core-features.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/clouddrive2.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/clouddrive2.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "CloudDrive2 \u5b9e\u6d4b\uff1a\u628a\u7f51\u76d8\u53d8\u6210\u672c\u5730\u76d8\uff0c\u5b83\u5728\u540c\u7c7b\u91cc\u6392\u7b2c\u51e0", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">CloudDrive2 实测：把网盘变成本地盘，它在同类里排第几</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">CloudDrive2 实测：把网盘变成本地盘，它在同类里排第几</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">对比 rclone、各网盘客户端自带挂载和系统方案，分析 CloudDrive2 在 NAS 支持、WebDAV 服务、直链播放三个维度的差异化与取舍。</p>
+  </header>
+  <div class="prose">
+<p>把多个云盘「挂成本地盘」这件事，不是 CloudDrive2 发明的。在它之前，rclone 的 mount 子命令已经跑了很多年，各家网盘客户端也或多或少带过类似功能，macOS 用户甚至有 Mounty 这样的轻量方案。但如果你真在这条路上踩过坑——容器里挂载看不见、杀软拦驱动、想在电视上直接看片还要额外搭 WebDAV 服务——你会发现同类工具的差距远不只是「能不能挂载」这一条。</p>
+<h2>同类格局先拉一张表</h2>
+<p>我用挂载类工具的历史大概是：一开始图省事用网盘客户端自带的「虚拟盘」，体验是各家实现参差不齐、有的只支持单家网盘；后来转向 rclone，灵活是灵活，但写好一条能稳定跑的挂载命令要折腾半天，容器里更是要手动配好几层挂载传播，宿主机才能看见挂载点。再后来试了一些 Windows 上的聚合挂载工具，界面友好但稳定性参差不齐。</p>
+<p>从<a href="https://clouddrive2.usea.quest" target="_blank" rel="noopener">clouddrive2官网</a>了解到它的设计思路后，我的第一印象是：它不是从「挂载工具」这个点切入的，而是从「把网盘当本地存储用」这个完整场景切入的。挂载只是底层机制，它往上叠了一层 WebDAV 服务、一层浏览器管理页、一层 NAS 适配，甚至还考虑了影音媒体库的直链播放。这套组合拳打下来，定位就不一样了。</p>
+<p><img src="../images/clouddrive2/core-features.webp" alt="核心功能概览" loading="lazy"></p>
+<h2>它做得比别家好的三件事</h2>
+<h3>NAS 生态的适配深度，同类里罕见</h3>
+<p>这是我印象最深的一点。群晖、威联通、飞牛三家主流 NAS，CloudDrive2 都有现成的安装路径——群晖有社区维护的第三方套件，威联通直接走 Container Station 的 Docker Compose，飞牛 fnOS 甚至专门做了原生 fpk 套件。飞牛那个案例最能说明问题：容器里做 FUSE 挂载会撞上 fnOS 的命名空间限制，报 <code>mount syscall failed in pid 1 namespace</code>，这是平台侧硬限制，换什么容器参数都绕不开，官方于是专门为飞牛做了原生套件——能为单一平台的限制单独做产品适配，这个投入量级在同类工具里很少见。</p>
+<p>对比下来，rclone 在 NAS 上就是一把梭的容器部署，挂载传播、设备映射全靠你自己对着 Compose 模板抄，出了问题社区能找到的排查资料远不如 CloudDrive2 多。有些聚合挂载工具甚至根本没考虑 NAS 场景，只做了桌面端。</p>
+<h3>WebDAV 服务开箱即用，省了额外搭服务的事</h3>
+<p>挂载把网盘变成本机的一块盘，但本机以外的设备怎么办？CloudDrive2 自带 WebDAV 服务——开关、根目录、用户管理都在设置页里配，参数细节在<a href="https://clouddrive2.pages.dev/" target="_blank" rel="noopener">clouddrive2文档</a>里有说明，默认端口 19798，路径加 <code>/dav</code> 就能从局域网里的任何设备连接。手机、平板、电视盒子、别的电脑，只要支持 WebDAV 的客户端都能连上来读。</p>
+<p>这个设计的妙处在于它和挂载是两套独立的通路：桌面端继续用挂载盘拖文件看片，手机上装个 Infuse 或 nPlayer 填个 WebDAV 地址就能刮媒体库，两条路互不干扰。对比同类工具，rclone 要开 WebDAV 就得再写一条 serve webdav 命令，各家网盘客户端基本不提供 WebDAV 服务，想分享给局域网设备往往还要找第三方 WebDAV 中间层。</p>
+<p><img src="../images/clouddrive2/webdav.webp" alt="WebDAV 服务分享" loading="lazy"></p>
+<h3>直链能力解决了影音场景的核心痛点</h3>
+<p>如果你用挂载类工具喂过 Emby 或 Jellyfin，会发现一个绕不开的问题：视频数据全部过宿主机这一跳，4K 原盘跑起来带宽先顶不住，延迟也高。CloudDrive2 对支持 302 直链的网盘（115、天翼等）做了特殊处理——媒体库播放时流量不经过宿主机，直接从网盘走直链到播放器。这个设计的收益是实实在在的：10G 带宽的 NAS 不用再当数据中转站，媒体库刮削的速度和稳定性都明显好于纯挂载方案。</p>
+<h2>为这些优势付出的代价</h2>
+<p>说它好也要说清楚代价，CloudDrive2 不是没有门槛。</p>
+<p>从<a href="https://clouddrive2.usea.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包后，第一关是 FUSE 驱动。Windows 上是 WinFSP，macOS 上是 macFUSE，Linux 上是 FUSE3。驱动意味着什么？意味着装完可能需要重启，意味着个别杀毒软件会拦——哪怕安装包带代码签名，杀软对「装驱动、起系统服务」这类行为仍然高度警惕。我自己就遇到过安装完服务起不来，查了半小时才发现是 Windows Defender 把 WinFSP 驱动隔离了，最后把安装目录和驱动一起加进白名单才解决。</p>
+<p>第二，非官方接入有天然的不稳定性。夸克网盘这类没有直连支持的，社区通行做法是借 alist 之类的聚合工具转一层 WebDAV 再接进来。套娃方案能用，但要接受丢东西：夸克的接口不在官方支持序列里，网页接口变更或风控调整都可能导致中途失效；数据要过聚合工具那一跳，速度受两层影响；秒传和直链看运气，哈希信息能不能透传取决于聚合工具的实现。</p>
+<p>第三，WebDAV 协议的能力上限。WebDAV 是通用协议，走它只有列目录和读字节的能力——缩略图、云端搜索、秒传这类网盘原生能力传不过来，拖进度条、选音轨字幕没问题，但高码率原盘在带宽不足时还是会卡。这也是为什么官方同时提供了 API 令牌通道给另一台设备，两种方案按场景选。</p>
+<h2>选购结论：谁该用它</h2>
+<p>如果你有 NAS 并且想把网盘当本地存储用——备份任务、媒体库监控、WebDAV 分享一套拉通——CloudDrive2 是目前同类里适配最深入的选择，现成的套件和容器配置能省掉大量手动折腾的时间。</p>
+<p>如果你只是想把某个网盘临时挂成本地盘用几天，或者不打算做影音媒体库，rclone 或 Mounty 这类轻量方案可能更合适，它们不依赖服务常驻，装完就能用，也不会碰到驱动和杀软拦截的问题。</p>
+<p>如果你用的网盘全是没有直连支持的，也要想清楚：中转方案能跑通，但稳定性受中间层牵制，哪天官方直连支持了再切也不迟。</p>
+<p>最后说一句实在的——CloudDrive2 值得用的原因不是它比同类多几个功能，而是它把「把网盘当本地存储用」这件事上的每一个环节都做了适配：桌面端挂载、NAS 套件、WebDAV 分享、直链播放，这些不是孤立功能，是同一套产品思路下的连贯设计。同类工具里能做到这一点的，目前不多。需要部署模板的话可以去<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/clouddrive2" target="_blank" rel="noopener">GitHub</a>拿，国内网络不畅时试试<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/clouddrive2" target="_blank" rel="noopener">Gitee</a>或<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/clouddrive2" target="_blank" rel="noopener">GitCode</a>的镜像。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/vikacgapp.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了半年才发现 V站藏着四个别人不说的彩蛋</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/aski-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">ASKI 小白五分钟上手 从零到第一次和 AI 聊明白一件事</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

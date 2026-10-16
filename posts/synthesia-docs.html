@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 Synthesia 搭一条从练琴到发视频的完整流水线 · 老杨技术栈</title>
+  
+<meta name="description" content="把 Synthesia 嵌进日常练琴、录音和视频发布的工作流里，从每周练一首到产出一条能发的教学视频，到底能省掉哪些环节。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/synthesia-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Synthesia 搭一条从练琴到发视频的完整流水线">
+<meta property="og:description" content="把 Synthesia 嵌进日常练琴、录音和视频发布的工作流里，从每周练一首到产出一条能发的教学视频，到底能省掉哪些环节。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/synthesia-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/synthesia-docs/falling-notes-finger-hints.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/synthesia-docs/falling-notes-finger-hints.png">
+
+<meta name="twitter:title" content="用 Synthesia 搭一条从练琴到发视频的完整流水线">
+<meta name="twitter:description" content="把 Synthesia 嵌进日常练琴、录音和视频发布的工作流里，从每周练一首到产出一条能发的教学视频，到底能省掉哪些环节。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u628a Synthesia \u5d4c\u8fdb\u65e5\u5e38\u7ec3\u7434\u3001\u5f55\u97f3\u548c\u89c6\u9891\u53d1\u5e03\u7684\u5de5\u4f5c\u6d41\u91cc\uff0c\u4ece\u6bcf\u5468\u7ec3\u4e00\u9996\u5230\u4ea7\u51fa\u4e00\u6761\u80fd\u53d1\u7684\u6559\u5b66\u89c6\u9891\uff0c\u5230\u5e95\u80fd\u7701\u6389\u54ea\u4e9b\u73af\u8282\u3002", "headline": "\u7528 Synthesia \u642d\u4e00\u6761\u4ece\u7ec3\u7434\u5230\u53d1\u89c6\u9891\u7684\u5b8c\u6574\u6d41\u6c34\u7ebf", "image": ["https://alipymanbu.github.io/images/synthesia-docs/falling-notes-finger-hints.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/synthesia-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/synthesia-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 Synthesia \u642d\u4e00\u6761\u4ece\u7ec3\u7434\u5230\u53d1\u89c6\u9891\u7684\u5b8c\u6574\u6d41\u6c34\u7ebf", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">用 Synthesia 搭一条从练琴到发视频的完整流水线</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 Synthesia 搭一条从练琴到发视频的完整流水线</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">把 Synthesia 嵌进日常练琴、录音和视频发布的工作流里，从每周练一首到产出一条能发的教学视频，到底能省掉哪些环节。</p>
+  </header>
+  <div class="prose">
+<p>我每周要做一件事：挑一首钢琴曲目练熟，然后产出一条能发在视频平台上的简短教学演示。两年前这条链要手动跨三个工具，中间还穿插着无数次文件复制和格式转换。现在我把 Synthesia 插在了最中间的那个位置，整个流程稳定了下来。写这篇就是想把这条流水线拆给你看——每个环节具体接什么工具、哪里最容易断、以及这套组合什么时候反而不划算。</p>
+<h2>旧流程的断点</h2>
+<p>先说说以前怎么干的，以及卡在哪。</p>
+<p>第一步是找谱子。那时候我习惯从 MIDI 库下载现成文件，然后用一个 DAW 把 MIDI 导进去，开着节拍器跟着弹。练熟了之后，用屏幕录制软件把 DAW 的播放画面抓下来，后期把声音换掉（因为 DAW 默认音色太塑料），最后再做一遍字幕和封面。整条线涉及：MIDI 下载站 → DAW（Audacity 或 REAPER）→ 录屏软件 → 剪辑软件。</p>
+<p>这条线的问题不是工具多，而是<strong>每个工具之间不说话</strong>。MIDI 从 DAW 里导出来是一个文件，录屏文件又是另一个，后期配对的时候经常要手动对齐时间轴。有几次我录了两条轨，合并的时候发现差了两拍，又得重新找那个版本的 MIDI 重新导。加上换音源还要去下载 SoundFont、放到 DAW 的音色库里、重启 DAW 才能生效——练琴本身 30 分钟，这些准备工作经常要花掉两倍的时间。</p>
+<p>还有个更烦的：DAW 里弹 MIDI 没有指法提示。我只能自己在五线谱里手动标数字，或者干脆凭感觉弹。弹到难的段落，手指不知道该怎么放，停下来翻纸质谱子又打断了节奏。</p>
+<h2>新流程：Synthesia 插在了哪</h2>
+<p><a href="https://synthesia.bmww.store" target="_blank" rel="noopener">Synthesia官网</a> 解决的核心问题是：它把 MIDI 文件变成了一个<strong>可交互的练习界面</strong>，而不是一个被动播放的音频轨。我的新流程变成了五步：</p>
+<p><strong>第一步，找 MIDI。</strong> 这步没变，还是 MIDI 库或自己扒谱。但现在下完的 MIDI 直接拖进 Synthesia 的歌曲文件夹，不用再经过 DAW 中转。Synthesia 自带的歌单会自动扫描文件夹里的 <code>.mid</code> 文件，支持搜索和分类，比 DAW 的工程管理直观得多。</p>
+<p><strong>第二步，配手位和指法。</strong> 这是 Synthesia 替我省最多事的环节。打开一首歌后，左手自动显示蓝色方块、右手绿色方块，方块上还带指法数字（1=拇指，5=小指）。如果默认的左右手分配不对，进设置里的声部面板就能切换。我以前在 DAW 里手动标指法要花 15 分钟，现在 Synthesia 默认给的指法已经够用了，偶尔调一下就行。</p>
+<p><img src="../images/synthesia-docs/falling-notes-finger-hints.png" alt="下落音符与指法提示标注" loading="lazy"></p>
+<p><strong>第三步，练琴。</strong> 旋律练习模式下，该我弹的琴键会亮彩色圆点提示，弹错了自动停，弹对了继续。速度可以调慢到 50%，段落可以单独循环。这部分就是 Synthesia 的核心价值——它不是个播放器，是个陪练。</p>
+<p><strong>第四步，录音。</strong> 这步用的是 Synthesia 10.7 之后内置的多轨录音机。进 Free Play 模式，顶部红色按钮开始录第一轨，节拍器自动打拍，弹完按停止键。录第二轨时，第一轨在背景里播放，对着叠录就行。最多六轨，每轨可以独立选乐器和颜色。弹得不齐的地方，保存时勾上「吸附到节拍网格」，音符首尾自动对齐。</p>
+<p><img src="../images/synthesia-docs/free-play-recording-track.png" alt="自由演奏台的录音入口" loading="lazy"></p>
+<p>这里有个细节我一开始没注意：录音中途退出 Free Play、甚至关掉软件，进行中的录音都会保留。有一次电脑自动锁屏重启，回来打开还能接着录——这个容错设计比我之前用过的任何 DAW 都省心。</p>
+<p><strong>第五步，出视频。</strong> 这里要说清楚一个重要的历史遗留问题：Synthesia 的官方 Video Creator 在 10.4 版本（2017 年）之后就停更了，而且必须和 10.4 版主程序配套使用，在新版上会报「必须先解锁」，10.4 版主程序可以从<a href="https://synthesia.bmww.store/download.html" target="_blank" rel="noopener">官方下载</a>拿。所以现在我是用<strong>录屏软件抓 Synthesia 的全屏画面</strong>——开全屏播放，把下落音符、虚拟键盘、节拍器这些元素都录进去，音质直接用 Synthesia 里换过的 SoundFont 音色，不用再后期替换。如果想要纯乐谱视图，按 F5 就能关掉下落方块，只留五线谱，适合做读谱向的教学画面。</p>
+<h2>两个最容易断链的环节</h2>
+<p>这条流水线跑了大半年，我发现两个地方最容易出问题，提前说一下省得你踩坑。</p>
+<p>第一个是<strong>蓝牙连接的延迟</strong>。我一开始图省事，用蓝牙 MIDI 连键盘和 iPad，结果打分模式下毫秒级误差会被扣分。后来查了<a href="https://synthesia-docs.pages.dev/" target="_blank" rel="noopener">Synthesia文档</a>，蓝牙延迟确实略高于 USB，练习跟弹可以接受，独奏打分就别省这根线了。Windows 10 和 iPad 都原生支持蓝牙 MIDI，配对路径也不复杂，但如果你在意精度，USB 还是首选。</p>
+<p>第二个是<strong>元数据缺失</strong>。网上下的 MIDI 文件大多没有作曲家、标签这些信息，Synthesia 的歌单虽然能扫到文件，但高级搜索（比如按作曲家搜）用不了。解决办法是用官方开源的元数据编辑器给 MIDI 补一个同名的 <code>.synthesia</code> 文件。这个工具一直在更新，GitHub 上能找到，做歌单分发或者课程包的话必须配。</p>
+<h2>效果与边界</h2>
+<p>量化一下：以前从挑谱子到出成品视频大概要两个小时，现在稳定在 45 分钟左右。省掉的时间主要是三个地方：手动标指法（省了 15 分钟）、DAW 和录屏之间的格式转换（省了 20 分钟）、后期替换音源（省了 10 分钟）。不是什么天翻地覆的提升，但每周都要做的事，每次省 75 分钟，一年就是 60 多个小时。</p>
+<p>然后说边界——这套流程什么时候不划算。</p>
+<p>Synthesia 内置的多轨录音机最多六轨，而且不是专业 DAW，没有效果器、没有混音台。如果你要做复杂的编曲（超过六轨、要加鼓点贝斯吉他），那 Synthesia 只能覆盖练琴和初步叠录，后期还是得回到 DAW。它适合的场景是：一首钢琴独奏或简单的双手协奏，产出一条教学演示视频。超出这个范围的复杂创作，别强行塞进 Synthesia。</p>
+<p>还有一点：发布视频之前，曲目本身的版权是你的事。Synthesia 只管渲染画面和声音，商业曲目的公开传播需要另行授权，这一点和软件无关。</p>
+<p>总的来说，Synthesia 在我这条流水线里的角色是：把「找谱子」和「练琴」这两个以前分离的环节合成了一个，同时用内置的录音机替掉了 DAW 的初步录音功能。它不是万能的，但在「练一首 → 录一版 → 发一条」这个量级上，目前没找到更顺手的组合。怕单源维护出岔子的话，我把这些整理好的资料分别放在了 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Synthesia" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Synthesia" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Synthesia" target="_blank" rel="noopener">GitCode</a>，选你网络访问最顺的那个就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/netshort-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">NetShort 的付费墙为什么是双轨制——拆解短剧 App 的商业底层逻辑</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/dreamina-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Dreamina 快问快答：AI 视频生图一站搞定的剪映系新工具</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

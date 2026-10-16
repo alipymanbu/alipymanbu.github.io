@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从&#34;一个台&#34;到&#34;一档节目&#34;——MeTV 迭代史里藏着什么产品逻辑 · 老杨技术栈</title>
+  
+<meta name="description" content="从 v6.1.0 回看 MeTV 的演进路径：它什么时候开始管起了用户&#34;什么时候看什么&#34;，又为什么在&#34;全不行先查网络&#34;这种事上花了这么多心思？">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/metv-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从&#34;一个台&#34;到&#34;一档节目&#34;——MeTV 迭代史里藏着什么产品逻辑">
+<meta property="og:description" content="从 v6.1.0 回看 MeTV 的演进路径：它什么时候开始管起了用户&#34;什么时候看什么&#34;，又为什么在&#34;全不行先查网络&#34;这种事上花了这么多心思？">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/metv-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/metv-docs/live-variety-show.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/metv-docs/live-variety-show.png">
+
+<meta name="twitter:title" content="从&#34;一个台&#34;到&#34;一档节目&#34;——MeTV 迭代史里藏着什么产品逻辑">
+<meta name="twitter:description" content="从 v6.1.0 回看 MeTV 的演进路径：它什么时候开始管起了用户&#34;什么时候看什么&#34;，又为什么在&#34;全不行先查网络&#34;这种事上花了这么多心思？">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece v6.1.0 \u56de\u770b MeTV \u7684\u6f14\u8fdb\u8def\u5f84\uff1a\u5b83\u4ec0\u4e48\u65f6\u5019\u5f00\u59cb\u7ba1\u8d77\u4e86\u7528\u6237\"\u4ec0\u4e48\u65f6\u5019\u770b\u4ec0\u4e48\"\uff0c\u53c8\u4e3a\u4ec0\u4e48\u5728\"\u5168\u4e0d\u884c\u5148\u67e5\u7f51\u7edc\"\u8fd9\u79cd\u4e8b\u4e0a\u82b1\u4e86\u8fd9\u4e48\u591a\u5fc3\u601d\uff1f", "headline": "\u4ece\"\u4e00\u4e2a\u53f0\"\u5230\"\u4e00\u6863\u8282\u76ee\"\u2014\u2014MeTV \u8fed\u4ee3\u53f2\u91cc\u85cf\u7740\u4ec0\u4e48\u4ea7\u54c1\u903b\u8f91", "image": ["https://alipymanbu.github.io/images/metv-docs/live-variety-show.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/metv-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/metv-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u4ece\"\u4e00\u4e2a\u53f0\"\u5230\"\u4e00\u6863\u8282\u76ee\"\u2014\u2014MeTV \u8fed\u4ee3\u53f2\u91cc\u85cf\u7740\u4ec0\u4e48\u4ea7\u54c1\u903b\u8f91", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">从&#34;一个台&#34;到&#34;一档节目&#34;——MeTV 迭代史里藏着什么产品逻辑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从&#34;一个台&#34;到&#34;一档节目&#34;——MeTV 迭代史里藏着什么产品逻辑</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 v6.1.0 回看 MeTV 的演进路径：它什么时候开始管起了用户&#34;什么时候看什么&#34;，又为什么在&#34;全不行先查网络&#34;这种事上花了这么多心思？</p>
+  </header>
+  <div class="prose">
+<h2>现状：v6.1.0 已经不是那个"换源看直播"的工具了</h2>
+<p>现在上 <a href="https://metv.ggcd.online" target="_blank" rel="noopener">MeTV官网</a> 看 v6.1.0 的功能列表，你能感受到它和早期同类产品的明显差别——它不再只是一个"能切换信号源的直播播放器"。节目预告覆盖到未来若干小时，对感兴趣的节目可以直接点预约，到点自动推通知甚至自动跳台；错过了也不怕，7 天回看把最近一周的节目都兜住了。看直播时某一路源卡了，另一路源秒切无缝衔接，连个缓冲黑屏都尽量省掉。</p>
+<p><img src="../images/metv-docs/live-variety-show.png" alt="多源切换的实际效果，同一频道多路源同时可用" loading="lazy"></p>
+<p>但我写这篇不是为了列功能清单——真正有意思的是：这些功能不是同时冒出来的，它们之间藏着一条清晰的产品演进线。</p>
+<h2>来路：样本文档没提的恰恰说明……</h2>
+<p>去 <a href="https://metv-docs.pages.dev/" target="_blank" rel="noopener">MeTV文档</a> 翻了一下，唯一明确标注版本号的就是 v6.1.0。更早的历史官方没细说，<a href="https://metv.ggcd.online/download.html" target="_blank" rel="noopener">官方下载</a>只提供 v6.1.0 这一版的安装包，但从现有功能的"新旧分层"能反推一些东西。</p>
+<p>最底层的"换源看直播"——这肯定是 MeTV 最早就有的核心能力，也是同类 IPTV 客户端的入场券。没有这个，后面的一切都无从谈起。但光有换源不够，用户会碰到一个经典问题：所有频道都打不开的时候，到底是 App 坏了还是自己网络有问题？</p>
+<p>"全不行先查网络——手机热点一秒分出是谁的锅"这篇老用户经验的存在，本身就说明 MeTV 团队意识到了这个困惑不是个别现象。他们没有硬加一个"网络自检"按钮（那是系统该干的事），而是在文档里把"手机热点测试法"写成了标准化的 30 秒排查流程。这个动作很产品——不碰用户的系统权限，只教一个零成本的判断方法。</p>
+<p>然后就是节目预告和预约。这两个功能的出现标志着 MeTV 从"被动观看"转向了"主动排期"——用户不再是"打开看看有什么"，而是"我想看今晚 8 点那档综艺，帮我记着"。预告数据来源于频道本身的 EPG，不同频道更新精度不同，央视和卫视准，地方台可能滞后——MeTV 没有吹"我的预告 100% 准确"，而是坦诚告诉用户"不准不是我的问题，是上游没给准"。这种克制在同类产品里不常见。</p>
+<p><img src="../images/metv-docs/metv-official-1.png" alt="MeTV 主界面，频道分类和预告并列呈现" loading="lazy"></p>
+<h2>规律：团队一直在死磕什么、什么一直没碰</h2>
+<p>从现有功能反推迭代节奏，我看到两条非常稳定的优先级线索。</p>
+<p>第一条，<strong>死磕"看到"的确定性</strong>。多源切换解决了"这一路源卡了"，7 天回看解决了"错过了"，预约提醒解决了"忘了看"，手机热点排查解决了"全不行的时候分不清是谁的锅"——所有新增功能都围绕同一个核心问题：让用户在"想看"这个时刻，尽可能不被非内容因素打断。这不是什么高大上的产品战略，就是朴素地解决 IPTV 用户最常抱怨的几个痛点。</p>
+<p>第二条，<strong>一直没碰的东西反而更值得注意</strong>。MeTV 到现在也没做个性化推荐——没有"猜你喜欢"、没有"基于你的观看历史推荐频道"。它也没做社区、没做弹幕、没做任何用户生成内容相关的东西。连收藏功能都保持在"标记一个台/节目"的极简状态，没有社交属性、没有云端同步的宣传。</p>
+<p>这说明 MeTV 的团队非常清楚自己的边界：他们做的是一个<strong>看电视的工具</strong>，不是一个内容平台，也不是一个社区。这个定位从早期版本延续到 v6.1.0 都没变过——迭代只是让"看电视"这件事本身变得更稳定、更省心，而不是往里面塞更多内容。</p>
+<h2>预判：照这个路线，下一步大概率走向哪</h2>
+<p>从迭代规律推，MeTV 未来几个版本的方向不会跳脱"让看到这件事更省心"的框架。</p>
+<p>一个比较确定的猜测是<strong>回看时长的扩展</strong>——现在是 7 天，如果上游 EPG 数据允许，往 14 天甚至更长走是顺理成章的事。另一个可能是<strong>预约功能的增强</strong>——现在是"到点通知跳台"，未来可能支持"自动录制"或者"多期连约"（比如追一整季综艺，不用每期单独点）。</p>
+<p>但我不太相信它会在短期内做个性化推荐或者社区功能——那完全是另一个产品方向，需要的资源和 MeTV 当前的团队能力也不匹配。</p>
+<p>至于有没有什么"憋了好几个版本的大功能"藏在 v6.1.0 之后的路线图里，目前看不太出来。MeTV 的迭代节奏一直比较稳，没有那种突然跳级的大版本颠覆——它更像是在同一条路上不停地铺砖，每一块砖都解决一个具体的小痛点。</p>
+<h2>写在最后</h2>
+<p>写这篇版本史的时候我才意识到，MeTV 的迭代逻辑其实和很多成功的工具产品是通的：先把一件事做扎实，然后围绕这件事的用户抱怨一点点补。换源做扎实了，用户抱怨"全坏了不知道是我还是它"，就加热点排查的引导；换源加预告了，用户抱怨"忘了看"，就加预约提醒；预约加了，用户抱怨"错过了怎么办"，就加 7 天回看。每一步都不是什么革命性的创新，但每一步都让"打开 MeTV 看电视"这件事变得更顺畅。</p>
+<p>这类产品最不讨巧——没有炫功能的发布会，没有社交媒体上的话题点，但用户就是会在一个又一个小细节里感受到"这个 App 懂我在烦什么"。</p>
+<p>MeTV 的资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/MeTV" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/MeTV" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/MeTV" target="_blank" rel="noopener">GitCode</a> 三个仓库都有维护，国内访问走 Gitee 或 GitCode 更顺手。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/anyview-docs.html">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</a></h2>
+  <p class="card-desc">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/newline-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">我的一天音频工作流：从腾讯会议到通勤到工位专注，只用 Newline 一对耳机</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/lsposed-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">我的手机不想要它自己的样子——LSPosed 折腾记事</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

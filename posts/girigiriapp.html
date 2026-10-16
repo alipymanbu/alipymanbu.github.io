@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>GirigiriAPP 用了三个月才踩透的五个坑 装之前先看看 · 老杨技术栈</title>
+  
+<meta name="description" content="Girigiri 看着简单清爽，但推送通知、主题同步、数据迁移这些地方藏着让人闹心的细节。本文把我踩过的坑一条一条列出来，附解法，希望你不用再从头摸黑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/girigiriapp.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GirigiriAPP 用了三个月才踩透的五个坑 装之前先看看">
+<meta property="og:description" content="Girigiri 看着简单清爽，但推送通知、主题同步、数据迁移这些地方藏着让人闹心的细节。本文把我踩过的坑一条一条列出来，附解法，希望你不用再从头摸黑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/girigiriapp.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/girigiriapp/login-screen.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/girigiriapp/login-screen.jpg">
+
+<meta name="twitter:title" content="GirigiriAPP 用了三个月才踩透的五个坑 装之前先看看">
+<meta name="twitter:description" content="Girigiri 看着简单清爽，但推送通知、主题同步、数据迁移这些地方藏着让人闹心的细节。本文把我踩过的坑一条一条列出来，附解法，希望你不用再从头摸黑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Girigiri \u770b\u7740\u7b80\u5355\u6e05\u723d\uff0c\u4f46\u63a8\u9001\u901a\u77e5\u3001\u4e3b\u9898\u540c\u6b65\u3001\u6570\u636e\u8fc1\u79fb\u8fd9\u4e9b\u5730\u65b9\u85cf\u7740\u8ba9\u4eba\u95f9\u5fc3\u7684\u7ec6\u8282\u3002\u672c\u6587\u628a\u6211\u8e29\u8fc7\u7684\u5751\u4e00\u6761\u4e00\u6761\u5217\u51fa\u6765\uff0c\u9644\u89e3\u6cd5\uff0c\u5e0c\u671b\u4f60\u4e0d\u7528\u518d\u4ece\u5934\u6478\u9ed1\u3002", "headline": "GirigiriAPP \u7528\u4e86\u4e09\u4e2a\u6708\u624d\u8e29\u900f\u7684\u4e94\u4e2a\u5751 \u88c5\u4e4b\u524d\u5148\u770b\u770b", "image": ["https://alipymanbu.github.io/images/girigiriapp/login-screen.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/girigiriapp.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/girigiriapp.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "GirigiriAPP \u7528\u4e86\u4e09\u4e2a\u6708\u624d\u8e29\u900f\u7684\u4e94\u4e2a\u5751 \u88c5\u4e4b\u524d\u5148\u770b\u770b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">GirigiriAPP 用了三个月才踩透的五个坑 装之前先看看</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">GirigiriAPP 用了三个月才踩透的五个坑 装之前先看看</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Girigiri 看着简单清爽，但推送通知、主题同步、数据迁移这些地方藏着让人闹心的细节。本文把我踩过的坑一条一条列出来，附解法，希望你不用再从头摸黑。</p>
+  </header>
+  <div class="prose">
+<p>初次接触 <a href="https://girigiriapp.laze.skin" target="_blank" rel="noopener">GirigiriAPP官网</a> 时我以为它就是个干干净净的追番工具——界面不花里胡哨，分类清楚，点进去就能看。但用了三个月、换了一次平板、重装了两次之后，我发现这东西在一些你想不到的地方藏着坑。不是什么致命 bug，就是你没料到它会那样，等遇到的时候才发现绕不过去。</p>
+<p>下面五个是我实打实踩过的，希望你看了之后不用再踩一遍。</p>
+<h2>坑一：更新通知收不到，但书架上已经有红标了</h2>
+<h3>症状</h3>
+<p>订阅了好几部番，某天下午打开 app，发现书架上有两部已经标了「NEW 3」「NEW 5」，但手机从头到尾没弹过一条推送。去设置里翻了一遍，应用内的通知开关也是开的，系统通知权限也给了，就是不响。</p>
+<h3>原因</h3>
+<p>这个坑我查了好几天才搞明白——<strong>安卓系统的通知渠道</strong>（Notification Channel）。Girigiri 的追更推送走的是一个单独的通知渠道，如果这个渠道被你或者手机管家之类的工具屏蔽了，应用本身不会报错，也不会提示。书架上的更新标记是本地扫描出来的，不依赖推送通道，所以两边表现不一致。</p>
+<p>另外还有一种情况：<strong>应用被电池优化白名单排除了</strong>。安卓系统会杀掉后台应用节省电量，Girigiri 不在白名单里的话，休眠期间就没法定期检查更新，自然也发不出推送。</p>
+<h3>解法</h3>
+<p>进手机设置 → 应用 → Girigiri → 通知，先看一眼追更那个渠道的开关是否独立打开。然后进电池/性能设置，把 Girigiri 加入「允许后台活动」或者「不受限制」的白名单。做完这两步，下次更新应该就能正常收到了。如果还不行，试试强制停止应用再重新打开，有时候被系统卡住的通知通道需要重新激活。</p>
+<h2>坑二：换设备登录之后，所有主题设置又变回默认浅色</h2>
+<h3>症状</h3>
+<p>家里的手机设了深色主题、漫画阅读器也开了夜间模式，晚上躺床上看特别舒服。然后买了个平板，登录同一个账号，打开一看——白底黑字，差点把眼睛闪瞎。翻了半天才找到主题设置，又得逐个重新调一遍。</p>
+<p><img src="../images/girigiriapp/login-screen.jpg" alt="Girigiri 登录页面" loading="lazy"></p>
+<h3>原因</h3>
+<p>这其实是应用当前的设计决定——<strong>显示主题、字体大小、漫画阅读器设置这些偏好只存在本地，不跟着账号云端同步</strong>。书架、历史进度、关注列表这些数据是云同步的，但纯粹的显示个性化设置不走云端。</p>
+<p>后来去 <a href="https://girigiriapp.pages.dev/" target="_blank" rel="noopener">GirigiriAPP文档</a> 翻了一下才确认，样本文档里明说了这一点，但我没仔细看就直接换了设备，结果白调了半小时。</p>
+<h3>解法</h3>
+<p>目前没有一键同步的办法，只能每台设备分别调一遍。如果你有多台设备（手机 + 平板），建议第一次登录新设备的第一件事就是先把主题、字体、夜间模式全部调好，再开始用，避免中途被刺眼的默认设置打断心情。未来如果应用更新了云同步功能，应该会自动生效，但在那之前只能手动。</p>
+<h2>坑三：不登录就重装 app，书架和历史全没了</h2>
+<h3>症状</h3>
+<p>某天手机清理空间，嫌 app 缓存太大就卸载重装了。装好之后打开一看——书架空空荡荡，之前追了二十多部番全没了，播放历史也清空了。当时脸都黑了。</p>
+<h3>原因</h3>
+<p><strong>不登录账号的情况下，所有数据都是本地存储</strong>。卸载 app 会把 app 目录下的数据一并清掉，没有任何云端备份兜底。书架、收藏、历史记录，这些全跟着本地数据库走，删了就没了。</p>
+<h3>解法</h3>
+<p>注册登录一个账号花不了一分钟——安装包记得从 <a href="https://girigiriapp.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a> 拿，别在各种应用商店里乱装——但这能保住你所有的追更数据。登录之后书架、收藏、历史进度会自动绑定到账号，换手机、重装都能通过同一个账号拉回来。手机号注册或者第三方一键授权都行，选你觉得方便的。</p>
+<h2>坑四：同步延迟——手机上刚关注的番，平板上找不到</h2>
+<h3>症状</h3>
+<p>在手机上刚关注了一部新番，转头拿平板打开，书架里怎么都找不到。下拉刷新了好几次，退出重登也试了，等了大概十分钟才终于出现。</p>
+<h3>原因</h3>
+<p>多设备同步不是实时的，应用内部有一个同步周期。如果你在流量环境下操作，服务器响应可能更慢；另外，Girigiri 不限制同时登录的设备数量，但极端情况下多设备同时操作同一份数据时，偶尔会出现冲突，需要等下一次同步周期来解决。</p>
+<h3>解法</h3>
+<p>遇到同步延迟先别急着退出重登——大部分时候等个几分钟就好。如果十分钟以上还没同步过来，试试切换到 WiFi 环境下拉一次手动刷新，比流量下靠谱。另外注意，<strong>缓存内容是不跨设备同步的</strong>，这个是设计如此，别等着它自己出现了。</p>
+<h2>坑五：漫画阅读器的夜间模式和 app 深色主题是两套东西</h2>
+<h3>症状</h3>
+<p>开了 app 的深色主题，首页和书架都暗下来了，但点进漫画一看——还是白底，晃得眼睛疼。翻了好久才发现还要在漫画阅读器里单独开一遍夜间模式。</p>
+<h3>原因</h3>
+<p>app 整体主题和漫画阅读器的夜间模式是两套独立的设置开关。深色主题管的是导航区域（首页、分类、书架这些），漫画阅读器夜间模式只影响漫画页面本身。两个互不影响，各管各的。</p>
+<p><img src="../images/girigiriapp/app-screen-3.jpg" alt="分类分区界面" loading="lazy"></p>
+<h3>解法</h3>
+<p>白天用浅色主题 + 漫画标准模式，晚上看番记得先切 app 深色主题，再进漫画开一下夜间模式。如果嫌麻烦，可以养成习惯：睡前躺床上看的话，进 app 第一件事先切深色主题，进漫画再顺手开夜间模式，形成肌肉记忆就不会忘了。</p>
+<h2>防坑清单</h2>
+<p>把上面五个坑浓缩成 3 条速查：</p>
+<ul><li><strong>先登录再用</strong>，别等数据丢了才后悔。注册花一分钟，保住书架一辈子。</li><li><strong>通知收不到优先查安卓通知渠道</strong>和电池白名单，比重装 app 靠谱一百倍。</li><li><strong>换设备记得先手动调主题</strong>，显示设置不走云端同步，别指望它自动跟上。</li></ul>
+<p>Girigiri 本质上还是一个做得比较干净的追番工具，坑都不是什么离谱的 bug，就是一些你没料到的设计选择——顺手说一句，<a href="https://github.com/alipymanbu/APK/tree/main/APP/GirigiriAPP" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/GirigiriAPP" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/GirigiriAPP" target="_blank" rel="noopener">GitCode</a> 上也有更完整的软件资料，需要的话可以去看看。知道这些坑之后，这软件其实相当省心。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/tunefree-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">TuneFree 深度解析：一个开源音乐聚合器的技术取舍之道</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/abema-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">ABEMA 快问快答：日本流媒体平台入门到不踩坑</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

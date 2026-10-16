@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>家里 Wi-Fi 到底连了多少设备？装了 Fing 终于搞清楚了 · 老杨技术栈</title>
+  
+<meta name="description" content="朋友说家里 Wi-Fi 变慢可能有人蹭网，我抱着试试看的心态装了 Fing。结果不仅揪出了两台陌生设备，还发现路由器本身就有两个频段在打架。这是我用了一周的真实体验。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/fing-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="家里 Wi-Fi 到底连了多少设备？装了 Fing 终于搞清楚了">
+<meta property="og:description" content="朋友说家里 Wi-Fi 变慢可能有人蹭网，我抱着试试看的心态装了 Fing。结果不仅揪出了两台陌生设备，还发现路由器本身就有两个频段在打架。这是我用了一周的真实体验。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/fing-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/fing-docs/home-scan-feature.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/fing-docs/home-scan-feature.webp">
+
+<meta name="twitter:title" content="家里 Wi-Fi 到底连了多少设备？装了 Fing 终于搞清楚了">
+<meta name="twitter:description" content="朋友说家里 Wi-Fi 变慢可能有人蹭网，我抱着试试看的心态装了 Fing。结果不仅揪出了两台陌生设备，还发现路由器本身就有两个频段在打架。这是我用了一周的真实体验。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u670b\u53cb\u8bf4\u5bb6\u91cc Wi-Fi \u53d8\u6162\u53ef\u80fd\u6709\u4eba\u8e6d\u7f51\uff0c\u6211\u62b1\u7740\u8bd5\u8bd5\u770b\u7684\u5fc3\u6001\u88c5\u4e86 Fing\u3002\u7ed3\u679c\u4e0d\u4ec5\u63ea\u51fa\u4e86\u4e24\u53f0\u964c\u751f\u8bbe\u5907\uff0c\u8fd8\u53d1\u73b0\u8def\u7531\u5668\u672c\u8eab\u5c31\u6709\u4e24\u4e2a\u9891\u6bb5\u5728\u6253\u67b6\u3002\u8fd9\u662f\u6211\u7528\u4e86\u4e00\u5468\u7684\u771f\u5b9e\u4f53\u9a8c\u3002", "headline": "\u5bb6\u91cc Wi-Fi \u5230\u5e95\u8fde\u4e86\u591a\u5c11\u8bbe\u5907\uff1f\u88c5\u4e86 Fing \u7ec8\u4e8e\u641e\u6e05\u695a\u4e86", "image": ["https://alipymanbu.github.io/images/fing-docs/home-scan-feature.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/fing-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/fing-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u5bb6\u91cc Wi-Fi \u5230\u5e95\u8fde\u4e86\u591a\u5c11\u8bbe\u5907\uff1f\u88c5\u4e86 Fing \u7ec8\u4e8e\u641e\u6e05\u695a\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">家里 Wi-Fi 到底连了多少设备？装了 Fing 终于搞清楚了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">家里 Wi-Fi 到底连了多少设备？装了 Fing 终于搞清楚了</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">朋友说家里 Wi-Fi 变慢可能有人蹭网，我抱着试试看的心态装了 Fing。结果不仅揪出了两台陌生设备，还发现路由器本身就有两个频段在打架。这是我用了一周的真实体验。</p>
+  </header>
+  <div class="prose">
+<h2>为什么我会去装它</h2>
+<p>说实话，我之前对"网络扫描"这类工具的认知还停留在 Nmap 那种命令行黑框框——感觉是给程序员或运维用的，普通人碰不着也没必要碰。</p>
+<p>但前段时间有个挺实在的原因逼我试试：家里的 Wi-Fi 从之前稳稳 80 多兆，突然掉到了 30 兆左右，刷视频偶尔会卡一下。我先排除了运营商的问题——插网线直连光猫测速是正常的，说明瓶颈在自家局域网里。朋友推荐我装 Fing 看看，说这个 App 扫一下就能把你家网络里所有连上来的设备列得清清楚楚，还能告诉你每台设备到底是什么型号。</p>
+<p>这一点直接戳中了我。以前路由器管理后台也能看已连接设备列表，但那玩意儿只给一串 MAC 地址和 IP，除了能看到自己的手机和电脑，其他要么显示 "Unknown" 要么显示一个完全猜不出来的设备名。Fing 号称数据库里有 45 万种设备型号，扫完能直接告诉你"这是 iPhone 14 Pro"或者"这是小米智能音箱"——光这一点就足够让我动心了。</p>
+<p>Fing <a href="https://fing.fewf.click" target="_blank" rel="noopener">官网</a>现在有 App（iOS/Android）、Desktop（Windows/macOS）和 Web 端，我先从<a href="https://fing.fewf.click/download.html" target="_blank" rel="noopener">下载</a>拿了手机版，登录免费账号之后，主界面就一个大按钮——"Scan"。点一下，等个十几秒，结果就出来了。</p>
+<h2>第一眼：扫出来的结果比我想象的详细太多</h2>
+<p>第一次扫描的时候我正蹲在路由器旁边。看着进度条一格一格跑，心里还在嘀咕"能扫出什么花来"。</p>
+<p>结果出来的时候我真的愣了一下——一共扫出了 17 台设备。不是那种模糊的 IP 列表，每一台都标得明明白白：三台手机、两台笔记本、一台 iPad、路由器本体、光猫、小米电视、两个智能音箱、一台 Switch、几个我自己都忘了什么时候买的智能家居传感器……甚至还有两台我完全不认识的设备，一台识别成 "Realtek 网卡的 Windows PC"，另一台只显示了 MAC 前缀是某国产厂商。</p>
+<p><img src="../images/fing-docs/home-scan-feature.webp" alt="扫一下就能列出所有连上的设备" loading="lazy"></p>
+<p>我当时第一反应是：那台 Realtek 的 PC 是不是邻居在蹭我家 Wi-Fi？我家路由器设的 WPA3 密码不算弱啊。不过后来想想，可能是我上周帮楼下邻居修过一次电脑，他可能连过一次之后密码被自动记住了还没改。不管怎样，这个发现本身就值了——以前我完全不知道自己家网络里到底有哪些设备在连。</p>
+<p>说到识别精度，我后来专门验证了一下。Fing 不仅能说出设备型号，连设备连的是 2.4GHz 还是 5GHz 都标出来了，还能看到每台设备当前的实时网速。我家那台小米电视一直连在 2.4GHz 频段上——它就在客厅离路由器不到两米的地方，明明可以连 5GHz，它就是不连，白白浪费了 5GHz 的速度优势。这个细节如果不是 Fing 指出来，我根本不会去查。</p>
+<h2>实际用下来：挑几个印象最深的功能讲</h2>
+<h3>排查网络慢的 Ping 和 Traceroute</h3>
+<p>扫完设备，接下来就是定位问题。Fing 在每台设备的详情页里都嵌了 Ping 按钮，点一下就能看到往返延迟。我 Ping 了一下我家路由器（192.168.1.1），结果平均延迟竟然有 35ms——按理说家里局域网 Ping 路由器应该在 1ms 以内才对。这说明问题真的在我家路由器这边，不是运营商。</p>
+<p>然后我用 Fing Desktop 上的 Traceroute 功能，追踪了一下从我的电脑出去到外网的路径。结果发现数据包在经过我家路由器之后，下一跳的延迟就从 1ms 跳到了 28ms，再往后到运营商那边倒是正常了。基本锁定——路由器性能不行了或者负载太高。后来我把家里那几台不常用的智能设备断网，Ping 延迟立刻降到了 3ms 以内，外网测速也回到了 70 多兆。</p>
+<p>说实话，Traceroute 这个功能在 Desktop 上比 App 上完整得多。App 里只能看到简化结果，Desktop 版本会把每一跳的 IP、延迟、运营商名称都列出来，一目了然。如果你真的要搞网络排查，建议还是在电脑上跑。</p>
+<h3>Pause 功能：终于能管管小孩的平板了</h3>
+<p>我朋友后来问我，Fing 除了扫设备还有什么用。我给他演示了 Pause 功能——在设备详情页点一下 Pause Internet，那台设备几秒之内就断网了，再点 Resume 立即恢复。</p>
+<p>他眼睛都亮了。说小孩每天晚上刷平板刷到 10 点多，之前试过在路由器里设家长控制，但路由器的界面太复杂，而且设了之后全家的设备一起被断网，太不方便。现在用 Fing，只暂停小孩的 iPad 就行，大人的手机和电脑继续上网不受影响。</p>
+<p>我自己试了一下，Pause 真的是秒生效——点完之后在 App 里能看到设备状态变成了 Paused，等了大概 3 秒钟，再 Ping 那台设备就超时了。Resume 之后，下一秒就能 Ping 通。Premium 订阅还支持定时自动恢复，比如"暂停到明天早上 8 点"，或者一键 Pause All 把所有设备都暂停。这个功能在 Premium 里才有，但对于有小孩的家庭来说值不值那点钱，我觉得见仁见智。</p>
+<h3>设备识别数据库：为什么 Fing 比别家准</h3>
+<p>我特意翻了一下 Fing 的 <a href="https://fing-docs.pages.dev/" target="_blank" rel="noopener">文档</a>，想搞清楚它到底是怎么做到"这台就是 iPhone 14 Pro"的。</p>
+<p>答案是三层叠加。第一层是 MAC 地址的 OUI 前缀——每块网卡出厂时烧录的前 3 字节指向厂商，这个是最基础的。但光靠 OUI 只能知道"Apple 生产的"，不知道是 iPhone 还是 iPad。所以第二层就上了机器学习——Fing 会主动发一些轻量探测包，抓 DHCP 请求里的 hostname、尝试 HTTP 请求看有没有设备特征、解析 Bonjour/mDNS 名称，把这些信号拼起来喂给训练好的分类器，就能把"Apple"细化成具体型号。第三层是社区贡献——Fing App 里有个"识别错了"按钮，用户手动修正品牌型号之后，这些修正会回流到数据库里帮算法改进。Overlook 说他们现在的数据库已经有 45 万种设备型号，每周都有更新。</p>
+<p>这套体系是十几年攒下来的。很多开源工具比如 Nmap 也能做 OUI 查表，但它们不做持续更新的商业级数据库、不做机器学习型号推断、也没有几千万用户的修正数据积累。Fing 的优势本质上就是时间沉淀。</p>
+<h2>适合谁，不适合谁</h2>
+<p>如果你看完上面这些觉得"哦这不就是一个网络工具吗"，那我得说点实在的——</p>
+<p>适合装的人：</p>
+<ul><li>家里 Wi-Fi 变慢但不知道为什么的人——Fing 能帮你快速定位瓶颈是在自家局域网、路由器还是运营商那边</li><li>家里有小孩想用技术手段管管上网时间的人——Pause 功能比路由器自带的家长控制好用太多</li><li>对网络安全有点意识的人——扫一下就能知道有没有陌生设备蹭网，心里踏实</li><li>家里智能设备多的人——十几台 IoT 设备连在一起，Fing 能帮你理清楚每台是什么、在干什么</li></ul>
+<p>不太适合的人：</p>
+<ul><li>连路由器登录密码都不知道的小白——Fing 能帮你发现问题，但解决问题可能还是需要一点动手能力</li><li>以为装了 Fing 就能修网络的人——它是诊断工具，不是修复工具，告诉你问题出在哪之后还得你自己动手</li></ul>
+<p><img src="../images/fing-docs/home-security-feature.webp" alt="安全防护功能一览" loading="lazy"></p>
+<p>我自己的结论是：Fing 不是那种装完就每天都要用的 App，但装一次、扫一次，很可能就能发现一个你之前没注意到的问题。比如我扫出来路由器 2.4GHz 和 5GHz 频段之间有信道重叠，换一下信道之后整个网络延迟都好了不少——这个问题之前我用测速软件测了半年都没发现。</p>
+<p>这套技术资料在三个仓库都能拿到，<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Fing" target="_blank" rel="noopener">GitHub</a> 上是主源，<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Fing" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Fing" target="_blank" rel="noopener">GitCode</a> 有同步镜像，国内访问后者会更顺畅，想深挖的朋友可以按需取用。</p>
+<p>总的来说这是一个装了不会后悔的小工具。它做的事情不花哨，但做得很实在——让你对自己家里那片看不见的网络空间，终于有了一个清晰的认知。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/obtainium.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">手机里的应用总追不上最新版？Obtainium 五分钟帮你搞定</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/apowermirror.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">投屏 + 操控安卓手机到电脑，ApowerMirror 这几天我用下来的真实感受</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

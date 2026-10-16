@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>QBot 深度盘点：QQ 浏览器里藏着的 AI 能力到底有多强 · 老杨技术栈</title>
+  
+<meta name="description" content="QBot 不是一个独立 App，而是嵌在 QQ 浏览器里的 AI 平台。从 Agent 中心的场景化工具到 QBotClaw 的浏览器自动化，这篇把它的能力面完整铺开。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/qbot-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QBot 深度盘点：QQ 浏览器里藏着的 AI 能力到底有多强">
+<meta property="og:description" content="QBot 不是一个独立 App，而是嵌在 QQ 浏览器里的 AI 平台。从 Agent 中心的场景化工具到 QBotClaw 的浏览器自动化，这篇把它的能力面完整铺开。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/qbot-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/qbot-docs/skills-agent-center.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/qbot-docs/skills-agent-center.png">
+
+<meta name="twitter:title" content="QBot 深度盘点：QQ 浏览器里藏着的 AI 能力到底有多强">
+<meta name="twitter:description" content="QBot 不是一个独立 App，而是嵌在 QQ 浏览器里的 AI 平台。从 Agent 中心的场景化工具到 QBotClaw 的浏览器自动化，这篇把它的能力面完整铺开。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "QBot \u4e0d\u662f\u4e00\u4e2a\u72ec\u7acb App\uff0c\u800c\u662f\u5d4c\u5728 QQ \u6d4f\u89c8\u5668\u91cc\u7684 AI \u5e73\u53f0\u3002\u4ece Agent \u4e2d\u5fc3\u7684\u573a\u666f\u5316\u5de5\u5177\u5230 QBotClaw \u7684\u6d4f\u89c8\u5668\u81ea\u52a8\u5316\uff0c\u8fd9\u7bc7\u628a\u5b83\u7684\u80fd\u529b\u9762\u5b8c\u6574\u94fa\u5f00\u3002", "headline": "QBot \u6df1\u5ea6\u76d8\u70b9\uff1aQQ \u6d4f\u89c8\u5668\u91cc\u85cf\u7740\u7684 AI \u80fd\u529b\u5230\u5e95\u6709\u591a\u5f3a", "image": ["https://alipymanbu.github.io/images/qbot-docs/skills-agent-center.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/qbot-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/qbot-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "QBot \u6df1\u5ea6\u76d8\u70b9\uff1aQQ \u6d4f\u89c8\u5668\u91cc\u85cf\u7740\u7684 AI \u80fd\u529b\u5230\u5e95\u6709\u591a\u5f3a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">QBot 深度盘点：QQ 浏览器里藏着的 AI 能力到底有多强</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">QBot 深度盘点：QQ 浏览器里藏着的 AI 能力到底有多强</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">QBot 不是一个独立 App，而是嵌在 QQ 浏览器里的 AI 平台。从 Agent 中心的场景化工具到 QBotClaw 的浏览器自动化，这篇把它的能力面完整铺开。</p>
+  </header>
+  <div class="prose">
+<p>很多人对 QQ 浏览器的印象还停留在"手机上刷个网页"——直到 <a href="https://qbot.rggd.pw" target="_blank" rel="noopener">qbot官网</a> 上线。</p>
+<p>它不是一个独立的 AI 应用，而是直接嵌在浏览器壳里的一套 AI 能力矩阵：搜索框直接提问就能用，Agent 中心里挂着一堆现成的场景化 Agent，还有 QBotClaw 能让 AI 自己动手操作浏览器。这套组合拳打下来，QBot 其实已经远超"AI 搜索框"的范畴，更像一个随身 AI 助手平台。</p>
+<p>这篇文章把 QBot 的能力面系统性地过一遍——从即开即用的轻量工具到可以闭环执行任务的自动化，再说说它的短板在哪里，最后给还在犹豫要不要用的人一个参考。</p>
+<h2>能力域一：Agent 中心 —— 场景化 Agent 随点随用</h2>
+<p>Agent 中心是 QBot 最直观的入口。打开首页往下滑就能看到一排 Agent 卡片，每一张对应一个具体场景——不需要你自己写 prompt，点开直接用。</p>
+<p>目前能用到的 Agent 覆盖了几个高频需求面。AI 财经助理是其中信息密度最高的一个，输入"帮我分析腾讯控股"这类自然语言，它会结合基本面（财报、估值）、技术面（K 线、成交量）和消息面（近期新闻、公告）给出结构化的分析报告，还支持行业内多家公司的横向对比。当然它自己也反复强调——分析基于公开数据，不是投资建议，黑天鹅事件和未公开信息模型天然覆盖不到。</p>
+<p>文档翻译 Agent 解决了一个很多人遇到过但懒得解决的小麻烦：PDF 和 Word 翻译完排版就乱。市面上的翻译工具要么翻完段落顺序全变，要么图片表格直接丢失。QBot 里的翻译 Agent 专门针对这个点做了优化，PDF 翻译后文字和图片的位置关系基本不动，Word 文档的字体、段落、表格格式也能保持原样。支持中英文双向和日、韩、法、德、西等主流语种互译，专业术语和文学翻译的质量还是得人工兜底，但日常商务文档拿来当初稿效率提升很明显。</p>
+<p>高考 Agent、翻译 Agent、财经助理——<a href="https://qbot-docs.pages.dev/" target="_blank" rel="noopener">qbot文档</a> 里对每个 Agent 的用法和参数都有详细说明，Agent 中心的整体思路也很清楚：不做通用大模型的替代品，而是把高频场景封装成一键可用的工具。打开即用，不需要任何配置，这对不想跟 AI 反复调试 prompt 的人来说是很大的吸引力。</p>
+<p><img src="../images/qbot-docs/skills-agent-center.png" alt="Agent 中心功能入口" loading="lazy"></p>
+<h2>能力域二：QBotClaw —— 带着上下文干活的浏览器自动化</h2>
+<p>如果说 Agent 中心是"让 AI 帮你想"，QBotClaw 就是"让 AI 帮你做"。</p>
+<p>传统自动化工具的痛点是无状态——每次执行指令都要把环境完整描述一遍：打开哪个页面、登录哪个账号、当前文件在哪。QBotClaw 的核心改进是内置了浏览器级别的上下文感知能力：它天然知道你当前在哪个标签页、页面上有什么内容、你登录了哪些账号、最近在处理什么文件。所以你说"把当前页面上这 5 个产品的价格整理成 Excel"，它不需要你额外拆解成"选文本 → 复制 → 打开 Excel → 粘贴 → 整理"这一串操作，直接就能闭环完成。</p>
+<p>多轮对话也是上下文感知的延伸。第一次做出来的结果不满意，你可以说"换一种方式再做一遍"——它记得刚才做了什么，知道"换一种方式"指的是哪一层的变化，不需要从头交代。这比每次都重新写完整 prompt 省不少力气。</p>
+<p>从产品定位上看，QBotClaw 瞄准的是"个人级浏览器自动化"——不是给开发者写脚本用的，而是让普通用户用自然语言就能让浏览器帮自己跑腿。收集竞品定价、批量整理网页数据、跨页面提取信息这类重复性操作，它的价值最直接。</p>
+<p><img src="../images/qbot-docs/qbotclaw-cover.jpg" alt="QBotClaw 自动化封面" loading="lazy"></p>
+<h2>短板也要说</h2>
+<p>QBot 的能力面虽然铺得开，但几个边界条件得提前知道。</p>
+<p>首先，它的所有能力都跑在 QQ 浏览器里——这既是优势（不需要额外装 App，<a href="https://qbot.rggd.pw/download.html" target="_blank" rel="noopener">官方下载</a> 就能拿到完整包）也是限制（浏览器内核的能力边界就是它的天花板）。如果你习惯用 Chrome 或 Safari，为了 QBot 专门切到 QQ 浏览器，迁移成本得自己掂量。</p>
+<p>其次，Agent 中心的 Agent 目前数量不算多，覆盖的场景有限。财经、翻译、高考几个是高频刚需，但如果你的需求比较垂直——比如专业领域的文档处理、特定行业的数据采集——现成的 Agent 可能不够用，需要等后续迭代。</p>
+<p>再者，AI 翻译、财经分析这类 Agent 的输出质量仍然有 AI 工具的通病：专业术语不准、文学翻译丢语感、黑天鹅事件无法覆盖。拿来当初稿或参考可以，直接作为最终交付物风险很大。</p>
+<p>最后，QBotClaw 的自动化能力虽然方便，但涉及账号操作和敏感数据时还是要留个心眼——让 AI 代劳之前先确认清楚它要操作的页面和数据范围，别一股脑全交出去。</p>
+<h2>什么样的人该用它</h2>
+<p>梳理完能力和短板，QBot 适合的人群其实很清晰。</p>
+<p>第一类是想让 AI 帮自己省时间但又不想折腾 prompt 的人。Agent 中心的场景化工具点开即用，不需要学习成本，翻译文档、查财经信息、问学习问题这类高频需求直接就能用。</p>
+<p>第二类是有大量重复性浏览器操作的人。QBotClaw 的上下文感知在这类场景下价值最明显——收集竞品数据、批量整理网页信息、跨页面提取结构化内容，说一句话就能让浏览器自己跑完。</p>
+<p>第三类是本来就用 QQ 浏览器作为主力浏览器的人。这部分用户几乎零迁移成本，首页就是 QBot，搜索框直接提问，Agent 中心随手点，相当于浏览器直接升级成了 AI 助手。</p>
+<p>总结一下：QBot 不是一个要替代所有 AI 工具的大而全产品，而是在"浏览器 + AI"这个交叉点上找到了一个不错的切入——把场景化 Agent 和上下文感知自动化结合在一个你本来就会打开的 App 里。能力面够日常用，短板也都是可以预期的边界。要不要用，取决于你自己的浏览器习惯和日常需求里有没有它能帮上忙的场景。这套关于 QBot 的整理资料在 <a href="https://github.com/alipymanbu/APK/tree/main/APP/qbot" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/qbot" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/APP/qbot" target="_blank" rel="noopener">GitCode</a> 都有备份，方便不同网络环境的读者查阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/castro-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用 Castro 查了两周参数，踩出来的五个深坑</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/shield-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用 Shield 搭一套安卓轻量开发流水线，从想法到打包不碰电脑</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

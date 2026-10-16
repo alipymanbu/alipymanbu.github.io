@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>dododex 十年盘点：这款 ARK 计算器到底藏了多少能力域 · 老杨技术栈</title>
+  
+<meta name="description" content="从 2016 年首发到 2026 年的 2.8 版本，dododex 早已不是一张驯服表。本文按能力域系统梳理它的完整版图，顺带说清那些文档里没明讲的使用场景和局限。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/dododex.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dododex 十年盘点：这款 ARK 计算器到底藏了多少能力域">
+<meta property="og:description" content="从 2016 年首发到 2026 年的 2.8 版本，dododex 早已不是一张驯服表。本文按能力域系统梳理它的完整版图，顺带说清那些文档里没明讲的使用场景和局限。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/dododex.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/dododex/appstore-shot-1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/dododex/appstore-shot-1.png">
+
+<meta name="twitter:title" content="dododex 十年盘点：这款 ARK 计算器到底藏了多少能力域">
+<meta name="twitter:description" content="从 2016 年首发到 2026 年的 2.8 版本，dododex 早已不是一张驯服表。本文按能力域系统梳理它的完整版图，顺带说清那些文档里没明讲的使用场景和局限。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece 2016 \u5e74\u9996\u53d1\u5230 2026 \u5e74\u7684 2.8 \u7248\u672c\uff0cdododex \u65e9\u5df2\u4e0d\u662f\u4e00\u5f20\u9a6f\u670d\u8868\u3002\u672c\u6587\u6309\u80fd\u529b\u57df\u7cfb\u7edf\u68b3\u7406\u5b83\u7684\u5b8c\u6574\u7248\u56fe\uff0c\u987a\u5e26\u8bf4\u6e05\u90a3\u4e9b\u6587\u6863\u91cc\u6ca1\u660e\u8bb2\u7684\u4f7f\u7528\u573a\u666f\u548c\u5c40\u9650\u3002", "headline": "dododex \u5341\u5e74\u76d8\u70b9\uff1a\u8fd9\u6b3e ARK \u8ba1\u7b97\u5668\u5230\u5e95\u85cf\u4e86\u591a\u5c11\u80fd\u529b\u57df", "image": ["https://alipymanbu.github.io/images/dododex/appstore-shot-1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/dododex.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/dododex.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "dododex \u5341\u5e74\u76d8\u70b9\uff1a\u8fd9\u6b3e ARK \u8ba1\u7b97\u5668\u5230\u5e95\u85cf\u4e86\u591a\u5c11\u80fd\u529b\u57df", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">dododex 十年盘点：这款 ARK 计算器到底藏了多少能力域</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">dododex 十年盘点：这款 ARK 计算器到底藏了多少能力域</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 2016 年首发到 2026 年的 2.8 版本，dododex 早已不是一张驯服表。本文按能力域系统梳理它的完整版图，顺带说清那些文档里没明讲的使用场景和局限。</p>
+  </header>
+  <div class="prose">
+<p>如果你玩 ARK，大概率见过<a href="https://dododex.djnf.quest" target="_blank" rel="noopener">dododex官网</a>——可能是在驯龙前对着它算发数，也可能是在繁育季靠它记计时器。但你有没有想过：这款 2016 年就上架的应用，十年间已经长到了什么程度？</p>
+<p>很多玩家对它的认知还停留在「驯服计算器」这四个字上，可当你把它的功能面完整铺开，会发现它其实是一整套 ARK 实战决策体系：从打晕的第一发麻醉镖开始，到饲料配比、饥饿计时、成长阶段、资源反推，甚至管理员命令和克隆舱成本——每一个环节它都有对应的模块，而且每个模块背后都埋着游戏底层的真实数值。</p>
+<p>这篇就来做一次系统性的能力域盘点，顺便聊聊它的短板到底在哪。</p>
+<h2>能力域一：驯服计算——从「查表」到「预算方案」</h2>
+<p>驯服表是 dododex 被看得最多的界面，但它的三列联动设计，决定了它远不止一张静态对照表。</p>
+<p>QTY（数量）、MAX（上限）、TIME（耗时）这三列构成了一个动态决策器。你手头有 30 份顶级饲料还是 80 份生羊肉？把 QTY 手动调到你实际有的份数，总耗时和驯服效率百分比会实时重算。这在实战中特别有用——比如你只剩 25 份饲料，驯 150 级雷克斯，调完之后发现效率从 95% 掉到 87%，那你就要算：是继续补饲料到 33 份保效率，还是省点资源接受少升几级？</p>
+<p>这个调数开关的存在，把「选食物」从填空题变成了选择题。很多新人第一次用会把 MAX 当成必须喂的量硬凑，其实 MAX 是上限——低于上限照样驯成，只是效率会按比例下降。</p>
+<p>底部两个大数字也有讲究：TOTAL TIME 旁边那个现实时刻预测（比如凌晨 5:21AM 驯完），是真的能帮你排班的。要不要挂到半夜、要不要中途起来补麻醉剂，看一眼就有数。</p>
+<p><img src="../images/dododex/appstore-shot-1.png" alt="雷克斯的驯服表：食物清单三列与底部总耗时、效率" loading="lazy"></p>
+<h2>能力域二：击晕与麻醉——节奏才是核心</h2>
+<p>很多人驯服失败不是因为粮不够，而是击晕阶段节奏崩了。</p>
+<p>dododex 在击晕区直接标注了每个生物的眩晕衰减速率，并给出「高 / 低」标签。这个速率值才是决定麻醉镖间隔的真正因素——同样 5 秒一发，打三角龙（衰减约 1/秒）和打南方巨兽龙（1 级就 120/秒）完全是两个难度。南巨的情况最极端：第一发之后隔 7 秒打第二发，那 1 秒的空档几乎把第一发的眩晕全吞了。</p>
+<p>2.7 版本后新增的「理想射击节奏」参考，是把武器详情、头击倍率、部落塔加成这些变量一起算进去的。你用的是长管步枪还是复合弓？打在头部还是身体？这些参数全在后台参与计算，最终给你一个秒数范围。</p>
+<p>击晕完成后，眩晕衰减不会停，战场从枪换成了麻醉剂。dododex 的眩晕计时器会帮你算出「下一次补麻醉剂的临界时刻」——衰减快的生物（比如飞龙系 25/秒）昏迷期也要高频补，不能凭感觉整组硬塞。</p>
+<h2>能力域三：繁育与成长——时间线精确到分钟</h2>
+<p>繁育计算器是 dododex 在 1.13 版本就上线的老模块，但它的完整度在 2.8 版本才真正体现出来。</p>
+<p>它能算出幼龙从孵化到每个成长阶段的精确到达时间，而且考虑了模组变体。2.5 版本加了 Primitive Plus 模组支持，2.6 版本之后搜索可以按生物分类筛选，繁育党管理多枚蛋的时候不用一个个翻。</p>
+<p>成长阶段的时间点在实战中很关键——比如你要在幼龙进入下一阶段前准备好对应食物，或者要安排部落成员接力守着。dododex 给的不是大概值，是精确到分钟的倒计时，而且离线也能查（2.4 版本加了离线模式）。</p>
+<h2>能力域四：资源与配方——反推你的采集清单</h2>
+<p>这是 2.6 版本才正式上线的模块，但对部落管理者来说可能是最实用的一块。</p>
+<p>资源计算器可以按配方反推材料需求——你要做 100 发麻醉镖，它会告诉你需要多少黑色浆果、多少麻醉药、多少石头。物品重量的标注（2.5.2 版本加的）让你在规划采集路线时就能算好负重，不会跑一半发现背包满了。</p>
+<p>2.5.2 版本加的自定义配方计算器是个隐藏功能——很多模组会引入新配方，或者你想按自己部落的特定菜谱来算，都可以手动录入后让 dododex 帮你算批量需求。</p>
+<h2>能力域五：版本适配与数据维护——跟得上游戏才是好工具</h2>
+<p>这一点是 dododex 和其他计算器拉开差距的地方。</p>
+<p>ARK 从 ASE（生存进化）转到 ASA（生存飞升），基础驯服速度翻倍、头击倍率变了、很多生物的参数重新校准——dododex 在 2.5 版本就加了 ASA/ASE 版本开关，2.7 版本又把头击倍率做成了切换项。2.8 版本进一步给每个生物档案标注了 ASA/ASE/UME（手游版）的可用性，你查一个物种时一眼就知道它在你玩的版本里有没有。</p>
+<p>数据本身的维护体系也值得说：它以游戏底层参数为基准而非玩家目测，每周多次更新，还有 40 万玩家提交的驯服经验做众包校验。你发现一个数值不对可以一键上报，开发者修得很快。更详细的倍率校准表和各版本历史参数，在它的<a href="https://dododex.pages.dev/" target="_blank" rel="noopener">dododex文档</a>里都能查到。</p>
+<h2>能力域六：内置管理员命令——作弊玩家的偷懒神器</h2>
+<p>2.8 版本加的这个功能算是「隐藏彩蛋」：内置了生物和物品的管理员命令，而且已经按 ASA/ASE/UME 版本做了分类。单机玩家或者开服管理员可以直接复制粘贴指令，不用再到维基里翻。</p>
+<h2>短板也要说</h2>
+<p>盘点不能只说好的，几个客观局限得摆在这：</p>
+<p><strong>免费版有广告</strong>——虽然形态很克制（底部一条横幅，不弹窗），但确实存在。Pro 版 4.99 美元买断，买的是去广告加暗色主题，没有其他功能锁定。</p>
+<p><strong>跨平台购买不互通</strong>——iOS 的 Pro 买了不能转移到 Android，反之亦然。这是苹果和谷歌的内购体系限制，开发者绕不过去。</p>
+<p><strong>没有 PC 客户端</strong>——dododex 本质是移动端应用，从<a href="https://dododex.djnf.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿到的也是手机端安装包，虽然有网页版但功能不如 App 完整。PC 玩家如果习惯键鼠操作，可能会觉得在手机上切来切去有点麻烦。</p>
+<p><strong>模组覆盖不全</strong>——虽然支持 Primitive Plus，但很多热门模组（比如 Primal Fear、Extinction Core）的数据还是靠社区众包，更新节奏不如官方内容快。</p>
+<h2>什么样的人该用它</h2>
+<p>三个典型画像：</p>
+<p><strong>深度 ARK 玩家</strong>——如果你每天开服、每周刷 Boss、每月繁育一波龙，dododex 是必需品。驯服效率差 8% 就意味着主力龙少升好几级，眩晕衰减算错就意味着麻醉药白攒，这些代价都不是「凭感觉」能承受的。</p>
+<p><strong>部落组织者</strong>——资源反推、繁育计时、多人协作的时间安排，这些模块在部落层面的价值远高于个人。你可以用它做每周的采集清单，或者安排谁在什么时间点起来补蛋。</p>
+<p><strong>新手过渡期</strong>——刚入坑 ARK 的时候，dododex 是最好的教科书。它的「饿驯法」说明、击晕节奏参考、常见误读提醒，比维基百科更实战，比 YouTube 视频更浓缩。而且免费版功能全开，一分钱不花就能把核心能力用透。</p>
+<h2>最后说一句</h2>
+<p>dododex 的更新节奏本身就是一个信号——十年不断更、跟着游戏版本同步调整、数据以底层参数为基准——这些看起来理所当然的事，在游戏工具类应用里其实非常少见。很多同类型工具要么停在某个版本不再维护，要么数据来源不可靠让你算出来的结果在实战中对不上。</p>
+<p>它不一定是你用的唯一 ARK 工具，但一定是你应该装在手机上随时能打开的那一个。关于这款应用的详细资料和历史版本归档，在<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/dododex" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/dododex" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/dododex" target="_blank" rel="noopener">GitCode</a>三个仓库都能找到，方便不同平台的玩家查阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/qnet-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">QNET 弱网测试的底层逻辑：为什么用 VPN 接管而不是改系统参数</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/chromecast-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">ChromeCast 投屏的底层逻辑——为什么它能把手机画面扔到电视上还不卡</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

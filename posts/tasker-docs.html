@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Tasker 上手一周，我把手机交给了一个会自己思考的助手 · 老杨技术栈</title>
+  
+<meta name="description" content="第一次装 Tasker 时我以为就是个定时开关，一周后才发现它能替你做的事远超想象。从简单场景到踩坑实录，聊聊这款安卓自动化神器的真实体验。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/tasker-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tasker 上手一周，我把手机交给了一个会自己思考的助手">
+<meta property="og:description" content="第一次装 Tasker 时我以为就是个定时开关，一周后才发现它能替你做的事远超想象。从简单场景到踩坑实录，聊聊这款安卓自动化神器的真实体验。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/tasker-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/tasker-docs/first-launch-choice.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/tasker-docs/first-launch-choice.jpg">
+
+<meta name="twitter:title" content="Tasker 上手一周，我把手机交给了一个会自己思考的助手">
+<meta name="twitter:description" content="第一次装 Tasker 时我以为就是个定时开关，一周后才发现它能替你做的事远超想象。从简单场景到踩坑实录，聊聊这款安卓自动化神器的真实体验。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7b2c\u4e00\u6b21\u88c5 Tasker \u65f6\u6211\u4ee5\u4e3a\u5c31\u662f\u4e2a\u5b9a\u65f6\u5f00\u5173\uff0c\u4e00\u5468\u540e\u624d\u53d1\u73b0\u5b83\u80fd\u66ff\u4f60\u505a\u7684\u4e8b\u8fdc\u8d85\u60f3\u8c61\u3002\u4ece\u7b80\u5355\u573a\u666f\u5230\u8e29\u5751\u5b9e\u5f55\uff0c\u804a\u804a\u8fd9\u6b3e\u5b89\u5353\u81ea\u52a8\u5316\u795e\u5668\u7684\u771f\u5b9e\u4f53\u9a8c\u3002", "headline": "Tasker \u4e0a\u624b\u4e00\u5468\uff0c\u6211\u628a\u624b\u673a\u4ea4\u7ed9\u4e86\u4e00\u4e2a\u4f1a\u81ea\u5df1\u601d\u8003\u7684\u52a9\u624b", "image": ["https://alipymanbu.github.io/images/tasker-docs/first-launch-choice.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/tasker-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/tasker-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Tasker \u4e0a\u624b\u4e00\u5468\uff0c\u6211\u628a\u624b\u673a\u4ea4\u7ed9\u4e86\u4e00\u4e2a\u4f1a\u81ea\u5df1\u601d\u8003\u7684\u52a9\u624b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Tasker 上手一周，我把手机交给了一个会自己思考的助手</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Tasker 上手一周，我把手机交给了一个会自己思考的助手</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">第一次装 Tasker 时我以为就是个定时开关，一周后才发现它能替你做的事远超想象。从简单场景到踩坑实录，聊聊这款安卓自动化神器的真实体验。</p>
+  </header>
+  <div class="prose">
+<p>上周三我还在每天晚上 11 点手动切勿扰、早上 7 点手动关——直到朋友扔给我一句：你还没用过 Tasker？说实话，之前刷到过几次这个名字，但每次看到界面上满屏的英文术语和层层嵌套的逻辑，就觉得这东西不是给普通用户准备的。这次抱着试试看的心态装上了，结果一周下来，我手机上至少跑了七八个 Profile，从最基础的昼夜模式到上下班自动切换静音，连我自己都开始惊讶它能做到什么程度。它的<a href="https://tasker.fewa.skin" target="_blank" rel="noopener">tasker官网</a>上也有不少社区分享的 Profile 可以直接导入，省了自己从零搭的功夫。</p>
+<h2>第一眼界面：不像 App，像个开发环境</h2>
+<p>安装过程本身还算顺畅，安装包从<a href="https://tasker.fewa.skin/download.html" target="_blank" rel="noopener">官方下载</a>就能拿到，但刚打开 Tasker 的那一刻我就被劝退了半秒——主界面根本不是传统 App 那种"首页 + 设置"的结构，而是直接扔给你三个标签页：<strong>Profiles、Tasks、Scenes</strong>，外加一个藏在菜单里的变量面板。</p>
+<p><img src="../images/tasker-docs/first-launch-choice.jpg" alt="首次启动的权限选择" loading="lazy"></p>
+<p>要让 Tasker 正常干活，权限这关必须过。我数了一下，它至少要电池优化白名单、常驻通知、自启动、后台锁定这四样。小米用户可能还要额外去设置里把 Tasker 的"后台弹出界面"和"显示悬浮窗"也开了——这一步我没做，结果第一个 Profile 死活不触发，后来翻了半天才找到原因。</p>
+<p>说句实在话，界面设计非常"工程师友好"。每个 Profile 点进去都是一行 Context（触发条件）加一行 Enter Task（触发后执行什么），想加条件就点加号、想调逻辑就长按编辑。它没有引导页、没有新手教程弹窗、甚至没有一个"从模板开始"的按钮——你要么自己从零搭，要么去社区扒别人的 Profile 导入。但恰恰是这种"裸奔式"的简洁，反而让你能快速理解它的核心模型：<strong>条件 → 动作</strong>，仅此而已。</p>
+<h2>时间上下文：我写的第一个 Profile 就是它</h2>
+<p>我写的第一个 Profile 极其简单——"夜间模式"：条件是时间窗口 23:00 到次日 07:00，Enter Task 做三件事：亮度调到 15%、开勿扰模式、关掉 Wi-Fi。听起来很简单对吧？但我栽了第一个跟头：跨午夜的时间窗口在其他 App 里可能要写两条规则，Tasker 这里你直接填 23:00 开始、07:00 结束就行，它自动识别"开始比结束晚 = 跨午夜"。就这一个小细节，让我对 Tasker 的好感瞬间拉满。</p>
+<p>然后我又加了一条 Day Context，只让它在工作日生效——周末熬夜看球不想被强制调暗亮度。这里又发现一个好处：Context 之间是 AND 语义，叠上去就是"所有条件同时满足才激活"，逻辑非常清晰。时间上下文本身也是 Tasker 里最省电、最可靠的触发方式，它用的是 Android 标准的 AlarmManager，Doze 模式下也能正常唤醒，不像位置 Context 那样受 GPS 信号和后台限制影响大。</p>
+<p><img src="../images/tasker-docs/main-screen-vars-tab.jpg" alt="主界面变量标签页" loading="lazy"></p>
+<p>提到变量就不得不说 Tasker 的变量面板。%BATT、%WIFII、%APP 这些系统变量都是实时的，我后来做了一个常驻通知显示电量、当前 Wi-Fi 和前台 App——不是为了炫技，是排查 Profile 不触发时真的有用。你以为条件满足了，结果变量值一看根本不是那回事，瞬间就能定位问题。</p>
+<h2>Profile 不触发：每一个 Tasker 用户都会踩的坑</h2>
+<p>说实话，我有整整一天的时间在跟 Profile 不触发死磕。第一个"夜间模式"跑起来了，第二个"到家自动开 Wi-Fi"却纹丝不动。排查过程让我对 Tasker 的运行机制有了最直接的理解。</p>
+<p>先说结论：<strong>Tasker 不会平白无故不触发，一定是某个环节出了问题</strong>。我后来总结的排查顺序跟<a href="https://tasker-docs.pages.dev/" target="_blank" rel="noopener">tasker文档</a>里写的基本一致，但自己踩过才知道每一步的分量：</p>
+<p>先看 Tasker 本身在不在运行——通知栏有没有常驻图标？主界面右下角的开关是绿色吗？我第一次就是因为小米后台杀了 Tasker 进程，整个 App 都没在跑，Profile 当然不会触发。这一步 5 秒钟就能确认，但很多人会跳过直接去调 Context。</p>
+<p>然后是 Context 叠加问题。我那个"到家开 Wi-Fi"是 Location AND Wi-Fi Connected，Location 条件设的是家附近 50 米。结果 GPS 在室内根本没有信号，Location Context 永远不满足，整个 Profile 就一直灰着。后来把半径调到 100 米、换成网络定位，立刻就好了。样本里提到的变量名大小写问题我也碰过一次——%BATT 和 %batt 是两个不同的变量，写错了条件永远不成立。</p>
+<p>还有一个容易忽略的点：Event Context 是瞬发的。比如"收到短信"这个事件，只有短信到达的那一瞬间会触发，如果你之后才创建 Profile，之前收到的短信是不会回头触发它的。这点跟 Time 或 Location Context 的"持续检测"行为完全不同，第一次用时很容易搞混。</p>
+<h2>备份还原：我差点失去全部配置的那一次</h2>
+<p>有天手贱升级了 Tasker 版本，升完发现有个插件 Action 报错，我临时把整个 Profile 禁用调了，然后忘了启用。又过了两天才发现夜间模式没在跑——如果当时没做备份，那几天里调过的所有逻辑都得重新来一遍。</p>
+<p>Tasker 的备份机制让我很踏实。全局备份就是菜单里点一下，生成一个几十 KB 的 XML 文件，包含所有 Profile、Task、Scene、变量和首选项。我现在养成了习惯：每次大改之前先手动备份一次，每周日凌晨 3 点让 Tasker 自己备份一次，备份文件自动复制到坚果云，只保留最近 7 份。三层保障下来，就算手机丢了也不怕。</p>
+<p>还原的时候要注意：全局还原是<strong>完全覆盖</strong>，会删掉还原之后新建的所有东西。所以我日常更常用的是"单个项目导入"——合并模式，重名了提示我覆盖还是跳过。这个设计很贴心，等于给了两种粒度的安全网。</p>
+<h2>适合谁，不适合谁</h2>
+<p>用了一周下来，Tasker 给我的最大感受是：<strong>它不是自动化工具，它是一个可编程的手机行为层</strong>。你告诉它"在什么条件下做什么事"，它就帮你执行到底，不打折扣。</p>
+<p>适合人群其实很广：上班族想让手机在上下班路上自动静音、到家自动切 Wi-Fi；程序员想让手机连到公司 Wi-Fi 时自动同步代码仓库；甚至只是觉得每天手动调亮度太麻烦的人，都能从 Tasker 里受益。但前提是——你愿意花半小时理解它的基本模型，愿意在 Profile 不触发时耐心排查。</p>
+<p>不适合谁也很明确：完全不想折腾、遇到问题就想"一键修好"的人。Tasker 没有模板市场、没有智能推荐、没有可视化拖拽（虽然 Scenes 可以图形化编辑 UI，但那又是另一个难度级别）。它给你的是积木和说明书，城堡怎么搭全看你自己。</p>
+<h2>最后说两句</h2>
+<p>写这篇文章的时候我又新增了一个 Profile：连上蓝牙耳机时自动打开云音乐，断开时暂停播放。一行 Context（蓝牙设备连接事件），一个 Enter Task（打开 App + 恢复播放），三分钟搞定。说实话，用了 Tasker 之后才发现，之前每天手动做的那些小事——切模式、开 Wi-Fi、调亮度——加起来其实挺耗精力的。把这些重复劳动交给一个不会忘事、不会嫌麻烦的助手，自己省下来的时间做点别的，感觉挺值。我整理的这份 Tasker 资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Tasker" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Tasker" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Tasker" target="_blank" rel="noopener">GitCode</a>三个平台都有同步备份，国内访问选 Gitee 或 GitCode 更顺手。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/janitorai-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">JanitorAI 对比评测：角色创作工具里，它凭 Scripts 三件套站稳脚跟</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/characterai-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Character.AI 新手入门：从完全不懂到聊上第一个 AI 角色</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

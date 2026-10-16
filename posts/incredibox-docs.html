@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Incredibox 这几个坑我踩过——从跨平台到混音丢失的完整翻车实录 · 老杨技术栈</title>
+  
+<meta name="description" content="Incredibox 看着像个简单的节奏小游戏，但换设备、跨平台、混音保存这些地方藏着几个容易踩的坑。我把踩过的教训整理成一份避坑清单。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/incredibox-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Incredibox 这几个坑我踩过——从跨平台到混音丢失的完整翻车实录">
+<meta property="og:description" content="Incredibox 看着像个简单的节奏小游戏，但换设备、跨平台、混音保存这些地方藏着几个容易踩的坑。我把踩过的教训整理成一份避坑清单。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/incredibox-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/incredibox-docs/home-main.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/incredibox-docs/home-main.jpg">
+
+<meta name="twitter:title" content="Incredibox 这几个坑我踩过——从跨平台到混音丢失的完整翻车实录">
+<meta name="twitter:description" content="Incredibox 看着像个简单的节奏小游戏，但换设备、跨平台、混音保存这些地方藏着几个容易踩的坑。我把踩过的教训整理成一份避坑清单。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Incredibox \u770b\u7740\u50cf\u4e2a\u7b80\u5355\u7684\u8282\u594f\u5c0f\u6e38\u620f\uff0c\u4f46\u6362\u8bbe\u5907\u3001\u8de8\u5e73\u53f0\u3001\u6df7\u97f3\u4fdd\u5b58\u8fd9\u4e9b\u5730\u65b9\u85cf\u7740\u51e0\u4e2a\u5bb9\u6613\u8e29\u7684\u5751\u3002\u6211\u628a\u8e29\u8fc7\u7684\u6559\u8bad\u6574\u7406\u6210\u4e00\u4efd\u907f\u5751\u6e05\u5355\u3002", "headline": "Incredibox \u8fd9\u51e0\u4e2a\u5751\u6211\u8e29\u8fc7\u2014\u2014\u4ece\u8de8\u5e73\u53f0\u5230\u6df7\u97f3\u4e22\u5931\u7684\u5b8c\u6574\u7ffb\u8f66\u5b9e\u5f55", "image": ["https://alipymanbu.github.io/images/incredibox-docs/home-main.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/incredibox-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/incredibox-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "Incredibox \u8fd9\u51e0\u4e2a\u5751\u6211\u8e29\u8fc7\u2014\u2014\u4ece\u8de8\u5e73\u53f0\u5230\u6df7\u97f3\u4e22\u5931\u7684\u5b8c\u6574\u7ffb\u8f66\u5b9e\u5f55", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">Incredibox 这几个坑我踩过——从跨平台到混音丢失的完整翻车实录</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Incredibox 这几个坑我踩过——从跨平台到混音丢失的完整翻车实录</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Incredibox 看着像个简单的节奏小游戏，但换设备、跨平台、混音保存这些地方藏着几个容易踩的坑。我把踩过的教训整理成一份避坑清单。</p>
+  </header>
+  <div class="prose">
+<h2>开头：一个让我差点骂人的节奏玩具</h2>
+<p>第一次打开 Incredibox 是在朋友手机上。点几个小人头，把 beatbox 声音串起来，十几秒就能编一段像样的节奏。界面干净、角色可爱、八个版本的风格各有特色——V6 Alive 的 trap 节奏配上赛博机器人，V5 Brazil 的桑巴一出来脑子自动开始点头。<a href="https://incredibox.bmww.store" target="_blank" rel="noopener">Incredibox官网</a>上能看到每个版本的详细介绍和试听片段。我当时就觉得这玩意儿简单得像个玩具，没啥学习曲线，直接掏钱买了付费版。</p>
+<p>然后坑就一个接一个来了。</p>
+<h2>坑一：跨平台购买不互通——安卓买了 iOS 用不了</h2>
+<p><strong>症状</strong>：我在安卓手机上买了付费版，兴冲冲想在 iPad 上也装一个，结果 App Store 里的 Incredibox 还要重新付费，而且买了之后发现安卓的 Mixlist 一个都没同步过来。</p>
+<p><strong>原因</strong>：Incredibox 的开发者 So Far So Good 是个只有三个人的小工作室，他们没做跨平台账号体系。Android、iOS、Mac、Windows 是四个独立的购买渠道，各自的计费后台不打通。同一平台内多设备可以同步（比如 iPhone 和 iPad 都是 iOS，登录同一个 Apple ID 就行），但跨了平台就等于两个陌生人。Steam 版是个例外——它在 Mac 和 Windows 之间通用。</p>
+<p><strong>解法</strong>：掏钱前先想清楚自己主要在哪玩——安装包从<a href="https://incredibox.bmww.store/download.html" target="_blank" rel="noopener">官方下载</a>拿，别从第三方渠道瞎下。如果主力设备是安卓，就别指望 iOS 上也能白嫖。想双平台都用？老老实实买两份，或者看 Steam 版能不能覆盖你的桌面需求。</p>
+<h2>坑二：换设备 Mixlist 不自动迁移——得给官发邮件</h2>
+<p><strong>症状</strong>：旧手机换了新手机，打开 Incredibox 发现以前存的二十多条混音全没了。设置里找了半天也没看到"导出"或"云同步"按钮。</p>
+<p><strong>原因</strong>：Incredibox 的付费版 Mixlist 确实是存在服务器上的，但迁移流程完全是手动的——不是自动绑定设备也不是绑定账号，官方让你和他们发邮件。</p>
+<p><strong>解法</strong>：迁移流程是这样的：旧设备上打开 Incredibox → Settings → Credits → Feedback，发一封邮件到官方邮箱，标题写"你的名字 - Recover mixes (old device)"；然后新设备上也发一封，标题写"你的名字 - Recover mixes (new device)"。等他们回复邮件告诉你迁移完成，新设备 Settings 里会出现一个 Recover 按钮，点一下就回来了。如果旧设备已经用不了了，也可以直接给官方发邮件说明情况，但能不能成功就看他们的心情了。</p>
+<p>说真的，这个流程第一次遇到时我以为要重装 App 或者清缓存。给一个三个人的工作室发邮件求助听起来有点不真实，但这确实是官方推荐的唯一途径——我后来翻了<a href="https://incredibox-docs.pages.dev/" target="_blank" rel="noopener">Incredibox文档</a>才确认，没有捷径可走。</p>
+<h2>坑三：网页版混音三个月自动删除——以为永久存的会哭</h2>
+<p><strong>症状</strong>：有个同学说他在网页版做了一条特别满意的混音，过了一个多月想拿出来分享，结果打开发现找不到了。网页版不像付费 App 有 Mixlist，保存的链接点进去直接 404。</p>
+<p><strong>原因</strong>：网页免费版只放最新的一个版本当 Demo，靠广告养服务器。服务器空间有限，官方设定了三个月的自动清理周期。付费 App 的混音是永久保留的，但也不是完全无条件——如果一年内你的某个混音没有任何活动（你自己不打开、没人听、没人点赞），也可能被系统自动清理。</p>
+<p><strong>解法</strong>：网页版玩玩就行，别指望它帮你存东西。做了满意的混音要么尽快分享出去，要么直接转付费版用 Mixlist 存。付费版还有 MP3 导出功能，可以把混音下载下来存本地，双重保险。</p>
+<h2>坑四：安全模式开了关不上——设置被隐藏了找不到</h2>
+<p><strong>症状</strong>：我帮朋友装 Incredibox 给他女儿玩，顺手开了 Safe Mode 防止小朋友乱点。后来朋友想自己玩，发现安全模式把大部分界面都隐藏了，连设置入口都找不着，只能彻底退出重开 App 碰运气。</p>
+<p><strong>原因</strong>：安全模式的设计初衷是给未成年人用的，它会隐藏付费版的大部分功能选项，包括 Mixlist 管理、社区内容、排行榜这些。但隐藏的时候连设置本身也一起藏了，而且官方没做什么"长按恢复"之类的快捷入口。</p>
+<p><strong>解法</strong>：在版本选择界面仔细找一找——设置入口可能在右上角或者侧边角落，缩小成了一个小图标。实在找不到就彻底退出 App 重开，但这不一定每次都能解决。更稳妥的做法是，给孩子玩之前先确认自己知道怎么关安全模式，别开完就忘了。</p>
+<p><img src="../images/incredibox-docs/home-main.jpg" alt="Incredibox 主界面" loading="lazy"></p>
+<h2>坑五：混音版权不是你的——别拿去商业化</h2>
+<p><strong>症状</strong>：有人在 Incredibox 做了一条好听的混音，想拿去做视频背景音乐或者上传到流媒体平台赚钱，结果被官方下架了。</p>
+<p><strong>原因</strong>：Incredibox 的声音素材是 So Far So Good 的财产——不管是官方九个版本的音色还是社区 Mods，底层素材版权都不归用户。官网明确写了可以私人用、非商业项目用、教育项目用、YouTube/Twitch 视频里用（需要说明来源），但不能用混音做产品卖、不能拿去流媒体平台赚钱、不能做商业推广。</p>
+<p><strong>解法</strong>：老老实实拿来玩、分享、做视频背景音都没问题，但别打版权的主意。一个三个人的小工作室做出来的东西，这点底线还是要守的。</p>
+<h2>防坑清单</h2>
+<p>把上面这些教训浓缩成几条，下次用 Incredibox 前快速过一遍：</p>
+<ul><li><strong>跨平台购买想清楚</strong>：Android/iOS/Mac/Windows 不互通，Steam 版覆盖桌面双平台</li><li><strong>换设备先迁移混音</strong>：旧新设备各发一封邮件给官方，等回复后点 Recover 按钮</li><li><strong>网页版别存东西</strong>：三个月自动清理，重要混音转付费版或导出 MP3</li><li><strong>安全模式开关记住位置</strong>：开之前先确认自己知道怎么关，别给自己挖坑</li><li><strong>混音不能商业化</strong>：私人/非商业/教育/视频背景音 OK，别拿去卖钱或做商业推广</li></ul>
+<p>知道这些坑之后，Incredibox 其实相当省心——界面直观、上手快、付费也不贵，三个人的小工作室能做到这个程度已经挺不容易了。这套避坑资料我也同步到了三个代码仓库方便随时查阅：<a href="https://github.com/alipymanbu/APK/tree/main/APP/Incredibox" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/Incredibox" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/Incredibox" target="_blank" rel="noopener">GitCode</a> 各有一份。踩过这些坑之后，剩下的就是纯玩了。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/autoglm-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">AutoGLM 深度盘点：让大模型真正会用手机的开源框架到底能做什么</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/immich-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Immich 藏得最深的 4 个冷技巧：把自托管相册用出花来</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

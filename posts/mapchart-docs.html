@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>每周一张销售区域图：我把 MapChart 嵌进 Excel 到邮件的全自动链路 · 老杨技术栈</title>
+  
+<meta name="description" content="以前每周要花半小时手动涂销售区域地图，现在一条链跑下来，从 Excel 数据到带配色、图例的成品图进邮件正文，只需要八分钟。这篇讲我怎么把 MapChart 当生产力工具链的一环接进日常。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/mapchart-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周一张销售区域图：我把 MapChart 嵌进 Excel 到邮件的全自动链路">
+<meta property="og:description" content="以前每周要花半小时手动涂销售区域地图，现在一条链跑下来，从 Excel 数据到带配色、图例的成品图进邮件正文，只需要八分钟。这篇讲我怎么把 MapChart 当生产力工具链的一环接进日常。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/mapchart-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/mapchart-docs/color-pick.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/mapchart-docs/color-pick.png">
+
+<meta name="twitter:title" content="每周一张销售区域图：我把 MapChart 嵌进 Excel 到邮件的全自动链路">
+<meta name="twitter:description" content="以前每周要花半小时手动涂销售区域地图，现在一条链跑下来，从 Excel 数据到带配色、图例的成品图进邮件正文，只需要八分钟。这篇讲我怎么把 MapChart 当生产力工具链的一环接进日常。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u6bcf\u5468\u8981\u82b1\u534a\u5c0f\u65f6\u624b\u52a8\u6d82\u9500\u552e\u533a\u57df\u5730\u56fe\uff0c\u73b0\u5728\u4e00\u6761\u94fe\u8dd1\u4e0b\u6765\uff0c\u4ece Excel \u6570\u636e\u5230\u5e26\u914d\u8272\u3001\u56fe\u4f8b\u7684\u6210\u54c1\u56fe\u8fdb\u90ae\u4ef6\u6b63\u6587\uff0c\u53ea\u9700\u8981\u516b\u5206\u949f\u3002\u8fd9\u7bc7\u8bb2\u6211\u600e\u4e48\u628a MapChart \u5f53\u751f\u4ea7\u529b\u5de5\u5177\u94fe\u7684\u4e00\u73af\u63a5\u8fdb\u65e5\u5e38\u3002", "headline": "\u6bcf\u5468\u4e00\u5f20\u9500\u552e\u533a\u57df\u56fe\uff1a\u6211\u628a MapChart \u5d4c\u8fdb Excel \u5230\u90ae\u4ef6\u7684\u5168\u81ea\u52a8\u94fe\u8def", "image": ["https://alipymanbu.github.io/images/mapchart-docs/color-pick.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/mapchart-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/mapchart-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u6bcf\u5468\u4e00\u5f20\u9500\u552e\u533a\u57df\u56fe\uff1a\u6211\u628a MapChart \u5d4c\u8fdb Excel \u5230\u90ae\u4ef6\u7684\u5168\u81ea\u52a8\u94fe\u8def", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">每周一张销售区域图：我把 MapChart 嵌进 Excel 到邮件的全自动链路</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">每周一张销售区域图：我把 MapChart 嵌进 Excel 到邮件的全自动链路</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前每周要花半小时手动涂销售区域地图，现在一条链跑下来，从 Excel 数据到带配色、图例的成品图进邮件正文，只需要八分钟。这篇讲我怎么把 MapChart 当生产力工具链的一环接进日常。</p>
+  </header>
+  <div class="prose">
+<h2>我每周要做的那件事</h2>
+<p>做区域销售的人大概都有这个活：每周五下午，把本周各区域的销售额汇总成一张"什么颜色对应什么档次"的地图，贴进周末汇报邮件里发给团队。这件事听起来小，但以前我得三步手动拼起来，每次半小时起。</p>
+<p>旧流程是这样的：先从 Excel 里把各区域的销售额数字抠出来 → 打开某个在线地图工具，对着区域名单一格一格手动点颜色 → 截图、裁边、加图例说明 → 贴进邮件正文。卡的地方不止一个：手动涂色慢是一方面，配色总是随心情选，出来的图有时同事反馈"看不太清梯度"；图例更是每次要手动敲字，改两版配色就得重写两次；导出的图有时候在邮件里变形，还要截图重传。</p>
+<p>后来有人甩给我 <a href="https://mapchart.usea.quest" target="_blank" rel="noopener">MapChart 官网</a>，说"你试试这个，能省一半时间"。一开始我只当成一个更好用的地图涂色 App，但用了两周才发现，它真正的价值不是"手动涂色更快"，而是它能嵌进我已有的数据链路里——从 Excel 数据直接跑到底色+图例+配色成品，中间那堆手动步骤基本被干掉了。</p>
+<h2>新流程：Excel → MapChart → 邮件，一条链串起来</h2>
+<p>现在每周五的流程变成了这样：</p>
+<p>第一步永远在 Excel 里完成。我已经把区域名称列和数字列的格式固定了——区域列的命名必须和 MapChart 底图里的区域名逐字对得上（这个坑踩过一次就记住了），数字列就是本周的销售额，不再需要额外整理。</p>
+<p>第二步才打开 MapChart，App 从<a href="https://mapchart.usea.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿的。选好底图（我固定用中国单国详细那张，省得每次挑），然后点那个我之前完全没注意到的入口：Actions 菜单里的"从 Excel 数据自动填色"。这一步是整个工作流的核心——它直接读我复制进去的两列数据，自动把每个区域按数字大小映射到颜色梯度里，连图例一起生成。</p>
+<p><img src="../images/mapchart-docs/color-pick.png" alt="从 Excel 自动填色的界面" loading="lazy"></p>
+<p>第三步是调配色和外观。MapChart 自带了几套调色板，我现在固定用"商务深蓝"那套——深色边框、渐变填充，比我以前瞎选的红绿配专业多了。如果本周的区域数字差距特别大，我会把梯度调一下，让中档区间的颜色区分更明显，同事一眼能看出来。</p>
+<p>第四步导出，直接发邮件。导出 PNG 后 MapChart 有两个选择：分享到系统应用，或者直接保存到本地。我现在的习惯是先本地保存一份当归档备份，然后直接用系统分享面板贴进邮件正文——刚好 1400px 宽度，邮件里不变形。如果赶时间，分享面板里还能直接发到工作群或微信，省了存文件那一步。</p>
+<p><img src="../images/mapchart-docs/share-export.png" alt="导出和分享界面" loading="lazy"></p>
+<p>整个流程从打开 Excel 到邮件发出去，平均八分钟。旧流程里那两次手动复制（数字 → 地图、颜色梯度 → 图例），现在全没了。</p>
+<h2>最容易断链的两个环节怎么处理</h2>
+<p>这条链我跑了快两个月，踩过两个最容易让流程断掉的坑。</p>
+<p><strong>第一个是 Excel 区域名和底图区域名对不上。</strong> MapChart 里的中国底图用的是标准行政区划名称，我一开始 Excel 里写的"内蒙"和"内蒙古自治区"就卡住了——自动填色直接跳过不匹配的区域，地图上就缺几块空白。解决办法很简单：把 Excel 的区域名列做成固定模板，每次直接复制粘贴，不再手动打字。这样 MapChart 读进去一次就能过，再也没出现过缺口。</p>
+<p><strong>第二个是配色别用默认那套。</strong> MapChart 打开时的默认配色是个红绿渐变，在邮件里对比度太差，有两次同事直接说"看不太清"。我后来把固定配色存进了"我的调色板"功能里，这个功能的完整参数和可用色调我第一次翻了一下<a href="https://mapchart-docs.pages.dev/" target="_blank" rel="noopener">MapChart 文档</a>才摸透，每次打开直接选，不再随机选。MapChart 免费版的调色板能存 25 个，Premium 版无限，但对我来说存一套够用的就行。</p>
+<p>还有一个小习惯：我现在每次涂到一半会按 Save config 存一份快照。MapChart 免费版能存 25 份，够我每周留几份不同配色的版本做归档参考。上次手机突然没电重启，回来打开还能接着上次的状态继续，没丢东西。</p>
+<p><img src="../images/mapchart-docs/legend-edit.png" alt="图例编辑界面" loading="lazy"></p>
+<h2>省了多少事，什么时候不划算</h2>
+<p>说点具体的。旧流程每次三十分钟，现在八分钟，一周省二十二分钟，一个月就是快两个半小时。这些时间以前花在"手动点颜色格子"和"调整图例文字"上，现在花在"看一眼配色合不合适"和"检查有没有遗漏区域"上——本质是从机械劳动变成了判断决策，累是累在眼睛不是累在手指。</p>
+<p>但这条链也有不划算的场景。比如我做过一次全球市场潜力评估，用的是世界 Robinson 投影底图，区域名是英文名，我得先把 Excel 里的中文区域名翻译成英文才能自动填色——翻译花的时间还不如手动涂。这时候我会跳过自动填色，退回到手动模式，但配色和图例还是用 MapChart 带，省一半是一半。</p>
+<p>另外，如果 MapChart 底图里根本没有我要的区域（比如某个行业自定义的销售分区），那这套流程也走不通——自动填色根本找不到对应的底图块。这种情况目前只能手动涂，但有一次我给 MapChart 发了反馈，居然真的回了邮件，说他们的历史地图库支持社区贡献底图，说不定以后能自己上传分区底图。</p>
+<h2>我现在怎么管理地图的版本</h2>
+<p>还有个细节值得说：我现在把每周生成的配置快照也用 MapChart 里的"Export config to file"功能导出成 txt 文件，存进公司的云盘。这样以后要翻去年的同期数据、或者想把某张旧图改配色重发，直接导入配置就能继续编辑，不用从 Excel 重新走一遍。配置文件是纯文本格式，比我自己存一堆图片文件方便多了——体积小，能在任何设备上导入，甚至 mapchart.net 网页版也能导入继续。</p>
+<p><img src="../images/mapchart-docs/map-list.png" alt="地图列表和已保存配置" loading="lazy"></p>
+<p>这套流程跑下来我最大的感受是：工具真正省时间的地方，从来不是"让某一步更快"，而是"把原本断开的步骤接上"。MapChart 在我这里不是"一个涂色 App"，而是 Excel 数据和成品图之间的那个衔接点——它吞进已经整理好的数据，吐出来直接能用的图片，中间我只需要做配色判断。如果哪天我换销售区域、换数据源，这条链只要改底图和 Excel 模板，其他环节原样不动。</p>
+<p>对了，我平时查的那些使用说明和配置文件示例，作者在 <a href="https://github.com/alipymanbu/APK/tree/main/APP/mapchart" target="_blank" rel="noopener">GitHub</a> 维护主仓库，国内访问不方便的朋友可以从 <a href="https://gitee.com/manbu1103/APK/tree/main/APP/mapchart" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/APP/mapchart" target="_blank" rel="noopener">GitCode</a> 镜像拿，三份内容保持同步。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/rays-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">关于 Rays，斗图党最该知道的九件事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/powerdirector.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">powerdirector 里藏着的五个功能，我翻了三个月才找到</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

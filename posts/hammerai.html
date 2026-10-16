@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>HammerAI 桌面版从零上手：5 步跑通本地大模型聊天 · 老杨技术栈</title>
+  
+<meta name="description" content="这是一份给刚装 HammerAI 的新人准备的实战教程。跟着做，你能在半小时内完成模型下载、界面配置和第一次有质量的角色对话。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hammerai.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HammerAI 桌面版从零上手：5 步跑通本地大模型聊天">
+<meta property="og:description" content="这是一份给刚装 HammerAI 的新人准备的实战教程。跟着做，你能在半小时内完成模型下载、界面配置和第一次有质量的角色对话。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hammerai.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hammerai/image-gen-button.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hammerai/image-gen-button.jpg">
+
+<meta name="twitter:title" content="HammerAI 桌面版从零上手：5 步跑通本地大模型聊天">
+<meta name="twitter:description" content="这是一份给刚装 HammerAI 的新人准备的实战教程。跟着做，你能在半小时内完成模型下载、界面配置和第一次有质量的角色对话。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd9\u662f\u4e00\u4efd\u7ed9\u521a\u88c5 HammerAI \u7684\u65b0\u4eba\u51c6\u5907\u7684\u5b9e\u6218\u6559\u7a0b\u3002\u8ddf\u7740\u505a\uff0c\u4f60\u80fd\u5728\u534a\u5c0f\u65f6\u5185\u5b8c\u6210\u6a21\u578b\u4e0b\u8f7d\u3001\u754c\u9762\u914d\u7f6e\u548c\u7b2c\u4e00\u6b21\u6709\u8d28\u91cf\u7684\u89d2\u8272\u5bf9\u8bdd\u3002", "headline": "HammerAI \u684c\u9762\u7248\u4ece\u96f6\u4e0a\u624b\uff1a5 \u6b65\u8dd1\u901a\u672c\u5730\u5927\u6a21\u578b\u804a\u5929", "image": ["https://alipymanbu.github.io/images/hammerai/image-gen-button.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hammerai.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hammerai.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "HammerAI \u684c\u9762\u7248\u4ece\u96f6\u4e0a\u624b\uff1a5 \u6b65\u8dd1\u901a\u672c\u5730\u5927\u6a21\u578b\u804a\u5929", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">HammerAI 桌面版从零上手：5 步跑通本地大模型聊天</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">HammerAI 桌面版从零上手：5 步跑通本地大模型聊天</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">这是一份给刚装 HammerAI 的新人准备的实战教程。跟着做，你能在半小时内完成模型下载、界面配置和第一次有质量的角色对话。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程结束时，你能做到三件事：确认自己的机器能跑多大的模型、完成桌面版安装与首次模型下载、用聊天界面完成一次有角色设定的对话并保存到本地。</p>
+<h2>准备：先搞清楚你的机器吃不吃得下</h2>
+<p>动手下载之前花 5 分钟看一眼硬件条件——这一步能省掉后面"为什么这么卡""为什么跑不起来"的疑问。HammerAI 的硬性规则只有一条：<strong>模型必须完整装进内存或显存才能运行</strong>，看的是空闲量不是总量。</p>
+<p>按官方给的经验公式：模型文件 6GB，就至少留出 6GB 空闲内存或显存，再给生成开销留 10% 到 50% 的缓冲。给你一张压缩版的对号表快速定位：</p>
+<table><thead><tr><th>你的硬件</th><th>推荐起步模型</th><th>能跑到什么程度</th></tr></thead><tbody><tr><td>RTX 3050 / 2060 SUPER（8GB）</td><td>3B Q4</td><td>日常对话足够</td></tr><tr><td>RTX 3060 / 4070（12GB）</td><td>7B Q4 到 13B Q4</td><td>能玩中等规模的角色</td></tr><tr><td>RTX 3090 / 4080（16~24GB）</td><td>13B Q8 到 30B Q4</td><td>基本什么都能试</td></tr><tr><td>纯核显或 CPU</td><td>7B Q4 起步</td><td>速度会慢，但能跑</td></tr></tbody></table>
+<p>机械硬盘用户注意：内存吃紧时系统会把数据挪到页面文件，HDD 的慢速读写会直接拖垮体验。换 SSD 或 M.2 不能替代足够的内存，但能让你在临界状态下不至于卡成幻灯片。</p>
+<p>不想算就用试水法——从小到大逐级开跑，卡了就退，后面会讲。</p>
+<h2>第一步：下载并安装桌面版</h2>
+<p>HammerAI 有桌面版、网页版和移动端三个入口，去<a href="https://hammerai.usea.quest" target="_blank" rel="noopener">HammerAI官网</a>可以看到三个版本的完整介绍。如果你想跑本地模型（这是它区别于其他聊天产品的核心优势），直接下桌面版最省事。</p>
+<p>打开<a href="https://hammerai.usea.quest/download.html" target="_blank" rel="noopener">官方下载</a>页面，根据你的系统选对应的安装包（Windows / macOS / Linux 都有）。安装过程很干净，一路默认即可——它不会强制你注册账号。</p>
+<p>装好之后先别急着打开，记住一个关键认知：<strong>HammerAI 本地功能完全免注册</strong>。账号只在三种情况才值得碰：想用云端模型、想跨设备同步聊天记录、想购买积分或订阅。纯本地聊天全程不需要邮箱、不需要手机号。</p>
+<h2>第二步：下载你的第一个模型</h2>
+<p>安装完成首次启动，应用会引导你下载第一个模型。这里给你一个新人最稳的路线：<strong>从小模型起步</strong>。</p>
+<p>推荐顺序是 2.7B Q2 → 7B Q4 → 13B Q4，逐级加大。如果你按前面的对号表已经清楚自己的硬件极限，可以直接跳到对应档位。下载过程中应用会显示进度条，模型文件比较大（7B Q4 大约 4~8GB），取决于你的网速。</p>
+<p>下载完的模型存在本地，不联网也能用——这正是 HammerAI 强调的"私密"所在。想验证的话，断网再聊一次，对话照常进行就说明数据确实没出门。</p>
+<h2>第三步：认识聊天界面的三段式布局</h2>
+<p>模型就绪后进入主界面。聊天窗口是三段式结构，花两分钟认清楚每个区域的分工：</p>
+<p><img src="../images/hammerai/image-gen-button.jpg" alt="聊天窗口三段式布局——左栏导航、中间消息区、右侧设置面板" loading="lazy"></p>
+<p><strong>左栏</strong>是功能导航：创建新聊天、管理角色库、浏览公共角色、模型管理入口都在这边。</p>
+<p><strong>中间消息区</strong>是主战场：消息气泡区分角色发言和你的发言，输入框上方有一排核心操作按钮——Undo、Stop、Regenerate、Continue、Impersonate、Image。这排按钮用得勤，尤其是 Stop（觉得回复跑偏了立刻掐断）和 Regenerate（上一条不满意重跑）。</p>
+<p><strong>右侧面板</strong>有三个标签：</p>
+<ul><li><strong>Settings</strong>：模型选择、采样参数滑条、用户人设、背景图管理——这是调教输出的主控台，具体参数怎么拧可以去<a href="https://hammerai.pages.dev/" target="_blank" rel="noopener">HammerAI文档</a>翻一下</li><li><strong>Prompt</strong>：显示实际发给模型的完整内容，排查"角色为什么失忆"必看</li><li><strong>Character</strong>：当前角色的档案与设定，聊天中随时可以回看</li></ul>
+<p>右栏顶部还有一个保存模式开关（自动 / 手动），关掉自动保存的话，关掉窗口聊天即清空——想要"阅后即焚"效果就切到手动模式。</p>
+<h2>第四步：用快捷键提速，别在菜单里绕</h2>
+<p>HammerAI 有一个非常实用的命令面板，按 <strong>Ctrl + K</strong>（macOS 是 Cmd + K）就能唤起。它能做两件事：全局跳转页面、触发常用聊天动作。不想记菜单层级的话，记住这一个组合键就行。</p>
+<p>所有快捷键都可以在设置里自定义。桌面版还额外支持 Ctrl + 左右方向键在页面间前进后退，相当于浏览器的导航。</p>
+<h2>第五步：角色失忆了？打开 Prompt 标签页看看</h2>
+<p>新人最常遇到的问题就是"角色怎么把我告诉它的事忘了"。别瞎猜，打开右栏的 <strong>Prompt</strong> 标签页。</p>
+<p>这个页面会把实际发送给模型的完整内容摊开给你看，并且标注哪些消息真的进入了上下文窗口、哪些因为超出长度被裁掉了。"失忆"的真相大多是早期消息被滚出了窗口——不是角色忘了，是模型根本没收到。</p>
+<p>几种常见现象对应解法：</p>
+<table><thead><tr><th>现象</th><th>在 Prompt 标签页里会看到</th><th>怎么修</th></tr></thead><tbody><tr><td>长对话后忘事</td><td>早期消息被裁</td><td>调大上下文长度</td></tr><tr><td>性格变淡、回复跑偏</td><td>性格描述占比太小</td><td>精简闲聊内容，或重写角色的性格设定</td></tr><tr><td>回复太啰嗦</td><td>系统提示被塞满</td><td>清理不必要的角色卡字段</td></tr><tr><td>世界书条目没生效</td><td>对应条目没被注入</td><td>检查触发关键词是否真的出现在近期聊天里</td></tr></tbody></table>
+<p>理解了上下文裁剪的机制，再回去看聊天保存模式和群聊的内存压力就都有解释了。</p>
+<h2>三个新手最容易翻车的卡点</h2>
+<p><strong>卡点一：下了个大模型跑不动</strong>。退不是丢人的事——回到模型管理，先换小一档的试。7B Q4 是绝大多数人的安全起步点，能跑再往上加。</p>
+<p><strong>卡点二：角色聊到一半性格变了</strong>。先看 Prompt 标签页，性格栏的内容是不是被后来的闲聊挤掉了。如果是，考虑开一个新聊天重进角色，或者精简一下角色设定里的冗余字段。</p>
+<p><strong>卡点三：想跨设备同步但发现记录没了</strong>。本地聊天默认只存在当前设备上，不自动上传。想同步的话需要主动登录账号并开启云同步——这是可选功能，不开就是纯本地、纯私密。</p>
+<h2>往下还能玩什么</h2>
+<p>跑通本地模型只是起点。HammerAI 的角色市场里有大量公开角色可以直接导入，你也可以用角色创建工具自己写性格设定和世界书条目。等你对采样参数有感觉了，Temperature、Repetition Penalty 这些滑条能调出完全不同的回复风格。这份教程参考的硬件对照表和角色设定模板我同步维护在<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/HammerAI" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/HammerAI" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/HammerAI" target="_blank" rel="noopener">GitCode</a>，主库在 GitHub，国内访问选 Gitee 或 GitCode 都行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/melonticket.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">MelonTicket 付费决策账本：粉丝俱乐部和 Melon 会员到底值不值？</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/adblockplus-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Adblock Plus 完全上手：从弹窗到规则排查的实战教程</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

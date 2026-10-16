@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>iCam365 避坑指南：用了大半年才摸透的六个暗雷 · 老杨技术栈</title>
+  
+<meta name="description" content="从 GPS 权限被拒到 TF 卡莫名报错，从 2.4G/5G 配网踩坑到云端中转延迟——这篇把 iCam365 最容易翻车的六个真实问题逐个拆开讲。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/icam365.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iCam365 避坑指南：用了大半年才摸透的六个暗雷">
+<meta property="og:description" content="从 GPS 权限被拒到 TF 卡莫名报错，从 2.4G/5G 配网踩坑到云端中转延迟——这篇把 iCam365 最容易翻车的六个真实问题逐个拆开讲。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/icam365.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/icam365/scan-code-step1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/icam365/scan-code-step1.jpg">
+
+<meta name="twitter:title" content="iCam365 避坑指南：用了大半年才摸透的六个暗雷">
+<meta name="twitter:description" content="从 GPS 权限被拒到 TF 卡莫名报错，从 2.4G/5G 配网踩坑到云端中转延迟——这篇把 iCam365 最容易翻车的六个真实问题逐个拆开讲。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece GPS \u6743\u9650\u88ab\u62d2\u5230 TF \u5361\u83ab\u540d\u62a5\u9519\uff0c\u4ece 2.4G/5G \u914d\u7f51\u8e29\u5751\u5230\u4e91\u7aef\u4e2d\u8f6c\u5ef6\u8fdf\u2014\u2014\u8fd9\u7bc7\u628a iCam365 \u6700\u5bb9\u6613\u7ffb\u8f66\u7684\u516d\u4e2a\u771f\u5b9e\u95ee\u9898\u9010\u4e2a\u62c6\u5f00\u8bb2\u3002", "headline": "iCam365 \u907f\u5751\u6307\u5357\uff1a\u7528\u4e86\u5927\u534a\u5e74\u624d\u6478\u900f\u7684\u516d\u4e2a\u6697\u96f7", "image": ["https://alipymanbu.github.io/images/icam365/scan-code-step1.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/icam365.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/icam365.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "iCam365 \u907f\u5751\u6307\u5357\uff1a\u7528\u4e86\u5927\u534a\u5e74\u624d\u6478\u900f\u7684\u516d\u4e2a\u6697\u96f7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">iCam365 避坑指南：用了大半年才摸透的六个暗雷</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">iCam365 避坑指南：用了大半年才摸透的六个暗雷</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 GPS 权限被拒到 TF 卡莫名报错，从 2.4G/5G 配网踩坑到云端中转延迟——这篇把 iCam365 最容易翻车的六个真实问题逐个拆开讲。</p>
+  </header>
+  <div class="prose">
+<p>iCam365 这款摄像头 App 看着简单，注册扫码配网一气呵成，画面也能立刻出来。它的<a href="https://icam365.xnyx.quest" target="_blank" rel="noopener">官网</a>上产品说明和规格表写得相当清楚，但真用起来才发现，藏着好几个"不踩不知道、一踩吓一跳"的暗雷。我前前后后折腾了三台摄像头，从 WiFi 室内机到 4G 太阳能款，踩过的坑写出来给你当个提前量。</p>
+<h2>坑一：Android GPS 权限拒了就没救</h2>
+<p><strong>症状</strong>：Android 手机上点开添加设备，App 先弹一个"请开启 GPS 定位服务"的提示，手滑点了拒绝——这下完了，配网页面直接卡死，点任何按钮都没反应，App 设置里也找不到"重新授权 GPS"的入口。</p>
+<p><strong>原因</strong>：Android 6.0+ 要求扫描周边 WiFi 必须申请地理位置权限，iCam365 的配网逻辑就卡在这里。它不扫 WiFi 列表就判断不了摄像头在不在附近、信号强不强，所以 GPS 一关整个流程就瘫痪。而 App 内部没做权限回收重走的兜底设计，拒了就是拒了。</p>
+<p><strong>解法</strong>：没有解法，只能卸载重装。下次装的时候弹权限申请，GPS 那项务必点"允许"——哪怕你觉得定位和摄像头没关系，App 自己知道它在干嘛。iOS 用户跳过这个坑，苹果不走这套。</p>
+<p><img src="../images/icam365/scan-code-step1.jpg" alt="配网第一步截图" loading="lazy"></p>
+<h2>坑二：双频合一路由器配完网还是离线</h2>
+<p><strong>症状</strong>：摄像头刚配完网的时候状态灯闪几下就变常亮，语音提示也说"配置成功"，结果 App 里设备卡片还是灰色的，点进去显示"设备离线"。重启摄像头、重启路由器，来回折腾半小时没结果。</p>
+<p><strong>原因</strong>：iCam365 摄像头<strong>只能连 2.4G WiFi</strong>，不认 5G。现在大部分家用路由器默认"双频合一"，2.4G 和 5G 共用一个 SSID，手机能自动切但摄像头不会——它拿到的可能是 5G 的信号，连上了但因为硬件不支持，握手就失败了。</p>
+<p><strong>解法</strong>：进路由器后台把"双频合一"暂时关掉，让 2.4G 和 5G 各自一个 SSID，单独用 2.4G 那个去配网。配完再合回去也没事，摄像头会记住 2.4G 的 SSID 和密码，不会被切走。如果你嫌麻烦，App 里有个"故障排查"入口，重新配网时会强制让摄像头只扫 2.4G，也能解决。</p>
+<h2>坑三：实时画面一直转圈，90% 不是硬件坏了</h2>
+<p><strong>症状</strong>：App 首页设备显示"在线"，点进去看实时画面，loading 圈转个十几秒然后超时。换了 WiFi、换了手机、换了摄像头电源，还是转。</p>
+<p><strong>原因</strong>：iCam365 的实时预览<strong>默认走云端中转</strong>——哪怕你的手机和摄像头在同一个局域网里，画面也要先传到探格的云服务器再回传到手机。这意味着公网抖动、运营商 DNS、云端负载都会影响你本地看画面的体验。另外，TF 卡坏了也可能导致主循环卡死、画面一直出不来。夜视时画面慢是正常现象，红外编码效率下降会让延迟涨到 2~3 秒，这个别当真。</p>
+<p><strong>解法</strong>：先检查有没有"局域网直连"开关——在设备设置里找，打开后同 Wi-Fi 下直接连摄像头、不走云端，延迟和稳定性都会好很多。没有这个开关说明 App 版本老，去应用商店更一下。实在搞不定就去<a href="https://icam365.pages.dev/" target="_blank" rel="noopener">icam365文档</a>翻一下，还不行就断电重启摄像头，或者把 TF 卡格式化再试。</p>
+<p><img src="../images/icam365/tf-card-detect.jpg" alt="TF卡状态检测截图" loading="lazy"></p>
+<h2>坑四：PC Player 装了才发现很多事做不了</h2>
+<p><strong>症状</strong>：在应用商店没找到 Mac 版，Windows 版装完登录进去，发现界面上只有实时预览和回看，想给新摄像头配网、想调整移动侦测灵敏度、想购买云存储——按钮在哪？找不到。</p>
+<p><strong>原因</strong>：PC Player 是纯查看端，只有"看"的权限，没有"改"的权限。添加/删除设备、配网、云存储、AI 服务订阅、通知推送设置、分享设备——这些全都得在手机 App 上完成。很多人以为电脑版是功能完整的客户端，结果装了发现只能当大屏监视器用。Mac 用户更惨，官方根本没做 Mac 版，只能走 OEM 厂商的网页端（阉割到只剩实时预览）或者装安卓模拟器凑合用。</p>
+<p><strong>解法</strong>：安装包从<a href="https://icam365.xnyx.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿，装之前先想清楚你要电脑版干嘛。如果是商铺前台常开一个显示器看画面、或者想批量导出 mp4 录像文件，那 PC Player 正合适。但所有配置操作还是要靠手机，这一点绕不开。</p>
+<p><img src="../images/icam365/home-hero-banner.png" alt="PC播放器首页截图" loading="lazy"></p>
+<h2>坑五：TF 卡容量突然见底，你得排查这四个地方</h2>
+<p><strong>症状</strong>：前几天才格式化的 128G 卡，App 提示"存储空间不足"。进去一看，使用率快满了，可才用了不到一周，理论上至少能存二十多天的录像啊？</p>
+<p><strong>原因</strong>：四个常见原因，概率从高到低：</p>
+<ol><li><strong>高清晰度 + 全天录像</strong>——1080P HD 2048 Kbps 全天录，128G 卡撑不到三周。</li><li><strong>云存储和 TF 卡同时开了全天录像</strong>——两者独立计算空间，你感觉"怎么又快满了"，其实是两张存储在同时消耗。</li><li><strong>TF 卡有坏块</strong>——App 设备设置里能看错误次数，每天几次以上说明卡快坏了。</li><li><strong>告警截图没清理</strong>——移动侦测触发时摄像头会自动保存关键帧快照，这些文件不参与录像循环覆盖，越积越多。</li></ol>
+<p><strong>解法</strong>：录像清晰度选最低可用档，门口巡检、婴儿看护 SD 就够看清人形了。改成事件录像模式，只在有人触发时才录。定期在 App 里清一下告警截图，或者干脆在告警设置里关掉自动截图。如果错误次数频繁，趁还能读赶紧备份换卡。</p>
+<h2>坑六：Android 通知开了还是收不到</h2>
+<p><strong>症状</strong>：移动侦测告警在 App 里能看到记录，但系统通知栏没有弹窗，锁屏也没推送。朋友用 iPhone 一切正常，就我的安卓机没反应。</p>
+<p><strong>原因</strong>：iCam365 Android 版走的是厂商推送通道（小米/华为/Firebase），国内 ROM 的系统优化会把后台推送掐掉。你装完 App 只点了"允许通知"是不够的，还得手动在系统设置里给 App 开三项权限：<strong>允许通知、自启动、忽略电池优化</strong>。少开一项，推送就会延迟甚至直接丢。</p>
+<p><strong>解法</strong>：进系统设置 → 应用管理 → iCam365 → 权限，把这三项全部打开。部分机型还要在"后台弹出界面"和"锁屏通知"那里单独授权。iPhone 用户同样绕过这个坑，APNs 通道系统自己管。</p>
+<p><img src="../images/icam365/notification-settings.jpg" alt="通知设置截图" loading="lazy"></p>
+<h2>防坑清单</h2>
+<ul><li><strong>GPS 权限别拒</strong>：Android 装完 App 第一个权限弹窗，GPS 务必点允许，拒了只能卸载重装。</li><li><strong>配网前查频段</strong>：摄像头只认 2.4G，双频合一路由器先关掉再配网，或者用 App 故障排查强制 2.4G。</li><li><strong>画面转圈先查开关</strong>：设备设置里找"局域网直连"，打开后同 Wi-Fi 不走云端中转，90% 的转圈问题直接消失。</li><li><strong>录像模式改事件</strong>：全天录改成事件触发，TF 卡容量直接翻几倍用。</li><li><strong>安卓通知要开三项</strong>：允许通知 + 自启动 + 忽略电池优化，一个都不能少。</li></ul>
+<p>iCam365 本身硬件质量和画面素质都在线，六个坑全是配网逻辑、平台差异、默认设置这类"软问题"——不是摄像头坏了，是开发者把很多细节藏得太深，第一次用很容易踩。知道这些点之后，这软件其实相当省心。另外配套的中文文档和软件安装包整理在三个代码仓库里都能拿到，国内访问不稳定时可以切 Gitee 或 GitCode，<a href="https://github.com/alipymanbu/APK/tree/main/APP/iCam365" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/iCam365" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/iCam365" target="_blank" rel="noopener">GitCode</a>。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/tripo-ai.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Tripo AI 秒级 2D 转 3D 的背后——从一张照片到可交互模型，中间发生了什么</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/soundraw-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Soundraw 的 Bar 级编辑原理：AI 音乐为什么要拆成轨道和段落？</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

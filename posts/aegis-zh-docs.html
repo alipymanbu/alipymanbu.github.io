@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Aegis 深度盘点：从验证码生成到保险库安全，把所有能力面一次摊开 · 老杨技术栈</title>
+  
+<meta name="description" content="不少人把 Aegis 当成一个纯 TOTP 生成器用，其实它覆盖了验证码管理的完整链路——从条目录入、整理排序、图标个性化，到加密保险库的安全设计和备份迁移，每个环节都有可圈可点的细节。本文按能力域逐一盘点。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/aegis-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Aegis 深度盘点：从验证码生成到保险库安全，把所有能力面一次摊开">
+<meta property="og:description" content="不少人把 Aegis 当成一个纯 TOTP 生成器用，其实它覆盖了验证码管理的完整链路——从条目录入、整理排序、图标个性化，到加密保险库的安全设计和备份迁移，每个环节都有可圈可点的细节。本文按能力域逐一盘点。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/aegis-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/aegis-zh-docs/icon-picker.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/aegis-zh-docs/icon-picker.png">
+
+<meta name="twitter:title" content="Aegis 深度盘点：从验证码生成到保险库安全，把所有能力面一次摊开">
+<meta name="twitter:description" content="不少人把 Aegis 当成一个纯 TOTP 生成器用，其实它覆盖了验证码管理的完整链路——从条目录入、整理排序、图标个性化，到加密保险库的安全设计和备份迁移，每个环节都有可圈可点的细节。本文按能力域逐一盘点。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e0d\u5c11\u4eba\u628a Aegis \u5f53\u6210\u4e00\u4e2a\u7eaf TOTP \u751f\u6210\u5668\u7528\uff0c\u5176\u5b9e\u5b83\u8986\u76d6\u4e86\u9a8c\u8bc1\u7801\u7ba1\u7406\u7684\u5b8c\u6574\u94fe\u8def\u2014\u2014\u4ece\u6761\u76ee\u5f55\u5165\u3001\u6574\u7406\u6392\u5e8f\u3001\u56fe\u6807\u4e2a\u6027\u5316\uff0c\u5230\u52a0\u5bc6\u4fdd\u9669\u5e93\u7684\u5b89\u5168\u8bbe\u8ba1\u548c\u5907\u4efd\u8fc1\u79fb\uff0c\u6bcf\u4e2a\u73af\u8282\u90fd\u6709\u53ef\u5708\u53ef\u70b9\u7684\u7ec6\u8282\u3002\u672c\u6587\u6309\u80fd\u529b\u57df\u9010\u4e00\u76d8\u70b9\u3002", "headline": "Aegis \u6df1\u5ea6\u76d8\u70b9\uff1a\u4ece\u9a8c\u8bc1\u7801\u751f\u6210\u5230\u4fdd\u9669\u5e93\u5b89\u5168\uff0c\u628a\u6240\u6709\u80fd\u529b\u9762\u4e00\u6b21\u644a\u5f00", "image": ["https://alipymanbu.github.io/images/aegis-zh-docs/icon-picker.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/aegis-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/aegis-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "Aegis \u6df1\u5ea6\u76d8\u70b9\uff1a\u4ece\u9a8c\u8bc1\u7801\u751f\u6210\u5230\u4fdd\u9669\u5e93\u5b89\u5168\uff0c\u628a\u6240\u6709\u80fd\u529b\u9762\u4e00\u6b21\u644a\u5f00", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">Aegis 深度盘点：从验证码生成到保险库安全，把所有能力面一次摊开</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Aegis 深度盘点：从验证码生成到保险库安全，把所有能力面一次摊开</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">不少人把 Aegis 当成一个纯 TOTP 生成器用，其实它覆盖了验证码管理的完整链路——从条目录入、整理排序、图标个性化，到加密保险库的安全设计和备份迁移，每个环节都有可圈可点的细节。本文按能力域逐一盘点。</p>
+  </header>
+  <div class="prose">
+<h2>它是什么，为什么值得认真盘点</h2>
+<p>Aegis 是一个开源的两步验证管理器，它的<a href="https://aegis.bmww.store" target="_blank" rel="noopener">官网</a>上标注的核心职责是在本地生成一次性验证码（2FA code），帮你摆脱每登录一个服务就掏手机看短信或翻 Google Authenticator 的麻烦。但如果只用它的默认配置、录入几条 TOTP 密钥就完事，那你只用了它不到一半的能力。</p>
+<p>这个应用从条目创建、日常整理、保险库加密到备份迁移，每个环节都有细致的设计。比如它支持两种主流算法（TOTP 和 HOTP）外加 Steam、Yandex、mOTP 等特殊类型；条目可以自定义图标、拖动排序、按分组筛选；保险库默认 AES-256-GCM 加密，一个文件装下全部密钥。对于已经在用 Aegis 但没深挖的用户，或者正在对比同类管理器想做选择的人，这篇盘点会比单独看功能列表有用得多。</p>
+<h2>能力域一：验证码生成——不止 TOTP 一种</h2>
+<h3>两种主流算法，覆盖绝大多数场景</h3>
+<p>Aegis 对 TOTP（时间型）和 HOTP（计数型）两种 RFC 标准算法都支持。TOTP 是你在 Google、GitHub、微信等绝大多数平台上见到的那种——验证码每 30 秒自动刷新，手机时间对得上就能出对的码。HOTP 则是每次使用后才换码，常见于部分硬件令牌、老系统或特定企业场景。</p>
+<p>两种算法各有使用注意。TOTP 的命门是时间同步——手机时间不准，算出来的码永远是错的。Aegis 在 3.3 版起做了两个贴心设计：验证码临近过期会变色提醒，3.4 版又加了触感反馈，让你在输码的最后几秒能察觉"这个码快不能用了"。HOTP 的坑则是计数器不能乱——同一密钥在两台设备上各自生成过，计数器就会错位，之后算的码跟服务端对不上，而且 HOTP 密钥不建议多设备共用。</p>
+<h3>少数派算法的兼容</h3>
+<p>除了 TOTP 和 HOTP，Aegis 还支持 Steam Guard、Yandex Key、mOTP（移动端 OTP）等特殊验证码类型。这些不属于两种标准算法，但在特定平台上是强制要求。Steam 的验证码是 5 位字母数字组合，Yandex 是时间型但算法有变体，mOTP 则是基于设备信息生成。Aegis 自动识别这些类型，用户手动添加时选对类型就能正常出码。</p>
+<h3>三种添加方式</h3>
+<p>安装包从<a href="https://aegis.bmww.store/download.html" target="_blank" rel="noopener">Aegis下载</a>拿，录入条目有三种方式：扫描二维码、手动输入密钥、从其他应用导入（支持 Google Authenticator、2FAS 等主流格式）。扫描二维码最省心，密钥、服务名、账号名一次识别；手动输入适合老服务或二维码扫不出来的场景；导入则是换机或换管理器时的迁移路径。</p>
+<h2>能力域二：条目整理与个性化——条目多了才显功力</h2>
+<p>刚用 Aegis 时条目少，所有条目挤在一个列表里也没什么。但当你同时管二十个以上服务的两步验证时，整理能力就成了日常效率的分水岭。</p>
+<h3>图标系统：三种来源</h3>
+<p>Aegis 的每个条目都可以配图标，让"找码"从读文字变成认图标。图标有三种来源：不手动设置时应用按服务名生成文字图标（首字母+配色）；从社区图标包里挑对应服务的现成图标（Aegis 自带多个图标包，还支持从第三方仓库安装）；或者从相册选一张自定义图片裁剪后作为条目图标。</p>
+<p><img src="../images/aegis-zh-docs/icon-picker.png" alt="图标选择器：搜索建议与图标网格" loading="lazy"></p>
+<p>图标会被压缩存储——3.3.4 版起统一缩放到 512×512，避免大图把保险库撑得过大或引发内存问题，所以不用担心选高清图，存储开销是受控的。图标作为条目数据的一部分，跟随备份和换机迁移。</p>
+<h3>排序：字母序还是手动拖动</h3>
+<p>顶栏的排序入口提供两种方式。字母排序按服务名的字母或拼音顺序自动排列，零维护成本，条目多时最省心；自定义排序则完全手动控制，长按条目进入拖动状态，把常用的服务拖到列表顶部，低频的沉底靠搜索定位。两种模式随时切换，切换不会丢失数据。</p>
+<p>一个值得留意的点：排序、分组、图标解决的是不同维度的问题。排序管"谁在前面"，分组管"按场景切片"，图标管"一眼认出"。条目个位数时什么都无所谓，超过十几个先把分组和排序配好，效率差异立竿见影。</p>
+<h3>视图模式：列表还是块状</h3>
+<p>Aegis 提供标准列表视图和块状视图两种展示方式。列表视图信息密度高，适合条目多需要扫读的场景；块状视图图标更大、视觉更友好，配合自定义图标效果最佳。两种视图下排序规则一致生效——在块状视图里做的排序调整，回到列表视图同样成立。</p>
+<h2>能力域三：保险库与安全——一个文件装下全部密钥</h2>
+<p>理解 Aegis 的保险库（vault）概念，很多功能就一目了然了。应用把所有条目——每条的密钥、服务名、账号名、图标、分组——集中持久化成一个文件，每次增删改都是对这个文件的更新。</p>
+<h3>加密与否由你决定</h3>
+<p>保险库支持两种状态。加密状态（推荐）下，文件内容用 AES-256-GCM 整体加密，没密码谁也读不出里面的密钥；明文状态则跳过密码设置，文件内容可读。手机上有其他恶意应用或文件被拷走时，明文状态的密钥等于裸奔。初始化时设置密码即为加密状态，随时可以在应用设置里查看与修改加密设置。</p>
+<h3>文件在哪，为什么必须备份</h3>
+<p>保险库默认存在应用的私有存储目录里，普通应用无法触碰，卸载应用时会随之删除。你在导出或自动备份时指定的文件夹里看到的副本，才是灾难恢复时真正要靠的东西。应用支持自动定期备份，也可以手动导出到任意位置。</p>
+<h3>安全公理</h3>
+<p><a href="https://aegis-zh-docs.pages.dev/" target="_blank" rel="noopener">Aegis文档</a>里有一条值得记住的安全公理：保险库的安全性 = 密码强度 × 备份可用性 × 设备安全性。三者缺一：密码弱则加密形同虚设；没备份则手机一丢全部重来；设备本身中毒则一切本地防护都打折扣。</p>
+<h2>短板也要说</h2>
+<p>Aegis 并非完美，几个短板在选型时需要留意。</p>
+<p>首先，备份机制依赖本地文件复制，没有内置的云端同步。这意味着换机时必须手动把保险库文件搬过去，而不是像有些管理器那样扫码即可同步。对于习惯多设备无缝切换的用户，这是一个不小的摩擦。</p>
+<p>其次，HOTP 密钥不支持多设备共用。计数器一旦错位，两台设备上生成的码就都不对，只能删掉条目重新绑定。相比之下，TOTP 因为基于时间，可以安全地在多设备上添加同一密钥。</p>
+<p>第三，社区图标包的覆盖度不是所有服务都好。小众应用的图标可能找不到，这时自定义图片是唯一出路，但裁剪和压缩增加了额外操作。</p>
+<h2>什么样的人该用它</h2>
+<p>综合以上盘点，三类人群会从 Aegis 中获得最大价值。</p>
+<p>第一类是已经在用两步验证、同时管理十几个以上服务的重度用户。条目多了之后，排序、分组、图标这些整理工具的价值就会显现，Aegis 在这个粒度上的设计密度比同类产品更均衡。</p>
+<p>第二类是在意本地加密的安全敏感用户。Aegis 的 AES-256-GCM 加密、单文件保险库设计、明文/加密状态的明确区分，在开源两步验证管理器中属于中上水准。</p>
+<p>第三类是从 Google Authenticator 迁移过来的用户。Aegis 支持从 Google Authenticator 直接导入，迁移成本低，而且多了自定义图标、分组、排序等 GA 没有的整理功能。</p>
+<p>这套资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Aegis" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Aegis" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Aegis" target="_blank" rel="noopener">GitCode</a>三个仓库都有维护，按国内网络状况任选一个获取都方便。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/facetune.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">我每周整理自拍的一条龙修图流程：从脸型分析到多平台裁剪</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/creatrip.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Creatrip 后台原理拆解：一个 App 如何吃掉韩国旅游的半个生态</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

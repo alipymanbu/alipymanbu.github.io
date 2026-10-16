@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用了一年才发现，BiliPai 藏着这 5 个大多数人没碰过的开关 · 老杨技术栈</title>
+  
+<meta name="description" content="BiliPai 作为 B 站第三方客户端的标杆，很多人用它只是看视频。但它藏着一堆冷门的高级设置——Material You 动态取色、弹幕增强插件、定时关闭、系统媒体中心联动、JSON 规则插件。本文把这些功能的入口和真正有用的场景挖出来。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/bilipai.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用了一年才发现，BiliPai 藏着这 5 个大多数人没碰过的开关">
+<meta property="og:description" content="BiliPai 作为 B 站第三方客户端的标杆，很多人用它只是看视频。但它藏着一堆冷门的高级设置——Material You 动态取色、弹幕增强插件、定时关闭、系统媒体中心联动、JSON 规则插件。本文把这些功能的入口和真正有用的场景挖出来。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/bilipai.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/bilipai/screenshot2.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/bilipai/screenshot2.png">
+
+<meta name="twitter:title" content="用了一年才发现，BiliPai 藏着这 5 个大多数人没碰过的开关">
+<meta name="twitter:description" content="BiliPai 作为 B 站第三方客户端的标杆，很多人用它只是看视频。但它藏着一堆冷门的高级设置——Material You 动态取色、弹幕增强插件、定时关闭、系统媒体中心联动、JSON 规则插件。本文把这些功能的入口和真正有用的场景挖出来。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "BiliPai \u4f5c\u4e3a B \u7ad9\u7b2c\u4e09\u65b9\u5ba2\u6237\u7aef\u7684\u6807\u6746\uff0c\u5f88\u591a\u4eba\u7528\u5b83\u53ea\u662f\u770b\u89c6\u9891\u3002\u4f46\u5b83\u85cf\u7740\u4e00\u5806\u51b7\u95e8\u7684\u9ad8\u7ea7\u8bbe\u7f6e\u2014\u2014Material You \u52a8\u6001\u53d6\u8272\u3001\u5f39\u5e55\u589e\u5f3a\u63d2\u4ef6\u3001\u5b9a\u65f6\u5173\u95ed\u3001\u7cfb\u7edf\u5a92\u4f53\u4e2d\u5fc3\u8054\u52a8\u3001JSON \u89c4\u5219\u63d2\u4ef6\u3002\u672c\u6587\u628a\u8fd9\u4e9b\u529f\u80fd\u7684\u5165\u53e3\u548c\u771f\u6b63\u6709\u7528\u7684\u573a\u666f\u6316\u51fa\u6765\u3002", "headline": "\u7528\u4e86\u4e00\u5e74\u624d\u53d1\u73b0\uff0cBiliPai \u85cf\u7740\u8fd9 5 \u4e2a\u5927\u591a\u6570\u4eba\u6ca1\u78b0\u8fc7\u7684\u5f00\u5173", "image": ["https://alipymanbu.github.io/images/bilipai/screenshot2.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/bilipai.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/bilipai.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u7528\u4e86\u4e00\u5e74\u624d\u53d1\u73b0\uff0cBiliPai \u85cf\u7740\u8fd9 5 \u4e2a\u5927\u591a\u6570\u4eba\u6ca1\u78b0\u8fc7\u7684\u5f00\u5173", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">用了一年才发现，BiliPai 藏着这 5 个大多数人没碰过的开关</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用了一年才发现，BiliPai 藏着这 5 个大多数人没碰过的开关</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 10 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">BiliPai 作为 B 站第三方客户端的标杆，很多人用它只是看视频。但它藏着一堆冷门的高级设置——Material You 动态取色、弹幕增强插件、定时关闭、系统媒体中心联动、JSON 规则插件。本文把这些功能的入口和真正有用的场景挖出来。</p>
+  </header>
+  <div class="prose">
+<p>你以为 BiliPai 就是个"能看 B 站视频的第三方播放器"？去它的<a href="https://bilipai.usea.quest" target="_blank" rel="noopener">官网</a>翻一下功能列表就知道远不止于此。说实话我最初也是这么想的，从<a href="https://bilipai.usea.quest/download.html" target="_blank" rel="noopener">下载</a>拿装好之后一直用默认设置刷 feed、看番、调调倍速就完事。直到某天深夜翻设置翻到凌晨三点，才发现这玩意儿藏得真深——从外观定制到弹幕玩法，从定时助眠到系统级媒体联动，一堆功能官方都不宣传，菜单入口埋得七拐八绕。</p>
+<p>今天把我挖到的 5 个冷门功能整理出来，每个都附带上具体的菜单路径和"什么人真能用得上"的判断，省得你再跟我一样瞎翻一晚上。</p>
+<h2>一、主题色能跟着你的手机壁纸实时变，而且不止一种风格</h2>
+<p>先说最有"哇"感的那个。Material You 动态取色这个东西，Android 12+ 自带，但大多数 App 都是应付了事——要么只支持主色取色，要么根本没做。BiliPai 不一样，它完整接进去了，而且还在 Material 3 之上叠加了三套主题风格。</p>
+<p>开启路径：<strong>设置 → 外观与主题 → 主题色 → 跟随系统（Material You）</strong>。前提是 Android 12+ 且系统没被厂商阉割（早期 MIUI 和 ColorOS 用户可能享受不到）。设置好之后，你每次换手机壁纸，BiliPai 的主色、次色、强调色、背景色都会自动跟着变——不是那种生硬的纯色替换，是一整套协调的配色方案，视觉统一得不像话。</p>
+<p><img src="../images/bilipai/screenshot2.png" alt="BiliPai Material You 主题随壁纸动态变化" loading="lazy"></p>
+<p>更绝的是那三套主题风格开关：<strong>设置 → 外观 → 主题风格</strong>，可以在 Material 3 默认、Miuix（小米风格组件）、Compose Cupertino（iOS 风格组件）之间随时切换，不需要重启 App，即时生效。我个人习惯 Material 3 默认，圆角大、色彩柔和；喜欢紧凑秩序感的可以试试 Miuix；iOS 用户觉得 Android 原生组件看着别扭的，Cupertino 那套能让你产生"我是不是在刷 iPhone"的错觉。</p>
+<p><strong>什么人用得上？</strong> 喜欢折腾外观的、对界面协调度有强迫症的、换壁纸频率高的用户。什么人可以无视？只用深色模式、从来不在意配色的用户。</p>
+<h2>二、弹幕增强插件：关键词过滤、防遮挡、重复折叠，一个插件解决所有弹幕痛点</h2>
+<p>弹幕是 B 站的灵魂，但有时候也烦——剧透、广告、满屏同一条"前方高能"，或者弹幕把画面中央的人物脸都挡了。BiliPai 内置了一个<strong>弹幕增强</strong>插件，默认是关闭的，得手动去开。</p>
+<p>路径：<strong>设置 → 插件中心 → 弹幕增强 → 启用</strong>。启用之后直接多出一堆实用功能：</p>
+<ul><li><strong>关键词过滤</strong>：把"剧透""广告""抽奖"这类词加进去，含这些词的弹幕直接屏蔽。追番的同学强烈推荐开这个，悬疑推理类番剧被剧透一条真的想砸手机。</li><li><strong>高亮关键词</strong>：反过来用，把 UP 主名字或你感兴趣的特定关键词加进去，命中的弹幕会被标红或加粗，你一眼就能看到。</li><li><strong>防遮挡</strong>：弹幕自动避开画面中央区域，特别是人像和字幕位置。大屏用户（平板、折叠屏）开这个最有用，屏幕大弹幕也多，不开防遮挡真的挡脸。</li><li><strong>重复弹幕折叠</strong>：完全相同的弹幕只显示一条，后面跟着"×N"。过年看拜年视频的时候这个功能能帮你省掉 80% 的视觉噪音。</li><li><strong>弹幕密度调节</strong>：限制同时显示的弹幕数量，不喜欢太热闹的可以调到"稀疏"。</li></ul>
+<p>如果你还想更进一步——比如正则匹配、按弹幕长度过滤、按发送时间过滤——那就得上 <strong>JSON 规则插件</strong>了，那个是给进阶用户准备的，能写规则脚本，基本上想怎么过滤就怎么过滤，不过这块配置起来稍微有点门槛，建议先去<a href="https://bilipai.pages.dev/" target="_blank" rel="noopener">BiliPai文档</a>把规则语法过一遍。这个偏门入口埋在 <strong>设置 → 插件中心 → JSON 规则插件</strong> 里，需要自己写 JSON 或者导入别人分享的规则文件。</p>
+<p><strong>什么人用得上？</strong> 追番怕剧透的、看教程想屏蔽无关弹幕的、大屏用户。什么人可以无视？从来不开弹幕的、只看冷门视频没弹幕可过滤的。</p>
+<h2>三、定时关闭：睡前助眠党必备，而且时间到了会温柔地淡出不是粗暴断音</h2>
+<p>这个功能我是在听视频模式里发现的——就是 BiliPai 那个只听声音不看画面的"后台听"模式。路径：<strong>听视频模式 → 右下角定时关闭按钮</strong>，点击后弹出时间选择器，有 5/10/15/30/60 分钟几个预设，也能自定义（比如 45 分钟、90 分钟）。</p>
+<p>它好在哪？不是选好就不管了。倒计时中途你点右上角的倒计时数字，可以延长 10 分钟、取消或者改时间。最关键的是<strong>时间到了不会粗暴地直接断音</strong>——会先渐渐淡出，像音量慢慢调小那样，然后停止播放、退出听视频模式。不会把你吵醒，也不会杀进程清后台，下次打开 BiliPai 还在。</p>
+<p>睡前听 ASMR、白噪音、助眠音乐的同学，这个功能真的是刚需。我之前用其他视频 App 听助眠内容，睡着之后视频能放到天亮，手机电量从满电掉到自动关机，还发热。自从用了 BiliPai 的定时关闭，设置 15 分钟，基本上每次都在淡出的前几秒睡着。</p>
+<h2>四、系统媒体中心联动：锁屏、蓝牙耳机、Android Auto、智能手表全接上了</h2>
+<p>这个功能我之前完全没意识到 BiliPai 做了——因为它是默认开启的，没有专门的开关让你去开。只有当你用蓝牙耳机控制 BiliPai 的播放时，才会发现它真的接进了 Android 的全局媒体控制中心。</p>
+<p>具体表现：</p>
+<ul><li><strong>锁屏通知栏</strong>：锁屏状态下能看到当前播放视频的封面、UP 主和标题，还有上一首/暂停/下一首按钮、可拖动的进度条，甚至连定时关闭的剩余时间都显示。</li><li><strong>蓝牙耳机按键</strong>：单击播放/暂停、双击下一首、三击上一首、长按快进/快退——取决于你的耳机型号。我用 AirPods 连接 Android，双击耳机柄就能切下一条视频，走路刷 B 站的时候特别方便。</li><li><strong>Android Auto / 车载</strong>：如果你的手机连了车载系统，BiliPai 会出现在车载媒体源列表里，可以用方向盘按键控制。当然开车的时候还是建议别刷视频画面，专心驾驶。</li><li><strong>智能手表</strong>：部分 Wear OS 手表能看到正在播放的内容和基本控制。</li></ul>
+<p>这里顺便提几个边界行为，省得你以为是 bug：两个 App 同时播放的时候（比如听着 BiliPai 又开了音乐 App），Android 的音频焦点机制会自动暂停前一个；导航 App 开始播报时，BiliPai 会自动降低音量（ducking），播报完恢复；来电时自动暂停，通话结束后不会自动恢复（避免通话内容被录进视频）。这些都是正常行为。</p>
+<p>想调整媒体会话相关设置的话，路径在 <strong>设置 → 后台与通知 → 媒体会话</strong>，可以改锁屏是否显示控件、耳机按键映射、通话恢复策略。</p>
+<h2>五、画质不解锁、TV 扫码失败？排查清单比你想的长</h2>
+<p>最后一个不是功能，是我翻了 FAQ 才搞懂的排查思路——很多人说"我用大会员登录了 BiliPai 怎么还是看不了 4K"，或者"用 BiliPai TV 版扫官方 App 的码扫不上"，其实原因可能不在 BiliPai，也不在 B 站。</p>
+<p>画质问题按这个顺序查：先在官方 App 或网页版验证同一个视频能不能选到目标画质（排除视频源本身没有高画质）→ 确认大会员没过期 → 退出 BiliPai 重新登录一次 → 清除缓存（<strong>设置 → 存储与数据 → 清除缓存</strong>，不影响笔记和历史）→ 确认手机芯片支持 HEVC/AV1 解码（骁龙 7 系以上基本都支持）→ 更新 BiliPai 到最新版 → 换网络再试（Wi-Fi 和移动切换一下）。</p>
+<p>TV 扫码问题也类似：BiliPai 端检查二维码是不是空白/模糊/屏幕暗，官方 App 端检查摄像头权限有没有给、光线够不够、摄像头能不能对焦、屏幕有没有反光、扫码框太小的话把 BiliPai 的二维码放大到全屏显示。实在不行换手机号+验证码登录，比扫码稳得多。</p>
+<h2>提醒一个坑：JSON 规则插件别乱装</h2>
+<p>最后说个小提醒——上面提到的 JSON 规则插件虽然强大，但它本质是运行在你设备上的脚本。如果你从网上随便找别人分享的 JSON 规则文件导入，理论上是有安全风险的。建议只从你信任的来源拿规则，或者自己写，别看到"过滤剧透神器"就下载。另外规则写错了（JSON 语法错误）会导致弹幕增强插件直接罢工——不是崩溃，是功能静默失效，排查起来有点烦。</p>
+<h2>收尾</h2>
+<p>写这篇文章的时候我一直在想，为什么 BiliPai 这个 App 能做到 100 多 MB 却不臃肿——因为它把那些"不是所有人都需要但真有人刚需"的功能都做成了可选插件，藏在深一点的菜单里而不是堆在首页。不像有些 App 生怕你不知道它有什么，全功能堆在首页，结果真正想找某个设置反而翻半天。</p>
+<p>如果你跟我一样用了很久 BiliPai 但从来没碰过插件中心和外观设置，今天可以花十分钟试试——Material You 换个壁纸看颜色变化、开个弹幕关键词过滤、睡前设个定时关闭——说不定能把它从"只是个播放器"变成"真的好用的播放器"。毕竟一款好 App 的底线是"开箱能用"，上限是"把它用透"。对了，本文提到的这些隐藏功能和排查思路，在<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/BiliPai" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/BiliPai" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/BiliPai" target="_blank" rel="noopener">GitCode</a>三个开源仓库里都能找到完整的原始文档和讨论，国内访问优先选 Gitee 或 GitCode，速度更快。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/nplayer-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">加班到凌晨的蓝光电影夜：我用 nPlayer 把收藏的 REMUX 看爽了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/hi-waifu.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Hi Waifu 是什么？从零开始用 AI 角色陪你聊天</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

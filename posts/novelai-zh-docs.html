@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>NovelAI上手记：当AI画师和AI编剧同时住进了一个订阅账户 · 老杨技术栈</title>
+  
+<meta name="description" content="花了一周把NovelAI的图像生成和故事写作两条线都踩了一遍坑，说说Opus档位值不值、哪些功能一上手就喜欢、哪些地方让我差点放弃。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/novelai-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NovelAI上手记：当AI画师和AI编剧同时住进了一个订阅账户">
+<meta property="og:description" content="花了一周把NovelAI的图像生成和故事写作两条线都踩了一遍坑，说说Opus档位值不值、哪些功能一上手就喜欢、哪些地方让我差点放弃。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/novelai-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/novelai-zh-docs/where-imagegen.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/novelai-zh-docs/where-imagegen.webp">
+
+<meta name="twitter:title" content="NovelAI上手记：当AI画师和AI编剧同时住进了一个订阅账户">
+<meta name="twitter:description" content="花了一周把NovelAI的图像生成和故事写作两条线都踩了一遍坑，说说Opus档位值不值、哪些功能一上手就喜欢、哪些地方让我差点放弃。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u82b1\u4e86\u4e00\u5468\u628aNovelAI\u7684\u56fe\u50cf\u751f\u6210\u548c\u6545\u4e8b\u5199\u4f5c\u4e24\u6761\u7ebf\u90fd\u8e29\u4e86\u4e00\u904d\u5751\uff0c\u8bf4\u8bf4Opus\u6863\u4f4d\u503c\u4e0d\u503c\u3001\u54ea\u4e9b\u529f\u80fd\u4e00\u4e0a\u624b\u5c31\u559c\u6b22\u3001\u54ea\u4e9b\u5730\u65b9\u8ba9\u6211\u5dee\u70b9\u653e\u5f03\u3002", "headline": "NovelAI\u4e0a\u624b\u8bb0\uff1a\u5f53AI\u753b\u5e08\u548cAI\u7f16\u5267\u540c\u65f6\u4f4f\u8fdb\u4e86\u4e00\u4e2a\u8ba2\u9605\u8d26\u6237", "image": ["https://alipymanbu.github.io/images/novelai-zh-docs/where-imagegen.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/novelai-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/novelai-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "NovelAI\u4e0a\u624b\u8bb0\uff1a\u5f53AI\u753b\u5e08\u548cAI\u7f16\u5267\u540c\u65f6\u4f4f\u8fdb\u4e86\u4e00\u4e2a\u8ba2\u9605\u8d26\u6237", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">NovelAI上手记：当AI画师和AI编剧同时住进了一个订阅账户</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">NovelAI上手记：当AI画师和AI编剧同时住进了一个订阅账户</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">花了一周把NovelAI的图像生成和故事写作两条线都踩了一遍坑，说说Opus档位值不值、哪些功能一上手就喜欢、哪些地方让我差点放弃。</p>
+  </header>
+  <div class="prose">
+<p>说实话我是冲着AI画二次元老婆去的<a href="https://novelai.fewa.skin" target="_blank" rel="noopener">NovelAI官网</a>，结果最后在故事创作编辑器里耗的时间比出图还多——这大概就是NovelAI最分裂也最有趣的地方：一个订阅账号里塞了两套气质完全不同的工具，一套教你当插画师，一套教你当桌游主持人。今天把我这一周的上手体验摊开说，踩过的坑也一并交代。</p>
+<h2>初印象：鹅图标和仪表盘里藏着两个世界</h2>
+<p>客户端从<a href="https://novelai.fewa.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿好之后，注册登录的流程没什么特别，邮箱加密码就行。但一进首页我有点懵——左侧栏顶部有只鹅图标，仪表盘上还有个图像生成的大卡片，加上一排故事入口按钮，信息密度比我预想的高出一截。后来才搞明白，鹅图标展开的是用户菜单，仪表盘是日常高频功能的快捷入口。</p>
+<p><img src="../images/novelai-zh-docs/where-imagegen.webp" alt="仪表盘里的图像生成入口" loading="lazy"></p>
+<p>第一次看到这种双轨设计的时候我愣了几秒：市面上大多数AI工具要么只做图像要么只做文本，NovelAI把两者捏在一个订阅里，这本身就是个大胆的决定——意味着用户得同时接受两套不同的交互逻辑和参数体系。</p>
+<h2>核心体验一：图像生成——标签、步数和刷新就丢图的噩梦</h2>
+<p>我选了V5 Curated模型作为起步，<a href="https://novelai-zh-docs.pages.dev/" target="_blank" rel="noopener">NovelAI文档</a>里说这个模型数据集干净、风格稳，不容易翻车。确实如此。输入框里打标签时会弹出联想提示，每个标签旁边有个小圆点，圆点越实说明模型越"认识"这个词——这个细节让提示词的反馈感比我用过的其他工具强太多，我可以一眼就知道哪些标签是模型真正能理解的，哪些是我自己脑补的。</p>
+<p><img src="../images/novelai-zh-docs/tag-knowledge-dots.webp" alt="标签联想的圆点反馈" loading="lazy"></p>
+<p>但我必须说，<strong>刷新页面就丢图这个设计，是我这一周最想骂娘的地方</strong>。第一次出了四张不错的图，习惯性地按了F5想看看加载状态——结果历史栏直接清空，一张不剩。后来才知道，NovelAI的图像是会话级缓存，不保存就蒸发是设计如此。保存图标在历史栏每张图的右上角，长得不太显眼。我花了整整一天才养成每次出完图立刻点保存的条件反射。</p>
+<p>分辨率和批量张数的联动也是门学问。Small档一次最多出6张，Normal和Large是4张。Opus档位免费出图只在单张时成立，勾了多张就全扣Anlas——我一开始没注意，批量撒了一轮网之后发现额度掉得比预想的快得多。后来学会了先小图6张抽卡找构图，固定种子之后再单张精修，成本立刻降了下来。</p>
+<h2>核心体验二：故事创作——Editor V2和导出的五种秘密</h2>
+<p>图像玩了两天之后我把注意力转向了故事编辑器。第一感觉是功能全得离谱，设定集、记忆模块、 Lorebook（知识手册）、场景占位符，这些东西堆在一起看起来像个文字冒险游戏的开发工具而不是AI聊天框。</p>
+<p>Editor V2是必须开的版本，旧版Editor V1功能缺失、编辑区卡顿，如果你发现自己的界面跟教程里的不一样，先检查一下是不是还在V1。</p>
+<p><img src="../images/novelai-zh-docs/export-story.webp" alt="故事编辑器的导出菜单" loading="lazy"></p>
+<p>故事导出给了五种格式，我挨个试了一遍：To File（.story）是完整备份，但我发现它会把所有重摇的废稿分支也打包进去——给朋友看之前必须先Trim Story或Flatten Story清理一下，不然尴尬。As Scenario（.scenario）最有意思，支持自定义占位符，导入的人可以填自己的名字和选项，相当于把故事变成了可交互的文字冒险剧本。As Image（截图设计器）能把故事片段排版成好看的作品卡，发社交平台晒稿特别方便。</p>
+<p>还有个保命按钮我必须提：用户设置里的Download All Stories，一键打包账户里所有故事为zip。我在FAQ样本里看到有用户因为重置密码导致远程故事丢失的案例，所以现在每月一次把这个动作变成了固定习惯。</p>
+<h2>订阅和计费：Opus到底值不值</h2>
+<p>我入的是Opus档位。说实话免费单张的额度对轻度玩家来说够用，但真正让我觉得值的是无限的故事生成次数——毕竟我在故事编辑区耗的时间远超过图像生成。Anlas点数是图像侧的通用货币，订阅结束会清零，这一点要提前有预期。</p>
+<p>有个细节值得提：升级订阅是按剩余周期补差价，账户页直接操作就行，不用取消重订。但一个身份只能一份订阅，多账号购买官方不管售后——别问我怎么知道的，踩过一次。</p>
+<h2>适合谁，不适合谁</h2>
+<p>如果你的需求是<strong>AI辅助创作二次元插画</strong>，NovelAI是目前体验最完整的一档。标签联想的圆点反馈、V5系列模型的稳定性、图像编辑工具链（增强放大、风格迁移），这一套下来出图效率比纯标签式的竞品高不少。</p>
+<p>如果你想<strong>用AI写可交互的故事或桌游剧本</strong>，NovelAI的故事编辑器是被严重低估的武器。Lorebook配合场景占位符能做出相当复杂的文字冒险体验，导出的.scenario格式让分享和再创作的门槛极低。</p>
+<p>但如果你只是想偶尔出几张图当桌面壁纸，或者写点简单的AI聊天记录就好，那Opus订阅对你来说可能偏重了——毕竟它的学习曲线比单功能工具陡不少，两套系统同时上手确实需要点耐心。</p>
+<p>还有一点：<strong>丢图和丢故事的风险是真实存在的</strong>，NovelAI把数据安全的很大一部分责任推给了用户自己。保存习惯、定期全量导出、别忘密码，这三件事少做任何一件都可能踩坑。</p>
+<p>这一周用下来的感受是，NovelAI不像是一个"AI工具"，更像是一个小型创作平台——图像和文本两条线各自成熟，捏在一起又产生了一些奇妙的化学反应。鹅图标背后藏着的东西，比我最初想象的要多得多。如果想深挖参数细节，相关整理好的资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/novelai" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/novelai" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/novelai" target="_blank" rel="noopener">GitCode</a>上都能找到，选哪个随你习惯。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mirai-docs.html">把 AI 角色原型嵌进内容创作流水线，我是这样用 MIRAI 的</a></h2>
+  <p class="card-desc">做虚拟角色设定以前要翻三份文档、手动演对话，现在用 MIRAI 当原型工场——从灵感收集到社区发布，一条链串起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/hailuo-ai-docs.html">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</a></h2>
+  <p class="card-desc">用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/iapp-docs.html">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</a></h2>
+  <p class="card-desc">从最初的可视化拖拽到裕语言 V7 的成熟，iApp 每一个语言版本背后都是一次产品定位的微调。我们顺着版本号看它的迭代节奏，猜一猜它下一步想做什么。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/heavenly-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Heavenly 三年磨一剑——从 v3.0.13 回看这款影视 App 的版本进化史</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/aibot-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">我用 AIbot 玩了三天：聊天、写诗、画图全体验</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Emoke 迭代了什么？从三个版本看一款情绪记录 app 的执念 · 老杨技术栈</title>
+  
+<meta name="description" content="没有账号系统、没有云端同步、开箱就是一个烟盒——Emoke 把极简这条路线走得比大多数同类产品都彻底。从 v1.1.2 到 v1.1.7，看它一直在死磕什么。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/emoke.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Emoke 迭代了什么？从三个版本看一款情绪记录 app 的执念">
+<meta property="og:description" content="没有账号系统、没有云端同步、开箱就是一个烟盒——Emoke 把极简这条路线走得比大多数同类产品都彻底。从 v1.1.2 到 v1.1.7，看它一直在死磕什么。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/emoke.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/emoke/screenshot-home.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/emoke/screenshot-home.webp">
+
+<meta name="twitter:title" content="Emoke 迭代了什么？从三个版本看一款情绪记录 app 的执念">
+<meta name="twitter:description" content="没有账号系统、没有云端同步、开箱就是一个烟盒——Emoke 把极简这条路线走得比大多数同类产品都彻底。从 v1.1.2 到 v1.1.7，看它一直在死磕什么。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6ca1\u6709\u8d26\u53f7\u7cfb\u7edf\u3001\u6ca1\u6709\u4e91\u7aef\u540c\u6b65\u3001\u5f00\u7bb1\u5c31\u662f\u4e00\u4e2a\u70df\u76d2\u2014\u2014Emoke \u628a\u6781\u7b80\u8fd9\u6761\u8def\u7ebf\u8d70\u5f97\u6bd4\u5927\u591a\u6570\u540c\u7c7b\u4ea7\u54c1\u90fd\u5f7b\u5e95\u3002\u4ece v1.1.2 \u5230 v1.1.7\uff0c\u770b\u5b83\u4e00\u76f4\u5728\u6b7b\u78d5\u4ec0\u4e48\u3002", "headline": "Emoke \u8fed\u4ee3\u4e86\u4ec0\u4e48\uff1f\u4ece\u4e09\u4e2a\u7248\u672c\u770b\u4e00\u6b3e\u60c5\u7eea\u8bb0\u5f55 app \u7684\u6267\u5ff5", "image": ["https://alipymanbu.github.io/images/emoke/screenshot-home.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/emoke.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/emoke.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Emoke \u8fed\u4ee3\u4e86\u4ec0\u4e48\uff1f\u4ece\u4e09\u4e2a\u7248\u672c\u770b\u4e00\u6b3e\u60c5\u7eea\u8bb0\u5f55 app \u7684\u6267\u5ff5", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Emoke 迭代了什么？从三个版本看一款情绪记录 app 的执念</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Emoke 迭代了什么？从三个版本看一款情绪记录 app 的执念</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">没有账号系统、没有云端同步、开箱就是一个烟盒——Emoke 把极简这条路线走得比大多数同类产品都彻底。从 v1.1.2 到 v1.1.7，看它一直在死磕什么。</p>
+  </header>
+  <div class="prose">
+<p>我手上这版 Emoke 的燃烧动画是流畅的。划完火柴，纸卷从底部往上慢慢烧，灰烬抖落的节奏和火苗跳动几乎同步——这是 v1.1.5 之后的体验。在此之前，旧设备上的用户可能划了火柴点不着、烧到一半卡住，甚至直接跳过燃烧阶段，纸卷"啪"一下掉进烟灰缸。官方在商店评论和更新日志里都回应过这个问题，v1.1.5 的补丁就是专门冲着它来的。</p>
+<p>打开 Emoke 的第一眼你看到什么？一个冬天里的纸盒，整整齐齐躺着一排情绪纸卷。没有登录页，没有新手引导弹窗，没有"请先完成 X"的强制流程。启动就能用。这是 Emoke 从第一天起就没有偏离的姿态——我后面会说，它迭代了这么多版本，变的东西很少，不变的东西很多。</p>
+<p><img src="../images/emoke/screenshot-home.webp" alt="Emoke 首页烟盒界面" loading="lazy"></p>
+<h2>来路：三个版本的时间线</h2>
+<p>样本文档里能看到的版本号只有三个，v1.1.2、v1.1.5 和 v1.1.7。更早的历史文档里没提——这本身就是一个有意思的信号。</p>
+<p><strong>v1.1.2 是一个"补漏"版本</strong>。它修复了启动时可能卡在白屏的问题，同时加了本地数据导出。白屏修复关联的是恢复购买流程的稳定性——说明 Pro 会员体系上线初期，在 Apple/Google 的内购回调链路上出过问题。数据导出则是另一个信号：它明确告诉用户"你的数据只在本地，自己备份好"。去<a href="https://emoke.uerg.quest/download.html" target="_blank" rel="noopener">官方下载</a>页面看一眼就能确认——Emoke 从一开始就不打算做云同步，这点在后来的文档里写得很直白——情绪记录是最私人的内容，上传云端意味着服务器运营方必须有访问控制和审计，而他们不想让用户为了"有个备份"就被迫注册账号。</p>
+<p>v1.1.2 把这两件事一起做了：一边修启动和恢复购买的 bug，一边把数据导出的"手动备份"通路给补上。逻辑很清楚——既然不做云端，那至少给用户一个自保的手段。</p>
+<p><strong>v1.1.5 是一次对核心体验的补课</strong>。从<a href="https://emoke.uerg.quest" target="_blank" rel="noopener">官网</a>和应用商店的更新日志里能看到三条：修复旧设备上燃烧动画无法显示的问题、优化界面响应速度与加载性能、改善分享模式跨设备连接体验。</p>
+<p>燃烧动画是 Emoke 的灵魂交互——选纸卷、划火柴、看着它烧完、把情绪写进去。如果这个环节卡住了，整个产品的仪式感就塌了。v1.1.5 之前，低端 Android 和旧款 iPhone 上 GPU 性能不够，动画会掉帧或者直接不渲染。这个补丁说明团队在初期上线时低估了设备碎片化带来的影响。</p>
+<p>界面响应速度和加载性能的优化，放在燃烧动画修复同一次更新里，也能看出问题的关联性——GPU 资源被动画吃掉之后，界面的其他部分就会变慢。v1.1.5 之后这两条一起解决，算是对"性能基线"做了一次校准。</p>
+<p>分享模式优化是这次更新里唯一一个和"核心仪式"无关的改动。Emoke 有一个跨设备分享情绪记录的功能——在没有账号系统的前提下，它靠的是设备之间的本地连接。这个功能的优先级在三个版本里排最后，也暗示了团队对"主路径"的定义：点烟、燃烧、写情绪——其他的都是锦上添花。</p>
+<p><strong>v1.1.7 只提到了分享模式的连接体验改善</strong>，这是 v1.1.5 那条的后续打磨。一个版本如果只动这一件事，说明主流程已经稳定了。</p>
+<h2>规律：一直在死磕什么</h2>
+<p>从这三个版本看下来，Emoke 团队的优先级非常清晰。</p>
+<p>第一优先级是<strong>核心仪式的完成度</strong>。选纸卷、划火柴、燃烧、写情绪——这条主路径上的任何 bug 和性能问题，都在版本列表里排最前面。白屏、燃烧卡顿、界面响应慢，这些问题不解决，整个产品就没法成立。</p>
+<p>第二优先级是<strong>隐私和极简的边界</strong>。不做账号、不做云端，这两个决策从 v1.1.2（甚至更早，只是文档没写）开始就没有动摇过。数据导出的存在，恰恰是在"不做云端"这个前提下给用户的兜底，而不是在暗示"以后可能加云端"。<a href="https://emoke.pages.dev/" target="_blank" rel="noopener">emoke文档</a>里甚至直接把对比竞品（Day One、Moodpath、Reflectly）的云同步功能拿出来当反面——Emoke 选的是"极简 + 零信任"，不追求功能最全，追求"打开就能用、点一下就能记、没人能看到"。</p>
+<p>什么一直不管？<strong>云同步、多设备、账号体系、社区功能</strong>。样本文档里没有任何一个版本更新提到要做这些，FAQ 里关于"将来加云端吗"的回答也是明确的克制——如果真加，会是可选的、端到端加密的、不关联身份的。但当前版本没有。</p>
+<p><img src="../images/emoke/screenshot-burn.webp" alt="Emoke 燃烧动画" loading="lazy"></p>
+<h2>预判：下一步大概率怎么走</h2>
+<p>从迭代节奏看，Emoke 的更新频率是两到四周一个版本，每次改动都很克制——v1.1.2 是补漏，v1.1.5 是性能和核心交互修复，v1.1.7 是分享体验微调。没有大版本的架构升级，没有突然加入新功能类别。</p>
+<p>照这个路线推，下一步的走向大概是：</p>
+<p>第一，继续打磨核心仪式的设备兼容性。燃烧动画的问题在 v1.1.5 修了，但 Android 设备碎片化的坑永远填不完——不同芯片组、不同系统版本、不同厂商的省电策略，都可能影响 GPU 渲染。后续版本大概率会继续覆盖更多边缘设备的适配。</p>
+<p>第二，Pro 会员体系的完善。Pro 权益在文档里提到了（主题、字体的高级选项），但 v1.1.2 的白屏修复关联恢复购买流程，说明内购链路初期还不够稳定。会员体系的打磨可能是中期的一个重点方向。</p>
+<p>第三，还是<strong>不会加云端同步</strong>。团队已经把"零信任"写进了产品定义，除非整个产品定位发生变化，否则这条线不会动。手动数据导出可能会继续优化，比如导出格式更通用、恢复流程更顺畅，但云端这条路短期内看不到迹象。</p>
+<p>当然这些只是从迭代规律推的，不是官方口径。Emoke 的开发者在文档里保持了一种低调但明确的姿态——他们不想做一款功能最全的情绪日记，只想把"打开烟盒、点一根纸卷、烧掉情绪"这件事做到位。</p>
+<p>现在打开 Emoke，首页的烟盒摆在那里，纸卷整整齐齐。划火柴，火苗跳起来，灰烬往下掉——这个流程从第一天到 v1.1.7，核心体验没有变。变的是它在越来越多的设备上跑得更稳了。这大概就是一款"执念型"产品的迭代逻辑：不追风口，不堆功能，把一件事做到底。</p>
+<p>关于 Emoke 的全部文档和资料，我同步在了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/emoke" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/emoke" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/emoke" target="_blank" rel="noopener">GitCode</a>三个仓库，总有一个你能顺畅访问。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/safe-haven-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Safe Haven 避坑指南：我踩过的四个坑，帮你省点时间</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/duckstation-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">DuckStation 深度盘点：一款把 PS1 模拟器做到&#34;无死角&#34;的作品</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

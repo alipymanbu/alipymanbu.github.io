@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 NetX 把家里网络摸得门清——从扫描设备到远程开机全流程 · 老杨技术栈</title>
+  
+<meta name="description" content="还在疑惑家里 WiFi 下到底连了多少设备？路由器卡慢时不知道从哪下手排查？NetX 一个安卓 App 就能帮你把局域网拓扑、信号质量、公网 IP 甚至远程唤醒全部搞定。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/netx-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 NetX 把家里网络摸得门清——从扫描设备到远程开机全流程">
+<meta property="og:description" content="还在疑惑家里 WiFi 下到底连了多少设备？路由器卡慢时不知道从哪下手排查？NetX 一个安卓 App 就能帮你把局域网拓扑、信号质量、公网 IP 甚至远程唤醒全部搞定。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/netx-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/netx-docs/permission-request.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/netx-docs/permission-request.jpg">
+
+<meta name="twitter:title" content="用 NetX 把家里网络摸得门清——从扫描设备到远程开机全流程">
+<meta name="twitter:description" content="还在疑惑家里 WiFi 下到底连了多少设备？路由器卡慢时不知道从哪下手排查？NetX 一个安卓 App 就能帮你把局域网拓扑、信号质量、公网 IP 甚至远程唤醒全部搞定。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd8\u5728\u7591\u60d1\u5bb6\u91cc WiFi \u4e0b\u5230\u5e95\u8fde\u4e86\u591a\u5c11\u8bbe\u5907\uff1f\u8def\u7531\u5668\u5361\u6162\u65f6\u4e0d\u77e5\u9053\u4ece\u54ea\u4e0b\u624b\u6392\u67e5\uff1fNetX \u4e00\u4e2a\u5b89\u5353 App \u5c31\u80fd\u5e2e\u4f60\u628a\u5c40\u57df\u7f51\u62d3\u6251\u3001\u4fe1\u53f7\u8d28\u91cf\u3001\u516c\u7f51 IP \u751a\u81f3\u8fdc\u7a0b\u5524\u9192\u5168\u90e8\u641e\u5b9a\u3002", "headline": "\u7528 NetX \u628a\u5bb6\u91cc\u7f51\u7edc\u6478\u5f97\u95e8\u6e05\u2014\u2014\u4ece\u626b\u63cf\u8bbe\u5907\u5230\u8fdc\u7a0b\u5f00\u673a\u5168\u6d41\u7a0b", "image": ["https://alipymanbu.github.io/images/netx-docs/permission-request.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/netx-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/netx-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 NetX \u628a\u5bb6\u91cc\u7f51\u7edc\u6478\u5f97\u95e8\u6e05\u2014\u2014\u4ece\u626b\u63cf\u8bbe\u5907\u5230\u8fdc\u7a0b\u5f00\u673a\u5168\u6d41\u7a0b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">用 NetX 把家里网络摸得门清——从扫描设备到远程开机全流程</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 NetX 把家里网络摸得门清——从扫描设备到远程开机全流程</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">还在疑惑家里 WiFi 下到底连了多少设备？路由器卡慢时不知道从哪下手排查？NetX 一个安卓 App 就能帮你把局域网拓扑、信号质量、公网 IP 甚至远程唤醒全部搞定。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇教程，你能：用手机一键扫出家里 WiFi 下所有在线设备、看懂每个设备的 MAC 和厂商、配置外网远程唤醒家里的电脑、在出行时随时确认自己的蜂窝网络状态。全程不需要电脑操作，也不需要刷路由器固件——一台装了 NetX 的安卓手机就行。</p>
+<h2>准备工作：版本、平台与权限</h2>
+<p><a href="https://netx.ggcd.uno" target="_blank" rel="noopener">NetX官网</a> 目前只支持安卓平台，最低要求 Android 7.0（Nougat）。iOS 用户暂时只能找同类替代了。安装包从<a href="https://netx.ggcd.uno/download.html" target="_blank" rel="noopener">官方下载</a>拿到手装好后，打开 App 首先要处理的是权限问题。</p>
+<p>NetX 首次启动会弹几个权限请求：<strong>位置信息</strong>、<strong>通知</strong>、<strong>后台运行</strong>。很多人这里习惯一路跳过，后面会发现扫描结果空空如也。这里注意，位置权限一定要给——安卓 12 以后，WiFi 扫描结果和位置权限绑定了，不给的话 App 连你当前连的 SSID 都读不到，更别说扫其他设备了。</p>
+<p>位置权限建议选「始终允许」或「仅在使用时允许」，取决于你会不会在锁屏时也让它跑扫描。通知权限给不给影响不大，主要是扫描完成后会不会弹个提示。后台运行权限可以在系统设置里把 NetX 加到电池优化白名单，防止系统把它杀了。</p>
+<p><img src="../images/netx-docs/permission-request.jpg" alt="NetX 权限请求界面" loading="lazy"></p>
+<p>全部权限搞定后，App 默认停在「设备」标签页——右下角一个蓝色扫描按钮，这就是我们第一步要用到的核心入口。</p>
+<h2>第一步：扫出家里所有在线设备</h2>
+<p>拿起手机连到你要扫的那个 WiFi，等 WiFi 图标稳定了（不要在 2G/5G 蜂窝数据下扫，那时候只能扫到自己），点右下角扫描按钮。正常情况下 3 到 15 秒出结果，取决于你家设备多不多、路由器响应快不快。</p>
+<p>扫描完成后，列表里每台设备会以一张卡片展示出来。卡片上你能看到：<strong>IP 地址</strong>、<strong>MAC 地址</strong>、<strong>厂商名称</strong>和<strong>主机名</strong>。厂商名是通过 MAC 前缀反查的——比如小米路由器会显示"Xiaomi"、苹果设备显示"Apple"、华硕显示"ASUS"。主机名能不能显示出来取决于设备有没有向局域网广播它的 Bonjour 或 NetBIOS 名，Windows 电脑通常能显示，智能家居设备大多显示不出来。</p>
+<p>卡片左侧还有个小图标，NetX 会自动根据厂商挑对应的图案——苹果设备用苹果 logo、路由器用路由器图标，这样你扫完一眼就能看出家里都有啥。</p>
+<p><img src="../images/netx-docs/scanned-results.jpg" alt="NetX 扫描结果列表" loading="lazy"></p>
+<p>扫完别急着退出，先数一下设备数量对不对。正常家庭 10 到 20 台设备比较常见：路由器、电视、两三部手机、一两台电脑、几个智能音箱、可能还有几个物联网设备（空气净化器、扫地机器人之类）。如果你数下来对不上，或者有些设备看着陌生，后面我们会讲怎么进一步排查。</p>
+<h2>第二步：深入看某台设备的详情</h2>
+<p>列表里点任意一张卡片进去，能看到这台设备的完整信息。除了 IP 和 MAC 这些基本项，还有它在局域网里的<strong>IPv6 地址</strong>、<strong>上次在线时间</strong>（如果它曾经在线后来离线了）、<strong>开放端口扫描</strong>入口和——最关键的——<strong>WOL 唤醒设置</strong>。</p>
+<p>IPv6 地址这块简单提一下：如果你家运营商和路由器都开了 IPv6，每台设备的详情里会有个以 2400 或 2408 开头的全局 IPv6 地址。IPv6 环境下每台设备理论上都有公网可达的地址，后面讲远程唤醒时你就会知道这有多方便。</p>
+<p>开放端口扫描可以帮你快速判断一台设备跑了什么服务——比如路由器通常开着 80/443（Web 管理）、37215（华硕特有的远程管理），NAS 会开 5000/5001（Web 界面）、22（SSH）。扫描结果里看到熟悉的端口，基本就能确认设备类型了。</p>
+<p><img src="../images/netx-docs/device-detail.jpg" alt="NetX 设备详情页" loading="lazy"></p>
+<h2>第三步：配置远程唤醒（WOL）</h2>
+<p>这是很多人用 NetX 的核心诉求：人在公司或出差，想远程把家里的电脑开机挂个下载任务或者跑个训练。WOL 魔法包默认只在同局域网生效，手机用蜂窝数据发不出去——因为魔法包是 UDP 广播包，出不了家宽的 NAT。解决这个问题有三条路，按简单程度排：</p>
+<p><strong>最省心的方案是路由器自带 WOL 功能。</strong> OpenWrt、华硕梅林、小米路由器这几家固件都有现成的 Web 界面或 App 入口，不需要记端口号，登录路由器后点一下就能远程唤醒。</p>
+<p><strong>通用方案是路由器端口转发。</strong> 登录路由器管理页面（通常是 <code>http://192.168.1.1</code>），找到端口转发或虚拟服务器菜单，新建一条规则：外部端口 9、内部 IP 填你家的局域网广播地址（大多数路由器是 192.168.1.255）、内部端口 9、协议选 UDP、源地址 0.0.0.0/0。保存后，在 NetX 的设备详情页 → WOL 设置里，把目标 IP 改成你家的公网 IP 或 DDNS 域名，端口保持 9，直接发唤醒包就行。</p>
+<p><strong>零配置方案是 VPN 接入。</strong> 如果你家有 OpenWrt + WireGuard 或 OpenVPN，手机在外连 VPN 后就等于在家里局域网里，WOL 直接能用，不用折腾端口转发也不用记 DDNS。</p>
+<p>这里注意几个安全细节：端口转发方案会把你的路由器暴露在公网，只转发 UDP 9 一个端口就行，别顺手开其他端口；定期查一下 DDNS 解析是否指向正确的公网 IP；能不用端口转发就不用，路由器原生 WOL 或 VPN 都更安全。具体参数和注意事项可以翻一下 <a href="https://netx-docs.pages.dev/" target="_blank" rel="noopener">NetX文档</a>。</p>
+<h2>第四步：切到蜂窝数据也能用的功能</h2>
+<p>NetX 不是只有连 WiFi 才能用。切到移动数据（4G/5G）时，WiFi 信息卡会自动切换到显示蜂窝网络信息——外部 IP、运营商、基站位置、网络制式（4G LTE 还是 5G NR）、信号强度（dBm）、小区 ID（CID）这些都会列出来。</p>
+<p>这个模式下你<strong>不能做局域网扫描</strong>，因为蜂窝网络是跨运营商的，你的手机看不到其他用户的设备。但网络诊断工具基本都能用：ping、traceroute、网速测试、IP 查询——这些不依赖局域网。远程唤醒在蜂窝下能不能生效，取决于你家里路由器有没有配好端口转发或 DDNS（就是上一步讲的那套）。</p>
+<p>数据流量注意一下：ping 大量数据包、traceroute 多跳、长时间网速测试这些操作会烧流量，建议重负载工具留到 WiFi 环境下跑，蜂窝下查个 IP 或 ping 一两跳没问题。</p>
+<h2>常见卡点</h2>
+<p><strong>卡点一：扫完列表是空的</strong>。检查顺序是：手机真的连上 WiFi 了吗（下拉通知栏确认，别看着 WiFi 图标亮着其实没拿到 IP）→ 位置权限给了吗 → 路由器开了 AP 隔离（客户端隔离）吗（很多路由器默认关，但部分高端路由有这个选项）→ 你是不是在蜂窝数据下扫的。</p>
+<p><strong>卡点二：远程唤醒没反应</strong>。先在同 WiFi 下直接发 WOL 包，确认硬件层面没问题——电脑 BIOS 里 WOL 开关开了吗？网卡驱动里有没有禁用 Magic Packet？同局域网能唤醒说明 PC 端没问题，再去查路由器的端口转发规则、DDNS 解析、UDP 端口有没有被运营商封（少数地区运营商会封 UDP 9）。</p>
+<p><strong>卡点三：有些设备扫不到</strong>。智能家居设备（空气净化器、扫地机器人、智能插座）经常不响应 ARP 请求，这时候可以试试手动扫描：知道它的 IP 的话直接在 App 里输入 IP 扫，或者等它主动联网时再扫一次。另外，离线设备默认不会出现在列表里，除非你开了历史记录。</p>
+<h2>一句话进阶</h2>
+<p>上面讲的是最基础的四个场景。再往下玩，可以把 NetX 和家里的 IPv6 环境结合起来——IPv6 下每台设备都有公网可达地址，SSH 和 WOL 都不需要 NAT 穿透，公网手机直接连就行；也可以把定时扫描做成日常巡检，每周固定时间扫一遍家里设备，有没有蹭网一眼就能看出来。</p>
+<p>NetX 把传统上需要电脑端命令行工具才能做的网络诊断，全部搬到了手机上。出门在外时掏出来查个 IP、跑个 ping，比带个笔记本方便多了。这套 NetX 的整理资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/NetX" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/NetX" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/NetX" target="_blank" rel="noopener">GitCode</a> 三个仓库都能找到。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/chromecast-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">ChromeCast 投屏的底层逻辑——为什么它能把手机画面扔到电视上还不卡</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/spicychat-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">SpicyChat 踩坑记：这五个问题我真的以为要重装软件</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

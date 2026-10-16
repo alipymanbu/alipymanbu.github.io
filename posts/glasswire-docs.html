@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>GlassWire 的零影响架构：不装内核驱动的防火墙到底靠什么干活 · 老杨技术栈</title>
+  
+<meta name="description" content="GlassWire 号称&#34;系统零影响&#34;，但不装驱动怎么拦截网络流量？本文拆解它以 Windows 防火墙为底座、用 ETW 做监听、以进程名为粒度的三层协作机制，以及这套设计的取舍边界。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/glasswire-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GlassWire 的零影响架构：不装内核驱动的防火墙到底靠什么干活">
+<meta property="og:description" content="GlassWire 号称&#34;系统零影响&#34;，但不装驱动怎么拦截网络流量？本文拆解它以 Windows 防火墙为底座、用 ETW 做监听、以进程名为粒度的三层协作机制，以及这套设计的取舍边界。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/glasswire-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/glasswire-docs/traffic-monitor-graph.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/glasswire-docs/traffic-monitor-graph.webp">
+
+<meta name="twitter:title" content="GlassWire 的零影响架构：不装内核驱动的防火墙到底靠什么干活">
+<meta name="twitter:description" content="GlassWire 号称&#34;系统零影响&#34;，但不装驱动怎么拦截网络流量？本文拆解它以 Windows 防火墙为底座、用 ETW 做监听、以进程名为粒度的三层协作机制，以及这套设计的取舍边界。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "GlassWire \u53f7\u79f0\"\u7cfb\u7edf\u96f6\u5f71\u54cd\"\uff0c\u4f46\u4e0d\u88c5\u9a71\u52a8\u600e\u4e48\u62e6\u622a\u7f51\u7edc\u6d41\u91cf\uff1f\u672c\u6587\u62c6\u89e3\u5b83\u4ee5 Windows \u9632\u706b\u5899\u4e3a\u5e95\u5ea7\u3001\u7528 ETW \u505a\u76d1\u542c\u3001\u4ee5\u8fdb\u7a0b\u540d\u4e3a\u7c92\u5ea6\u7684\u4e09\u5c42\u534f\u4f5c\u673a\u5236\uff0c\u4ee5\u53ca\u8fd9\u5957\u8bbe\u8ba1\u7684\u53d6\u820d\u8fb9\u754c\u3002", "headline": "GlassWire \u7684\u96f6\u5f71\u54cd\u67b6\u6784\uff1a\u4e0d\u88c5\u5185\u6838\u9a71\u52a8\u7684\u9632\u706b\u5899\u5230\u5e95\u9760\u4ec0\u4e48\u5e72\u6d3b", "image": ["https://alipymanbu.github.io/images/glasswire-docs/traffic-monitor-graph.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/glasswire-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/glasswire-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "GlassWire \u7684\u96f6\u5f71\u54cd\u67b6\u6784\uff1a\u4e0d\u88c5\u5185\u6838\u9a71\u52a8\u7684\u9632\u706b\u5899\u5230\u5e95\u9760\u4ec0\u4e48\u5e72\u6d3b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">GlassWire 的零影响架构：不装内核驱动的防火墙到底靠什么干活</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">GlassWire 的零影响架构：不装内核驱动的防火墙到底靠什么干活</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 11 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">GlassWire 号称&#34;系统零影响&#34;，但不装驱动怎么拦截网络流量？本文拆解它以 Windows 防火墙为底座、用 ETW 做监听、以进程名为粒度的三层协作机制，以及这套设计的取舍边界。</p>
+  </header>
+  <div class="prose">
+<p>很多人第一次从<a href="https://glasswire.ggcd.uno" target="_blank" rel="noopener">GlassWire官网</a>下载它的时候会有个疑惑：一个叫"防火墙"的软件，为什么安装包才十几兆，安装过程里连个内核驱动的数字签名确认弹窗都没有？</p>
+<p>传统防火墙（Comodo、ZoneAlarm、早年的 360 网络防护）走的路子很明确——装一个 NDIS 驱动，插在网络栈和网卡之间，所有收发包都先过它的手，放行、丢弃、记录日志全在这里做。驱动的好处是控制力强：可以做到包级别的精细拦截、可以看到未加密流量的明文内容、可以在系统启动早期就生效。代价也很实在：驱动冲突蓝屏、系统升级后驱动失效不兼容、卸载不干净留痕迹。这些年 Windows 自带防火墙越来越好用，第三方安全软件的内核驱动策略反而成了用户最大的顾虑。</p>
+<p>GlassWire 选了另一条路：你去<a href="https://glasswire.ggcd.uno/download.html" target="_blank" rel="noopener">官方下载</a>拿个十几兆的安装包装完，全程连驱动签名确认弹窗都不会见到——<strong>不装驱动，全靠 Windows 本身。</strong> 这个设计决策的聪明之处，在于它把自己定位成 Windows 防火墙的"智能交互层"——用更清晰的界面、更直观的可视化和更便捷的批量操作，把 Windows 防火墙藏在 <code>wf.msc</code> 里难用的规则管理能力暴露出来。但问题也随之而来：不插在网络栈中间，它怎么"看见"流量？又怎么"拦住"连接？</p>
+<h2>监听层：ETW，Windows 的实时事件日志管道</h2>
+<p>GlassWire 看到的每一个网络活动——"Chrome 正在连 github.com""微信发了 2MB 的图片""某个陌生 EXE 偷偷连了一个 IP"——都不是自己抓包抓到的，而是从 Windows 的 <strong>ETW（Event Tracing for Windows）</strong> 事件管道里"听"到的。</p>
+<p>ETW 是 Windows Vista 就内置的一套实时事件追踪框架，它像一个系统级的广播电台：内核、网络栈、驱动层、应用层的各种组件随时把自己发生的事情打包成事件抛出来，任何有权限的程序都可以订阅感兴趣的事件源。网络相关的事件源叫 <code>Microsoft-Windows-TCPIP</code> 和 <code>Microsoft-Windows-WinINet</code>，GlassWire 订阅这两个源的事件，就能实时拿到：</p>
+<ul><li>哪个进程（PID + 路径 + 可执行文件名）发起了一个 TCP/UDP 连接</li><li>目标 IP 和端口是什么</li><li>是出站还是入站</li><li>连接建立和关闭的时间戳</li></ul>
+<p>这些数据拼起来，就是 Traffic Monitor 页那条实时跳动的流量曲线、Usage 页按应用分组的流量统计、Log Analysis 页那些警报的原始素材。</p>
+<p><img src="../images/glasswire-docs/traffic-monitor-graph.webp" alt="GlassWire Traffic Monitor 流量监控图，实时显示各应用的出站/入站流量曲线" loading="lazy"></p>
+<p>ETW 这套机制的好处是<strong>完全非侵入</strong>——GlassWire 只是在"听"，它没有在网络路径上插任何东西，所以不会有延迟、不会丢包、不会和任何驱动冲突。代价是 ETW 事件只告诉你"发生了一次连接"和"传了多少字节"，它<strong>不告诉你包的具体内容</strong>。HTTPS 加密的流量它只能看到连接到了哪个域名，看不到请求的 URL、POST 的数据、响应的内容。这对普通用户其实够用了——毕竟大多数人关心的是"谁在连什么、花了多少流量"，而不是"Chrome 刚才发给 github 的具体 JSON 是什么"。但如果你想抓明文包做深度分析，GlassWire 的架构天生做不到，得找 Wireshark 这种真·抓包工具。</p>
+<h2>拦截层：动态写入 Windows 防火墙规则</h2>
+<p>看见流量是第一步，拦得住才算防火墙。GlassWire 的拦截逻辑比监听更简单——它直接调用 Windows 防火墙的 <strong>FwNetPolicy</strong> API，动态写入和删除规则。</p>
+<p>Protect 页上每一行应用后面的火焰图标，点一下到底发生了什么？GlassWire 拿到那行的进程可执行文件路径（比如 <code>C:\Program Files\Google\Chrome\Application\chrome.exe</code>），然后调用 <code>INetFwPolicy2.Rules.Add</code>，往 Windows 防火墙里写一条规则：</p>
+<pre><code>名称：GlassWire Block - chrome.exe
+动作：Block
+方向：Outbound
+应用：C:\Program Files\Google\Chrome\Application\chrome.exe
+配置文件：Domain + Private + Public</code></pre>
+<p>Windows 防火墙收到这条规则后，自己的过滤引擎会在网络栈里匹配：只要是 chrome.exe 发起的出站连接，一律丢包。Chrome 下一次连外网就会发现 SYN 包发出去石沉大海，重试几次后超时放弃——表现出来就是"Chrome 上不了网了"。</p>
+<p>再次点击火焰图标？GlassWire 删掉那条规则。Windows 防火墙恢复正常放行，Chrome 立即联网。整个过程没有任何内核层面的重启或刷新，规则增删是即时生效的。</p>
+<p><img src="../images/glasswire-docs/glasswire-protect-firewall.webp" alt="GlassWire Protect 防火墙主界面，每行应用的火焰图标就是一键阻断开关" loading="lazy"></p>
+<p>In 列和 Out 列的下拉框（允许/阻断/询问），本质上也是同样的 API 调用——只是方向从 Outbound 变成 Inbound，或者动作从 Block 变成 Allow / Prompt。Protect 页的搜索框、过滤下拉框、批量操作……全部是 FwNetPolicy API 的不同参数组合。</p>
+<p>这套机制有个有趣的副作用：你可以打开 Windows 防火墙高级设置（<code>wf.msc</code>），在入站规则和出站规则列表里找到所有 GlassWire 写入的规则——名字里都带 <code>GlassWire</code> 前缀。反过来，如果你手动在 Windows 防火墙里删了一条 GlassWire 写的规则，下次 GlassWire Protect 页刷新时会发现那个应用的阻断状态消失了，火焰图标自动灭了。两边是实时同步的，想搞清楚 In/Out 列和双向规则的各个选项到底怎么生效的，去<a href="https://glasswire-docs.pages.dev/" target="_blank" rel="noopener">GlassWire文档</a>查 Protect 页布局那篇就能看明白。</p>
+<h2>取舍：这个架构的代价是什么</h2>
+<p>GlassWire 选择 Windows 防火墙作为底座，本质上是把复杂的内核驱动问题甩给了微软自己。但每一个设计决策都有它的代价。</p>
+<p><strong>第一，它不是包级拦截，是进程级拦截。</strong> GlassWire 写入的规则匹配维度只有"哪个可执行文件"。如果 Chrome 里某个标签页偷偷弹了个子进程加载恶意 DLL 并联网，只要它挂的进程还是 <code>chrome.exe</code>，GlassWire 就拦不住——因为规则匹配的是进程名，不是进程内部的具体操作。传统驱动级防火墙可以做到更细的粒度，但代价就是驱动本身的复杂度和稳定性问题。</p>
+<p><strong>第二，Windows 防火墙必须保持开启。</strong> 如果有人手动在控制面板里关了 Windows 防火墙，GlassWire 打开 Protect 页会直接提示"Firewall is disabled"并停用所有防火墙功能。它自己不做拦截引擎，只是个 UI 壳——底座没了，上面什么都撑不起来。</p>
+<p><strong>第三，"询问"模式的体验依赖 Windows 弹窗。</strong> Ask to Connect 模式下，每个新应用第一次联网都会触发 Windows 防火墙自己的"是否允许此应用联网"弹窗。这个弹窗的标题栏可能显示的是 Windows 防火墙的名字而不是 GlassWire——体验上有点割裂，不像驱动级防火墙那样弹窗就是自家的界面。</p>
+<p><strong>第四，Premium 版的增值功能和核心架构无关。</strong> VirusTotal 扫描、网络设备扫描、流量历史时间线这些功能，本质上是 ETW 数据的后处理或外部 API 的调用，和"防火墙拦截"这件事没任何关系。它们可以独立于防火墙功能存在——换句话说，就算 Windows 防火墙关了，Premium 的设备扫描依然能用。</p>
+<h2>这套设计到底适合谁</h2>
+<p>如果把防火墙软件比作酒店的安保体系：传统驱动级防火墙是门口的保安队长，亲自检查每个进出门的人；GlassWire 更像大堂里的智能导览系统——它不拦任何人，但它会告诉你"刚才那个穿灰色外套的人进了哪个房间、从哪个通道走的"，并且当你需要时帮你按下总台的"锁门"按钮。</p>
+<p>这种定位决定了它的目标用户画像很明确：</p>
+<ul><li><strong>普通 Windows 用户</strong>，想知道自己电脑上到底有哪些软件在联网、各自用了多少流量、有没有陌生应用偷偷外连——但不想装一堆驱动把系统搞崩</li><li><strong>安全洁癖者</strong>，不信任国产安全软件的全家桶策略，也不想买贵的 Premium，就想要一个轻量、透明、卸载干净的网络可视化工具</li><li><strong>运维入门者</strong>，想在不写一行 PowerShell 的情况下快速理解 Windows 防火墙规则的作用方式——GlassWire Protect 页就是 Windows 防火墙规则管理的图形化教科书</li></ul>
+<p>反过来，如果你需要深度包检测、端口级精细拦截、自定义协议过滤——这些是驱动级防火墙的地盘，GlassWire 从架构上就不支持。它从一开始就没打算做一个"全能安全套件"，而是专注在"看懂"和"快速管控"这两件事上，用 Windows 自带的能力做底座，避免重复造轮子带来的稳定性风险。</p>
+<h2>写在最后</h2>
+<p>我在自己电脑上装 GlassWire 用了差不多一年，期间系统重装过两次、Windows 大版本升级过一次，每次重装完的第一步还是把 Windows 防火墙打开、然后装 GlassWire——不是因为它比别的防火墙强，而是因为它让我能在 30 秒内看清"现在有哪些应用在联网、各自连向了哪里"，然后花 10 分钟把不需要的外连全部锁掉。这个效率是任何其他工具都给不了的。</p>
+<p>有人可能会说"Windows 防火墙本身就能做这些事"——没错，但你得打开 <code>wf.msc</code>、手动写规则、手动核对进程路径、没有图形化的实时曲线、没有一键批量阻断、不知道每个应用累计用了多少流量……GlassWire 做的就是把这些散落在 Windows 各个角落的能力，整合成一套让人能<strong>用</strong>的界面。顺带说一句，本文涉及的 GlassWire 资料海外用户可以在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/GlassWire" target="_blank" rel="noopener">GitHub</a>仓库找到，国内访问的话<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/GlassWire" target="_blank" rel="noopener">Gitee</a>同步了完整备份，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/GlassWire" target="_blank" rel="noopener">GitCode</a>作为第三份国内镜像保证了多重可用性。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/g-shock.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了四年 G-SHOCK Connected，我为什么还没卸载</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/doodle-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Doodle 用了快一年，我发现自己几乎没打开过它</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

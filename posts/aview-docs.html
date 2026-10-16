@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 AView 连相机踩过的五个坑——从反复配网到画面全灰 · 老杨技术栈</title>
+  
+<meta name="description" content="AView 配捷高相机看似简单，实际在 WiFi 频段、离线排查、账号切换、多相机分组和同屏体验上各有容易忽略的细节。本文把我踩过的坑一个个拆解，帮你少走几小时弯路。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/aview-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 AView 连相机踩过的五个坑——从反复配网到画面全灰">
+<meta property="og:description" content="AView 配捷高相机看似简单，实际在 WiFi 频段、离线排查、账号切换、多相机分组和同屏体验上各有容易忽略的细节。本文把我踩过的坑一个个拆解，帮你少走几小时弯路。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/aview-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/aview-docs/screenshot-1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/aview-docs/screenshot-1.png">
+
+<meta name="twitter:title" content="用 AView 连相机踩过的五个坑——从反复配网到画面全灰">
+<meta name="twitter:description" content="AView 配捷高相机看似简单，实际在 WiFi 频段、离线排查、账号切换、多相机分组和同屏体验上各有容易忽略的细节。本文把我踩过的坑一个个拆解，帮你少走几小时弯路。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "AView \u914d\u6377\u9ad8\u76f8\u673a\u770b\u4f3c\u7b80\u5355\uff0c\u5b9e\u9645\u5728 WiFi \u9891\u6bb5\u3001\u79bb\u7ebf\u6392\u67e5\u3001\u8d26\u53f7\u5207\u6362\u3001\u591a\u76f8\u673a\u5206\u7ec4\u548c\u540c\u5c4f\u4f53\u9a8c\u4e0a\u5404\u6709\u5bb9\u6613\u5ffd\u7565\u7684\u7ec6\u8282\u3002\u672c\u6587\u628a\u6211\u8e29\u8fc7\u7684\u5751\u4e00\u4e2a\u4e2a\u62c6\u89e3\uff0c\u5e2e\u4f60\u5c11\u8d70\u51e0\u5c0f\u65f6\u5f2f\u8def\u3002", "headline": "\u7528 AView \u8fde\u76f8\u673a\u8e29\u8fc7\u7684\u4e94\u4e2a\u5751\u2014\u2014\u4ece\u53cd\u590d\u914d\u7f51\u5230\u753b\u9762\u5168\u7070", "image": ["https://alipymanbu.github.io/images/aview-docs/screenshot-1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/aview-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/aview-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 AView \u8fde\u76f8\u673a\u8e29\u8fc7\u7684\u4e94\u4e2a\u5751\u2014\u2014\u4ece\u53cd\u590d\u914d\u7f51\u5230\u753b\u9762\u5168\u7070", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">用 AView 连相机踩过的五个坑——从反复配网到画面全灰</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 AView 连相机踩过的五个坑——从反复配网到画面全灰</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">AView 配捷高相机看似简单，实际在 WiFi 频段、离线排查、账号切换、多相机分组和同屏体验上各有容易忽略的细节。本文把我踩过的坑一个个拆解，帮你少走几小时弯路。</p>
+  </header>
+  <div class="prose">
+<p>AView 是捷高 IPC 相机的配套 App，它的<a href="https://aview.usea.quest" target="_blank" rel="noopener">官网</a>上能拿到安装包，装完就能扫码把家里或店里的相机绑上去，实时画面、回放、告警推送一条龙。听起来挺顺对吧？我第一次用的时候也是这么想的——结果从配网到多相机管理花了整整一个晚上才把所有坑踩明白。下面按我遇到的顺序把这些坑记下来，提前知道的话真的能省不少时间。</p>
+<h2>坑一：双频合一的路由器死活配不上网</h2>
+<p><strong>症状</strong>：相机扫码配网时一直转，提示"连接失败"，我以为密码输错了，反复输了七八遍还是不行，手机明明就在相机旁边，信号满格。</p>
+<p><strong>原因</strong>：捷高的 WiFi 款相机只支持 2.4GHz 频段，这是硬件设计限制，App 层面突破不了。而现在大部分路由器默认把 2.4G 和 5G 合并成一个 SSID（叫"双频合一"或"智能连接"），手机在路由器旁边优先连 5G，扫码配网时 App 就把 5G 的 SSID 和密码传给了相机——相机搜不到 5G，自然配不上。我当时不知道这个细节，在那儿硬怼了半小时。</p>
+<p><strong>解法</strong>：登录路由器管理页面（一般是 <code>192.168.1.1</code> 或 <code>192.168.0.1</code>），找到 WiFi 设置页，关闭"双频合一"，把 2.4G 和 5G 改成不同的名字，比如 <code>Home24</code> 和 <code>Home5G</code>。AView 配网时选 2.4G 那个 SSID 就行。少数标注了"5G WiFi"的新型号例外，但大多数在售机型还是只有 2.4G。</p>
+<p><img src="../images/aview-docs/screenshot-1.png" alt="配网成功后的相机卡片" loading="lazy"></p>
+<h2>坑二：相机突然变灰显示离线，以为要送修</h2>
+<p><strong>症状</strong>：早晨起来一看，AView 里所有相机卡片都灰了，点进去提示"无法连接"。第一反应是相机坏了或者被人拔了电源，下楼检查发现电源好好的，指示灯也亮着。</p>
+<p><strong>原因</strong>：相机离线本质上就是手机 App 连不上相机的视频流，背后可能有好几种情况：电源适配器坏了但指示灯还亮着、路由器改了密码没通知相机、路由器开了 AP 隔离把手机和相机互相屏蔽了、相机本身卡死需要重启。我那次查了一圈最后发现是路由器开了 AP 隔离——之前为了防蹭网随手开的，没想到把自家设备也隔离了。</p>
+<p><strong>解法</strong>：按这个顺序排查最省时间：先看电源（指示灯完全不亮就换插座或换同规格电源适配器）→ 再看 WiFi 信号强度（同一路由器下手机搜一下，-60dBm 以上才够稳，隔着承重墙或金属柜会严重衰减）→ 检查路由器有没有改密码或开了 AP 隔离（有的话关掉或给相机重新配网）→ 退出 AView 杀后台重新登录 → 最后长按相机复位按钮重启。90% 的情况重启就能解决，真不行再去查固件有没有新版本——或者去<a href="https://aview.usea.quest/download.html" target="_blank" rel="noopener">aview下载</a>拿最新安装包覆盖重装。</p>
+<h2>坑三：换了账号登录，相机列表全没了</h2>
+<p><strong>症状</strong>：用另一个手机号注册了 AView 账号想试试新功能，退出原账号登录新号后，"我的相机"卡片一张都不剩，差点以为相机被解绑了。</p>
+<p><strong>原因</strong>：AView 不同注册渠道的账号是完全独立的——邮箱号、手机号、微信登录各是各的，互相看不到。相机绑定在哪个账号下，就只能用那个账号看。我原先是用邮箱注册的，换手机号登录自然什么都没有。还有一种情况是服务器图标不匹配，点一下图标会自动重登，也算常见。</p>
+<p><strong>解法</strong>：先回忆最初是用什么方式注册的，换回原账号就行。建议主力账号固定用一种注册方式，记在什么地方别忘。多相机的话一定要给每台相机按位置命名，比如"门口""收银台""后院""婴儿房"——全叫 camera-1、camera-2，告警通知来了完全分不清哪一台触发的。AView 主页右上角菜单可以建分组，把相机拖进去，十台以上相机时分组过滤能省很多事。</p>
+<p><img src="../images/aview-docs/screenshot-3.png" alt="多相机分组列表" loading="lazy"></p>
+<h2>坑四：多通道同屏画面卡顿花屏</h2>
+<p><strong>症状</strong>：收银台、门口、仓库三个相机开 4 分同屏，画面每隔几秒就卡一下，有时还会花屏变成马赛克。想放大某个画面操作 PTZ，发现同屏模式下根本点不动。</p>
+<p><strong>原因</strong>：4 路以上同屏对手机 CPU 和带宽要求挺高的，老一点的手机扛不住。而且同屏时每路画面画质会自动降到流畅档来保证整体流畅度，这个是 App 的策略，改不了。另外同屏模式下单个画面的 PTZ 控制被锁了，必须先放大到单画面才能操作——这个我一开始以为是 bug，其实是设计如此。</p>
+<p><strong>解法</strong>：同屏画面数别贪多，3 路以内一般手机都能扛，4 路以上建议用性能好一点的手机。需要操作云台的时候先点目标画面放大到单画面，操作完再切回同屏。分组管理里可以给不同场景预设同屏布局，比如店铺夜班巡逻时一键切到"收银台+门口+仓库"三联屏，比一个个点快多了。这些分组和布局的详细配置步骤，在<a href="https://aview-docs.pages.dev/" target="_blank" rel="noopener">aview文档</a>里写得比较全。</p>
+<h2>坑五：告警轰炸时找不到是哪台相机触发的</h2>
+<p><strong>症状</strong>：某天下午连续收到七八条移动侦测告警通知，但点开 AView 后相机卡片太多，来回翻了一圈才找到触发告警的那台，画面里人早就走没影了。</p>
+<p><strong>原因</strong>：没做分组也没命名。十台以上相机堆在主页，告警通知只说"有移动侦测"，不说哪台。之前嫌麻烦没分组，结果关键时刻找不到。</p>
+<p><strong>解法</strong>：AView 主页长按相机卡片可以手动拖动排序，把最常看的排在最前面，App 会记住这个顺序。告警设置里可以按分组配置通知策略——比如门口和仓库的相机常开告警，收银台在营业时间关掉。这样既能防漏告警，又不会被无关通知轰炸。</p>
+<h2>防坑清单</h2>
+<ul><li>配网前务必确认路由器已关闭双频合一，2.4G 和 5G 用不同的 SSID</li><li>相机离线先重启再查别的，90% 的情况复位就能搞定</li><li>账号固定一种注册方式，别邮箱、手机号、微信混着用</li><li>给每台相机按位置命名，建分组，别全叫 camera-N</li><li>同屏画面数控制在 3 路以内，需要 PTZ 操作时先放大单画面</li></ul>
+<p>知道这些坑之后，AView 其实相当省心——配好一次基本就不用再折腾了。我现在十几台相机分组命名、告警策略都配好，日常就是偶尔看一眼实时画面，从来没出过之前那种折腾一晚上的事。</p>
+<p>顺便说一下，这些排查和配置内容我也同步到了几个常用的代码仓库里。考虑到国内访问速度，除了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/aview" target="_blank" rel="noopener">GitHub</a>，我也在<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/aview" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/aview" target="_blank" rel="noopener">GitCode</a>各放了一份镜像，不同网络环境下都能方便查阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/readest-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">别再折腾多平台阅读器了——Readest 用一周，我的书库终于有了归宿</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/emochi.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了半年 Emochi 才发现的 5 个隐藏玩法，官方文档都没讲透</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

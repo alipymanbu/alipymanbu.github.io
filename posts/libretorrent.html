@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从 libtorrent 到 AMOLED：LibreTorrent 的 Android BT 客户端设计原理 · 老杨技术栈</title>
+  
+<meta name="description" content="为什么一个开源 BT 下载器能在 Android 生态里站稳脚跟？拆解它的引擎选型、数据隔离、后台保活和加密策略背后的设计取舍。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/libretorrent.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 libtorrent 到 AMOLED：LibreTorrent 的 Android BT 客户端设计原理">
+<meta property="og:description" content="为什么一个开源 BT 下载器能在 Android 生态里站稳脚跟？拆解它的引擎选型、数据隔离、后台保活和加密策略背后的设计取舍。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/libretorrent.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/libretorrent/main-interface.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/libretorrent/main-interface.png">
+
+<meta name="twitter:title" content="从 libtorrent 到 AMOLED：LibreTorrent 的 Android BT 客户端设计原理">
+<meta name="twitter:description" content="为什么一个开源 BT 下载器能在 Android 生态里站稳脚跟？拆解它的引擎选型、数据隔离、后台保活和加密策略背后的设计取舍。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e3a\u4ec0\u4e48\u4e00\u4e2a\u5f00\u6e90 BT \u4e0b\u8f7d\u5668\u80fd\u5728 Android \u751f\u6001\u91cc\u7ad9\u7a33\u811a\u8ddf\uff1f\u62c6\u89e3\u5b83\u7684\u5f15\u64ce\u9009\u578b\u3001\u6570\u636e\u9694\u79bb\u3001\u540e\u53f0\u4fdd\u6d3b\u548c\u52a0\u5bc6\u7b56\u7565\u80cc\u540e\u7684\u8bbe\u8ba1\u53d6\u820d\u3002", "headline": "\u4ece libtorrent \u5230 AMOLED\uff1aLibreTorrent \u7684 Android BT \u5ba2\u6237\u7aef\u8bbe\u8ba1\u539f\u7406", "image": ["https://alipymanbu.github.io/images/libretorrent/main-interface.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/libretorrent.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/libretorrent.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece libtorrent \u5230 AMOLED\uff1aLibreTorrent \u7684 Android BT \u5ba2\u6237\u7aef\u8bbe\u8ba1\u539f\u7406", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">从 libtorrent 到 AMOLED：LibreTorrent 的 Android BT 客户端设计原理</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从 libtorrent 到 AMOLED：LibreTorrent 的 Android BT 客户端设计原理</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">为什么一个开源 BT 下载器能在 Android 生态里站稳脚跟？拆解它的引擎选型、数据隔离、后台保活和加密策略背后的设计取舍。</p>
+  </header>
+  <div class="prose">
+<p>Android 上的 BT 客户端我用过好几个——有的界面花哨但广告多，有的轻量但配置简陋，有的功能全但体积膨胀。但我用下来最舒服的是从 <a href="https://libretorrent.hfdk.space" target="_blank" rel="noopener">LibreTorrent官网</a> 拿到的版本——没有开屏广告、没有追踪 SDK——它是少数让我长期留在手机上的那一个。但真正让我停下来琢磨的不是"它好用"这个结论，而是另一个问题：<strong>一个开源项目，没有商业团队、没有广告收入，是怎么在移动平台上把 BT 下载这件事做对的？</strong></p>
+<h2>引擎选型：不造轮子，但造好车</h2>
+<p>LibreTorrent 没有自己实现 BT 协议栈。它的核心下载引擎来自 libtorrent-rasterbar——一个用 C++ 写的、已经被 qBittorrent、Deluge、rTorrent 等桌面客户端验证过的成熟库。选择这条路不是偷懒，而是一种务实的工程判断。</p>
+<p>移动端 BT 下载的瓶颈从来不是 UI 层，而是协议栈本身的性能和稳定性。DHT 节点维护、piece 调度、choke/unchoke 算法、UTP 拥塞控制——这些逻辑每一项都是几千行代码的量级，自己重写一遍既要踩坑又要花时间，最后还不一定比经过十年打磨的 libtorrent 更靠谱。LibreTorrent 做的事情是用 Kotlin 写 Android UI，通过 JNI 桥接到 libtorrent 的 C++ 核心，把"下载引擎"和"移动端壳"分开。这种分层架构让它既能享受成熟引擎的性能，又能在 Android 层面灵活适配系统特性。</p>
+<p>从主界面就能看出这种分层的结果：种子列表、进度条、下载速度这些高频刷新的 UI 元素，直接从引擎拿到实时数据更新，中间没有额外的抽象层开销。</p>
+<p><img src="../images/libretorrent/main-interface.png" alt="主界面：种子列表与下载状态的实时展示" loading="lazy"></p>
+<h2>数据隔离：为什么备份不含下载文件</h2>
+<p>第一次看 LibreTorrent 的备份文档时我有点意外：它的备份只包含设置、种子列表和 RSS 订阅，<strong>不包含已经下载好的文件本身</strong>。这不是功能遗漏，而是一套有意为之的数据隔离设计。</p>
+<p>Android 的存储权限模型从 10 开始变得非常严格——应用只能访问自己的专属目录（<code>Android/data/&lt;包名&gt;/</code>），如果要访问外部存储还得申请 <code>MANAGE_EXTERNAL_STORAGE</code> 这种高敏感权限。LibreTorrent 把下载文件独立放在用户指定的存储目录里，而把所有"配置态"数据（JSON 格式）留在应用内部的 <code>files/</code> 目录。这样做有三个好处：</p>
+<p>一是<strong>权限最小化</strong>——应用不需要请求文件管理器权限就能正常工作，隐私敏感的用户也能放心装。二是<strong>换机迁移更灵活</strong>——下载文件可以直接通过 MTP 或云盘复制，不需要等应用导出导入，种子配置通过一份 JSON 就能恢复。三是<strong>崩溃不丢文件</strong>——即使应用数据被清，下载目录里的文件还在，从 <a href="https://libretorrent.hfdk.space/download.html" target="_blank" rel="noopener">官方下载</a> 拿到安装包重装后导入种子就能自动校验继续。</p>
+<p>手动备份路径 <code>org.proninyaroslav.libretorrent/files/</code> 下存的就是这些 JSON 文件，用文本编辑器打开能看到每一个种子的元信息——这也是开源的好处：数据格式透明，想怎么改都可以。</p>
+<p><img src="../images/libretorrent/settings.png" alt="备份与恢复的 JSON 配置结构" loading="lazy"></p>
+<h2>后台保活：三要素缺一不可</h2>
+<p>Android 6.0 引入 Doze 模式以来，后台应用被系统杀死是家常便饭。LibreTorrent 要实现"锁屏时继续下载"，不能只靠前台服务一条路。它的文档里提到了一个我觉得写得很实在的三要素：<strong>自启动 + 前台服务 + 电池白名单</strong>，缺了哪个都不行。</p>
+<p>自启动解决的是"重启后能不能自动恢复"的问题——但这个权限得用户在系统层面手动授予，不同厂商的入口还不一样（小米在应用设置里，华为在电池管理里，OPPO 在自启动管理里）。前台服务是 Android 官方允许的"常驻后台"方式，只要通知栏挂着一条下载进度，系统就不会轻易杀它。电池白名单是最后一道保险——Doze 模式下即使是前台应用，如果没被加入优化白名单，长时间锁屏后也会被限速。</p>
+<p>有意思的是，LibreTorrent 没有试图绕过这些系统约束，而是<strong>老老实实地把三个权限的获取路径告诉用户</strong>，在 <a href="https://libretorrent.pages.dev/" target="_blank" rel="noopener">LibreTorrent文档</a> 里逐条列出来让你检查。这种做法在 Android 客户端里反而少见——很多应用要么假装自己能后台（实际被系统杀死后静默恢复失败），要么引导用户去做各种不推荐的系统设置（比如关闭电池优化全局开关）。</p>
+<h2>加密策略：优先而非强制</h2>
+<p>很多 BT 客户端做加密时要么默认关闭、要么强制加密。LibreTorrent 把"优先加密"作为默认选项——能用 MSE/PE 就用，对方不支持就退为明文。这背后是一个典型的网络工程取舍。</p>
+<p>MSE/PE 是 BitTorrent 官方推荐的加密协议，基于 RC4，和 qBittorrent、Deluge 等主流客户端兼容。它能让 ISP 的深度包检测（DPI）把 BT 流量识别成普通 HTTPS 加密连接，避免被限速。但强制加密有代价——部分旧式客户端不支持加密握手，如果对方连不上，你的 peer 数量就会减少，下载速度反而可能更慢。</p>
+<p>"优先加密"在安全性和连接数之间找了一个平衡点：能加密的连接尽量加密，不能加密的也不硬拒。再加上它同时支持 UTP 协议自带的加密层，双层覆盖下大多数场景都够用了。当然加密不是万能的——ISP 如果直接封 6881 端口，再强的加密也没用，这时候就得配代理。</p>
+<h2>取舍与适用场景</h2>
+<p>说完设计原理，得聊聊 LibreTorrent 的局限。它坚持纯开源、零广告、数据最小化这些原则，也带来了一些代价：</p>
+<ul><li>没有内建的 VPN 或代理集成，网络受限的用户需要自己在外层加一层</li><li>加密连接可能比明文少一些 peer，在小众种子上下载速度可能略慢</li><li>纯开源意味着没有付费客服，遇到问题得自己翻文档或去 GitHub 提 issue</li><li>三种主题里只有纯黑（AMOLED）主题能真省电，深色主题在 LCD 屏上其实和浅色功耗差不了多少</li></ul>
+<p>那它适合谁？如果你在 Android 上经常用 BT、在意隐私（不想装一堆追踪器）、讨厌广告、愿意花十分钟把三个后台权限配好——LibreTorrent 很可能是你能找到的最干净、最稳的选择。如果你只想装完点开就用、不想折腾系统设置、或者是 iOS 用户（LibreTorrent 没有 iOS 版本），那它可能不是最优解。</p>
+<p>这套资料在三个仓库都能拿到——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/LibreTorrent" target="_blank" rel="noopener">GitHub</a> 主仓库有完整的备份文件、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/LibreTorrent" target="_blank" rel="noopener">Gitee</a> 方便国内用户直接下载、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/LibreTorrent" target="_blank" rel="noopener">GitCode</a> 做了第三份镜像防止单点不可用。从引擎选型到数据隔离、从后台保活的务实态度到加密策略的平衡取舍，LibreTorrent 的每一个设计决策背后都能看到"服务 Android 用户"这个核心目标。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/epik-docs.html">epik 六年迭代：一款修图 App 如何在「一键美型」和「精细控制」之间反复横跳</a></h2>
+  <p class="card-desc">从早期一键式美颜工具到如今同时拥有专业调色面板和 AI 毕业照服务，epik 的版本迭代史藏着一个修图产品最真实的两难。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wikihow-docs.html">凌晨十一点，我靠一个小应用打出了人生第一条领带</a></h2>
+  <p class="card-desc">面试前一夜对着领带慌了神，室友睡了爸妈远在千里，Google 搜出来的全是广告。偶然想起下载过的 wikiHow，跟着图文步骤一步步来，十分钟搞定。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/rewasd.html">reWASD 上手一周：手柄调瞄准手感这件事，终于不用靠玄学了</a></h2>
+  <p class="card-desc">一个被 FPS 瞄准漂移折磨了半年的人，用 reWASD 把摇杆曲线掰了半小时后，第一次觉得&#34;瞄准手感&#34;这玩意儿是能被精确描述和调整的。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/bubble-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了 bubble 两年才发现：原来它还藏着这些让订阅费值回票价的小设计</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/rosie-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Rosie 两年迭代观察：一个陪伴型 AI 如何在合规与沉浸之间找平衡</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

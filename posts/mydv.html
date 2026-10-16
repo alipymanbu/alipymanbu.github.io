@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>myDV 全能力盘点：把抖音搬上电视盒子的开源客户端到底能做什么 · 老杨技术栈</title>
+  
+<meta name="description" content="myDV 是一款跑在安卓电视盒子上的抖音客户端，开源、无广告、遥控器原生支持。本文从推荐流、直播、发布者主页、跨设备同步、遥控器操作等维度，系统性梳理它的能力边界与已知短板。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/mydv.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="myDV 全能力盘点：把抖音搬上电视盒子的开源客户端到底能做什么">
+<meta property="og:description" content="myDV 是一款跑在安卓电视盒子上的抖音客户端，开源、无广告、遥控器原生支持。本文从推荐流、直播、发布者主页、跨设备同步、遥控器操作等维度，系统性梳理它的能力边界与已知短板。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/mydv.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:title" content="myDV 全能力盘点：把抖音搬上电视盒子的开源客户端到底能做什么">
+<meta name="twitter:description" content="myDV 是一款跑在安卓电视盒子上的抖音客户端，开源、无广告、遥控器原生支持。本文从推荐流、直播、发布者主页、跨设备同步、遥控器操作等维度，系统性梳理它的能力边界与已知短板。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "myDV \u662f\u4e00\u6b3e\u8dd1\u5728\u5b89\u5353\u7535\u89c6\u76d2\u5b50\u4e0a\u7684\u6296\u97f3\u5ba2\u6237\u7aef\uff0c\u5f00\u6e90\u3001\u65e0\u5e7f\u544a\u3001\u9065\u63a7\u5668\u539f\u751f\u652f\u6301\u3002\u672c\u6587\u4ece\u63a8\u8350\u6d41\u3001\u76f4\u64ad\u3001\u53d1\u5e03\u8005\u4e3b\u9875\u3001\u8de8\u8bbe\u5907\u540c\u6b65\u3001\u9065\u63a7\u5668\u64cd\u4f5c\u7b49\u7ef4\u5ea6\uff0c\u7cfb\u7edf\u6027\u68b3\u7406\u5b83\u7684\u80fd\u529b\u8fb9\u754c\u4e0e\u5df2\u77e5\u77ed\u677f\u3002", "headline": "myDV \u5168\u80fd\u529b\u76d8\u70b9\uff1a\u628a\u6296\u97f3\u642c\u4e0a\u7535\u89c6\u76d2\u5b50\u7684\u5f00\u6e90\u5ba2\u6237\u7aef\u5230\u5e95\u80fd\u505a\u4ec0\u4e48", "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/mydv.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/mydv.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "myDV \u5168\u80fd\u529b\u76d8\u70b9\uff1a\u628a\u6296\u97f3\u642c\u4e0a\u7535\u89c6\u76d2\u5b50\u7684\u5f00\u6e90\u5ba2\u6237\u7aef\u5230\u5e95\u80fd\u505a\u4ec0\u4e48", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">myDV 全能力盘点：把抖音搬上电视盒子的开源客户端到底能做什么</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">myDV 全能力盘点：把抖音搬上电视盒子的开源客户端到底能做什么</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">myDV 是一款跑在安卓电视盒子上的抖音客户端，开源、无广告、遥控器原生支持。本文从推荐流、直播、发布者主页、跨设备同步、遥控器操作等维度，系统性梳理它的能力边界与已知短板。</p>
+  </header>
+  <div class="prose">
+<h2>它是什么，为什么值得认真盘点</h2>
+<p>电视盒子上的抖音客户端不少，但真正用起来顺手的不多。要么是投屏方案延迟高，要么是那种需要装一堆插件的第三方 ROM，遥控器适配还总是出问题。myDV 不一样——它是一个直接跑在安卓 TV 系统上的原生应用，遥控器全键位映射，不依赖触屏，不依赖中转设备，装上就能用。它的<a href="https://mydv.usea.quest" target="_blank" rel="noopener">MyDV官网</a>上有一份项目介绍和版本日志，能快速了解它的功能覆盖。</p>
+<p>从推荐流自动连播、直播专区、发布者主页，到登录后的关注流、收藏、稍后再看同步，myDV 几乎把手机端抖音能做的事都平移到了电视大屏上，还把遥控器操作这件事做扎实了。开源、无商业广告、社区持续迭代，这些要素叠在一起，使它在"把短视频搬上客厅"这个细分场景里成了被讨论最多的方案之一。</p>
+<h2>能力域一：推荐流——默认首页就是刷</h2>
+<p>打开 myDV 的第一屏不是启动页，不是引导教程，直接就是推荐视频流。上下键切视频，自动连播，预加载下一条——这一套交互逻辑和手机端抖音高度一致，唯一的区别是屏幕从竖的变成了横的，手指划变成了遥控器按。</p>
+<p>!<a href="/images/mydv-feeds.jpg">推荐流默认首页</a></p>
+<p>myDV 在推荐流上做了三件针对电视端的适配：竖屏视频自动适配横屏显示（上下加黑边或智能裁切）、后台静默预加载当前播放的下一条视频、没有任何插屏或贴片广告。预加载这块在 v1.5.29 之后做了关键优化——之前预加载会和当前视频的首帧抢占解码资源，切换时偶尔会卡，现在解耦后切换基本无缝。</p>
+<p>值得一提的是不登录也能直接刷。手机端抖音现在不登录连内容都刷不出来，myDV 直接调用抖音公开接口获取推荐列表，匿名可用。这对那些想在电视上装一个"纯看不用账号"的客户端来说，是个硬需求。</p>
+<h2>能力域二：直播专区——遥控器照样能看</h2>
+<p>直播在 myDV 里不是推荐流里的一个隐藏入口，而是导航栏里独立的一栏。按一下返回键呼出左侧导航，四个入口里"直播"就占了一格，选进去就是直播专区的分类流——游戏、生活、才艺……按抖音自己的分类排。</p>
+<p>!<a href="/images/mydv-live.jpg">直播专区界面</a></p>
+<p>直播播放的体验和短视频不同。短视频是自动连播的，直播是持续推送一路画面，遥控器需要能做的事不多——切上一场、退出去换分类、调音量、全屏退出。myDV 对直播场景没有额外画蛇添足的操作层，保留了最核心的几个键位，够用。</p>
+<h2>能力域三：发布者主页与合集——从单条跳到作者全集</h2>
+<p>看到一条视频想刷这个作者的其他内容，myDV 提供了两种方式：视频播放页长按 OK 键直接跳发布者主页，或者先搜索博主名字再进入。两种方式都能到同一个页面，里面有作者头像与简介、全部公开视频列表、以及作者自己创建的合集。</p>
+<p>!<a href="/images/mydv-profile.jpg">发布者主页与合集</a></p>
+<p>合集是 myDV 比较贴心的一个细节。抖音手机端的合集入口相对隐蔽，myDV 在主页里单独列出，点开就是连续播放，遥控器 OK 确认即可，这对追更某个博主的长系列内容来说，比在手机上翻方便得多。</p>
+<p>不过这里有个版本坑——v1.5.27 之前，抖音对作者主页和合集接口做过一次升级，旧版本 myDV 调用时会返回空数据，主页点开只有头像没有视频列表。如果你遇到过这个情况，先去<a href="https://mydv.usea.quest/download.html" target="_blank" rel="noopener">MyDV下载</a>拿最新安装包，更新到 v1.5.27+ 就能解决。</p>
+<h2>能力域四：跨设备同步——Cookie 登录把手机的社交关系搬过来</h2>
+<p>前面三个能力域不登录就能用，但登录之后 myDV 的价值会上一个台阶。它用 Cookie 方式登录抖音账号，成功之后会同步关注列表、喜欢、收藏、稍后再看这些数据——手机上关注的博主，在电视上 myDV 的关注流里就能看到；手机上加了"稍后再看"的视频，电视端 myDV 也能拉到。</p>
+<p>跨设备同步的几个细节值得说一下：数据同步通常有几分钟延迟，不是实时；稍后再看目前是只读的——抖音没有开放写接口，myDV 能拉列表但不能帮你标记或删除，加删还是得回手机操作；长时间用下来，喜欢和收藏的数量如果很大，电视端翻页会明显慢一些，这是接口返回量的问题。</p>
+<p>!<a href="/images/mydv-later.jpg">稍后再看跨设备同步</a></p>
+<h2>能力域五：遥控器操作——把一个客户端做扎实的地方</h2>
+<p>myDV 在遥控器这件事上的认真程度，是它比其他同类方案好用的关键。返回键有三重作用：在视频页按一下呼出左侧导航栏、在导航内部按一下逐层返回、连续快速按两次才退出应用。退出设计之所以做连按两次，是因为很多遥控器返回键位置在中间容易误触，一次只是呼出导航不会真关应用，这是个防误触的小设计。</p>
+<p>OK 键在不同场景下的含义也做了区分——视频播放页长按 OK 跳发布者主页、导航栏里 OK 确认入口、发布者主页里 OK 选中视频进入播放。加上画质切换、弹幕开关、Cookie 登录这些设置项全部放进导航栏，不藏在二级菜单深处，整个遥控器操作的认知负担很低。</p>
+<h2>短板也要说</h2>
+<p>盘点做到这儿，myDV 不是没有局限。</p>
+<p>最直接的一个：<strong>抖音接口一变，myDV 就得跟着改</strong>。v1.3.24 修复过喜欢、收藏、合集列表接口升级导致的数据获取失败；v1.5.27 又要跟进作者主页和搜索联想词接口的变化。开源项目没有商业合同保底，接口出问题的时候社区修复速度是唯一的保障——好在每一轮接口变化的修复和已知限制，社区都会整理到<a href="https://mydv.pages.dev/" target="_blank" rel="noopener">MyDV文档</a>里，遇到问题直接查就行。</p>
+<p>其次，<strong>稍后再看只有读没有写</strong>。抖音没有开放写接口，myDV 能拉到你的稍后再看列表，但不能帮你在电视端加标记或删除已看内容——这一点对重度用户来说是个明显的缺口。</p>
+<p>还有，<strong>无横屏视频的播放适配</strong>。抖音上横屏视频其实不少，但 myDV 只做了竖屏转横屏的适配，横屏视频在电视上会被裁切或两侧留白，没有像 YouTube 那样的"适应屏幕"按钮。</p>
+<h2>什么样的人该用它</h2>
+<p>第一类，<strong>有老电视盒子、想装个客户端"纯刷不登录"的人</strong>。不依赖手机投屏、不依赖中转 APP，装上就能刷，遥控器原生支持，是"把抖音搬上客厅"这件事上最省心的方案。</p>
+<p>第二类，<strong>已经有抖音账号、想在大屏上续刷社交关系的人</strong>。Cookie 登录之后关注流、收藏、稍后再看全部同步，手机上标记过的未看完视频，回家坐下来打开电视接着刷，体验连贯。</p>
+<p>第三类，<strong>对开源和无广告有明确偏好的人</strong>。myDV 是开源项目，没有任何商业广告，这一点和手机端抖音的大量广告形成了鲜明对比，也因此吸引了一批不想为"看短视频"这件事买单的用户。</p>
+<hr>
+<p>myDV 的资料在三个仓库都能拿到——维护分散是为了在不同的访问环境下都能找到最新版本，社区反馈和接口修复也是多平台同步推进的。海外节点走 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/MyDV" target="_blank" rel="noopener">GitHub</a>，国内访问优先看 <a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/MyDV" target="_blank" rel="noopener">Gitee</a>，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/MyDV" target="_blank" rel="noopener">GitCode</a> 作为额外备份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/furrybar-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从零开始用 FurryBar：五分钟上手你的第一个 AI 兽人伙伴</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/offertoday.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">OfferToday 藏得真深：五个大多数人不知道的 AI 招聘技巧</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

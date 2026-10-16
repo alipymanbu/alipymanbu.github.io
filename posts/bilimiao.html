@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么 · 老杨技术栈</title>
+  
+<meta name="description" content="从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/bilimiao.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么">
+<meta property="og:description" content="从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/bilimiao.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/bilimiao/home-ui.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/bilimiao/home-ui.jpg">
+
+<meta name="twitter:title" content="哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么">
+<meta name="twitter:description" content="从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece v2.3 \u5230 v2.4 \u7684\u7248\u672c\u6f14\u8fdb\u91cc\uff0c\u54d4\u54e9\u55b5\u4e0d\u53ea\u662f\u52a0\u4e86\u51e0\u4e2a\u529f\u80fd\u6309\u94ae\uff0c\u5b83\u7684\u8fed\u4ee3\u8282\u594f\u6084\u6084\u8bb2\u6e05\u695a\u4e86\u56e2\u961f\u771f\u6b63\u5173\u5fc3\u4ec0\u4e48\u2014\u2014\u4e2a\u6027\u5316\u3001\u6c89\u6d78\u611f\uff0c\u8fd8\u6709\u90a3\u4e9b B \u7ad9\u5b98\u65b9\u5ba2\u6237\u7aef\u505a\u4e0d\u5230\u7684\u4e8b\u3002", "headline": "\u54d4\u54e9\u55b5\u8fd9\u4e24\u5e74\uff1a\u4ece\u8ffd\u756a\u5de5\u5177\u5230\u65f6\u5149\u673a\uff0c\u5b83\u5728\u8fed\u4ee3\u91cc\u66b4\u9732\u4e86\u4ec0\u4e48", "image": ["https://alipymanbu.github.io/images/bilimiao/home-ui.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/bilimiao.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/bilimiao.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "\u54d4\u54e9\u55b5\u8fd9\u4e24\u5e74\uff1a\u4ece\u8ffd\u756a\u5de5\u5177\u5230\u65f6\u5149\u673a\uff0c\u5b83\u5728\u8fed\u4ee3\u91cc\u66b4\u9732\u4e86\u4ec0\u4e48", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+  </header>
+  <div class="prose">
+<h2>现在这版长什么样</h2>
+<p>手头这台手机里装的是 v2.4.8.1，距离我第一次从<a href="https://bilimiao.fewf.click" target="_blank" rel="noopener">bilimiao官网</a>找到它已经过去快两年了。坦白说，如果你只是打开首页刷推荐，界面和两年前差别并不大——还是那个熟悉的卡片流，还是那个顶部的时光机入口。但只要你往深处点几步，就会发现它已经不是当初那个"能看 B 站的第三方客户端"了。</p>
+<p><img src="../images/bilimiao/home-ui.jpg" alt="哔哩喵首页界面" loading="lazy"></p>
+<p>最直观的变化在播放器。全屏状态下，进度条默认是隐藏的，画面干净到几乎只剩视频本身。这个细节在 v2.3.1 才加上——之前不管你愿不愿意，进度条总是压在画面底部，像个赶不走的路人。现在你可以在播放器设置里单独关掉它，去<a href="https://bilimiao.pages.dev/" target="_blank" rel="noopener">bilimiao文档</a>翻一下就能找到这个选项，配合滑动手势控时间、长按倍速、上下滑调亮度，整个过程手不用离开屏幕，眼睛不用离开画面。追番的时候这种差别尤其明显，连续两三集看下来，你会意识到"哦原来 B 站官方客户端的 UI 一直挡着我"。</p>
+<p>另一个明显的变化是时光机。这东西刚出来的时候只有一个模糊的概念，现在点开它，你可以在三种模式之间切换：默认的时间线模式看最近七天，月份模式拉回到任意月份，还有自定义范围让你精确到某一天。我上周用它回看了五一假期的热门视频，三天之内的内容按播放量排得整整齐齐——这在官方客户端里要自己翻日期、切分区、调排序，至少点五六下。</p>
+<p><img src="../images/bilimiao/timeline-modes.png" alt="时光机三种模式切换界面" loading="lazy"></p>
+<h2>它从哪起步</h2>
+<p>样本文档里没提最早的版本号，只说"完整客户端时代"从 v2 大版本开始。但你能从功能痕迹里反推它的起步阶段：最初的版本形态只有常规版，分发渠道是网盘和 GitHub Release，体积三十兆上下，定位就是"给不想用官方客户端的人一个替代品"。</p>
+<p>第一个关键转折点大概是时光机功能的引入。在那之前，第三方 B 站客户端能做的事，官方基本都能做——最多是换个皮肤、去个广告。时光机不一样，它是一个官方客户端根本没动力做的东西：按时间维度聚合热门，让你从"我不知道看什么"的被动消费变成"我想知道某段时间大家在看什么"的主动探索。这个功能的设计意图很明确——它不是在复制官方，而是在官方做不到的地方开辟战场。</p>
+<p>第二个转折点是多版本形态。到 v2.3 前后，团队开始同时维护三个版本：常规版从<a href="https://bilimiao.fewf.click/download.html" target="_blank" rel="noopener">官方下载</a>、夸克网盘和 GitHub 都能拿到，F-Droid FOSS 版专门剔除闭源依赖给隐私敏感用户，甚至还做了 Android Wear 的手表版。一个面向大众的客户端，专门给开源社区做干净版本，这在同类产品里不多见。大多数第三方客户端要么只做一个版本、要么干脆闭源，哔哩喵选择了另一条路——功能最全的常规版兜底，纯开源版满足另一群人，手表版则明显是个练手的小项目。</p>
+<p>进度条设置是第三个转折点，虽然是个小功能，但它暴露了团队的产品哲学：每个 UI 元素都值得让用户自己决定留不留。v2.3.1 加这个设置的时候，我第一反应是"这也值得单独一个版本号？"但用了一周之后发现，这恰恰是哔哩喵和官方客户端最大的区别——官方默认给你什么你就得受着，哔哩喵默认给你选择。</p>
+<h2>从迭代节奏看它在死磕什么</h2>
+<p>把这些功能按时间轴排开，一个清晰的优先级排序就出来了。</p>
+<p><strong>第一优先级：个性化。</strong> 屏蔽关键词功能在 v2.3 中期加进来，配合之前的分区订阅、播放偏好，整个产品在"让信息流变成你想看的样子"这件事上花的精力远多于"加更多内容源"。屏蔽关键词本身不复杂——就是对视频标题做字符串包含匹配，不支持正则、不匹配正文——但它解决的是真痛点：首页推荐里永远有你不感兴趣的游戏区、带货视频、营销号标题，官方客户端给你的"不感兴趣"按钮太温和，哔哩喵直接给你一个黑名单。</p>
+<p><strong>第二优先级：沉浸感。</strong> 播放器的每一次迭代都在往这个方向走：隐藏进度条、滑动手势、全屏优化、横屏适配。甚至版本形态里专门提了"平板/大屏设备横屏已优化"——这在同类产品里也是少见的，大多数第三方客户端只保证手机能用就完事了。</p>
+<p><strong>第三优先级：多平台适配。</strong> F-Droid 版和手表版是这个方向的具体动作，但从更新节奏看，这块的优先级明显低于前两项。手表版更新慢、功能砍得只剩浏览和播放，F-Droid 版会滞后两三个版本——能做，但不优先。</p>
+<p><strong>什么一直没做？</strong> 社区功能。没有评论区、没有弹幕收藏、没有关注动态——它从第一天起就是一个纯消费工具，不想做社交。对比官方客户端越来越重的社区属性，哔哩喵一直在刻意保持轻量。这条路走得对不对我不好说，但从迭代节奏看，这是一个有意识的选择，不是做不到。</p>
+<h2>照这个路线，下一步大概率会走向哪</h2>
+<p>说预判之前先声明：这是从迭代规律推的，不是官方消息。</p>
+<p>首先，时光机肯定还会进化。现在的三种模式已经覆盖了时间维度，但聚合维度还停留在"按热门排序"——下一步大概率会加"按分区聚合"或者"按关注 UP 主聚合"的时光机。毕竟"看某段时间 B 站热门"和"看某段时间我关注的人发了什么"是两个完全不同的需求，后者的使用频率只会更高。</p>
+<p>其次，播放器的手势控制会继续细化。现在已经有了滑动控时间、长按倍速、上下滑调亮度，下一步可能会加双击快退、长按静音这类高频手势，或者允许用户自定义手势对应什么功能——毕竟"让用户自己决定"这条产品哲学，还有很大的发挥空间。</p>
+<p>最后，多版本形态里 F-Droid 版的更新节奏可能会加快。隐私敏感用户群体在变大，而哔哩喵已经证明了它有能力维护一个干净版本——如果 F-Droid 仓库的下载量持续增长，团队不太可能让它继续滞后两三个版本。手表版就不好说了，Android Wear 的生态一直半死不活，单独维护一个版本的 ROI 很低，随时可能被砍或者无限期停更。</p>
+<hr>
+<p>这款客户端完整的版本记录和使用文档在三个仓库都能找到——<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/bilimiao" target="_blank" rel="noopener">GitHub</a>上有源码和 Release 包，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/bilimiao" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/bilimiao" target="_blank" rel="noopener">GitCode</a>为国内网络受限的用户留了备份地址，分发渠道覆盖了常规 Android 用户、隐私敏感用户和 F-Droid 社区，方便不同偏好的人各取所需。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/koznak.html">Koznak 版本进化史：从维语电视频道到多端双语平台的五年长跑</a></h2>
+  <p class="card-desc">从早期单一直播入口到今天覆盖 iOS、Android、TV 三端的双语内容平台，Koznak 的迭代节奏折射出本土化视频产品的成长逻辑。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/heibai-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">heibai 用了三个月才发现的五个隐藏玩法，之前全都白看了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ankidroid.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了三年 AnkiDroid 才发现的 4 个藏得极深的功能</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

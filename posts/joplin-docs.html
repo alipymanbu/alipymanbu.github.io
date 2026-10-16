@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>折腾了一周 Joplin 后，我把笔记全搬过来了 · 老杨技术栈</title>
+  
+<meta name="description" content="一个用了五年某云笔记的老用户，因为同步丢了两篇笔记而彻底弃坑，转投开源的 Joplin。这是七天重度使用后的第一手体验报告。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/joplin-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="折腾了一周 Joplin 后，我把笔记全搬过来了">
+<meta property="og:description" content="一个用了五年某云笔记的老用户，因为同步丢了两篇笔记而彻底弃坑，转投开源的 Joplin。这是七天重度使用后的第一手体验报告。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/joplin-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/joplin-docs/clipper-extension.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/joplin-docs/clipper-extension.jpg">
+
+<meta name="twitter:title" content="折腾了一周 Joplin 后，我把笔记全搬过来了">
+<meta name="twitter:description" content="一个用了五年某云笔记的老用户，因为同步丢了两篇笔记而彻底弃坑，转投开源的 Joplin。这是七天重度使用后的第一手体验报告。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u7528\u4e86\u4e94\u5e74\u67d0\u4e91\u7b14\u8bb0\u7684\u8001\u7528\u6237\uff0c\u56e0\u4e3a\u540c\u6b65\u4e22\u4e86\u4e24\u7bc7\u7b14\u8bb0\u800c\u5f7b\u5e95\u5f03\u5751\uff0c\u8f6c\u6295\u5f00\u6e90\u7684 Joplin\u3002\u8fd9\u662f\u4e03\u5929\u91cd\u5ea6\u4f7f\u7528\u540e\u7684\u7b2c\u4e00\u624b\u4f53\u9a8c\u62a5\u544a\u3002", "headline": "\u6298\u817e\u4e86\u4e00\u5468 Joplin \u540e\uff0c\u6211\u628a\u7b14\u8bb0\u5168\u642c\u8fc7\u6765\u4e86", "image": ["https://alipymanbu.github.io/images/joplin-docs/clipper-extension.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/joplin-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/joplin-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6298\u817e\u4e86\u4e00\u5468 Joplin \u540e\uff0c\u6211\u628a\u7b14\u8bb0\u5168\u642c\u8fc7\u6765\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">折腾了一周 Joplin 后，我把笔记全搬过来了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">折腾了一周 Joplin 后，我把笔记全搬过来了</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个用了五年某云笔记的老用户，因为同步丢了两篇笔记而彻底弃坑，转投开源的 Joplin。这是七天重度使用后的第一手体验报告。</p>
+  </header>
+  <div class="prose">
+<h2>为什么装它</h2>
+<p>说起来挺简单——上周同步崩了，写了半年的项目笔记丢了两篇。云笔记服务在道歉和"数据已尽力恢复"之外给不出任何说法，我盯着屏幕想了五分钟，决定换个路子。</p>
+<p>之前就听过 Joplin 的名字，它的<a href="https://joplin.rggd.pw" target="_blank" rel="noopener">官网</a>写着开源、数据全在自己手里、支持 Markdown。抱着试试看的心态从<a href="https://joplin.rggd.pw/download.html" target="_blank" rel="noopener">官方下载</a>点了安装包，整个过程没花超过三分钟，双击打开，一个朴素的三栏界面就摆在那里了。说实话第一眼没什么惊艳的——左边笔记本树、中间笔记列表、右边编辑区，和绝大多数笔记工具长得差不多。但界面干净，没有弹窗、没有广告、没有"升级高级版"的小红点，这点让我松了口气。</p>
+<h2>网页剪藏：终于有个能用的</h2>
+<p>最先上手的功能是网页剪藏。原因很实际——我平时收集资料全靠浏览器收藏夹，但收藏夹里的链接过半年点不开一半。Joplin 的剪藏是浏览器扩展加桌面端服务的组合，两端都要配一下，装完扩展在 Joplin 设置里开启剪藏服务就行。</p>
+<p>真正惊艳的是剪藏质量。点一下扩展图标，整个网页的正文就被干净地抽出来了——广告、侧边栏、推荐位全被剥掉，只留标题和正文，自动变成 Markdown 格式存进你指定的笔记本。选"截图模式"还能把整页截成一张图贴进笔记。我这一周把过去半年收藏夹里的干货文章全剪了一遍，连之前忘了看的技术博客都翻出来读了，剪藏速度快到离谱，一篇文章两秒钟搞定。</p>
+<p><img src="../images/joplin-docs/clipper-extension.jpg" alt="Joplin 网页剪藏器浏览器扩展界面" loading="lazy"></p>
+<p>唯一的小别扭：剪藏服务默认跑在本机某个端口上，装了安全软件的第一次可能会弹拦截提示，放行就好。还有手机浏览器暂时不支持剪藏，这个倒是可以理解——手机端要搞服务端推送成本太高了。</p>
+<h2>附件管理：比想象中好用太多</h2>
+<p>之前用云笔记时，附件上传就是个玄学——大文件传不上去、PDF 不能预览、音视频存进去只能下载。Joplin 这一块的体验把我打醒了。</p>
+<p>任何文件都能直接拖进笔记里，截图 Ctrl+V 就粘进去了，连保存都不用。真正让我惊喜的是内嵌预览：PDF 直接在笔记里翻页看，mp3 和 mp4 直接在笔记里播放，不用跳出来。我上周整理了一批学习资料，把之前存的 PDF 讲义全拖进笔记，一边翻讲义一边写自己的理解，体验丝滑到让我回想起读书时用平板做笔记的感觉。</p>
+<p><img src="../images/joplin-docs/multimedia-notes-img.png" alt="官方展示的多媒体笔记效果" loading="lazy"></p>
+<p>移动端省流量这点也值得提一句。附件下载策略有三个选项：始终下载、手动下载、打开时才下载。默认是始终下载，但手机上我改成了"打开时才下载"——毕竟我存了好几个 G 的 PDF 和视频，每次同步全下载太费流量了。</p>
+<p>当然也有坑要注意：移动端目前单个附件不能超过 10MB，大附件得在桌面端处理。还有个安全提醒我差点忽略——从不可信来源收到的笔记，别随手打开陌生类型的附件，Windows 上 <code>.exe</code>、<code>.bat</code> 这些类型会被当程序运行。自己创建的笔记默认可信，这点没问题，但如果以后和朋友共享笔记，这条得记在脑子里。</p>
+<h2>待办提醒：够用就好</h2>
+<p>我试过不少任务管理工具，从 Todoist 到 Things，最后都不了了之。Joplin 的待办功能反而让我用起来了。原因很简单——它不是个独立的任务管理器，就是笔记的一个变种类型。</p>
+<p>待办和普通笔记长得一模一样，支持 Markdown 正文、支持附件、支持笔记本分类。区别只在于多了个勾选框和闹钟设置。这点戳中了我——我之前用任务管理工具的痛点就是，任务的背景资料（比如一篇参考文章、一段代码片段）得单独存，和任务本身割裂开来。在 Joplin 里，我把任务的所有上下文直接写在待办正文里，闹钟到点弹通知，完成了点一下勾选框打个勾。就这么简单。</p>
+<p>还有几个搜索过滤器让管理变得顺手——<code>type:todo</code> 列出所有待办，<code>iscompleted:0</code> 只看未完成，<code>-due:day+7</code> 显示未来七天到期的。把这些组合起来，个人任务面板就有了。当然如果你需要甘特图、团队协作那种重型功能，Joplin 肯定不是答案。但就个人日常任务管理来说，够用了。</p>
+<h2>数据自管：这才是真·放心</h2>
+<p>最让我安心的还是数据自管这件事。Joplin 支持把笔记整库导出成 JEX 格式，一个归档文件包含所有笔记、笔记本结构、标签、创建时间这些元数据，随时能再导入回来。格式细节我后来去<a href="https://joplin-docs.pages.dev/" target="_blank" rel="noopener">joplin文档</a>翻了一下才完全搞明白，同步和备份是两回事——同步会双向修改，误删会同步到云端，但 JEX 备份是独立快照，放移动硬盘上、放另一块盘上都可以。我现在养成了习惯，每次批量导入或者大改动前后都导一次 JEX，花不了十秒钟。</p>
+<h2>适合谁，不适合谁</h2>
+<p>写了这么多，总结一下。</p>
+<p>适合：<strong>重度 Markdown 用户</strong>、<strong>在意数据主权不想被云平台绑架的人</strong>、<strong>知识管理起步阶段不想花大钱买高级笔记工具的人</strong>。如果你平时就写 Markdown、习惯用文件夹和标签组织知识、偶尔需要剪藏网页和嵌附件，Joplin 几乎是免费的最优解。</p>
+<p>不适合：<strong>需要团队协作</strong>、<strong>习惯所见即所得富文本编辑</strong>、<strong>依赖云笔记生态绑定的人</strong>（比如之前在某云笔记里建了大量知识库、导出迁移成本太高）。Joplin 是个人工具，团队层面的东西它没有也不打算有。</p>
+<p>我现在已经把过去五年存的全部笔记迁移过来了——Markdown 目录直接导入，图片附件自动跟上，花了一个下午搞定。说真的，之前花在云笔记会员费和焦虑数据丢失的那些钱和时间，换个开源工具，换得回来了。资料归档这块也顺手处理了：<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/joplin" target="_blank" rel="noopener">GitHub</a> 上有完整的整理，国内访问不方便的话 <a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/joplin" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/joplin" target="_blank" rel="noopener">GitCode</a> 也各存了一份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/manwa2-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">漫蛙2 深度盘点：一个能把追漫体验做细的漫画阅读器</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/tripo-ai.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Tripo AI 秒级 2D 转 3D 的背后——从一张照片到可交互模型，中间发生了什么</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

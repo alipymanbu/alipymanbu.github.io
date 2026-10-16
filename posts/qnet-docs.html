@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>QNET 弱网测试的底层逻辑：为什么用 VPN 接管而不是改系统参数 · 老杨技术栈</title>
+  
+<meta name="description" content="从 QNET 的 VPN 通道设计出发，拆解弱网模拟的技术路径、进程保活约束与 ADB 接口的全量更新语义，理解这套方案的取舍与适用边界。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/qnet-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QNET 弱网测试的底层逻辑：为什么用 VPN 接管而不是改系统参数">
+<meta property="og:description" content="从 QNET 的 VPN 通道设计出发，拆解弱网模拟的技术路径、进程保活约束与 ADB 接口的全量更新语义，理解这套方案的取舍与适用边界。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/qnet-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/qnet-docs/qnet-workbench-start.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/qnet-docs/qnet-workbench-start.png">
+
+<meta name="twitter:title" content="QNET 弱网测试的底层逻辑：为什么用 VPN 接管而不是改系统参数">
+<meta name="twitter:description" content="从 QNET 的 VPN 通道设计出发，拆解弱网模拟的技术路径、进程保活约束与 ADB 接口的全量更新语义，理解这套方案的取舍与适用边界。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece QNET \u7684 VPN \u901a\u9053\u8bbe\u8ba1\u51fa\u53d1\uff0c\u62c6\u89e3\u5f31\u7f51\u6a21\u62df\u7684\u6280\u672f\u8def\u5f84\u3001\u8fdb\u7a0b\u4fdd\u6d3b\u7ea6\u675f\u4e0e ADB \u63a5\u53e3\u7684\u5168\u91cf\u66f4\u65b0\u8bed\u4e49\uff0c\u7406\u89e3\u8fd9\u5957\u65b9\u6848\u7684\u53d6\u820d\u4e0e\u9002\u7528\u8fb9\u754c\u3002", "headline": "QNET \u5f31\u7f51\u6d4b\u8bd5\u7684\u5e95\u5c42\u903b\u8f91\uff1a\u4e3a\u4ec0\u4e48\u7528 VPN \u63a5\u7ba1\u800c\u4e0d\u662f\u6539\u7cfb\u7edf\u53c2\u6570", "image": ["https://alipymanbu.github.io/images/qnet-docs/qnet-workbench-start.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/qnet-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/qnet-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "QNET \u5f31\u7f51\u6d4b\u8bd5\u7684\u5e95\u5c42\u903b\u8f91\uff1a\u4e3a\u4ec0\u4e48\u7528 VPN \u63a5\u7ba1\u800c\u4e0d\u662f\u6539\u7cfb\u7edf\u53c2\u6570", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">QNET 弱网测试的底层逻辑：为什么用 VPN 接管而不是改系统参数</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">QNET 弱网测试的底层逻辑：为什么用 VPN 接管而不是改系统参数</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 QNET 的 VPN 通道设计出发，拆解弱网模拟的技术路径、进程保活约束与 ADB 接口的全量更新语义，理解这套方案的取舍与适用边界。</p>
+  </header>
+  <div class="prose">
+<p>我第一次用 QNET 时就有一个疑问：弱网模拟到底是怎么做到的？</p>
+<p>当时同事说"开一下 QNET，设个 300ms 延迟"，我照着做了——就是从它的<a href="https://qnet.rggd.pw" target="_blank" rel="noopener">官网</a>下的那个 Android App——VPN 图标亮起来，被测应用的请求真的慢了半拍。但那个"为什么"一直悬着——市面上改网络参数的工具不少，为什么偏偏 QNET 选择走本地 VPN 通道这条路？这背后的设计取舍，决定了它能做什么、不能做什么，也解释了为什么有些场景它表现得特别好、有些场景却让你头疼。</p>
+<h2>问题：弱网模拟的两条路</h2>
+<p>先说清楚问题本身。在移动设备上模拟弱网，本质上就是在应用发出的网络请求上加一层"干扰"——加延迟、丢包、限速、抖动。实现这个干扰有两条路。</p>
+<p>一条是改系统网络栈的参数，比如修改 TCP 窗口大小、注入 iptables 规则、或者用 Chromium 的网络服务钩子。这条路的问题是碎片化——不同厂商的 Android 系统网络栈改动很大，iOS 上更难碰系统级参数，每台设备都要单独适配，维护成本极高。</p>
+<p>另一条路是 VPN 接管——让所有流量先经过一个本地代理，代理在转发时动手脚。这就是 QNET 选的路。它的核心假设是：<strong>只要能把流量接管过来，模拟延迟丢包就是在应用层处理数据包的事，跟底层系统无关</strong>。而 Android 和 iOS 都提供了 VPN 框架接口，这条路天然跨平台。</p>
+<h2>拆解：VPN 通道到底做了什么</h2>
+<p>从原理上讲，<a href="https://qnet.rggd.pw/download.html" target="_blank" rel="noopener">官方下载</a>的那个 QNET 启动后在设备上建立一个本地 VPN 连接，所有出站流量被路由到这个虚拟网卡。QNET 进程读取这些数据包，按照你设置的弱网参数（延迟多少毫秒、丢包率百分之几、带宽上限多少）做处理，再转发到真实网络。响应回来时原路返回，延迟和丢包同样套进去。</p>
+<p><img src="../images/qnet-docs/qnet-workbench-start.png" alt="QNET 工作台与 VPN 接管状态" loading="lazy"></p>
+<p>这个设计的精妙之处在于它把复杂度收敛到了一个层面——不管底层系统怎么变，QNET 只需要维护参数引擎和代理逻辑，不用跟每家厂商的定制系统做缠斗。</p>
+<p>但这个设计也带了一个架构层面的硬约束：<strong>VPN 通道由进程持有，进程死了通道就没了</strong>。这不是 QNET 的 bug，而是 VPN 框架本身的机制。所以你会发现 QNET 的文档里反复强调"必须加入电池白名单""锁屏要验证弱网是否还生效"——这些不是产品体验问题，而是架构决定的必然要求。进程被杀的四个来源（手动划掉、厂商省电策略、内存不足、应用崩溃）本质上都是在跟厂商的进程管理策略打架。测试前不做这几步，弱网跑到一半悄无声息失效，你还在等着看结果。</p>
+<h2>取舍：ADB 接口的全量更新语义</h2>
+<p>QNET 暴露了一套 adb 广播接口，自动化脚本可以原地更新参数而不需要重启进程。这在批量测试里非常高效——你可以做延迟梯度遍历，每次广播一条指令就能切换档位，悬浮窗读数和被测应用行为会同步变化。</p>
+<p>但这个接口有一个容易踩的坑：<strong>更新是全量的，没写的参数一律归默认</strong>。在<a href="https://qnet-docs.pages.dev/" target="_blank" rel="noopener">qnet文档</a>里用加粗字体强调了这一点。举个例子，你用一条广播把丢包率改成 100%，但只写了丢包参数——延迟、带宽、协议这些所有其他参数会被自动清零。如果你原本在丢包的基础上还设了 200ms 延迟，这条广播一发延迟就没了。</p>
+<pre><code>adb shell am broadcast -a &quot;qnet.boradcast.drive&quot; --include-stopped-packages \
+  --es &quot;command&quot; &quot;update&quot; \
+  --ei &quot;in_rate&quot; 100 --ei &quot;out_rate&quot; 100 \
+  --ei &quot;in_delay&quot; 200 --ei &quot;out_delay&quot; 200 \
+  --ei &quot;protocol&quot; 3 com.tencent.qnet</code></pre>
+<p>正确的梯度遍历写法永远是带上全量参数，每次循环把所有你关心的字段都显式声明。这看起来啰嗦，但保证了参数状态的可预测性。</p>
+<p><img src="../images/qnet-docs/qnet-adb-run.png" alt="ADB 驱动 QNET 参数更新" loading="lazy"></p>
+<h2>判断：这套原理意味着什么</h2>
+<p>理解了上面的设计，QNET 的优缺点就很清晰了。</p>
+<p>它的优势在于平台一致性和部署成本低——不需要 root，不需要改系统，装个 App 就能跑，ADB 接口也能直接集成进 CI/CD 流水线。弱网场景的预设模板库覆盖了从 4G 基准到高丢包高延迟的常见档位，团队内部把标准参数写进用例文档，新成员照着建模板几分钟就能上手。</p>
+<p>它的弱点也很明确。进程保活是长期测试的头号隐患——厂商的省电策略一年比一年激进，你可能需要在七八种机型上分别设置白名单。全量更新语义增加了自动化脚本的复杂度，每次参数变化都要小心不要意外清零其他配置。还有一个容易忽略的边界：周期弱网和暂停控制会让"网络突然恢复正常"的表象出现，判断是不是进程被杀需要先看信息悬浮窗还在不在、VPN 图标亮不亮，再怀疑进程本身。</p>
+<p>所以我的判断是，QNET 适合做<strong>应用层弱网的功能验证和交互测试</strong>——比如加载超时文案对不对、重试逻辑能不能工作、半成功状态下的幂等处理。这些场景关注的是应用行为在弱网下是否正确，不需要精确复现运营商级别的网络异常。它的模板管理功能让团队可以把标准档位固化成可复用的用例资产，长期运维下来能沉淀一套自己的弱网测试知识库。</p>
+<p>如果你要做更底层的网络性能分析、TCP 协议栈调优、或者需要复现特定运营商的 RTT 波动曲线，QNET 的精度可能不够——它的参数模型是简化的，而且跑在应用层本身就有额外的开销。对于这类场景，应该考虑更底层的模拟工具。</p>
+<p>QNET 的参数模板和使用案例我同步到了三个仓库，<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/qnet" target="_blank" rel="noopener">GitHub</a> 是主维护渠道，国内用户可以从<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/qnet" target="_blank" rel="noopener">Gitee</a> 或<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/qnet" target="_blank" rel="noopener">GitCode</a> 访问备份副本。对移动开发和 QA 来说，它是一个值得理解其底层设计的工具——知道了为什么它这么工作，才能用好它也知道什么时候该放下它。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/termius.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Termius 凭什么把 SSH 客户端做成付费产品？拆解它的 Vaults 架构</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/dododex.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">dododex 十年盘点：这款 ARK 计算器到底藏了多少能力域</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

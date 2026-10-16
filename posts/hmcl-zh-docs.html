@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>HMCL 十二年：从启动一个游戏到撑起一整条生态 · 老杨技术栈</title>
+  
+<meta name="description" content="HMCL 桌面版走过的十二年迭代里，版本号稳步推进，但它解决的问题从&#34;能启动&#34;一步步变成&#34;能让整套模组生态在手机上也跑起来&#34;。本文从版本节点回看这条演进线。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hmcl-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HMCL 十二年：从启动一个游戏到撑起一整条生态">
+<meta property="og:description" content="HMCL 桌面版走过的十二年迭代里，版本号稳步推进，但它解决的问题从&#34;能启动&#34;一步步变成&#34;能让整套模组生态在手机上也跑起来&#34;。本文从版本节点回看这条演进线。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hmcl-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hmcl-zh-docs/launcher-home.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hmcl-zh-docs/launcher-home.jpg">
+
+<meta name="twitter:title" content="HMCL 十二年：从启动一个游戏到撑起一整条生态">
+<meta name="twitter:description" content="HMCL 桌面版走过的十二年迭代里，版本号稳步推进，但它解决的问题从&#34;能启动&#34;一步步变成&#34;能让整套模组生态在手机上也跑起来&#34;。本文从版本节点回看这条演进线。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "HMCL \u684c\u9762\u7248\u8d70\u8fc7\u7684\u5341\u4e8c\u5e74\u8fed\u4ee3\u91cc\uff0c\u7248\u672c\u53f7\u7a33\u6b65\u63a8\u8fdb\uff0c\u4f46\u5b83\u89e3\u51b3\u7684\u95ee\u9898\u4ece\"\u80fd\u542f\u52a8\"\u4e00\u6b65\u6b65\u53d8\u6210\"\u80fd\u8ba9\u6574\u5957\u6a21\u7ec4\u751f\u6001\u5728\u624b\u673a\u4e0a\u4e5f\u8dd1\u8d77\u6765\"\u3002\u672c\u6587\u4ece\u7248\u672c\u8282\u70b9\u56de\u770b\u8fd9\u6761\u6f14\u8fdb\u7ebf\u3002", "headline": "HMCL \u5341\u4e8c\u5e74\uff1a\u4ece\u542f\u52a8\u4e00\u4e2a\u6e38\u620f\u5230\u6491\u8d77\u4e00\u6574\u6761\u751f\u6001", "image": ["https://alipymanbu.github.io/images/hmcl-zh-docs/launcher-home.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hmcl-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hmcl-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "HMCL \u5341\u4e8c\u5e74\uff1a\u4ece\u542f\u52a8\u4e00\u4e2a\u6e38\u620f\u5230\u6491\u8d77\u4e00\u6574\u6761\u751f\u6001", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">HMCL 十二年：从启动一个游戏到撑起一整条生态</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">HMCL 十二年：从启动一个游戏到撑起一整条生态</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">HMCL 桌面版走过的十二年迭代里，版本号稳步推进，但它解决的问题从&#34;能启动&#34;一步步变成&#34;能让整套模组生态在手机上也跑起来&#34;。本文从版本节点回看这条演进线。</p>
+  </header>
+  <div class="prose">
+<p>现在提到 HMCL，很多人的第一反应是"一个 Minecraft 启动器"——去它的<a href="https://hmcl.bmww.store" target="_blank" rel="noopener">官网</a>扫一眼你就会发现，这说法也太轻了。我最近翻着手上那台老安卓机里还留着的 HMCL-PE v2.0.8，对着样本文档里桌面版 2015 年的最早版本号算了一下，这条线已经跑了十二年。十二年里它从一行命令能拉起游戏就行，走到了能跨平台跨架构覆盖十几种系统、能自动装加载器能导整合包能管账户的一整套生态工具链。</p>
+<h2>来路：从桌面到安卓，从单体到家族</h2>
+<p>先说说桌面版的起点。样本文档里给了一个定位：2015 年起由开源社区持续建设。没有什么"第一版 changelog"被单独拎出来讲，早期版本长什么样样本文档没提——这本身可能就是一个信号：最初的几年里，它解决的是一个很朴素的问题——给 Minecraft 玩家一个能方便管理多个版本和多个账户的启动入口。那时候 Forge 刚起步没多久，模组加载器的安装还是手动拖 jar 进文件夹的时代，谁能把这事做自动化，谁就赢了一半。</p>
+<p>然后是安卓移植线的出现。样本文档对 HMCL-PE 的描述很清楚：社区开发者 Tungsten 主导，底层借助 Boat、PojavLauncher 等前代项目的成果。它不是从零写一个安卓启动器，而是在已有的 Java-on-Android 技术积累上，把桌面版的界面和能力一层一层搬过来。这件事的难度比听起来大得多——桌面版跑在 JVM 上，安卓上没有原生 JVM，整个运行时都是靠模拟层兜的。样本文档没给安卓移植线的具体版本时间表，但提到了 v2.0.8 是停更前的稳定线，需要安装包的话从<a href="https://hmcl.bmww.store/download.html" target="_blank" rel="noopener">下载</a>页面拿就行——说明至少到这个版本号，它已经走完了从"能跑"到"稳定可用"的迭代阶段。</p>
+<p><img src="../images/hmcl-zh-docs/launcher-home.jpg" alt="HMCL 桌面版主界面：左侧账户与游戏分组、右下角启动按钮" loading="lazy"></p>
+<h2>关键转折点：哪些功能憋了好几个版本才来</h2>
+<p>样本文档里提到的几个设计，在我看来是真正的版本节点，不是随便加的功能：</p>
+<p><strong>跨架构支持。</strong> 桌面版现在覆盖了 x86、ARM、RISC-V、MIPS、LoongArch——注意这里有 LoongArch，就是国产龙芯的那个架构。能走到这一步，说明团队不是只盯着 Windows 用户，而是认真做了跨平台抽象层。样本文档说"国产平台玩家也用它"，这句话轻描淡写，但背后是多少架构适配的工作量。</p>
+<p><strong>加载器自动安装。</strong> Forge、NeoForge、Cleanroom、Fabric、Quilt、LiteLoader、OptiFine——这一串加载器名字能自动装齐，不是一朝一夕的事。每个加载器的安装逻辑不一样、版本兼容矩阵不一样、下载源可能还会变。早期版本里这肯定是个让用户手动操作的环节，能做成一键式，说明团队花了好几个版本迭代维护一个加载器元数据层。</p>
+<p><strong>版本隔离与实例管理。</strong> 它的<a href="https://hmcl-zh-docs.pages.dev/" target="_blank" rel="noopener">hmcl文档</a>里讲游戏目录时提到了公有目录、私有目录、自定义目录，还有开启版本隔离后每个实例的资源独立。这件事在早期启动器里默认是关闭的——所有版本共用同一个 <code>.minecraft</code> 目录，装模组装资源包全堆在一起，多版本混装就污染。把版本隔离从"高级用户才懂的开关"变成默认开启，这个产品决策背后踩过多少坑、收过多少用户反馈，文档里没说，但从现在的默认行为倒推，这是一次很重要的产品方向切换。</p>
+<p><strong>整合包导入导出。</strong> 样本文档把整合包玩法列成了独立章节，说明这块已经是一级功能。整合包在社区生态里是重灾区——每个整合包作者的目录结构可能不一样、模组版本锁定方式不一样、有的还自带配置补丁。能做到"一键导进来、一键打包出去"，需要团队对社区标准做足调研后再定格式。</p>
+<p><img src="../images/hmcl-zh-docs/version-list.jpg" alt="版本列表页：公有目录、私有目录、安装新版本、安装整合包等入口" loading="lazy"></p>
+<h2>迭代规律：团队一直在死磕什么</h2>
+<p>从这些版本节点往回看，有一条很清晰的主线：HMCL 团队一直在解决"标准化"问题。</p>
+<p>加载器安装要标准化——用户不用去每个加载器官网找下载链接看兼容矩阵；游戏目录要标准化——公有私有自定义三种方式覆盖不同场景；实例要标准化——每个版本一套独立环境；整合包要标准化——导入导出有统一格式。</p>
+<p>但反过来看，什么东西它没那么在意？界面花哨程度是一个——样本文档里展示的桌面版界面和我几年前用的版本相比，变化不大，还是左侧导航栏 + 右侧主面板的经典布局。多语言支持虽然覆盖了十余种，但样本文档没花多少篇幅在上面，说明这是个加分项不是优先级。还有就是它从来没做过"启动器内商店"——不会推荐模组资源包然后抽成，下载模块是统一下载页，但都是指向社区资源而非商业渠道。</p>
+<p>这个定位很有意思：它从一开始就把自己定义成一个"工具"，不是一个"平台"。工具的生死取决于能不能帮用户更快更准地完成事，而不是取决于有没有粘性用户群。</p>
+<h2>预判：照这个路线，下一步大概率走向哪里</h2>
+<p>样本文档里有一个没展开但值得留意的地方——安卓线已经停更了。HMCL-PE v2.0.8 是稳定线，后继启动器另行推荐。而桌面版还在持续建设中。这说明团队的资源在收缩，集中到了桌面主力线上。</p>
+<p>从迭代规律推的话，接下来几个方向值得关注：</p>
+<p>跨架构覆盖可能继续往下走——LoongArch 已经支持了，国产操作系统上的用户规模在增长，这条线值得投入。加载器自动安装的元数据层可能会变得更智能——比如根据已装加载器自动推荐兼容的模组版本。整合包的生态对接可能会更深——现在只是导入导出，下一步可能直接对接社区整合包的发布源，用户在启动器里就能一键拉取。</p>
+<p>但我觉得更大的可能性是：它继续保持工具定位，不做平台化。十二年了，团队没走商业化路线，没做应用内购买，没把自己包装成"我的世界玩家社区"。这种克制本身就是一种信号——HMCL 的团队可能从一开始就没想过把它做成一个大产品，只想把它做成一个好用的启动器。</p>
+<p>对一款开源工具来说，能坚持十二年把同一个事做扎实，本身就是一种难得的坚持。我手上那台老安卓机里的 HMCL-PE v2.0.8 还能正常跑 1.16.5，桌面版在我这台龙芯笔记本上也能正常启动 Forge——跨越了十几年、跨越了好几种架构，同一个启动器的核心设计没有变过，这比任何 changelog 都更能说明问题。</p>
+<p>这套资料我整理了一份，放在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/hmcl" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/hmcl" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/hmcl" target="_blank" rel="noopener">GitCode</a>三个仓库里，考虑到国内网络环境差异和跨平台访问的便利性，三份内容同步维护，从文档说明到实际文件都保持一致，按需取用就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gamma-zh-docs.html">Gamma 到底值不值得掏钱？一份按月度重算的付费决策账本</a></h2>
+  <p class="card-desc">我把 Gamma 的免费版和 Pro 版每个功能的实际使用频率、能省的时间、替代方案成本全部拉出来算一遍，帮你三秒决定要不要开年卡。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/halihali-docs.html">哈哩哈哩藏得真深——10 个冷门技巧让你追番效率翻倍</a></h2>
+  <p class="card-desc">哈哩哈哩大家都用来看番，但你知道搜导演名能批量找作品、追番列表能按更新状态筛选、推送没收到可能是电池优化拦了吗？这 10 个隐藏设置翻出来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/poweramp.html">Poweramp 用了两年，从&#34;音质神器&#34;到我通勤路上的默认播放器</a></h2>
+  <p class="card-desc">装 Poweramp 到现在快两年了。从 v3 初期一路更到现在的 build-909，当初冲着&#34;安卓最强音质&#34;来的，现在却发现真正离不开的不是音质，是那些当初没在意的小功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/photopills.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">PhotoPills 翻了底朝天——那些藏得比银河还深的冷门玩法</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/tunefind.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">周末深夜刷剧被一首歌卡了半小时，直到我掏出了手机</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

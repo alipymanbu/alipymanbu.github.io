@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>XPlayer 私密文件夹的真相：它为什么不加密文件？ · 老杨技术栈</title>
+  
+<meta name="description" content="深入拆解 XPlayer 私密文件夹、硬解架构与投屏协议背后的技术取舍，理解「够用」和「安全」之间那条微妙的线">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/xplayer-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XPlayer 私密文件夹的真相：它为什么不加密文件？">
+<meta property="og:description" content="深入拆解 XPlayer 私密文件夹、硬解架构与投屏协议背后的技术取舍，理解「够用」和「安全」之间那条微妙的线">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/xplayer-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/xplayer-docs/private-folder.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/xplayer-docs/private-folder.jpg">
+
+<meta name="twitter:title" content="XPlayer 私密文件夹的真相：它为什么不加密文件？">
+<meta name="twitter:description" content="深入拆解 XPlayer 私密文件夹、硬解架构与投屏协议背后的技术取舍，理解「够用」和「安全」之间那条微妙的线">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6df1\u5165\u62c6\u89e3 XPlayer \u79c1\u5bc6\u6587\u4ef6\u5939\u3001\u786c\u89e3\u67b6\u6784\u4e0e\u6295\u5c4f\u534f\u8bae\u80cc\u540e\u7684\u6280\u672f\u53d6\u820d\uff0c\u7406\u89e3\u300c\u591f\u7528\u300d\u548c\u300c\u5b89\u5168\u300d\u4e4b\u95f4\u90a3\u6761\u5fae\u5999\u7684\u7ebf", "headline": "XPlayer \u79c1\u5bc6\u6587\u4ef6\u5939\u7684\u771f\u76f8\uff1a\u5b83\u4e3a\u4ec0\u4e48\u4e0d\u52a0\u5bc6\u6587\u4ef6\uff1f", "image": ["https://alipymanbu.github.io/images/xplayer-docs/private-folder.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/xplayer-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/xplayer-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "XPlayer \u79c1\u5bc6\u6587\u4ef6\u5939\u7684\u771f\u76f8\uff1a\u5b83\u4e3a\u4ec0\u4e48\u4e0d\u52a0\u5bc6\u6587\u4ef6\uff1f", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">XPlayer 私密文件夹的真相：它为什么不加密文件？</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">XPlayer 私密文件夹的真相：它为什么不加密文件？</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 10 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">深入拆解 XPlayer 私密文件夹、硬解架构与投屏协议背后的技术取舍，理解「够用」和「安全」之间那条微妙的线</p>
+  </header>
+  <div class="prose">
+<h2>一个反直觉的设计决策</h2>
+<p>我第一次注意到 XPlayer 私密文件夹的细节时，愣了一下。</p>
+<p>文档写得很直白：<strong>视频文件本身不会被加密</strong>，只在扫描层隐藏。也就是说，你在 XPlayer 里长按一个视频选「移动到私密文件夹」，设置了 8 位密码，但这个文件仍然躺在 <code>/storage/emulated/0/Movies/</code> 下面，原封不动。只要用手机自带的文件管理器或 MX Player 扫一遍，就能看到它。</p>
+<p>这算哪门子「私密」？</p>
+<p>但转念一想，每天还有上百万用户在用这个功能。如果它真的只是个"自欺欺人"的开关，早就被骂下架了。那 XPlayer 为什么做了这样一个看似"阉割版"的隐私功能？它背后的设计逻辑是什么？</p>
+<p>带着这个问题我去 <a href="https://xplayer.yoan.quest" target="_blank" rel="noopener">XPlayer官网</a> 翻了一圈资料，发现这套取舍远不止私密文件夹一个功能——而是从 XPlayer 的几个关键特性里，看它在"够用"和"安全"、"轻量"和"可靠"之间是怎么取舍的。</p>
+<h2>私密文件夹的底层逻辑：扫描层屏蔽</h2>
+<p>先说私密文件夹到底做了什么。</p>
+<p>Android 上所有视频播放器的"扫描"本质上都是一样的：遍历设备存储的各个目录（内部存储的 Movies、DCIM、Download，外加 SD 卡），识别 <code>.mp4</code>、<code>.mkv</code>、<code>.mov</code> 等扩展名，把结果汇总到首页列表。XPlayer 私密文件夹的做法，是在这个扫描环节<strong>把你标记过的那几个路径从索引里剔除</strong>——就像给相册的某些照片加了个"不在相册中显示"的标记，照片还在文件夹里，但相册 App 不把它们列出来。</p>
+<p><img src="../images/xplayer-docs/private-folder.jpg" alt="私密文件夹界面" loading="lazy"></p>
+<p>这是一个典型的"App 内隐藏"，而不是"文件级加密"。两者的区别在于：</p>
+<table><thead><tr><th>保护层级</th><th>原理</th><th>破解难度</th><th>性能开销</th></tr></thead><tbody><tr><td>扫描层屏蔽</td><td>App 不索引特定路径</td><td>极低（换个播放器就看到）</td><td>几乎为零</td></tr><tr><td>文件级加密</td><td>视频文件被 AES 加密存储</td><td>高（需要解密密钥）</td><td>大（播放前需要实时解密）</td></tr><tr><td>应用锁</td><td>整个 App 需要密码才能打开</td><td>中（可以用 ADB 绕过）</td><td>低</td></tr></tbody></table>
+<p>XPlayer 选择了最轻量的第一档。代价很明确——只要有人拿到你的手机解锁、打开任何其他播放器或文件管理器，就能看到这些视频。但好处也很明确：<strong>完全不影响播放性能</strong>。如果用文件级加密，每次打开私密文件夹里的视频都要先解密，4K HEVC 片源本身就吃硬件，再加一层解密开销，旗舰机都可能掉帧。</p>
+<p>这是一个典型的"够用优先"决策。XPlayer 的用户画像里，绝大多数场景是"手机被朋友/家人临时拿起翻一下"——这种情况下，扫描层屏蔽足够了。真正需要防的是"被解锁后用专业工具取证"，那应该用专门的加密 App（比如 AndroVault 或 KeepSafe），而不是一个视频播放器。</p>
+<p>文档里也诚实承认了这一点："私密文件夹的安全级别是 App 内隐藏，不是文件级加密。对于极端敏感的内容，需要额外用专门的加密工具做文件级加密。"</p>
+<h2>硬解 vs 软解：架构取舍的另一个例子</h2>
+<p>私密文件夹的逻辑在 XPlayer 其他地方也能看到类似的取舍。比如 4K 播放的硬解策略。</p>
+<p>4K HEVC 视频的码率通常在 20–80 Mbps，软解意味着完全靠 CPU 实时解码——骁龙 660 这种中端芯片跑 4K 软解大概率会卡成幻灯片，还会严重发热。硬解则是把解码任务交给 GPU 的专用硬件单元（ISP 或视频编解码器），同样的片源，硬解流畅度接近原生、耗电只有软解的 1/3 到 1/2。</p>
+<p><img src="../images/xplayer-docs/player-main.jpg" alt="播放器主界面" loading="lazy"></p>
+<p>XPlayer 的做法是<strong>默认开启硬件加速</strong>，而且不做软解的自动回退——如果设备不支持 H.265 硬解，4K 片源会直接提示"硬件不支持"，而不是偷偷切换软解然后让用户在卡顿中困惑。这跟私密文件夹的逻辑是一致的：<strong>不假装解决问题，而是把问题暴露出来让用户决定</strong>。</p>
+<p>翻 <a href="https://xplayer-docs.pages.dev/" target="_blank" rel="noopener">XPlayer文档</a> 时看到有一张推荐配置表很说明问题：骁龙 660 / 天玑 720 是 4K 硬解的最低门槛，骁龙 8 Gen / 天玑 9000 是推荐配置。低于这个门槛的设备，XPlayer 不做任何尝试，直接告诉你"看 1080P 吧"。这种"知难而退"的设计在播放器里不算常见——很多竞品会硬扛软解，美其名曰"全能解码"，实际上用户体验差到爆。</p>
+<h2>Chromecast 投屏：为什么选视频流而不是镜像</h2>
+<p>第三个例子是投屏。先去 <a href="https://xplayer.yoan.quest/download.html" target="_blank" rel="noopener">XPlayer下载</a> 装上应用，你就能在首页找到投屏入口。XPlayer 支持 Chromecast，而且文档里专门区分了"投屏"和"屏幕镜像"的不同。</p>
+<p>Chromecast 投屏和 Miracast 镜像在技术路径上完全是两回事：</p>
+<ul><li><strong>屏幕镜像</strong>是把手机屏幕的每帧画面实时编码、压缩、通过 WiFi 推到电视上——延迟高（通常 300ms 以上）、画质受限于手机分辨率、投屏时手机不能关屏（关屏就没画面了）。</li><li><strong>视频流传输</strong>是手机把视频文件的 URL 告诉 Chromecast 设备，让 Chromecast 自己去拉流解码——延迟低（&lt;1 秒）、画质由电视原生分辨率决定、手机屏幕可以关闭省电。</li></ul>
+<p><img src="../images/xplayer-docs/chromecast-cast.jpg" alt="投屏设备选择界面" loading="lazy"></p>
+<p>XPlayer 原生支持 Chromecast 的视频流传输协议，而不是简单做一层屏幕镜像。这背后的工程投入差异很大——视频流传输需要处理 Chromecast 的设备发现协议（SSDP/mDNS）、媒体控制协议（DIAL）、还要兼容不同电视厂商的 Chromecast 实现。但好处是用户体验天差地别：4K 片源投屏到 4K 电视，XPlayer 会自动以电视原生分辨率输出，而如果用 Miracast 镜像，上限就是手机的屏幕分辨率（大部分手机是 1080P 或 1440P）。</p>
+<p>文档里提到的"WiFi 是硬性要求"也是 Chromecast 协议的设计使然——Chromecast 依赖局域网发现，手机和电视必须在同一个网段。这不是 XPlayer 的问题，而是协议本身的约束。XPlayer 在这方面做的是<strong>如实告知</strong>：搜不到设备时第一条排查建议就是"确认手机和电视在同一个 WiFi"，而不是让用户反复重启 App 试运气。</p>
+<h2>从三个特性看一套设计哲学</h2>
+<p>把这三个功能放在一起看，XPlayer 的设计逻辑就清晰了：</p>
+<p><strong>不做过度承诺。</strong> 私密文件夹不加密，就坦白说"只在 App 内隐藏"；4K 硬解做不到，就直接说"硬件不支持"；投屏依赖同网段，就把"WiFi 是硬性要求"写在排查清单的第一条。这种设计在营销上不讨喜——竞品可以喊"全格式支持、全场景保护"，XPlayer 却说"我只能做到这一步"。但对用户来说，清晰的边界比虚假的全能更有价值。</p>
+<p><strong>够用就好，不为极端场景牺牲主体验。</strong> 私密文件夹选择扫描层屏蔽，是因为绝大多数用户只需要防"临时被翻"，而不是防专业取证；硬解优先不做软解回退，是因为用户用 4K 播放器就是为了流畅，卡顿的 4K 不如不看；Chromecast 原生支持而不是做镜像层，是因为投屏的核心需求是"大屏看片"，镜像只是退而求其次的方案。</p>
+<p><strong>把复杂度藏在实现里，把选择权留给用户。</strong> XPlayer 处理硬解失败的方式是提示而不是静默回退，处理投屏搜不到的方式是列出排查清单而不是自动重试，处理密码忘记的方式是给出三条出路（邮箱/安全问题/绕路）而不是强制重置。这三条功能的文档写法如出一辙：先讲原理、再讲操作、最后讲边界和常见问题——完全是"授人以渔"的思路。</p>
+<h2>这套设计适合谁、不适合谁</h2>
+<p>最后做个判断。</p>
+<p>XPlayer 这套"够用优先、边界清晰"的设计，适合<strong>把视频播放器当工具用</strong>的人——看电影、追剧集、投屏到电视、偶尔需要藏几个不想被看到的视频。这些人的诉求是"稳定、流畅、别给我找麻烦"，而不是"最安全、最全能、最炫酷"。</p>
+<p>不适合的场景也很明确：如果你需要真正的文件级加密保护极端敏感的视频，XPlayer 的私密文件夹不够用（文档也说了）；如果你的设备不支持 H.265 硬解又执着于看 4K，XPlayer 会直接拒绝而不是想办法帮你软解；如果你经常需要跨网段投屏（比如手机在公司、电视在家），Chromecast 的局域网限制会让你很头疼。</p>
+<p>但这些"不适合"恰恰是 XPlayer 设计哲学的体现——它不试图成为所有人的万能工具，而是把"安卓上最好用的本地视频播放器"这件事做好，其他场景你自己找专门的工具。我觉得这才是一个成熟产品应该有的样子。顺带说一句，整理过的资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/XPlayer" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/XPlayer" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/XPlayer" target="_blank" rel="noopener">GitCode</a> 三处都能拿到，国内访问卡的时候换个地址就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mirai-docs.html">把 AI 角色原型嵌进内容创作流水线，我是这样用 MIRAI 的</a></h2>
+  <p class="card-desc">做虚拟角色设定以前要翻三份文档、手动演对话，现在用 MIRAI 当原型工场——从灵感收集到社区发布，一条链串起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/hailuo-ai-docs.html">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</a></h2>
+  <p class="card-desc">用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/iapp-docs.html">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</a></h2>
+  <p class="card-desc">从最初的可视化拖拽到裕语言 V7 的成熟，iApp 每一个语言版本背后都是一次产品定位的微调。我们顺着版本号看它的迭代节奏，猜一猜它下一步想做什么。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/dalton-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Dalton 智能锁值不值得掏钱？——替你算三笔账</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/chordify-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Chordify 手机版被低估的五个隐藏玩法</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

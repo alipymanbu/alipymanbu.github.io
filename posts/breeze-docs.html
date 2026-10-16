@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>为什么我换掉了用了三年的漫画 App，投了 Breeze · 老杨技术栈</title>
+  
+<meta name="description" content="一个对漫画 App 有重度依赖的老用户，从好奇装到 GBox 绕过安装限制，再到体验插件架构和 Rust 超分引擎，聊聊 Breeze 到底值不值得你折腾那一套流程。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/breeze-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么我换掉了用了三年的漫画 App，投了 Breeze">
+<meta property="og:description" content="一个对漫画 App 有重度依赖的老用户，从好奇装到 GBox 绕过安装限制，再到体验插件架构和 Rust 超分引擎，聊聊 Breeze 到底值不值得你折腾那一套流程。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/breeze-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/breeze-docs/home-main.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/breeze-docs/home-main.png">
+
+<meta name="twitter:title" content="为什么我换掉了用了三年的漫画 App，投了 Breeze">
+<meta name="twitter:description" content="一个对漫画 App 有重度依赖的老用户，从好奇装到 GBox 绕过安装限制，再到体验插件架构和 Rust 超分引擎，聊聊 Breeze 到底值不值得你折腾那一套流程。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u5bf9\u6f2b\u753b App \u6709\u91cd\u5ea6\u4f9d\u8d56\u7684\u8001\u7528\u6237\uff0c\u4ece\u597d\u5947\u88c5\u5230 GBox \u7ed5\u8fc7\u5b89\u88c5\u9650\u5236\uff0c\u518d\u5230\u4f53\u9a8c\u63d2\u4ef6\u67b6\u6784\u548c Rust \u8d85\u5206\u5f15\u64ce\uff0c\u804a\u804a Breeze \u5230\u5e95\u503c\u4e0d\u503c\u5f97\u4f60\u6298\u817e\u90a3\u4e00\u5957\u6d41\u7a0b\u3002", "headline": "\u4e3a\u4ec0\u4e48\u6211\u6362\u6389\u4e86\u7528\u4e86\u4e09\u5e74\u7684\u6f2b\u753b App\uff0c\u6295\u4e86 Breeze", "image": ["https://alipymanbu.github.io/images/breeze-docs/home-main.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/breeze-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/breeze-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u4e3a\u4ec0\u4e48\u6211\u6362\u6389\u4e86\u7528\u4e86\u4e09\u5e74\u7684\u6f2b\u753b App\uff0c\u6295\u4e86 Breeze", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">为什么我换掉了用了三年的漫画 App，投了 Breeze</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">为什么我换掉了用了三年的漫画 App，投了 Breeze</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个对漫画 App 有重度依赖的老用户，从好奇装到 GBox 绕过安装限制，再到体验插件架构和 Rust 超分引擎，聊聊 Breeze 到底值不值得你折腾那一套流程。</p>
+  </header>
+  <div class="prose">
+<p>说实话我本来没打算换漫画 App——三年了，一直用那款国产老 App，界面熟得闭着眼能点，书架里两百多本收藏整整齐齐。但有次刷推荐看到 Breeze 的截图，界面干净得不像个漫画阅读器，好奇心一上来就去<a href="https://breeze.ggcd.uno" target="_blank" rel="noopener">breeze官网</a>看了看设计思路，然后装了。没想到这一装，折腾了我快半个钟头。</p>
+<h2>第一眼：书架是空的？</h2>
+<p>装完点开，三个标签页孤零零摆在那儿：书架、发现、更多。书架是空的，发现页上半部分是插件商店的入口，下半部分空荡荡。我第一反应是"这 App 是不是坏了？"——你见过哪个漫画阅读器打开没有任何漫画的？</p>
+<p><img src="../images/breeze-docs/home-main.png" alt="空空如也的书架首页" loading="lazy"></p>
+<p>翻了翻才搞明白，Breeze 的设计逻辑跟市面上所有漫画 App 都不一样：<strong>它本体不包含任何漫画资源</strong>。搜索、分类、榜单、章节列表、图片加载——这些跟漫画源挂钩的功能，全靠外部插件提供。本体只负责阅读引擎、书架管理和插件运行时。</p>
+<p>说实话这个思路挺反常识的，但仔细想又合理。传统漫画 App 为了覆盖尽可能多的源，内置了一堆没人用的东西，体积臃肿、启动慢、一个源挂了整个 App 都跟着卡。Breeze 把这些全拆出来，你装几个插件就用几个插件，不需要的就不装，本体保持干净。</p>
+<h2>安装：比想象中折腾</h2>
+<p>我用的是安卓，系统设置里开了未知来源之后，还是被国产 ROM 拦截了安装请求。这不是 Breeze 的问题——它没在国内应用商店上架，部分国产 ROM 出厂就锁了安装器，第三方 APK 装不上。</p>
+<p>安装包从<a href="https://breeze.ggcd.uno/download.html" target="_blank" rel="noopener">breeze下载</a>拿。解决办法是用 GBox，一个轻量级的应用隔离容器。装上 GBox，把 Breeze APK 导进去装，就能绕过 ROM 的限制了。鸿蒙系统的用户我劝你直接用 GSpace，官方应用商店能下，兼容性比 GBox 好。</p>
+<h2>插件制：选源这件事，终于让我自己决定了</h2>
+<p>装好之后去插件商店转了一圈，差点装嗨了。哔咔、禁漫、ehentai、nhentai、拷贝漫画、绅士漫画、WEBTOON……光官方和社区维护的插件就有十九个。我先装了哔咔和禁漫，够用了。搜索直接在插件管理页面点搜索图标，跳到对应插件的搜索界面。</p>
+<p><img src="../images/breeze-docs/screenshot-plugin-installed.png" alt="插件管理：启用开关和设置齿轮" loading="lazy"></p>
+<p>这种"本体干净、来源外置"的设计有几个好处我挺喜欢的：</p>
+<ul><li><strong>灵活</strong>——新漫画源出来了，有人写个插件就能用，不用等 Breeze 本体更新。去年某个源页面结构变了，传统 App 等修复等了快一个月，Breeze 用户只需要更新一下插件就行。</li><li><strong>解耦</strong>——Breeze 主项目和各插件由不同维护者负责，一个插件挂了不影响别的。</li><li><strong>可定制</strong>——甚至可以自己写插件接私人漫画源，详细接口说明翻<a href="https://breeze-docs.pages.dev/" target="_blank" rel="noopener">breeze文档</a>就能看到。</li></ul>
+<p>当然也有代价。插件功能目前还在 Beta 阶段，接口可能随版本迭代变，普通用户影响不大，但开发者要跟上上游变化。</p>
+<h2>图片超分：Rust 引擎真不是吹的</h2>
+<p>我有个习惯，喜欢在平板上看漫画。但很多漫画源提供的只有 720p 甚至更低的图，在大屏上糊得不行。Breeze 有个超分辨率功能，打开之后用 Rust 写的引擎把低分辨率图片放大，同时保持细节。</p>
+<p><img src="../images/breeze-docs/screenshot-3.png" alt="阅读时的超分设置与效果" loading="lazy"></p>
+<p>实际用下来效果挺明显的——480p 的图放大之后清晰度能提升三成以上，但要注意不是什么情况都该开：</p>
+<ul><li><strong>旗舰手机和桌面端</strong>：全程开着基本无感，体验提升最大；</li><li><strong>中端手机</strong>：会耗电发热，只在低分辨率图片时开就行；</li><li><strong>老设备</strong>：建议关了，超分是计算密集型操作，会卡；</li><li><strong>墨水屏</strong>：直接关，黑白屏对细节要求低。</li></ul>
+<p>v3.0.25 之后支持手动下载导入模型文件，网络受限的时候可以从 GitHub Releases 或模型仓库下好模型扔到本地目录，Breeze 启动会自动扫描识别。这对国内用户来说挺实用的——自动下载经常超时。</p>
+<h2>还有几个细节挺打动我的</h2>
+<p><strong>本地漫画支持</strong>。除了网络插件，Breeze 直接能读 ZIP、CBZ、CBR 压缩包和图片文件夹，不需要插件。我硬盘里存的那堆老漫画，直接从"更多"标签导入就能看，和网络漫画统一收纳在书架里。</p>
+<p><strong>追更体验</strong>。收藏的漫画有新章节会推通知，下载下来离线看没问题。书架支持按分类、标签、更新时间排序，两百多本找起来比之前那款 App 顺手。</p>
+<p><strong>WebDAV 同步</strong>。我手机和桌面端都装了，开了 WebDAV 同步之后，书架和阅读进度两边自动更新——地铁上手机看一半，回家打开电脑接着看，体验丝滑。</p>
+<h2>适合谁？</h2>
+<p><strong>适合</strong>：漫画重度爱好者，尤其是追多个源的——不用再为了看不同漫画装三四个 App，一个 Breeze 加几个插件搞定；不喜欢臃肿 App 的，本体干净清爽；手里有一堆本地漫画文件想集中管理的。</p>
+<p><strong>不适合</strong>：怕折腾的小白用户——装插件、配 GBox、手动导入模型，这套流程加起来够劝退一批人；只想搜个漫画就看的，传统 App 开箱即用还是方便。</p>
+<h2>最后说句真心话</h2>
+<p>Breeze 不是那种"打开就能直接看漫画"的 App，它需要你花点时间折腾——装插件、调超分参数、配同步。但折腾完之后你会发现，插件制架构带来的自由度是传统漫画 App 给不了的：想加什么源自己装，不想用的就不装，书架干干净净只有你真正想看的东西。</p>
+<p>我的书架现在有一百五十多本，比之前那个少了一半，但每一本都是我主动装的插件里找的。这种"自己决定看什么、用什么"的感觉，用了就回不去了。开源项目不怕单点故障，<a href="https://github.com/alipymanbu/APK/tree/main/APP/breeze" target="_blank" rel="noopener">GitHub</a> 是主仓库，<a href="https://gitee.com/manbu1103/APK/tree/main/APP/breeze" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/APP/breeze" target="_blank" rel="noopener">GitCode</a> 上也有完整镜像，国内网络访问哪个都行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/kindroid.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Kindroid 对比评测 —— AI 伴侣赛道里的全能派，但全能也有代价</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/yoki-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Yoki 的反搜索设计：为什么它把陌生人直接推到你面前</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

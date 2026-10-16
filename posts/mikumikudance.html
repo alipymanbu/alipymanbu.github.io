@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零开始用 MikuMikuDance — 不写代码也能让虚拟角色跳起来 · 老杨技术栈</title>
+  
+<meta name="description" content="写给完全没碰过 3D 动画的小白：MikuMikuDance 到底是什么、五分钟跑通第一次预览、新手最值得先玩的三个功能、常见坑一次讲清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/mikumikudance.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始用 MikuMikuDance — 不写代码也能让虚拟角色跳起来">
+<meta property="og:description" content="写给完全没碰过 3D 动画的小白：MikuMikuDance 到底是什么、五分钟跑通第一次预览、新手最值得先玩的三个功能、常见坑一次讲清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/mikumikudance.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:title" content="从零开始用 MikuMikuDance — 不写代码也能让虚拟角色跳起来">
+<meta name="twitter:description" content="写给完全没碰过 3D 动画的小白：MikuMikuDance 到底是什么、五分钟跑通第一次预览、新手最值得先玩的三个功能、常见坑一次讲清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5199\u7ed9\u5b8c\u5168\u6ca1\u78b0\u8fc7 3D \u52a8\u753b\u7684\u5c0f\u767d\uff1aMikuMikuDance \u5230\u5e95\u662f\u4ec0\u4e48\u3001\u4e94\u5206\u949f\u8dd1\u901a\u7b2c\u4e00\u6b21\u9884\u89c8\u3001\u65b0\u624b\u6700\u503c\u5f97\u5148\u73a9\u7684\u4e09\u4e2a\u529f\u80fd\u3001\u5e38\u89c1\u5751\u4e00\u6b21\u8bb2\u6e05\u3002", "headline": "\u4ece\u96f6\u5f00\u59cb\u7528 MikuMikuDance \u2014 \u4e0d\u5199\u4ee3\u7801\u4e5f\u80fd\u8ba9\u865a\u62df\u89d2\u8272\u8df3\u8d77\u6765", "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/mikumikudance.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/mikumikudance.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u5f00\u59cb\u7528 MikuMikuDance \u2014 \u4e0d\u5199\u4ee3\u7801\u4e5f\u80fd\u8ba9\u865a\u62df\u89d2\u8272\u8df3\u8d77\u6765", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">从零开始用 MikuMikuDance — 不写代码也能让虚拟角色跳起来</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零开始用 MikuMikuDance — 不写代码也能让虚拟角色跳起来</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">写给完全没碰过 3D 动画的小白：MikuMikuDance 到底是什么、五分钟跑通第一次预览、新手最值得先玩的三个功能、常见坑一次讲清。</p>
+  </header>
+  <div class="prose">
+<p>这篇文章能带你从完全不懂到把一个虚拟角色放进 3D 空间跳起舞来——不需要任何建模、编程或动画基础，跟着点鼠标就行。</p>
+<h2>它到底是干嘛的</h2>
+<p>你在 B 站刷到的那些"初音未来跳宅舞""原神角色翻跳"的视频，八成是用 <a href="https://mikumikudance.gerw.hair" target="_blank" rel="noopener">mikumikudance官网</a> 上这款叫做 MikuMikuDance 的工具做的。把它想象成一个 3D 版的芭比娃娃玩具箱：社区里有人已经做好了娃娃（3D 模型）、有人拍好了整套动作参考（舞蹈数据）、有人搭好了舞台布景，你只需要把娃娃放进箱子、选一段动作、点一下播放，娃娃就自己动起来了。</p>
+<p>软件本身<strong>不负责建模、不负责绑骨骼、不负责做动作</strong>——它的核心能力是"让现成的东西动起来"。2007 年日本开发者樋口优为初音未来做的配套工具，后来在 Niconico 社区炸了，VPVP（Vocaloid Promotion Video Project）生态就这样慢慢长起来了。</p>
+<p>和 Blender、Maya 这种重型软件比起来，MMD 的定位特别清晰：<strong>你已经有了模型，想快速出一支舞蹈视频，这就是最快的路</strong>。下载量、教程数、社区资源量——全是免费的，这是它二十多年没被淘汰的护城河。</p>
+<h2>五分钟上手</h2>
+<p>好，现在从零开始。你需要的东西很少：一台 Windows 电脑、一个能下压缩包的浏览器。</p>
+<h3>第一步：拿到软件</h3>
+<p>打开 mikumikudance 的官网，找到 <a href="https://mikumikudance.gerw.hair/download.html" target="_blank" rel="noopener">下载</a> 入口拉一个压缩包下来。解压到任意目录就行——这软件免安装，双击 <code>MMD.exe</code> 直接跑，连管理员权限都不需要。首次启动如果弹语言选择框，选中文就行，9.32 版本自带中文界面。</p>
+<h3>第二步：拿到角色模型</h3>
+<p>官网不带模型，得去社区配布站找。B 站搜"MMD 模型配布"能找到一堆，Niconico 上也有专门的配布分区。下载下来的模型文件是 <code>.pmx</code> 或 <code>.pmd</code> 格式，解压后你会看到一堆文件——<code>.pmx</code> 是模型本体，其他是贴图和骨骼数据。</p>
+<h3>第三步：导入到场景里</h3>
+<p>双击打开 MMD.exe，中间那个白色大画布就是 3D 视口。点顶部菜单栏的"文件 → 读取模型"，选中你刚下载的 <code>.pmx</code> 文件。视口中央立刻会出现一个角色，站在坐标原点（XYZ 轴交点）。</p>
+<h3>第四步：给她一段舞蹈动作</h3>
+<p>光站着没意思。再点"文件 → 读取动作数据"，找一份 VMD 格式的动作文件（社区同样免费配布）。加载之后你会注意到底部时间轴上出现了密密麻麻的菱形标记——那是关键帧，每一个都是一个姿势。</p>
+<h3>第五步：按下播放</h3>
+<p>按一下空格键（或者点最底部的 ▶️ 按钮），角色开始动了。头发和裙摆会跟着物理引擎自己飘起来——这是 MMD 内置的 Bullet 物理演算在起作用，不用你手动设置。</p>
+<p>到这里，你已经完成了第一次 MMD 预览。整个流程不超过五分钟，没写一行代码。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>跑通一次之后，别急着装插件。先把下面这三个最基础但最常用的功能玩透，它们能解决你后续所有创作的 80% 问题。</p>
+<h3>功能一：IK 反向动力学——拖手腕就能摆姿势</h3>
+<p>你可能注意到，加载动作数据之后角色的姿势已经定好了。但有时候你想自己摆一个姿势（比如让角色用手撑着地面蹲着），这时候就要用骨骼操作面板。</p>
+<p>选中模型后，右侧会出现一排骨骼操作按钮。点"选择"，模型身上会出现一圈 X 形的骨骼标记。现在重点来了：<strong>直接拖动手腕的骨骼标记</strong>，你会发现手肘自动跟着弯曲、肩膀也跟着转动——这就是 IK（反向动力学，Inverse Kinematics）。你动末端，中间的关节自动到位。</p>
+<p>对比一下不用 IK 的方式：你得分别转肩膀、转肘、转手腕，调三次还不一定自然。MMD 默认就是 IK 模式，这是社区模型配布时就设好的，你只需要拖就行了。</p>
+<p>当然 IK 不是万能的——有时候极端姿势会让肘往反方向拐，或者角色的脚"飘"在地面上几厘米。这时候关掉 IK（骨骼操作面板里有开关），手动把关节掰到正确方向，再开回 IK 微调即可。</p>
+<h3>功能二：相机运镜——让画面不呆板</h3>
+<p>你刚才看的预览画面是固定视角的。但一支好的舞蹈视频需要运镜：远景开场、推近特写、跟着角色转一圈……MMD 里相机动画是独立的一条轨道，和角色动作分开编辑。</p>
+<p>在右侧面板找到"相机"面板（或者在模型列表里点相机那一行），视口会切换到相机视角。你现在的操作对象不是角色了，而是一台虚拟的摄像机。鼠标左键拖动绕目标旋转视角、右键平移、滚轮推远拉近——和看 3D 模型一样的手感。</p>
+<p>摆好一个角度之后，去底部时间轴的当前帧位置点"注册"（菱形标记会亮起来），跳到下一个帧，换一个角度再注册。播放的时候，相机就会从第一个角度平滑过渡到第二个角度——这就是运镜。补间曲线面板里你可以调整过渡是匀速还是先快后慢，让镜头语言更有感觉。</p>
+<h3>功能三：表情 Morph——让角色"演"起来</h3>
+<p>光跳舞不说话有点呆。MMD 的 Morph（变形）面板可以控制角色的表情：眨眼、张嘴、皱眉、微笑，甚至能切换口型配合音频。</p>
+<p>Morph 面板通常在右侧，里面列出了模型配布时预设好的所有表情。你会看到一排滑条，往上拉是加强这个表情、往下拉是减弱。比如把"笑"那条拉到 100，角色立刻就笑了；把"睁一只眼闭一只眼"拉到 50，角色会抛个媚眼。</p>
+<p>表情也是可以做动画的——在第 0 帧注册一个面无表情，第 30 帧注册一个微笑，播放时表情会自然过渡。配合导入的音频（"文件 → 读取音频"），你甚至可以让角色的口型跟着歌声动起来。表情的高级用法、口型同步的精确调法，在 <a href="https://mikumikudance.pages.dev/" target="_blank" rel="noopener">mikumikudance文档</a> 里有完整教程。</p>
+<h2>小白的三个常见疑问</h2>
+<h3>疑问一：FPS 很低、画面卡怎么办</h3>
+<p>右下角 FPS 计数器如果掉到 30 以下，说明硬件吃紧了。最常见的原因是模型太复杂（面数高）或者物理演算太密集。几个简单的优化手段：播放控制条里先关掉物理演算看 FPS 能不能上来；换一个面数更低的模型；预览时可以暂时把背景特效关掉，渲染输出时再开全。</p>
+<h3>疑问二：IK 让角色的脚飘起来或者穿模</h3>
+<p>这是新手最头疼的问题，根因通常是模型作者给的 IK 链长度没调好。最简单的解决方法：选中脚踝骨骼，打开 IK，直接向下拖到脚踝刚好接触地面；如果膝盖弯曲得太厉害，就在骨骼面板里减小 IK 的链长度参数（默认是 2，改成 1 试试）。实在不行就关掉 IK 手动摆脚的位置，再开 IK 微调。</p>
+<h3>疑问三：模型加载后材质全黑、贴图丢失</h3>
+<p>大概率是你没把模型文件夹里的所有东西一起解压——<code>.pmx</code> 文件旁边那一堆 <code>.bmp</code>、<code>.tga</code> 就是贴图，缺了它们角色身上就没颜色。还有一种可能是你从别的文件夹单独拖了 <code>.pmx</code> 出来，脱离了贴图的相对路径。正确做法：<strong>永远整包解压、整包使用</strong>，不要单独移动模型文件。</p>
+<h2>写在最后</h2>
+<p>MMD 这个软件的魅力在于它的低门槛——你不需要懂 3D 图形学、不需要背快捷键、甚至不需要会用鼠标之外的任何输入设备，就能在半小时内看到自己亲手"做"出来的第一个动画预览。而它的上限也足够高：Ray-MMD 物理渲染能把画面从"玩具级"拉到"专业 MV 级"、MME 插件系统能叠出电影级的粒子和后期效果、社区每年还在出新的模型、新的动作、新的渲染配方。</p>
+<p>如果这篇入门文让你想深入，下一步最值得啃的是 Ray-MMD 渲染——把默认的朴素光影替换成基于物理的 PBR 材质，画面质感会有质的飞跃。社区配布的渲染配方和 HDR 环境贴图资源，搜一下就能拿到。</p>
+<p>总之，别光看，先把第一段舞蹈跑起来——剩下的自然会想折腾。这份入门素材在 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/mikumikudance" target="_blank" rel="noopener">GitHub</a> 仓库维护之外，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/mikumikudance" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/mikumikudance" target="_blank" rel="noopener">GitCode</a> 上也各有镜像，国内访问更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gprinter.html">开水果店那阵我才知道，标签打印APP能省这么多事</a></h2>
+  <p class="card-desc">开了半年水果店，打价签和保质期标签是每天的烦心事。试了佳博配套的 Gprinter 之后，原来标签设计这件事可以在手机上 5 分钟搞定，还能语音输入、自动算日期。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/autox-js.html">Autox.js 到底强在哪？和同类自动化工具的横向对比</a></h2>
+  <p class="card-desc">在安卓自动化脚本引擎这个品类里，Autox.js 用 JavaScript + 无障碍服务的组合走出了一条不一样的路。用过按键精灵、Auto.js、Tasker 之后，我为什么最终留在了 Autox.js。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/kshare-docs.html">装KShare大半年后：那些当初没注意到的好用与糟心</a></h2>
+  <p class="card-desc">从v1.5用到v1.7，从凑活投屏到开会离不开，说说这八个月里KShare让我惊喜和头疼的地方。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/win7simu.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Win7 Simu 深度对比评测：把十年前的系统装进浏览器和手机，它做到了什么别人没做到的事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/9xbuddy-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">把零散视频素材收进同一条流水线：我用 9xbuddy 做周素材采集的完整工作流</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

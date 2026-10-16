@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>周六深夜被踢下线之后，我给服务器上的 Agent 装了 MateClaw · 老杨技术栈</title>
+  
+<meta name="description" content="折腾了大半年自托管 AI Agent，最怕 token 过期把会话掐断。直到朋友甩来一个链接，说有个东西能让 Agent 越用越聪明还不会踢你下线——这是我把它跑起来的那个周末的故事。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/mateclaw.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="周六深夜被踢下线之后，我给服务器上的 Agent 装了 MateClaw">
+<meta property="og:description" content="折腾了大半年自托管 AI Agent，最怕 token 过期把会话掐断。直到朋友甩来一个链接，说有个东西能让 Agent 越用越聪明还不会踢你下线——这是我把它跑起来的那个周末的故事。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/mateclaw.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/mateclaw/cloud-deploy.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/mateclaw/cloud-deploy.png">
+
+<meta name="twitter:title" content="周六深夜被踢下线之后，我给服务器上的 Agent 装了 MateClaw">
+<meta name="twitter:description" content="折腾了大半年自托管 AI Agent，最怕 token 过期把会话掐断。直到朋友甩来一个链接，说有个东西能让 Agent 越用越聪明还不会踢你下线——这是我把它跑起来的那个周末的故事。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6298\u817e\u4e86\u5927\u534a\u5e74\u81ea\u6258\u7ba1 AI Agent\uff0c\u6700\u6015 token \u8fc7\u671f\u628a\u4f1a\u8bdd\u6390\u65ad\u3002\u76f4\u5230\u670b\u53cb\u7529\u6765\u4e00\u4e2a\u94fe\u63a5\uff0c\u8bf4\u6709\u4e2a\u4e1c\u897f\u80fd\u8ba9 Agent \u8d8a\u7528\u8d8a\u806a\u660e\u8fd8\u4e0d\u4f1a\u8e22\u4f60\u4e0b\u7ebf\u2014\u2014\u8fd9\u662f\u6211\u628a\u5b83\u8dd1\u8d77\u6765\u7684\u90a3\u4e2a\u5468\u672b\u7684\u6545\u4e8b\u3002", "headline": "\u5468\u516d\u6df1\u591c\u88ab\u8e22\u4e0b\u7ebf\u4e4b\u540e\uff0c\u6211\u7ed9\u670d\u52a1\u5668\u4e0a\u7684 Agent \u88c5\u4e86 MateClaw", "image": ["https://alipymanbu.github.io/images/mateclaw/cloud-deploy.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/mateclaw.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/mateclaw.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u5468\u516d\u6df1\u591c\u88ab\u8e22\u4e0b\u7ebf\u4e4b\u540e\uff0c\u6211\u7ed9\u670d\u52a1\u5668\u4e0a\u7684 Agent \u88c5\u4e86 MateClaw", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">周六深夜被踢下线之后，我给服务器上的 Agent 装了 MateClaw</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">周六深夜被踢下线之后，我给服务器上的 Agent 装了 MateClaw</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">折腾了大半年自托管 AI Agent，最怕 token 过期把会话掐断。直到朋友甩来一个链接，说有个东西能让 Agent 越用越聪明还不会踢你下线——这是我把它跑起来的那个周末的故事。</p>
+  </header>
+  <div class="prose">
+<h2>凌晨一点，401 把我从椅子上弹起来</h2>
+<p>那天是周六。不是工作日那种被迫加班的周六，是我自己没事干，想把花了一周写的 Agent 部署到 VPS 上，让它帮我每周定时拉数据生成报告。</p>
+<p>前面挺顺的——Docker 拉镜像、配 PostgreSQL、写技能描述文件，忙活了四五个小时，终于看到 Agent 第一次成功跑完了整个流程。我正准备截图发到群里装逼，浏览器突然给我弹了个红色的 <code>401 Unauthorized</code>。</p>
+<p>没登录。</p>
+<p>我刷新一下，还在。再刷新，登录页出来了，要重新输用户名密码。好，登进去，再看 Agent 的任务列表——刚才那个跑了一半的报告任务丢了半截，数据库里只存了前三项，后面全没了。</p>
+<p>这不是我第一次遇到这种事了。之前用别的方案，token 有效期 24 小时，我要是隔一天没看，回来就得重新登录，而且刚好撞在任务执行到一半的时候。滑动续签？不是没有，但要么是前端得自己处理响应头，要么就是根本没实现。</p>
+<p>更让我郁闷的是，我给 Agent 写的技能描述文件每次都是干的。上次它帮我写代码 review 忘了跑测试，我在 prompt 里加了一句「记得先跑测试」，下次又忘了——这不是 Agent 笨，是每次都从头开始，根本没有累积经验。</p>
+<h2>朋友甩来一个链接</h2>
+<p>我在群里吐槽完，一个朋友私发我：「试试 MateClaw，它的<a href="https://mateclaw.fewf.ren" target="_blank" rel="noopener">官网</a>上就是给自托管场景做的。」</p>
+<p>他说这个东西就是给自托管场景做的，Docker 一条命令全拉起来，token 有滑动窗口续签，而且技能包能记录 LESSONS.md——每次执行完自动问 Agent 有没有值得记下来的经验。</p>
+<p>说实话我当时半信半疑。类似的东西我见过好几个，说得都挺好听，真正跑起来就不是那么回事。但反正已经凌晨一点了，也没别的事可干。</p>
+<h2>60 秒跑起来（服务器版）</h2>
+<p>我先试了 Docker 栈部署——朋友说服务器端首选这个，<a href="https://mateclaw.fewf.ren/download.html" target="_blank" rel="noopener">下载</a>页面也有桌面端安装包，不想折腾 Docker 可以直接双击。克隆仓库，复制一个 <code>.env</code> 模板填密码，然后一条 <code>docker compose up -d</code>，三个容器就起来了：后端 Spring Boot、PostgreSQL 16、还有一个内置的 SearXNG 搜索后端。</p>
+<p>端口直接开了 18080，浏览器访问就能看到登录页。默认账号 <code>admin</code> / <code>admin123</code>，进去第一件事改密码——这个套路我熟。</p>
+<p><img src="../images/mateclaw/cloud-deploy.png" alt="MateClaw Docker 栈部署到云服务器的界面" loading="lazy"></p>
+<h2>滑动窗口续签——我盯了三天才敢信</h2>
+<p>跑起来之后第一个要验证的就是那个滑动窗口续签。原理很简单：token 24 小时，剩余不到 25%（也就是 6 小时）的时候，服务器在每次响应头里悄悄塞一个全新的 token，前端自动替换。用户完全没感觉。</p>
+<p>我专门开了个 curl 脚本盯了 72 小时，每隔一小时打一次请求，检查响应头里有没有 <code>X-New-Token</code>。结果真的是每次快到点的时候就续上了，token 链从没断过。之前用的方案要么没这功能，要么得自己写前端代码处理，MateClaw 原生就做了。</p>
+<p>现在我的 Agent 跑定时任务的时候再也不会被中途踢断了。</p>
+<h2>LESSONS.md——让技能越长越聪明</h2>
+<p>这是我觉得最有意思的设计。每个技能包除了必须的描述文件，还可以带一份 LESSONS.md——后来去<a href="https://mateclaw.pages.dev/" target="_blank" rel="noopener">MateClaw文档</a>翻了一下才弄明白背后的机制，Agent 在注入技能之前会先读这份经验文件，让 Agent 在每次执行时先读这些经验教训。而且每次任务结束后，MateClaw 会自动问 Agent 有没有值得记录的经验，我审核一下就能追加进去。</p>
+<p>我那个代码 review 的技能，现在 LESSONS.md 里已经积累了十几条：常见坑是别只看风格漏掉性能问题、最佳实践是先跑测试再看代码、我自己的偏好是喜欢 inline comment 不喜欢长篇 summary。上次它 review 我的 Spring Boot 3.5 升级代码，自动就注意到了 breaking changes——这个是我以前得每次手动提醒的。</p>
+<p>技能不是静止的模板，是会生长的。</p>
+<p><img src="../images/mateclaw/skills-market.png" alt="技能市场里可以给每个技能包配 LESSONS.md 让经验持续积累" loading="lazy"></p>
+<h2>那一夜之后</h2>
+<p>周末那两个小时，我从被 401 弹起来到把新方案跑通，刚好比我之前折腾那个方案快了三倍。</p>
+<p>现在服务器上那个 Agent 已经帮我跑了快一个月的定时任务了，没断过一次。代码 review 的技能也越来越顺手，LESSONS.md 已经长到了 80 多行，每次 review 都比上次更懂我的习惯。</p>
+<p>有时候我会想，如果当时没在群里吐槽、没收到那篇文档，我还在自己写 JWT 续签的前端逻辑吧。自托管的坑真的太多了，能遇到一个把常见场景都替你想好了的东西，省的不只是时间。</p>
+<p>我后来把整个踩坑过程和 Docker 部署笔记整理了一套资料，<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/MateClaw" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/MateClaw" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/MateClaw" target="_blank" rel="noopener">GitCode</a> 上都同步了，方便其他还在被 token 过期踢下线的人参考。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/fgomooncell.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">FgoMooncell 深度对比：为什么它是 FGO 玩家绕不开的那本攻略</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/musclewiki.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MuscleWiki 装了快一年：它没让我成为健身达人，但让我学会了怎么不瞎练</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

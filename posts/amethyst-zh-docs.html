@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Amethyst 零基础上手：手机也能玩 Minecraft Java 版？一篇讲明白 · 老杨技术栈</title>
+  
+<meta name="description" content="第一次接触 Amethyst 完全不知道怎么下手？这篇从零带路，从装软件到第一次启动游戏，再到装模组和导入整合包，每个步骤都讲清楚——不需要任何技术基础。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/amethyst-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Amethyst 零基础上手：手机也能玩 Minecraft Java 版？一篇讲明白">
+<meta property="og:description" content="第一次接触 Amethyst 完全不知道怎么下手？这篇从零带路，从装软件到第一次启动游戏，再到装模组和导入整合包，每个步骤都讲清楚——不需要任何技术基础。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/amethyst-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/amethyst-zh-docs/profile-create.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/amethyst-zh-docs/profile-create.png">
+
+<meta name="twitter:title" content="Amethyst 零基础上手：手机也能玩 Minecraft Java 版？一篇讲明白">
+<meta name="twitter:description" content="第一次接触 Amethyst 完全不知道怎么下手？这篇从零带路，从装软件到第一次启动游戏，再到装模组和导入整合包，每个步骤都讲清楚——不需要任何技术基础。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7b2c\u4e00\u6b21\u63a5\u89e6 Amethyst \u5b8c\u5168\u4e0d\u77e5\u9053\u600e\u4e48\u4e0b\u624b\uff1f\u8fd9\u7bc7\u4ece\u96f6\u5e26\u8def\uff0c\u4ece\u88c5\u8f6f\u4ef6\u5230\u7b2c\u4e00\u6b21\u542f\u52a8\u6e38\u620f\uff0c\u518d\u5230\u88c5\u6a21\u7ec4\u548c\u5bfc\u5165\u6574\u5408\u5305\uff0c\u6bcf\u4e2a\u6b65\u9aa4\u90fd\u8bb2\u6e05\u695a\u2014\u2014\u4e0d\u9700\u8981\u4efb\u4f55\u6280\u672f\u57fa\u7840\u3002", "headline": "Amethyst \u96f6\u57fa\u7840\u4e0a\u624b\uff1a\u624b\u673a\u4e5f\u80fd\u73a9 Minecraft Java \u7248\uff1f\u4e00\u7bc7\u8bb2\u660e\u767d", "image": ["https://alipymanbu.github.io/images/amethyst-zh-docs/profile-create.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/amethyst-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/amethyst-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "Amethyst \u96f6\u57fa\u7840\u4e0a\u624b\uff1a\u624b\u673a\u4e5f\u80fd\u73a9 Minecraft Java \u7248\uff1f\u4e00\u7bc7\u8bb2\u660e\u767d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">Amethyst 零基础上手：手机也能玩 Minecraft Java 版？一篇讲明白</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Amethyst 零基础上手：手机也能玩 Minecraft Java 版？一篇讲明白</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">第一次接触 Amethyst 完全不知道怎么下手？这篇从零带路，从装软件到第一次启动游戏，再到装模组和导入整合包，每个步骤都讲清楚——不需要任何技术基础。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到用起来——不需要任何技术基础，跟着点就行。</p>
+<h2>它到底是干嘛的</h2>
+<p>先打个比方：如果你玩过电脑上的 Minecraft，一定知道启动器是什么——帮你选版本、装模组、管理不同游戏环境的那个工具。去 <a href="https://amethyst.ggcd.online" target="_blank" rel="noopener">Amethyst官网</a> 看看就知道——它就是<strong>把这件事搬到了安卓手机上</strong>的启动器。</p>
+<p>它不生成游戏内容，也不是模组本体。它的角色更像是一个<strong>管家</strong>：你告诉它要玩哪个版本、装哪些模组、用什么加载器，它帮你把这些组装好，然后把 Minecraft Java 版跑在手机上。</p>
+<p>想象一下，在公交上掏出手机，进自己搭的那个有暮色森林、有匠魂模组的世界继续干活——这就是 Amethyst 存在的意义。</p>
+<h2>五分钟上手：从下载到第一次跑通</h2>
+<p>好消息是，Amethyst 的第一次启动流程设计得挺友好，不需要你提前配置一堆东西。以下五个步骤，每步几十秒：</p>
+<p><strong>第一步：装软件</strong>。先去 Amethyst 的<a href="https://amethyst.ggcd.online/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包，装好打开。第一次启动时它会申请一些存储权限——都给就行，因为启动器要在手机上建自己的游戏文件夹。</p>
+<p><strong>第二步：Java 运行时</strong>。Minecraft Java 版需要 Java 环境才能跑，Amethyst 启动时会检测你手机上有没有合适的 Java 版本。没有的话它会提示你下载一个，跟着提示走就好，不用纠结选哪个版本——启动器推荐的那个就对了。</p>
+<p><strong>第三步：创建第一个配置</strong>。启动器主界面有个"创建新配置"按钮，点进去。最简单的路线：</p>
+<ul><li>类型选 <strong>原版（VANILLA）</strong>——先别碰 Forge/Fabric，跑通原版再说；</li><li>游戏版本随便挑一个稳定版（比如 1.20.1），越新的越好；</li><li>给配置起个名字，比如"我的第一个世界"。</li></ul>
+<p><img src="../images/amethyst-zh-docs/profile-create.png" alt="创建第一个配置" loading="lazy"></p>
+<p><strong>第四步：启动</strong>。配置列表里出现你刚创建的那一条，点它旁边的启动按钮。第一次启动需要下载游戏文件，网速决定等待时间——下载完自动进游戏。</p>
+<p><strong>第五步：创建存档</strong>。进游戏后点"单人游戏"→"创建新的世界"，选个游戏模式（生存/创造都行），点创建。</p>
+<p>到这里，你已经在手机上玩到了完整的 Minecraft Java 版。五分钟没夸张。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>跑通原版之后，新手最值得先碰的三个点——按顺序来，每个都能给你一个清晰的"这意味着什么"：</p>
+<h3>装第一个模组</h3>
+<p>电脑上装模组是把 .jar 文件丢进 mods 文件夹，Amethyst 在手机上也是一样的逻辑。<strong>关键区别只有一个：用复制，别用剪切。</strong></p>
+<p>从浏览器下载模组文件到手机后，打开启动器，进入你的配置，找到 mods 文件夹入口，把文件<strong>复制</strong>进去。然后重新启动配置。</p>
+<p><img src="../images/amethyst-zh-docs/home-main.png" alt="启动器主界面" loading="lazy"></p>
+<p>你会在启动日志里看到模组被加载的信息。进游戏如果一切正常，说明你已经成功扩展了游戏内容。这意味着：你手机上的 Minecraft 不再只有原版那点东西，社区做的上千个模组都能尝试。</p>
+<h3>导入一个整合包</h3>
+<p>单模组是零散的体验，整合包是"开箱即用"的完整方案——作者帮你选好了模组、配好了设置、调好了内存分配，你拿到直接玩。</p>
+<p>Amethyst 支持两种导入方式：</p>
+<ul><li><strong>有文件</strong>：下载好 .mrpack（Modrinth 格式）或 .zip（CurseForge 格式），创建配置时选"创建整合包配置"，挑文件就行；</li><li><strong>没文件</strong>：启动器内置了 Modrinth 整合包搜索，在创建配置的整合包流程里直接搜，搜到想要的点选中，启动器帮你搞定剩下的。</li></ul>
+<p>你会发现启动器在后台默默下载一堆东西，几分钟后配置就准备好了。这意味着：不用再一个一个找模组、手动排依赖，想要"科技包"还是"魔法包"，搜名字就行。</p>
+<h3>执行 JAR 按钮：别碰它装模组</h3>
+<p>主菜单上有个"执行 JAR 文件"按钮，名字很容易让人误会。<strong>这个按钮不是装模组用的</strong>——很多新手拿它去"装模组"，然后收到一堆崩溃。</p>
+<p>它的真实用途是<strong>直接运行一个 .jar 文件</strong>，像电脑上双击运行 Java 程序那样。适合的场景只有一种：你拿到的是个<strong>带图形界面的安装器</strong>，需要"跑起来点下一步"才能完成安装的那种。</p>
+<p>大多数模组没有图形界面，打开它们的 .jar 只会在日志里报错退出。所以：装模组丢 mods 文件夹，装加载器用启动器自动装，OptiFine 走专门的 OptiFine 配置——别让执行 JAR 按钮参合进来。更详细的参数和边界可以去<a href="https://amethyst-zh-docs.pages.dev/" target="_blank" rel="noopener">Amethyst文档</a>查。</p>
+<h2>小白的三个常见疑问</h2>
+<p>玩了一阵子后，这些问题大概率会碰到。提前知道省得瞎试：</p>
+<p><strong>Q1：装任何模组都崩，日志全是 Permission denied？</strong></p>
+<p>这不是模组的锅。是你把模组文件<strong>剪切</strong>进 mods 文件夹的——安卓文件系统在剪切时权限标志没跟着迁移，启动器读不了。</p>
+<p>修法很简单：把 mods 里的模组全删掉，回到原下载位置，改用<strong>复制</strong>（不是剪切）重新放进去，重启配置就好。就这一个动作。</p>
+<p>如果复制了还崩，再往下排查：先试一个别的模组（单个崩可能是兼容问题）、核对加载器类型（纯原版配置读不了模组）、检查是不是改过自定义路径。</p>
+<p><strong>Q2：听说 Sodium 能大幅提升帧率，我装了为什么黑屏？</strong></p>
+<p>Sodium 以及 Embeddium、Rubidium 这类性能模组，和手机上的 OpenGL 翻译层存在已知的兼容性问题。直接装大概率崩或黑屏。</p>
+<p>绕行方案有两个：换用 Zink 系渲染器再试，或者走 OptiFine 路线（注意 OptiFine 的 Render Regions 在手机上不工作）。</p>
+<p>不光是 Sodium，Create（关飞轮渲染或换 Zink）、Iris 光影（依赖完整 OpenGL）、ReplayMod（导出视频需要额外插件）等也有各自的适配细节。社区维护了一份长期更新的不适配清单，装模组前扫一眼能省大量试错时间。</p>
+<p><strong>Q3：启动器里还有个渲染器选项，我该选哪个？</strong></p>
+<p>Amethyst 内置了多种渲染器供选择，不同渲染器影响画面表现和模组兼容性。简单给个新手参考：Zink 系渲染器对模组兼容性更好，但画面可能不如 gl4es；gl4es 画面表现扎实，但部分模组（尤其是 Create 这样的大型内容模组）需要额外调整。</p>
+<p>如果你还在摸索阶段，保持启动器推荐的默认选项就好。遇到模组兼容问题时，先尝试切换渲染器，再考虑其他方案。</p>
+<h2>写在后面</h2>
+<p>到这里，你已经知道 Amethyst 是干嘛的、怎么跑通、怎么装模组和导入整合包，也了解了几个新手最容易踩的坑。</p>
+<p>一个进阶方向：试试 Fabric 或 Forge 加载器路线。原版玩腻了之后，加载器能帮你解锁更多模组生态，也是大多数整合包的基础。关于加载器配置和更多技术细节的参考资料，<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Amethyst" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Amethyst" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Amethyst" target="_blank" rel="noopener">GitCode</a> 上各有一份备份，随你选哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/epik-docs.html">epik 六年迭代：一款修图 App 如何在「一键美型」和「精细控制」之间反复横跳</a></h2>
+  <p class="card-desc">从早期一键式美颜工具到如今同时拥有专业调色面板和 AI 毕业照服务，epik 的版本迭代史藏着一个修图产品最真实的两难。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wikihow-docs.html">凌晨十一点，我靠一个小应用打出了人生第一条领带</a></h2>
+  <p class="card-desc">面试前一夜对着领带慌了神，室友睡了爸妈远在千里，Google 搜出来的全是广告。偶然想起下载过的 wikiHow，跟着图文步骤一步步来，十分钟搞定。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/rewasd.html">reWASD 上手一周：手柄调瞄准手感这件事，终于不用靠玄学了</a></h2>
+  <p class="card-desc">一个被 FPS 瞄准漂移折磨了半年的人，用 reWASD 把摇杆曲线掰了半小时后，第一次觉得&#34;瞄准手感&#34;这玩意儿是能被精确描述和调整的。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/tronclass.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从一门课的管课工具到全校教学中枢：畅课TronClass的版本进化史</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/dd373.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用 DD373 快一年了，我把它从&#34;偶尔用&#34;改成了&#34;优先用&#34;</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

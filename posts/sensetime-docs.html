@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>商汤日日新里藏得最深的四个玩法：复刻直播间、图片变视频、Skill 自由组合…… · 老杨技术栈</title>
+  
+<meta name="description" content="大多数人只知道商汤是做安防摄像头的，不知道日日新 SenseNova 生态里藏着复刻直播间、一张图生成数字人视频、Token Plan 内置工作流引擎等四个冷门但杀招级的功能。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/sensetime-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="商汤日日新里藏得最深的四个玩法：复刻直播间、图片变视频、Skill 自由组合……">
+<meta property="og:description" content="大多数人只知道商汤是做安防摄像头的，不知道日日新 SenseNova 生态里藏着复刻直播间、一张图生成数字人视频、Token Plan 内置工作流引擎等四个冷门但杀招级的功能。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/sensetime-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/sensetime-docs/ruanhong-livestream.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/sensetime-docs/ruanhong-livestream.png">
+
+<meta name="twitter:title" content="商汤日日新里藏得最深的四个玩法：复刻直播间、图片变视频、Skill 自由组合……">
+<meta name="twitter:description" content="大多数人只知道商汤是做安防摄像头的，不知道日日新 SenseNova 生态里藏着复刻直播间、一张图生成数字人视频、Token Plan 内置工作流引擎等四个冷门但杀招级的功能。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5927\u591a\u6570\u4eba\u53ea\u77e5\u9053\u5546\u6c64\u662f\u505a\u5b89\u9632\u6444\u50cf\u5934\u7684\uff0c\u4e0d\u77e5\u9053\u65e5\u65e5\u65b0 SenseNova \u751f\u6001\u91cc\u85cf\u7740\u590d\u523b\u76f4\u64ad\u95f4\u3001\u4e00\u5f20\u56fe\u751f\u6210\u6570\u5b57\u4eba\u89c6\u9891\u3001Token Plan \u5185\u7f6e\u5de5\u4f5c\u6d41\u5f15\u64ce\u7b49\u56db\u4e2a\u51b7\u95e8\u4f46\u6740\u62db\u7ea7\u7684\u529f\u80fd\u3002", "headline": "\u5546\u6c64\u65e5\u65e5\u65b0\u91cc\u85cf\u5f97\u6700\u6df1\u7684\u56db\u4e2a\u73a9\u6cd5\uff1a\u590d\u523b\u76f4\u64ad\u95f4\u3001\u56fe\u7247\u53d8\u89c6\u9891\u3001Skill \u81ea\u7531\u7ec4\u5408\u2026\u2026", "image": ["https://alipymanbu.github.io/images/sensetime-docs/ruanhong-livestream.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/sensetime-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/sensetime-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "\u5546\u6c64\u65e5\u65e5\u65b0\u91cc\u85cf\u5f97\u6700\u6df1\u7684\u56db\u4e2a\u73a9\u6cd5\uff1a\u590d\u523b\u76f4\u64ad\u95f4\u3001\u56fe\u7247\u53d8\u89c6\u9891\u3001Skill \u81ea\u7531\u7ec4\u5408\u2026\u2026", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">商汤日日新里藏得最深的四个玩法：复刻直播间、图片变视频、Skill 自由组合……</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">商汤日日新里藏得最深的四个玩法：复刻直播间、图片变视频、Skill 自由组合……</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">大多数人只知道商汤是做安防摄像头的，不知道日日新 SenseNova 生态里藏着复刻直播间、一张图生成数字人视频、Token Plan 内置工作流引擎等四个冷门但杀招级的功能。</p>
+  </header>
+  <div class="prose">
+<h2>引子：你以为它只是个摄像头厂？</h2>
+<p>坦白说，在翻透它之前我对商汤的印象和大部分人一样——就是做手机人脸识别、安防摄像头那种 AI 硬件公司。打开日日新 SenseNova 的<a href="https://sensetime.fwen.ren" target="_blank" rel="noopener">sensetime官网</a>和文档站，起初也只是想找个 API、顺便看看<a href="https://sensetime.fwen.ren/download.html" target="_blank" rel="noopener">官方下载</a>有没有什么能本地跑的 Demo，结果一头扎进去三个月，发现整个生态里藏着一批官方几乎不宣传、但对中小团队来说是杀招的功能。</p>
+<p>下面这四个，每一个都让我觉得"用了这么久居然没发现"。</p>
+<h2>一、Token Plan 不是便宜 API，是 Skill 自由组合的长链路引擎</h2>
+<p>Token Plan 刚上线的时候我第一眼扫过去："哦，按量计费省 60%，Free 档 0 元/月"——这不就是另一个按 token 计费的 API 套餐吗？</p>
+<p>结果翻到<a href="https://sensetime-docs.pages.dev/" target="_blank" rel="noopener">sensetime文档</a>里一段没加粗的小字才发现，这东西藏得比我想的深多了。Token Plan 根本不是个单纯的计费方式，它是一个<strong>办公生产力能力包</strong>——里面捆绑了 8 项 Cowork-Skills 组件，贯穿理解、执行、生成三层，可以独立调用解决单点任务，也能自由组合跑通长链路。</p>
+<p>这意味着什么？假设你是一个电商运营，以前可能要自己写脚本调不同模型：用一个模型抓评论数据、另一个做情感分析、第三个生成回复话术、第四个排定时推送。现在 Token Plan 里直接就能把这些 Skill 串成一条流水线，一次跑到结果。商汤自己的官方说法是"复杂办公流程一次跑到结果"，但没说的是——<strong>这个组合能力跟 token 计费是分开的</strong>，你只要在 Token Plan 的用量额度内，用 Skill 串多少次都不额外收费。</p>
+<p>什么人用得上？有固定办公流程、不想自己搭 Agent 编排框架的中小团队。什么人可以无视？只调单次模型推理、不涉及复杂工作流的开发者。</p>
+<h2>二、复刻直播间：一段往期视频克隆一整间直播间</h2>
+<p>这个功能藏得真深，甚至在文档站里都不是一个独立章节——它混在如影数字人的「超级直播间」子产品里，埋在一堆功能点中间。</p>
+<p>你猜怎么开？打开如影数字人控制台，进超级直播间，找「复刻直播间」按钮。就这么简单。但它做的事情远不止"数字人替身"那么简单：</p>
+<p><strong>不需要真人模特、不需要绿幕棚、不需要提词器</strong>——只喂一段你店铺往期直播的视频，它就能生成一个 7×24 小时在线的数字人主播，连主播的说话节奏、停顿习惯、甚至跟观众互动时的语气都能复刻出来。</p>
+<p>但这还不是最狠的。它还有个「多模态大模型智能运营」功能：<strong>按商品交易额、互动频次等维度自动选品</strong>，把一个长直播里最能卖的品自动拆成多段短视频，特写镜头智能提取。商汤自己测的是直播运营效率提升 7 倍。</p>
+<p>我第一次看到这个功能的时候反应是："这不就是把之前一个运营团队的活儿，交给一个模型干了？" 而且不需要你有任何拍摄剪辑经验，不需要绿幕棚，不需要真人出镜——你只要有一段过去的直播录像。</p>
+<p>什么人用得上？电商卖家、本地生活商家、想做带货但没有直播间资源的个人。什么人可以无视？只做纯内容短视频、不涉及实时互动的创作者。</p>
+<p><img src="../images/sensetime-docs/ruanhong-livestream.png" alt="如影直播间" loading="lazy"></p>
+<h2>三、图片数字人：一张图 + 一段音频 = 3 分钟以上视频</h2>
+<p>如影数字人还有一个子产品叫「图片数字人」，名字听起来平平无奇，但能力完全是反常识的。</p>
+<p>你猜做一条数字人视频需要什么素材？大多数人的第一反应是：真人拍摄、动作捕捉、至少得有一段真人出镜的视频吧？</p>
+<p>错。如影图片数字人只需要<strong>一张图片 + 一段音频</strong>。</p>
+<p>没错，就是你手机相册里随便一张人脸照片，加上一段你自己录的音频——就能生成一条高质量、多语种的数字人视频。而且还不是那种嘴型对不上的粗糙版本，官方宣称是 <strong>Rap 级口型对齐</strong>——连快速说唱的咬字都能跟得上。更离谱的是，它支持 Prompt 驱动动作：你可以说"让它举起右手"或者"让它做一个惊讶的表情"，还能指定多人互动的场景。</p>
+<p>输出时长也不短——单条可以做到 3 分钟以上，支持说话、唱歌等多种场景。对于做知识科普短视频、教育培训内容的人来说，这等于把"出镜"这件事的门槛降到了零。</p>
+<p>什么人用得上？知识博主、教育培训从业者、不想露脸但需要真人形象出镜的内容创作者。什么人可以无视？追求极致真实感、需要精细表情表演的影视级创作者。</p>
+<p><img src="../images/sensetime-docs/ruanhong-video.png" alt="如影视频生成" loading="lazy"></p>
+<h2>四、SSP 训推一体：不用换平台的分布式训练</h2>
+<p>这个功能藏在 SenseCore 算力池的技术细节里，对于做 AI 应用的开发者来说可能是最被低估的一个。</p>
+<p>SSP（SenseScale AI Compute Platform）是商汤面向企业的训推一体平台。听起来没什么特别的，但商汤自己没怎么宣传的两个技术细节值得注意：</p>
+<p>第一，<strong>从交互式开发调试到大规模分布式训练再到高效推理，全在一个平台上完成</strong>。你不需要在 PyTorch MPI 集群、Jupyter Notebook 开发环境、推理服务之间来回切换——一个 SSP 搞定。对于还在不同平台之间搬数据的团队来说，这省的不只是时间，还有数据迁移的风险。</p>
+<p>第二，<strong>CKPT 读写速度提升 10 倍</strong>——通过多级缓存机制实现的。做过大模型训练的人都知道，checkpoint 保存和加载是训练效率的瓶颈之一，特别是在 10,000 卡规模的并行训练里。商汤说 SSP 支持高达 96% 的线性加速比，这里面 CKPT 的提速功不可没。</p>
+<p>什么人用得上？科研机构、正在做大模型应用落地的互联网团队、具身智能赛道的创新实践团队。什么人可以无视？只调 API 不训模型的应用开发者、小规模微调就能搞定的项目。</p>
+<h2>坑别踩：三个容易忽略的限制</h2>
+<p>藏得深的功能往往也藏着限制，这三个我试过踩过：</p>
+<p><strong>Token Plan Free 档有隐形配额</strong>——每个模型每 5 小时 1,500 次调用，特殊模型不在这个范围内。看起来 0 元很香，但如果你要做连续高频调用（比如跑一个 24 小时的自动化运营任务），5 小时窗口的配额可能不够用。而且 Lite / Pro 档到现在还没上线，想升级也升不了。</p>
+<p><strong>复刻直播间依赖往期素材质量</strong>——如果你的往期直播是用手机竖屏录的、光线差、背景杂乱，复刻出来的数字人质量会打折扣。最好用绿幕棚或者光线均匀的横屏直播录像作为复刻源。</p>
+<p><strong>图片数字人的私有化部署需要商务对接</strong>——虽然它支持 API 调用和私有化部署，但私有化部署不是自助开通的，得跟商汤的商务团队谈。如果你的数据不能出域，这个门槛要提前考虑。</p>
+<h2>收尾</h2>
+<p>这四个功能里，让我重新理解一件事：<strong>很多时候不是软件没能力，是官方没把它说清楚</strong>。日日新 SenseNova 生态里藏的东西远不止这四个——算力池的异构混训、数字人的 API 接口、甚至算力节点的全国布局——每深挖一个都能发现新东西。</p>
+<p>把它用透，比换一个新工具更值。</p>
+<p>想直接拿完整资料的话，我在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/sensetime" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/sensetime" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/sensetime" target="_blank" rel="noopener">GitCode</a>三个仓库都维护了一份备份，哪个方便用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/cimoc.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Cimoc 付费决策账本：一款免费开源漫画阅读器，到底值不值得你花时间折腾</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/blacklyte.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">搬家那天，我用一台会呼吸的游戏桌迎接了新赛季</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

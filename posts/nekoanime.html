@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>10MB 追番客户端值不值得用：NekoAnime 在开源番剧工具里的位置 · 老杨技术栈</title>
+  
+<meta name="description" content="把 NekoAnime 放进开源番剧客户端的坐标系里——它用体积、广告和平台限制换来了纯粹的追番体验，适合轻量用户，也能在老机型上跑得稳。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/nekoanime.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10MB 追番客户端值不值得用：NekoAnime 在开源番剧工具里的位置">
+<meta property="og:description" content="把 NekoAnime 放进开源番剧客户端的坐标系里——它用体积、广告和平台限制换来了纯粹的追番体验，适合轻量用户，也能在老机型上跑得稳。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/nekoanime.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/nekoanime/home.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/nekoanime/home.png">
+
+<meta name="twitter:title" content="10MB 追番客户端值不值得用：NekoAnime 在开源番剧工具里的位置">
+<meta name="twitter:description" content="把 NekoAnime 放进开源番剧客户端的坐标系里——它用体积、广告和平台限制换来了纯粹的追番体验，适合轻量用户，也能在老机型上跑得稳。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u628a NekoAnime \u653e\u8fdb\u5f00\u6e90\u756a\u5267\u5ba2\u6237\u7aef\u7684\u5750\u6807\u7cfb\u91cc\u2014\u2014\u5b83\u7528\u4f53\u79ef\u3001\u5e7f\u544a\u548c\u5e73\u53f0\u9650\u5236\u6362\u6765\u4e86\u7eaf\u7cb9\u7684\u8ffd\u756a\u4f53\u9a8c\uff0c\u9002\u5408\u8f7b\u91cf\u7528\u6237\uff0c\u4e5f\u80fd\u5728\u8001\u673a\u578b\u4e0a\u8dd1\u5f97\u7a33\u3002", "headline": "10MB \u8ffd\u756a\u5ba2\u6237\u7aef\u503c\u4e0d\u503c\u5f97\u7528\uff1aNekoAnime \u5728\u5f00\u6e90\u756a\u5267\u5de5\u5177\u91cc\u7684\u4f4d\u7f6e", "image": ["https://alipymanbu.github.io/images/nekoanime/home.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/nekoanime.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/nekoanime.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "10MB \u8ffd\u756a\u5ba2\u6237\u7aef\u503c\u4e0d\u503c\u5f97\u7528\uff1aNekoAnime \u5728\u5f00\u6e90\u756a\u5267\u5de5\u5177\u91cc\u7684\u4f4d\u7f6e", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">10MB 追番客户端值不值得用：NekoAnime 在开源番剧工具里的位置</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">10MB 追番客户端值不值得用：NekoAnime 在开源番剧工具里的位置</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">把 NekoAnime 放进开源番剧客户端的坐标系里——它用体积、广告和平台限制换来了纯粹的追番体验，适合轻量用户，也能在老机型上跑得稳。</p>
+  </header>
+  <div class="prose">
+<h2>同类软件格局：开源追番工具本来就是个夹缝</h2>
+<p>追番这个需求很尴尬。正规视频应用有版权、有弹幕、有社区，但番剧更新慢、广告多、占空间大；网页上的资源站更新快、片源全，但弹窗误触、手机浏览器体验差。开源追番客户端就是在这两者的夹缝里长出来的——它的生存逻辑从来不是跟大厂拼功能，而是把「资源站的片库 + 正规应用的体验」这两件事捏到一起。</p>
+<p>这个类目里选手不少。早几年的 Imomoe 攒过一波用户，后来的 Bangumi 生态也冒出过几个三方客户端，大厂自己也在做番剧专区但那不是同一个赛道。开源追番工具的共同宿命是数据源绑定——一旦源站换域名或改页面，应用就得跟着改，迭代节奏永远不在自己手里。<a href="https://nekoanime.fewa.skin" target="_blank" rel="noopener">NekoAnime官网</a> 也是这个宿命里的一员，但它选了一条跟别人不太一样的路径。</p>
+<h2>它的差异化：把轻量这件事做到底</h2>
+<h3>体积克制到不像一个视频应用</h3>
+<p>10.6MB 的安装包是什么概念？你手机里随便一个输入法、一个天气应用都比它大。大厂视频应用动辄上百 MB，加上缓存轻松破 GB。NekoAnime 10.6MB 装完跑起来，内存占用也非常克制——我在一台用了四年的骁龙 660 老机型上装过，跟同期试的另外两款开源客户端相比，切换和加载速度确实更利落。</p>
+<p>这个 10MB 不是砍功能砍出来的。首页轮播、新番动态、分类筛选、搜索、详情页、播放器手势、离线缓存——该有的都有。它用的是 Kotlin + Jetpack Compose 的现代技术栈，架构参考了谷歌官方的 nowinandroid 示例，从一开始就没有历史包袱。</p>
+<p><img src="../images/nekoanime/home.png" alt="NekoAnime 首页界面" loading="lazy"></p>
+<h3>真的没有广告</h3>
+<p>这一点在同类里并不稀奇，但 NekoAnime 做得更彻底——不是「开发者愿意就没有」，而是项目设计里从一开始就没有广告位。打开就是番剧列表，搜出来就播，播放器界面干净，锁屏界面也不会冒出个开屏广告等你等三秒。对比一下同类工具里偶尔会弹的开发者感谢弹窗、或者某些渠道打包里夹带的推广位，这个区别对于被网页资源站弹窗折磨过的用户来说是硬刚需。</p>
+<h3>离线缓存补上了最关键的一块</h3>
+<p>开源追番工具长期以来的短板就是缓存。要么根本没有，要么缓存逻辑差到找不着文件。NekoAnime 在 v0.5 系列把这个功能补上了，而且做得不凑合——缓存的集数不受源站波动影响，源站断了照样能看。项目历史里写得清楚，这个功能是用户呼声最高的，v0.5 才加上，说明开发者是真听反馈的。</p>
+<h2>它的取舍：轻量不是没有代价</h2>
+<h3>数据源绑定是原罪</h3>
+<p>NekoAnime 的片库完全来自樱花动漫系资源站。2024 年 9 月 v0.4.0 那次伤筋动骨的换源，直接导致用户数据全部重来——这不是开发者能控制的。源站换域名、改页面结构、加密视频地址，每一次都逼开发者紧急发版。v0.5.2 就是专门用来解密的，历史上类似的修复版本已经有过好几次。</p>
+<p>这种不确定性意味着：<strong>它不是一个可以「装了就不用管」的应用</strong>。全站加载失败了，先别急着卸载，去<a href="https://nekoanime.pages.dev/" target="_blank" rel="noopener">NekoAnime文档</a>和仓库看看有没有新版本，大概率是源站侧又出了变化。清缓存、等一等，往往几小时到几天就能恢复。</p>
+<h3>只有安卓，而且要求 Android 10+</h3>
+<p>安装包从<a href="https://nekoanime.fewa.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿，目前只有安卓版，没有 iPhone 版，没有电脑版。平台支持写得明明白白，这不是技术局限，而是项目定位——轻量、专注、不扩散。Android 10 的门槛不算高，但也意味着特别老的机器（比如 Android 9 及以下）装不了。对大部分用户来说这不是问题，但如果你手上真有个老古董，得提前注意。</p>
+<h3>没有弹幕，没有多端同步</h3>
+<p>弹幕是很多追番用户的核心需求。NekoAnime 从头到尾就没打算做弹幕——不是做不了，而是做了弹幕就得做社区，做社区就不叫轻量了。同样地，追番历史和收藏只存在本机，换机不迁移，卸载清零。这对于有换机习惯的用户来说是个麻烦。</p>
+<p><img src="../images/nekoanime/player.png" alt="播放器界面" loading="lazy"></p>
+<h2>选购结论：你是什么人就选什么</h2>
+<p><strong>适合 NekoAnime 的用户</strong>：不想在追番这件事上折腾手机的人——讨厌广告、不想注册账号、手机存储紧张、只用安卓。被网页资源站弹窗伤过的用户也值得试试，把片库装进一个干净的客户端里体验会好很多。开源偏好者也会喜欢它，仓库历史透明，Issues 区讨论活跃，代码公开可查。</p>
+<p><strong>不太适合的</strong>：需要弹幕氛围的、iPhone 用户、有重度多端同步需求的。这些需求可以去同类开源项目里找，那个赛道里有做弹幕做得不错的，但代价通常是体积更大、广告更多、或者迭代速度更慢。</p>
+<p>最后说一句实话：在开源追番工具这个赛道里，没有完美解。NekoAnime 选了「轻量」作为核心竞争力，就自然放弃了弹幕、多端、社区这些东西。但如果你刚好只想要一个打开就能看、没有广告、不占空间的追番客户端，那它就是这个类目里最合适的选项之一。</p>
+<p>关于这个项目的更多资料在三个仓库都同步维护着，<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/NekoAnime" target="_blank" rel="noopener">GitHub</a> 是主仓库，国内访问慢的话可以换<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/NekoAnime" target="_blank" rel="noopener">Gitee</a> 或<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/NekoAnime" target="_blank" rel="noopener">GitCode</a>，构建文档、版本日志和问题反馈记录全都能找到。开源项目的好处就是所有东西都摆在明面上。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/lumeow.html">Lumeow 深度盘点：一款 AI 角色扮演应用的能力面完整铺开</a></h2>
+  <p class="card-desc">从多人剧情共创到隐私保护三件套，从对话历史管理到云端同步——Lumeow 到底能做什么？本文按能力域系统性梳理这款 AI 角色扮演应用的亮点、适用场景和局限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/appenjoy.html">APPenjoy 翻了个底朝天才敢说——这五个隐藏功能你肯定漏了仨</a></h2>
+  <p class="card-desc">以为 APPenjoy 就是个找应用下 APK 的工具？三重安全审核、隐藏影视入口、社区积分体系……我把它翻了一周，挖出五个官方没写在明面上的冷门玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pado-docs.html">Pado 情侣应用全能力盘点：定位、记录、仪式感三件套到底做得怎么样</a></h2>
+  <p class="card-desc">从实时位置到 365 打卡挑战，从安全区域到甜蜜相册，这篇盘点把 Pado 的核心功能域拆开逐一评测，帮你判断它值不值得装。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/vipskillapp.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了半年度课才发现，VipSkill 藏了这几个冷门功能</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/mihon-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Mihon 长期使用报告：从 Tachiyomi 替身到我的漫画追更主力</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

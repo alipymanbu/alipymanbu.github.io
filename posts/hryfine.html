@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从 HryFine 看百元智能手表的设计哲学——为什么它能撑住 7 天续航 · 老杨技术栈</title>
+  
+<meta name="description" content="一百多块钱的 HryFine 手表能做通知推送、心率血氧、运动追踪，还能撑一周不充电。它是怎么在极低功耗下塞下这么多功能的？答案藏在蓝牙 BLE 架构、光学传感器取舍和电池保护机制里。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hryfine.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从 HryFine 看百元智能手表的设计哲学——为什么它能撑住 7 天续航">
+<meta property="og:description" content="一百多块钱的 HryFine 手表能做通知推送、心率血氧、运动追踪，还能撑一周不充电。它是怎么在极低功耗下塞下这么多功能的？答案藏在蓝牙 BLE 架构、光学传感器取舍和电池保护机制里。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hryfine.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hryfine/notifications.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hryfine/notifications.png">
+
+<meta name="twitter:title" content="从 HryFine 看百元智能手表的设计哲学——为什么它能撑住 7 天续航">
+<meta name="twitter:description" content="一百多块钱的 HryFine 手表能做通知推送、心率血氧、运动追踪，还能撑一周不充电。它是怎么在极低功耗下塞下这么多功能的？答案藏在蓝牙 BLE 架构、光学传感器取舍和电池保护机制里。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u767e\u591a\u5757\u94b1\u7684 HryFine \u624b\u8868\u80fd\u505a\u901a\u77e5\u63a8\u9001\u3001\u5fc3\u7387\u8840\u6c27\u3001\u8fd0\u52a8\u8ffd\u8e2a\uff0c\u8fd8\u80fd\u6491\u4e00\u5468\u4e0d\u5145\u7535\u3002\u5b83\u662f\u600e\u4e48\u5728\u6781\u4f4e\u529f\u8017\u4e0b\u585e\u4e0b\u8fd9\u4e48\u591a\u529f\u80fd\u7684\uff1f\u7b54\u6848\u85cf\u5728\u84dd\u7259 BLE \u67b6\u6784\u3001\u5149\u5b66\u4f20\u611f\u5668\u53d6\u820d\u548c\u7535\u6c60\u4fdd\u62a4\u673a\u5236\u91cc\u3002", "headline": "\u4ece HryFine \u770b\u767e\u5143\u667a\u80fd\u624b\u8868\u7684\u8bbe\u8ba1\u54f2\u5b66\u2014\u2014\u4e3a\u4ec0\u4e48\u5b83\u80fd\u6491\u4f4f 7 \u5929\u7eed\u822a", "image": ["https://alipymanbu.github.io/images/hryfine/notifications.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hryfine.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hryfine.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece HryFine \u770b\u767e\u5143\u667a\u80fd\u624b\u8868\u7684\u8bbe\u8ba1\u54f2\u5b66\u2014\u2014\u4e3a\u4ec0\u4e48\u5b83\u80fd\u6491\u4f4f 7 \u5929\u7eed\u822a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">从 HryFine 看百元智能手表的设计哲学——为什么它能撑住 7 天续航</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从 HryFine 看百元智能手表的设计哲学——为什么它能撑住 7 天续航</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一百多块钱的 HryFine 手表能做通知推送、心率血氧、运动追踪，还能撑一周不充电。它是怎么在极低功耗下塞下这么多功能的？答案藏在蓝牙 BLE 架构、光学传感器取舍和电池保护机制里。</p>
+  </header>
+  <div class="prose">
+<p>我一直在想一个问题：百元级的智能手表，到底是怎么活下来的？</p>
+<p>随手拎起手腕上这块 HryFine——从<a href="https://hryfine.bpfl.quest" target="_blank" rel="noopener">官网</a>的介绍来看，它能收微信消息、测心率血氧、记跑步数据、还能换表盘，电池却能撑 7 天。对比 Apple Watch 那种一天一充的主，这块表的续航长得有点反常识。更有意思的是，它的功能列表拉出来并不短：蓝牙通知推送、四类健康指标、四种运动模式、遥控拍照、表盘 DIY……光看规格表，你会觉得这块表的硬件怎么也得是个几百块的配置。</p>
+<p>但它就是卖一百多——安装包从<a href="https://hryfine.bpfl.quest/download.html" target="_blank" rel="noopener">官方下载</a>就能拿到。</p>
+<p>答案藏在三个地方：<strong>蓝牙 BLE 的低功耗架构、光学传感器的取舍、以及电池保护机制的设计哲学</strong>。我翻了一下这款手表的<a href="https://hryfine.pages.dev/" target="_blank" rel="noopener">hryfine文档</a>和说明书，下面就试着把背后的原理拆给你看。</p>
+<h2>核心矛盾：功能要多，电要省</h2>
+<p>智能手表的本质是一个被塞进手腕的微型计算机，但它和手机有个根本不同——<strong>电池太小了</strong>。手机电池至少 3000mAh，智能手表能塞进 300mAh 就不错了，还要扛住持续的传感器采样、蓝牙连接、屏幕显示。HryFine 这块表的电池我没查到具体容量，但从续航反推，应该在 200~300mAh 之间。</p>
+<p>在这个量级下，每一个功能都是电老虎。心率监测每秒要采几百次光学样本，蓝牙保持连接每小时消耗几毫安，屏幕亮一秒就吃掉待机状态好几分钟的电量。如果把这些功能全开、全时运行，可能撑不过两天。</p>
+<p>所以 HryFine 的设计者面临的是一个经典的工程矛盾：<strong>用户要功能，电池不给力</strong>。解法不是砍掉功能，而是<strong>把"全时运行"变成"按需唤醒"</strong>。</p>
+<h2>拆解一：蓝牙 BLE 的"哨兵模式"</h2>
+<p>HryFine 用的是蓝牙 4.0 BLE（低功耗蓝牙），但文档里明确提到它和 BT3.0 型号有功能差异——BT3.0 才能拨号通话，BT4.0 只能收通知。这不是偷工减料，是 BLE 架构的核心设计取舍。</p>
+<p>BLE 的工作模式可以理解成"哨兵站岗"：平时手表这边的蓝牙模块处于低功耗休眠状态，电流只有几微安；手机那边如果有消息要推，会先给手表发一个唤醒信号，手表的蓝牙模块"唰"地醒过来、接收数据、处理完再"唰"地睡回去。整个过程可能只有几百毫秒，但节省下来的电量是持续连接模式的几十倍。</p>
+<p>这个架构在文档里有个很有意思的佐证——<strong>表盘推送是一次性的</strong>。表盘数据（图片 + 配置）通过蓝牙推到手表后，手表本地存储、切换表盘时根本不需要联网。也就是说，BLE 连接只在真正需要的时候才短暂活跃，平时就是"哨兵在岗，有事喊我"。</p>
+<p><img src="../images/hryfine/notifications.png" alt="通知推送界面" loading="lazy"></p>
+<p>当然代价也很明显：BLE 带宽低、延迟高，而且因为是"唤醒-传输-休眠"的间歇性模式，实时性会打折扣。微信消息可能要晚个几百毫秒才到，拨号通话需要持续的音频流传输——这就是为什么 BT3.0 型号才能打电话，BT4.0 只能收文字通知。设计者在"能不能打电话"和"能不能撑一周"之间选了后者。</p>
+<h2>拆解二：光学传感器的"够用就好"</h2>
+<p>HryFine 的健康监测功能列表里写了心率、血压、血氧、睡眠四项，但说明书里有句话我每次看都觉得很扎心：<strong>"非医疗设备，所有测量数据仅供参考"</strong>。</p>
+<p>这不是免责声明，是<strong>硬件物理极限</strong>。</p>
+<p>手表背面那个绿色（或红光）闪烁的东西叫 PPG 传感器（光电容积脉搏波），原理很简单：用 LED 往手腕皮下打光，然后用光感受器捕捉皮肤下面血管搏动时对光的吸收率变化，再用算法反推心率。但这个原理天生带缺陷：皮肤颜色、汗水、周围光线、甚至手腕上毛发的多少都会影响测量结果。HryFine 文档里提到的<strong>步数误差 ±5%~30%</strong>，其实是同一类问题——加速度传感器在手上拎东西、推婴儿车时采集到的加速度特征和正常走路太像，算法分不清。</p>
+<p>但 PPG 传感器足够便宜、功耗足够低、体积足够小，能塞进一块百元手表里。相比之下，专业医疗级的心电电极、袖带式血压计，成本翻好几倍，体积也塞不下。所以设计者做了一个很实际的决策：<strong>把 PPG 传感器的精度调在"够用就行"的水平，用算法补偿一部分误差，剩下的误差靠用户接受"趋势参考"而非"精确诊断"来消化</strong>。</p>
+<p>文档里的睡眠监测也是同样逻辑：手表根本没有办法直接监测你睡没睡着，它只是用加速度传感器检测手腕动不动、用心率传感器看心跳节奏，然后用一个训练好的模型把这些数据分成"深睡/浅睡/清醒"三段。模型是从大量真实睡眠数据上学来的，但每个人的睡眠习惯差异太大，分错的时候并不罕见。</p>
+<p><img src="../images/hryfine/heart-rate.png" alt="心率监测界面" loading="lazy"></p>
+<h2>拆解三：电池保护的"宁可充慢点，也别炸了"</h2>
+<p>HryFine 的充电故障排查文档里有个细节让我印象深刻——<strong>电池低于 3.6V 时，会有预充保护，需要等 3~5 分钟才显示充电状态</strong>。</p>
+<p>这个设计背后是锂电池的基本物理特性：当电芯电压低于 3.6V 时，锂离子电池内部的化学反应会变得不稳定，直接大电流充电可能导致电芯发热、膨胀甚至起火。所以所有带电池保护电路的设备，在检测到电芯电压过低时，都会先以一个极小的电流（可能只有正常充电电流的 1/10）慢慢"激活"电芯，等电压回升到安全阈值（一般 3.6V 左右）后再切入正常充电。</p>
+<p>HryFine 的预充保护就是这个逻辑的直接体现。文档里还特意提醒"不要中途拔掉再插"——因为预充过程中拔掉会让电芯又掉回低压区，下次还得从头来。这不是产品 bug，是电池保护电路在老老实实干活。</p>
+<p>续航方面，文档给出了一个参考表：中档亮度 5~7 天、最低档 7~10 天、最高档 3~4 天。这个差异的核心驱动因素是<strong>屏幕亮度</strong>——OLED 屏（或 LCD 背光）在高亮度下的功耗可以是低亮度下的好几倍。手表在电池快耗尽时会自动降低亮度、停止心率监测、频繁断开蓝牙，也是同一套省电逻辑的一部分。</p>
+<h2>这套设计意味着什么</h2>
+<p>讲完原理，回到最初的问题：HryFine 为什么能在百元价位撑住 7 天续航？</p>
+<p>总结下来就是三层设计的协同：<strong>BLE 架构从连接层面省电大项（持续连接 → 间歇唤醒）、光学传感器从精度层面接受妥协（精确医疗 → 趋势参考）、电池保护从安全层面保障寿命（宁可预充也不过充）</strong>。这三层加在一起，把一个可能只能撑两三天的方案硬生生拉长了一倍续航。</p>
+<p>代价也很明确：它不能打电话（BLE 带宽不够）、测量数据不能当诊断依据（PPG 物理极限）、极端环境下可能充不上电（预充保护的副作用）。但对于绝大多数用户来说，这些代价是可接受的——买它的人要的就是"能收消息、能测个大概、一周充一次"，不是"能打电话、能当医疗设备、随便充都没问题"。</p>
+<p>如果你的需求是"手腕上有个手机"，那 HryFine 肯定不是你的菜；但如果你只是想有个东西帮你记记步数、看看心率、收收消息，而且不想天天充电，这套"够用就好 + 按需唤醒 + 电池保护"的设计哲学，反而是百元价位下最务实的方案。哦对了，这套资料我在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/hryfine" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/hryfine" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/hryfine" target="_blank" rel="noopener">GitCode</a>上都有备份，国内访问去 Gitee/GitCode 更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/epik-docs.html">epik 六年迭代：一款修图 App 如何在「一键美型」和「精细控制」之间反复横跳</a></h2>
+  <p class="card-desc">从早期一键式美颜工具到如今同时拥有专业调色面板和 AI 毕业照服务，epik 的版本迭代史藏着一个修图产品最真实的两难。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wikihow-docs.html">凌晨十一点，我靠一个小应用打出了人生第一条领带</a></h2>
+  <p class="card-desc">面试前一夜对着领带慌了神，室友睡了爸妈远在千里，Google 搜出来的全是广告。偶然想起下载过的 wikiHow，跟着图文步骤一步步来，十分钟搞定。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/rewasd.html">reWASD 上手一周：手柄调瞄准手感这件事，终于不用靠玄学了</a></h2>
+  <p class="card-desc">一个被 FPS 瞄准漂移折磨了半年的人，用 reWASD 把摇杆曲线掰了半小时后，第一次觉得&#34;瞄准手感&#34;这玩意儿是能被精确描述和调整的。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/webtoapp-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">零代码把网页变手机 App？WebToApp 新手五分钟上手</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/alger-music.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AlgerMusicPlayer 里藏得最深的 5 个功能——用了半年才摸透</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

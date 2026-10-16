@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>NeriPlayer 玻璃质感拉满——高级模糊与缓存清理实战调优 · 老杨技术栈</title>
+  
+<meta name="description" content="从开启进阶高级模糊到调参、从看懂存储分组到精准清理，三步把 NeriPlayer 调到既好看又清爽，附带天玑设备避坑指南。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/neriplayer.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NeriPlayer 玻璃质感拉满——高级模糊与缓存清理实战调优">
+<meta property="og:description" content="从开启进阶高级模糊到调参、从看懂存储分组到精准清理，三步把 NeriPlayer 调到既好看又清爽，附带天玑设备避坑指南。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/neriplayer.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/neriplayer/now-playing.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/neriplayer/now-playing.png">
+
+<meta name="twitter:title" content="NeriPlayer 玻璃质感拉满——高级模糊与缓存清理实战调优">
+<meta name="twitter:description" content="从开启进阶高级模糊到调参、从看懂存储分组到精准清理，三步把 NeriPlayer 调到既好看又清爽，附带天玑设备避坑指南。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u5f00\u542f\u8fdb\u9636\u9ad8\u7ea7\u6a21\u7cca\u5230\u8c03\u53c2\u3001\u4ece\u770b\u61c2\u5b58\u50a8\u5206\u7ec4\u5230\u7cbe\u51c6\u6e05\u7406\uff0c\u4e09\u6b65\u628a NeriPlayer \u8c03\u5230\u65e2\u597d\u770b\u53c8\u6e05\u723d\uff0c\u9644\u5e26\u5929\u7391\u8bbe\u5907\u907f\u5751\u6307\u5357\u3002", "headline": "NeriPlayer \u73bb\u7483\u8d28\u611f\u62c9\u6ee1\u2014\u2014\u9ad8\u7ea7\u6a21\u7cca\u4e0e\u7f13\u5b58\u6e05\u7406\u5b9e\u6218\u8c03\u4f18", "image": ["https://alipymanbu.github.io/images/neriplayer/now-playing.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/neriplayer.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/neriplayer.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "NeriPlayer \u73bb\u7483\u8d28\u611f\u62c9\u6ee1\u2014\u2014\u9ad8\u7ea7\u6a21\u7cca\u4e0e\u7f13\u5b58\u6e05\u7406\u5b9e\u6218\u8c03\u4f18", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">NeriPlayer 玻璃质感拉满——高级模糊与缓存清理实战调优</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">NeriPlayer 玻璃质感拉满——高级模糊与缓存清理实战调优</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从开启进阶高级模糊到调参、从看懂存储分组到精准清理，三步把 NeriPlayer 调到既好看又清爽，附带天玑设备避坑指南。</p>
+  </header>
+  <div class="prose">
+<p>如果你还没接触过 NeriPlayer，可以去它的<a href="https://neriplayer.yoan.quest" target="_blank" rel="noopener">官网</a>看看这款多平台音乐播放器的完整功能列表。读完这篇，你能亲手把 NeriPlayer 的播放页调到 iOS 级别的玻璃质感，并且彻底搞清楚每 MB 缓存花在了哪里——哪些能删、哪些碰不得。不需要 root，不需要翻墙，一台 Android 13 以上的设备就行。</p>
+<h2>准备工作</h2>
+<p>动手之前先确认三件事：</p>
+<ul><li><strong>Android 版本</strong>：进阶高级模糊要求 Android 13（API 33），如果你的系统是 12 也能用基础模糊，往下看会说降级情况。</li><li><strong>安装包来源</strong>：NeriPlayer 的官方版本直接从它的<a href="https://neriplayer.yoan.quest/download.html" target="_blank" rel="noopener">官方下载</a>渠道拿，第三方应用市场可能有延迟。</li><li><strong>存储空间</strong>：调完之后顺便清一波缓存，建议至少预留 2 GB 做缓冲。</li></ul>
+<h2>第一步：把高级模糊开起来</h2>
+<p>打开 NeriPlayer，进入设置页，找到「外观」或者「显示效果」相关的条目。你会看到两级模糊开关：</p>
+<ol><li>先打开<strong>高级模糊</strong>（Android 12 就能用）——这会让封面图和播放页背景出现基础的模糊效果。</li><li>再打开<strong>进阶高级模糊</strong>（需要 Android 13）——这一步会让顶部 Tab、底部 Tab、设置里的卡片都变成玻璃材质，整个 UI 质感瞬间拉满。</li></ol>
+<p>别急着点保存，先退到首页晃一圈看看效果——如果顶栏已经有了那种半透明毛玻璃的感觉，说明你开对了。</p>
+<p><img src="../images/neriplayer/now-playing.png" alt="开启进阶高级模糊后的播放页效果" loading="lazy"></p>
+<h2>第二步：调参，找到你的甜蜜点</h2>
+<p>进阶高级模糊不是开了就完事，两个参数决定观感和性能：</p>
+<h3>模糊半径（12~64 dp）</h3>
+<p>数值越高，背景越模糊、玻璃感越强；越低越清晰、性能越好。建议先拉到 32 dp 试试——这个中间值在大部分设备上观感和性能比较平衡。觉得不够通透就往上推，觉得有点糊就往回拉。</p>
+<h3>模糊质量（四档）</h3>
+<p>这里是很多人容易踩的坑：</p>
+<ul><li><strong>高</strong>：完整渲染 + 无下采样，效果最好但开销大，旗舰机才能稳稳扛住。</li><li><strong>默认</strong>：标准渲染 + 硬件缓存，日常使用推荐值。</li><li><strong>低 / 超低</strong>：通过局部区域渲染和下采样降低开销，效果上和默认差别不大，但性能压力骤降。</li></ul>
+<p><strong>天玑芯片用户注意</strong>：NeriPlayer 检测到联发科 SoC 时会自动选超低档——天玑在实时模糊渲染上天生吃紧，别硬上高档把手机卡成 PPT。如果你是骁龙 8 Gen 2 及以上，可以大胆试高档。</p>
+<p>改完参数后，前后台切一次或者锁屏再亮屏，应用会自动重建局部模糊缓存，避免出现模糊残留或者纹理错位。</p>
+<h3>不同 Android 版本的降级</h3>
+<table><thead><tr><th>系统版本</th><th>能用到什么</th></tr></thead><tbody><tr><td>&lt; 12</td><td>无任何模糊效果，UI 是纯色背景</td></tr><tr><td>12</td><td>只有高级模糊（封面 + 播放页背景）</td></tr><tr><td>13+</td><td>完整两级模糊系统</td></tr></tbody></table>
+<h2>第三步：缓存清理，看清每一分钱花在哪</h2>
+<p>打开「存储与缓存」设置，你会看到一个分组统计面板——NeriPlayer 把应用占用分成了八类，每一类的含义和边界如下：</p>
+<table><thead><tr><th>分组</th><th>能删吗</th><th>说明</th></tr></thead><tbody><tr><td>音频缓存</td><td>✅</td><td>播放过的歌曲缓存，LRU 自动淘汰，默认上限 1 GB</td></tr><tr><td>图片缓存</td><td>✅</td><td>封面等网络图片</td></tr><tr><td>下载暂存</td><td>✅（自动）</td><td>下载任务的续传凭据，下载完成自动清</td></tr><tr><td>分享暂存</td><td>✅</td><td>外部分享导入时的临时文件</td></tr><tr><td>平台歌单缓存</td><td>✅</td><td>网易云、B 站、YouTube Music 歌单详情缓存</td></tr><tr><td><strong>下载内容</strong></td><td>❌</td><td>你主动下载的完整音频，<strong>这不是缓存！</strong></td></tr><tr><td>日志</td><td>✅</td><td>普通日志、崩溃记录、ANR trace</td></tr><tr><td>核心应用数据</td><td>❌</td><td>数据库、设置、登录凭据</td></tr></tbody></table>
+<p>这里最关键的一点：<strong>下载内容和音频缓存是两类独立存储</strong>。清缓存时 NeriPlayer 不会碰你主动下载的歌曲——但如果你在别的文件管理器里删东西，就得自己搞清楚路径了。完整的分组定义和清理边界设计可以去<a href="https://neriplayer.pages.dev/" target="_blank" rel="noopener">NeriPlayer文档</a>翻一下，那里还有更多参数说明。</p>
+<h3>分组清理 vs 一键清理</h3>
+<p>缓存清理支持按分组选择。比如你只想清图片缓存，就单独勾上图片缓存那一项；想腾空间就一键清所有可清缓存。怎么选取决于你的场景：</p>
+<ul><li>换了一批封面图 → 只清图片缓存</li><li>某个歌单在应用里加载异常 → 清歌单缓存试试</li><li>手机整体存储紧张 → 一键清可清缓存最省事</li></ul>
+<p>音频缓存的默认上限是 1 GB，满了之后 LRU 会自动淘汰最旧的条目，日常不需要手动管。但你可以在设置里调高或调低——喜欢离线听的调大，追求纯净的调小到 500 MB 也行。</p>
+<h2>常见卡点</h2>
+<h3>天玑设备开高档模糊卡爆</h3>
+<p>别折腾，退回默认或者直接用超低档。天玑芯片在 Android 实时模糊渲染这条路径上的性能表现就是不如骁龙，这是硬件级的差异，调不动的。</p>
+<h3>模糊效果偶尔出现错位或残留</h3>
+<p>前后台切换的时候应用会自动重建模糊缓存，但如果你在快速滑动页面时刚好切后台回来，可能赶上缓存没重建完——锁屏再亮屏一次就好了，不用重启应用。</p>
+<h3>清缓存后歌单里的歌加载慢了</h3>
+<p>正常现象——歌单缓存被清了，下次打开需要重新拉取。这就是为什么平台歌单缓存放在「可清」那一栏：清了能再拉回来，但占空间时又能腾出来。</p>
+<h2>进阶：建个自己的一起听房间</h2>
+<p>如果你玩腻了默认的一起听服务器，可以试试 Cloudflare Workers 自建服务端——每个房间对应一个 Durable Object 实例，跨请求持久化房间状态，成员的播放位置实时对齐。部署完之后在 NeriPlayer 设置里填自定义服务端地址，就彻底不经过原作者的服务器了。整套服务端代码和部署说明能在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/NeriPlayer" target="_blank" rel="noopener">GitHub</a> 上拿到，<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/NeriPlayer" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/NeriPlayer" target="_blank" rel="noopener">GitCode</a> 也同步了一份，国内仓库访问会更快一些。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/anyview-docs.html">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</a></h2>
+  <p class="card-desc">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/saylo.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了半天才发现 Saylo 里藏着这些能把剧情玩活的功能</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/obtainium.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">手机里的应用总追不上最新版？Obtainium 五分钟帮你搞定</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

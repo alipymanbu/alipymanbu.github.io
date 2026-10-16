@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我用 Brickit 把每月积木清点从三天缩到半小时——一条扫描到复刻的完整链 · 老杨技术栈</title>
+  
+<meta name="description" content="以前拆完旧套装手动数零件要熬两个晚上，现在掏出 Brickit 拍几张照就能自动建库存、搜创意、导 Rebrickable。这条链到底怎么接，哪里最容易断，讲清楚。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/brickit-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我用 Brickit 把每月积木清点从三天缩到半小时——一条扫描到复刻的完整链">
+<meta property="og:description" content="以前拆完旧套装手动数零件要熬两个晚上，现在掏出 Brickit 拍几张照就能自动建库存、搜创意、导 Rebrickable。这条链到底怎么接，哪里最容易断，讲清楚。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/brickit-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/brickit-docs/creative-building.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/brickit-docs/creative-building.webp">
+
+<meta name="twitter:title" content="我用 Brickit 把每月积木清点从三天缩到半小时——一条扫描到复刻的完整链">
+<meta name="twitter:description" content="以前拆完旧套装手动数零件要熬两个晚上，现在掏出 Brickit 拍几张照就能自动建库存、搜创意、导 Rebrickable。这条链到底怎么接，哪里最容易断，讲清楚。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u62c6\u5b8c\u65e7\u5957\u88c5\u624b\u52a8\u6570\u96f6\u4ef6\u8981\u71ac\u4e24\u4e2a\u665a\u4e0a\uff0c\u73b0\u5728\u638f\u51fa Brickit \u62cd\u51e0\u5f20\u7167\u5c31\u80fd\u81ea\u52a8\u5efa\u5e93\u5b58\u3001\u641c\u521b\u610f\u3001\u5bfc Rebrickable\u3002\u8fd9\u6761\u94fe\u5230\u5e95\u600e\u4e48\u63a5\uff0c\u54ea\u91cc\u6700\u5bb9\u6613\u65ad\uff0c\u8bb2\u6e05\u695a\u3002", "headline": "\u6211\u7528 Brickit \u628a\u6bcf\u6708\u79ef\u6728\u6e05\u70b9\u4ece\u4e09\u5929\u7f29\u5230\u534a\u5c0f\u65f6\u2014\u2014\u4e00\u6761\u626b\u63cf\u5230\u590d\u523b\u7684\u5b8c\u6574\u94fe", "image": ["https://alipymanbu.github.io/images/brickit-docs/creative-building.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/brickit-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/brickit-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6211\u7528 Brickit \u628a\u6bcf\u6708\u79ef\u6728\u6e05\u70b9\u4ece\u4e09\u5929\u7f29\u5230\u534a\u5c0f\u65f6\u2014\u2014\u4e00\u6761\u626b\u63cf\u5230\u590d\u523b\u7684\u5b8c\u6574\u94fe", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">我用 Brickit 把每月积木清点从三天缩到半小时——一条扫描到复刻的完整链</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我用 Brickit 把每月积木清点从三天缩到半小时——一条扫描到复刻的完整链</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前拆完旧套装手动数零件要熬两个晚上，现在掏出 Brickit 拍几张照就能自动建库存、搜创意、导 Rebrickable。这条链到底怎么接，哪里最容易断，讲清楚。</p>
+  </header>
+  <div class="prose">
+<h2>每月一次的积木清点，以前是体力活</h2>
+<p>我手里大概有两万多块乐高积木，散落在五个整理箱里——来自六七年陆陆续续买的套装，大部分已经被我拆掉混在一起了。每月末我会花一个周末做一次清点：把混装的零件按颜色和形状分堆，数每堆有多少块，然后把数据敲进一张 Excel 表。</p>
+<p>这套流程我坚持了两年，痛点攒了一箩筐：</p>
+<ul><li><strong>数错是常态</strong>——一堆红色 2x4 砖混着 2x2 和 1x1，眼睛看花了经常数两遍还对不上</li><li><strong>查库存靠肉眼翻表</strong>——想复刻某套 2018 年绝版的星战 set，我得拿着零件清单对着 Excel 一行一行找有没有对应编号的零件，一次下来半小时起步</li><li><strong>新拆的套装不想入库</strong>——清点 500 块零件的套装，手动登记要两个小时，有时候干脆放弃，让新拆的零件继续躺在纸箱里</li></ul>
+<p>去年朋友给我推荐<a href="https://brickit.xnyx.quest" target="_blank" rel="noopener">Brickit官网</a>的时候，我以为就是个拍照识别的玩具 APP。真正把它插进我的清点流程之后，才发现它能串起一整条链——从扫描建库存，到搜零件、找创意，再到导出 Rebrickable 存档，中间的手动环节砍到了几乎为零。</p>
+<h2>这条链长什么样</h2>
+<p>先说整体架构，每个环节具体怎么接放在后面：</p>
+<pre><code>拆套装 → 每袋拍一张 Brickit 扫描照 → AI 自动识别建 Pocket
+    ↓
+所有 Pocket 合并成完整数字库存
+    ↓
+想复刻 set？在 Brickit 里搜创意 → 自动对比库存告诉你缺啥
+    ↓
+清点完导出 Rebrickable → 存档或直接在 Rebrickable 上补货</code></pre>
+<p>整条链里我唯一需要手动做的事，就是<strong>把零件分成小袋</strong>（一袋不超过 30~50 块，识别率最高）和<strong>偶尔修正几个 AI 认错的零件</strong>。剩下的全是 Brickit 的活。</p>
+<h3>环节一：扫描建 Pocket</h3>
+<p>这是整条链的起点。以前我是"按颜色分堆"然后数，现在改成"按袋装分堆"然后拍。</p>
+<p>我用的是那种透明自封袋，每袋标个编号（Pocket #1、Pocket #2……），然后把 30~50 块零件倒在一张白纸上拍一张。光线要均匀——我试过在台灯下拍，阴影重的地方识别率会掉一截，后来改成在窗边自然光下拍，识别率稳定在 95% 以上。</p>
+<p>拍完 Brickit 会自动框出照片里的每一块零件，标上识别到的编号和颜色。偶尔有磨损严重的老零件会认错颜色（白色被识成灰色是高频问题），这时候手动点一下改过来就行——一袋里通常也就一两块需要改。</p>
+<p><img src="../images/brickit-docs/creative-building.webp" alt="扫描识别场景" loading="lazy"></p>
+<p>扫完所有袋子，Pockets 界面里就是一份完整的数字库存了：每个 Pocket 有哪些零件、每种零件有几块、分布在第几袋，一目了然。</p>
+<h3>环节二：搜索和创意匹配——这才是 Brickit 真正值钱的地方</h3>
+<p>建完库存之后，痛点就从"我不知道有什么"变成了"我想用这些零件搭点什么"。</p>
+<p>以前想复刻某套 set，我得先去 Rebrickable 下载零件清单，然后拿着清单对着我的 Excel 表逐行核对。现在这个环节直接变成：在 Brickit 里搜那套 set 的编号或名字，它会<strong>自动把我的完整库存和创意需要的零件清单做对比</strong>，几秒钟就告诉我"这套需要 247 块零件，你有 244 块，缺 3 块"，还能精确到缺的是什么——比如"红色 2x6 × 2，黑色 1x1 × 1"。</p>
+<p>知道缺什么之后，要么去 Rebrickable 上买那 3 块，要么换一个能搭的创意——Brickit 的创意库里有几千个推荐，Pro 版可以打开"只显示完整可搭"筛选，直接把你手头零件全有的创意排在前面。这个筛选开关在免费版是锁的，对零件种类多但数量分散的玩家来说是刚需。</p>
+<h3>环节三：导出 Rebrickable 存档</h3>
+<p>清点完之后我会把库存导出一份 Rebrickable 格式的 CSV，上传到 Rebrickable 账户存档。这样有两个好处：一是 Rebrickable 上能查到完整的"你能用手头零件复刻哪些套装"；二是如果哪天 Brickit 数据丢了，Rebrickable 那边还有一份完整备份。</p>
+<p>免费版的导出有一些字段限制，但我用 Pro 版导出是完整字段、直接兼容 Rebrickable 导入格式的，不用手动改列名。</p>
+<p><img src="../images/brickit-docs/pockets-overview.png" alt="库存管理界面" loading="lazy"></p>
+<h2>两个容易断链的环节</h2>
+<p>这条链跑了半年，我总结出两个最容易出问题的地方，提前处理好能省很多事。</p>
+<h3>断链一：扫完不手动调数量</h3>
+<p>从某个 Pocket 里拿走零件搭完东西之后，必须回到 Pockets 界面把那块零件的数量减去——这个动作 2 秒就能做完，但很多人容易忘。库存不准的话，后续的创意匹配就是错的——Brickit 以为你有 12 块红色 2x4，实际你只剩 5 块，推荐的创意就搭不出来。</p>
+<p>我给自己定了个规矩：<strong>每次拆完东西搭完新创意，第一件事就是开 Brickit 减库存</strong>。现在已经养成习惯了，不会忘。</p>
+<h3>断链二：扫描时光线太暗或零件堆太紧</h3>
+<p>我试过在晚上台灯下拍，也试过把零件密密麻麻堆成一团拍，这两种情况的识别率会掉到 80% 以下，很多小零件（1x1 的圆板、细杆）会漏识别。后来固定成一个操作规范：<strong>白天窗边自然光 + 零件倒在白纸上散开、互不遮挡</strong>，识别率就稳定了。Brickit 的设置里还有一个"识别精度优先"的模式，不嫌慢的话去<a href="https://brickit-docs.pages.dev/" target="_blank" rel="noopener">Brickit文档</a>翻一下具体参数怎么调，磨损零件和小零件的识别率还能再提几个百分点。App 本身从<a href="https://brickit.xnyx.quest/download.html" target="_blank" rel="noopener">官方下载</a>就能拿到，iOS Android 都有。</p>
+<h2>效果和边界</h2>
+<p>说点具体数字，别讲"大大提升效率"这种空话：</p>
+<ul><li><strong>清点一套 500 块的旧套装</strong>：以前手动数 2 小时，现在分 10 袋各拍一张 + 偶尔修正两三个识别错误，<strong>实际耗时 10 分钟左右</strong></li><li><strong>查某套绝版 set 能不能复刻</strong>：以前翻 Excel 半小时，现在 Brickit 搜一下创意 <strong>5 秒出结果</strong></li><li><strong>维护成本</strong>：每月一次的清点，以前是一个周末的事，现在是<strong>一个晚上</strong>就能搞定</li></ul>
+<p>但这条链也有明显的边界，别指望它解决所有问题：</p>
+<ul><li><strong>纯套装党用不上</strong>——如果你买乐高就是按说明书拼好摆着、从来不拆，那 Brickit 的扫描功能对你来说是多余的</li><li><strong>磨损严重的老零件识别率会降</strong>——有些玩了十几年的零件颜色褪得厉害，AI 有时候会认错，需要手动改</li><li><strong>免费版有限制</strong>——大库存的批量编辑、完整创意库筛选、Rebrickable 完整导出这些都锁在 Pro 后面。免费版扫几十袋、管理一千多块零件是够用的，但上万块的收藏还是建议 Pro</li><li><strong>只有手机端</strong>——目前只有 iOS 和 Android 客户端，没有电脑版。对我来说不是问题，我习惯拿着手机蹲在整理箱旁边拍，但如果你只在电脑上操作就尴尬了</li></ul>
+<h2>我给它的定位</h2>
+<p>Brickit 在我的工具链里不是主力工具，而是一个<strong>"把散落的数据结构化"的连接点</strong>——它把我散落在五个整理箱里的两万块零件，变成了一份可搜索、可对比、可导出的结构化数据。有了这份数据，后面的事（找创意、补货、存档）才能真正高效起来。</p>
+<p>如果你也有一堆记不清有什么的乐高，我建议先装个免费版扫一两袋试试——不用花一分钱就能体验到核心价值，觉得好用再考虑 Pro。毕竟，把"翻遍三个鞋盒找一块红色 2x4"的时间省下来，多搭两套创意不香吗。对了，<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/brickit" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/brickit" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/brickit" target="_blank" rel="noopener">GitCode</a> 上也有 Brickit 的完整资料，哪个顺手用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ampere-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用 Ampere 看懂你的手机充电电流——新手五分钟上手</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/lawnchair.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了五年 Nova Launcher，我为什么在一个周末迁到了 Lawnchair</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

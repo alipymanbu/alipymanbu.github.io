@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从收单到对账一条链：我用 Mollie 把欧洲电商的支付流程跑通了 · 老杨技术栈</title>
+  
+<meta name="description" content="面向欧洲市场的小团队做跨境电商，支付环节最头疼。我把 Mollie 嵌进现有工作流，从结算页到报表导出全流程打通，少了三次手动复制，财务同事终于不用天天对账到深夜。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/mollie-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从收单到对账一条链：我用 Mollie 把欧洲电商的支付流程跑通了">
+<meta property="og:description" content="面向欧洲市场的小团队做跨境电商，支付环节最头疼。我把 Mollie 嵌进现有工作流，从结算页到报表导出全流程打通，少了三次手动复制，财务同事终于不用天天对账到深夜。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/mollie-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/mollie-docs/checkout-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/mollie-docs/checkout-hero.jpg">
+
+<meta name="twitter:title" content="从收单到对账一条链：我用 Mollie 把欧洲电商的支付流程跑通了">
+<meta name="twitter:description" content="面向欧洲市场的小团队做跨境电商，支付环节最头疼。我把 Mollie 嵌进现有工作流，从结算页到报表导出全流程打通，少了三次手动复制，财务同事终于不用天天对账到深夜。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u9762\u5411\u6b27\u6d32\u5e02\u573a\u7684\u5c0f\u56e2\u961f\u505a\u8de8\u5883\u7535\u5546\uff0c\u652f\u4ed8\u73af\u8282\u6700\u5934\u75bc\u3002\u6211\u628a Mollie \u5d4c\u8fdb\u73b0\u6709\u5de5\u4f5c\u6d41\uff0c\u4ece\u7ed3\u7b97\u9875\u5230\u62a5\u8868\u5bfc\u51fa\u5168\u6d41\u7a0b\u6253\u901a\uff0c\u5c11\u4e86\u4e09\u6b21\u624b\u52a8\u590d\u5236\uff0c\u8d22\u52a1\u540c\u4e8b\u7ec8\u4e8e\u4e0d\u7528\u5929\u5929\u5bf9\u8d26\u5230\u6df1\u591c\u3002", "headline": "\u4ece\u6536\u5355\u5230\u5bf9\u8d26\u4e00\u6761\u94fe\uff1a\u6211\u7528 Mollie \u628a\u6b27\u6d32\u7535\u5546\u7684\u652f\u4ed8\u6d41\u7a0b\u8dd1\u901a\u4e86", "image": ["https://alipymanbu.github.io/images/mollie-docs/checkout-hero.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/mollie-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/mollie-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u6536\u5355\u5230\u5bf9\u8d26\u4e00\u6761\u94fe\uff1a\u6211\u7528 Mollie \u628a\u6b27\u6d32\u7535\u5546\u7684\u652f\u4ed8\u6d41\u7a0b\u8dd1\u901a\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">从收单到对账一条链：我用 Mollie 把欧洲电商的支付流程跑通了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从收单到对账一条链：我用 Mollie 把欧洲电商的支付流程跑通了</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 11 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">面向欧洲市场的小团队做跨境电商，支付环节最头疼。我把 Mollie 嵌进现有工作流，从结算页到报表导出全流程打通，少了三次手动复制，财务同事终于不用天天对账到深夜。</p>
+  </header>
+  <div class="prose">
+<p>每个月十五号前后，我们团队的微信群都会出现几张截图——财务同事贴出 Excel 对账单、银行交易流水、PayPal 后台导出的 CSV，然后问一句"这三笔对上没有"。这是我们做欧洲电商的传统仪式。</p>
+<p>以前这条支付到对账的流程，散落在至少四个工具里：前端结算页是自己写的（为了省 PCI 合规那堆事），PayPal 单独接了 SDK，荷兰本地客户走 iDEAL 又是另一个接口，结算到银行的环节要看两个后台。每到月底合并数据是一场噩梦，少一笔都要翻四个后台查半小时。</p>
+<p>这套流程卡了我们快一年。直到上个月把 Mollie 拉进来——它的<a href="https://mollie.gerw.hair" target="_blank" rel="noopener">官网</a>上把欧洲支付能力写得清清楚楚，整条链才真正跑通。</p>
+<h2>旧流程到底卡在哪</h2>
+<p>说具体问题：</p>
+<p><strong>卡一：支付方式太多，每种一个接入。</strong> 我们做荷兰和比利时市场，客户习惯 iDEAL 和 Bancontact，但偶尔也有 Visa/Mastercard 进来。以前每种方式都要单独对接 SDK、单独写回调逻辑、单独存交易记录。新增一种方式意味着开发周期至少一周，改回调逻辑还要部署、测、再部署。</p>
+<p><strong>卡二：数据散在各处，对账靠人肉拼。</strong> PayPal 的 CSV 导出格式和 iDEAL 的不一样，银行流水又在另一个系统。财务同事要手动把三份数据合并到一张表里，按交易时间和金额逐条匹配。旺季一个月几千笔交易，这事能占掉她整三天。</p>
+<p><strong>卡三：团队多人协作权限乱。</strong> 老板想看日流水，但又不想让运营碰 API Key；开发要配 Webhook，但财务又需要导出报表。以前共用一个账号密码，谁登录了做了什么完全没记录，误操作了也追不回来。</p>
+<p>这三个问题不是孤立的——接入多了数据自然散，数据散了就没法协作，协作乱了又加剧接入混乱。是时候找一个能兜住整条链的东西了。</p>
+<h2>新流程：把 Mollie 插进三个关键环节</h2>
+<p>现在的流程里，Mollie 是中心节点，我们把原来散的几个工具串了起来。整条链是：</p>
+<ol><li>客户在网站选商品 → 跳转到 Mollie Checkout 结算页 → 付款完成回调</li><li>交易数据自动进 Mollie Dashboard → 财务每周导出一次 CSV → 导入会计系统</li><li>开发用 Mollie API Key 配 Webhook → 订单系统自动更新状态</li></ol>
+<p>说说每个环节具体怎么接的。</p>
+<h3>环节一：结算页——把控制权交出去</h3>
+<p>我们以前自己写结算页，为的是能完全控制 UI 和交互。但欧洲法规里的 3DS 验证是强制的——每笔卡类交易都要判断要不要触发 3DS、处理跳转、解析结果。这套逻辑自己写的话，不仅复杂还容易踩合规红线。</p>
+<p>现在换成了 Mollie Checkout。从<a href="https://mollie.gerw.hair/download.html" target="_blank" rel="noopener">官方下载</a>拿到 SDK 集成进订单系统后，做法很简单：创建一笔 Payment，拿到 <code>checkout_url</code>，302 重定向过去就行。Mollie 负责展示所有启用的支付方式、处理 3DS、处理回调。客户付款完成后，Mollie 会 POST 一个 <code>payment.paid</code> 事件到我们配置的 Webhook URL，我们的订单系统接收到这个事件就把订单状态改成"已支付"。</p>
+<p><img src="../images/mollie-docs/checkout-hero.jpg" alt="Mollie Checkout 结算页示例" loading="lazy"></p>
+<p>选支付方式这一步，我们只在 Dashboard 里勾了五种：Visa/Mastercard、iDEAL、Bancontact、PayPal、Klarna。排序是 iDEAL 放最前面（荷兰市场转化率最高），然后是卡类。Mollie 会自动把 Logo 和本地化界面渲染出来——iDEAL 客户看到的是荷兰语界面，Bancontact 客户是法语。我们一行代码都没写。</p>
+<p>这一步省掉了什么？原来对接五种支付方式大概要写 2000 行代码，现在只需要创建 Payment 时传一个 <code>methods</code> 数组。3DS 的合规压力也没了——Mollie 自动判断、自动处理、自动把结果回传，我们只管等事件。</p>
+<h3>环节二：数据出口——一个后台搞定所有交易</h3>
+<p>这是 Mollie 进来后变化最大的地方。原来我们要从 PayPal 后台导 CSV、从银行网银导流水、从 iDEAL 商户平台导记录，三份数据格式不一、字段不全，还要手动对齐。</p>
+<p>现在所有交易——不管客户用的是 Visa、iDEAL 还是 Klarna——全都在 Mollie Dashboard 的交易列表里。财务同事每周一次，进去点导出，拿到的 CSV 里每一行都是一笔完整交易：交易时间、金额、支付方式、状态、Mollie 收取的手续费、预计结算日期。</p>
+<p><img src="../images/mollie-docs/dashboard-accounts.png" alt="Mollie 后台账户管理界面" loading="lazy"></p>
+<p>这份 CSV 直接能扔进我们的会计系统（QuickBooks），字段名完全对得上。原来需要三天的对账工作，现在大概二十分钟。</p>
+<p>关于手续费这块，我得单独提一下。Mollie 的定价透明到有点反直觉：<strong>只按成功交易扣费，不收月度费、设置费、汇率转换费、反欺诈费</strong>。一笔 €100 的 iDEAL 交易，费用固定 £0.30；同样金额的 Visa 卡，€0.25 + 1.80% = €2.05。没有任何隐藏费用——官方面对面向列了一张"我们没有这些费用"的清单，把竞品常见的收费项（设置费、月度费、FX 溢价、拒付费）一条条打勾划掉。</p>
+<p>这个定价模式对我们这种小团队太友好了——月度零交易不扣钱，旺季多收几单用费率自动算成本，完全不用预测月度流水来选套餐。月流水到了 €100,000 以上还能谈 Volume Pricing，我们目前还没到那个量级，但这个弹性留着总归好。</p>
+<h3>环节三：团队协作——角色分离，互不干扰</h3>
+<p>这个改动是顺手做的。之前共用一个账号密码总觉得不稳，现在 Mollie 的团队权限系统让我们每个人一个账号、各守各的职责。</p>
+<p>目前分了五个角色：老板是 Owner（只有他能看所有设置和计费），我是 Admin（管大部分操作但碰不到 API Key），财务同事是 Finance（只能看交易、退款、导出报表），开发同事是 Developer（只管 API Key 和 Webhook）。客服本来想给 Support 角色，但 Mollie 没有 Support，就给了 Finance——反正她只需要看交易和处理退款。</p>
+<p>权限边界划得很清楚：Finance 看不到 API Key，Developer 碰不了退款，Owner 可以管所有但审计日志永久记录谁改了什么。全员开启了双因素认证（用 Google Authenticator），离职的同事从 Team 列表里删掉就行，不存在账号交接问题。</p>
+<p>这套权限划分的好处是，我们终于敢让同事直接用 Mollie 后台了。之前要查交易记录，财务要找我借账号；现在她自己登录自己的账号就能看，我不用再当中间人。审计日志也能用来回溯——上个月有一笔退款处理晚了，从日志里查到是客服忘了操作，直接定位到人，改了 SOP 就好了。</p>
+<h2>实操中踩过的两个坑</h2>
+<p>流程跑通后，有两个地方差点断链，值得写下来。</p>
+<p><strong>坑一：Webhook URL 必须是公网可达的 HTTPS 地址。</strong> 我们的开发同事一开始在本地调试，用 ngrok 隧道，但忘了 Mollie 要求 Webhook URL 必须是稳定公网地址。测试环境没问题（Mollie 有测试模式，Webhook 要求不严），切到生产环境后，连续三笔交易没有收到回调。后来去<a href="https://mollie-docs.pages.dev/" target="_blank" rel="noopener">Mollie文档</a>翻了一下才确认，Webhook URL 必须是公网可达的 HTTPS 地址，我们一开始用内部服务器的局域网地址，Mollie 的服务器当然访问不到。改回公网域名后立刻恢复。</p>
+<p><strong>坑二：结算周期不是即时到账。</strong> 我们以为客户付款成功后钱立刻能到账，实际 Mollie 有一个结算周期（通常是 T+2）。也就是说，周一收的钱要周三才能进银行。这个节奏一开始打乱了我们的资金预期——本来以为能当周发供应商货款，结果要等。后来在 Dashboard 设置里把结算周期调整成了我们需要的节奏，财务那边也把这个延迟写进了现金预测表里。</p>
+<p>这两个坑现在都有了固定解法：Webhook 配置好后立刻用 Mollie 测试模式的模拟交易验证一次；结算日期在 Dashboard 的交易详情里能提前看到，财务每周导出 CSV 时顺便就把下周预计到账的金额也算出来了。</p>
+<h2>这套流程什么时候不划算</h2>
+<p>实话说，Mollie 不是万能的。</p>
+<p>如果你只做单一支付方式（比如国内电商只用微信支付宝），那单独接一个 SDK 可能更简单——没必要为了一个功能引入整套支付平台的配置成本。Mollie 的优势在于同时接多种欧洲本地支付方式，每种单独接都要写代码，整合起来后省下的开发时间才是划算的。</p>
+<p>另外，Mollie 目前的覆盖区域主要是欧洲。如果你的业务重心在北美或者亚太，Stripe/Adyen 可能更合适。我们选 Mollie 还有一个原因是它对 iDEAL 和 Bancontact 的支持是最好的——这两个是荷兰和比利时的主流支付方式，费率也低（iDEAL £0.30/笔，比 Visa 的 1.80% + €0.25 便宜多了）。</p>
+<p>最后，如果你已经有了一套成熟的支付基础设施（比如用 Stripe 做了多年，所有数据和报表都在 Stripe 体系里），迁移成本可能比收益大。我们选 Mollie 是因为从零开始，没有历史包袱。</p>
+<h2>总结：把一件事做到底的价值</h2>
+<p>这套流程跑下来，最直观的变化是：财务同事不用再花三天对账了（现在 20 分钟搞定），开发同事不用为新支付方式写代码了（Dashboard 点一下就生效），我们终于能专注在卖货本身，而不是被支付环节的技术细节拖住。</p>
+<p>选择 Mollie 不是因为它在某个单点功能上比竞品强多少，而是它把"收单 → 结算 → 对账 → 团队协作"这条链上的每一个环节都做了——而且每一环的接口都干净、定价都透明。我们不需要再在四五个工具之间手动搬运数据，只需要一个 Dashboard 就能看到全貌。</p>
+<p>如果你也在做欧洲市场，还在为支付方式分散、数据对账头疼，不妨看看 Mollie 能不能嵌进你的现有流程里。关于 Mollie 的接入代码和完整资料，<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Mollie" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Mollie" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Mollie" target="_blank" rel="noopener">GitCode</a> 上都有同步版本，国内访问 Gitee 或 GitCode 更顺手。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/soundbrenner.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">手腕上的节拍器——Soundbrenner 新手入门指南</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/autoagent-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AutoAgent 你只用来开悬浮球？五个藏得真深的玩法</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

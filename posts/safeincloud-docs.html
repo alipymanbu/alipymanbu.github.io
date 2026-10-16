@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>那天在便利店刷不出卡，我才意识到密码这件事不能再拖了 · 老杨技术栈</title>
+  
+<meta name="description" content="一个普通上班族在便利店购物时遭遇支付困境，由此开启了用密码管理器整理全部敏感信息的旅程——从浏览器自动填到多设备云同步，从银行卡片到证件笔记，用三个月时间彻底告别混乱。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/safeincloud-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="那天在便利店刷不出卡，我才意识到密码这件事不能再拖了">
+<meta property="og:description" content="一个普通上班族在便利店购物时遭遇支付困境，由此开启了用密码管理器整理全部敏感信息的旅程——从浏览器自动填到多设备云同步，从银行卡片到证件笔记，用三个月时间彻底告别混乱。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/safeincloud-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/safeincloud-docs/encryption-android.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/safeincloud-docs/encryption-android.png">
+
+<meta name="twitter:title" content="那天在便利店刷不出卡，我才意识到密码这件事不能再拖了">
+<meta name="twitter:description" content="一个普通上班族在便利店购物时遭遇支付困境，由此开启了用密码管理器整理全部敏感信息的旅程——从浏览器自动填到多设备云同步，从银行卡片到证件笔记，用三个月时间彻底告别混乱。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u666e\u901a\u4e0a\u73ed\u65cf\u5728\u4fbf\u5229\u5e97\u8d2d\u7269\u65f6\u906d\u9047\u652f\u4ed8\u56f0\u5883\uff0c\u7531\u6b64\u5f00\u542f\u4e86\u7528\u5bc6\u7801\u7ba1\u7406\u5668\u6574\u7406\u5168\u90e8\u654f\u611f\u4fe1\u606f\u7684\u65c5\u7a0b\u2014\u2014\u4ece\u6d4f\u89c8\u5668\u81ea\u52a8\u586b\u5230\u591a\u8bbe\u5907\u4e91\u540c\u6b65\uff0c\u4ece\u94f6\u884c\u5361\u7247\u5230\u8bc1\u4ef6\u7b14\u8bb0\uff0c\u7528\u4e09\u4e2a\u6708\u65f6\u95f4\u5f7b\u5e95\u544a\u522b\u6df7\u4e71\u3002", "headline": "\u90a3\u5929\u5728\u4fbf\u5229\u5e97\u5237\u4e0d\u51fa\u5361\uff0c\u6211\u624d\u610f\u8bc6\u5230\u5bc6\u7801\u8fd9\u4ef6\u4e8b\u4e0d\u80fd\u518d\u62d6\u4e86", "image": ["https://alipymanbu.github.io/images/safeincloud-docs/encryption-android.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/safeincloud-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/safeincloud-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "\u90a3\u5929\u5728\u4fbf\u5229\u5e97\u5237\u4e0d\u51fa\u5361\uff0c\u6211\u624d\u610f\u8bc6\u5230\u5bc6\u7801\u8fd9\u4ef6\u4e8b\u4e0d\u80fd\u518d\u62d6\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">那天在便利店刷不出卡，我才意识到密码这件事不能再拖了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">那天在便利店刷不出卡，我才意识到密码这件事不能再拖了</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个普通上班族在便利店购物时遭遇支付困境，由此开启了用密码管理器整理全部敏感信息的旅程——从浏览器自动填到多设备云同步，从银行卡片到证件笔记，用三个月时间彻底告别混乱。</p>
+  </header>
+  <div class="prose">
+<h2>地铁站口的尴尬时刻</h2>
+<p>去年深秋的一个早晨，我在二号线转十号线的那家便利店排队买咖啡和饭团。轮到我扫码付款的时候，手机上跳出一个我从未见过的支付确认页面——那天 Apple Pay 出了点小问题，系统要求我手动输入完整的信用卡号。</p>
+<p>我站在收银台前，脑子一片空白。那张卡的十七位数字我当然背不下来，CVC 三位数更是连想都别想。后面排了七八个人，我假装在包里找卡，其实是在疯狂回忆：我的银行卡号到底存哪儿了？</p>
+<p>浏览器里有一版——但前阵子刚看到新闻，说某主流浏览器的密码同步机制存在泄漏风险，我当时就把所有自动保存的密码清了。OneNote 里好像写过一遍？翻了三分钟没找到。手机备忘录里肯定有，但我给备忘录加了密码锁，而那个密码……我又记成另外一组了。</p>
+<p>最后还是同事从后面递过来他的卡："刷我的，回头转你。"我脸烧得能煎鸡蛋。</p>
+<h2>朋友扔给我一个链接</h2>
+<p>午休的时候我坐在茶水间啃饭团，跟邻座的老张吐槽了这件事。老张在公司做运维，手上管着各种服务器密码，对安全这事儿特别较真。听完我一通抱怨，他手机屏幕一亮，扔给我一个链接。</p>
+<p>"试试这个。我全家都在用，两台电脑三部手机，同步了快两年没出过问题。"他说，"密码这玩意儿不是记不住，是你没给它找对地方。"</p>
+<p>我扫了一眼<a href="https://safeincloud.ggcd.uno" target="_blank" rel="noopener">SafeInCloud官网</a>的介绍——AES-256 加密、多平台支持、云同步走自己的 Google Drive 或 OneDrive。说实话，密码管理器这个品类我之前一直觉得是"给安全强迫症准备的"，正常人哪用得着那么麻烦。但那天早上的尴尬劲还没过去，我点进去，花了十分钟把主密码设好，第一次打开了那个空空如也的加密保险库。</p>
+<h2>搬进去的第一周：浏览器、邮箱、信用卡</h2>
+<p>第一个晚上我坐在电脑前，开始清点自己到底有多少敏感信息。结果吓了一跳——光是常用的邮箱、网购账号、银行网银这些加起来就有四十多个，每一个的密码我之前要么写在便签上贴显示器旁边，要么用"生日加手机号"这种万能模板糊上去。</p>
+<p>安装过程出奇地顺滑。桌面端从<a href="https://safeincloud.ggcd.uno/download.html" target="_blank" rel="noopener">SafeInCloud下载</a>下来是个不到二十兆的小文件，安装完第一次启动就弹出引导向导，帮我把浏览器里还没清干净的密码一条条导了进去。我在手机上也装了一份，同一个主密码解锁，两边的保险库文件通过我自己的 OneDrive 账户同步——数据上传前就已经在本地加密好了，云盘里存的只有加密后的文件本体，连 OneDrive 自己都看不懂里面是什么。</p>
+<p><img src="../images/safeincloud-docs/encryption-android.png" alt="加密数据流转" loading="lazy"></p>
+<p>银行卡是第二个重点。Safe 里内置了专门的银行卡卡片模板，不是普通的登录条目硬改的，字段都预设好了：持卡人姓名、卡号、有效期、CVC、PIN 码，甚至还有发卡行和备注。我把三张信用卡两张储蓄卡的信息一张张录进去，卡号和 CVC 默认都是隐藏显示的，要点击才看得见——这一点我特别喜欢，防止旁边有人瞟一眼就记下了。</p>
+<p>录完最后一张卡已经快凌晨一点。我躺在床上想，这些信息以前散落在便签、浏览器缓存、备忘录、Excel 表格里，现在全部安安稳稳地待在一个地方，用同一把锁锁着。这种感觉很微妙，像是把家里所有贵重物品从鞋柜、抽屉、旧书包里找出来，统一放进一个带密码锁的保险箱。</p>
+<h2>日常使用里那些让我惊喜的细节</h2>
+<p>真正让我觉得"这钱花值了"的，是后面几个月里慢慢发现的小功能。</p>
+<p>手机上的自动填充配置，iPhone 和 Android 完全是两套路数。iOS 那边简单得离谱，我打开系统设置，找到"密码 → 自动填充密码"，把 Safe 的开关打开就完事了。Safari 里访问任何登录页面，输入框上方会自动出现钥匙图标，点一下就能从保险库里挑条目填进去，Face ID 验证完身份就自动完成，全程不用切换 App。Android 稍微麻烦一点，系统级和浏览器级要分开设置，但也就多花两分钟，之后在 Chrome 里体验一样顺畅。</p>
+<p><img src="../images/safeincloud-docs/autofill-ios-setting.png" alt="iOS 自动填充设置" loading="lazy"></p>
+<p>云同步这块我踩过一个坑。有一次我在电脑上改了主密码，手机上没同步，结果打开 Safe 直接弹出"密码不匹配"警告。当时慌了一下，以为数据丢了。后来去<a href="https://safeincloud-docs.pages.dev/" target="_blank" rel="noopener">中文文档</a>翻了一下，解决流程挺简单：手机上卸载 Safe → 重新安装 → 启动时选"从云恢复保险库" → 输入新密码。五分钟就搞定了，数据一根毛都没丢。那次之后我养成了一个习惯：改主密码前先在另一台设备上登进去确认一下，省得两边密码不一致。</p>
+<p>还有那个浏览器扩展。装完之后它会自动检测当前页面有没有匹配的密码条目，有的话地址栏旁边亮个小图标，一键填充用户名密码。更妙的是支付场景——上次在亚马逊买东西，结账页面刚加载出来，扩展就提示我保存的那张 Visa 卡可用，点一下卡号、持卡人姓名、有效期直接填进对应的框里，CVC 要手动输入。我后来才知道这是故意设计的，CVC 永远不会自动填，因为那是只有拿着实体卡才能看到的信息，就算保险库被破解了，攻击者也拿不到 CVC。</p>
+<h2>三个月后的变化</h2>
+<p>三个月过去了。我的保险库里现在有六十七张卡片：登录条目四十八张、银行卡五张、身份证护照各一张、常用地址和备注若干。主密码我选了一个十六位的词组加数字组合，记在脑子里，不写任何地方。手机锁屏用 Face ID，Safe 本身也开了生物识别解锁——平时打开 App 扫一下脸就行，偶尔 Face ID 识别不了（比如口罩戴得严严实实的时候），输入主密码解锁。</p>
+<p>那天在便利店刷不出卡的场景再也没发生过。上周五出差订机票，酒店登记、机场 Wi-Fi、租车平台的登录全部自动填充，银行卡信息在支付页直接弹出来。我同事老张听说我也在用，笑着说："早跟你说了吧，密码这事儿不能靠脑子记。"</p>
+<p>现在我偶尔会打开 Safe 的官网翻看一下，看看有没有新功能更新。也常去它的中文文档里查一些边角功能——比如怎么创建额外的保险库给家人用、怎么把某张卡片分享给信任的人。这款软件在国内直接就能用，不用翻墙，云同步也支持国内访问稳定的服务。</p>
+<p>如果你也像我之前那样，密码东一个西一个记不住，浏览器自动填又不敢放心用，不妨试试这个方向。选一个靠谱的密码管理器，花一个晚上把散落的敏感信息归拢到一个地方，然后让它帮你在日常里省心——这点时间投资真的值得。我用的这套资料在三个仓库都能拿到，从文档维护到备份分发各有侧重：<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/SafeInCloud" target="_blank" rel="noopener">GitHub</a>是主仓库，<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/SafeInCloud" target="_blank" rel="noopener">Gitee</a>对国内访问更友好，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/SafeInCloud" target="_blank" rel="noopener">GitCode</a>做了额外一份备份以防万一，直接搜软件名就能找到对应目录。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gamma-zh-docs.html">Gamma 到底值不值得掏钱？一份按月度重算的付费决策账本</a></h2>
+  <p class="card-desc">我把 Gamma 的免费版和 Pro 版每个功能的实际使用频率、能省的时间、替代方案成本全部拉出来算一遍，帮你三秒决定要不要开年卡。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/halihali-docs.html">哈哩哈哩藏得真深——10 个冷门技巧让你追番效率翻倍</a></h2>
+  <p class="card-desc">哈哩哈哩大家都用来看番，但你知道搜导演名能批量找作品、追番列表能按更新状态筛选、推送没收到可能是电池优化拦了吗？这 10 个隐藏设置翻出来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/poweramp.html">Poweramp 用了两年，从&#34;音质神器&#34;到我通勤路上的默认播放器</a></h2>
+  <p class="card-desc">装 Poweramp 到现在快两年了。从 v3 初期一路更到现在的 build-909，当初冲着&#34;安卓最强音质&#34;来的，现在却发现真正离不开的不是音质，是那些当初没在意的小功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/vtn-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">VTN 对比评测：在跨境健康电商这条赛道上，它为什么敢只选 12 个品牌</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/jhentai.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">JHenTai 是什么？一篇写给完全不懂 EH 生态的新手入门指南</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

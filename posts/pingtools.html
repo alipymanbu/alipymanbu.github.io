@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>PingTools 全能力盘点：把安卓变成随身网络诊断台 · 老杨技术栈</title>
+  
+<meta name="description" content="PingTools 远不止一个 Ping 工具——从连通性巡检、端口扫描到流量统计和 Watcher 定时监控，盘点这款安卓网络工具箱的完整能力覆盖。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/pingtools.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PingTools 全能力盘点：把安卓变成随身网络诊断台">
+<meta property="og:description" content="PingTools 远不止一个 Ping 工具——从连通性巡检、端口扫描到流量统计和 Watcher 定时监控，盘点这款安卓网络工具箱的完整能力覆盖。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/pingtools.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/pingtools/1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/pingtools/1.png">
+
+<meta name="twitter:title" content="PingTools 全能力盘点：把安卓变成随身网络诊断台">
+<meta name="twitter:description" content="PingTools 远不止一个 Ping 工具——从连通性巡检、端口扫描到流量统计和 Watcher 定时监控，盘点这款安卓网络工具箱的完整能力覆盖。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "PingTools \u8fdc\u4e0d\u6b62\u4e00\u4e2a Ping \u5de5\u5177\u2014\u2014\u4ece\u8fde\u901a\u6027\u5de1\u68c0\u3001\u7aef\u53e3\u626b\u63cf\u5230\u6d41\u91cf\u7edf\u8ba1\u548c Watcher \u5b9a\u65f6\u76d1\u63a7\uff0c\u76d8\u70b9\u8fd9\u6b3e\u5b89\u5353\u7f51\u7edc\u5de5\u5177\u7bb1\u7684\u5b8c\u6574\u80fd\u529b\u8986\u76d6\u3002", "headline": "PingTools \u5168\u80fd\u529b\u76d8\u70b9\uff1a\u628a\u5b89\u5353\u53d8\u6210\u968f\u8eab\u7f51\u7edc\u8bca\u65ad\u53f0", "image": ["https://alipymanbu.github.io/images/pingtools/1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/pingtools.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/pingtools.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "PingTools \u5168\u80fd\u529b\u76d8\u70b9\uff1a\u628a\u5b89\u5353\u53d8\u6210\u968f\u8eab\u7f51\u7edc\u8bca\u65ad\u53f0", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">PingTools 全能力盘点：把安卓变成随身网络诊断台</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">PingTools 全能力盘点：把安卓变成随身网络诊断台</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">PingTools 远不止一个 Ping 工具——从连通性巡检、端口扫描到流量统计和 Watcher 定时监控，盘点这款安卓网络工具箱的完整能力覆盖。</p>
+  </header>
+  <div class="prose">
+<p>很多人对 PingTools 的印象还停留在"手机上的 Ping 命令行"——打开 App，输个域名，看延迟和丢包率。但如果你只把它当一个移动端 ping.exe 来用，其实只用到了它不到三分之一的能力。</p>
+<p>这款安卓应用背后是一个完整的网络诊断工具箱——<a href="https://pingtools.fewz.tech" target="_blank" rel="noopener">官网</a>上列了二十多个独立工具，它把网络工程师在台式机上才能完成的大半日常工作，浓缩进了手机屏幕的几行列表里：连通性检测、端口扫描、Wi-Fi 勘查、流量追溯、定时巡检、数据导出……每一项单独拎出来都是一个能干活的工具，组合在一起就是一张覆盖从"家里 Wi-Fi 是不是出问题了"到"上线服务器端口为什么扫不通"的广谱诊断网。下面按能力域完整走一遍，看看它到底能替你省下多少次 SSH 到服务器上跑命令的时间。</p>
+<p><img src="../images/pingtools/1.png" alt="PingTools 主界面一览" loading="lazy"></p>
+<h2>连通性检测：从手动 Ping 到 24 小时 Watcher</h2>
+<p>连通性检测是 PingTools 的基础盘，但它把这个单项做了两层迭代。</p>
+<p>第一层是 Ping 家族的基础三件套：普通 Ping、TCP Ping 和 HTTP Ping。普通 Ping 用 ICMP 协议测基础可达性；TCP Ping 对指定端口发 SYN 包，能看到真实的 TCP 连接状态——这在排查"端口扫描显示 Open 但连不上"的情况时特别有用；HTTP Ping 则直接对 URL 发 GET 请求，看响应码和首字节时间，等于把 curl 的前半段搬到了手机上。</p>
+<p>第二层是收藏管理和 Watcher 定时巡检，这是把 Ping 从一个"临时动作"升级成"持续监控"的关键设计。你把常用目标存进 Favorites，给每个主机起个备注名（"主服务器""家路由""VPS"），下次选一下就行，不用每次敲域名。Watcher 则更进一步——每隔 N 分钟自动对一组主机跑 Ping，任何一个状态变化时响铃或推送通知，后台静默运行，重启后可恢复。对运维来说这意味着什么？一台放在家里或公司的安卓设备，装上 PingTools 就能顶一个简化版的 UptimeRobot，24 小时盯着你的服务器有没有掉线，发现问题第一时间推送到手机。</p>
+<p><img src="../images/pingtools/9.png" alt="收藏主机列表与备注名" loading="lazy"></p>
+<h2>网络状态面板：谁在偷偷跑流量，Wi-Fi 里混了谁</h2>
+<p>如果说 Ping 是"单点探测"，那 Info 面板就是对当前网络环境的"全局快照"。</p>
+<p>面板最实用的两个子功能是 Network usage 和 Wi-Fi Scanner。Network usage 以条形图和列表两种方式展示手机上每个应用的累计上传下载数据——这个功能的价值在蜂窝流量快用完的时候会立刻显现：打开就能看到是哪只 App 在后台偷偷同步大文件，关掉它的后台数据权限就行。Android 自带的流量统计只区分 Wi-Fi 和蜂窝，而且只有本月累计，PingTools 则按应用拆开、随时刷新看最新值，还能导出做报告。Wi-Fi Scanner 则列出附近所有 Wi-Fi SSID 的信号强度、信道、加密方式，排查"为什么我家 Wi-Fi 总是卡"的时候，一眼就能看到是不是有邻居在同信道上干扰。</p>
+<p>这两个功能组合起来，其实能帮你定位不少家庭或办公室网络问题：流量异常 + Wi-Fi 列表里出现陌生 SSID，大概率就是路由器被蹭了。</p>
+<h2>端口安全与诊断：扫不通不一定是对方关了</h2>
+<p>PingTools 的端口扫描器在很多场景下比 nmap 更便携，但扫出来的结果怎么解读，是新手最容易踩坑的地方——<a href="https://pingtools.pages.dev/" target="_blank" rel="noopener">PingTools文档</a>里有专门讲防火墙与扫描结果解读的文章，把 Open / Filtered / Closed 三种状态的成因掰开揉碎了讲。</p>
+<p>端口扫描的返回值只有三种：Open、Filtered、Closed。但每一种背后的原因可能完全不同。Open 但实际连不上？可能是服务器上的应用层防火墙主动发 RST 拒绝，也可能是服务有 IP 白名单而你的手机 IP 不在里面。Filtered 意味着发了 SYN 包后既没收到 SYN-ACK 也没收到 RST，直接超时——运营商封锁、企业防火墙、云服务商安全组、路由器 NAT 但端口没转发，任何一个中间设备丢包都会导致这个结果。Closed 但你明明开了服务？先检查服务是不是只监听 IPv6、是不是绑定了 127.0.0.1 回环地址、或者扫描器是不是开了太快的线程数把目标内核的半连接队列给冲了。</p>
+<p>这些判断逻辑 PingTools 本身不会直接告诉你——但它提供了 TCP Ping 做交叉验证。端口扫描如果让你困惑，直接用 TCP Ping 对同一端口试一下，能看到真实的 TCP 连接状态，比批量探测更精确。这一点是它和很多"一键扫描"类工具的区别：不替你下结论，但给了你足够多的信号让你自己判断。</p>
+<h2>数据导出：CSV 比截图有用得多</h2>
+<p>所有工具的结果都可以导出成文本（TXT）或 CSV，这一点在实际工作中会被反复用到。</p>
+<p>截图有几个天然劣势：不能二次分析、信息密度低、容易截错。CSV 则完全相反——Ping 导出的列头是 <code>timestamp,host,ip,sequence,delay_ms,size,ttl</code>，用 Excel、WPS 或 Python pandas 打开后，可以按时间排序画延迟趋势折线图、按主机分组做丢包率分布直方图、多主机结果合并对比。Watcher 的历史记录还有一个批量导出功能，把所有监控主机的历史一次性导出到一个 CSV，直接就能喂给 Grafana 或 Prometheus 做可视化看板。</p>
+<p>导出文件默认保存在应用的内部存储目录，Android 11+ 的分区存储机制下如果提示权限不足，去系统设置里给 PingTools 开"所有文件访问"或者选仅存内部存储再手动复制出去就行。</p>
+<h2>短板也要说</h2>
+<p>PingTools 是个功能全面的工具，但它的局限也很明确。</p>
+<p>首先，很多高级功能需要授予特殊权限——Network usage 需要"使用情况访问"权限、导出可能需要"所有文件访问"权限、定时后台运行需要忽略电池优化。这些都是 Android 系统层面的限制，PingTools 本身无法绕过，每次系统重置权限后还要手动重新开。其次，端口扫描和 Traceroute 这类深度诊断工具的结果有很强的上下文依赖——运营商封锁、NAT 类型、目标服务器的安全策略都会影响结果解读，App 只负责给你原始数据，判断还得靠你自己的经验。最后，免费版有一定的功能限制，Watcher 的监控数量、扫描线程数等参数在 Pro 版里才有完整开放——完整版可以从<a href="https://pingtools.fewz.tech/download.html" target="_blank" rel="noopener">官方下载</a>获取。</p>
+<h2>什么样的人该用它</h2>
+<p>如果你是以下几类人，PingTools 值得装在手机上长期留着：</p>
+<p><strong>运维或站长</strong>：手机上随时能查服务器通不通、端口有没有开掉，Watcher 定时巡检能当一个轻量级的在线监控用，不用再在 VPS 上装一堆监控组件。</p>
+<p><strong>网络爱好者或学生</strong>：做网络实验、学 TCP/IP 协议的时候，PingTools 把命令行工具的体验搬到了触屏上，对比不同网络环境下的 Ping 行为、观察端口扫描的三种状态，都是很好的动手学习素材。</p>
+<p><strong>普通用户排查家庭网络</strong>：家里 Wi-Fi 突然卡了、蜂窝流量莫名其妙快用完了、怀疑路由器被蹭了——打开 PingTools 查一下 Wi-Fi 列表和流量统计，几分钟内就能定位问题。</p>
+<p>这套资料在三个仓库都能拿到，文档维护同步更新、国内访问也方便：主仓库放在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/PingTools" target="_blank" rel="noopener">GitHub</a>，<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/PingTools" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/PingTools" target="_blank" rel="noopener">GitCode</a> 上也各自有一份镜像，按你习惯的平台选就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mirai-docs.html">把 AI 角色原型嵌进内容创作流水线，我是这样用 MIRAI 的</a></h2>
+  <p class="card-desc">做虚拟角色设定以前要翻三份文档、手动演对话，现在用 MIRAI 当原型工场——从灵感收集到社区发布，一条链串起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/hailuo-ai-docs.html">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</a></h2>
+  <p class="card-desc">用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/iapp-docs.html">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</a></h2>
+  <p class="card-desc">从最初的可视化拖拽到裕语言 V7 的成熟，iApp 每一个语言版本背后都是一次产品定位的微调。我们顺着版本号看它的迭代节奏，猜一猜它下一步想做什么。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/codeformer-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">CodeFormer 深度盘点：从老照片修复到 AI 生图后处理，一个模型能扛多少活</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/cemu-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Cemu 用了两年，我把 Wii U 的那些事想清楚了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

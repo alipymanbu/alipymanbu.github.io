@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>安卓手机上零成本跑 Python——Pydroid 3 从安装到动手写代码 · 老杨技术栈</title>
+  
+<meta name="description" content="还在纠结出门想练 Python 却没带电脑？Pydroid 3 让 Android 手机直接变成便携 IDE。跟着这篇教程，十分钟把解释器、pip 包管理、代码编辑器全跑起来。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/pydroid3.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓手机上零成本跑 Python——Pydroid 3 从安装到动手写代码">
+<meta property="og:description" content="还在纠结出门想练 Python 却没带电脑？Pydroid 3 让 Android 手机直接变成便携 IDE。跟着这篇教程，十分钟把解释器、pip 包管理、代码编辑器全跑起来。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/pydroid3.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/pydroid3/main-menu.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/pydroid3/main-menu.jpg">
+
+<meta name="twitter:title" content="安卓手机上零成本跑 Python——Pydroid 3 从安装到动手写代码">
+<meta name="twitter:description" content="还在纠结出门想练 Python 却没带电脑？Pydroid 3 让 Android 手机直接变成便携 IDE。跟着这篇教程，十分钟把解释器、pip 包管理、代码编辑器全跑起来。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd8\u5728\u7ea0\u7ed3\u51fa\u95e8\u60f3\u7ec3 Python \u5374\u6ca1\u5e26\u7535\u8111\uff1fPydroid 3 \u8ba9 Android \u624b\u673a\u76f4\u63a5\u53d8\u6210\u4fbf\u643a IDE\u3002\u8ddf\u7740\u8fd9\u7bc7\u6559\u7a0b\uff0c\u5341\u5206\u949f\u628a\u89e3\u91ca\u5668\u3001pip \u5305\u7ba1\u7406\u3001\u4ee3\u7801\u7f16\u8f91\u5668\u5168\u8dd1\u8d77\u6765\u3002", "headline": "\u5b89\u5353\u624b\u673a\u4e0a\u96f6\u6210\u672c\u8dd1 Python\u2014\u2014Pydroid 3 \u4ece\u5b89\u88c5\u5230\u52a8\u624b\u5199\u4ee3\u7801", "image": ["https://alipymanbu.github.io/images/pydroid3/main-menu.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/pydroid3.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/pydroid3.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u5b89\u5353\u624b\u673a\u4e0a\u96f6\u6210\u672c\u8dd1 Python\u2014\u2014Pydroid 3 \u4ece\u5b89\u88c5\u5230\u52a8\u624b\u5199\u4ee3\u7801", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">安卓手机上零成本跑 Python——Pydroid 3 从安装到动手写代码</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">安卓手机上零成本跑 Python——Pydroid 3 从安装到动手写代码</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">还在纠结出门想练 Python 却没带电脑？Pydroid 3 让 Android 手机直接变成便携 IDE。跟着这篇教程，十分钟把解释器、pip 包管理、代码编辑器全跑起来。</p>
+  </header>
+  <div class="prose">
+<p>有没有过这种时候——地铁上刷到一段 Python 小算法，想跑一下验证结果，身边却只有手机；或者上课老师发了个 <code>.ipynb</code> 练习本，想在课间对着跑，掏不开电脑。Pydroid 3 就是专门解决这件事的：它把 CPython 解释器、pip 包管理、代码编辑器和终端全部打包进一个 Android App。想了解更多可以去<a href="https://pydroid3.fewz.tech" target="_blank" rel="noopener">官网</a>看看，装完就能写、写完就能跑。</p>
+<h2>准备条件</h2>
+<ul><li>设备：Android 手机或平板，系统版本 7.0 以上（iOS 版功能覆盖度会打折扣，优先 Android）</li><li>存储空间：建议预留 500MB 以上，科学库装多了会膨胀得比较快</li><li>网络：首次安装和 pip 装包需要联网，装好常用库之后可以离线运行</li><li>键盘：纯触摸也能写代码，但长时间敲 Python 建议配一个蓝牙键盘，或者开启 Pydroid 自带的扩展键盘栏</li></ul>
+<h2>第一步：装好 Pydroid 3 本体</h2>
+<p><img src="../images/pydroid3/main-menu.jpg" alt="主界面菜单" loading="lazy"></p>
+<p>安装包从<a href="https://pydroid3.fewz.tech/download.html" target="_blank" rel="noopener">下载</a>获取，装好之后点开 App，你会看到左侧一个隐藏式的抽屉菜单——这是整个应用的导航中枢，后面所有功能都从这里进。先别急着写代码，我们先把环境探一遍。</p>
+<p>点左侧菜单 → <strong>Terminal</strong>，你会进入一个内置终端。敲一行 <code>python --version</code> 回车，应该能看到 Python 3.x 的版本号输出。如果版本号能正常打印，说明解释器已经就绪了，不需要你手动装任何东西。</p>
+<p>这里注意一个细节：Pydroid 用的是<strong>内置的 CPython 解释器</strong>，不是把代码发到远端跑。你关掉网络、关掉 Wi-Fi，再跑同样的命令也能通——这和浏览器里的在线 Python IDE 本质不同。</p>
+<h2>第二步：用编辑器写第一段代码</h2>
+<p>还是从左侧菜单进 → <strong>Editor</strong>，这是 Pydroid 的代码编辑器。默认会开一个 untitled 文件，你可以敲：</p>
+<pre><code>print(&quot;Hello Pydroid&quot;)
+for i in range(3):
+    print(f&quot;loop {i}&quot;)</code></pre>
+<p>然后点右上角的 <strong>Run</strong> 按钮（一个绿色的三角形），屏幕下方会弹出一个 Terminal 面板，里面打印出三行 loop 加一个 Hello。编辑器本身支持语法高亮、自动缩进、括号配对这些基本功能，写短代码完全够用。</p>
+<p><img src="../images/pydroid3/editor-code.jpg" alt="代码编辑器界面" loading="lazy"></p>
+<p>如果你发现 Run 按钮点了之后没反应，先检查一下代码里有没有语法错误——Pydroid 不会帮你做实时的语法检查，错误信息会直接打印在 Terminal 里。新手最容易犯的一个错是混用中文引号，Python 只认英文的 <code>&quot;&quot;</code> 和 <code>&#x27;&#x27;</code>。</p>
+<h2>第三步：用 pip 装个第三方库</h2>
+<p>内置解释器够用，但真要干活还得装库。Pydroid 有两条路可以装包：图形界面和命令行。</p>
+<p><strong>图形界面方式</strong>：左侧菜单 → <strong>Pip</strong>，顶部有个搜索框，搜你想要的包名（比如 <code>requests</code>），从结果里选中它，点 <strong>Install</strong> 就行。已装包也在这个面板里列出来，旁边有版本号，可以随时 <strong>Uninstall</strong>。</p>
+<p><strong>命令行方式</strong>：Terminal 里直接敲标准 pip 命令：</p>
+<pre><code>pip install requests
+pip install numpy pandas matplotlib</code></pre>
+<p>一次性装多个包、指定版本号（<code>pip install openpyxl&gt;=3.0</code>）的时候，命令行比图形界面灵活得多。</p>
+<p>Pydroid 的 pip 能装科学库是个亮点——普通 Android 环境装 NumPy、SciPy 会炸，因为没有合适的 C 编译器、也没有 ARM 架构的 wheel。Pydroid 内置了交叉编译器，还维护了一份 Android ARM 的预编译 wheel 仓库，pip 默认优先查这个仓库，绝大多数常见库直接就能装，跳过源码编译那一步。wheel 覆盖范围和编译失败的排查思路，<a href="https://pydroid3.pages.dev/" target="_blank" rel="noopener">pydroid3文档</a>里有更详细的列表和案例。</p>
+<h2>第四步：跑一个带图表的小脚本</h2>
+<p>装好 <code>matplotlib</code> 和 <code>numpy</code> 之后，我们来写个折线图验证一下科学计算能力。在编辑器里新建一个文件：</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)
+
+plt.plot(x, y)
+plt.title(&quot;y = sin(x)&quot;)
+plt.show()</code></pre>
+<p>点 Run，几秒之后屏幕上会弹出一张折线图——不是在 Terminal 里打字符画，是真的弹出一个 GUI 窗口显示 Matplotlib 渲染的图。在手机屏幕上虽然不是最佳看图体验，但胜在<strong>能跑就行</strong>——出差路上快速确认数据趋势、午休时给同事演示一个小算法，比带电脑轻松得多。</p>
+<h2>常见卡点</h2>
+<h3>卡点一：pip install 报 wheel 找不到</h3>
+<p>Pydroid 的 wheel 仓库不可能囊括所有 PyPI 包，某些冷门包会 fallback 到源码编译，然后因为缺少系统依赖而失败。排查顺序：先确认网络没问题 → 再看这个包是不是纯 Python 的（纯 Python 包不需要编译，一般都能装）→ 如果包有 C 扩展，大概率是 ARM wheel 没覆盖到，换个同类库试试。</p>
+<h3>卡点二：切后台回来执行状态没了</h3>
+<p>Android 的系统会杀后台进程。Pydroid 切到后台一会儿，再回来的时候之前的 kernel 状态、Jupyter 的单元执行上下文都可能丢失。解决办法：长时间运行的任务不要依赖手机的前后台切换，写完就跑、跑完就看，别让它在后台挂着。</p>
+<h3>卡点三：键盘敲得难受</h3>
+<p>手机上敲 Python 最大的痛点是括号和缩进。Pydroid 自带一个<strong>扩展键盘栏</strong>——在 Settings 里打开，可以在键盘顶部多一排括号、引号、Tab 键和常用的 Python 关键字，比原生软键盘好用很多。真要长时间写，还是建议蓝牙键盘。</p>
+<h2>往下还能玩什么</h2>
+<p>基础跑通之后，可以试试 Pydroid 的几个进阶方向：<strong>Jupyter Notebook</strong> 查看和运行 <code>.ipynb</code> 文件（Android 版偏查看，iOS 版编辑功能更完整）、<strong>Pygame 2D</strong> 写个小游戏原型直接在手机上跑、<strong>Kivy</strong> 做跨平台 GUI 的移动端原型验证，甚至开 Proot root 模式跑一个完整的 Linux 用户空间跑定时脚本。</p>
+<p>对大多数人来说，Pydroid 3 最核心的价值就是「<strong>出门也能摸 Python</strong>」——不需要装 IDE、不需要配环境、不需要联网，装完就能打开编辑器敲代码。写这篇文的时候顺手把相关资料整理了一份，分别放在了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/pydroid3" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/pydroid3" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/pydroid3" target="_blank" rel="noopener">GitCode</a>上，国内访问走 Gitee 或 GitCode 会快一些。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/anyview-docs.html">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</a></h2>
+  <p class="card-desc">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/unifans.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">引力圈创作者入门：从注册到发第一条付费帖子的完整实战</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/feem-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

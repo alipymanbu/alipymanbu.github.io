@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>海螺 AI 避坑清单：我踩过的七个视频生成翻车点 · 老杨技术栈</title>
+  
+<meta name="description" content="用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hailuo-ai-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="海螺 AI 避坑清单：我踩过的七个视频生成翻车点">
+<meta property="og:description" content="用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hailuo-ai-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hailuo-ai-docs/subject-reference.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hailuo-ai-docs/subject-reference.webp">
+
+<meta name="twitter:title" content="海螺 AI 避坑清单：我踩过的七个视频生成翻车点">
+<meta name="twitter:description" content="用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528\u6d77\u87ba AI \u505a\u4e86\u5c0f\u4e24\u4e2a\u6708\uff0c\u4ece\u4e3b\u4f53\u53c2\u8003\u5230\u591a\u89d2\u8272\u3001\u4ece\u8fd0\u955c\u5230\u9020\u578b\u5ba4\uff0c\u8e29\u4e86\u4e00\u5806\u6587\u6863\u6ca1\u660e\u8bf4\u7684\u6697\u5751\u3002\u6574\u7406\u6210\u8fd9\u7bc7\u907f\u5751\u6307\u5357\uff0c\u5e2e\u4f60\u7701\u6389\u6211\u82b1\u6389\u7684\u90a3\u4e9b\u91cd\u8bd5\u6b21\u6570\u548c\u79ef\u5206\u3002", "headline": "\u6d77\u87ba AI \u907f\u5751\u6e05\u5355\uff1a\u6211\u8e29\u8fc7\u7684\u4e03\u4e2a\u89c6\u9891\u751f\u6210\u7ffb\u8f66\u70b9", "image": ["https://alipymanbu.github.io/images/hailuo-ai-docs/subject-reference.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hailuo-ai-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hailuo-ai-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6d77\u87ba AI \u907f\u5751\u6e05\u5355\uff1a\u6211\u8e29\u8fc7\u7684\u4e03\u4e2a\u89c6\u9891\u751f\u6210\u7ffb\u8f66\u70b9", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。</p>
+  </header>
+  <div class="prose">
+<p>海螺 AI 刚从<a href="https://hailuo-ai.qhah.skin" target="_blank" rel="noopener">官网</a>下来的时候我以为它就是个"能生成视频的 app"——上传几张照片、输一段提示词、点个生成，完事。结果第一周我就把积分花了两千多，出的全是废片。不是串脸就是脸漂了，要不就是运镜完全不对，还有几次角色被遮挡直接凭空消失。</p>
+<p>如果你也刚从<a href="https://hailuo-ai.qhah.skin/download.html" target="_blank" rel="noopener">官方下载</a>装上海螺 AI，或者已经在上面烧了不少积分却没出什么满意的东西，这篇东西可能能帮你少走点弯路。下面七个坑，是我实打实踩过的，每一个都有症状、原因和解法。</p>
+<h2>坑一：主体参考的照片没选对，脸越生越漂</h2>
+<p><strong>症状</strong>：你明明上传了参考照，生成出来的视频里角色脸还是在变——开头是你，中间变成一个陌生人，结尾又换了一张。或者五官骨架还对，但表情一做夸张点就开始畸形。</p>
+<p><strong>原因</strong>：海螺 AI 的主体参考对输入照片质量极其敏感。我之前随手截了一张朋友圈自拍当参考，光线暗、脸上还有阴影，结果模型根本没法建立清晰的特征嵌入。还有一次用了一张墨镜照，模型直接把"墨镜"当成了面部的一部分，后面生成的视频里角色全程戴着墨镜，摘都摘不掉。</p>
+<p>我后来去翻了一下<a href="https://hailuo-ai-docs.pages.dev/" target="_blank" rel="noopener">hailuo ai文档</a>才知道，参考照要"清晰、正面、光线好"，但没说什么叫清晰。我后来实测，至少要满足这几点：面部占照片宽度的三分之一以上、光线均匀没有明显阴影、接近正面（侧脸超过 45 度基本就废了）、分辨率不低于 720p。</p>
+<p><strong>解法</strong>：专门拍一组参考照。找个光线好的窗边，正面拍两三张——一张自然表情、一张微笑、一张稍微侧一点但不超过 30 度。别用合影里裁出来的，别用滤镜重的，别用逆光的。这几张照片值得你花五分钟拍，后面每条视频都会用上。</p>
+<p><img src="../images/hailuo-ai-docs/subject-reference.webp" alt="主体参考示意" loading="lazy"></p>
+<h2>坑二：多角色一上三个就开始串脸</h2>
+<p><strong>症状</strong>：一段视频里有三个人，A 和 B 走着走着，A 的脸突然变成了 C 的。或者本来是 A 和 B 在对话，镜头切回来两个人的脸长得一模一样。</p>
+<p><strong>原因</strong>：海螺 AI 在 2 个角色时稳定性还不错，上 3 个角色后串脸概率会大幅上升。我之前做一个三人场景的短剧，试了五次，每次都至少有一次串脸。模型同时要记住三张脸，还要在镜头切换时区分谁是谁，这个能力目前还在天花板附近。</p>
+<p>而且如果两个角色本身长得就像，或者上传的参考照风格太接近（同一个地方拍的、光线一样、表情类似），模型更容易搞混。</p>
+<p><strong>解法</strong>：核心角色不超过 2 个，背景角色别给参考照，让模型自由生成——接受一定程度的不一致。如果必须三个人同框，分镜头拍：每个镜头里锁定的角色不超过 2 个，第三个人当背景板。</p>
+<h2>坑三：运镜指令写太复杂，模型直接罢工</h2>
+<p><strong>症状</strong>：提示词里写了"先固定拍 2 秒，然后缓慢推近，再环绕 360°，最后拉远到全景"，生成出来要么全程固定镜头，要么就只执行了最后一个动作。</p>
+<p><strong>原因</strong>：Hailuo 2.3 系列能识别的运镜类型挺多的，但组合能力有限。模型对"先 A 再 B 最后 C"这种多段指令理解得不好，通常只能稳定执行 1–2 种运镜。我试过把五种运镜连在一起写，结果模型直接选了一个最简单的——固定镜头。</p>
+<p><strong>解法</strong>：提示词里只写一种主要运镜。最多加一个简单的组合，比如"先固定拍摄几秒，然后缓慢推近"。别追求花哨的运镜切换，先把一种运镜执行好再说。</p>
+<h2>坑四：角色被遮挡，参考直接失效</h2>
+<p><strong>症状</strong>：镜头拉远，角色被前景物（比如一棵树、一张桌子）挡住了上半身，结果挡住的部分模型直接自由发挥——或者整个人消失了，或者长出了奇怪的肢体。</p>
+<p><strong>原因</strong>：海螺 AI 的主体参考是基于面部特征的。如果角色在画面里只有背影、侧脸、或者被大幅遮挡，模型就找不到足够的面部信息来匹配参考，会自动退回到文生视频模式，完全不管你上传了什么参考照。</p>
+<p><strong>解法</strong>：写提示词时主动说明。比如"镜头固定在角色正面，上半身完整可见"、"角色站在空旷处，没有前景遮挡"。如果场景里必须有遮挡，尽量让遮挡物只挡身体不挡脸，或者把被遮挡的镜头单独作为一段来处理。</p>
+<h2>坑五：极端表情下面部开始崩盘</h2>
+<p><strong>症状</strong>：提示词里写了"角色愤怒地大喊"或者"大哭，眼泪直流"，生成出来的视频里面部扭曲变形、五官错位，或者眼睛直接变成两个黑洞。</p>
+<p><strong>原因</strong>：主体参考能保持骨架和五官的相对位置，但极端表情（大哭、愤怒、惊恐）会让面部肌肉产生大幅变形，模型在维持骨架和允许表情变化之间找不到平衡，就容易出现面部畸形。这个问题不是海螺 AI 独有的，几乎所有 AI 视频工具都有，但海螺 AI 在极端表情下的容错空间特别小。</p>
+<p><strong>解法</strong>：提示词里的表情描述收敛一点。把"愤怒地大喊"改成"表情严肃，眉头微皱"，把"大哭"改成"眼眶泛红"。或者干脆避开极端情绪的镜头——把这些留给真人演员，海螺 AI 负责中低强度的情感表达就够了。</p>
+<h2>坑六：造型室生成的手永远是残的</h2>
+<p><strong>症状</strong>：用造型室换完衣服，出来的图片手部要么缺手指、要么手指扭曲成奇怪的形状，做静态展示还行，一做视频就穿帮。</p>
+<p><strong>原因</strong>：这不是海螺 AI 一家的问题，所有 AI 换装工具目前都还没把手部做好。手指数量多、结构复杂、姿势变化大，模型对这块的理解始终不到位。我试过换了五张参考照，手的问题每次都存在，只是严重程度不同。</p>
+<p><strong>解法</strong>：做视频时尽量避开手部特写。让角色把手放在口袋里、背在身后、或者自然下垂——总之不要让手成为画面焦点。静态展示的话，直接裁掉手部区域就行。</p>
+<h2>坑七：以为主体参考能控制末帧，结果还是不行</h2>
+<p><strong>症状</strong>：你想让视频开头角色站着、结尾坐着，于是上传了主体参考照，提示词里也写了"从站立过渡到坐姿"，结果生成出来末帧完全不是你想要的姿势，可能是走着、可能是蹲着、也可能根本没坐下。</p>
+<p><strong>原因</strong>：Hailuo 2.3 系列目前只能控制起始帧，末帧由模型自己决定。主体参考只管"脸是谁"，不管"最后摆出什么姿势"。我之前做一个转场镜头，以为上传了站立和坐着两张参考照就能锁定首尾，结果模型只认了第一张站着的，结尾想让它坐下完全不听。</p>
+<p><strong>解法</strong>：要么接受末帧不可控的现实，把视频剪短到模型能稳定执行的长度（6–10 秒），要么用后期剪辑把多段视频拼接起来，靠剪辑点制造转场效果。</p>
+<h2>防坑速查清单</h2>
+<ul><li>主体参考照专门拍：光线均匀、接近正面、面部清晰，别用随手截的</li><li>多角色上限 2 个，超过就分镜头</li><li>运镜只写 1–2 种，别堆组合</li><li>提示词里主动说"角色不被遮挡"</li><li>表情描述收敛，别写极端情绪</li><li>视频里避开手部特写</li><li>别指望末帧可控，用剪辑补</li></ul>
+<hr>
+<p>以上这些坑，我花了将近三千积分才摸清楚。如果你正准备上手海螺 AI，或者已经在用但效果不理想，把这份清单对着过一遍，应该能帮你筛掉大部分无效生成。这软件本身的能力是够的——主体参考的一致性、运镜的识别精度、造型室的换装效果，在同类工具里都算靠前。但它不是"傻瓜式一键出片"，你得摸清楚它的边界在哪里，别在它做不到的事情上浪费积分。</p>
+<p>这套资料我同步到了三个仓库，<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/hailuo%20ai" target="_blank" rel="noopener">GitHub</a> 主站更新最快，国内访问慢的时候可以去 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/hailuo%20ai" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/hailuo%20ai" target="_blank" rel="noopener">GitCode</a> 拿同样的内容。知道这些坑之后，海螺 AI 其实相当省心——把时间花在想提示词和拍参考照上，比浪费在反复重试上划算多了。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mirai-docs.html">把 AI 角色原型嵌进内容创作流水线，我是这样用 MIRAI 的</a></h2>
+  <p class="card-desc">做虚拟角色设定以前要翻三份文档、手动演对话，现在用 MIRAI 当原型工场——从灵感收集到社区发布，一条链串起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/iapp-docs.html">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</a></h2>
+  <p class="card-desc">从最初的可视化拖拽到裕语言 V7 的成熟，iApp 每一个语言版本背后都是一次产品定位的微调。我们顺着版本号看它的迭代节奏，猜一猜它下一步想做什么。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/geektyper-docs.html">每周分享开场的这条链，我用 GeekTyper 串起来了</a></h2>
+  <p class="card-desc">技术分享前用 GeekTyper 跑十秒绿色代码当开场仪式，配一个红色警报转折，直接把观众注意力钉住。以前准备开场白要写草稿、调 PPT，现在一条链自动走完。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/bud-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">国际服 bud 从零上手：语言切换、基础操作到第一件衣服发布</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/heibai-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">heibai 用了三个月才发现的五个隐藏玩法，之前全都白看了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

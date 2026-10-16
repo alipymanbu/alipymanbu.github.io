@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Myket 这三个坑我全踩过——伊朗安卓商店上手实录 · 老杨技术栈</title>
+  
+<meta name="description" content="从权限放错位置到白屏加载再到下载卡住，三个真实踩坑经历告诉你 Myket 看着简单但藏着哪些容易翻车的细节。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/myket-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Myket 这三个坑我全踩过——伊朗安卓商店上手实录">
+<meta property="og:description" content="从权限放错位置到白屏加载再到下载卡住，三个真实踩坑经历告诉你 Myket 看着简单但藏着哪些容易翻车的细节。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/myket-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/myket-docs/home-screen.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/myket-docs/home-screen.png">
+
+<meta name="twitter:title" content="Myket 这三个坑我全踩过——伊朗安卓商店上手实录">
+<meta name="twitter:description" content="从权限放错位置到白屏加载再到下载卡住，三个真实踩坑经历告诉你 Myket 看着简单但藏着哪些容易翻车的细节。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u6743\u9650\u653e\u9519\u4f4d\u7f6e\u5230\u767d\u5c4f\u52a0\u8f7d\u518d\u5230\u4e0b\u8f7d\u5361\u4f4f\uff0c\u4e09\u4e2a\u771f\u5b9e\u8e29\u5751\u7ecf\u5386\u544a\u8bc9\u4f60 Myket \u770b\u7740\u7b80\u5355\u4f46\u85cf\u7740\u54ea\u4e9b\u5bb9\u6613\u7ffb\u8f66\u7684\u7ec6\u8282\u3002", "headline": "Myket \u8fd9\u4e09\u4e2a\u5751\u6211\u5168\u8e29\u8fc7\u2014\u2014\u4f0a\u6717\u5b89\u5353\u5546\u5e97\u4e0a\u624b\u5b9e\u5f55", "image": ["https://alipymanbu.github.io/images/myket-docs/home-screen.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/myket-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/myket-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Myket \u8fd9\u4e09\u4e2a\u5751\u6211\u5168\u8e29\u8fc7\u2014\u2014\u4f0a\u6717\u5b89\u5353\u5546\u5e97\u4e0a\u624b\u5b9e\u5f55", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">Myket 这三个坑我全踩过——伊朗安卓商店上手实录</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Myket 这三个坑我全踩过——伊朗安卓商店上手实录</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从权限放错位置到白屏加载再到下载卡住，三个真实踩坑经历告诉你 Myket 看着简单但藏着哪些容易翻车的细节。</p>
+  </header>
+  <div class="prose">
+<p>Myket 是伊朗本土的 Android 应用商店，同时还整合了波斯语视频流媒体——它的<a href="https://myket.gltd.quest" target="_blank" rel="noopener">官网</a>显示，一个 13MB 的 APK 装下 35 万应用加 14 万部影视。功能上确实有特色，我第一次用的时候冲着它免订阅看波斯语动画片就装了。但说实话，<strong>装完之后没少翻车</strong>——不是什么致命问题，就是几个地方设计挺"地域性"的，国内用户不注意的话很容易卡壳。</p>
+<p>今天就把我踩过的三个坑说一下，都是真金白银换来的经验。</p>
+<hr>
+<h2>坑一：装完点不开，原来是权限放错了应用</h2>
+<p><strong>症状</strong>：从<a href="https://myket.gltd.quest/download.html" target="_blank" rel="noopener">Myket下载</a>拿到 APK，点开安装，系统弹窗拦截，我去设置里给 Myket 开了"安装未知应用"，结果回来再点 APK 还是被拦。反复试了两次，以为手机中毒了。</p>
+<p><strong>原因</strong>：Android 的"安装未知应用"权限有个反直觉的设计——这个权限是给<strong>打开 APK 的那个应用</strong>开的，不是给要安装的目标应用开的。我当时是用系统文件管理器找到 APK 的，结果我把权限给了 Myket 自己，系统文件管理器反而没权限调用安装流程，自然每次都被拦。</p>
+<p><img src="../images/myket-docs/home-screen.png" alt="Myket 首页" loading="lazy"></p>
+<p><strong>解法</strong>：打开系统设置，找到「特殊访问权限 → 安装未知应用」，然后找到<strong>你实际用来打开 APK 的那个应用</strong>——一般是系统文件管理器，也可能是网盘客户端内置的文件管理器，或者 Chrome 浏览器（如果你是在浏览器里下载的）。给这个应用开开关，不是给 Myket 开。</p>
+<p>顺便说一下，这个权限装完之后可以关掉，日常使用 Myket 不需要它，留着反而有安全顾虑。</p>
+<hr>
+<h2>坑二：打开就白屏转圈，以为 App 坏了卸载重装</h2>
+<p><strong>症状</strong>：装好 Myket，点开之后屏幕一片白，中间一个 loading 转半天。划掉重开还是白。我当时以为下载的安装包有问题，卸了重下还是一样。</p>
+<p><strong>原因</strong>：Myket 的服务器和 CDN 全在伊朗境内。伊朗之外的网络访问这个 CDN 天然有延迟，跨境带宽波动的时候甚至连不上。它不是"加载慢"，是"压根没连上"，所以就一直转圈。我后来去<a href="https://myket-docs.pages.dev/" target="_blank" rel="noopener">Myket文档</a>翻了一下才知道，很多海外用户都遇到过这个问题，不是手机问题也不是安装包问题。</p>
+<p><strong>解法有三档，按顺序试</strong>：</p>
+<p>第一档，最快的——Wi-Fi 和移动数据互切一下。有时候某个网络运营商的路由恰好通，另一个就不通。我当时就是在家 Wi-Fi 白屏，切到 5G 秒开。</p>
+<p>第二档，彻底关闭再打开。从最近任务里把 Myket 划掉（不是按返回键，是彻底划走），然后重新点图标。这能触发 Myket 重新建立网络连接，而不是沿用那个已经断了的旧连接。</p>
+<p>第三档，清缓存。前两档都不行就进系统设置 → 应用 → Myket → 存储 → 清除缓存。注意是清缓存不是清数据——清缓存只删临时文件，不会动你的登录状态和收藏清单。清完第一次打开会慢一些，缓存要重建。</p>
+<p>如果三档都试了还是反复白屏，可能就是你所在网络对伊朗 CDN 路由不稳定，或者手机系统版本太旧和最新版不完全兼容，等一段时间再试或者换个设备就好。</p>
+<hr>
+<h2>坑三：下载游戏卡在 0%，以为手机存储炸了</h2>
+<p><strong>症状</strong>：在 Myket 里点下载一个带数据包的游戏，进度条卡在 23% 不动了，速度显示 0 KB/s，等了十分钟还是那样。取消重下，又卡在另一个百分比。我当时第一反应是手机存储不够了，去设置里一看还有 8GB 空闲。</p>
+<p><strong>原因</strong>：Myket 的下载管理器本身没问题，卡住主要是四个因素：网络波动（Wi-Fi 信号掉一格或者移动数据切换基站）、伊朗 CDN 临时压力大、Android 省电策略把后台下载进程杀了、极少数情况才是存储真的不够。我那次就是 Wi-Fi 信号掉了一格，路由切换的时候下载连接断了，Myket 没自动恢复，就一直卡在那。</p>
+<p><strong>解法也是三步</strong>：</p>
+<p>第一步，先取消重试。在下载管理器里点取消，重新点安装按钮。简单粗暴但经常管用。</p>
+<p>第二步，切换网络。和白屏问题一样的道理，Wi-Fi ↔ 移动数据互切，换一条路试试。</p>
+<p>第三步，重启 Myket。划掉彻底关闭重开，再点下载。</p>
+<p>至于要不要开断点续传——坦白说，Myket 的下载管理器文档没明确说支不支持。官方没写，但从实际体验来看，停个几十秒再回来大概率能接上；如果停了很久（比如一两个小时），很可能还是从头开始。所以<strong>大文件下载的时候尽量别让手机锁屏太久</strong>，或者把 Myket 加进系统的省电白名单里，防止后台被杀。</p>
+<p>还有个提前检查：保持手机至少有 2~3 GB 可用空间。数据游戏的数据包一下就是几百 MB 到几 GB，Myket 存储不足时会弹提示，但等它弹出来的时候你可能已经等了很久了。</p>
+<hr>
+<h2>防坑清单（速查版）</h2>
+<ol><li><strong>安装权限开给谁？</strong> → 给打开 APK 的那个应用（文件管理器/浏览器），不是给 Myket</li><li><strong>白屏怎么办？</strong> → 先切网络，不行重启应用，再不行清缓存</li><li><strong>下载卡住？</strong> → 取消重试 → 切网络 → 重启 Myket，别先怀疑存储</li><li><strong>大文件下载注意</strong> → 别锁屏太久，加进省电白名单防后台被杀</li><li><strong>装完可以做的事</strong> → 关掉"安装未知应用"权限，语言切到 English</li></ol>
+<p>知道这些坑之后，Myket 其实相当省心。35 万应用随便下，波斯语动画片免广告看，对于想接触中东生态的人来说是个不错的窗口。就是网络这个事吧，确实是硬伤——毕竟服务器在伊朗，国内访问难免抖一抖，习惯就好。这份踩坑记录也同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Myket" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Myket" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Myket" target="_blank" rel="noopener">GitCode</a>，从国内访问选 Gitee 或 GitCode 会更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/guise-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Guise 用过之后才懂的几个坑——我重装了两次才踩明白</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/typeless-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Typeless 这一年：从 Beta 到日常工具，一款语音输入法的迭代速写</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

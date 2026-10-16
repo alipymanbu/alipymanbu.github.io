@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Whack 是什么？从零开始带你玩转这款 AI 游戏社群工具 · 老杨技术栈</title>
+  
+<meta name="description" content="第一次接触 Whack 的游戏公会群主看过来，这篇带你从下载到跑通签到、超管、子群三大功能，用大白话讲清每一步。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/whack-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Whack 是什么？从零开始带你玩转这款 AI 游戏社群工具">
+<meta property="og:description" content="第一次接触 Whack 的游戏公会群主看过来，这篇带你从下载到跑通签到、超管、子群三大功能，用大白话讲清每一步。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/whack-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/whack-docs/group-customization.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/whack-docs/group-customization.jpg">
+
+<meta name="twitter:title" content="Whack 是什么？从零开始带你玩转这款 AI 游戏社群工具">
+<meta name="twitter:description" content="第一次接触 Whack 的游戏公会群主看过来，这篇带你从下载到跑通签到、超管、子群三大功能，用大白话讲清每一步。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7b2c\u4e00\u6b21\u63a5\u89e6 Whack \u7684\u6e38\u620f\u516c\u4f1a\u7fa4\u4e3b\u770b\u8fc7\u6765\uff0c\u8fd9\u7bc7\u5e26\u4f60\u4ece\u4e0b\u8f7d\u5230\u8dd1\u901a\u7b7e\u5230\u3001\u8d85\u7ba1\u3001\u5b50\u7fa4\u4e09\u5927\u529f\u80fd\uff0c\u7528\u5927\u767d\u8bdd\u8bb2\u6e05\u6bcf\u4e00\u6b65\u3002", "headline": "Whack \u662f\u4ec0\u4e48\uff1f\u4ece\u96f6\u5f00\u59cb\u5e26\u4f60\u73a9\u8f6c\u8fd9\u6b3e AI \u6e38\u620f\u793e\u7fa4\u5de5\u5177", "image": ["https://alipymanbu.github.io/images/whack-docs/group-customization.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/whack-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/whack-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "Whack \u662f\u4ec0\u4e48\uff1f\u4ece\u96f6\u5f00\u59cb\u5e26\u4f60\u73a9\u8f6c\u8fd9\u6b3e AI \u6e38\u620f\u793e\u7fa4\u5de5\u5177", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">Whack 是什么？从零开始带你玩转这款 AI 游戏社群工具</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Whack 是什么？从零开始带你玩转这款 AI 游戏社群工具</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">第一次接触 Whack 的游戏公会群主看过来，这篇带你从下载到跑通签到、超管、子群三大功能，用大白话讲清每一步。</p>
+  </header>
+  <div class="prose">
+<h2>Whack 到底是干嘛的？一个游戏公会的"装修队"</h2>
+<p>想象一下：你拉了一个游戏开黑群，二十几个人，消息刷得飞快，新人进来找不到组织，老人嫌吵潜水，你一个人要管广告、管吵架、还要记得每天发签到红包——忙不过来还容易得罪人。</p>
+<p>Whack 就是专门给游戏公会做的一套 AI 社群装修队——它的<a href="https://whack.hfdk.space" target="_blank" rel="noopener">官网</a>上有完整功能列表。它在你的群里加一个 AI 机器人（人工智能自动回复的小程序，不是真人），帮你自动签到、自动欢迎新人、自动拦违规消息，还能帮你把一个大群拆成主群加子群的多层结构，让指挥频道和闲聊频道各归各位，互不打扰。</p>
+<p>这篇能带你从完全不懂到用起来，不需要任何基础。</p>
+<h2>五分钟上手：从下载到跑通的最短路径</h2>
+<p>第一步很简单：安装包从<a href="https://whack.hfdk.space/download.html" target="_blank" rel="noopener">下载</a>拿，用手机号注册登录就行。进来之后点创建社群的按钮，填群名、选游戏类型标签，主群就建好了。</p>
+<p>接下来是最关键的一步——把 AI 机器人打开。群设置里往下翻，找到 AI 机器人那一栏，开关一拨，一个带表情的小机器人头像就出现在群成员列表里了。别担心配置复杂，先开着默认设置就能用，后面再慢慢调。</p>
+<p>到这里群已经能跑了。拉几个朋友进来，让新人点一下群设置里的签到按钮，AI 机器人会自动回复一条带积分的消息。第一次感受到它在干活了吧？</p>
+<h2>上手后先玩这三个功能</h2>
+<h3>一、签到：让水群变成每日习惯</h3>
+<p>进群设置，找到 AI 机器人的互动插件，点开签到开关。配一下奖励数值，比如每次签到给 5 积分，连续签到加成也可以开——连续 7 天多给 3 倍奖励。</p>
+<p>你会发现什么？AI 机器人每天会在群里推送签到榜单，显示今日签到人数和连续签到冠军。群里会慢慢出现一种微妙的打卡竞争感——有人断签了会在群里喊一声"今天忘了，补签还有机会吗"，潜水的成员也会冒头点一下签到，至少留个痕迹。</p>
+<p>签到还能和其他玩法联动。连续签到 5 天可以获得一次免排队点歌权，每日签到成员可以参与专属福袋抽奖，连续签到达到一定天数甚至能自动获得贵族头衔。别小看这些联动，它们是让群活起来的关键，更多玩法组合可以去<a href="https://whack-docs.pages.dev/" target="_blank" rel="noopener">Whack文档</a>查。</p>
+<h3>二、超管：把管群压力分给靠谱的朋友</h3>
+<p>群设置里有成员管理，点进去就能任命超管。选两个你信得过的朋友（比如公会的战队队长和后勤负责人），给他们超管权限。</p>
+<p>你会发现什么？超管现在可以审批入群申请、撤回违规消息、执行禁言，甚至从 v1.5.20 版本开始可以直接移除踢人了。你不用再 24 小时盯着群里谁又吵架了、谁又发广告了，超管分担掉大部分日常管理，你只需要管群名、群头像、子群结构这些群主独有的事。</p>
+<p>群主和超管的核心区别在于，群主可以任命和撤销超管、修改群的基本信息、解散整个群、调整子群架构，这些权限超管碰不到。所以放心放权，不会出乱子。</p>
+<h3>三、群内群：把一个大群拆成主群加频道</h3>
+<p>群设置里找到群结构或子群管理，点创建新的子群。给子群起个清楚的名字，比如"指挥频道"或"新人频道"，写一句简介，选个游戏类型标签，再设置一下入群规则（申请审核还是群主直接邀请）。</p>
+<p>你会发现什么？主群发总公告和版本通知，指挥频道只有战队核心成员讨论战术复盘，新人频道由 AI 机器人自动发入门攻略和常见问题。每个子群还能独立开 AI 机器人、独立任命超管，互不干扰。百人以上的公会再也不会乱成一锅粥了。</p>
+<p>当然，群规模 20 人以下、全是熟人、定位纯粹的小群就不用折腾分群了，一个群够用，分群反而增加跳转成本。</p>
+<p><img src="../images/whack-docs/group-customization.jpg" alt="社群自定义与外观设置" loading="lazy"></p>
+<h2>小白最常问的三个问题</h2>
+<p><strong>Q：贵族身份是什么？要不要花钱？</strong></p>
+<p>贵族身份是会员体系里的视觉权益。拥有贵族身份的用户加入任何群聊时，AI 机器人会自动触发一个带特效的欢迎动画，群里所有人都能看到。它通常和 VIP 或 SVIP 会员挂钩，买了会员就自动激活，会员到期自动失效，不是独立购买的东西，相当于会员送的群内出场特效。</p>
+<p>除了入群特效，贵族身份通常还伴随专属表情和贴纸、部分 AI 互动插件的优先权益、群内贵族等级标识这些额外福利。群主也可以做一些自定义设置，比如允许或禁止贵族入群特效、把贵族身份作为连续签到榜冠军的临时奖励。</p>
+<p><strong>Q：为什么签到入口找不到？</strong></p>
+<p>大概率是群主还没开签到插件。签到开关在群设置的 AI 机器人互动插件那一栏，是群主控制的，普通成员没有权限开。先确认一下你的版本号够不够新，v1.5.10 之后签到入口更突出，找不到就让群主去开一下。</p>
+<p><strong>Q：子群的 AI 机器人和主群是同一个吗？</strong></p>
+<p>不是。每个子群有独立的 AI 机器人配置面板，开关和规则可以各管各的。主群开了签到不代表子群自动有，反过来也一样，这样每个频道可以根据自己的需要配不同的 AI 功能。比如主群开签到和福袋，指挥频道只开点歌和战报，互不干扰。</p>
+<p><img src="../images/whack-docs/ios-signin-rewards.webp" alt="签到奖励与会话界面" loading="lazy"></p>
+<h2>最后说一句</h2>
+<p>Whack 上手门槛真的不高，装好、开 AI 机器人、建主群、拉人，五分钟就能跑起来。等你跑顺了，再慢慢调签到奖励、加超管、拆子群，AI 会帮你把大部分重复劳动接过去。</p>
+<p>想进阶的话，下一步可以试试把签到和点歌、福袋这些互动插件联动起来，或者研究一下贵族身份的自定义玩法，让群里的互动玩出花样来。这篇用到的功能细节我同步维护在<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Whack" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Whack" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Whack" target="_blank" rel="noopener">GitCode</a>三个仓库，国内网络选 Gitee 或 GitCode 访问会更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/cherry-studio-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Cherry Studio 深度盘点：这款 AI 客户端到底把多少事搬进去了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/womic.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">WO Mic 到底值不值得掏钱？——把手机当电脑麦克风这笔账算明白</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

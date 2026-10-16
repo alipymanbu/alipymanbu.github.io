@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Struckd 这一路：从低代码创作工具到戛然而止的三年迭代 · 老杨技术栈</title>
+  
+<meta name="description" content="从 Style 环境系统的逐层堆叠、NPC 行为树的可视化改造，到 Muse Behavior 与存档模式的长期不兼容——这款移动端游戏创作工具的迭代逻辑，在停运公告发布后反而变得格外清晰。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/struckd.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Struckd 这一路：从低代码创作工具到戛然而止的三年迭代">
+<meta property="og:description" content="从 Style 环境系统的逐层堆叠、NPC 行为树的可视化改造，到 Muse Behavior 与存档模式的长期不兼容——这款移动端游戏创作工具的迭代逻辑，在停运公告发布后反而变得格外清晰。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/struckd.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/struckd/muse-behavior.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/struckd/muse-behavior.png">
+
+<meta name="twitter:title" content="Struckd 这一路：从低代码创作工具到戛然而止的三年迭代">
+<meta name="twitter:description" content="从 Style 环境系统的逐层堆叠、NPC 行为树的可视化改造，到 Muse Behavior 与存档模式的长期不兼容——这款移动端游戏创作工具的迭代逻辑，在停运公告发布后反而变得格外清晰。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece Style \u73af\u5883\u7cfb\u7edf\u7684\u9010\u5c42\u5806\u53e0\u3001NPC \u884c\u4e3a\u6811\u7684\u53ef\u89c6\u5316\u6539\u9020\uff0c\u5230 Muse Behavior \u4e0e\u5b58\u6863\u6a21\u5f0f\u7684\u957f\u671f\u4e0d\u517c\u5bb9\u2014\u2014\u8fd9\u6b3e\u79fb\u52a8\u7aef\u6e38\u620f\u521b\u4f5c\u5de5\u5177\u7684\u8fed\u4ee3\u903b\u8f91\uff0c\u5728\u505c\u8fd0\u516c\u544a\u53d1\u5e03\u540e\u53cd\u800c\u53d8\u5f97\u683c\u5916\u6e05\u6670\u3002", "headline": "Struckd \u8fd9\u4e00\u8def\uff1a\u4ece\u4f4e\u4ee3\u7801\u521b\u4f5c\u5de5\u5177\u5230\u621b\u7136\u800c\u6b62\u7684\u4e09\u5e74\u8fed\u4ee3", "image": ["https://alipymanbu.github.io/images/struckd/muse-behavior.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/struckd.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/struckd.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "Struckd \u8fd9\u4e00\u8def\uff1a\u4ece\u4f4e\u4ee3\u7801\u521b\u4f5c\u5de5\u5177\u5230\u621b\u7136\u800c\u6b62\u7684\u4e09\u5e74\u8fed\u4ee3", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">Struckd 这一路：从低代码创作工具到戛然而止的三年迭代</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Struckd 这一路：从低代码创作工具到戛然而止的三年迭代</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 Style 环境系统的逐层堆叠、NPC 行为树的可视化改造，到 Muse Behavior 与存档模式的长期不兼容——这款移动端游戏创作工具的迭代逻辑，在停运公告发布后反而变得格外清晰。</p>
+  </header>
+  <div class="prose">
+<p><a href="https://struckd.gltd.quest" target="_blank" rel="noopener">struckd官网</a> 关闭的消息出来那天，我把手机里还停在草稿界面的 App 打开看了一眼。版本号停在 v3.7 还是 v3.8 已经记不清了——界面上没有任何警示，创建工作台照常打开，资产库照常在加载，Studio Web 里那个调色板图标的 Style 工具还在原位等着被点。</p>
+<p>这个状态本身就是它整个产品史的缩影：<strong>功能在往前跑，但终点线没人看得见</strong>。</p>
+<h2>它起步在哪</h2>
+<p>Struckd 最初的定位很明确——让没碰过 Unity 的人也能在手机上搭出一个可玩的小游戏。"低代码"这个词当时在游戏圈还没烂大街，"手机端做 3D 游戏"更是个没人认真做的命题。当时从 <a href="https://struckd.gltd.quest/download.html" target="_blank" rel="noopener">struckd下载</a> 拿到 App 后，我先开了一个空场景——它靠两个东西打了第一轮用户：资产库的一键拖拽，和移动端 3D 场景的实时预览。</p>
+<p>样本文档没有提到早期版本的时间线，但从幸存的功能结构能反推它的起步优先级：<strong>先给你东西用，再让你把东西变得好用</strong>。Terrain 地形生成、资产库、基础角色——这些肯定是最早一批上线的，没什么花活，就是让人能"搭起来"。</p>
+<h2>环境系统是它死磕最久的一条线</h2>
+<p>如果让我从幸存文档里挑一条迭代最密集的功能线，那一定是 Style 环境系统。</p>
+<p>天空盒先出来——六套预设，晴朗、日落、星空、外太空、阴天、地下城，覆盖了绝大多数场景的背景需求。然后是光照：方向、强度、阴影开关，给场景加上明暗关系。再然后是天气：晴阴雨雪，雨有粒子效果、雪会覆盖地面。再然后是水：静态/动态、颜色、反射。最后是雾效——颜色、浓度、起始距离，甚至可以调成"浓雾遮挡视线"来做恐怖游戏。</p>
+<p>这不是一次性堆出来的功能包。<strong>每一层都是在上一层的基础上迭代</strong>——先有天空盒才有光照，有了光照才好做天气，有了水面反射才需要雾效来控制远处可见度。Style 工具的颜色调色板也是这条线的产物：当天空、光照、水、雾各自都有了一堆参数之后，"一键应用协调组合"就成了必然的功能需求。</p>
+<p>我能确定的是，这条环境线至少横跨了三到四个大版本。因为每加一层，移动端性能的取舍都要重新做一遍——关闭阴影提升帧率、雨和雪的粒子开销、水面反射需要额外渲染 Pass——样本文档里的"性能注意事项"章节，就是这条迭代线留下的调试痕迹。</p>
+<h2>从硬编码到可视化：NPC 行为的两次改写</h2>
+<p>NPC 行为系统的迭代更有意思，它能让你看到产品团队在"够用"和"好用"之间的摇摆。</p>
+<p>最早的方案是六个硬编码的行为模式：Guard、Follow、Flee、Roam、Attack，再加一个 Default。选 NPC → 切模式 → 改 Detection Range，就能凑出岗亭守卫、队友跟随、平民逃跑这些常见效果。后来去 <a href="https://struckd.pages.dev/" target="_blank" rel="noopener">struckd文档</a> 翻了一下才确认，这个方案的定位就是"够用但简单"——先让非程序员能跑起来，后面再迭代 Muse Behavior。</p>
+<p>然后他们上了 Muse Behavior——一个可视化的行为树工具。巡逻路线、条件触发、多个行为之间的切换，这些硬编码做不了的事，用 Muse Behavior 的节点拖拽就能搭。官方的说法是"可视化让逻辑更直观"。</p>
+<p>但问题也随之而来：<strong>Muse Behavior 和保存模式不兼容</strong>。通用游戏设置面板里明确写了：如果用了 Muse Behavior，必须关闭"保存游戏"选项；如果开了保存游戏，Muse Behavior 就不可用。</p>
+<p>这是典型的"先上功能，后补兼容"——或者说，<strong>兼容一直没补上</strong>。样本文档里这条限制的措辞是"目前不兼容"，但"目前"这个状态从 Muse Behavior 上线一直持续到官方关闭公告发布。三年时间，他们没把这两个模块打通。</p>
+<p><img src="../images/struckd/muse-behavior.png" alt="Muse Behavior 可视化行为树" loading="lazy"></p>
+<h2>多人与模式配置：一条浅尝辄止的线</h2>
+<p>Team Deathmatch（团队死亡竞赛）模式和友军伤害开关，是 Struckd 在多人对战方向上唯一留下的痕迹。</p>
+<p>从功能设计来看，它走的是"预设模式 + 参数开关"的轻量路线：自动分红队蓝队、同队不互伤、击杀数获胜或限时获胜——规则写死，玩家不能自定义队伍数量、不能改计分逻辑、不能加赛制。友军伤害开关是这条线上唯一的"深度"——开启后同队也能互伤，可以做大逃杀玩法。</p>
+<p><strong>这条线的迭代节奏明显比环境系统慢得多</strong>。我搜了一下样本文档的目录结构，没有"自定义比赛规则"、"排行榜"、"匹配系统"这些模块——TDM 就是终点。很可能是因为多人对战的后端成本太高，团队在这条线上投入了资源但很快踩了刹车，转而去攻低代码创作这个他们更擅长的方向。</p>
+<h2>那些"永远在修"的小事</h2>
+<p>订阅退款的文档是 Struckd 关闭后才暴露出来的一个尴尬细节。App Store 和 Google Play 的订阅机制与 App 本身独立——即使 App 下架了，订阅还会继续扣费。官方公告里"请手动取消订阅"的提醒，说明他们在关闭前尝试过推送取消通知，但效果显然不好，否则不会专门写一份退款流程文档。</p>
+<p>这类"产品上线后才发现的缺口"贯穿了整个产品史：Detection Range 参数能放大或缩小行为效果，但从来没给过可视化预览；保存游戏和 Muse Behavior 的冲突拖了至少两年没解；移动端性能优化的建议全都落在文档里，没有做工具层面的自动检测。</p>
+<h2>从迭代规律推，它下一步本来要去哪</h2>
+<p>按 Struckd 的迭代节奏，我觉得他们本来在往两个方向走：</p>
+<p>第一个是<strong>把所有硬编码的行为都 Muse Behavior 化</strong>。六个内置行为模式是 Muse Behavior 的"底层预设"——如果把 Muse Behavior 的节点库扩到覆盖所有硬编码场景，那六个模式就可以变成"Muse Behavior 的快捷模板"，玩家的自由度和上手门槛都能兼顾。但这一步需要先解决 Muse Behavior 和存档的兼容问题，而那个问题本身就可能需要重构底层引擎。</p>
+<p>第二个是<strong>环境系统的程序化生成</strong>。Style 工具的"颜色调色板"已经是半自动的了——手动选一个预设，一键应用。下一步大概率是程序化地形+程序化环境：根据 Terrain 的海拔和湿度自动生成对应的天空、植被、水体和雾效参数，让玩家只需要画地形，环境自己适配。这个方向在 Unity 生态里已经有成熟方案，Struckd 作为移动端低代码工具，如果能做出轻量化版本，差异化会很明显。</p>
+<p>但这两个方向都没能迈出下一步。2025 年底的关闭公告里没有给出具体原因，只说了"无法继续维持服务"。</p>
+<h2>那些留下来的东西</h2>
+<p>Struckd 停运后，玩家手上的草稿还能在 Studio Web 里继续编辑吗？Muse Behavior 画的行为树节点还能导出成 Unity 工程吗？官方公告里提到的 Game Exporter 工具，据说可以把草稿迁移到 Unity——这是 Struckd 留给它的用户最后的东西。</p>
+<p>从迭代史的角度回看，Struckd 其实完成了它作为"低代码游戏创作工具"的核心使命：它证明了"手机上做 3D 小游戏"不是伪命题，证明了"可视化行为树"能大幅降低游戏逻辑的门槛，也让一批没碰过 Unity 的人第一次把脑子里的游戏想法变成了可玩的原型。</p>
+<p>只是它走得太远了——远到自己没跟上自己的迭代节奏。环境系统堆了五六个层次、Muse Behavior 引入了新的复杂度、多人对战开了头但收不了尾——每一层都想做好，结果每一层的兼容问题都在累积，直到整个架构的维护成本超过了它能支撑的用户规模。</p>
+<p><img src="../images/struckd/studio-web-testing.png" alt="Studio Web 创建工作台" loading="lazy"></p>
+<p>Struckd 最后停在 v3.8 左右的版本号上。它没有 v4.0，没有宣布 Muse Behavior 和存档模式终于打通，也没有推出程序化环境生成。它就这样停在了一个"功能比定位走得更快"的位置上——而这，可能就是它整个产品史最诚实的注脚。如果你想翻看它留下来的文档和样稿，<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/struckd" target="_blank" rel="noopener">GitHub</a> 仓库有完整归档，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/struckd" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/struckd" target="_blank" rel="noopener">GitCode</a> 各自同步了一份方便国内用户直接访问。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gprinter.html">开水果店那阵我才知道，标签打印APP能省这么多事</a></h2>
+  <p class="card-desc">开了半年水果店，打价签和保质期标签是每天的烦心事。试了佳博配套的 Gprinter 之后，原来标签设计这件事可以在手机上 5 分钟搞定，还能语音输入、自动算日期。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/autox-js.html">Autox.js 到底强在哪？和同类自动化工具的横向对比</a></h2>
+  <p class="card-desc">在安卓自动化脚本引擎这个品类里，Autox.js 用 JavaScript + 无障碍服务的组合走出了一条不一样的路。用过按键精灵、Auto.js、Tasker 之后，我为什么最终留在了 Autox.js。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/kshare-docs.html">装KShare大半年后：那些当初没注意到的好用与糟心</a></h2>
+  <p class="card-desc">从v1.5用到v1.7，从凑活投屏到开会离不开，说说这八个月里KShare让我惊喜和头疼的地方。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/gamekiller.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">被模拟经营游戏逼到抓狂的那个下午，我第一次打开了八门神器</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/kshare-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">装KShare大半年后：那些当初没注意到的好用与糟心</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

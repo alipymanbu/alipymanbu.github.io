@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Immich 藏得最深的 4 个冷技巧：把自托管相册用出花来 · 老杨技术栈</title>
+  
+<meta name="description" content="你以为 Immich 只是个自托管的谷歌相册替代品？其实它还藏着外部库挂载、任务队列手动调度、Takeout 专用导入工具等大多数用户没发现的进阶玩法，这篇把这些冷技巧扒个干净。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/immich-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Immich 藏得最深的 4 个冷技巧：把自托管相册用出花来">
+<meta property="og:description" content="你以为 Immich 只是个自托管的谷歌相册替代品？其实它还藏着外部库挂载、任务队列手动调度、Takeout 专用导入工具等大多数用户没发现的进阶玩法，这篇把这些冷技巧扒个干净。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/immich-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/immich-zh-docs/external-library-scan.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/immich-zh-docs/external-library-scan.webp">
+
+<meta name="twitter:title" content="Immich 藏得最深的 4 个冷技巧：把自托管相册用出花来">
+<meta name="twitter:description" content="你以为 Immich 只是个自托管的谷歌相册替代品？其实它还藏着外部库挂载、任务队列手动调度、Takeout 专用导入工具等大多数用户没发现的进阶玩法，这篇把这些冷技巧扒个干净。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4f60\u4ee5\u4e3a Immich \u53ea\u662f\u4e2a\u81ea\u6258\u7ba1\u7684\u8c37\u6b4c\u76f8\u518c\u66ff\u4ee3\u54c1\uff1f\u5176\u5b9e\u5b83\u8fd8\u85cf\u7740\u5916\u90e8\u5e93\u6302\u8f7d\u3001\u4efb\u52a1\u961f\u5217\u624b\u52a8\u8c03\u5ea6\u3001Takeout \u4e13\u7528\u5bfc\u5165\u5de5\u5177\u7b49\u5927\u591a\u6570\u7528\u6237\u6ca1\u53d1\u73b0\u7684\u8fdb\u9636\u73a9\u6cd5\uff0c\u8fd9\u7bc7\u628a\u8fd9\u4e9b\u51b7\u6280\u5de7\u6252\u4e2a\u5e72\u51c0\u3002", "headline": "Immich \u85cf\u5f97\u6700\u6df1\u7684 4 \u4e2a\u51b7\u6280\u5de7\uff1a\u628a\u81ea\u6258\u7ba1\u76f8\u518c\u7528\u51fa\u82b1\u6765", "image": ["https://alipymanbu.github.io/images/immich-zh-docs/external-library-scan.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/immich-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/immich-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "Immich \u85cf\u5f97\u6700\u6df1\u7684 4 \u4e2a\u51b7\u6280\u5de7\uff1a\u628a\u81ea\u6258\u7ba1\u76f8\u518c\u7528\u51fa\u82b1\u6765", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">Immich 藏得最深的 4 个冷技巧：把自托管相册用出花来</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Immich 藏得最深的 4 个冷技巧：把自托管相册用出花来</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">你以为 Immich 只是个自托管的谷歌相册替代品？其实它还藏着外部库挂载、任务队列手动调度、Takeout 专用导入工具等大多数用户没发现的进阶玩法，这篇把这些冷技巧扒个干净。</p>
+  </header>
+  <div class="prose">
+<p>你以为 Immich 只是个自托管的谷歌相册替代品？<a href="https://immich.ggcd.uno" target="_blank" rel="noopener">Immich官网</a>上把它定义为「开源自托管照片库」，但真把 Docker Compose 跑起来、手机端装个 App 自动备份之后才发现——这才哪到哪。我前前后后折腾了大半个月，翻遍了设置面板的每一个角落、试遍了各种导入路径，才发现这玩意儿藏得真深——<strong>那些"默认不会主动告诉你"的功能，才是把 Immich 用透的关键</strong>。</p>
+<h2>第一个惊喜：外部库——十年照片原地不动直接进时间线</h2>
+<p>把硬盘上攒了十年的照片目录灌进 Immich，你是不是也纠结过"文件要搬家吗"？拷进 <code>UPLOAD_LOCATION</code> 既费空间又打乱原来的目录结构——按年份、按旅行、按家庭分类好的文件夹，拆碎了重新组织太别扭。</p>
+<p>直到我在 Docker Compose 的 volume 挂载里随手加了一行、然后在网页端发现了那个叫<strong>外部库（External Libraries）</strong> 的入口。</p>
+<p>这玩意儿干的事情极其简单：<strong>文件原地不动，Immich 直接读进来</strong>。你只需要在 compose 文件里把已有目录挂进容器，然后在 Immich 后台登记一下路径——<a href="https://immich-zh-docs.pages.dev/" target="_blank" rel="noopener">Immich文档</a>里有完整的挂载参数说明——它就会扫描这个目录，把里面的照片视频全部登记进时间线——不复制、不移动，原来的目录结构一丝不动。</p>
+<p>操作骨架就是三步：compose 里加挂载、网页端建库、手动触发一次扫描。听起来平平无奇，但背后有个关键的读写模式选择，直接决定了四件事：</p>
+<ul><li><strong>读写模式</strong>（默认）：Immich 可以写这个目录——编辑照片时能写 XMP 旁路文件，清空回收站时能真删原文件；</li><li><strong>只读模式</strong>（挂载加 <code>:ro</code>）：Immich 对该目录只读。代价很明确：<strong>编辑功能不可用</strong>（元数据改不了），照片进回收站清空时会"复活"回时间线——因为删不动原文件。</li></ul>
+<p>取舍口诀很简单：想让 Immich 全权管理 → 读写；想保证 Immich 绝对不碰原始文件 → 只读。</p>
+<p>扫描也有讲究：手动扫描随时触发，适合刚挂载或批量改完文件后；定时扫描可以按库单独设间隔，增量识别新文件；支持文件系统事件的外部库甚至能做到"文件一落盘就登记"——监控（Watch）模式，这个官方文档提得不多，但对于那些持续往某个目录扔照片的人来说简直是神器。</p>
+<p>有一点要注意：外部库的去重发生在<strong>单个库内部</strong>，而且外部库不参与上传区的去重——同一张图既在外部库又上传过一次的话，时间线可能出现两张，需要自己清理。另外，外部库的文件<strong>不在</strong> <code>UPLOAD_LOCATION</code> 里，备份清单上那几个默认目录不包含它——挂了外部库的家庭，文件层备份一定要覆盖挂载源目录，别让外部库成为备份体系的漏网之鱼。</p>
+<p><img src="../images/immich-zh-docs/external-library-scan.webp" alt="外部库的自定义扫描间隔设置" loading="lazy"></p>
+<h2>第二个惊喜：任务队列的手动调度——批量导入前先"关掉"机器学习</h2>
+<p>我第一次传完两千张照片，点开智能搜索想试试语义搜，结果搜啥都没结果。又去人脸页面看——空的。当时以为是部署出了问题，差点重装，直到朋友说"你去任务队列看看"。</p>
+<p>原来 Immich 对每个文件有一串后台工作要做：元数据提取、缩略图生成、智能搜索（语义向量计算）、人脸识别、视频转码。上传完成不等于"处理完成"——队列没跑完，功能就用不了。</p>
+<p>Jobs 页面藏在网页端左侧的 <strong>Administration（管理）→ Job Queues（任务队列）</strong>。每个任务类型一张卡片，显示等待中/活跃/成功的数量，右上角有三个全局按钮：全部暂停、全部恢复、清空失败的。</p>
+<p>这页面最有用的不是看进度，而是<strong>批量导入前的节奏控制</strong>。给你个实用操作：</p>
+<p><strong>大批量导入前</strong>：暂停「智能搜索」「人脸识别」「转码」三类任务，先让照片全部传完、缩略图出齐；然后恢复它们，让机器学习在夜里慢慢跑——白天跑这些任务 CPU 风扇狂转，晚上跑完第二天起来就全好了。</p>
+<p>机器发烫风扇狂转的时候，还能在管理后台系统设置里给任务限流——调并发数、调机器学习负载，或者直接手动暂停不需要的任务。</p>
+<p>发现某类任务卡住了怎么办？卡片上会显示失败计数，点进详情能看到具体是哪个文件、报了什么错；清空失败后可以重跑。我遇到过微信转发来的图片没有 EXIF 导致元数据提取一直失败，清空之后跳过它继续跑，其他任务不受影响。</p>
+<p><img src="../images/immich-zh-docs/admin-jobs.webp" alt="Immich 管理端任务队列总览" loading="lazy"></p>
+<h2>第三个惊喜：谷歌相册搬家别用官方 CLI——immich-go 才是正确答案</h2>
+<p>迁移季的重头戏：把在谷歌相册住惯了的几万张照片搬进 Immich。我一开始老老实实用官方 CLI 的 upload 命令，结果导入之后日期全乱、相册也没了——后来才搞清楚 Google Takeout 导出的根本不是普通目录。</p>
+<p>Takeout 交给你的是一堆<strong>分卷压缩包</strong>，内部还有配套的 JSON 元数据文件——记录着拍摄时间、相册归属、地理信息，很多正是压缩包里照片 EXIF 缺失的部分。官方 CLI 的 upload 面向"普通目录"，根本不解析这套结构。</p>
+<p>社区维护的 <strong>immich-go</strong> 专门吃这个格式：自动解开分卷、读取 JSON 元数据补全日期和归属、按原相册结构在 Immich 里重建相册。官方文档把它列为 Takeout 导入的推荐工具，安装包从<a href="https://immich.ggcd.uno/download.html" target="_blank" rel="noopener">官方下载</a>拿。</p>
+<p>完整流程四步：Takeout 导出 → 核对导出物（分卷数量、完整性）→ immich-go 导入（跑之前先看参数——"重建相册""处理 JSON 元数据"这些开关都在）→ Immich 侧收尾（等任务队列消化完、重新挂家庭分享体系）。</p>
+<p>三个务实提醒别忘：<strong>先小后大</strong>（拿一个分卷试跑全流程）、<strong>迁移期间别删源</strong>（两边都有完整副本才算迁完）、<strong>账号冻结风险</strong>（大批量 API 操作在谷歌侧有触发风控的先例，Takeout 导出走网页分批下载更稳妥）。</p>
+<h2>第四个惊喜：你以为在跟云相册比免费？其实比的是"控制权"</h2>
+<p>Immich 跟商业云相册的对比，很多人停留在"免费、开源、隐私"这几个词——但真正的差距是成本结构和维护门槛的完全倒置。</p>
+<p>云相册是<strong>订阅制</strong>，每月/每年付钱买空间和功能；Immich 是<strong>一次投入</strong>的硬件成本（电费 + 硬盘），空间上限由硬盘决定，加盘即扩，功能全免费。但云相册的隐性成本是零，Immich 的隐性成本是<strong>你的维护时间</strong>——升级、备份、排查故障都要自己动手。</p>
+<p>有个细节值得说：多用户、共享相册、公开链接这些功能，Immich 不按人头收费。给家人开账号想开几个开几个，共享相册也不分等级——这一点对大家庭用户来说，省下来的订阅费很快就能覆盖一台旧电脑或 NAS 的成本。</p>
+<p>我自己的建议是：先在旧电脑上装一套（Docker Compose 部署只要五分钟），用一两周再决定要不要把全部照片搬进来。完全不想碰技术操作的人，付费云相册省心得多——诚实面对这一点比冲动迁移更好。</p>
+<h2>最后说两个坑</h2>
+<p>第一个坑：<strong>只读外部库的回收站是假的</strong>。只读库的照片进回收站、清空时会复活回时间线——因为删不动原文件。设只读的时候就要接受这个特性。</p>
+<p>第二个坑：<strong>后台备份的"无感"是相对的</strong>。安卓的电池优化、iOS 的后台刷新策略都会影响备份时机——Immich 后台备份有专门的设置页面，花几分钟调一下，比等它自己慢慢爬靠谱得多。</p>
+<p>把 Immich 用透，关键在于<strong>不要把它当"一个 App"，而是把它当"一套系统"</strong>。外部库帮你绕开文件搬家的心理障碍、任务队列让你掌控机器负载、immich-go 解决最大的迁移痛苦——这些都是默认不会主动推荐的功能，但用对了，你的照片库才是真·你说了算。这套资料我顺手同步到了三个仓库——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Immich" target="_blank" rel="noopener">GitHub</a>的开源主线、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Immich" target="_blank" rel="noopener">Gitee</a>的国内镜像，还有<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Immich" target="_blank" rel="noopener">GitCode</a>的备份，哪边方便从哪边拿就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/incredibox-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Incredibox 这几个坑我踩过——从跨平台到混音丢失的完整翻车实录</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/phyphox.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">phyphox 到底值不值得花时间？——一个零元物理实验 app 的付费决策账本</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

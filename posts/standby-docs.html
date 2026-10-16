@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>StandBy 待机屏踩坑记：那些看似简单却会让你一头雾水的细节 · 老杨技术栈</title>
+  
+<meta name="description" content="装 StandBy 以为就是个充电屏亮钟的简单事，用久了才发现退出规则、竖屏触发、第三方组件、老系统特效全是容易踩的坑。这篇把我踩过的四个典型坑和绕开它们的法子整理出来。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/standby-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StandBy 待机屏踩坑记：那些看似简单却会让你一头雾水的细节">
+<meta property="og:description" content="装 StandBy 以为就是个充电屏亮钟的简单事，用久了才发现退出规则、竖屏触发、第三方组件、老系统特效全是容易踩的坑。这篇把我踩过的四个典型坑和绕开它们的法子整理出来。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/standby-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/standby-docs/clock-neon-digital.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/standby-docs/clock-neon-digital.webp">
+
+<meta name="twitter:title" content="StandBy 待机屏踩坑记：那些看似简单却会让你一头雾水的细节">
+<meta name="twitter:description" content="装 StandBy 以为就是个充电屏亮钟的简单事，用久了才发现退出规则、竖屏触发、第三方组件、老系统特效全是容易踩的坑。这篇把我踩过的四个典型坑和绕开它们的法子整理出来。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u88c5 StandBy \u4ee5\u4e3a\u5c31\u662f\u4e2a\u5145\u7535\u5c4f\u4eae\u949f\u7684\u7b80\u5355\u4e8b\uff0c\u7528\u4e45\u4e86\u624d\u53d1\u73b0\u9000\u51fa\u89c4\u5219\u3001\u7ad6\u5c4f\u89e6\u53d1\u3001\u7b2c\u4e09\u65b9\u7ec4\u4ef6\u3001\u8001\u7cfb\u7edf\u7279\u6548\u5168\u662f\u5bb9\u6613\u8e29\u7684\u5751\u3002\u8fd9\u7bc7\u628a\u6211\u8e29\u8fc7\u7684\u56db\u4e2a\u5178\u578b\u5751\u548c\u7ed5\u5f00\u5b83\u4eec\u7684\u6cd5\u5b50\u6574\u7406\u51fa\u6765\u3002", "headline": "StandBy \u5f85\u673a\u5c4f\u8e29\u5751\u8bb0\uff1a\u90a3\u4e9b\u770b\u4f3c\u7b80\u5355\u5374\u4f1a\u8ba9\u4f60\u4e00\u5934\u96fe\u6c34\u7684\u7ec6\u8282", "image": ["https://alipymanbu.github.io/images/standby-docs/clock-neon-digital.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/standby-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/standby-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "StandBy \u5f85\u673a\u5c4f\u8e29\u5751\u8bb0\uff1a\u90a3\u4e9b\u770b\u4f3c\u7b80\u5355\u5374\u4f1a\u8ba9\u4f60\u4e00\u5934\u96fe\u6c34\u7684\u7ec6\u8282", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">StandBy 待机屏踩坑记：那些看似简单却会让你一头雾水的细节</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">StandBy 待机屏踩坑记：那些看似简单却会让你一头雾水的细节</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">装 StandBy 以为就是个充电屏亮钟的简单事，用久了才发现退出规则、竖屏触发、第三方组件、老系统特效全是容易踩的坑。这篇把我踩过的四个典型坑和绕开它们的法子整理出来。</p>
+  </header>
+  <div class="prose">
+<p>当初从<a href="https://standby.wxhp.skin/download.html" target="_blank" rel="noopener">官方下载</a>装了 StandBy，是冲着"插电自动亮屏当钟用"的简洁描述，觉得无非是<a href="https://standby.wxhp.skin" target="_blank" rel="noopener">StandBy官网</a>主打那个把待机界面做得好看点的小工具。用了三个月，钟面是换了七八套，但踩的坑也攒了一串——全是那种"以为是 bug 其实是设计"的事，每次都得翻 <a href="https://standby-docs.pages.dev/" target="_blank" rel="noopener">StandBy文档</a> 才搞明白。挑四个出镜率最高的说，基本覆盖了日常使用里八成的困惑。</p>
+<h2>坑一：竖屏充电，怎么不自动亮？</h2>
+<p><strong>症状</strong>：横放手机充电一切正常，换立式无线充竖屏放着，插上电屏幕纹丝不动。手动点开应用倒是能进待机界面，但自动触发就没反应。我第一次遇到时以为快捷启动的开关没开，把设置里翻了三遍确认勾着，差点卸了重装。</p>
+<p><strong>原因</strong>：自动触发只认横屏。官方的设计逻辑是——竖放等于在口袋或背包里，自动亮屏会误触发耗电；横放才是"我想把它当个钟"的信号。这个取舍写在退出规则里，但安装时没特别提示，新用户很容易以为横竖都应该触发。</p>
+<p><strong>解法</strong>：竖屏场景想用上，手动点开应用即可，界面会按竖屏重排，该有的钟面和组件一个不少。或者换一个横放的充电底座——很多用户最后干脆配了个床头横充架，也算间接解决。</p>
+<h2>坑二：拔了充电器，屏幕还亮着</h2>
+<p><strong>症状</strong>：早上拔线准备出门，手机屏幕继续亮着待机界面，不自动熄灭。按电源键也关不掉，得强制点双击关闭或者进应用退出去。我以为是充电检测坏了，重插拔了几次才消。</p>
+<p><strong>原因</strong>：双击关闭会覆盖拔电退出的优先级。你手动双击关掉过一次之后，应用会记住"用户主动退出"这个状态，后续即使拔掉充电器也不会自动返回系统待机。这个逻辑在退出规则里提了一嘴，但没有明显的状态指示——你看不出自己是不是在"手动退出模式"下。</p>
+<p><strong>解法</strong>：最简单的办法是再插回充电器等它自动亮屏，然后正常拔线，状态就恢复了。如果嫌麻烦，可以在设置里找一下"退出后保持状态"之类的开关关掉——我的版本里这个选项藏在高级设置最底下，叫 Persist Exit State，默认开启。</p>
+<h2>坑三：第三方小组件加了不显示，显示异常</h2>
+<p><strong>症状</strong>：长按屏幕进编辑，选了个天气应用的组件加进槽位，回到屏上要么是空白方块，要么只有半截、要么尺寸完全不对。我先后试了三个不同的天气应用，两个显示异常，最后换了个日历应用才正常。</p>
+<p><strong>原因</strong>：不是 StandBy 的锅。Android 的锁屏通道对小组件有系统级限制——某些应用的小组件只在桌面通道完整渲染，锁屏通道上会被截断或降级。天气类应用因为要实时刷新，受影响的概率特别高。另外免费版只有 1 个第三方槽位，Premium 最多 6 个，槽位用完了再加也会静默失败，容易误以为是组件本身的问题。</p>
+<p><strong>解法</strong>：换同类应用。社区里有专门整理的"锁屏兼容组件清单"，大体规律是——原生系统应用的组件优先，第三方里日历、待办类的兼容性最好，天气和音乐类最容易翻车。如果是 Premium 用户，六个槽位合理分配，不要一口气全塞给同一类应用。</p>
+<h2>坑四：钟面特效比别人少一截</h2>
+<p><strong>症状</strong>：看人帖子里霓虹数字钟有呼吸灯效果、模拟钟有秒针动画，自己换上同款样式却光秃秃的，只有静态画面。字体选项也比别人少几个，矩阵主题的字符雨完全不刷。我对照了版本号是最新的，一度怀疑自己下了盗版。</p>
+<p><strong>原因</strong>：特效需要 Android 12 及以上。文档里提了一句"部分动画老系统会被隐藏"，但没列具体哪些。实际情况是——Android 11 以下大部分动画直接不渲染，Android 12~13 之间有部分特效降级，到 14 才算完整。霓虹钟的呼吸灯、矩阵的字符雨、模拟钟的秒针动画，全在这个被降级的清单里。</p>
+<p><strong>解法</strong>：确认系统版本。进设置里找"特效兼容模式"的开关，有的版本里可以强制开启（代价是耗电略增），有的版本硬开不起来。老系统上退而求其次，选那些静态效果本身就好看的样式——LED 分段钟和极简两针模拟钟在任何版本上都完整显示，不亏。</p>
+<p><img src="../images/standby-docs/clock-neon-digital.webp" alt="霓虹数字钟面" loading="lazy"></p>
+<p>还有几个小坑没单独展开，提一嘴：Duo 分屏的格子比例在某些平板上会跳来跳去，重启应用就好；模拟钟换角标之后偶尔会残留旧角标，长按重选能清掉；免费版的第三方槽位用完再加没反应，别像我那样反复卸载重装以为是 bug。</p>
+<p>知道这些坑之后，这软件其实相当省心。把防坑清单贴在下面，每次设置新设备时过一遍就行。</p>
+<h2>防坑速查清单</h2>
+<ul><li><strong>自动触发认横不认竖</strong>：想竖屏用就手动点开，别在设置里翻半天找开关；</li><li><strong>双击关闭会覆盖拔电退出</strong>：拔线不灭屏时先插回去再拔，或者关掉 Persist Exit State；</li><li><strong>第三方组件兼容性先查</strong>：原生应用和日历/待办类优先，天气音乐类踩坑概率高；</li><li><strong>特效看系统版本</strong>：Android 12 以下别指望呼吸灯和字符雨，选静态也好看的样式；</li><li><strong>免费版只有 1 个槽位</strong>：加第三个组件没反应不是 bug，是额度到顶了。</li></ul>
+<hr>
+<p>这套资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/StandBy" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/StandBy" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/StandBy" target="_blank" rel="noopener">GitCode</a> 三个仓库都能拿到，文档更新同步、版本号保持一致，国内访问选 Gitee 或 GitCode 就行，GitHub 偶尔会慢半拍。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/oneai-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">OneAI 网页端上手教程：三步把聊天鹅变成你的写作助手</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/hp-smart.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">HP Smart 快问快答：从移动传真到 Instant Ink 订阅，八个问题一次说清</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

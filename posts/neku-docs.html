@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Neku 迭代史：一款&#34;反常规&#34;头像生成器是怎么一步步走到今天的 · 老杨技术栈</title>
+  
+<meta name="description" content="从模板开局的争议性设计说起，回望 Neku 从部件堆到角色系统的迭代逻辑，看看团队一直在死磕什么、什么始终没碰。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/neku-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neku 迭代史：一款&#34;反常规&#34;头像生成器是怎么一步步走到今天的">
+<meta property="og:description" content="从模板开局的争议性设计说起，回望 Neku 从部件堆到角色系统的迭代逻辑，看看团队一直在死磕什么、什么始终没碰。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/neku-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/neku-docs/neku-template-start.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/neku-docs/neku-template-start.jpg">
+
+<meta name="twitter:title" content="Neku 迭代史：一款&#34;反常规&#34;头像生成器是怎么一步步走到今天的">
+<meta name="twitter:description" content="从模板开局的争议性设计说起，回望 Neku 从部件堆到角色系统的迭代逻辑，看看团队一直在死磕什么、什么始终没碰。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u6a21\u677f\u5f00\u5c40\u7684\u4e89\u8bae\u6027\u8bbe\u8ba1\u8bf4\u8d77\uff0c\u56de\u671b Neku \u4ece\u90e8\u4ef6\u5806\u5230\u89d2\u8272\u7cfb\u7edf\u7684\u8fed\u4ee3\u903b\u8f91\uff0c\u770b\u770b\u56e2\u961f\u4e00\u76f4\u5728\u6b7b\u78d5\u4ec0\u4e48\u3001\u4ec0\u4e48\u59cb\u7ec8\u6ca1\u78b0\u3002", "headline": "Neku \u8fed\u4ee3\u53f2\uff1a\u4e00\u6b3e\"\u53cd\u5e38\u89c4\"\u5934\u50cf\u751f\u6210\u5668\u662f\u600e\u4e48\u4e00\u6b65\u6b65\u8d70\u5230\u4eca\u5929\u7684", "image": ["https://alipymanbu.github.io/images/neku-docs/neku-template-start.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/neku-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/neku-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Neku \u8fed\u4ee3\u53f2\uff1a\u4e00\u6b3e\"\u53cd\u5e38\u89c4\"\u5934\u50cf\u751f\u6210\u5668\u662f\u600e\u4e48\u4e00\u6b65\u6b65\u8d70\u5230\u4eca\u5929\u7684", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">Neku 迭代史：一款&#34;反常规&#34;头像生成器是怎么一步步走到今天的</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Neku 迭代史：一款&#34;反常规&#34;头像生成器是怎么一步步走到今天的</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从模板开局的争议性设计说起，回望 Neku 从部件堆到角色系统的迭代逻辑，看看团队一直在死磕什么、什么始终没碰。</p>
+  </header>
+  <div class="prose">
+<h2>现在这版：一个不太像画图软件的画图软件</h2>
+<p>从<a href="https://neku.fwen.ren/download.html" target="_blank" rel="noopener">下载</a>拿到安装包之后，第一次打开 Neku 的时候有点懵——界面上没有白纸、没有工具栏、没有画笔图标，只有一排整整齐齐的模板缩略图，每张都带一张默认脸、一撮发型、一套衣服。选一张才能进编辑界面，不选就什么都不能干。</p>
+<p>这种开局方式放在画图类产品里算是反常规的。大部分同类应用，不管是专业绘图还是休闲头像，默认入口都是空白画布或随机生成，让用户从零开始或者靠运气。Neku 偏不——它把"选模板"设成了进入编辑的硬性门槛。</p>
+<p>我一开始挺抗拒这个设计的。毕竟画图嘛，总得有点创作自由，上来就给个模板算什么？但用了几次之后我发现，这个设计的背后其实藏着 Neku 整个产品哲学的起点。</p>
+<h2>来路：从模板到系统的三层迭代</h2>
+<p>样本文档里没提具体的版本号，所以没法精确说哪个大功能是哪一版加的。但从文档的目录分层和功能依赖关系来看，Neku 的迭代路径大致是清晰的。</p>
+<h3>第一层：模板打底——解决"从哪开始"的问题</h3>
+<p>最早的 Neku 想必先搞定了模板系统。每套用模板锁定脸型轮廓、肤色底色和默认发型衣服。这三件事里，肤色一旦选定就再也不能改，脸型进去了还能微调，发型衣服随便换。</p>
+<p>为什么模板是第一个做的？从<a href="https://neku.fwen.ren" target="_blank" rel="noopener">官网</a>的产品定位来看，Neku 瞄准的不是插画师，是"不会画画但想要一张像样头像"的人。给一张空白画布等于把难度曲线直接拉到悬崖边上；而模板帮你把最难的三件事（脸型比例、肤色选择、初始造型）都定好了，用户进来之后只需要做选择题——换个发型、挑个眼睛、选件衣服，全是点选操作，没有任何技能门槛。</p>
+<p>这套模板系统一直沿用到今天，看起来没大改过。模板数量不算多，但每月陆续加新的，主题包上新时会搭配一张新模板作为该主题的"官方脸"。可以说模板是 Neku 的根基，也是它和其他同类产品最本质的区别点。</p>
+<p><img src="../images/neku-docs/neku-template-start.jpg" alt="模板选择：每套模板都先定好脸型和肤色" loading="lazy"></p>
+<h3>第二层：部件库扩张——从"能选"到"有得选"</h3>
+<p>模板定好之后，下一件事就是堆部件了。三千多件的部件库，按五官、发型、衣服、配饰、背景分门别类——从基础的脸型眼睛眉毛鼻子嘴巴，到雀斑腮红痣疤痕这些脸部细节，再到各种风格的服装和背景板。</p>
+<p>这里有个有意思的递进关系。早期版本的部件库大概只覆盖了基础五官和发型衣服——能做出一张脸就行。后来加了雀斑、腮红、痣、疤痕这类小装饰，是因为发现"只用基础五官容易撞脸"，这些低成本的细节是让角色有辨识度的最好方式。再后来又在调色系统上做文章，给部分部件加了滑杆调色入口，颜色自由度从"选个预设色"扩展到"色板+滑杆双调"。</p>
+<p>这一层的迭代逻辑很直白：先有量（覆盖够多场景），再提高度（给细分需求加深度工具）。</p>
+<h3>第三层：副本与管理——从"单个作品"到"角色系统"</h3>
+<p>副本功能是我印象里比较后期才加的东西。早期的 Neku 大概是"一个模板选到底，改改就是一张图"，但用户开始不满足于只做单张头像了——一个角色想做日常装、战斗装、节日装，三套造型怎么办？</p>
+<p>副本功能就是为这个场景来的：先做出第一套完整造型，然后"另存为副本"，在副本上只换衣服发型，脸型五官全不动。配合标签系统（免费用户限 10 个），同一角色的多套造型能快速筛选出来。更巧的是，<a href="https://neku-docs.pages.dev/" target="_blank" rel="noopener">neku文档</a>里还专门提了"识别锚点"的概念——虹膜颜色、雀斑位置、头发色调这几个点保持不变，哪怕衣服发型全换，观众一眼就能认出是同一个人。</p>
+<p><img src="../images/neku-docs/neku-editor-layers.jpg" alt="编辑器里的层级和部件选择" loading="lazy"></p>
+<p>这一层的意义在于，它把 Neku 从"做头像的工具"往"做角色的工具"推了一步。单个头像变成了角色设定的一环，多套造型成了角色设定的自然延伸。这个转变不算大，但说明团队开始意识到用户的需求在升级。</p>
+<h2>从迭代节奏看团队的优先级</h2>
+<p>把上面三层放在一起看，Neku 的迭代逻辑其实非常聚焦。</p>
+<p><strong>一直在死磕的三件事：</strong></p>
+<p>第一，<strong>降低创作门槛</strong>。模板开局是最直接的体现——把最难的选择题替用户做了，让不会画画的人也能做出像样的东西。这在它的所有功能设计里都是底层逻辑，不是锦上添花的附加项。</p>
+<p>第二，<strong>用低成本手段提升角色辨识度</strong>。雀斑、痣、疤痕这些小装饰的出现，以及滑杆调色的加入，本质上都是在给用户更多"和别人不一样"的手段，而不是单纯堆部件数量。</p>
+<p>第三，<strong>帮已创作的角色延续生命力</strong>。副本功能解决的是"同一个角色多套造型"的管理问题，标签系统解决的是"我的作品越来越多之后怎么找"的问题——都是服务于"长期使用"而不是"一次性出图"。</p>
+<p><strong>一直没碰、或者说始终没发力的事情：</strong></p>
+<p>实时换装预览——文档里明确说"不支持直接换装预览"，用副本功能绕过去。这其实是个挺明显的产品空白，但 Neku 一直没填。社区分享和作品市场——至少从当前文档结构来看，没有"发布到社区"或者"浏览他人作品"相关的内容，Neku 更像是个纯创作工具而不是创作社区。移动端——虽然没明确说只有桌面端，但从功能设计来看（层级覆盖、拖动调整、滑杆调色），都是偏向鼠标+键盘操作的。</p>
+<p>这说明团队的资源一直集中在"把工具本身做好"，而不是往外延伸到社区、多平台或者其他生态。对一个工具类产品来说，这未必是坏事——聚焦意味着每个功能都有时间打磨，而不是铺了摊子顾不上。</p>
+<h2>下一步会往哪走？</h2>
+<p>纯从迭代规律推，不当官方口径传：</p>
+<p>部件库还会继续加，这是最确定的方向。每月上新的模板和主题包说明这个节奏没断过。但我更关心的是，会不会在"角色系统"这条线上再往前走一步——比如同一角色的多套造型能不能一键切场景，或者角色的基础设定（脸型、肤色、虹膜）能不能抽出来当"角色档案"跨作品复用。模板开局的那个"肤色选了就不能改"的设计，其实一直在暗示 Neku 想让你做的不只是一张头像，而是一个你会回来持续打磨的角色。</p>
+<p>当然也有可能就是继续堆部件，保持"好用的头像生成器"这个定位不变。毕竟它现在的状态已经足够好用了——模板门槛友好、部件覆盖够全、副本管理能满足进阶需求。</p>
+<p>我倒是挺希望它能往前再走一步的。毕竟一款画图工具如果能让我真的"养"一个角色而不是一次性出图，那感觉会完全不一样。上面聊到的这些功能细节和迭代观察，对应的资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/neku" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/neku" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/neku" target="_blank" rel="noopener">GitCode</a> 都有同步，国内访问后两个通常更快。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/anyview-docs.html">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</a></h2>
+  <p class="card-desc">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/beautybox-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">beautybox绿盒子到底值不值得掏钱——一个付费用户的账本</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/logseq-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Logseq 深度评测：块式大纲笔记的另一条路</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

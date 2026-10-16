@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Markor 快问快答——Android 上最干净的纯文本编辑器 · 老杨技术栈</title>
+  
+<meta name="description" content="整理了九个关于 Markor 的高频问题：它是什么、谁适合用、权限极简到什么程度、Snippets 和 YAML front-matter 怎么玩、SD 卡挂载踩不踩坑，以及值不值得长期留在手机里。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/markor-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markor 快问快答——Android 上最干净的纯文本编辑器">
+<meta property="og:description" content="整理了九个关于 Markor 的高频问题：它是什么、谁适合用、权限极简到什么程度、Snippets 和 YAML front-matter 怎么玩、SD 卡挂载踩不踩坑，以及值不值得长期留在手机里。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/markor-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/markor-docs/editor-markdown.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/markor-docs/editor-markdown.jpg">
+
+<meta name="twitter:title" content="Markor 快问快答——Android 上最干净的纯文本编辑器">
+<meta name="twitter:description" content="整理了九个关于 Markor 的高频问题：它是什么、谁适合用、权限极简到什么程度、Snippets 和 YAML front-matter 怎么玩、SD 卡挂载踩不踩坑，以及值不值得长期留在手机里。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6574\u7406\u4e86\u4e5d\u4e2a\u5173\u4e8e Markor \u7684\u9ad8\u9891\u95ee\u9898\uff1a\u5b83\u662f\u4ec0\u4e48\u3001\u8c01\u9002\u5408\u7528\u3001\u6743\u9650\u6781\u7b80\u5230\u4ec0\u4e48\u7a0b\u5ea6\u3001Snippets \u548c YAML front-matter \u600e\u4e48\u73a9\u3001SD \u5361\u6302\u8f7d\u8e29\u4e0d\u8e29\u5751\uff0c\u4ee5\u53ca\u503c\u4e0d\u503c\u5f97\u957f\u671f\u7559\u5728\u624b\u673a\u91cc\u3002", "headline": "Markor \u5feb\u95ee\u5feb\u7b54\u2014\u2014Android \u4e0a\u6700\u5e72\u51c0\u7684\u7eaf\u6587\u672c\u7f16\u8f91\u5668", "image": ["https://alipymanbu.github.io/images/markor-docs/editor-markdown.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/markor-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/markor-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "Markor \u5feb\u95ee\u5feb\u7b54\u2014\u2014Android \u4e0a\u6700\u5e72\u51c0\u7684\u7eaf\u6587\u672c\u7f16\u8f91\u5668", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">Markor 快问快答——Android 上最干净的纯文本编辑器</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Markor 快问快答——Android 上最干净的纯文本编辑器</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">整理了九个关于 Markor 的高频问题：它是什么、谁适合用、权限极简到什么程度、Snippets 和 YAML front-matter 怎么玩、SD 卡挂载踩不踩坑，以及值不值得长期留在手机里。</p>
+  </header>
+  <div class="prose">
+<p>整理一篇关于 Markor 的快问快答——把 Android 上这款纯文本编辑器大家常问的问题一次说清。</p>
+<h3>Markor 到底是什么？</h3>
+<p>Markor 是一款 Android 平台上的 <strong>纯文本优先、离线优先</strong> 的编辑器。它能写 Markdown、AsciiDoc、Org-Mode、todo.txt、纯文本，内置预览模式、代码高亮、文件夹浏览——但所有这些功能不依赖云服务，不需要账号，默认也不联网。想了解完整功能列表可以去它的<a href="https://markor.qjxz.skin" target="_blank" rel="noopener">官网</a>看看。定位很明确：给想在手机上写点正经文本的人一个干净的地方。</p>
+<p><img src="../images/markor-docs/editor-markdown.jpg" alt="Markor 编辑器界面" loading="lazy"></p>
+<h3>谁适合用它？</h3>
+<p>三类人会特别喜欢 Markor。第一类是 <strong>在手机上写 Markdown 笔记</strong> 的人——比如用 Obsidian、Jekyll、Hugo 的，需要随时在外出时补几段笔记回家再同步。第二类是 <strong>重度 todo.txt 用户</strong>——Markor 对 todo.txt 格式的支持是原生的，优先级、截止日期、上下文标签都能自动识别。第三类是 <strong>在意隐私、不想让笔记被任何云端服务扫描</strong> 的人。如果你只用手机自带备忘录，可能觉得 Markor 太重；但如果你的笔记有结构、有格式、有跨平台需求，Markor 刚好踩在那个点上。</p>
+<h3>怎么装？</h3>
+<p>两个路子。要么去 Google Play 搜 Markor 直接装，要么从<a href="https://markor.qjxz.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿 APK 安装包手动装——两种渠道拿到的是同一个东西，都没有广告、没有推广弹窗。安装完打开，默认会引导你选一个 Notebook 根目录，之后所有文件操作都围绕这个目录进行。首次启动不需要登录，不需要填任何信息，直接就能写。</p>
+<h3>它申请了哪些 Android 权限？为什么这么少？</h3>
+<p>这是 Markor 最值得拿出来说的地方。它申请的权限加起来 <strong>只有六类</strong>，而且每一类都有明确且唯一的用途：</p>
+<ul><li><strong>存储权限</strong>：读写本地文件——这是编辑器的生存基础</li><li><strong>MANAGE_EXTERNAL_STORAGE</strong>（Android 11+）：只有当你想把 Notebook 放在 Downloads、SD 卡等公共目录时才需要，内部存储目录操作不需要</li><li><strong>INTERNET</strong>：<strong>仅当你自己写的 Markdown 里引用了外部图片 URL 时</strong>，预览模式才需要联网加载。全用本地图片路径的话，这个权限实际上从不触发</li><li><strong>INSTALL_SHORTCUT</strong>：在主屏幕创建快捷方式，可选功能</li><li><strong>REQUEST_INSTALL_PACKAGES</strong>：用 Markor 打开 APK 文件时才用到，极少见</li><li>一个应用内部通信的特殊权限，用户无感知</li></ul>
+<p>注意 Markor <strong>没有</strong>申请摄像头、录音、位置、通讯录、短信、蓝牙、通知这些权限——和 Google Keep（通常 15-25 个权限）形成鲜明对比。原因很简单：它的三条原则是 <strong>纯文本优先、本地存储、离线优先</strong>，一个不需要云同步、不需要推送、不需要拍照的编辑器，确实不需要那些。开发者在 README 里明确承诺：不联网、不收集、不分享任何个人数据。</p>
+<h3>YAML front-matter 怎么玩？</h3>
+<p>从 v2.9 起 Markor 能解析 Markdown 文件开头的 YAML front-matter——就是用两条 <code>---</code> 包裹的那段元数据。静态站点生成器（Jekyll、Hugo、Hexo）和 Obsidian 都用这个标准格式，所以 Markor 读起来完全兼容。编辑器里 front-matter 块会用特殊样式高亮和正文区分；预览模式可以配置成显示为表格或完全隐藏。使用时注意一个坑：front-matter 必须写在文件最开头，第一条就是 <code>---</code>，中间不能有空行，前面有任何空行 Markor 都会识别失败。更多配置细节可以在<a href="https://markor-docs.pages.dev/" target="_blank" rel="noopener">Markor文档</a>里找到。这对写 Jekyll/Hugo 博客、Obsidian 知识库的人来说特别方便——手机上补笔记时也能顺便把 front-matter 字段填好。</p>
+<h3>Snippets 模板是什么？能省多少事？</h3>
+<p>Snippets 是 Markor 从 v2.9 引入、v2.10 大幅扩展的功能——<strong>写一次、到处插</strong>。把可复用的文本块放在 Notebook 根目录的 <code>.app/snippets/</code> 目录里，文件名就是模板名。点底部操作栏的 Snippets 按钮弹出列表，选哪个就把那段文本插到光标位置。v2.10 之后 Snippets 同时也能当新建文件的模板用——新建 Markdown 时直接选一个模板，文件创建时就带好标准头部。</p>
+<p>常见的 Snippets 用法：每天写会议纪要，开头的日期、参会人、议程格式固定，做成一个 <code>meeting-header.md</code>，每次新建会议纪要直接插入；写技术文档需要反复插 JSON 代码块模板，做成 <code>api-response.md</code>；用 Obsidian 的人可以把 YAML front-matter 头部做成 <code>new-note.md</code>，新建笔记时直接生成。唯一需要注意的点：<code>.app/snippets/</code> 是隐藏目录，默认同步客户端（Syncthing、Dropbox、Nextcloud）通常会忽略以点开头的目录。如果需要跨设备同步 Snippets，要么在同步客户端里显式把 <code>.app/</code> 加白名单，要么把 Snippets 放在非隐藏子目录（v2.10+ 支持）。</p>
+<p><img src="../images/markor-docs/screenshot-collage-1.jpg" alt="Snippets 模板列表" loading="lazy"></p>
+<h3>能把 Notebook 放 SD 卡吗？</h3>
+<p>可以，但 Android 11+ 分区存储机制下需要做专门的挂载。流程三步：先在系统设置里给 Markor 授予 <strong>MANAGE_EXTERNAL_STORAGE</strong> 权限（允许所有文件访问）；然后在 Markor 文件浏览器里浏览到 SD 卡，点底部操作栏的 <strong>挂载按钮</strong>，在向导里选一个 <strong>SD 卡子目录</strong>（不能选根目录）；最后在 Settings → General → Notebook directory 里把根目录改成刚才挂载好的那个路径，重启生效。挂载成功后 SD 卡文件名不再显示红色删除线，读写正常。</p>
+<p>有几个坑要提前说：挂载只能针对子目录，根目录本身权限限制更多；某些老 FAT32 卡可能挂载失败，换 exFAT 卡试试；SD 卡读写速度比内部存储慢不少，加密文件时尤其明显；同步客户端在 SD 卡上的表现有时不稳定。所以推荐策略很明确：<strong>内部存储优先，空间真不够才用 SD 卡</strong>，省掉挂载的那点麻烦。</p>
+<h3>要不要付费？</h3>
+<p>免费。Markor 是开源项目，许可证 GPL v3，没有内购、没有高级版、没有订阅。桌面端对应的是 gsantner/markor 仓库，社区维护。</p>
+<h3>和同类比怎么样？值不值得长期用？</h3>
+<p>和 Notion、Evernote、Google Keep 这些云端笔记应用比，Markor 是完全不同的方向——它不做同步、不做搜索索引、不做 AI 总结、不做多人协作。但反过来，这些云端应用也不会像 Markor 那样只有六类权限、完全离线运行、文件就是纯文本原样存放在你选的目录里。和其他 Markdown 编辑器比，Markor 的优势在于 Android 平台上的深度整合：todo.txt 原生支持、SD 卡挂载方案成熟、分享面板接收文件到指定目录、Snippets 模板系统。</p>
+<p>如果你的笔记不需要云端、不需要多人协作、在意隐私，Markor 是 Android 上几乎没有替代品的选择。如果这些对你不重要，那它可能显得太朴素。</p>
+<p>Markor 相关的资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Markor" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Markor" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Markor" target="_blank" rel="noopener">GitCode</a>三个仓库同步维护，国内访问 Gitee 或 GitCode 通常更快。</p>
+<p>最后一句：对在意隐私的写作者来说，装一个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gprinter.html">开水果店那阵我才知道，标签打印APP能省这么多事</a></h2>
+  <p class="card-desc">开了半年水果店，打价签和保质期标签是每天的烦心事。试了佳博配套的 Gprinter 之后，原来标签设计这件事可以在手机上 5 分钟搞定，还能语音输入、自动算日期。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/autox-js.html">Autox.js 到底强在哪？和同类自动化工具的横向对比</a></h2>
+  <p class="card-desc">在安卓自动化脚本引擎这个品类里，Autox.js 用 JavaScript + 无障碍服务的组合走出了一条不一样的路。用过按键精灵、Auto.js、Tasker 之后，我为什么最终留在了 Autox.js。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/kshare-docs.html">装KShare大半年后：那些当初没注意到的好用与糟心</a></h2>
+  <p class="card-desc">从v1.5用到v1.7，从凑活投屏到开会离不开，说说这八个月里KShare让我惊喜和头疼的地方。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/gamekee.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">我每周给手游群做福利周报，现在把 GameKee 插进整条链里省了至少两小时</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ksweb-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">KSWEB 横向盘点：把一台手机变成完整的 Web 开发服务器，它做到了什么</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

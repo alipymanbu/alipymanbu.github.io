@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>e621客户端避坑指南：那些年我踩过的五个让网格空白的坑 · 老杨技术栈</title>
+  
+<meta name="description" content="The Wolf&#39;s Stash 看着简单，其实有几个容易踩的暗坑。从视频放不出来、黑名单写反、到账号黑名单没同步，逐个拆解症状、原因和解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/e621-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="e621客户端避坑指南：那些年我踩过的五个让网格空白的坑">
+<meta property="og:description" content="The Wolf&#39;s Stash 看着简单，其实有几个容易踩的暗坑。从视频放不出来、黑名单写反、到账号黑名单没同步，逐个拆解症状、原因和解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/e621-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/e621-docs/home-grid.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/e621-docs/home-grid.png">
+
+<meta name="twitter:title" content="e621客户端避坑指南：那些年我踩过的五个让网格空白的坑">
+<meta name="twitter:description" content="The Wolf&#39;s Stash 看着简单，其实有几个容易踩的暗坑。从视频放不出来、黑名单写反、到账号黑名单没同步，逐个拆解症状、原因和解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "The Wolf\u0027s Stash \u770b\u7740\u7b80\u5355\uff0c\u5176\u5b9e\u6709\u51e0\u4e2a\u5bb9\u6613\u8e29\u7684\u6697\u5751\u3002\u4ece\u89c6\u9891\u653e\u4e0d\u51fa\u6765\u3001\u9ed1\u540d\u5355\u5199\u53cd\u3001\u5230\u8d26\u53f7\u9ed1\u540d\u5355\u6ca1\u540c\u6b65\uff0c\u9010\u4e2a\u62c6\u89e3\u75c7\u72b6\u3001\u539f\u56e0\u548c\u89e3\u6cd5\u3002", "headline": "e621\u5ba2\u6237\u7aef\u907f\u5751\u6307\u5357\uff1a\u90a3\u4e9b\u5e74\u6211\u8e29\u8fc7\u7684\u4e94\u4e2a\u8ba9\u7f51\u683c\u7a7a\u767d\u7684\u5751", "image": ["https://alipymanbu.github.io/images/e621-docs/home-grid.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/e621-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/e621-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "e621\u5ba2\u6237\u7aef\u907f\u5751\u6307\u5357\uff1a\u90a3\u4e9b\u5e74\u6211\u8e29\u8fc7\u7684\u4e94\u4e2a\u8ba9\u7f51\u683c\u7a7a\u767d\u7684\u5751", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">e621客户端避坑指南：那些年我踩过的五个让网格空白的坑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">e621客户端避坑指南：那些年我踩过的五个让网格空白的坑</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">The Wolf&#39;s Stash 看着简单，其实有几个容易踩的暗坑。从视频放不出来、黑名单写反、到账号黑名单没同步，逐个拆解症状、原因和解法。</p>
+  </header>
+  <div class="prose">
+<p>第一次从 <a href="https://e621.qhah.skin" target="_blank" rel="noopener">e621官网</a> 拿到 The Wolf's Stash 客户端的时候，我以为这就是个图站浏览壳子，点开就能用——直到某天搜了一堆东西出来全是空白网格，或者好不容易看到视频却只有声音没画面，才意识到这玩意儿比看起来复杂得多。以下是我踩过的五个真坑，每个都有实打实的症状和解法。</p>
+<h2>坑一：视频只有声音没画面，或者直接黑屏</h2>
+<p><strong>症状</strong>：点开一个 webm 视频，播放界面正常弹出，进度条能拖，但画面是黑的或者压根没渲染出来；有的 mp4 干脆直接报"格式不支持"。</p>
+<p><strong>原因</strong>：这个坑分三种情况，我前两次都错判成了网络问题。第一种是<strong>分辨率超出设备硬解上限</strong>——图站里有不少社区小伙伴传的 4K webm，手机的硬件解码器扛不住，客户端内置播放器就直接黑屏。第二种是<strong>格式标注 bug</strong>，曾有版本把 mp4 错标成 jpg，结果桌面网页端能正常播，客户端却报"图片格式不支持"，纯标注错误。第三种最诡异——<strong>动画 webp 正常视图放不出来，但点帖子信息的 i 图标反而能放</strong>，属于已知兼容问题，社区反馈持续了好几个版本。</p>
+<p><img src="../images/e621-docs/home-grid.png" alt="视频播放故障示意" loading="lazy"></p>
+<p><strong>解法</strong>：先别急着卸载重安。用系统自带的播放器或 MX Player 试试同一个文件——如果能放，基本就是硬解上限问题，下次检索的时候加个 <code>filetype:webm</code> 以外的筛选，比如用尺寸元标签排除超大文件。格式标注 bug 好办，更新客户端就行，这类修复会进版本更新记录。动画 webp 那个临时走 i 图标路径，或者存到本地用相册看，等官方修。这类已知问题和检索技巧在 <a href="https://e621-docs.pages.dev/" target="_blank" rel="noopener">e621文档</a> 里也有更详细的排查思路。</p>
+<h2>坑二：黑名单写反了，越挡越多</h2>
+<p><strong>症状</strong>：我明明写了一条规则想屏蔽 dragon 标签的内容，结果刷新之后带 dragon 的帖子反而更多了——整个网格被红色占满，差点以为客户端炸了。</p>
+<p><strong>原因</strong>：黑名单规则的加减号方向我搞反了。减号是"挡"，加号是"留"，我写成了 <code>+ dragon</code>，意思变成了"只要带 dragon 就放行"——等于反过来筛了。这套规则还有带例外的复合写法：<code>— horse … + feral</code> 是屏蔽 horse，但带 feral 的放行；多标签全含用逗号分隔的减号，例外多标签用加号（任一即放行）。记不住方向的时候很容易写反。</p>
+<p><img src="../images/e621-docs/blacklist.png" alt="黑名单规则编辑界面" loading="lazy"></p>
+<p><strong>解法</strong>：改规则前先想清楚"挡"还是"留"。如果改完还是觉得不对劲，先确认标签拼写有没有写错（dragon 拼成 drag0n 就等于没写），再确认规则方向，最后检查是不是站点侧的账号黑名单没同步过来——客户端支持和站点侧黑名单同步，两边是两层过滤，漏了一层就挡不住。</p>
+<h2>坑三：注册了客户端账号，结果根本登录不上</h2>
+<p><strong>症状</strong>：在客户端里找了半天注册按钮，找不到；然后去站点注册了一个账号，回客户端输入用户名密码又报 API 密钥错误。</p>
+<p><strong>原因</strong>：我搞混了两套东西。The Wolf's Stash <strong>没有自己的账号体系</strong>，客户端不负责注册任何账号——账号是注册在站点侧的（网页端），客户端只负责"登录"这个站点账号。登录也不是直接输密码，需要先在站点的用户主页里生成 API 密钥，相当于密码的替身。另外，一个账号在 e621 和 e926 两边通用，这点倒是省了一份注册功夫。</p>
+<p><strong>解法</strong>：流程是这样的——浏览器打开站点 Sign up，填用户名邮箱密码收验证邮件，登录后进用户主页找 API 密钥入口，复制密钥回客户端填进去。客户端本身直接从 <a href="https://e621.qhah.skin/download.html" target="_blank" rel="noopener">官方下载</a> 就行，不需要额外注册账号。密码本身客户端不用，API 密钥丢了去站点重新生成就行。</p>
+<h2>坑四：搜出来一堆动图，老设备卡得像幻灯片</h2>
+<p><strong>症状</strong>：在旧手机上搜了一轮，网格加载慢得要死，点进动图要么黑屏要么帧率掉到肉眼可见的卡顿。我以为是信号不好，换了 WiFi 还是一样。</p>
+<p><strong>原因</strong>：图站里动图 webp、视频 webm、mp4 都混在普通图片网格里，不加筛选的话会一股脑全出来。弱网或老设备上，动图的解码负担比普通 png 高得多，网格滚动直接卡成 PPT。这不是网络问题，是解码能力的瓶颈。</p>
+<p><strong>解法</strong>：检索时用 <code>filetype:</code> 精确筛选。只看静图就 <code>filetype:png</code> 或 <code>filetype:jpg</code>，想排除动图和视频就加 <code>-filetype:webm -filetype:animated_webp</code>。还可以配合尺寸元标签，用比较符号排除大文件——比如加上 <code>&lt;1000x1000</code> 限制分辨率范围，或者用像素元标签只取中等尺寸的图。</p>
+<h2>坑五：收藏和关注全丢了，以为账号被盗</h2>
+<p><strong>症状</strong>：换了一台手机登客户端，发现之前收藏的帖子、关注的标签全没了，第一反应是账号被人动过。</p>
+<p><strong>原因</strong>：站点侧的收藏和关注数据在账号里没问题，但客户端本地可能没正确同步过来——尤其是换设备或者重装过的情况下。另外，客户端支持本地黑名单与站点侧黑名单同步，但收藏关注的同步逻辑在旧版本里确实出过 bug。</p>
+<p><strong>解法</strong>：先确认用的是同一个 API 密钥登录的同一个账号（e621 和 e926 账号通用但密钥各自生成），然后在客户端设置里手动触发一次数据同步。如果还是没回来，去站点网页端看一眼收藏列表——那里还在的话说明账号没问题，等客户端同步就行。</p>
+<h2>防坑清单</h2>
+<ul><li><strong>视频放不出先别慌重安</strong>：先用系统播放器验一下，排除硬解上限问题，再查客户端版本和格式标注 bug</li><li><strong>黑名单规则写完先刷新一遍看效果</strong>：加减号方向搞反 = 反着筛，标签拼写也得二次确认</li><li><strong>记住客户端不负责注册</strong>：账号去站点网页侧注册，客户端只填 API 密钥</li><li><strong>老设备检索先排除动图视频</strong>：<code>-filetype:webm -filetype:animated_webp</code> 一行检索式省很多事</li><li><strong>换设备先手动同步数据</strong>：收藏关注在账号里丢不了，大概率是客户端没触发同步</li></ul>
+<p>说穿了，这软件本身就是个干净的浏览壳子，没那么多花里胡哨的功能，但正好因为简单，几个容易踩的点反而更隐蔽。把这几个坑摸透之后，日常用着其实相当省心。顺便提一句，我整理的这套资料和安装包说明同时放在了 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/e621" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/e621" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/e621" target="_blank" rel="noopener">GitCode</a> 三个仓库，哪边国内访问更顺就用哪边。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/easytouch-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">项目deadline前的三天，我靠一个悬浮球把手指救活了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/novella-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了八个月 Novella，我对开源阅读器的几个真实感受</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把虚拟形象直播串成一条不费脑的流水线：Reality 主播工作流整合实践 · 老杨技术栈</title>
+  
+<meta name="description" content="一个每周固定开播的虚拟主播，把 Reality 嵌进日历提醒、OBS 推流、复盘笔记的完整工作流，解决段位结算、联动开关、连续打卡三个最容易断链的环节。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/reality-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把虚拟形象直播串成一条不费脑的流水线：Reality 主播工作流整合实践">
+<meta property="og:description" content="一个每周固定开播的虚拟主播，把 Reality 嵌进日历提醒、OBS 推流、复盘笔记的完整工作流，解决段位结算、联动开关、连续打卡三个最容易断链的环节。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/reality-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/reality-docs/rank-list.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/reality-docs/rank-list.png">
+
+<meta name="twitter:title" content="把虚拟形象直播串成一条不费脑的流水线：Reality 主播工作流整合实践">
+<meta name="twitter:description" content="一个每周固定开播的虚拟主播，把 Reality 嵌进日历提醒、OBS 推流、复盘笔记的完整工作流，解决段位结算、联动开关、连续打卡三个最容易断链的环节。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u6bcf\u5468\u56fa\u5b9a\u5f00\u64ad\u7684\u865a\u62df\u4e3b\u64ad\uff0c\u628a Reality \u5d4c\u8fdb\u65e5\u5386\u63d0\u9192\u3001OBS \u63a8\u6d41\u3001\u590d\u76d8\u7b14\u8bb0\u7684\u5b8c\u6574\u5de5\u4f5c\u6d41\uff0c\u89e3\u51b3\u6bb5\u4f4d\u7ed3\u7b97\u3001\u8054\u52a8\u5f00\u5173\u3001\u8fde\u7eed\u6253\u5361\u4e09\u4e2a\u6700\u5bb9\u6613\u65ad\u94fe\u7684\u73af\u8282\u3002", "headline": "\u628a\u865a\u62df\u5f62\u8c61\u76f4\u64ad\u4e32\u6210\u4e00\u6761\u4e0d\u8d39\u8111\u7684\u6d41\u6c34\u7ebf\uff1aReality \u4e3b\u64ad\u5de5\u4f5c\u6d41\u6574\u5408\u5b9e\u8df5", "image": ["https://alipymanbu.github.io/images/reality-docs/rank-list.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/reality-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/reality-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u628a\u865a\u62df\u5f62\u8c61\u76f4\u64ad\u4e32\u6210\u4e00\u6761\u4e0d\u8d39\u8111\u7684\u6d41\u6c34\u7ebf\uff1aReality \u4e3b\u64ad\u5de5\u4f5c\u6d41\u6574\u5408\u5b9e\u8df5", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">把虚拟形象直播串成一条不费脑的流水线：Reality 主播工作流整合实践</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把虚拟形象直播串成一条不费脑的流水线：Reality 主播工作流整合实践</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个每周固定开播的虚拟主播，把 Reality 嵌进日历提醒、OBS 推流、复盘笔记的完整工作流，解决段位结算、联动开关、连续打卡三个最容易断链的环节。</p>
+  </header>
+  <div class="prose">
+<h2>我每周要做的事，以前是散的</h2>
+<p>我是个固定每周二、四、日晚八点开播的虚拟主播，用的就是主打虚拟形象直播的 <a href="https://reality.qjxz.skin" target="_blank" rel="noopener">Reality官网</a>。内容不算硬核游戏，主要是和观众聊聊天、偶尔唱几句、联动上麦热闹热闹。听起来轻松，但以前每周要手动处理的事加起来挺碎：</p>
+<p>开播前半小时，手动掏手机把 Reality 打开、进设置里检查联动开关、对着镜子确认前置摄像头没被刘海遮掉——然后切到 OBS 开推流、切到飞书发开播预告。播的过程中联动申请弹出来要立刻点批准，饰品礼物来了要迅速选佩戴者，播完还要手动记一下今天开了多久、有没有拿到 DAILY 徽章、段位点数大概攒了多少。</p>
+<p>最头疼的不是操作多，是<strong>忘事</strong>。有一次开播四十分钟才想起联动开关没开，那天本来有三个老观众等着上麦聊天；还有一次周末赶稿子忘了开播，DAILY 连续纪录断在 27 天，心疼了好一阵。</p>
+<p>这套流程本质上是三件事：<strong>按时开播、播的时候不手忙脚乱、播完心里有数</strong>。以前我把它当三个独立任务分别处理，现在试着用 Reality 自己的能力加几个常见工具，把三件事拧成一条流水线。</p>
+<h2>新流程长什么样：三个环节的衔接</h2>
+<p>整套链我分成「开播前准备 → 直播进行中 → 直播后收尾」三段，每段只需要一两次操作，Reality 自己承担了大部分重复性的判断。</p>
+<h3>开播前：日历提醒 + Reality 预设置 + OBS 一键推流</h3>
+<p>安装包从 <a href="https://reality.qjxz.skin/download.html" target="_blank" rel="noopener">官方下载</a> 拿的，手机版装完直接能推流，不用额外装 PC 客户端。飞书日历是这条链的起点。我在里面建了三个固定开播时间的重复日程，每个日程提前 30 分钟弹提醒，提醒内容不是空泛的「开播」，而是一条我自己写的 checklist：</p>
+<ol><li>Reality 打开 → 确认段位功能没被关闭</li><li>开播设置里联动开关打开（我现在默认每次都开，不想接的时候中途关）</li><li>前置摄像头对准脸，别被刘海挡</li><li>OBS 开推流</li></ol>
+<p>这里有个小细节：Reality 的联动开关<strong>开播前和直播中都能开</strong>，所以我现在开播前就开，播到一半想专心聊天了再随手关掉，不用等开播完了才后悔没开。段位功能默认是开的，但我养成每次开播前扫一眼的习惯——之前有一次误触关掉了，结算时才发现点数没在累计，白播了三天。</p>
+<h3>直播中：Reality 接管大部分，我只做两个决策</h3>
+<p>开播之后，Reality 自动做的事：表情追踪、形象渲染、观众进来的欢迎提示、弹幕滚动。我在这个环节只需要盯两个东西：</p>
+<p><strong>联动申请的批准/拒绝</strong>。申请弹出来有明显提示，我扫一眼对方资料，认识的直接批，不认识的看他历史发言再决定。批准之后对方形象直接出现在我旁边，观众看到的是两个虚拟形象同框。</p>
+<p><strong>饰品礼物的佩戴归属</strong>。联动期间观众送礼，屏幕底部会弹一个按钮让我选「这件饰品谁戴」。这个小决策我现在基本不靠脑子——如果联动的观众第一次上麦，饰品让他戴；如果是老常客了，我戴。这个规则让我不用每次都纠结。</p>
+<h3>直播后：Reality 段位点数 + 飞书文档复盘</h3>
+<p>下播之后我切到 Reality 的「我的资料 → 创作者工具」，扫一眼段位点数有没有增长、DAILY 徽章亮没亮。这个检查不超过 10 秒，亮了就好，没亮就回忆一下今天播了多久——15 分钟以上就满足打卡条件，没亮多半是网络波动没传上去。</p>
+<p>然后打开飞书文档里我建的「每周直播复盘」，把今天的主题、联动了谁、最热闹的一段对话记下来，再扫一眼观众的支援者等级有没有新变化。支援者等级是跟着段位一起开的，观众侧每月重置一次，我不用记它的周期。</p>
+<h2>最容易断链的两个环节，怎么处理</h2>
+<p>上面说的流程听起来顺，但实际跑起来有两个地方最容易出问题，我踩过坑之后想了点办法。</p>
+<h3>断链一：DAILY 连续纪录不小心断了</h3>
+<p>Reality 的 DAILY 徽章是<strong>开播就算打卡</strong>，哪怕只有 15 分钟。但我有时候加班到十点半才到家，一累就忘了开。</p>
+<p>解决办法是加了一条日历规则：如果原定开播日没能开播，当天晚上 11 点之前一定要补开一次，哪怕只对着形象说三句话就关。15 分钟是硬门槛，14 分钟不算。这个规则我在飞书日历里建了一个晚上 10:50 的「补开提醒」，专门对应没按时播的日子。</p>
+<p>还有个细节：Reality 的跳过券只影响段位结算周期，不影响 DAILY 的连续纪录。之前我以为用了跳过券连打卡都算跳过，其实不是——该断还是断，所以补开不能省。</p>
+<h3>断链二：不知道这周段位会不会降</h3>
+<p>段位是 E 到 A 九级，7 天一个结算周期，18 点升、12–17 点保、0–11 点降。我之前完全不看点数，只在周日结算时才知道结果，有一次攒了 11 点，卡在下线，白白浪费一周。</p>
+<p>现在的做法是：<strong>每周三晚上扫一次点数</strong>。Reality 在段位功能里能看到当前累计点数，我记下周三的数字，就能大概推算周日能到多少。如果周三已经有 14 点了，那剩下几天随便播播就能保段；如果周三只有 8 点，那周四、日两天就得稍微认真播，争取凑够 12。</p>
+<p>这个推算不用精确——不需要换算每个 Kudos 等于多少点，大概心里有数就行。<a href="https://reality-docs.pages.dev/" target="_blank" rel="noopener">Reality文档</a>里有点数的换算公式，但我背不下来，周三那一眼够用了。</p>
+<p><img src="../images/reality-docs/rank-list.png" alt="主播段位结算周期和升降段阈值对照" loading="lazy"></p>
+<h2>效果与边界</h2>
+<p>这套流程跑了两个月，实际变化是：开播前的准备时间从 10 分钟降到 3 分钟，播完的复盘时间从 20 分钟降到 5 分钟，DAILY 连续纪录从 27 天断过一次之后再也没断过。最实在的收益是<strong>不用再记一堆零碎的时间点</strong>——日历提醒替我盯开播，Reality 替我盯徽章和点数，我只负责开播内容本身。</p>
+<p>但这套流程也有边界。如果你是那种想冲 A 段、每天直播三小时的全职主播，这套轻量化的检查就不够了——你需要更精细地算每个 Kudos 能换多少点，甚至可能要用到 Reality 支持的全身动捕来提升内容质量。对我这种每周三播、每场一个半小时的半全职来说，够用。</p>
+<p>还有一个边界：Reality 的表情追踪对光线和前置摄像头位置挺敏感的。如果我突然换了房间、或者刘海长了遮住眼睛，追踪就会飘——头转向左边虚拟形象转到右边，说话的时候嘴型不同步。这个不在流程之内，只能开播前那一眼多留意一下。我现在养成了开播前三秒钟对着镜头眨一下眼、说一句话的习惯，确认追踪正常再开始。</p>
+<p><img src="../images/reality-docs/home-avatar.png" alt="开播前快速自检表情追踪的场景" loading="lazy"></p>
+<p>说到底，这条流水线的思路是：<strong>把 Reality 自身能承担的重复性判断（徽章累计、段位点数、联动申请提示）全交给它，外部只补日历提醒和复盘笔记这两个它覆盖不了的环节</strong>。你不用硬凑什么花里胡哨的工具组合——飞书日历 + Reality + 一个记笔记的地方，够了。</p>
+<p>我把这套流程里提到的 Reality 相关配置、段位升降的完整规则、以及 DAILY 徽章和跳过券的微妙关系，都整理在了在线资料里，<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Reality" target="_blank" rel="noopener">GitHub</a> 有完整仓库树，<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Reality" target="_blank" rel="noopener">Gitee</a> 适合国内拉取，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Reality" target="_blank" rel="noopener">GitCode</a> 作为镜像备份，三处内容保持同步。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/hoptodesk-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">HopToDesk 用了快一年，说说那些当初没在意的事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/fiil.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">FIIL 耳机全家桶横向盘点：从 55dB 降噪到双形态切换，四款产品怎么选</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

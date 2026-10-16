@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把 Hermit 翻了个底朝天：五个藏得最深的功能 · 老杨技术栈</title>
+  
+<meta name="description" content="你以为 Hermit 只是把网站包装成独立 App 的壳？其实它还藏着永久隐身沙盒、站点级精细配置、本地恶意域名拦截等一系列大多数人没发现的隐私武器。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hermit-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把 Hermit 翻了个底朝天：五个藏得最深的功能">
+<meta property="og:description" content="你以为 Hermit 只是把网站包装成独立 App 的壳？其实它还藏着永久隐身沙盒、站点级精细配置、本地恶意域名拦截等一系列大多数人没发现的隐私武器。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hermit-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hermit-docs/sandbox-containers.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hermit-docs/sandbox-containers.png">
+
+<meta name="twitter:title" content="把 Hermit 翻了个底朝天：五个藏得最深的功能">
+<meta name="twitter:description" content="你以为 Hermit 只是把网站包装成独立 App 的壳？其实它还藏着永久隐身沙盒、站点级精细配置、本地恶意域名拦截等一系列大多数人没发现的隐私武器。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4f60\u4ee5\u4e3a Hermit \u53ea\u662f\u628a\u7f51\u7ad9\u5305\u88c5\u6210\u72ec\u7acb App \u7684\u58f3\uff1f\u5176\u5b9e\u5b83\u8fd8\u85cf\u7740\u6c38\u4e45\u9690\u8eab\u6c99\u76d2\u3001\u7ad9\u70b9\u7ea7\u7cbe\u7ec6\u914d\u7f6e\u3001\u672c\u5730\u6076\u610f\u57df\u540d\u62e6\u622a\u7b49\u4e00\u7cfb\u5217\u5927\u591a\u6570\u4eba\u6ca1\u53d1\u73b0\u7684\u9690\u79c1\u6b66\u5668\u3002", "headline": "\u628a Hermit \u7ffb\u4e86\u4e2a\u5e95\u671d\u5929\uff1a\u4e94\u4e2a\u85cf\u5f97\u6700\u6df1\u7684\u529f\u80fd", "image": ["https://alipymanbu.github.io/images/hermit-docs/sandbox-containers.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hermit-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hermit-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u628a Hermit \u7ffb\u4e86\u4e2a\u5e95\u671d\u5929\uff1a\u4e94\u4e2a\u85cf\u5f97\u6700\u6df1\u7684\u529f\u80fd", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">把 Hermit 翻了个底朝天：五个藏得最深的功能</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把 Hermit 翻了个底朝天：五个藏得最深的功能</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">你以为 Hermit 只是把网站包装成独立 App 的壳？其实它还藏着永久隐身沙盒、站点级精细配置、本地恶意域名拦截等一系列大多数人没发现的隐私武器。</p>
+  </header>
+  <div class="prose">
+<p>你以为 Hermit 就是一个把常逛网站包成独立图标放桌面的壳？打开、收藏、换图标——差不多就这样了吧。我一开始也是这么想的，直到把设置面板翻了三圈，才发现这玩意儿藏得比洋葱还深。</p>
+<p>Hermit 的定位其实是「隐私优先的轻应用浏览器」，但<a href="https://hermit.hhdc.tech" target="_blank" rel="noopener">官网</a>没把这些进阶功能列成显眼的卖点。它们就躺在各轻应用的设置深处，等着愿意折腾的人一个个挖出来。下面说的五个功能，每一个都让我觉得「这才是 Hermit 真正想卖的东西」。</p>
+<h2>第一个：永久隐身沙盒——不是临时的，是物理隔离的</h2>
+<p>普通浏览器的无痕模式关了窗口就清零，Hermit 的沙盒可以配置成<strong>永久隐身</strong>。什么意思？每次打开都是全新身份，跟你其他轻应用的 Cookie、本地存储<strong>物理隔离</strong>，互相看不见。</p>
+<p>想折腾这些隐私玩法的话，先从<a href="https://hermit.hhdc.tech/download.html" target="_blank" rel="noopener">官方下载</a>装一个吧。这个功能藏在每个轻应用的「More Settings」里，选一个沙盒颜色就绑定上了。每个沙盒有独立颜色标记，方便你一眼认出哪些站点跑在哪个沙盒里。</p>
+<p>具体场景一想就明白。Facebook、X、TikTok 网页版、Amazon 未登录状态——这些都是追踪激进型网站。你在 Chrome 里装 uBlock Origin + Privacy Badger + Decentraleyes，看似全覆盖，实际上追踪是多层的：拦截器挡不住网站本身的 Cookie、挡不住 ETag 缓存追踪、挡不住 Canvas 指纹。而沙盒做的是更底层的隔离：哪怕你漏装了某个拦截器，沙盒本身就是一道物理墙，这些网站的 Cookie 根本碰不到你正常浏览的 Cookie。</p>
+<p>代价是配置完需要完全重启轻应用——从系统最近任务列表划掉再打开，新沙盒才生效。官方 Help 文档里特意提了这个步骤，很多人卡在这里以为功能没生效。</p>
+<p><img src="../images/hermit-docs/sandbox-containers.png" alt="沙盒容器的颜色标记界面" loading="lazy"></p>
+<h2>第二个：每个网站一套独立配置——不是全局开关，是精细控制</h2>
+<p>传统浏览器的设置是全局的——Chrome 关了第三方 Cookie，全站都关；Firefox 开了桌面模式，全网站都是桌面版。Hermit 的配置模型完全反着来：<strong>每个轻应用有自己独立的一套配置</strong>。</p>
+<p>我给你列几个我实际用到的场景：知乎开大号字体，B站保持默认；Twitter 关第三方 Cookie 防追踪，Reddit 继续开着不然没法登录；微信公众平台强制桌面模式，知乎还是移动版；豆瓣开暗色模式，小红书保持明亮。这些设置互相之间完全不干扰。</p>
+<p>几乎所有配置项都是按站点独立的：弹窗拦截、第三方 Cookie、桌面模式、暗色模式、文字大小、主题、下拉刷新、甚至用户脚本的启用状态。只有一个例外——内核版本是全局共用的，因为 Hermit 用的是系统 WebView，没法给每个轻应用配不同内核。</p>
+<p>这个设计理念很有意思。Hermit 团队的想法大概是：既然你把每个网站都当成独立的「轻应用」来用，那它就应该有自己独立的设置，而不是被全局设置绑架。代价是第一次上手的时候需要逐个调——某些网站默认拦截弹窗就登不上，你得进 Quick Settings 把那个网站的弹窗拦截单独关掉。但默认配置（隐私优先、弹窗拦、第三方 Cookie 关）对大部分网站已经够用了，只有遇到问题才需要逐个调。</p>
+<p><img src="../images/hermit-docs/customization-settings.png" alt="站点级设置的独立配置界面" loading="lazy"></p>
+<h2>第三个：本地恶意域名拦截——不上传你的浏览 URL</h2>
+<p>Hermit 功能页列出了「Malware Protection」作为隐私能力，但没说它和 Chrome 的安全浏览有什么区别。我去翻了<a href="https://hermit-docs.pages.dev/" target="_blank" rel="noopener">Hermit文档</a>才搞清楚——这个保护来自内容拦截器里的<strong>本地恶意域名列表</strong>，当你访问被标记为恶意的网站时，Hermit 提前拦截并提示风险。</p>
+<p>关键差异在这里：Chrome 是把 URL 发给 Google 服务器做实时查询，Hermit 是用本地列表做本地匹配。这意味着 Hermit 的检测可能不如 Chrome 实时，但好处是<strong>不把你的浏览 URL 发给任何服务器</strong>。从隐私角度看，这反而更干净——毕竟 Google 安全浏览服务器会记录查询时间戳和 IP 地址。</p>
+<p>Hermit 团队在一篇 blog 里专门解释过为什么这么设计：他们认为把用户的浏览行为传给任何第三方都是不可接受的，哪怕是为了安全检测。本地列表虽然更新频率不如云端，但胜在零上报。</p>
+<h2>第四个：三个隐藏的登录修复开关——90% 的登录问题调一调就好</h2>
+<p>Hermit 的默认设置偏紧，很多人第一次用会遇到某个网站登不上的问题。官方文档给了三个最常见的修复方案，按出现频率排序，全部藏在每个轻应用的 Quick Settings 里：</p>
+<p><strong>关掉弹窗拦截</strong>——OAuth 登录（Google、Facebook 登录按钮需要弹一个小窗口）的流程依赖弹窗，Hermit 默认拦截导致卡住。进 Quick Settings 关掉，登录完再打开就行。</p>
+<p><strong>开启第三方 Cookie</strong>——很多网站用第三方 Cookie 做跨域登录验证（A 网站通过 B 网站的 Cookie 验证身份），Hermit 默认关了导致验证失败。临时开启，登录完可以再关掉（Cookie 还是保留，只是新的第三方请求不再写 Cookie）。</p>
+<p><strong>Google 登录切回移动模式</strong>——某些情况下用 Desktop Mode 强制桌面版访问 Google 登录页会出奇怪问题。如果前两个开关都试过还是登不上，试试关掉 Desktop Mode。</p>
+<p>还有几个冷门情况：银行、支付这类安全敏感网站的登录流程涉及多个页面跳转，每个跳转都可能被 Hermit 的某种默认设置挡掉。这种情况下把 Quick Settings 里所有隐私开关临时都关掉，完成操作后再逐个恢复。第三方密码管理器（比如 1Password）在 Hermit 的 WebView 里可能不兼容，Google 的 AutoFill 通常没问题。</p>
+<h2>第五个：WebView 崩溃保护——99.8% 无崩溃率怎么来的</h2>
+<p>Hermit 基于 Android System WebView 而不是自嵌 Chromium，这点其实是它的设计优势。好处是 WebView 跟系统一起自动更新安全补丁，不用 Hermit 自己维护渲染引擎版本。坏处是安全能力取决于 WebView 本身能提供什么。</p>
+<p>但 Hermit 团队在这个基础上做了两层额外保护。第一层是崩溃保护——WebView 进程崩溃时，Hermit 不闪退主应用，而是优雅地提示刷新页面或重启轻应用。官方 Help 文档给出的数据是 <strong>99.8% 的无崩溃率</strong>。</p>
+<p>第二层是架构设计：每个轻应用是独立进程，一个崩了不影响其他；只实现必需的浏览器功能，不做花哨但易出错的扩展。Chimbori（Hermit 开发团队）专门写过一篇 blog 解释"how does Hermit reduce crashes"，核心思路就是「渲染崩溃概率最低的选择 + 物理隔离 + 优雅降级」。</p>
+<h2>最后说一个坑</h2>
+<p>Hermit 的安全性最终建立在 WebView 的基础上。如果你的手机提示有 Android System WebView 更新，一定要更——WebView 版本落后，Hermit 的那层额外保护再强也挡不住底层漏洞。这点在 Help 文档里有专门一节叫「如何以及为什么更新 Android WebView」，翻译过来就是：始终让 Android WebView 保持在最新版本，这才是真正的安全补丁。</p>
+<p>还有一点：沙盒配置完必须完全重启轻应用（从系统最近任务划掉再打开），只在应用内刷新不生效。我第一次配的时候就是在应用里刷新，以为功能坏了，白折腾了十分钟。</p>
+<p>Hermit 的官网和文档对这些隐藏功能的描述其实都在，只是没有用加粗、高亮的方式突出。你得真的去翻——每个轻应用的设置面板、More Settings 里的沙盒选项、Quick Settings 里的弹窗拦截和第三方 Cookie 开关——这些东西串起来才是 Hermit 真正的产品形态：不是一个套壳工具，而是一套完整的隐私浏览器方案，把每个网站独立成沙盒，给每个沙盒配精细的隐私策略，同时用本地拦截和崩溃保护做底层兜底。</p>
+<p>上面这五个功能，每一个都能单独拿出来当卖点，但 Hermit 偏不。它就把它们藏在设置深处，等着愿意多花五分钟翻设置的人发现。关于这些功能的更完整资料，在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Hermit" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Hermit" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Hermit" target="_blank" rel="noopener">GitCode</a>三处都有备份，国内网络挑哪个方便就用哪个。这种设计思路跟它的隐私定位倒是挺搭的——真正的隐私保护，不是替你做决定，而是给你足够多的开关让你自己做决定。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/fusion360.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Fusion 360 到底值不值得掏钱？我用了半年算完这笔账</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/vlive-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">VLIVE 快问快答：从注册到互动全流程一网打尽</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

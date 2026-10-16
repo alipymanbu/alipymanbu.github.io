@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>CodeFormer 深度盘点：从老照片修复到 AI 生图后处理，一个模型能扛多少活 · 老杨技术栈</title>
+  
+<meta name="description" content="CodeFormer 不是又一个&#34;人脸修复工具&#34;那么简单。它用 VQGAN Codebook 的离散建模思路，在保真度和修复力之间走出了一条跟 GFPGAN 完全不同的路。本文从能力域到适用场景做一次系统性的盘点。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/codeformer-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CodeFormer 深度盘点：从老照片修复到 AI 生图后处理，一个模型能扛多少活">
+<meta property="og:description" content="CodeFormer 不是又一个&#34;人脸修复工具&#34;那么简单。它用 VQGAN Codebook 的离散建模思路，在保真度和修复力之间走出了一条跟 GFPGAN 完全不同的路。本文从能力域到适用场景做一次系统性的盘点。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/codeformer-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/codeformer-docs/before-after-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/codeformer-docs/before-after-1.jpg">
+
+<meta name="twitter:title" content="CodeFormer 深度盘点：从老照片修复到 AI 生图后处理，一个模型能扛多少活">
+<meta name="twitter:description" content="CodeFormer 不是又一个&#34;人脸修复工具&#34;那么简单。它用 VQGAN Codebook 的离散建模思路，在保真度和修复力之间走出了一条跟 GFPGAN 完全不同的路。本文从能力域到适用场景做一次系统性的盘点。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "CodeFormer \u4e0d\u662f\u53c8\u4e00\u4e2a\"\u4eba\u8138\u4fee\u590d\u5de5\u5177\"\u90a3\u4e48\u7b80\u5355\u3002\u5b83\u7528 VQGAN Codebook \u7684\u79bb\u6563\u5efa\u6a21\u601d\u8def\uff0c\u5728\u4fdd\u771f\u5ea6\u548c\u4fee\u590d\u529b\u4e4b\u95f4\u8d70\u51fa\u4e86\u4e00\u6761\u8ddf GFPGAN \u5b8c\u5168\u4e0d\u540c\u7684\u8def\u3002\u672c\u6587\u4ece\u80fd\u529b\u57df\u5230\u9002\u7528\u573a\u666f\u505a\u4e00\u6b21\u7cfb\u7edf\u6027\u7684\u76d8\u70b9\u3002", "headline": "CodeFormer \u6df1\u5ea6\u76d8\u70b9\uff1a\u4ece\u8001\u7167\u7247\u4fee\u590d\u5230 AI \u751f\u56fe\u540e\u5904\u7406\uff0c\u4e00\u4e2a\u6a21\u578b\u80fd\u625b\u591a\u5c11\u6d3b", "image": ["https://alipymanbu.github.io/images/codeformer-docs/before-after-1.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/codeformer-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/codeformer-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "CodeFormer \u6df1\u5ea6\u76d8\u70b9\uff1a\u4ece\u8001\u7167\u7247\u4fee\u590d\u5230 AI \u751f\u56fe\u540e\u5904\u7406\uff0c\u4e00\u4e2a\u6a21\u578b\u80fd\u625b\u591a\u5c11\u6d3b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">CodeFormer 深度盘点：从老照片修复到 AI 生图后处理，一个模型能扛多少活</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">CodeFormer 深度盘点：从老照片修复到 AI 生图后处理，一个模型能扛多少活</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">CodeFormer 不是又一个&#34;人脸修复工具&#34;那么简单。它用 VQGAN Codebook 的离散建模思路，在保真度和修复力之间走出了一条跟 GFPGAN 完全不同的路。本文从能力域到适用场景做一次系统性的盘点。</p>
+  </header>
+  <div class="prose">
+<p>如果你在找人脸修复工具，十有八九先碰到的是 GFPGAN——那个一键式、参数都不用调的 GAN 模型。但如果你手里的照片还能认出是谁、只是画质不好，GFPGAN 那套激进的恢复策略反而容易"修得不像本人"。CodeFormer 就是在这个细分缺口上被 NTU S-Lab 推出来的，去它的<a href="https://codeformer.laze.skin" target="_blank" rel="noopener">CodeFormer官网</a>能看到完整的项目介绍：它用 VQGAN Codebook 的离散 token 建模思路，不去猜一张"应该长什么样的脸"，而是在大量人脸 token 的组合空间里找最匹配的那一组。</p>
+<p>这条技术路线决定了 CodeFormer 的性格——<strong>保真度优先</strong>。w 权重越小它越愿意改脸（画面优先），w 越大越克制身份维度的改动（保真优先）。这个简单的滑块背后藏着一个完整的工具链：从老照片到 AI 生图、从整图到视频、从上色到划痕修复，CodeFormer 其实是一个多入口的人脸处理框架。下面按能力域逐个展开。</p>
+<h2>能力域一：人脸修复本体——w 权重背后的权衡艺术</h2>
+<p>CodeFormer 的核心推理脚本只有一个必填参数 <code>-w</code>，取值范围 0 到 1。这个权重控制的是 Codebook token 在解码时的"重建 vs 生成"倾向：</p>
+<ul><li>w 接近 0：模型更倾向于从训练分布里"采样"一个好看的脸，画面优先，代价是身份特征会被弱化</li><li>w 接近 1：模型严格按输入退化人脸的 token 序列重建，身份保真优先，代价是极端退化时可能"修不动"</li></ul>
+<p>实际使用中，w 的选择高度依赖场景：老照片修复用 0.6~0.8 保证不把长辈修成网红脸，AI 生图后处理用 0.2~0.4 因为反正不存在"保真"问题只需要看起来自然，视频逐帧增强用 1.0 避免同一人前后帧长得不一样。更多参数组合和边界情况可以去<a href="https://codeformer-docs.pages.dev/" target="_blank" rel="noopener">CodeFormer文档</a>翻。</p>
+<p><img src="../images/codeformer-docs/before-after-1.jpg" alt="老照片修复对比" loading="lazy"></p>
+<p>和 GFPGAN 的对比是绕不开的话题。简单说，CodeFormer 对<strong>还能认出是谁</strong>的中等退化最稳，GFPGAN 对<strong>连是谁都看不清</strong>的重度退化更有存在感——前者保守不瞎改，后者激进能救回来。两者互补而非替代，Replicate 上很多生产环境会同时跑两个模型做交叉验证。</p>
+<h2>能力域二：背景增强与整图修复——不只是修脸</h2>
+<p>CodeFormer 推理模型本身只处理人脸区域，头发边缘、肩膀、背景、衣服这些它完全不管。如果只跑基础命令，你会得到一张"人脸清晰、背景模糊"的照片，边界处甚至可能像贴上去的一样——这就是很多人第一次用 CodeFormer 觉得"假"的原因。</p>
+<p>解决办法是 <code>--bg_upsampler realesrgan</code>。Real-ESRGAN 是腾讯 ARC Lab 开源的通用图像超分辨率模型，CodeFormer 作者把它作为默认的背景增强器挂到了推理管线里。加了这个参数后，处理流程变成两路并行：CodeFormer 修人脸 + Real-ESRGAN 增强整张图，然后把 CodeFormer 的修复脸贴到 Real-ESRGAN 的背景上，接缝用 back projection 融合。</p>
+<p>代价也很实在：显存多吃 3.5GB，时间多花约 35%。8GB 显卡的用户大概率会在这里触发 OOM，只能放弃背景增强或者缩小输入图。12GB 显存是"整图 + 背景增强"的舒适起点。</p>
+<h2>能力域三：多场景入口——不是一个脚本包打天下</h2>
+<p>CodeFormer 的仓库里其实不止一个推理脚本：</p>
+<p><strong><code>inference_codeformer.py</code></strong> 是主入口，整图或裁切对齐的人脸都能处理。支持 <code>--has_aligned</code> 模式跳过 YOLOv5 人脸检测直接推理，省 1GB 显存，适合已经批量裁好对齐人脸的场景。</p>
+<p><strong><code>inference_colorization.py</code></strong> 是独立的黑白上色工具，只接受 512×512 裁切对齐的人脸，不上色背景。颜色风格来自 FFHQ 彩色数据集学到的"自然肤色"，不是写实还原——博物馆数字化场景用不了，但老照片头像翻新够用。</p>
+<p><strong><code>inference_inpainting.py</code></strong> 处理划痕、涂鸦、遮挡。用法很简单：在 Photoshop 或 GIMP 里用白色画笔涂掉要修复的区域，脚本会把白色当作 mask 只修复被遮住的部分。mask 不要超过人脸 30%，太大修复效果会明显下降。</p>
+<p><img src="../images/codeformer-docs/inpainting-result-1.png" alt="划痕和遮挡修复" loading="lazy"></p>
+<p>视频逐帧增强没有独立脚本，而是在主入口上加 <code>--input_path</code> 指向视频文件，内部用 ffmpeg 做逐帧提取和合成。这里有两个注意点：一是 Windows 用户特别容易忘装 ffmpeg 且没配 PATH，二是 CodeFormer 是逐帧处理的没有显式时间约束，但 Codebook token 的确定性反而让同一人的相邻帧预测出相似的 token 序列，时间一致性比 GAN 方法好一些。</p>
+<h2>能力域四：工程化参数——让它在你的机器上跑起来</h2>
+<p>CodeFormer 的门槛不在效果而在"让它跑起来"。安装包从<a href="https://codeformer.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a>获取，几个高频踩坑点集中在：</p>
+<p><strong>显存分配</strong>：不开背景增强约 8.5GB，开了约 12GB。8GB 卡用户的组合拳是：关 <code>--bg_upsampler</code>（省 3.5GB）+ 用 <code>--has_aligned</code> 跳过检测（省 1GB）+ 图片先缩小再处理（面积减半激活值显存减 4 倍），三管齐下能把需求压到 5GB 以下。还可以加 <code>--fp16</code> 走混合精度，显存减半还更快。</p>
+<p><strong>ffmpeg 依赖</strong>：视频处理必须有。Windows 最推荐 Conda 环境内一条命令装好自动进 PATH；手动装的话解压路径别带空格和中文，改完 PATH 要重开终端窗口。VS Code 用户还要注意 Python 解释器和 Conda 环境的对应关系——GUI 启动的应用 PATH 可能不包含 ffmpeg。</p>
+<p><strong>云 GPU 平台</strong>：AutoDL、矩池云这类国内平台通常预装 ffmpeg，直接 <code>ffmpeg -version</code> 确认就行。Colab 里一行 <code>!apt-get install ffmpeg</code> 搞定。</p>
+<h2>短板也要说</h2>
+<p>CodeFormer 不是万能的。实时视频增强（30fps）单帧推理要 100~300ms，实时场景需要 &lt;33ms/帧，差了一个数量级——有专门的轻量模型做这个事。完全糊成一团、连五官轮廓都看不清的照片，CodeFormer 不管 w 设多少都只能编一张"像样的脸"出来，不如 GFPGAN 编得好看。背景里有重要文字（证件照、文件扫描件）的时候不能开 Real-ESRGAN，它对低分辨率文字会"瞎猜"成乱码。</p>
+<h2>什么样的人该用它</h2>
+<p>手里有老照片想修复的家庭用户、AI 绘画玩家需要在 Stable Diffusion / Midjourney 生成后端接一个后处理节点的创作者、做视频逐帧增强的剪辑师——这三类人是 CodeFormer 最匹配的画像。第一类看重保真度不想把长辈修成网红脸，第二类追求画面自然度不在乎身份一致性，第三类需要 w=1.0 的时间稳定性保证同一人前后帧长得一样。</p>
+<p>从一个简单的人脸修复模型出发，CodeFormer 实际上已经长成了一个覆盖修复、增强、上色、补全的小型工具生态。它不一定是效果最惊艳的那一个，但在"保真度可控"这个维度上，目前还没有开源方案能完全替代。如果你还没试过，可以先去官网拿安装包跑一跑。这份整理好的资料我在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/codeformer" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/codeformer" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/codeformer" target="_blank" rel="noopener">GitCode</a>上各同步了一份，国内访问选 Gitee 或 GitCode 更稳。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/anyview-docs.html">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</a></h2>
+  <p class="card-desc">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/apatch-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">APatch 值不值得折腾？一份刷机老手的迁移账本</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/pingtools.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">PingTools 全能力盘点：把安卓变成随身网络诊断台</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

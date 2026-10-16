@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 Shield 搭一套安卓轻量开发流水线，从想法到打包不碰电脑 · 老杨技术栈</title>
+  
+<meta name="description" content="每周要做的安卓小工具，以前要开 Android Studio 加模拟器，现在一台手机装 Shield 就能走完整个流程。这篇讲我这套工作流的拼接细节和踩过的坑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/shield-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Shield 搭一套安卓轻量开发流水线，从想法到打包不碰电脑">
+<meta property="og:description" content="每周要做的安卓小工具，以前要开 Android Studio 加模拟器，现在一台手机装 Shield 就能走完整个流程。这篇讲我这套工作流的拼接细节和踩过的坑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/shield-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/shield-docs/editor-run-button.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/shield-docs/editor-run-button.png">
+
+<meta name="twitter:title" content="用 Shield 搭一套安卓轻量开发流水线，从想法到打包不碰电脑">
+<meta name="twitter:description" content="每周要做的安卓小工具，以前要开 Android Studio 加模拟器，现在一台手机装 Shield 就能走完整个流程。这篇讲我这套工作流的拼接细节和踩过的坑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6bcf\u5468\u8981\u505a\u7684\u5b89\u5353\u5c0f\u5de5\u5177\uff0c\u4ee5\u524d\u8981\u5f00 Android Studio \u52a0\u6a21\u62df\u5668\uff0c\u73b0\u5728\u4e00\u53f0\u624b\u673a\u88c5 Shield \u5c31\u80fd\u8d70\u5b8c\u6574\u4e2a\u6d41\u7a0b\u3002\u8fd9\u7bc7\u8bb2\u6211\u8fd9\u5957\u5de5\u4f5c\u6d41\u7684\u62fc\u63a5\u7ec6\u8282\u548c\u8e29\u8fc7\u7684\u5751\u3002", "headline": "\u7528 Shield \u642d\u4e00\u5957\u5b89\u5353\u8f7b\u91cf\u5f00\u53d1\u6d41\u6c34\u7ebf\uff0c\u4ece\u60f3\u6cd5\u5230\u6253\u5305\u4e0d\u78b0\u7535\u8111", "image": ["https://alipymanbu.github.io/images/shield-docs/editor-run-button.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/shield-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/shield-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u7528 Shield \u642d\u4e00\u5957\u5b89\u5353\u8f7b\u91cf\u5f00\u53d1\u6d41\u6c34\u7ebf\uff0c\u4ece\u60f3\u6cd5\u5230\u6253\u5305\u4e0d\u78b0\u7535\u8111", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">用 Shield 搭一套安卓轻量开发流水线，从想法到打包不碰电脑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 Shield 搭一套安卓轻量开发流水线，从想法到打包不碰电脑</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">每周要做的安卓小工具，以前要开 Android Studio 加模拟器，现在一台手机装 Shield 就能走完整个流程。这篇讲我这套工作流的拼接细节和踩过的坑。</p>
+  </header>
+  <div class="prose">
+<h2>以前做安卓小工具，我走过哪些弯路</h2>
+<p>我每周都会冒出一两个「要是手机上有这么个小工具就好了」的念头——批量重命名文件、快速转发一段固定格式的文字、定时提醒喝水——都是三五百行代码就能搞定的东西。但以前每次动手，流程都卡得我不想往下走：</p>
+<p>开 Android Studio，新建一个空工程，Gradle 同步等十分钟，写代码，开模拟器跑一遍，导出 APK 拷到手机里测试。调试一轮又一轮，每改一次代码都要重复这套链路。等到第三个星期这个小工具大概已经忘了当初要干嘛。</p>
+<p>后来试过各种壳子和在线编辑器，要么功能不全，要么导出的包自己都跑不起来。真正让我把「想法 → 能用」的周期压缩到一小时内的，是装了 <a href="https://shield.djnf.quest" target="_blank" rel="noopener">Shield</a> 之后。</p>
+<h2>新流程：Shield 在整条链里的位置</h2>
+<p>现在我的安卓小工具流水线是这样的：<strong>一台手机从<a href="https://shield.djnf.quest/download.html" target="_blank" rel="noopener">官方下载</a>装 Shield → 开 Shield 写 Lua → 按三角直接跑 → 打包成 APK → 存到网盘</strong>。整条链只有这台手机，没有电脑、没有模拟器、没有 Gradle。</p>
+<p>Shield 解决的是中间那三行——写、跑、打包。上下游配合的工具也都是手机上现成的：</p>
+<ul><li><strong>写</strong>：Shield 自带的 Lua 编辑器。左上角三线图标打开工程抽屉，能看到完整存储路径 <code>/storage/emulated/0/AndroLua/project/&lt;项目名&gt;/</code>，改到哪个工程一眼不会错。多文件切换靠顶部标签，写个 100 行的小项目绰绰有余。</li><li><strong>跑</strong>：顶栏那个三角按钮就是全部的运行机制。按下去，Lua 解释器读 <code>main.lua</code>，把布局表渲染成安卓界面。第一次跑什么都不改，能出来空白页面就证明环境没问题，之后每次报错范围一下子缩小——要么是你改的那几行，要么是 Lua 语法。</li><li><strong>打包</strong>：写完直接导 APK，Shield 处理所有签名和工程配置。</li></ul>
+<p>上游的「想法」阶段，我用手机自带的备忘录记下来，列清楚界面要几个按钮、每个按钮点下去干嘛。下游的「发布」阶段，APK 生成后直接用文件管理器移到网盘同步，或者用另一个 Shield 实例装上去自己测试。</p>
+<h2>实操里最容易断链的两个环节</h2>
+<p>这套流程听起来简单，但我跑了大概二十个小工具之后，有两个地方反复让我卡住。现在基本都是条件反射地处理了。</p>
+<h3>运行飞了怎么办？撤销 + 组合拳</h3>
+<p>写 Lua 最容易犯的错就是手滑写个死循环，或者界面布局参数写错导致白屏。这时候 Shield 不会给你什么友好提示——界面直接卡死或者一片空白。</p>
+<p>我的解法是「撤销 + 运行」组合拳：连按几次顶栏的左弧形箭头（撤销），直到脚本回到上一个能跑的状态，按三角确认没问题之后，再逐步重做刚才的修改，每重做一步跑一次。跑挂的那一步就是凶手。手机上没有键盘快捷键，所以我每次改动幅度都控制在十行以内——改一小段、跑一次，出问题立刻定位。</p>
+<p>脚本真跑飞了连界面都切不回来怎么办？从最近应用里把 Shield 划掉重开就行，编辑内容不会丢——这是我试过三次死循环之后才敢放心写的。</p>
+<p><img src="../images/shield-docs/editor-run-button.png" alt="编辑器顶栏：运行按钮位置" loading="lazy"></p>
+<h3>工程多了之后怎么对账？看路径不看名字</h3>
+<p>Shield 允许同名工程同时存在——我就真的建过两个都叫 <code>backup</code> 的工程，改了半个月才发现一直在改旧的那个。</p>
+<p>后来养成了一个习惯：每次开工前先点左上角三线打开工程抽屉，看顶部第二行的完整路径。那行小字平时不起眼，但 <code>/storage/emulated/0/AndroLua/project/backup/</code> 和 <code>/storage/emulated/0/AndroLua/project/backup_v2/</code> 是两个不同的目录。对账完再动手，比看工程名靠谱得多。</p>
+<p>工程跑起来之后，Shield 会自动生成 <code>icon.png</code>、<code>welcome.png</code> 这些资源文件，全部堆在同一个目录里。工程就是普通文件夹，拿着路径去文件管理器直接复制、备份、分享都行，目录结构和各文件的完整分工可以去<a href="https://shield-docs.pages.dev/" target="_blank" rel="noopener">Shield文档</a>查。</p>
+<p><img src="../images/shield-docs/project-drawer.jpg" alt="工程抽屉：文件树与完整路径" loading="lazy"></p>
+<h2>工具箱是给研究向用户准备的</h2>
+<p>写自己的工程用不上太多额外工具，但 Shield 底部最右侧那个「我的」标签里藏了五件工具——图标仓库、配色参考、DEX 查看、安装包提取、指定类分析。前两件帮你给工程换个像样的门面，后三件是反编译向的，可以拆开别人装过的应用看结构。</p>
+<p>我现在的用法是：写完自己的小工具打包前，用图标仓库挑个不那么丑的图标换上；想研究某个开源应用的内部结构时，先在手机上装一下，再用安装包提取导出来，进 DEX 查看类结构。这整套研究流程也不用碰电脑，直接在 Shield 里走完。</p>
+<h2>这套流程省了多少事、什么时候不划算</h2>
+<p>算一笔账：以前从想法到打包要 45 分钟以上（AS 启动 + 同步 + 编码 + 模拟器 + 导出），现在稳定在 15 分钟。少了开电脑、少了等 Gradle、少了 USB 拷包——每次至少少两次手动复制，还不算调试时来回切窗口的时间。</p>
+<p>但它有明确的边界。<strong>超过两千行的项目我不会用 Shield</strong>——Lua 的编辑器没有语法高亮、没有补全、没有重构，纯手写全靠脑子记，大项目写起来会很痛苦。Shield 适合的就是我这种场景：小工具、快迭代、写完就扔或者自己长期用。需要团队协作、需要 CI/CD、需要上架到应用商店的正经产品，还是得回到 Android Studio 走正规流程。</p>
+<p>另外它只支持 Lua。如果你是 Kotlin/Java 老手，转过来写 Lua 的安卓界面需要适应一下——布局是表结构不是 XML，事件绑定的写法也不一样。但只要过了那两三个小工具的门槛，后面就是行云流水。</p>
+<h2>收尾</h2>
+<p>我把这套工作流的核心思路——Shield 本体的安装包、完整的示例工程、以及一些常用的 Lua 界面片段——整理在三份同步更新的资料里，<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Shield" target="_blank" rel="noopener">GitHub</a> 放完整版，<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Shield" target="_blank" rel="noopener">Gitee</a> 对国内访问更友好，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Shield" target="_blank" rel="noopener">GitCode</a> 作为额外备份，哪个顺手用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/qbot-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">QBot 深度盘点：QQ 浏览器里藏着的 AI 能力到底有多强</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/itubego.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">装了三天 iTubeGo，我把电脑里四个下载器卸了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

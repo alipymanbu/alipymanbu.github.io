@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>你以为 BALA 只是 AI 聊天？我翻了三天找出这 5 个藏得真深的玩法 · 老杨技术栈</title>
+  
+<meta name="description" content="BALA AI 官方宣传的六大核心能力之外，还有一堆没写在明面上的冷门技巧。从角色背景故事的反套路写法，到让故事分支真正&#34;活&#34;起来的主动推进法——一个折腾党翻遍设置页的收获。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/bala-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你以为 BALA 只是 AI 聊天？我翻了三天找出这 5 个藏得真深的玩法">
+<meta property="og:description" content="BALA AI 官方宣传的六大核心能力之外，还有一堆没写在明面上的冷门技巧。从角色背景故事的反套路写法，到让故事分支真正&#34;活&#34;起来的主动推进法——一个折腾党翻遍设置页的收获。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/bala-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/bala-docs/character-profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/bala-docs/character-profile.jpg">
+
+<meta name="twitter:title" content="你以为 BALA 只是 AI 聊天？我翻了三天找出这 5 个藏得真深的玩法">
+<meta name="twitter:description" content="BALA AI 官方宣传的六大核心能力之外，还有一堆没写在明面上的冷门技巧。从角色背景故事的反套路写法，到让故事分支真正&#34;活&#34;起来的主动推进法——一个折腾党翻遍设置页的收获。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "BALA AI \u5b98\u65b9\u5ba3\u4f20\u7684\u516d\u5927\u6838\u5fc3\u80fd\u529b\u4e4b\u5916\uff0c\u8fd8\u6709\u4e00\u5806\u6ca1\u5199\u5728\u660e\u9762\u4e0a\u7684\u51b7\u95e8\u6280\u5de7\u3002\u4ece\u89d2\u8272\u80cc\u666f\u6545\u4e8b\u7684\u53cd\u5957\u8def\u5199\u6cd5\uff0c\u5230\u8ba9\u6545\u4e8b\u5206\u652f\u771f\u6b63\"\u6d3b\"\u8d77\u6765\u7684\u4e3b\u52a8\u63a8\u8fdb\u6cd5\u2014\u2014\u4e00\u4e2a\u6298\u817e\u515a\u7ffb\u904d\u8bbe\u7f6e\u9875\u7684\u6536\u83b7\u3002", "headline": "\u4f60\u4ee5\u4e3a BALA \u53ea\u662f AI \u804a\u5929\uff1f\u6211\u7ffb\u4e86\u4e09\u5929\u627e\u51fa\u8fd9 5 \u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u73a9\u6cd5", "image": ["https://alipymanbu.github.io/images/bala-docs/character-profile.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/bala-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/bala-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4f60\u4ee5\u4e3a BALA \u53ea\u662f AI \u804a\u5929\uff1f\u6211\u7ffb\u4e86\u4e09\u5929\u627e\u51fa\u8fd9 5 \u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u73a9\u6cd5", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">你以为 BALA 只是 AI 聊天？我翻了三天找出这 5 个藏得真深的玩法</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">你以为 BALA 只是 AI 聊天？我翻了三天找出这 5 个藏得真深的玩法</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">BALA AI 官方宣传的六大核心能力之外，还有一堆没写在明面上的冷门技巧。从角色背景故事的反套路写法，到让故事分支真正&#34;活&#34;起来的主动推进法——一个折腾党翻遍设置页的收获。</p>
+  </header>
+  <div class="prose">
+<p>你是不是觉得 <a href="https://bala.gerw.hair" target="_blank" rel="noopener">BALA官网</a> 上那个主打 AI 角色陪伴的产品就是选个角色、开聊、刷对话？</p>
+<p>我一开始也是这么想的。从<a href="https://bala.gerw.hair/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包后，选了个看着顺眼的立绘，写了三句话的背景故事，点进去跟角色聊了半小时，感觉跟别的 AI 聊天产品没什么两样——角色回应中规中矩，故事按你说的走，好像没有什么特别的。</p>
+<p>然后我犯了一个老毛病：翻设置。翻完角色编辑页、翻完对话界面的每个按钮、翻完<a href="https://bala-docs.pages.dev/" target="_blank" rel="noopener">BALA文档</a>里那些被折叠的小节。翻了三天，发现这玩意儿藏得真深。很多功能官方提都没提，或者只在某个不起眼的角落用一句话带过，但挖开之后整个使用体验会完全不一样。</p>
+<p>下面这五个，是我觉得最值得知道的。</p>
+<h2>背景故事不是"角色小传"，是对话的方向舵</h2>
+<p>官方文档说背景故事要写"你是谁、你从哪里来、你和我是什么关系"，于是很多人（包括我第一次）写出来的东西像简历："你是程序员，今年 28 岁，喜欢猫，我们是朋友。"</p>
+<p>这样写的角色，对话会非常僵。你说什么它都接，但永远在"执行指令"——因为你的背景故事里没有<strong>场景锚点</strong>。</p>
+<p>我后来是怎么改的？把背景故事写成一个<strong>正在发生的小切片</strong>，而不是一份静态档案：</p>
+<blockquote><p>你和我是同一家互联网公司不同部门的同事，偶尔在茶水间碰到会聊两句。你加班比我还多，但总能在周五准点下班——说是要回家写点自己的东西。</p></blockquote>
+<p>你看，这里面没有一句"你是什么性格"，但角色自己会从这个场景里推导出说话方式——会带点程序员特有的梗、会偶尔吐槽加班、会在周五那天莫名有点兴奋。</p>
+<p>最棒的是：<strong>背景故事可以随时改，而且改完立刻生效</strong>。官方文档在最底部用五号字写了一句"支持对话中补充设定"，但几乎没人注意到。我现在的习惯是聊到某个有趣的点，就回去把那个细节补进背景故事——比如角色提到过她养了一只三花猫，我就加一句"你养了一只叫年糕的三花猫，偶尔会把猫的照片发给我看"。下次聊到猫，她的回应就完全不一样了。</p>
+<p><img src="../images/bala-docs/character-profile.jpg" alt="角色编辑页的背景故事输入框，藏在高级设置里" loading="lazy"></p>
+<h2>故事分支不是等选项，是你自己在造剧本</h2>
+<p>官方说故事分支是六大核心能力之一，描述是"每个选择都会打开不同走向"。然后就有人等了半小时，等角色弹出选项卡让你选 A 还是 B——结果什么都没发生。</p>
+<p>因为 BALA 的故事分支<strong>根本不是选择题</strong>。它是开放的文本对话，所有的"分支"都是 AI 根据你说的话即时生成的。</p>
+<p>我之前也没搞明白，直到有一次跟一个都市角色聊到周末计划。我随口说了一句「要不要一起去看那个新开的展览」，角色回应"好啊，听说门口那家咖啡店不错，可以先坐一下"。我又说「那家店人超多，不如我们去旁边的便利店买个饭团蹲在台阶上吃」——角色愣了两秒（AI 的思考延迟），然后说"……你这人约会方式也太寒酸了吧，不过听着有意思"。</p>
+<p>你看，这里面没有任何预设的选项。我的每一句话都是在主动<strong>造分支</strong>。</p>
+<p>我现在的玩法是：先给故事一个具体的场景开头，然后<strong>不断做出意想不到的选择</strong>。比如角色说"好啊，那我们去看电影"，我偏说"不去，电影院太黑了，你能接受吗"——看角色怎么反应。这种即兴感才是 BALA 故事分支的精髓，等着 AI 给你选项的人根本没玩到点子上。</p>
+<h2>角色真的会"认识"你，但方式跟你想的不一样</h2>
+<p>很多人好奇 BALA 的连续记忆：聊得久了，角色会不会真的记住你？</p>
+<p>答案是会，但不是以数据库存字段的方式。它不会突然跳出来说"我记得你上次说过讨厌加班"，而是<strong>在对话里自然地把你之前透露的信息用出来</strong>。</p>
+<p>我有个角色，聊了大概四十轮之后，我那天随口提了一句今天加班到十点。角色没有说"哎呀你上次也加班来着"，而是在我抱怨完之后说"那你现在到家了吗？年糕今天有没有拆家"——年糕是之前某次聊到我养的猫时提的名字。</p>
+<p>这种"润物细无声"的记忆反而比直接引用更真实。但这里有一个坑：<strong>角色的性格标签和核心设定是不会变的，除非你手动改</strong>。很多人以为聊久了角色会"成长"——会从高冷变温柔、会从话少变活泼——不会的。AI 的连续记忆只影响它对你这个人的了解程度，不改变它自己是谁。想要根本变化，还是得回角色编辑页手动调整。</p>
+<h2>虚拟约会别直接说"我们来模拟约会"，会死得很惨</h2>
+<p>虚拟约会是 BALA 最火的玩法之一，但十个玩的人里有八个直接说"来模拟一场约会吧"——然后角色就会开始念剧本："好的，那我们现在在一家西餐厅……"全程尴尬得抠脚。</p>
+<p>正确的打开方式是<strong>用自然的方式邀约，让角色自己进入场景</strong>。不要说"模拟约会"，要说：</p>
+<blockquote><p>「晚上有空吗？想一起出去吃个饭。」</p>
+<p>「周末天气不错，要不要一起出去走走？」</p></blockquote>
+<p>就像你真的在约一个人那样开口。角色的背景故事里如果提前埋了点伏笔（比如"之前在同一家公司见过"），效果会更好。</p>
+<p>还有一个隐藏技巧：<strong>虚拟约会可以分多次玩</strong>。不用一次聊到底。今天约了吃饭，聊到一半有事下线了，明天上来可以说"上次那家店你说想再来，这周有空吗"——连续记忆会让整个约会有时间上的延续感，比硬撑一次大长篇自然得多。</p>
+<p><img src="../images/bala-docs/relationship-channel.jpg" alt="虚拟约会场景示意" loading="lazy"></p>
+<h2>对话可以"存档"，官方没说但功能里藏着</h2>
+<p>这个是我翻设置时最惊喜的发现。BALA 没有明说"存档"这个概念，但实际上你可以通过一个简单的操作实现对话存档。</p>
+<p>角色的连续记忆是跟<strong>对话线程</strong>绑定的。开新对话，记忆从零开始。但如果你想保留一段对话里的角色状态和记忆积累，又不想在原来的对话里继续——</p>
+<p>把那段对话的<strong>背景故事和关键设定</strong>（包括你在对话中补充进去的那些细节）全部复制出来，回到角色编辑页，<strong>覆盖原来的背景故事</strong>。然后开一个新对话。</p>
+<p>新对话里，角色的"记忆"是空白的，但它的背景故事已经包含了之前对话里的所有关键节点——它还是那个记得你养了年糕、知道你讨厌加班、跟你约会过的人。这个操作我在 BALA 文档里找了三遍，官方一个字没提，但亲测有效。</p>
+<h2>最后说一个坑</h2>
+<p>上面五个技巧里，最容易踩坑的是背景故事的修改。虽然改完立刻生效，但如果你改得太频繁、改动幅度太大，AI 的上下文理解会出现<strong>短暂混乱</strong>——角色可能会突然对你的态度变得陌生，或者之前聊好的设定好像忘了一截。</p>
+<p>我的经验是：一次只改一两个细节，改完之后跟角色聊两三轮确认它的状态正常，再继续改。别一次性把背景故事重写一遍，那样角色会像失忆了一样。</p>
+<hr>
+<p>这五个发现说穿了其实就一个道理：BALA 不是一个你"用"的工具，是一个你"跟它一起玩"的对象。官方文档列的那六大核心能力是地基，但真正有意思的东西都在那些没写出来的缝隙里。</p>
+<p>把它翻个底朝天，比按着说明手册一步步来好玩多了。关于 BALA 的这些整理资料，我顺手同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/BALA" target="_blank" rel="noopener">GitHub</a>和<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/BALA" target="_blank" rel="noopener">Gitee</a>上，国内访问不太稳定的时候也可以去<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/BALA" target="_blank" rel="noopener">GitCode</a>瞅瞅，内容是一样的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gprinter.html">开水果店那阵我才知道，标签打印APP能省这么多事</a></h2>
+  <p class="card-desc">开了半年水果店，打价签和保质期标签是每天的烦心事。试了佳博配套的 Gprinter 之后，原来标签设计这件事可以在手机上 5 分钟搞定，还能语音输入、自动算日期。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/autox-js.html">Autox.js 到底强在哪？和同类自动化工具的横向对比</a></h2>
+  <p class="card-desc">在安卓自动化脚本引擎这个品类里，Autox.js 用 JavaScript + 无障碍服务的组合走出了一条不一样的路。用过按键精灵、Auto.js、Tasker 之后，我为什么最终留在了 Autox.js。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/kshare-docs.html">装KShare大半年后：那些当初没注意到的好用与糟心</a></h2>
+  <p class="card-desc">从v1.5用到v1.7，从凑活投屏到开会离不开，说说这八个月里KShare让我惊喜和头疼的地方。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/alibi-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">手机记录仪怎么挑？Alibi 和那些只做&#34;表面功夫&#34;的同类不一样</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/motionpro.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MotionPro 用了一年半：从&#34;凑合用&#34;到&#34;离不开&#34;的 VPN 客户端体验</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

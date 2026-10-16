@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Kali Linux 踩过的那些坑——从 dpkg 锁到 OpenVAS 初始化 · 老杨技术栈</title>
+  
+<meta name="description" content="用 Kali 两三年，升级中断锁死 dpkg、公钥过期、工具版本不兼容这些毛病都踩过。把遇到的症状、根因和解法整理出来，省得你再挨个撞墙。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/kali-linux.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kali Linux 踩过的那些坑——从 dpkg 锁到 OpenVAS 初始化">
+<meta property="og:description" content="用 Kali 两三年，升级中断锁死 dpkg、公钥过期、工具版本不兼容这些毛病都踩过。把遇到的症状、根因和解法整理出来，省得你再挨个撞墙。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/kali-linux.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/kali-linux/nethunter-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/kali-linux/nethunter-logo.png">
+
+<meta name="twitter:title" content="Kali Linux 踩过的那些坑——从 dpkg 锁到 OpenVAS 初始化">
+<meta name="twitter:description" content="用 Kali 两三年，升级中断锁死 dpkg、公钥过期、工具版本不兼容这些毛病都踩过。把遇到的症状、根因和解法整理出来，省得你再挨个撞墙。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7528 Kali \u4e24\u4e09\u5e74\uff0c\u5347\u7ea7\u4e2d\u65ad\u9501\u6b7b dpkg\u3001\u516c\u94a5\u8fc7\u671f\u3001\u5de5\u5177\u7248\u672c\u4e0d\u517c\u5bb9\u8fd9\u4e9b\u6bdb\u75c5\u90fd\u8e29\u8fc7\u3002\u628a\u9047\u5230\u7684\u75c7\u72b6\u3001\u6839\u56e0\u548c\u89e3\u6cd5\u6574\u7406\u51fa\u6765\uff0c\u7701\u5f97\u4f60\u518d\u6328\u4e2a\u649e\u5899\u3002", "headline": "Kali Linux \u8e29\u8fc7\u7684\u90a3\u4e9b\u5751\u2014\u2014\u4ece dpkg \u9501\u5230 OpenVAS \u521d\u59cb\u5316", "image": ["https://alipymanbu.github.io/images/kali-linux/nethunter-logo.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/kali-linux.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/kali-linux.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Kali Linux \u8e29\u8fc7\u7684\u90a3\u4e9b\u5751\u2014\u2014\u4ece dpkg \u9501\u5230 OpenVAS \u521d\u59cb\u5316", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Kali Linux 踩过的那些坑——从 dpkg 锁到 OpenVAS 初始化</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Kali Linux 踩过的那些坑——从 dpkg 锁到 OpenVAS 初始化</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 11 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">用 Kali 两三年，升级中断锁死 dpkg、公钥过期、工具版本不兼容这些毛病都踩过。把遇到的症状、根因和解法整理出来，省得你再挨个撞墙。</p>
+  </header>
+  <div class="prose">
+<p><a href="https://kali-linux.qjxz.skin" target="_blank" rel="noopener">kali linux官网</a>上列着它是专为渗透测试场景打造的 Debian 衍生发行版，看着是个装完就能打命令的渗透工具集，其实上手两三个月你就会发现——它比普通发行版矫情多了。升级稍微断一下、仓库公钥换了、甚至一个工具自己迭代了新版本，都能给你搞出一堆莫名其妙的问题。我第一次遇到 dpkg 锁死的时候以为系统废了要重装，折腾了半天才发现三行命令就能救回来。下面把我踩过的几个比较典型的坑写下来，照这个来省不少时间。</p>
+<h2>坑一：升级中途断了，dpkg 被锁死</h2>
+<p>这是 Kali Rolling 用户最常碰上的。<code>apt full-upgrade</code> 跑了一半断电、Ctrl+C 或者网络断了，再来就报「dpkg is locked」或者「could not get lock /var/lib/dpkg/lock」。</p>
+<pre><code>E: dpkg was interrupted, you must manually run &#x27;sudo dpkg --configure -a&#x27;</code></pre>
+<p>症状就是 apt 什么都装不了、什么都更不了，整个系统包管理瘫痪。</p>
+<p>原因也简单——升级到一半 dpkg 还在处理某个包，突然中断后它留下了一个锁文件（通常在 <code>/var/lib/dpkg/lock-frontend</code> 或 <code>/var/cache/apt/archives/lock</code>），但进程早就没了。新的 dpkg 启动时看到锁文件就以为有另一个实例在跑，不敢接着干。</p>
+<p>解法三步就好：</p>
+<pre><code class="language-bash">sudo dpkg --configure -a
+sudo apt install -f -y
+sudo apt full-upgrade -y</code></pre>
+<p>第一行让 dpkg 把上次没处理完的包接着配置完，第二行修依赖，第三行重新升级。跑完基本就活了。我第一次看到这个还不信，以为要删锁文件，但删锁文件容易搞坏包状态——<code>dpkg --configure -a</code> 才是正道，它会自己判断哪些包处理了一半。</p>
+<p>如果连 <code>dpkg --configure -a</code> 都报锁，那说明还有残留进程：</p>
+<pre><code class="language-bash">ps aux | grep dpkg
+sudo kill &lt;PID&gt;</code></pre>
+<p>找到那个僵死的 dpkg 进程杀掉再跑 configure 就行。</p>
+<h2>坑二：仓库公钥过期，apt 全红</h2>
+<p>某次升级突然变成这样：</p>
+<pre><code>W: GPG error: http://deb.debian.org/debian bullseye InRelease:
+The repository is not signed.
+E: The repository ... does not have a Release file.</code></pre>
+<p>或者报「NO_PUBKEY XXXXXXXX」。这时候你以为是网络问题，ping 一下仓库发现通的，但 apt 就是不认。</p>
+<p>原因是 Kali 升级仓库时换了新的 GPG 公钥，旧系统还拿着老 keyring 包，验签通不过就拒接所有包。Kali Rolling 每半年一次的大版本快照（比如 2025.1、2025.4）经常伴随 keyring 更新，老系统滞后一两个版本就容易踩上。</p>
+<p>解法也直接：</p>
+<pre><code class="language-bash">sudo apt-key update</code></pre>
+<p>如果这个命令也跑不通，直接装新的 keyring 包：</p>
+<pre><code class="language-bash">sudo apt install -y kali-archive-keyring</code></pre>
+<p>装完之后 <code>apt update</code> 就能正常刷新包列表了。这个坑我踩了两次，第二次是从 2023.x 直接升到 2025.x 跨了两个大版本，keyring 彻底不兼容。现在养成习惯，升级前先手动更一下 keyring 包。</p>
+<h2>坑三：工具升级后坏了，想回退又回不去</h2>
+<p>某次 <code>full-upgrade</code> 把 nmap 从 7.94 升到 7.95，新版本 <code>nmap --script smb-vuln-ms17-010</code> 就报错说脚本找不到。或者 searchsploit 升级后数据库对不上，查出来的 PoC 编号复制过去就失效。</p>
+<p>症状就是某个你常用的工具，突然某个参数报错、某个脚本没了、某个功能行为变了，搞得扫描流程跑不通。</p>
+<p>原因是 Kali 的 Rolling 仓库跟得很紧，工具作者偶尔会改参数名、移除旧脚本或者重构内部逻辑，而你的渗透流程是在旧版本上调好的。这个在渗透测试场景里挺烦的——报告模板里写着用某个脚本，结果脚本没了，临时改参数又怕扫出来的结果有差异。</p>
+<p>解法分两种情况。如果你就想把某个工具钉在当前版本：</p>
+<pre><code class="language-bash">sudo apt-mark hold nmap</code></pre>
+<p>这样以后 <code>full-upgrade</code> 都不会碰 nmap。要解锁就 <code>apt-mark unhold nmap</code>。</p>
+<p>如果想临时降级到历史版本：</p>
+<pre><code class="language-bash">apt-cache madison nmap        # 查看仓库里有哪些版本
+sudo apt install nmap=7.94-1  # 装指定版本</code></pre>
+<p>降完之后建议先 hold 住，不然下次 full-upgrade 又给你升上去。</p>
+<p>我现在的策略是：高频依赖的工具（nmap、searchsploit、msfconsole）在稳定工作后统一 hold，等半年的大版本快照发布时再集中解开升级一次。测试工具够用就行，追着最新版本跑反而容易踩坑。</p>
+<h2>坑四：OpenVAS 初始化慢到让人以为卡死</h2>
+<p>第一次装 OpenVAS 跑 <code>gvm-setup</code>，我从<a href="https://kali-linux.qjxz.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿到的镜像里自带的工具集其实已经够用了，但还是想折腾一下这个大名鼎鼎的扫描器。控制台滚了几分钟之后停在某个地方不动了。等了十分钟还是没反应，Ctrl+C 重来，还是卡同一个位置。我以为是国内网络拉不动漏洞规则库，加了代理也没用，最后怀疑 OpenVAS 是不是烂了。</p>
+<p>症状就是 <code>gvm-setup</code> 跑完启动后，访问 <code>https://localhost:9392</code> 打不开，或者打开了但漏洞规则列表是空的。正常情况 OpenVAS 要从 Greenbone Networks 拉 5 万+ 条漏洞规则，这个过程在国内网络下特别慢，还容易断。</p>
+<p>原因就是规则库下载。OpenVAS 的规则数据源在海外，国内直连能跑到几 KB/s 的速度，下载几小时都有可能中途断掉。而且即使下载完了，首次启动时还要编译、索引这些规则，CPU 占满十分钟以上，看起来像卡死。</p>
+<p>解法也简单，但需要耐心：</p>
+<pre><code class="language-bash">sudo gvm-setup --fast-import</code></pre>
+<p><code>--fast-import</code> 跳过一些非必要的同步步骤，首次初始化能快一些。如果还是慢，挂代理或者多等会儿——OpenVAS 初始化本来就是个慢活，别看到不动就重启。</p>
+<p>还有个省事的办法：如果不做合规要求的正式漏洞评估，日常用 Nmap NSE 脚本或者 Nuclei 模板扫描就够了。Nmap 的 NSE 漏洞脚本（比如 <code>smb-vuln*</code>、<code>http-log4shell</code>、<code>ssl-heartbleed</code>）覆盖的常见漏洞比你想象的多，而且启动就是秒级的，不用等 OpenVAS 初始化。更多脚本组合和参数细节可以查<a href="https://kali-linux.pages.dev/" target="_blank" rel="noopener">kali linux文档</a>。</p>
+<h2>坑五：Volatility 装了两个版本，命令名搞混</h2>
+<p>Kali 仓库里 Volatility 2 和 Volatility 3 是两个独立的包。Volatility 2 是 Python 2 时代的，插件多、社区资源老文章里常见；Volatility 3 是 Python 3 重写的，速度快但插件体系重构过，有些 V2 插件还没迁移过去。</p>
+<p>症状就是你照着一篇 2021 年的内存取证教程跑命令，<code>vol.py</code> 找不到 <code>windows.hashdump</code> 或者某个插件报「Unsupported plugin」。又或者装了 V3 但教程里全是 V2 的命令行参数格式，对不上。</p>
+<p>原因很简单，两个版本的命令名、插件体系都不一样。V2 命令是 <code>vol.py -f image.raw windows.pslist</code>，V3 命令是 <code>vol -f image.raw windows.pslist</code>（少了 <code>.py</code>）。而且 V2 有不少社区插件只在旧版上跑，V3 重写后这些插件没迁过来。</p>
+<p>解法就是两个都装上，根据文档年代选版本跑：</p>
+<pre><code class="language-bash">sudo apt install volatility volatility3</code></pre>
+<p>V2 的可执行文件叫 <code>vol.py</code>，V3 的叫 <code>vol</code>，不会冲突。查文档时如果看到命令是 <code>vol.py</code> 开头的就是 V2，<code>vol</code> 开头的大概率是 V3。</p>
+<h2>防坑清单</h2>
+<p>用了两年多整理下来，这几件事做到位，大部分坑能绕开：</p>
+<ol><li><strong>升级用 <code>apt full-upgrade</code> 不用 <code>upgrade</code></strong>——Kali 工具集迭代快，旧包被替代时 <code>upgrade</code> 处理不了依赖</li><li><strong><code>apt update</code> 先于 <code>full-upgrade</code></strong>，看到公钥相关警告先跑 <code>apt install -y kali-archive-keyring</code> 再升</li><li><strong>高频工具稳定后 <code>apt-mark hold</code></strong>，等大版本快照时集中解开升级</li><li><strong><code>gvm-setup</code> 跑的时候别碰它</strong>，OpenVAS 首次初始化就是慢，网络不好的话先挂好代理</li><li><strong>Volatility 两个版本都装</strong>，照着命令名判断跑哪个</li></ol>
+<p>知道这些坑之后，Kali Linux 其实相当省心。它毕竟是专为渗透测试场景打磨的发行版，工具链的整合度和更新速度是普通发行版比不了的——前提是别踩到上面那些小毛病。这些排查思路和操作记录我也分别同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/kali%20linux" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/kali%20linux" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/kali%20linux" target="_blank" rel="noopener">GitCode</a>，方便随时对照查阅。</p>
+<p><img src="../images/kali-linux/nethunter-logo.png" alt="NetHunter 是 Kali Linux 的移动端版本，在安卓上也能跑完整工具链" loading="lazy"></p>
+<p><img src="../images/kali-linux/wsl-apps.png" alt="WSL 下运行的 Kali 应用，适合 Windows 环境做轻量测试" loading="lazy"></p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/soundcore-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">soundcore 应用上手：从开箱到调音的完整实操指南</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/kadokado.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">KadoKado 到底值不值五十块一个月？一本付费决策账本</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

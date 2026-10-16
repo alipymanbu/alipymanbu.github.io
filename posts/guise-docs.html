@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Guise 用过之后才懂的几个坑——我重装了两次才踩明白 · 老杨技术栈</title>
+  
+<meta name="description" content="Guise 作为一款 Xposed Hook 模块，看着就是装个 APK 点几下的事。实际用下来踩了好几个想象不到的坑，从框架激活到 Hook 链路验证，每一个都够让新手摸不着头脑。整理一下我踩过的几个典型。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/guise-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Guise 用过之后才懂的几个坑——我重装了两次才踩明白">
+<meta property="og:description" content="Guise 作为一款 Xposed Hook 模块，看着就是装个 APK 点几下的事。实际用下来踩了好几个想象不到的坑，从框架激活到 Hook 链路验证，每一个都够让新手摸不着头脑。整理一下我踩过的几个典型。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/guise-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/guise-docs/guise-lsposed-check.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/guise-docs/guise-lsposed-check.png">
+
+<meta name="twitter:title" content="Guise 用过之后才懂的几个坑——我重装了两次才踩明白">
+<meta name="twitter:description" content="Guise 作为一款 Xposed Hook 模块，看着就是装个 APK 点几下的事。实际用下来踩了好几个想象不到的坑，从框架激活到 Hook 链路验证，每一个都够让新手摸不着头脑。整理一下我踩过的几个典型。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Guise \u4f5c\u4e3a\u4e00\u6b3e Xposed Hook \u6a21\u5757\uff0c\u770b\u7740\u5c31\u662f\u88c5\u4e2a APK \u70b9\u51e0\u4e0b\u7684\u4e8b\u3002\u5b9e\u9645\u7528\u4e0b\u6765\u8e29\u4e86\u597d\u51e0\u4e2a\u60f3\u8c61\u4e0d\u5230\u7684\u5751\uff0c\u4ece\u6846\u67b6\u6fc0\u6d3b\u5230 Hook \u94fe\u8def\u9a8c\u8bc1\uff0c\u6bcf\u4e00\u4e2a\u90fd\u591f\u8ba9\u65b0\u624b\u6478\u4e0d\u7740\u5934\u8111\u3002\u6574\u7406\u4e00\u4e0b\u6211\u8e29\u8fc7\u7684\u51e0\u4e2a\u5178\u578b\u3002", "headline": "Guise \u7528\u8fc7\u4e4b\u540e\u624d\u61c2\u7684\u51e0\u4e2a\u5751\u2014\u2014\u6211\u91cd\u88c5\u4e86\u4e24\u6b21\u624d\u8e29\u660e\u767d", "image": ["https://alipymanbu.github.io/images/guise-docs/guise-lsposed-check.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/guise-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/guise-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "Guise \u7528\u8fc7\u4e4b\u540e\u624d\u61c2\u7684\u51e0\u4e2a\u5751\u2014\u2014\u6211\u91cd\u88c5\u4e86\u4e24\u6b21\u624d\u8e29\u660e\u767d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">Guise 用过之后才懂的几个坑——我重装了两次才踩明白</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Guise 用过之后才懂的几个坑——我重装了两次才踩明白</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Guise 作为一款 Xposed Hook 模块，看着就是装个 APK 点几下的事。实际用下来踩了好几个想象不到的坑，从框架激活到 Hook 链路验证，每一个都够让新手摸不着头脑。整理一下我踩过的几个典型。</p>
+  </header>
+  <div class="prose">
+<p>我第一次装<a href="https://guise.fedq.ren" target="_blank" rel="noopener">Guise官网</a>上发布的那个版本的时候，以为就是装个 APK 然后在 LSPosed 里勾一下目标应用，完事能跑。结果断断续续重装了两次才把它弄明白——这东西的坑比想象中多，而且很多坑不会直接报错，它就是安安静静地不生效，你以为配置了半天白忙活。这篇就把我踩过的几个典型摊开说，照着走一遍能省你至少一两天的折腾。</p>
+<h2>第一个坑：Xposed service 显示连接失败，但 Guise 本身能打开</h2>
+<p>症状是 Guise 管理端一切正常，应用列表能读，配置能改，唯独状态栏那一排小字永远在说连接失败。我第一次见到这个以为是网络问题，反复开飞行模式、重启手机、重新装 Guise APK，全没用。折腾了半个小时才反应过来——根本不是 Guise 的事，是 LSPosed 框架本身没激活。</p>
+<p>为什么会这样：Guise 是 Xposed 模块，它自己不负责注入，注入全靠 LSPosed 框架。如果框架状态是"未激活"，Guise APK 照常能装能开界面，但 Hook 代码根本不会被注入到任何目标应用。它显示的 Xposed service 连接失败，说白了就是在告诉你"框架那边没响应"。我第一次以为是自己的 Guise 版本不对，还特意跑去<a href="https://guise.fedq.ren/download.html" target="_blank" rel="noopener">官方下载</a>页找对应 Android 版本的包，白费功夫。</p>
+<p>解法很直接：打开 LSPosed 管理器，先看框架状态是不是"已激活"。如果没激活，排查方向就两个——Zygisk 开了没、框架模块有没有被禁用。Magisk 用户要在 Magisk 设置里确认 Zygisk 开关是开的，然后去 LSPosed 里看模块列表，确认 Guise 的勾选框真的打上了勾。这些都到位了，重启手机，连接失败那行字会自动消失。这个坑我后来给朋友装机也见过两次，全是同一原因，属于新手高频翻车点。</p>
+<p><img src="../images/guise-docs/guise-lsposed-check.png" alt="打开 LSPosed 管理器先看框架状态" loading="lazy"></p>
+<h2>第二个坑：GPS 伪装开了，应用定位结果就是不对</h2>
+<p>这个坑我踩得最久。配置了一套固定坐标，选了个上海的经纬度，打开地图 APP 一看定位还是我家。我以为是坐标格式问题，改了格式再试；以为是随机偏移开了，关了再试；甚至以为是应用不在 Hook 列表里，反复确认勾选。折腾了大概一个小时才发现——我忽略了一个基本事实：Guise 伪装不了 IP 定位。</p>
+<p>症状就是：Hook 配置都对，LSPosed 也激活了，目标应用也在列表里，但定位就是对不上。我当时还去翻 Guise 的日志，ERROR 级别一条没有，INFO 全是 Hook 加载成功。这说明客户端这边全对，问题不在 Guise。</p>
+<p>为什么会这样：Guise 的定位伪装走的是客户端 Hook——拦截应用通过 Android <code>Location</code> API 读取的 GPS、网络、融合坐标。但很多应用除了读 Android 系统的坐标，还会发请求到自己的服务器端，服务器拿到请求来源 IP 直接反查位置。这条链路完全绕开了客户端 Hook，服务器端我又控制不了。我当时用的那个地图 APP 显然就是这样干的，Guise 把 Android API 返回值改了，但应用转头就用服务器返回的位置覆盖了。</p>
+<p>解法分两种情况。如果目标应用只用 Android 系统定位 API，那 Guise 的伪装就能生效。但如果应用有服务器端定位（现在大部分主流 APP 都有），客户端 Hook 管不了服务器那边。这种情况下要么配合 VPN 或代理用，要么换一个只依赖系统定位的目标 APP 来测试。另外还有个细节——厂商私有位置接口（比如小米、华为的私有 Location 扩展）也绕得开通用 Hook，在这些 ROM 上要特别留意。</p>
+<h2>第三个坑：改完配置不知道生效了没，瞎猜</h2>
+<p>这个坑说穿了不是技术问题，是使用习惯的问题。我前几次用 Guise 改配置，都是直接打开真实目标应用看效果——设备 ID 变没变、应用说我是什么手机、定位对不对。结果每次改完配置后，要么是应用还显示旧值，要么是某个通道跟预期不一致，我得反复改反复重启，完全凭感觉判断问题出在哪。</p>
+<p>Guise 有个专门的靶应用叫 Guise Test，跟 Guise Reborn 同仓库发布，但我第一次用的时候完全没注意到它。这个靶应用的核心能力是三源交叉哈希——同一批设备事实，分别从 Java API、系统属性、内核三个通道各读一遍，各自哈希。哪个哈希跟你配置的对不上，它直接告诉你是 Build、属性层、GPU 还是内核层出了问题。第一次跑的时候看到它列出"不一致 0 项"那一刻，我才明白之前瞎折腾了多久。</p>
+<p>正确的做法是：每次改完配置，先用 Guise Test 测一遍再去用真实应用。测完的理想结果是所有通道一致、痕迹暴露为零。如果有通道跟不上，Guise Test 会精确指出是哪条 Hook 没注入成功，你只需要针对那一条排查，不用全链路重来。物理事实那几项（内核 SoC、内存、ABI）它会正常标注为"无法修改"，这时候也别硬改，那根本不是 Guise 管的范围。</p>
+<p><img src="../images/guise-docs/guise-shot-3.png" alt="三源交叉哈希直观告诉我每个通道跟上没跟上" loading="lazy"></p>
+<h2>第四个坑：为了排障把 DEBUG 日志打开，反而留了更多痕迹</h2>
+<p>这个坑我踩得最冤枉。为了排查前面那个 Hook 链路的问题，我打开了 Guise 管理端的 DEBUG 级别日志，想着看看 Hook 配置的明细。结果日志确实打出来了，但排查完之后我忘了关。过了两三天去 Guise Test 里一看，痕迹暴露多了好几项。</p>
+<p>为什么会这样：Guise 的 DEBUG 日志默认关闭不是没道理的。关闭状态下，目标进程只在有事件时才批量投递日志到管理端，不查询目标应用 Context、不排队重试、不发广播——不为了日志功能留下多余的生命周期 Hook。但一旦打开 DEBUG，它就会额外做这些事，每个多余的 Hook 都可能被有反 Hook 检测的应用抓到。</p>
+<p>而且日志本身也会记录 Hook 的配置明细和完整异常堆栈，这些信息在 DEBUG 级别下全量打印。排查的时候看一眼确实方便，但排完不关，等于给自己开了个后门。关于日志的投递机制和隐私边界，<a href="https://guise-docs.pages.dev/" target="_blank" rel="noopener">Guise文档</a>里写得很清楚。目标进程只保留每进程最近 12 条待投递记录，不无限增长，管理端去重后最多存 2000 条——但这仍然是排完障必须关掉的东西。</p>
+<p>解法也很简单：ERROR 和 INFO 级别一直开着就行，这两个是排障兜底用的，默认就开。只有当你确认需要深入排查某个 Hook 配置细节的时候，临时打开 DEBUG，查完立刻关。日志里也有隐私边界的——它不会记录应用内容、账号密码、位置网络数据、系统全量 Logcat，所以正常打开 ERROR 和 INFO 没问题。</p>
+<h2>防坑清单</h2>
+<ul><li>装 Guise 之前先确认 LSPosed 框架状态是已激活，别等连接失败报错了才回头查框架，浪费半小时</li><li>定位伪装不等于 IP 伪装，遇到定位不对先想是不是应用有服务器端定位，不要反复改坐标</li><li>每次改配置后先用 Guise Test 跑三源交叉哈希验收，再去用真实应用，省得全链路瞎猜</li><li>DEBUG 日志默认关是有原因的，排完障务必关掉，别给自己留多余 Hook 痕迹</li><li>厂商 ROM（小米、华为）的私有位置接口可能绕开通用 Hook，排查时别漏了这条</li></ul>
+<p>知道这些坑之后，这软件其实相当省心。它的 Hook 覆盖范围、日志链路的设计、三源交叉哈希的靶应用思路，在同类工具里都算做得很扎实的。整套开源代码我在三个仓库都做了完整归档方便随时查阅——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Guise" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Guise" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Guise" target="_blank" rel="noopener">GitCode</a>。前提是你得先把这些坑踩明白，不然光看文档上的配置项一个一个点，不知道哪个环节在悄悄给你拖后腿。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/flowin-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">部门周会从准备到纪要，一条链在 FlowIn 里跑完</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/myket-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Myket 这三个坑我全踩过——伊朗安卓商店上手实录</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

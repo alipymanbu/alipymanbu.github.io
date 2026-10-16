@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>国际服 bud 从零上手：语言切换、基础操作到第一件衣服发布 · 老杨技术栈</title>
+  
+<meta name="description" content="新手第一次打开国际服 bud 满眼英文懵圈？这篇手把手带你把界面改成中文、跑通第一个房间、摸透商城和创作者工具，一小时内从看客变成能发布自己作品的玩家。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/bud-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="国际服 bud 从零上手：语言切换、基础操作到第一件衣服发布">
+<meta property="og:description" content="新手第一次打开国际服 bud 满眼英文懵圈？这篇手把手带你把界面改成中文、跑通第一个房间、摸透商城和创作者工具，一小时内从看客变成能发布自己作品的玩家。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/bud-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/bud-docs/01_640x360.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/bud-docs/01_640x360.png">
+
+<meta name="twitter:title" content="国际服 bud 从零上手：语言切换、基础操作到第一件衣服发布">
+<meta name="twitter:description" content="新手第一次打开国际服 bud 满眼英文懵圈？这篇手把手带你把界面改成中文、跑通第一个房间、摸透商城和创作者工具，一小时内从看客变成能发布自己作品的玩家。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u65b0\u624b\u7b2c\u4e00\u6b21\u6253\u5f00\u56fd\u9645\u670d bud \u6ee1\u773c\u82f1\u6587\u61f5\u5708\uff1f\u8fd9\u7bc7\u624b\u628a\u624b\u5e26\u4f60\u628a\u754c\u9762\u6539\u6210\u4e2d\u6587\u3001\u8dd1\u901a\u7b2c\u4e00\u4e2a\u623f\u95f4\u3001\u6478\u900f\u5546\u57ce\u548c\u521b\u4f5c\u8005\u5de5\u5177\uff0c\u4e00\u5c0f\u65f6\u5185\u4ece\u770b\u5ba2\u53d8\u6210\u80fd\u53d1\u5e03\u81ea\u5df1\u4f5c\u54c1\u7684\u73a9\u5bb6\u3002", "headline": "\u56fd\u9645\u670d bud \u4ece\u96f6\u4e0a\u624b\uff1a\u8bed\u8a00\u5207\u6362\u3001\u57fa\u7840\u64cd\u4f5c\u5230\u7b2c\u4e00\u4ef6\u8863\u670d\u53d1\u5e03", "image": ["https://alipymanbu.github.io/images/bud-docs/01_640x360.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/bud-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/bud-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u56fd\u9645\u670d bud \u4ece\u96f6\u4e0a\u624b\uff1a\u8bed\u8a00\u5207\u6362\u3001\u57fa\u7840\u64cd\u4f5c\u5230\u7b2c\u4e00\u4ef6\u8863\u670d\u53d1\u5e03", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">国际服 bud 从零上手：语言切换、基础操作到第一件衣服发布</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">国际服 bud 从零上手：语言切换、基础操作到第一件衣服发布</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">新手第一次打开国际服 bud 满眼英文懵圈？这篇手把手带你把界面改成中文、跑通第一个房间、摸透商城和创作者工具，一小时内从看客变成能发布自己作品的玩家。</p>
+  </header>
+  <div class="prose">
+<p>第一次点开<a href="https://bud.qjxz.skin" target="_blank" rel="noopener">bud官网</a>的国际服，你大概率会被满屏英文砸一下。别慌，这篇教程结束时你能做到三件事：界面全中文逛房间、在商城里用免费资源搭出一套像样的穿搭、把自己设计的第一件衣服发布到社区。全程不花一分钱，所有按钮位置我都给你标清楚。</p>
+<h2>准备工作：版本、平台和前置条件</h2>
+<p>先说清楚你在什么环境下玩：</p>
+<ul><li>支持平台以应用商店实际为准，主流移动端都能下载，从<a href="https://bud.qjxz.skin/download.html" target="_blank" rel="noopener">bud下载</a>装就行。</li><li>这篇针对<strong>国际服</strong>（带全球联机和社区商城的版本）。如果你下的是国服「碧优蒂的世界」，界面天然中文但数据不互通，教程里的部分入口位置会有差异。</li><li>账号用手机号注册最稳，邮箱注册偶尔会遇到验证延迟。建议现在就打开应用，跟着我一步一步走，遇到找不到的按钮直接看我写的排查路径。</li></ul>
+<h2>第一步：把界面改成中文</h2>
+<p>这是第一个卡壳点。语言选项的位置跟着版本挪过不止一次，很多人照着旧教程找半天找不到。按下面这个顺序找，命中率 100%：</p>
+<ol><li><strong>先退到登录界面</strong>，看右下角有没有一个小小的语言图标——这是最稳定的入口，几乎所有版本都保留。点进去直接选简体中文就行。</li><li>如果登录界面没图标，进游戏主界面，找右上角的菜单按钮（三条横线或齿轮图标），点 Settings → Languages，在语言列表里翻。</li><li>还找不到？主界面左下角有个小地图图标，点开弹出的菜单里也藏着 Language 入口。</li></ol>
+<p>这里注意：选完中文后一定要点 <strong>Done</strong> 确认，别按返回键直接退——直接返回等于没保存。切换后界面可能有两秒延迟，正常。如果切完发现部分页面还是英文，那是<strong>正常现象</strong>：系统文案大部分汉化了，但活动页、社区里玩家自己写的地图名和台词本来就是玩家创作的，不属于汉化范围。</p>
+<p><img src="../images/bud-docs/01_640x360.png" alt="登录界面右下角的语言图标" loading="lazy"></p>
+<p>有同学问能不能用第三方汉化补丁？别碰——改包有账号风险，界面级的中文切换已经够日常用了。真需要更彻底中文化可以考虑国服，但两个版本运营独立，数据完全不互通，相当于重新玩。</p>
+<h2>第二步：进一个房间，跑通基本操作</h2>
+<p>语言搞定了，进游戏。主界面中间通常有推荐房间，随便点一个进去——别纠结选哪个，反正随时能换。</p>
+<p>进房间后先别急着跟人聊天，把基础操作摸一遍：</p>
+<ul><li><strong>移动</strong>：左下角虚拟摇杆，或者直接点屏幕上想去的位置，角色会自动走过去。</li><li><strong>打字聊天</strong>：屏幕上找聊天框图标，点开就能输入。房间里默认是公开频道，所有人都能看到。</li><li><strong>开语音</strong>：语音按钮一般在聊天框旁边，第一次用会请求麦克风权限，允许就行。语音房间里跟世界各地的人实时对话是 bud 最有社交感的地方。</li><li><strong>怎么离开房间</strong>：左上角返回键，或者找房间菜单里的「离开」选项，不会强制退出游戏。</li></ul>
+<p>逛两三个房间你就有感觉了——每个房间是一张独立的玩家地图，有的是跑酷、有的是解谜、有的就是纯社交闲聊。地图、服装、NPC 台词全是其他玩家创作的，质量参差很正常，遇到设计糟糕的直接换，没什么心理负担。</p>
+<h2>第三步：穿搭系统和商城，先搞懂免费的东西能拿多少</h2>
+<p>逛了一圈，看到别人穿得花里胡哨，自己默认形象素得可怜。别急着充钱，先把免费资源摸透。</p>
+<p>打开商城（主界面一般有入口），你会看到三种货币的商品：</p>
+<ul><li><strong>金币档</strong>：最底层，用日常任务、房间活动就能攒，够买基础款上衣、裤子、鞋子。</li><li><strong>钻石档</strong>：高级单品和礼包，可以充值，也能通过创作比赛、签到活动免费拿。</li><li><strong>会员专享</strong>：VIP 会员能解锁的工具和装扮。</li></ul>
+<p>零氪能不能玩？能，而且闭环完整。社区里有专门教你不氪金搭出好看穿搭的路线——每天跑两三个任务、参加一次限时活动、偶尔把自己做的衣服发到社区卖，三条线同时跑，一两周就能攒出一套像样的衣柜。</p>
+<p>那会员值不值得开？社区里评价比较两极。客观说，早年免费的一些功能后来确实跟 VIP 挂钩了，比如往服装上导入自定义图片的能力、部分个人主页装扮。但零氪不影响核心游玩和创作，会员买的主要是便利和限定款。我的建议是：先把免费路径跑两周，真觉得缺什么再考虑。很多人跑完免费上限就不想开了。</p>
+<h2>第四步：从穿衣服到做衣服——设计师工具入门</h2>
+<p>这是 bud 跟其他社交游戏最大的区别：<strong>你不只是玩家，还是创作者</strong>。打开服装编辑器（商城或个人页面里一般有入口），跟着下面的步骤做第一件属于自己的衣服：</p>
+<ol><li>选一个基础模板——T恤、裤子、帽子都行，从最简单的 T 恤开始。</li><li>编辑器里有涂色、裁剪、贴图三种核心工具。涂色是给区域上色，裁剪工具可以切掉不想保留的部分，贴图能导入自定义图案（VIP 才解锁自定义贴图，但自带的素材库够用）。每种工具的参数调法和避坑技巧在<a href="https://bud-docs.pages.dev/" target="_blank" rel="noopener">bud文档</a>里写得很细，这里就不展开了。</li><li>边改边在预览窗口里看效果，编辑器支持实时预览。做完保存，这时候衣服只在你自己的衣柜里。</li><li>想让别人也能穿？点<strong>发布按钮</strong>，进入作品提交页。填好名称（说清楚是什么单品，方便搜索）、选对分类（选错了进错货架等于埋没）、确认展示效果干净，提交就行。</li></ol>
+<p>发布后，作品会进入社区商城，其他玩家可以浏览和购买。有人买你就获得收益（一般以社区币结算），赶上创作比赛还能冲名次拿钻石。</p>
+<p><img src="../images/bud-docs/03_640x360.png" alt="服装编辑器里的涂色和裁剪工具" loading="lazy"></p>
+<p>第一次发布前记得自查三件事：自己先穿上逛两个房间，别人视角下效果和你想的未必一致；检查图案有没有越界涂到不该涂的区域；名称和介绍别搬运别人的——抄袭在社区是红线。</p>
+<h2>常见卡点：三个新手最容易翻车的地方</h2>
+<h3>卡点一：语言选项又没了</h3>
+<p>更新后或者重装过，语言会偶尔被重置，回到第一步的排查顺序重切一遍就行。切完记得点 <strong>Done</strong> 然后杀进程重开一次，确保设置跟着账号走。</p>
+<h3>卡点二：连不上房间、加载转圈不动</h3>
+<p>国际服偶尔会遇到网络波动，换个时间段再试，或者切个网络。如果持续不行，去游戏设置里找服务器切换，换到延迟低的区域。</p>
+<h3>卡点三：衣服发布了但搜不到</h3>
+<p>大概率是分类选错了。提交的时候分类下拉框仔细看一眼，选的分类决定了你的衣服进哪个货架。选错了等于放错了地方，玩家翻不到。</p>
+<h2>进阶：往下还能玩什么</h2>
+<p>跑通这四步，你已经从纯看客变成能生产内容的创作者了。往上走还有世界地图编辑器（不只是做衣服，还能做整张跑酷地图）、社区排行榜、创作比赛的奖金机制——但这些不急，先把穿搭和发衣服这件事磨熟练。另外这套整理好的资料也同步放在了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/bud" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/bud" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/bud" target="_blank" rel="noopener">GitCode</a>，国内网络走后两个更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/iapp-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/hailuo-ai-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>NetGuard 全能力盘点：无 Root 时代最硬核的 Android 防火墙到底强在哪 · 老杨技术栈</title>
+  
+<meta name="description" content="从应用联网管控到 Hosts 广告拦截、从 DNS 隐私配置到条件规则体系，系统性梳理 NetGuard 六大能力域的完整能力、亮点、局限与适用场景。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/netguard-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NetGuard 全能力盘点：无 Root 时代最硬核的 Android 防火墙到底强在哪">
+<meta property="og:description" content="从应用联网管控到 Hosts 广告拦截、从 DNS 隐私配置到条件规则体系，系统性梳理 NetGuard 六大能力域的完整能力、亮点、局限与适用场景。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/netguard-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/netguard-docs/01-main.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/netguard-docs/01-main.png">
+
+<meta name="twitter:title" content="NetGuard 全能力盘点：无 Root 时代最硬核的 Android 防火墙到底强在哪">
+<meta name="twitter:description" content="从应用联网管控到 Hosts 广告拦截、从 DNS 隐私配置到条件规则体系，系统性梳理 NetGuard 六大能力域的完整能力、亮点、局限与适用场景。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u5e94\u7528\u8054\u7f51\u7ba1\u63a7\u5230 Hosts \u5e7f\u544a\u62e6\u622a\u3001\u4ece DNS \u9690\u79c1\u914d\u7f6e\u5230\u6761\u4ef6\u89c4\u5219\u4f53\u7cfb\uff0c\u7cfb\u7edf\u6027\u68b3\u7406 NetGuard \u516d\u5927\u80fd\u529b\u57df\u7684\u5b8c\u6574\u80fd\u529b\u3001\u4eae\u70b9\u3001\u5c40\u9650\u4e0e\u9002\u7528\u573a\u666f\u3002", "headline": "NetGuard \u5168\u80fd\u529b\u76d8\u70b9\uff1a\u65e0 Root \u65f6\u4ee3\u6700\u786c\u6838\u7684 Android \u9632\u706b\u5899\u5230\u5e95\u5f3a\u5728\u54ea", "image": ["https://alipymanbu.github.io/images/netguard-docs/01-main.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/netguard-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/netguard-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "NetGuard \u5168\u80fd\u529b\u76d8\u70b9\uff1a\u65e0 Root \u65f6\u4ee3\u6700\u786c\u6838\u7684 Android \u9632\u706b\u5899\u5230\u5e95\u5f3a\u5728\u54ea", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">NetGuard 全能力盘点：无 Root 时代最硬核的 Android 防火墙到底强在哪</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">NetGuard 全能力盘点：无 Root 时代最硬核的 Android 防火墙到底强在哪</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 11 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从应用联网管控到 Hosts 广告拦截、从 DNS 隐私配置到条件规则体系，系统性梳理 NetGuard 六大能力域的完整能力、亮点、局限与适用场景。</p>
+  </header>
+  <div class="prose">
+<h2>开篇：为什么要认真盘点 NetGuard</h2>
+<p>在 Android 生态里，"防火墙"这个词很容易让人联想到 root、内核级模块、复杂的 iptables 命令行操作——但 NetGuard 从诞生第一天就走了一条完全不同的路，你去它的<a href="https://netguard.ggcd.store" target="_blank" rel="noopener">官网</a>扫一眼就能感觉到这种克制。它不需要 root 权限，利用 Android 系统自带的 VPN 接口，在不修改系统内核的前提下实现了接近 root 防火墙的控制粒度，而且完全开源。</p>
+<p>不想折腾 root 的话，直接从<a href="https://netguard.ggcd.store/download.html" target="_blank" rel="noopener">官方下载</a>拿一份就行，装好开防火墙就能用。</p>
+<p>这份盘点想做的不是简单列功能，而是把 NetGuard 的能力面完整铺开：它到底能控制什么、控制到什么程度、有哪些你可能没注意到的高级玩法、以及它天生解决不了的问题。不管你是第一次听说 NetGuard 还是已经用了几年，都能在这里找到值得翻到文档里深挖的内容。</p>
+<h2>能力域一：应用联网管控——黑白名单 + 条件规则的双重自由</h2>
+<p>NetGuard 最核心、也是最"即插即用"的能力就是对每个应用的联网行为做独立管控。打开应用后，主界面就是一个完整的应用清单，每行右边两个小图标分别代表 Wi-Fi 和移动数据，点一下就能在允许和禁止之间切换。</p>
+<p>但这只是最表层的玩法。真正有价值的是它的<strong>黑白名单模式</strong>切换——在默认设置里，Block Wi-Fi 和 Block mobile data 两个开关可以独立配置。勾上 Block Wi-Fi 就是白名单模式：所有应用默认禁止 Wi-Fi 联网，你手动放行的少数才能上网；不勾就是黑名单模式：默认全允许，你手动拦截的才会被禁止。移动数据侧同理，而且两边完全独立，你完全可以让 Wi-Fi 下全放开、蜂窝下只允许微信和地图这两个应用上网，省流量省得非常狠。</p>
+<p>比黑白名单更灵活的是<strong>条件规则体系</strong>。点开应用左侧的展开箭头，详情面板里能看到三类条件：亮屏时允许（应用被禁止联网但屏幕点亮时临时放行，适合需要推送但又不想后台偷跑的社交应用）、漫游时拦截（默认让新应用在国际漫游时完全断网，省漫游流量的利器）、锁屏模式下允许（配合锁屏模式开关使用，锁屏后暂时恢复联网让同步完成）。</p>
+<p>这三层组合起来，NetGuard 的管控逻辑就从简单的"允许/禁止"变成了"什么时候、什么网络下、允许哪个应用联网"的精细化决策，粒度远超绝大多数同类应用。</p>
+<p><img src="../images/netguard-docs/01-main.png" alt="主界面：顶部 Action Bar + 应用列表 + 右侧 Wi-Fi / 移动图标" loading="lazy"></p>
+<h2>能力域二：地址级精细拦截——不止应用，还能管到域名和端口</h2>
+<p>如果说应用级管控决定了"谁能上网"，那地址级拦截决定了"上网能去哪"。点击应用详情面板里的访问日志，你会看到这个应用已经访问过的所有域名和 IP 地址，每条旁边都有独立的允许/禁止开关。</p>
+<p>这带来一个很实用的场景：某个应用整体需要联网，但你想禁掉它内置的广告域名或统计 SDK 的上报域名——不需要禁整个应用，只在访问日志里找到那几个广告域名点禁止就行。NetGuard 会把这些地址级规则叠加到应用级规则之上，精准而不粗暴。</p>
+<p>Pro 版用户还能进入 Configure 面板做更深度的配置，包括端口级别的拦截和自定义规则，不过对大多数用户来说，访问日志里点点点已经够用了。</p>
+<h2>能力域三：Hosts 广告拦截——开源域名列表的完整生态</h2>
+<p>NetGuard 的第三个核心能力是基于 Hosts 文件的域名拦截。它内置的"下载 Hosts 文件"按钮会自动拉取 StevenBlack Hosts——目前最流行、维护最活跃的开源广告域名列表，合并了多个知名追踪域名源，约 5 万个条目，每周更新一次。</p>
+<p>但 NetGuard 的 Hosts 体系远不止"用默认"这么简单。它支持<strong>手动导入任意来源的 Hosts 文件</strong>，而且导入时自动去重——你可以把 StevenBlack（约 5 万条）、AdGuard Base、NoCoin（专门拦截加密货币挖矿脚本）三个来源合并使用，重复条目自动清理，最终生效的是所有导入源的并集。还有 1Hosts（Reinforced，约 2 万条、经过人工审核误伤极少）适合对精准度要求高的用户，OISD Big（约 10 万条、覆盖极广）适合极致拦截党。</p>
+<p>Hosts 文件的更新维护也很轻量：每月手动点一次下载按钮就行，喜欢自动化的还能用 Tasker 发送 Intent 让 NetGuard 自动下载默认 Hosts，甚至通过 ADB 命令触发——对极客用户来说可玩性很高。</p>
+<h2>能力域四：DNS 配置与隐私——NetGuard 能拦截的前提是能看到 DNS</h2>
+<p>Hosts 拦截有一个容易被忽视的前提：<strong>NetGuard 必须能看到应用发出的 DNS 查询</strong>。如果应用用了加密 DNS（DoT/DoH），请求被 TLS 加密后 NetGuard 就看不到里面是什么域名，自然无法匹配拦截。这也是<a href="https://netguard-docs.pages.dev/" target="_blank" rel="noopener">NetGuard文档</a>里反复强调"必须关闭 Android 私人 DNS"和"必须检查浏览器独立 DoT/DoH 设置"的原因。</p>
+<p>NetGuard 默认允许所有 DNS 请求（即使域名在 Hosts 里），因为它需要先让 DNS 查询完成拿到域名→IP 映射，才能知道要拦截哪个 IP。如果你不信任系统默认 DNS（Google 或运营商 DNS），可以在高级设置里填两台自定义 DNS 服务器地址——Cloudflare（1.1.1.1 / 1.0.0.1）速度最快，Quad9（9.9.9.9）过滤恶意域名，NextDNS 高度可配置还有免费版。注意必须填两台，NetGuard 才会完全替换系统默认 DNS，只填一台的话等于没替换。</p>
+<p>配置完之后怎么验证 Hosts 拦截是否生效？打开 Chrome 访问 netguard.me/test 看广告是否被拦截，或者去全球流量日志里搜 doubleclick/admob，红色禁止条目出现就说明链路通了。</p>
+<h2>能力域五：辅助功能——日志、备份、自动化的完整闭环</h2>
+<p>除了四大核心能力，NetGuard 还有一套辅助工具链：</p>
+<p><strong>全球流量日志</strong>是所有应用出站流量的统一视图，按时间倒序排列，绿色=允许、红色=禁止，支持按应用、域名、状态筛选，想排查哪个应用偷偷联网直接翻日志就行。</p>
+<p><strong>备份导出</strong>功能把你的所有应用级配置、默认设置、Hosts 文件一键导出到本地存储，换手机或重装系统后导入即可恢复，省了重新配置的麻烦。</p>
+<p><strong>锁屏模式</strong>是一个特色功能：开启后锁屏时暂时取消所有禁止规则，让应用完成同步、推送等后台任务，解锁后自动恢复。对那种"联网但推送要正常"的场景特别友好。</p>
+<p><img src="../images/netguard-docs/30-settings-default.png" alt="默认设置页面：Block Wi-Fi、Block mobile data、Allow when screen on、Block when roaming" loading="lazy"></p>
+<h2>能力域六：端口管理与速度功能——进阶用户的专属玩具</h2>
+<p>设置里的端口配置面板允许你手动添加允许或禁止的 TCP/UDP 端口范围，对需要精细控制特定网络协议的用户（比如只想让应用走特定端口、或者禁止某些 P2P 端口）来说非常实用。</p>
+<p>速度功能（Speed）面板可以实时显示当前应用的上下行速度，配合全局日志使用时能定位到底是哪个应用在偷偷走流量，对排查"为什么流量突然没了"这类问题非常高效。</p>
+<h2>短板也要说清楚</h2>
+<p>盘点不能只说好的。NetGuard 有几个天生解决不了的问题和使用中的注意事项：</p>
+<p><strong>VPN 权限是前提也是限制</strong>。NetGuard 通过 Android VPN 接口工作，这意味着它会占用系统唯一的 VPN 位置——任何其他 VPN、流量统计、广告拦截应用都无法同时运行（Blokada、AdAway、Pi-hole 客户端这些都不行）。选 NetGuard 就意味着在防火墙/广告拦截这条赛道上没有其他选择。</p>
+<p><strong>Hosts 拦截有本质局限</strong>。它按域名工作，但 CDN 混载（同一个域名同时承载视频和广告）、IP 直连（应用绕过 DNS 直接用 IP）、DoT/DoH 加密 DNS（NetGuard 看不到域名）这三种情况是 Hosts 拦截的死穴，一个都处理不了。某些场景下你可能需要手动放行被误拦截的正常站点。</p>
+<p><strong>国内用户的 Hosts 下载可能慢</strong>。默认 Hosts 文件托管在 GitHub，国内网络环境下"下载 Hosts 文件"按钮可能超时失败。这时可以手动下载 StevenBlack Hosts 的 raw 文件再导入，或者切换到 Gitee 上的镜像源。</p>
+<p><strong>Play 版 vs 开源版有差异</strong>。Google Play 版本出于合规原因不包含 Hosts 文件下载功能，需要去 GitHub 或 F-Droid 下载开源完整版才能用完整的 Hosts 拦截能力。</p>
+<h2>什么样的人该用 NetGuard</h2>
+<p>如果你属于下面三类人之一，NetGuard 大概率值得装：</p>
+<p><strong>第一类：不想 root 但想管控应用联网的 Android 用户</strong>。很多人不想 root 手机（丢保修、兼容性风险、安全顾虑），但又受不了应用后台偷跑流量和推送轰炸。NetGuard 用 VPN 接口绕开了 root 门槛，能做到接近 root 防火墙的效果，而且完全开源透明。</p>
+<p><strong>第二类：重视广告拦截质量的用户</strong>。不想装一堆臃肿的广告拦截浏览器插件、也不想被视频开头的开屏广告和信息流里的联盟广告烦。NetGuard 的 Hosts 拦截覆盖所有应用（不限于浏览器），配置好 Hosts 文件之后拦截效果非常干净。</p>
+<p><strong>第三类：对隐私和流量安全敏感的极客用户</strong>。想自己掌控每个应用的数据流向、想把敏感应用的移动数据关掉只留 Wi-Fi、想知道到底哪些应用在偷偷给统计 SDK 上报数据——NetGuard 的访问日志、地址级拦截、条件规则组合给了你充分的主动权。</p>
+<p>这套资料我分别放在了三个仓库，方便不同网络环境下的用户获取和后续维护：一个走 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/NetGuard" target="_blank" rel="noopener">GitHub</a> 默认通道，一个在 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/NetGuard" target="_blank" rel="noopener">Gitee</a> 上做了国内镜像，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/NetGuard" target="_blank" rel="noopener">GitCode</a> 上还有一份备份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mirai-docs.html">把 AI 角色原型嵌进内容创作流水线，我是这样用 MIRAI 的</a></h2>
+  <p class="card-desc">做虚拟角色设定以前要翻三份文档、手动演对话，现在用 MIRAI 当原型工场——从灵感收集到社区发布，一条链串起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/hailuo-ai-docs.html">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</a></h2>
+  <p class="card-desc">用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/iapp-docs.html">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</a></h2>
+  <p class="card-desc">从最初的可视化拖拽到裕语言 V7 的成熟，iApp 每一个语言版本背后都是一次产品定位的微调。我们顺着版本号看它的迭代节奏，猜一猜它下一步想做什么。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/anich.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">anich 用了大半年：那些当初没料到的习惯和嫌麻烦</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/cinetry.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Cinetry 实战：五分钟把家里所有媒体源装进同一个播放器</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

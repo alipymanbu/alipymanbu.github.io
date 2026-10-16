@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把 Flud 翻了个底朝天：五个藏得真深的冷门技巧 · 老杨技术栈</title>
+  
+<meta name="description" content="Flud 作为 Android 上最轻量的 BT 客户端之一，很多人只用它&#34;添加种子然后等&#34;。但它藏着几个几乎没人注意到的功能——VPN 绑定 Kill Switch、中途换存储位置、强制校验救废种……翻完设置目录才发现，这东西远不止下载器那么简单。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/flud.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把 Flud 翻了个底朝天：五个藏得真深的冷门技巧">
+<meta property="og:description" content="Flud 作为 Android 上最轻量的 BT 客户端之一，很多人只用它&#34;添加种子然后等&#34;。但它藏着几个几乎没人注意到的功能——VPN 绑定 Kill Switch、中途换存储位置、强制校验救废种……翻完设置目录才发现，这东西远不止下载器那么简单。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/flud.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/flud/settings.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/flud/settings.png">
+
+<meta name="twitter:title" content="把 Flud 翻了个底朝天：五个藏得真深的冷门技巧">
+<meta name="twitter:description" content="Flud 作为 Android 上最轻量的 BT 客户端之一，很多人只用它&#34;添加种子然后等&#34;。但它藏着几个几乎没人注意到的功能——VPN 绑定 Kill Switch、中途换存储位置、强制校验救废种……翻完设置目录才发现，这东西远不止下载器那么简单。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Flud \u4f5c\u4e3a Android \u4e0a\u6700\u8f7b\u91cf\u7684 BT \u5ba2\u6237\u7aef\u4e4b\u4e00\uff0c\u5f88\u591a\u4eba\u53ea\u7528\u5b83\"\u6dfb\u52a0\u79cd\u5b50\u7136\u540e\u7b49\"\u3002\u4f46\u5b83\u85cf\u7740\u51e0\u4e2a\u51e0\u4e4e\u6ca1\u4eba\u6ce8\u610f\u5230\u7684\u529f\u80fd\u2014\u2014VPN \u7ed1\u5b9a Kill Switch\u3001\u4e2d\u9014\u6362\u5b58\u50a8\u4f4d\u7f6e\u3001\u5f3a\u5236\u6821\u9a8c\u6551\u5e9f\u79cd\u2026\u2026\u7ffb\u5b8c\u8bbe\u7f6e\u76ee\u5f55\u624d\u53d1\u73b0\uff0c\u8fd9\u4e1c\u897f\u8fdc\u4e0d\u6b62\u4e0b\u8f7d\u5668\u90a3\u4e48\u7b80\u5355\u3002", "headline": "\u628a Flud \u7ffb\u4e86\u4e2a\u5e95\u671d\u5929\uff1a\u4e94\u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u51b7\u95e8\u6280\u5de7", "image": ["https://alipymanbu.github.io/images/flud/settings.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/flud.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/flud.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u628a Flud \u7ffb\u4e86\u4e2a\u5e95\u671d\u5929\uff1a\u4e94\u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u51b7\u95e8\u6280\u5de7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">把 Flud 翻了个底朝天：五个藏得真深的冷门技巧</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把 Flud 翻了个底朝天：五个藏得真深的冷门技巧</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Flud 作为 Android 上最轻量的 BT 客户端之一，很多人只用它&#34;添加种子然后等&#34;。但它藏着几个几乎没人注意到的功能——VPN 绑定 Kill Switch、中途换存储位置、强制校验救废种……翻完设置目录才发现，这东西远不止下载器那么简单。</p>
+  </header>
+  <div class="prose">
+<p>你以为 Flud 就是个"点加号、粘磁力、等下载"的工具？Flud的<a href="https://flud.ggcd.online" target="_blank" rel="noopener">官网</a>也只写了最基础的功能。我之前也是这么想的。用了快两年，一直停留在"能跑就行"的层面，直到某天为了查一个下载卡住的问题翻遍了设置目录，后来去<a href="https://flud.pages.dev/" target="_blank" rel="noopener">flud文档</a>补了一下才彻底搞明白——好家伙，这货藏的东西比我以为的多了去了。</p>
+<p>下面说五个我自己用出来的、官方几乎不宣传的冷门技巧，要试的话先从<a href="https://flud.ggcd.online/download.html" target="_blank" rel="noopener">flud下载</a>拿个最新版。每个我都试过，讲清楚在哪开、怎么用、什么人真的需要。</p>
+<h2>一、VPN 绑定：比 VPN 自带 Kill Switch 靠谱多了</h2>
+<p>如果你用 VPN 上网，肯定见过这种情况：VPN 偶尔断那么一秒，BT 流量"嗖"地一下就从普通网络溜出去了——虽然只是一瞬间，但如果你的 ISP 会抓 BT 流量，那一秒就够留记录。</p>
+<p>Flud 有个<strong>应用级 Kill Switch</strong>，藏得非常深：Settings → Security → Bind to。这个下拉列表会列出你手机上所有活跃的网络接口，包括 WiFi（<code>wlan0</code>）、移动数据（<code>rmnet_data0</code> 之类），还有 VPN 建立的隧道接口（通常是 <code>tun0</code> 或 <code>wg0</code>）。</p>
+<p>把 Flud <strong>绑到 VPN 隧道接口上</strong>，会发生什么：</p>
+<ul><li>Flud 的所有 BT 流量只从这个接口出去，绝对走不到别的网络。</li><li>VPN 隧道断了 → 接口消失 → Flud <strong>自动停传所有种子</strong>，状态变成 "Network unavailable"。</li><li>VPN 恢复 → 接口回来 → 下载自动续上。</li></ul>
+<p>这比 VPN 应用自带的 Kill Switch 好在哪？VPN 自带的 Kill Switch 是<strong>全局断网</strong>——它断了整个手机没网，浏览器、微信全断。Flud 的绑定是<strong>只杀自己</strong>，其他应用不受影响。我现在就这么用，WireGuard 连家里的 VPS，Flud 绑 <code>wg0</code>，隧道偶尔抖一下也不耽误我刷微博。</p>
+<p>识别 VPN 接口有个小技巧：WireGuard 的接口名是按配置文件命名的（<code>wg0</code>、<code>wg1</code>），OpenVPN 是 <code>tun0</code>，IPsec 可能是 <code>ppp0</code>。拿不准的时候先连上 VPN，在 Flud 的 Bind to 里看哪个新冒出来，选它就对了。选错也没事——Flud 会下不了东西，不会炸手机。</p>
+<p><img src="../images/flud/settings.png" alt="设置界面" loading="lazy"></p>
+<h2>二、中途换存储位置：下载到一半想搬去 SD 卡？</h2>
+<p>手机内部存储快满了，但种子才下了 60%，删了可惜、留着占空间？Flud 长按种子 → <strong>Move to</strong>，选一个新目录（比如 SD 卡里的某个文件夹），它会把已下载的数据整块搬过去，然后从断点继续下剩下的部分。</p>
+<p>我上个月把一个 20G 的电视剧合集从内部存储搬到 128G 的 SD 卡，搬的过程中种子自动暂停，搬完自己恢复，没丢一个碎片、没重新校验。大文件搬的时间会比较长（20G 大概花了五分钟），但不用我手动搬运再重新校验，省事。</p>
+<p>这个功能我问过好几个用 Flud 的朋友，没一个知道的——都以为只能删了重下。</p>
+<h2>三、强制校验：废种救星</h2>
+<p>下载到 90% 突然卡住不动了，速度 0、peers 还有好几个、tracker 也全绿？这时候长按种子 → <strong>Force recheck</strong>（强制校验），Flud 会从头扫描已下载的所有碎片，标记哪些是完整的、哪些是损坏或缺失的，然后从断点继续。</p>
+<p>我碰到过好几次种子下到最后几百 MB 突然停住，怀疑是之前某次 VPN 切换的时候数据写坏了，Force recheck 跑一遍之后总能恢复速度。这个操作不会删除已下载的数据，放心用就行。</p>
+<h2>四、顺序下载：边下边播视频不卡</h2>
+<p>Flud 默认是<strong>随机下载</strong>——BT 协议的标准行为，swarm 里哪个碎片先来就拿哪个，整体效率最高。但如果你想一边下一边用播放器看视频，随机下载会导致播放器找不到连续的视频帧，要么卡要么跳。</p>
+<p>Flud 在<strong>单个种子的设置</strong>里（不是全局）藏了一个开关：点击种子 → 详情页 → 右上角菜单 → Torrent settings → <strong>Sequential download</strong>（顺序下载）。打开之后 Flud 会从视频开头按序拉取碎片，播放器就能连续播放了。代价是整体下载速度可能略慢（10%~20%），但追剧的时候值。</p>
+<p>注意这个开关是<strong>每个种子单独开</strong>的，不是全局。我之前找了好久全局开关在哪，原来它就藏在每个种子自己的设置菜单里。</p>
+<h2>五、文件优先级：合集里先下你想看的那几集</h2>
+<p>一个 BT 种子打包了整季电视剧、或者一个大型游戏的全部 DLC，里面可能有上百个文件。Flud 在添加种子的时候可以勾选要下哪些——这个很多人都知道。但下载过程中<strong>随时回来改勾选</strong>，还有给文件设优先级（High / Normal / Low），这两个功能用的人就少了。</p>
+<p>操作：进入种子详情 → Files 标签 → 长按一个文件或文件夹 → Set priority。设为 High 的文件会被 Flud <strong>优先调度碎片</strong>，不是速度更快，而是更早被拉取。设为 Low 的排最后。追剧党把前两集设 High，下完就看，后面慢慢补，体验好很多。</p>
+<p>取消勾选的文件不会被继续下载，已经下载完的取消勾选也不会被删除——要删得手动来。重新勾选已取消的文件，从断点续传。</p>
+<p><img src="../images/flud/file-picker.png" alt="文件选择界面" loading="lazy"></p>
+<h2>一个要注意的坑</h2>
+<p>VPN 绑定有个潜在问题：有些 VPN 应用每次重连会创建新的隧道接口名（tun0 → tun1 → tun2），这时候 Flud 之前绑的那个接口就消失了，下载会停掉。解决办法很简单——每次换节点或重连 VPN 之后，进 Flud 的 Bind to 重新选一下就行。WireGuard 用户没这个烦恼，它的接口名是固定的，按配置文件命名。</p>
+<p>另外，绑定到 VPN 之后如果 Flud 连不上 peers，先别急着怀疑绑定——去浏览器试试能不能上网。有些 VPN 默认不支持端口转发，而 BT 入站连接需要开放端口，这时候要么在路由器上映射监听端口，要么换个支持端口转发的 VPN 服务商。</p>
+<h2>最后</h2>
+<p>Flud 可能是 Android 上功能最全但最不"张扬"的 BT 客户端了——很多功能藏得深到几乎看不见。上面这五个是我自己翻出来、日常真在用的，如果你用 Flud 也有一阵了，不妨回去翻翻 Settings 目录，说不定还能挖出别的。把它用透的感觉，和只用它"点加号等下载"，完全是两个工具。对了，上面这些资料在开源仓库也能找到，<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/flud" target="_blank" rel="noopener">GitHub</a>上有完整整理，国内用户访问<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/flud" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/flud" target="_blank" rel="noopener">GitCode</a>更顺。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/sekai-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">深夜三点，我在 Sekai 里找回了两年前那个陪我熬夜的角色</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/wigglypaint-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">我用 WigglyPaint 把每周的动态素材生产链砍了三刀</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

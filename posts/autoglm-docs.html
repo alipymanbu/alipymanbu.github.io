@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>AutoGLM 深度盘点：让大模型真正会用手机的开源框架到底能做什么 · 老杨技术栈</title>
+  
+<meta name="description" content="从视觉理解屏幕到跨 App 自动执行，AutoGLM 把 Phone Use 能力做成了可落地的工程框架。这篇盘点把它的能力面、适用场景和局限一次说清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/autoglm-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoGLM 深度盘点：让大模型真正会用手机的开源框架到底能做什么">
+<meta property="og:description" content="从视觉理解屏幕到跨 App 自动执行，AutoGLM 把 Phone Use 能力做成了可落地的工程框架。这篇盘点把它的能力面、适用场景和局限一次说清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/autoglm-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/autoglm-docs/task-loop.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/autoglm-docs/task-loop.png">
+
+<meta name="twitter:title" content="AutoGLM 深度盘点：让大模型真正会用手机的开源框架到底能做什么">
+<meta name="twitter:description" content="从视觉理解屏幕到跨 App 自动执行，AutoGLM 把 Phone Use 能力做成了可落地的工程框架。这篇盘点把它的能力面、适用场景和局限一次说清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u89c6\u89c9\u7406\u89e3\u5c4f\u5e55\u5230\u8de8 App \u81ea\u52a8\u6267\u884c\uff0cAutoGLM \u628a Phone Use \u80fd\u529b\u505a\u6210\u4e86\u53ef\u843d\u5730\u7684\u5de5\u7a0b\u6846\u67b6\u3002\u8fd9\u7bc7\u76d8\u70b9\u628a\u5b83\u7684\u80fd\u529b\u9762\u3001\u9002\u7528\u573a\u666f\u548c\u5c40\u9650\u4e00\u6b21\u8bf4\u6e05\u3002", "headline": "AutoGLM \u6df1\u5ea6\u76d8\u70b9\uff1a\u8ba9\u5927\u6a21\u578b\u771f\u6b63\u4f1a\u7528\u624b\u673a\u7684\u5f00\u6e90\u6846\u67b6\u5230\u5e95\u80fd\u505a\u4ec0\u4e48", "image": ["https://alipymanbu.github.io/images/autoglm-docs/task-loop.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/autoglm-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/autoglm-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "AutoGLM \u6df1\u5ea6\u76d8\u70b9\uff1a\u8ba9\u5927\u6a21\u578b\u771f\u6b63\u4f1a\u7528\u624b\u673a\u7684\u5f00\u6e90\u6846\u67b6\u5230\u5e95\u80fd\u505a\u4ec0\u4e48", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">AutoGLM 深度盘点：让大模型真正会用手机的开源框架到底能做什么</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">AutoGLM 深度盘点：让大模型真正会用手机的开源框架到底能做什么</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从视觉理解屏幕到跨 App 自动执行，AutoGLM 把 Phone Use 能力做成了可落地的工程框架。这篇盘点把它的能力面、适用场景和局限一次说清。</p>
+  </header>
+  <div class="prose">
+<p>大语言模型能写代码、能做问答、能生成内容，但它们始终停留在桌面键盘的这一侧。现实里大量高价值操作发生在手机的图形界面上——点按钮、输文字、翻页面、选位置——这些动作靠传统脚本录制易脆，靠 App 内部 API 拿不到，而且每个 App 各一套。智谱 AI 在 2025 年 12 月开源的 AutoGLM 就是奔着这个缺口来的，它不是一个单点工具，而是一套完整的手机 Agent 工程框架，<a href="https://autoglm.boop.uno" target="_blank" rel="noopener">官网</a>上能看到完整的交付物清单。</p>
+<p>这篇文章会把 AutoGLM 的能力面完整铺开。我会按能力域分组盘点它解决问题的维度，客观讲它的亮点、适用场景和短板，最后给一张什么样的人该用它的画像。</p>
+<h2>能力域一：视觉驱动，不依赖 App API</h2>
+<p>AutoGLM 的核心思路和传统 UI 自动化工具完全不同。它不解析 App 的组件树（像 Appium 那样），也不预录脚本回放固定坐标（像按键精灵那样），而是<strong>真正"看着"屏幕想步骤、动手做</strong>。整个链路是：截图 → 视觉语言模型理解当前画面 → 生成下一步点击坐标 → 通过 ADB/HDC 执行动作。</p>
+<p>这个设计的直接好处是<strong>跨 App 通用性</strong>。AutoGLM 内置的应用映射表已经覆盖了 50 多款主流中文 App——微信、QQ、淘宝、京东、美团、饿了么、携程、bilibili、抖音、小红书、知乎……从社交通讯到电商购物，从美食外卖到出行旅游，从视频娱乐到内容社区，每个分类都有典型代表。你跟 Agent 说话时直接用中文 App 名就行，比如"打开美团搜索附近的火锅店"，框架内部会自动把"美团"翻译成 Android 包名 <code>com.sankuai.meituan</code>，不需要你记任何技术细节。</p>
+<p><img src="../images/autoglm-docs/task-loop.png" alt="AutoGLM 任务循环" loading="lazy"></p>
+<p>如果某个 App 没在清单里也不怕，手动加一行映射就行——找到包名（<code>adb shell pm list packages | findstr 关键词</code>），在 <code>apps.py</code> 里追加一行中文名到包名的对应关系，同时在 System Prompt 里告诉模型这个新 App 存在，就搞定了。</p>
+<h2>能力域二：多端覆盖，不止 Android</h2>
+<p>AutoGLM 交付时不只是 Android 一家。框架的设备控制适配层同时支持三条通路：ADB（Android）、HDC（HarmonyOS NEXT）、WebDriverAgent（iOS）。鸿蒙侧已验证覆盖 60 多款应用，而且鸿蒙有一个 Android 没有的优势——<strong>重启后无线调试不会被重置</strong>。Android 设备重启后 TCP/IP 模式默认关闭（Google 的安全设计），每次都要插 USB 重新 <code>adb tcpip 5555</code>，鸿蒙不需要这步。</p>
+<p>模型层面也分两个版本，<a href="https://autoglm.boop.uno/download.html" target="_blank" rel="noopener">下载</a>页面可以拿到完整的权重文件：中文版的 AutoGLM-Phone-9B 针对中文 App 场景优化，多语言版的 AutoGLM-Phone-9B-Multilingual 支持英文 App（Gmail、Google Maps、X 等）。启动 Agent 时加 <code>--lang en</code> 就能切英文 System Prompt。</p>
+<h2>能力域三：远程无线调试，摆脱 USB 线</h2>
+<p>线连是最稳定的方案，但拖着一根 USB 线确实碍手。AutoGLM 支持 ADB WiFi 无线控制，配置好之后电脑和手机在同一 WiFi 下就能直接操作。</p>
+<p>无线调试的门槛不算高：手机上先用 USB 插一次跑 <code>adb tcpip 5555</code> 开启 TCP/IP 模式，然后 <code>adb connect 手机IP:5555</code> 就能连上。但实际使用中坑不少——跨网段肯定连不上，企业网络通常有 AP 隔离导致设备之间互相看不到，手机切 WiFi 后 IP 变了也要重新连。<a href="https://autoglm-docs.pages.dev/" target="_blank" rel="noopener">AutoGLM文档</a>专门给了一份排查手册，从 connection refused 到连接频繁断开，每条现象都列了逐项排查流程，甚至附了一张排查流程图。</p>
+<h2>能力域四：双集成方式，开发者友好</h2>
+<p>如果你只是想跑起来看效果，直接用 CLI 就行——命令行敲自然语言指令，框架驱动手机完成操作。如果你想嵌入自己的项目，Python API 提供了完整的 Agent 主循环接口，截图、理解、规划、执行每一步都可以单独调用和调试。</p>
+<p>这套框架从 2023 年 4 月项目启动到 2025 年 12 月开源，中间踩过的坑全部放进了这份工程交付物里。GitHub Star 在开源 24 小时内突破 1.7K，社区反应挺快。</p>
+<h2>短板也要说</h2>
+<p>盘点不能只说亮点。AutoGLM 的局限同样明确：</p>
+<p><strong>感知延迟是硬伤</strong>。视觉模型理解屏幕画面需要时间，整个链路（截图 → 理解 → 规划 → 执行）的延迟比 Appium 这种直接解析组件树的方案高不少。对实时性要求高的场景它就不合适。</p>
+<p><strong>环境配置有门槛</strong>。ADB 的安装、PATH 环境变量配置、手机端开发者模式和 USB 调试的开启、数据线要支持数据传输——这一连串步骤对新手来说容易卡壳。文档里专门给了 ADB 安装的完整指南，Windows/macOS/Linux 三端都覆盖，但跑不通时的排查还是要费点时间。</p>
+<p><strong>无线调试稳定性依赖网络环境</strong>。WiFi 信号弱、手机离路由器远、穿墙多都会导致连接断开。省电模式也可能在信号弱时自动关掉无线调试。企业网络的 AP 隔离几乎是无解的——要么用手机热点让电脑和手机连同一热点，要么换回有线 USB。</p>
+<p><strong>手机重启后无线失效</strong>（Android）。这是 Google 的安全设计，防止恶意应用滥用无线调试。每次重启都要插 USB 重新跑一次 <code>adb tcpip 5555</code>。</p>
+<h2>什么样的人该用它</h2>
+<p>个人自动化爱好者——如果你想让手机帮你做那些重复性的 App 操作，比如每天定时打开某个 App 看数据、自动抢票、自动签到，AutoGLM 的跨 App 通用性比你自己写脚本省事太多。而且开源 + 私有化部署意味着数据和控制权全在你自己手里，不用担心隐私问题。</p>
+<p>开发者和测试工程师——传统 UI 自动化工具（Appium、UIAutomator）每个 App 各一套适配，换框架就得重写。AutoGLM 用视觉理解绕过了这个问题，不知道目标 App 内部组件结构时它照样能跑。适合做跨 App 的流程测试、回归测试。</p>
+<p>AI 研究者——从 2023 年项目启动到开源，AutoGLM 团队还发表了 ComputerRL、MobileRL、AgentRL 三篇强化学习论文，验证了强化学习在 Phone Use 场景的规模扩展定律。模型权重 MIT License、代码框架 Apache-2.0，最宽松的开源许可给足了研究空间。</p>
+<hr>
+<p>这套资料在三个仓库都能拿到，国内访问看 <a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/AutoGLM" target="_blank" rel="noopener">Gitee</a> 更顺畅，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/AutoGLM" target="_blank" rel="noopener">GitCode</a> 作为备份源，<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/AutoGLM" target="_blank" rel="noopener">GitHub</a> 上有完整的提交历史和 issue 讨论。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/a9vg.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">A9VG 电玩部落用了两年，踩过的坑一次性说清楚</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/incredibox-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Incredibox 这几个坑我踩过——从跨平台到混音丢失的完整翻车实录</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

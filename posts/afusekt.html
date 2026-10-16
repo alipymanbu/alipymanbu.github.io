@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零搭建专属家庭影院：AfuseKt 上手实战全流程 · 老杨技术栈</title>
+  
+<meta name="description" content="不想再被各种影视 App 的广告和片源限制折腾？跟着这篇教程，用 AfuseKt 把你手上的网盘/WebDAV 资源变成一个有海报墙、能刮削、跨设备同步的私人影院。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/afusekt.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零搭建专属家庭影院：AfuseKt 上手实战全流程">
+<meta property="og:description" content="不想再被各种影视 App 的广告和片源限制折腾？跟着这篇教程，用 AfuseKt 把你手上的网盘/WebDAV 资源变成一个有海报墙、能刮削、跨设备同步的私人影院。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/afusekt.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/afusekt/poster-wall.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/afusekt/poster-wall.png">
+
+<meta name="twitter:title" content="从零搭建专属家庭影院：AfuseKt 上手实战全流程">
+<meta name="twitter:description" content="不想再被各种影视 App 的广告和片源限制折腾？跟着这篇教程，用 AfuseKt 把你手上的网盘/WebDAV 资源变成一个有海报墙、能刮削、跨设备同步的私人影院。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e0d\u60f3\u518d\u88ab\u5404\u79cd\u5f71\u89c6 App \u7684\u5e7f\u544a\u548c\u7247\u6e90\u9650\u5236\u6298\u817e\uff1f\u8ddf\u7740\u8fd9\u7bc7\u6559\u7a0b\uff0c\u7528 AfuseKt \u628a\u4f60\u624b\u4e0a\u7684\u7f51\u76d8/WebDAV \u8d44\u6e90\u53d8\u6210\u4e00\u4e2a\u6709\u6d77\u62a5\u5899\u3001\u80fd\u522e\u524a\u3001\u8de8\u8bbe\u5907\u540c\u6b65\u7684\u79c1\u4eba\u5f71\u9662\u3002", "headline": "\u4ece\u96f6\u642d\u5efa\u4e13\u5c5e\u5bb6\u5ead\u5f71\u9662\uff1aAfuseKt \u4e0a\u624b\u5b9e\u6218\u5168\u6d41\u7a0b", "image": ["https://alipymanbu.github.io/images/afusekt/poster-wall.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/afusekt.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/afusekt.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u642d\u5efa\u4e13\u5c5e\u5bb6\u5ead\u5f71\u9662\uff1aAfuseKt \u4e0a\u624b\u5b9e\u6218\u5168\u6d41\u7a0b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">从零搭建专属家庭影院：AfuseKt 上手实战全流程</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零搭建专属家庭影院：AfuseKt 上手实战全流程</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">不想再被各种影视 App 的广告和片源限制折腾？跟着这篇教程，用 AfuseKt 把你手上的网盘/WebDAV 资源变成一个有海报墙、能刮削、跨设备同步的私人影院。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程结束时，你手里的 Android 手机上会跑着一个海报墙漂漂亮亮、能搜能播、还能和电视联动的<a href="https://afusekt.boop.uno" target="_blank" rel="noopener">AfuseKt官网</a>——全程不装多余的东西，不写一行代码。</p>
+<h2>准备：先把几个前提捋清楚</h2>
+<p>在动手之前，花 3 分钟确认这几件事，能帮你避开一半的坑。</p>
+<p><strong>平台要求</strong>：AfuseKt 手机端最低 Android 8.1，TV 端（AfuseKtV）低至 Android 6.0——绝大多数近年的手机和电视盒子都能跑。如果你手上有老款盒子（比如小米盒子 3 代），建议直接装手机端先用着，等换了新盒子再上 TV 端。</p>
+<p><strong>版本选择</strong>：免费版 vs 永久 PRO。免费版覆盖了全部 11 种协议的资源库添加、三核心播放器切换（MPV / VLC / EXO）、海报墙浏览和聚合搜索——够你把手机端用得很顺手。PRO 是一次性付费，解锁 TV 端使用权、跨设备资源库同步和多服务版本搜索。刚开始先用免费版，等你确定要搭配电视端一起用再升级也不迟。</p>
+<p><strong>前置条件</strong>：你至少要有一个可访问的影视资源源。AfuseKt 支持 Alist、WebDAV、SMB、Emby、阿里云盘等 11 种协议——如果你只有本地视频文件，也可以直接扫手机本地 / SDCard，不依赖任何网络服务。</p>
+<p><img src="../images/afusekt/poster-wall.png" alt="海报墙效果" loading="lazy"></p>
+<h2>第一步：安装与注册</h2>
+<p>AfuseKt 不在 Google Play 上架，安装包从<a href="https://afusekt.boop.uno/download.html" target="_blank" rel="noopener">官方下载</a>拿。拿到 APK 之后直接装——Android 8+ 首次安装外部应用会弹权限提示，允许即可。</p>
+<p>打开 App，第一眼看到的是登录界面。点邮箱注册，填一个常用邮箱和密码，收到验证码确认就能进主界面了。免费版注册即使用，没有试用期限制。</p>
+<p>如果你后面打算上 TV 端，现在就先注册好手机端账号——TV 端没有独立注册入口，完全依赖手机端同步配置过去。</p>
+<h2>第二步：添加你的第一个资源库</h2>
+<p>进主界面之后，左滑调出侧栏，点「资源库」→「添加资源库」。这里有 11 种协议可选，最常用的是 Alist 和 WebDAV。</p>
+<p>选 Alist 的话，你需要准备好 Alist 服务的地址（比如 <code>https://你的alist域名</code>）、用户名和密码。填进去之后点「测试连接」，如果弹出绿色的「连接成功」，直接确定就行。如果失败，先检查地址有没有写错（尤其注意 https:// 和末尾斜杠），再确认 Alist 那边是否开启了 API 访问。</p>
+<p>选 WebDAV 的同理，填 URL、用户名、密码，测试通过就好。SMB 适合局域网共享文件夹的场景——比如你家 NAS 上开了 SMB，直接扫局域网就能找到，不用手动填 IP。</p>
+<p><img src="../images/afusekt/player-interface.jpg" alt="播放器界面" loading="lazy"></p>
+<p>资源库加完之后，AfuseKt 会自动开始扫库——根据文件名匹配 TMDB 数据、下载海报和简介。这个过程叫刮削，后面会详细讲。你现在可以切去喝口水，小资源库 10 分钟以内就能出结果，大的可能要半小时到一小时。</p>
+<h2>第三步：刮削海报墙，让资源不再是一堆文件名</h2>
+<p>扫库结束回到首页，如果一切顺利，你看到的应该是一张张带海报、评分、类型标签的卡片，而不是一堆杂乱的文件名。如果还是文件名，或者识别错了，这里有两个工具帮你救回来。</p>
+<p><strong>自动匹配失败时，用手动 TMDB ID 兜底。</strong> 长按识别错的那个文件 → 更多 → 手动刮削。你可以直接去 TMDB 官网搜这部电影/剧集，地址栏里的数字就是它的 TMDB ID（比如 <code>/movie/27205</code> 里的 27205 是《盗梦空间》）。把这个 ID 粘进来确认，AfuseKt 立即拉取正确的海报和元数据。文件夹级设置一次 TMDB ID，可以批量修正里面所有剧集，比逐个文件改效率高得多。</p>
+<p><strong>首页展示模式切换。</strong> 刮削完之后在设置里可以切换三种首页布局：海报墙（默认，纵向滚动）、栏目模式（横向滑动的「最近更新」「热门推荐」条）、轮播主题模式（PRO 专属，顶部大图轮播 + 下方栏目）。建议先用栏目模式，想看新片直接横向滑「最近更新」，找老片从海报墙往下翻——比纯海报墙效率高。首页布局和刮削源的高级配置，在<a href="https://afusekt.pages.dev/" target="_blank" rel="noopener">afusekt文档</a>里有更细的参数表。</p>
+<h2>第四步：开始播放——三核心怎么选</h2>
+<p>点开一张海报进入详情页，底部有个播放按钮。这里有个新手容易踩的小细节：直接点播放按钮走默认核心（通常是 EXO），<strong>长按播放按钮</strong>才会弹出 MPV / VLC / EXO 三核心选择面板。</p>
+<p>三个核心各有优劣：</p>
+<ul><li><strong>EXO</strong>：Google 官方做的，Android 原生适配最好，发热最少。建议作为日常默认。</li><li><strong>MPV</strong>：兼容性最强，一些 EXO 播不了的编码格式 MPV 能搞定。但性能开销大，老手机容易发热。</li><li><strong>VLC</strong>：老机器的兜底选项，功能全但 UI 比较糙。</li></ul>
+<p>播放界面的手势也顺便说一下：双击暂停/播放，左右滑动快进快退（默认 ±10 秒，可在设置里调），左侧上下滑动调亮度，右侧上下滑动调音量。右下角菜单里可以切换字幕、音轨和倍速（1x ~ 3x）。</p>
+<h2>常见卡点：新手最容易翻车的三个地方</h2>
+<p><strong>卡点一：刮削识别成了另一部同名电影。</strong> 《蝙蝠侠》1989、2005、2022 三个版本重名，自动匹配经常错。解法就是第三步说的手动 TMDB ID——去 TMDB 官网搜你那个年份的版本，把 ID 粘过来就行。如果 TMDB 上根本搜不到（比如冷门国产老剧），那就只能接受文件名展示了，AfuseKt 目前主要用 TMDB 这一个刮削源。</p>
+<p><strong>卡点二：Alist 连接成功但扫不出内容。</strong> 90% 的情况是 Alist 那边没开「公开访问」或者路径权限没给。回到 Alist 后台检查对应目录的权限配置——AfuseKt 需要只读权限就能正常扫库。</p>
+<p><strong>卡点三：TV 端装了但资源库同步不过去。</strong> 先确认你的手机端账号是 PRO 激活状态。然后在手机端侧栏「设置」→「账户与同步」里打开「资源库自动同步」，等几分钟 TV 端的 AfuseKtV 会自动拉取过来。TV 端本身不能手动添加资源库——设计上就是让手机端负责配置、TV 端负责纯播放。</p>
+<h2>进阶一句话</h2>
+<p>跑通上面四步之后，你可以考虑把手机端的配置推送到 AfuseKtV 上，遥控器按方向键直接在大电视上划海报墙——旗舰盒子用 EXO 默认核心 + MPV 备用、焦点动画开、海报选特大号，体验会让你觉得之前在手机上看都是浪费。写这篇教程时对照的软件目录，在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/afusekt" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/afusekt" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/afusekt" target="_blank" rel="noopener">GitCode</a> 上都能找到，国内访问走 Gitee 或 GitCode 更快。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/anyview-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/geektyper-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">每周分享开场的这条链，我用 GeekTyper 串起来了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

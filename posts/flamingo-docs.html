@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>地铁通勤的那台播放器，终于不用再对着会员弹窗叹气 · 老杨技术栈</title>
+  
+<meta name="description" content="一个每天在地铁上待四十分钟的人，如何被一个完全本地、歌词还能逐字高亮的安卓播放器收了心——从找安装包到调电池白名单，全程折腾实录。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/flamingo-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="地铁通勤的那台播放器，终于不用再对着会员弹窗叹气">
+<meta property="og:description" content="一个每天在地铁上待四十分钟的人，如何被一个完全本地、歌词还能逐字高亮的安卓播放器收了心——从找安装包到调电池白名单，全程折腾实录。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/flamingo-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/flamingo-docs/home-en.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/flamingo-docs/home-en.png">
+
+<meta name="twitter:title" content="地铁通勤的那台播放器，终于不用再对着会员弹窗叹气">
+<meta name="twitter:description" content="一个每天在地铁上待四十分钟的人，如何被一个完全本地、歌词还能逐字高亮的安卓播放器收了心——从找安装包到调电池白名单，全程折腾实录。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u6bcf\u5929\u5728\u5730\u94c1\u4e0a\u5f85\u56db\u5341\u5206\u949f\u7684\u4eba\uff0c\u5982\u4f55\u88ab\u4e00\u4e2a\u5b8c\u5168\u672c\u5730\u3001\u6b4c\u8bcd\u8fd8\u80fd\u9010\u5b57\u9ad8\u4eae\u7684\u5b89\u5353\u64ad\u653e\u5668\u6536\u4e86\u5fc3\u2014\u2014\u4ece\u627e\u5b89\u88c5\u5305\u5230\u8c03\u7535\u6c60\u767d\u540d\u5355\uff0c\u5168\u7a0b\u6298\u817e\u5b9e\u5f55\u3002", "headline": "\u5730\u94c1\u901a\u52e4\u7684\u90a3\u53f0\u64ad\u653e\u5668\uff0c\u7ec8\u4e8e\u4e0d\u7528\u518d\u5bf9\u7740\u4f1a\u5458\u5f39\u7a97\u53f9\u6c14", "image": ["https://alipymanbu.github.io/images/flamingo-docs/home-en.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/flamingo-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/flamingo-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u5730\u94c1\u901a\u52e4\u7684\u90a3\u53f0\u64ad\u653e\u5668\uff0c\u7ec8\u4e8e\u4e0d\u7528\u518d\u5bf9\u7740\u4f1a\u5458\u5f39\u7a97\u53f9\u6c14", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">地铁通勤的那台播放器，终于不用再对着会员弹窗叹气</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">地铁通勤的那台播放器，终于不用再对着会员弹窗叹气</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个每天在地铁上待四十分钟的人，如何被一个完全本地、歌词还能逐字高亮的安卓播放器收了心——从找安装包到调电池白名单，全程折腾实录。</p>
+  </header>
+  <div class="prose">
+<p>早上七点四十，我挤进上海二号线的车厢，耳机刚戴好，熟悉的那个在线 APP 又弹了个会员广告。不是那种挡半屏的弹窗，是更烦人的——它不阻止你听歌，但每切三首歌就插一次，声音还比我放的歌大。</p>
+<p>我其实有一堆本地 FLAC，从大学时候攒到现在，两千多首，按专辑分在手机存储的一个文件夹里。之前用那个在线 APP 也不是因为它好，而是它扫本地歌还算顺手，歌词也能自动下。但最近几个月它越来越飘，本地扫库要等三十秒，歌词匹配不准就算了，有时候还把我藏在子文件夹里的歌漏掉。</p>
+<p>那天在地铁上盯着那个会员弹窗叹气的时候，突然想起前几天在一个小众论坛里刷到过一个帖子，楼主说找了快一年终于找到个长得像 Apple Music 的安卓播放器，而且完全不用联网。我当时没留链接，只记住了它的<a href="https://flamingo.hhdc.tech" target="_blank" rel="noopener">官网</a>地址和那个名字——Flamingo。</p>
+<h2>第一次启动：给权限、调电池、换头像</h2>
+<p>从<a href="https://flamingo.hhdc.tech/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包点开，界面是真干净。主页底部三个 Tab，右上角一个圆形头像按钮——我当时没注意，后来才发现长按能换自己的图，仿 Apple Music 仿得很用心。</p>
+<p>但第一次启动它要权限的时候我还是愣了一下。先是媒体访问，然后是通知，然后它弹了一句提示让我去系统设置里把电池优化关了。我当时嫌烦，通知权限给了但电池白名单没加，结果第二天地铁上就出事了——后台播放听了两首歌就被杀了，锁屏显示也消失。</p>
+<p>后来才知道国产系统的省电策略真的狠，后台播放、歌词状态栏通知这些功能全靠一个"允许后台运行"。我打开系统设置找了半天，不同厂商叫法还不一样——小米叫自启动，OPPO 叫省电策略，华为叫后台弹窗。折腾了五分钟终于加上，之后后台就稳了。</p>
+<p><img src="../images/flamingo-docs/home-en.png" alt="Flamingo 主页右上角的头像按钮" loading="lazy"></p>
+<p>媒体权限没给的时候资料库是空的，我一开始以为它没扫到歌，后来才想起上次换手机的时候拒绝过一次权限。安卓的权限机制挺反直觉的——首次拒绝之后应用内不会再弹窗，得去系统设置的应用管理里手动开。开完刷新媒体库，两千多首歌两分钟全出来了，按专辑、艺人、文件夹三种视图随便切。</p>
+<h2>歌词系统：逐字高亮这件事</h2>
+<p>我之前对本地播放器的歌词没抱什么期待，LRC 逐行高亮就够了。但 Flamingo 支持两种格式——TTML 和 LRC，同首歌两种都有的时候优先 TTML。TTML 能做到什么？逐字高亮，翻译对照，甚至对唱分行。</p>
+<p>上周我把几首经典日剧的 OP/EP 找了过来，里面有一首宇多田光的《First Love》，我自己找了 TTML 格式的外挂歌词文件扔到同目录，点开播放页的时候真的愣了一秒——每一个日文假名跟着演唱进度点亮，下方还自动显示中文翻译。之前用在线 APP 的时候从来没见过这么细的效果，要么逐行亮要么翻译对不上。</p>
+<p><img src="../images/flamingo-docs/lyrics-cn-translation.jpg" alt="Flamingo 歌词页的中文逐字效果" loading="lazy"></p>
+<p>Flamingo 的开发者专门维护了一份歌词格式文档，TTML 里的 <code>&lt;span&gt;</code> 标签能精确定位每个字的时间，LRC 也支持逐字时间标签。甚至连翻译行怎么写、对唱歌手前缀怎么标，<a href="https://flamingo-docs.pages.dev/" target="_blank" rel="noopener">Flamingo文档</a>里都有。我自己试着给一首歌写了份 LRC 逐字歌词，写错了几个时间标签，解析器直接跳过了那几个字继续显示，没崩也没卡死。</p>
+<h2>扫描不到歌怎么办</h2>
+<p>折腾了三天，还是遇到了一次资料库空的情况。那天晚上我把一批新歌拷进手机，刷新之后只出来了三分之一。排查下来是 SD 卡的存储路径——我那天偷懒直接拷进了 App 双开分身的存储目录，那个路径不在媒体权限的授权范围内。</p>
+<p>把音乐移到内部存储之后刷新就好了。后来总结了一下：资料库空要么是权限没给，要么是忘了刷新，要么是文件真没传完。大文件传输中断是常事，我之前有个 80MB 的 FLAC 拷到一半就断了，以为传成功了结果播放器扫不到。换个播放器试一下同一个文件就能排除是不是文件本身的问题。</p>
+<p>格式方面 MP3、FLAC、AAC 肯定没问题，APE 之类的冷门格式要靠 FFmpeg 解码扩展支持，得看版本是不是在 v2.0.0 之后。</p>
+<h2>三周后的变化</h2>
+<p>现在每天在地铁上四十分钟，耳机里不再有会员弹窗的声音了。歌单按艺人分，歌词逐字亮，锁屏上能直接切歌，后台再也没被杀过。</p>
+<p>说实话换头像这种小功能真不算什么刚需，但配合歌单和统计页，整个应用真的像"属于我一个人"的空间。不是那种大家共用的在线歌单，是我大学攒到现在、换了三台手机也没丢的那些 FLAC。</p>
+<p>本体完全本地不联网，纯本地玩家甚至可以在系统层面把它的联网权限禁掉，不影响听歌。</p>
+<p>代码和资源包在 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Flamingo" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Flamingo" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Flamingo" target="_blank" rel="noopener">GitCode</a> 三个仓库都能拿到，作者好像是怕单一平台访问不稳定，特意同步了三份镜像。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gprinter.html">开水果店那阵我才知道，标签打印APP能省这么多事</a></h2>
+  <p class="card-desc">开了半年水果店，打价签和保质期标签是每天的烦心事。试了佳博配套的 Gprinter 之后，原来标签设计这件事可以在手机上 5 分钟搞定，还能语音输入、自动算日期。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/autox-js.html">Autox.js 到底强在哪？和同类自动化工具的横向对比</a></h2>
+  <p class="card-desc">在安卓自动化脚本引擎这个品类里，Autox.js 用 JavaScript + 无障碍服务的组合走出了一条不一样的路。用过按键精灵、Auto.js、Tasker 之后，我为什么最终留在了 Autox.js。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/kshare-docs.html">装KShare大半年后：那些当初没注意到的好用与糟心</a></h2>
+  <p class="card-desc">从v1.5用到v1.7，从凑活投屏到开会离不开，说说这八个月里KShare让我惊喜和头疼的地方。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/monica-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Monica 避坑指南：看着全能，这四个地方容易翻车</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/gamestoday.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">gamestoday 深度盘点：一款让 Android 游戏管理变得省心的工具</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

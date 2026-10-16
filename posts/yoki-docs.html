@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Yoki 的反搜索设计：为什么它把陌生人直接推到你面前 · 老杨技术栈</title>
+  
+<meta name="description" content="多数社交 App 让用户&#34;主动搜索&#34;，Yoki 反其道而行之——Discover 广场把实时在线的一切流式推到首页。这背后是一套关于社交冷启动和参与门槛的设计逻辑，我来拆解它为什么这么做、代价是什么。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/yoki-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yoki 的反搜索设计：为什么它把陌生人直接推到你面前">
+<meta property="og:description" content="多数社交 App 让用户&#34;主动搜索&#34;，Yoki 反其道而行之——Discover 广场把实时在线的一切流式推到首页。这背后是一套关于社交冷启动和参与门槛的设计逻辑，我来拆解它为什么这么做、代价是什么。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/yoki-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/yoki-docs/discover-plaza.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/yoki-docs/discover-plaza.webp">
+
+<meta name="twitter:title" content="Yoki 的反搜索设计：为什么它把陌生人直接推到你面前">
+<meta name="twitter:description" content="多数社交 App 让用户&#34;主动搜索&#34;，Yoki 反其道而行之——Discover 广场把实时在线的一切流式推到首页。这背后是一套关于社交冷启动和参与门槛的设计逻辑，我来拆解它为什么这么做、代价是什么。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u591a\u6570\u793e\u4ea4 App \u8ba9\u7528\u6237\"\u4e3b\u52a8\u641c\u7d22\"\uff0cYoki \u53cd\u5176\u9053\u800c\u884c\u4e4b\u2014\u2014Discover \u5e7f\u573a\u628a\u5b9e\u65f6\u5728\u7ebf\u7684\u4e00\u5207\u6d41\u5f0f\u63a8\u5230\u9996\u9875\u3002\u8fd9\u80cc\u540e\u662f\u4e00\u5957\u5173\u4e8e\u793e\u4ea4\u51b7\u542f\u52a8\u548c\u53c2\u4e0e\u95e8\u69db\u7684\u8bbe\u8ba1\u903b\u8f91\uff0c\u6211\u6765\u62c6\u89e3\u5b83\u4e3a\u4ec0\u4e48\u8fd9\u4e48\u505a\u3001\u4ee3\u4ef7\u662f\u4ec0\u4e48\u3002", "headline": "Yoki \u7684\u53cd\u641c\u7d22\u8bbe\u8ba1\uff1a\u4e3a\u4ec0\u4e48\u5b83\u628a\u964c\u751f\u4eba\u76f4\u63a5\u63a8\u5230\u4f60\u9762\u524d", "image": ["https://alipymanbu.github.io/images/yoki-docs/discover-plaza.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/yoki-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/yoki-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "Yoki \u7684\u53cd\u641c\u7d22\u8bbe\u8ba1\uff1a\u4e3a\u4ec0\u4e48\u5b83\u628a\u964c\u751f\u4eba\u76f4\u63a5\u63a8\u5230\u4f60\u9762\u524d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">Yoki 的反搜索设计：为什么它把陌生人直接推到你面前</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Yoki 的反搜索设计：为什么它把陌生人直接推到你面前</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">多数社交 App 让用户&#34;主动搜索&#34;，Yoki 反其道而行之——Discover 广场把实时在线的一切流式推到首页。这背后是一套关于社交冷启动和参与门槛的设计逻辑，我来拆解它为什么这么做、代价是什么。</p>
+  </header>
+  <div class="prose">
+<h2>一个反常的设计选择</h2>
+<p>安装包从<a href="https://yoki.qhah.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿到，体积不大。第一次打开 Yoki，完成注册和真人验证之后，我下意识地点开右上角想找搜索框——结果没有。首页就是 Discover 广场，把当前在线的用户、正在开的语音房、最新的动态卡片直接混排在你面前，等你决定要不要 Say Hi、要不要进房、要不要点赞。</p>
+<p>这不是 bug。从 App Store 的描述到<a href="https://yoki.qhah.skin" target="_blank" rel="noopener">yoki官网</a>的产品介绍，核心表达都是同一件事："you can browse who's online right now and say hi with one tap"——关键字是 <strong>right now</strong>，实时在线，流式推送，没有搜索入口。</p>
+<p>为什么一个社交 App 要刻意去掉搜索？我翻了<a href="https://yoki-docs.pages.dev/" target="_blank" rel="noopener">yoki文档</a>和几份第三方使用流程，慢慢理清了这套设计的底层逻辑。它解决的核心问题不是"你想找谁"，而是"你为什么会去找人"。</p>
+<h2>流式发现 vs 主动搜索：两种社交哲学的分水岭</h2>
+<p>传统社交产品的路径是：用户有一个明确的目标（找老同学、找同好、找附近的人）→ 用搜索或筛选 → 找到结果 → 发起接触。这条路径的前提是<strong>用户自己知道要什么</strong>。</p>
+<p>Yoki 不赌这个前提。它假设大部分人打开社交 App 时其实没有明确目标——只是无聊了、想看看有没有有趣的人、想随便点进一个房间听听。Discover 广场的设计是把选择成本从用户身上转移到系统身上：你不用想，我直接把当下最鲜活的内容推到你面前。</p>
+<p>这个设计的代价是<strong>主动搜索党会感到受限</strong>。如果你想找一个特定兴趣的群体（比如只找考研党、只找某个星座的人），目前公开资料里没有提到分类筛选或搜索入口——你只能靠广场的推荐算法逐步收敛，或者进一个相关的语音房，在房间里认识人。</p>
+<h2>Say Hi：把心理负担压缩到最小</h2>
+<p>Discover 广场上每一张在线用户卡片的右下角都有一个 Say Hi 按钮——点一下就发出去了，不需要对方先通过好友验证，不需要写开场白，不需要配图。</p>
+<p>我一开始觉得这设计太随意，后来想明白了：这不是"简化流程"，这是<strong>系统性地降低社交破冰的心理门槛</strong>。</p>
+<p>在微信里加一个陌生人，你要想：写什么开场白？会不会被当成营销号？对方不理我怎么办？这一系列心理活动构成了一道隐形的门槛，拦住了大部分潜在的接触。Yoki 把这道门槛拆到了最低——Say Hi 的代价几乎为零，哪怕对方不理你，你也没损失什么。</p>
+<p>文档里提到广场的推荐算法会根据你 Say Hi 了谁、进了什么类型的房来逐步优化推荐——这意味着<strong>你用得越多，广场推得越准</strong>。第一次打开时可能是最"嘈杂"的，刷一周后基本都是你感兴趣的人在上面。这是一个正反馈循环：低门槛让你愿意多试几次，多次尝试让算法更懂你，算法更懂你又让推荐更精准。</p>
+<p><img src="../images/yoki-docs/discover-plaza.webp" alt="Discover 广场截图" loading="lazy"></p>
+<h2>破冰投票：群体冷启动的工程化解法</h2>
+<p>Say Hi 解决的是<strong>一对一破冰</strong>，但进了一个已经有十来个人的语音房，你会发现另一个问题：全场都在聊，你插不上嘴，默默挂着又尴尬。</p>
+<p>Yoki 的解法是主持工具面板里的破冰投票功能。主持点进去，选一个预设问题或者自己写一个，设置 2 到 4 个选项，选持续时间（比如 1 分钟），启动之后房间所有人的屏幕上立刻弹出投票界面。投完票自动显示当前比例。</p>
+<p>文档里有一个细节让我印象深刻：<strong>投票不是目的，是话题的引子</strong>。投票结束后，结果本身可以延伸出下一轮讨论——"看来选甜口的人多，那大家聊聊上周哪家甜品店好吃"。这相当于主持有了一个"一键冷场急救"按钮，不需要自己硬想话题。</p>
+<p>为什么投票比答题游戏门槛更低？因为答题需要反应速度或知识储备，投票只需要看选项点一个——不想说话、答不上题的用户，至少能投个票。这让投票成为房间里最"安全"的参与方式，也是 Yoki 把群体冷启动这件事做成了一个可复用的工程组件。</p>
+<h2>免费聊天卡：高意向的筛选器</h2>
+<p>Discover 广场的标准流程是 Say Hi → 等对方回应 → 回应后才能进入正式聊天。如果对方没回应，这条链路就断了。</p>
+<p>免费聊天卡是 Yoki 为"不想等回应"的用户设计的道具。持有聊天卡可以跳过"等回应"这一步，直接向对方发起聊天。它的本质是一个<strong>信号筛选器</strong>——当你用免费聊天卡时，你在告诉对方："我对你很感兴趣，这张卡代表我的诚意"。获取渠道包括任务奖励、活动领取、金币购买，文档里提到它是"高意向破冰"的专属工具。</p>
+<p>这个设计挺聪明：既给了主动用户一个加速通道，又不会让普通 Say Hi 被淹没——毕竟大部分人还是走 Say Hi → 等回应的路径。聊天卡的稀缺性（需要获取）反而让它的信号价值更突出。</p>
+<h2>实时性的代价</h2>
+<p>Discover 广场展示的是 <strong>right now 在线</strong>的用户和房间——不是离线缓存，是实时状态。这带来了即时感（Say Hi 之后对方真的可能马上回应），但也有代价：</p>
+<ul><li><strong>冷启动问题</strong>：新用户第一次打开广场时，在线人数可能不多，推荐算法也还没积累你的行为数据，这时候的广场是最"贫瘠"的。Yoki 靠真人验证保证用户质量，但新用户可能需要刷一周才能让推荐收敛。</li><li><strong>内容波动性</strong>：广场内容完全依赖当前在线用户的活跃度。凌晨三四点的广场和晚上八点的广场，密度和质量差距可能很大。</li><li><strong>搜索缺失的长期影响</strong>：如果你是一个有明确社交目标的人（比如想找健身搭子、想找同专业的学长），流式发现的效率远不如搜索。Yoki 目前没有公开计划要补搜索功能，说明它是故意放弃这部分用户的。</li></ul>
+<h2>这套设计适合谁</h2>
+<p>我用了一段时间之后，感觉 Yoki 的定位很清晰：它适合<strong>"被动发现"型的社交用户</strong>——没有明确的社交目标，想随便逛逛、想低压力地认识陌生人、想偶尔进一个语音房听听热闹。它不适合有明确搜索需求的人、也不适合想快速建立稳定社交关系的人。</p>
+<p>核心原因是它的所有设计都围绕"降低破冰门槛"展开：Discover 广场替代搜索是为了不让用户被选择成本劝退，Say Hi 零验证是为了不让社交压力成为障碍，破冰投票是为了不让冷场尴尬阻止新人参与，免费聊天卡是为了不让"等回应"这条链路卡住高意向用户。</p>
+<p>这套设计的取舍也很明确：放弃主动搜索党，换来了极低的社交参与门槛；牺牲了内容的确定性，换来了实时在线的新鲜感。至于哪个更好，取决于你打开社交 App 时的心态——是"我想找谁"，还是"随便看看有什么"。顺手提一句，本文引用的产品资料同步维护在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/yoki" target="_blank" rel="noopener">GitHub</a>，同时在<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/yoki" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/yoki" target="_blank" rel="noopener">GitCode</a>做了镜像备份，国内网络访问后者更稳。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/epik-docs.html">epik 六年迭代：一款修图 App 如何在「一键美型」和「精细控制」之间反复横跳</a></h2>
+  <p class="card-desc">从早期一键式美颜工具到如今同时拥有专业调色面板和 AI 毕业照服务，epik 的版本迭代史藏着一个修图产品最真实的两难。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wikihow-docs.html">凌晨十一点，我靠一个小应用打出了人生第一条领带</a></h2>
+  <p class="card-desc">面试前一夜对着领带慌了神，室友睡了爸妈远在千里，Google 搜出来的全是广告。偶然想起下载过的 wikiHow，跟着图文步骤一步步来，十分钟搞定。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/rewasd.html">reWASD 上手一周：手柄调瞄准手感这件事，终于不用靠玄学了</a></h2>
+  <p class="card-desc">一个被 FPS 瞄准漂移折磨了半年的人，用 reWASD 把摇杆曲线掰了半小时后，第一次觉得&#34;瞄准手感&#34;这玩意儿是能被精确描述和调整的。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/breeze-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">为什么我换掉了用了三年的漫画 App，投了 Breeze</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/missai.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">写了三个月互动小说后，我为什么留在 MissAI</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

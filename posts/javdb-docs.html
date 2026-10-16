@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>javdb 用了三个月，那些我踩过的真实坑 · 老杨技术栈</title>
+  
+<meta name="description" content="这款应用看着简单，拿包、投屏、切画质、装盒子，每一步我都栽过。本文把症状、原因和解法整理出来，帮你一次性绕过。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/javdb-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javdb 用了三个月，那些我踩过的真实坑">
+<meta property="og:description" content="这款应用看着简单，拿包、投屏、切画质、装盒子，每一步我都栽过。本文把症状、原因和解法整理出来，帮你一次性绕过。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/javdb-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/javdb-docs/home-screen.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/javdb-docs/home-screen.jpg">
+
+<meta name="twitter:title" content="javdb 用了三个月，那些我踩过的真实坑">
+<meta name="twitter:description" content="这款应用看着简单，拿包、投屏、切画质、装盒子，每一步我都栽过。本文把症状、原因和解法整理出来，帮你一次性绕过。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd9\u6b3e\u5e94\u7528\u770b\u7740\u7b80\u5355\uff0c\u62ff\u5305\u3001\u6295\u5c4f\u3001\u5207\u753b\u8d28\u3001\u88c5\u76d2\u5b50\uff0c\u6bcf\u4e00\u6b65\u6211\u90fd\u683d\u8fc7\u3002\u672c\u6587\u628a\u75c7\u72b6\u3001\u539f\u56e0\u548c\u89e3\u6cd5\u6574\u7406\u51fa\u6765\uff0c\u5e2e\u4f60\u4e00\u6b21\u6027\u7ed5\u8fc7\u3002", "headline": "javdb \u7528\u4e86\u4e09\u4e2a\u6708\uff0c\u90a3\u4e9b\u6211\u8e29\u8fc7\u7684\u771f\u5b9e\u5751", "image": ["https://alipymanbu.github.io/images/javdb-docs/home-screen.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/javdb-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/javdb-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "javdb \u7528\u4e86\u4e09\u4e2a\u6708\uff0c\u90a3\u4e9b\u6211\u8e29\u8fc7\u7684\u771f\u5b9e\u5751", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">javdb 用了三个月，那些我踩过的真实坑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">javdb 用了三个月，那些我踩过的真实坑</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">这款应用看着简单，拿包、投屏、切画质、装盒子，每一步我都栽过。本文把症状、原因和解法整理出来，帮你一次性绕过。</p>
+  </header>
+  <div class="prose">
+<h2>开头：这款应用看着简单，其实有几个坑</h2>
+<p>第一次装上 <a href="https://javdb.djnf.quest" target="_blank" rel="noopener">javdb官网</a> 的时候，我以为就是个普通的影音客户端——点开就能播、想投就投、不行就重启。结果三个月下来，我在投屏、画质、安装包、盒子路线上轮番翻船，有的坑甚至让我以为包坏了、路由器坏了、甚至手机坏了。</p>
+<p>这篇文章把我遇到的几个真实坑按「症状→原因→解法」的结构整理出来，都是我自己踩过的，不是凭空编的。看完之后你会发现，大部分问题其实只是某个开关没开、某个小参数没对上，根本不用重装也不用换设备。</p>
+<h2>坑一：投屏搜不到电视，我以为路由器坏了</h2>
+<p><strong>症状</strong>：点播放页的投屏按钮，设备列表空的，刷新也出不来。我把路由器重启了三次、把电视关机再开机、甚至换了一条 HDMI 线，还是搜不到。</p>
+<p><strong>原因</strong>：投屏这件事需要手机和电视在同一个局域网里互发 DLNA 广播。我当时手机连的是路由器的 Wi-Fi，电视却连的是光猫自带的 Wi-Fi——这俩在两个网段里，互相根本看不见。后来我还遇到过一次手机连了信号放大器、电视连主路由器，同样搜不到。还有路由器开了 AP 隔离或者访客模式的，设备之间也互相不可见。电视端「多屏互动 / DLNA 服务」开关没开的情况我也碰到过，品牌不同叫法不一样，核心词就是「多屏互动」。</p>
+<p><strong>解法</strong>：三步同时检查。第一，手机和电视确认连的是同一个 SSID、同一个路由器，别一个在主网一个在访客网；第二，进电视设置搜「多屏互动」，把服务打开；第三，登录路由器管理页关掉 AP 隔离，关完重启路由器让设置生效。这三个条件缺一不可，我之前就是犯了「只查手机不查路由器」的错误，白折腾了半小时。</p>
+<p><img src="../images/javdb-docs/home-screen.jpg" alt="投屏前得确认三个前提都满足" loading="lazy"></p>
+<h2>坑二：画质降到最低还是卡，我以为手机内存不够</h2>
+<p><strong>症状</strong>：播放的时候画面卡成幻灯片，声音还一卡一卡的。我把后台所有应用都关了，还是卡。以为是手机内存不够，甚至清了一遍缓存和数据，结果还是老样子。</p>
+<p><strong>原因</strong>：卡的根源往往不是手机性能，而是当前播放源的带宽扛不住。我当时选了超清档位，但那条源本身就堵得厉害，降画质之前我根本没意识到这一点。而且画质降了之后如果还卡，往往是没换源——同一条源拥堵时换一条就立竿见影。还有一种情况是 Wi-Fi 信号太弱，离路由器远了导致带宽骤降。</p>
+<p><strong>解法</strong>：按顺序来，别跳步。先动画质到流畅档，画面略糊但至少能看；还卡就换一条播放源，同一条源拥堵时换源是最快的解法；再不行就测一下网络，开个网页看看加载速度，Wi-Fi 信号弱就挪近路由器。我后来养成了习惯，卡顿第一反应就是降画质，清缓存和重启应用反而排在最后。</p>
+<h2>坑三：下载的安装包偏小，我以为分享方给了坏包</h2>
+<p><strong>症状</strong>：从<a href="https://javdb.djnf.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿到包，转存到自己的网盘后再下载，文件大小只有 8MB 左右，样本里写的是 12.63M。我以为分享方给了坏包或者被网盘压缩了，差点去换别的渠道重下。</p>
+<p><strong>原因</strong>：下载没下完整。网盘客户端有时候会因为网络波动中断但不报明显的错误提示，文件就停在了半拉子状态。我那次就是在电脑端下载时 Wi-Fi 断了几秒，客户端自动重连后继续下但实际只下了一半多一点。</p>
+<p><strong>解法</strong>：下载完先核对大小，应该接近 12.63M。明显偏小就删掉重下。如果重下后还是不对，再考虑用 MD5 校验——把 APK 传到电脑用校验工具算一遍，结果应为 <code>811492776C42105AA3451B7CD2091439</code>。对不上就说明分享端文件有问题，停止安装换一个版本。另外转存的时候记得先转存再下载，转存后不怕分享失效，这也是我后来养成的习惯。</p>
+<p><img src="../images/javdb-docs/player-frame.jpg" alt="下载完核对一下包的大小" loading="lazy"></p>
+<h2>坑四：老盒子上装完播放还是卡，我以为盒子配置不够</h2>
+<p><strong>症状</strong>：把 javdb 装进家里的老安卓盒子之后，播放时偶尔卡顿，尤其是高清档位。我以为是盒子内存不够或者 CPU 跑不动，差点去换一个新盒子。</p>
+<p><strong>原因</strong>：老盒子的内存确实小，但卡顿更多是画质档位太高或者后台挂了别的应用。盒子路线本身比投屏稳得多——不依赖手机、不依赖电视开关、遥控器直接操作。我当时在盒子上开了好几个后台应用，又选了超清档位，才导致掉帧。</p>
+<p><strong>解法</strong>：老盒子上直接选流畅或高清档位，别碰超清；播放前清一下后台，把不用的应用关掉；如果还是卡，就进盒子的存储管理清一下缓存。这三条做完基本就稳了。盒子的遥控器操作和手机不同，换台用方向键加 OK 键，唤出控制条用 OK 键或方向键，这些操作逻辑细节可以去<a href="https://javdb-docs.pages.dev/" target="_blank" rel="noopener">javdb文档</a>翻一下，讲得挺细的。</p>
+<h2>防坑清单</h2>
+<p>总结一下，把这些坑提前记住，下次遇到直接跳过：</p>
+<ol><li>投屏搜不到设备先查「手机和电视是不是同一个 Wi-Fi」，再查电视的多屏互动开关和路由器 AP 隔离</li><li>卡顿第一反应是降画质，然后换源，清缓存和重启排最后</li><li>安装包下载完必须核对大小，明显偏小直接重下，别猜分享方给了坏包</li><li>老盒子上别开超清档位，流畅或高清就够了，记得清后台</li><li>从网盘拿包一定先转存再下载，防止分享失效</li></ol>
+<p>知道这些坑之后，这款应用其实相当省心。大部分问题都不是什么大毛病，只是我一开始没摸透它的脾气，走了不少弯路。对了，这款应用的资料我在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/javdb" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/javdb" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/javdb" target="_blank" rel="noopener">GitCode</a> 三个仓库都同步了一份，哪个能访问就用哪个。希望你看完这篇能少踩几个我踩过的坑。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/shiki-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">我为什么装了一个俄语圈的动漫客户端——ShikiApp 上手体验</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/auvfun.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AuvFun 藏得最深的 4 个冷门设置，用之前真不知道它还能这样</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

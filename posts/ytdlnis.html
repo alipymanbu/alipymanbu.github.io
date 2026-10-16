@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零开始用 YTDLnis：五分钟装好，立刻能下 · 老杨技术栈</title>
+  
+<meta name="description" content="YTDLnis 是安卓上最好用的视频下载图形化界面之一，这篇文章从下载安装到第一次跑通，带你一步步上手音频下载、Cookie 登录等核心功能，全程不需要任何技术基础。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/ytdlnis.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始用 YTDLnis：五分钟装好，立刻能下">
+<meta property="og:description" content="YTDLnis 是安卓上最好用的视频下载图形化界面之一，这篇文章从下载安装到第一次跑通，带你一步步上手音频下载、Cookie 登录等核心功能，全程不需要任何技术基础。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/ytdlnis.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/ytdlnis/screenshot-01.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/ytdlnis/screenshot-01.png">
+
+<meta name="twitter:title" content="从零开始用 YTDLnis：五分钟装好，立刻能下">
+<meta name="twitter:description" content="YTDLnis 是安卓上最好用的视频下载图形化界面之一，这篇文章从下载安装到第一次跑通，带你一步步上手音频下载、Cookie 登录等核心功能，全程不需要任何技术基础。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "YTDLnis \u662f\u5b89\u5353\u4e0a\u6700\u597d\u7528\u7684\u89c6\u9891\u4e0b\u8f7d\u56fe\u5f62\u5316\u754c\u9762\u4e4b\u4e00\uff0c\u8fd9\u7bc7\u6587\u7ae0\u4ece\u4e0b\u8f7d\u5b89\u88c5\u5230\u7b2c\u4e00\u6b21\u8dd1\u901a\uff0c\u5e26\u4f60\u4e00\u6b65\u6b65\u4e0a\u624b\u97f3\u9891\u4e0b\u8f7d\u3001Cookie \u767b\u5f55\u7b49\u6838\u5fc3\u529f\u80fd\uff0c\u5168\u7a0b\u4e0d\u9700\u8981\u4efb\u4f55\u6280\u672f\u57fa\u7840\u3002", "headline": "\u4ece\u96f6\u5f00\u59cb\u7528 YTDLnis\uff1a\u4e94\u5206\u949f\u88c5\u597d\uff0c\u7acb\u523b\u80fd\u4e0b", "image": ["https://alipymanbu.github.io/images/ytdlnis/screenshot-01.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/ytdlnis.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/ytdlnis.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u5f00\u59cb\u7528 YTDLnis\uff1a\u4e94\u5206\u949f\u88c5\u597d\uff0c\u7acb\u523b\u80fd\u4e0b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">从零开始用 YTDLnis：五分钟装好，立刻能下</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零开始用 YTDLnis：五分钟装好，立刻能下</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">YTDLnis 是安卓上最好用的视频下载图形化界面之一，这篇文章从下载安装到第一次跑通，带你一步步上手音频下载、Cookie 登录等核心功能，全程不需要任何技术基础。</p>
+  </header>
+  <div class="prose">
+<p>第一次接触 YTDLnis 不知道怎么下手？这篇能带你从完全不懂到用起来——<strong>全程不需要任何技术基础，五分钟装好就能跑通第一次下载</strong>。</p>
+<h2>它到底是干嘛的（一个生活化类比讲明白）</h2>
+<p>YTDLnis 本质上是安卓上跑 yt-dlp 的图形化界面，它的<a href="https://ytdlnis.wxhp.skin" target="_blank" rel="noopener">官网</a>上有完整的说明和版本更新。yt-dlp 是一个开源的视频下载引擎，能从 YouTube、B 站、Twitter 等上千个网站拉取视频和音频。但 yt-dlp 本身是个命令行工具，要手动敲参数，对小白来说门槛很高。</p>
+<p>YTDLnis 把这些复杂的命令行封装成了触屏友好的界面——打个比方：yt-dlp 是你厨房里的燃气灶和锅碗瓢盆，YTDLnis 就是把这些厨具整整齐齐摆好、还带大按钮触屏的集成厨房。你不用管怎么点火、怎么调火候，丢一条视频链接进去，它帮你选合适的厨具、做好端上桌。</p>
+<p><img src="../images/ytdlnis/screenshot-01.png" alt="YTDLnis 主界面" loading="lazy"></p>
+<h2>五分钟上手：从安装到第一次下载的最短路径</h2>
+<h3>第一步：把应用装到手机上</h3>
+<p>去<a href="https://ytdlnis.wxhp.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿安装包，用手机浏览器下载到本地，点 APK 文件就能装。安卓系统可能会弹"未知来源"的提示，允许一下就行——这是正常的安全提醒，不是病毒。</p>
+<h3>第二步：装两个必需的组件</h3>
+<p>YTDLnis 用的是组件化架构——核心下载功能之外的运行时依赖（比如 Python、FFmpeg）做成了独立的 Package，可以单独安装和更新。第一次打开应用，这两个是必须装的：</p>
+<ol><li>点底部的「更多」标签</li><li>进「设置 → Updating → Packages」</li><li>找到 <strong>Python 3</strong>（yt-dlp 的运行时，必装）和 <strong>FFmpeg</strong>（音视频处理，强烈推荐），分别点旁边的安装按钮</li><li>等它们下载完、自动装好</li></ol>
+<p>其他组件（Node.js、aria2 等）暂时不用碰——后面遇到特定站点报"需要 JS 运行时"再说。</p>
+<h3>第三步：丢一条链接试试</h3>
+<p>回到首页，顶部搜索栏直接粘贴一条 YouTube 或 B 站的视频链接。应用会自动解析出这个视频有哪些可用格式——点一下就能看到一列带预览图的选项：</p>
+<ul><li>左边是<strong>视频 + 音频合并好的格式</strong>（比如 1080p 的 mp4）</li><li>中间是<strong>纯视频流</strong>（只有画面没有声音，需要另外挑音轨合并）</li><li>右边是<strong>纯音频</strong>（只有声音，用来下歌）</li></ul>
+<p>新手推荐直接选左边合并好的那种，点进去确认一下文件名和保存位置，再点右下角那大大的下载按钮就完事了。</p>
+<p><img src="../images/ytdlnis/screenshot-02.png" alt="格式选择界面" loading="lazy"></p>
+<p>下载进度在「下载」标签页能看到，完成后自动保存到你设的文件夹里。恭喜——你已经跑通了第一次下载。</p>
+<h2>上手后先玩这三个功能</h2>
+<h3>1. 音频模式：把视频变成歌</h3>
+<p>很多人用 YTDLnis 就是奔着下歌来的。在格式选择页面，切到「Audio」标签，选一个音频容器就能把视频的音轨单独抽出来保存。</p>
+<p>这里有个新手容易踩的坑：<strong>转码不会提升音质</strong>。YouTube 原生只有 m4a（AAC）和 opus 两种音频格式，没有 mp3。当你选 mp3 时，YTDLnis 实际上是把原始的 m4a/opus 转码成 mp3——这个过程只能让音质不变或下降，不可能变好。</p>
+<p>那到底选什么？给个简单的建议：</p>
+<table><thead><tr><th>你的情况</th><th>推荐选</th></tr></thead><tbody><tr><td>手机本地随便听听</td><td>留空不选 Container，保持原始 opus 或 m4a</td></tr><tr><td>车载、老设备不支持 opus</td><td>mp3（接受一点音质损失）</td></tr><tr><td>想无损存档</td><td>flac 或 alac（文件会大很多）</td></tr></tbody></table>
+<p>别被网上那种"转码到 320kbps 更清晰"的说法骗了，那是纯营销话术——原始格式的编码率才是真正的上限。关于容器格式的完整对比表，可以翻一下 YTDLnis 的<a href="https://ytdlnis.pages.dev/" target="_blank" rel="noopener">文档</a>。</p>
+<h3>2. 用 Cookie 解锁私密内容</h3>
+<p>默认情况下 YTDLnis 下载的是公开视频，但有些内容需要登录账号才能拿到：会员专属视频、年龄限制视频、订阅独家、YouTube Premium 的高码率格式（比如 256kbps AAC）。这时候就需要用 Cookie 登录。</p>
+<p>操作很简单：</p>
+<ol><li>「更多 → Cookies」，点「New Cookie」</li><li>输入网站域名，比如 <code>https://youtube.com</code></li><li>应用内置浏览器打开，正常登录你的账号（扫码或密码都行）</li><li>登录完成后点顶部的「OK」按钮</li><li><strong>最重要的一步</strong>：回到 Cookies 页面顶部，打开主开关「Use cookies」——不开的话 Cookies 白存了</li></ol>
+<p><img src="../images/ytdlnis/screenshot-07.png" alt="Cookies 管理界面" loading="lazy"></p>
+<p>之后下载这个网站的视频时，YTDLnis 就会带上你的登录凭证，能拿到匿名请求拿不到的内容。</p>
+<p>有个安全提醒：Cookie 等于你账号的控制权，<strong>不要把 Cookie 导出来发给任何人</strong>，也不要把包含 Cookie 的备份文件传公开网盘。推荐专门用一个副号来放 Cookie，主号留着日常用更安全。</p>
+<h3>3. 一键备份：换手机不丢配置</h3>
+<p>YTDLnis 的备份功能非常好用——它会把你的全部设置、Cookies、命令模板、订阅源配置、下载历史一次性打一个包。换手机时只要装好应用，把备份文件导进来，一切就和旧手机一模一样，不用重新配置任何东西。</p>
+<p>操作路径：「更多 → 设置 → Backup → Backup」，选个保存位置就行。建议备份文件存到云盘里，这样随时能拿到最新的。</p>
+<p>唯一要注意的是：<strong>包含 Cookie 的备份永远不要分享</strong>——不管是发给朋友还是传到公开网盘。如果你想分享一套好用的命令模板又不想暴露自己的 Cookie，可以恢复备份后手动删掉 Cookies，或者直接编辑备份文件的 JSON 把 Cookies 数组删掉再分享。</p>
+<h2>小白的三个常见疑问</h2>
+<h3>Q1：下出来的 mp3 音质为什么不如源视频？</h3>
+<p>这是因为 YouTube 原生就没有 mp3 格式。你选 mp3 容器时，YTDLnis 是从原始的 m4a 或 opus 转码过来的——转码只会降低或保持音质，不可能提升。想要音质最好就别选 Container，让它保持原始格式。</p>
+<h3>Q2：Cookie 安全吗？我的账号会被封吗？</h3>
+<p>YTDLnis 用的是你自己账号的 Cookie 来请求下载，这相当于告诉源站"我是这个账号，我有权限"。正常下载公开内容一般没问题，但如果批量下载大量 Premium 会员视频或用脚本自动化高频请求，确实有被风控标记的可能。保险起见用副号，而且不要用自动化脚本高频跑。</p>
+<h3>Q3：Packages 是什么？为什么我装完 Python 和 FFmpeg 还剩好多组件？</h3>
+<p>Packages 是 YTDLnis 的运行时依赖组件。Python 和 FFmpeg 是必装的，其他（Node.js、aria2 等）按需装就行。一般用户只会在这两种情况需要额外组件：某个站点报"需要 JS 运行时"时装一个 Node.js 或 Deno；想加速下载时装 aria2。不用全装，装多了反而浪费存储空间。</p>
+<hr>
+<p>到这里你应该能独立完成日常的下载需求了。接下来如果想让下载更自动化，建议去试试 Observe Sources 功能——订阅一个频道或播放列表，它能定时检查有没有新视频、自动下载，连点都不用点。</p>
+<p>这套工具的开发和整理资料在三个仓库都能拿到：<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/YTDLnis" target="_blank" rel="noopener">GitHub 主仓</a>同步了完整的文档和备份方案，国内访问慢的话可以去 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/YTDLnis" target="_blank" rel="noopener">Gitee 镜像</a>拉一份，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/YTDLnis" target="_blank" rel="noopener">GitCode</a>上也有方便社区协作的分支。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/epik-docs.html">epik 六年迭代：一款修图 App 如何在「一键美型」和「精细控制」之间反复横跳</a></h2>
+  <p class="card-desc">从早期一键式美颜工具到如今同时拥有专业调色面板和 AI 毕业照服务，epik 的版本迭代史藏着一个修图产品最真实的两难。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wikihow-docs.html">凌晨十一点，我靠一个小应用打出了人生第一条领带</a></h2>
+  <p class="card-desc">面试前一夜对着领带慌了神，室友睡了爸妈远在千里，Google 搜出来的全是广告。偶然想起下载过的 wikiHow，跟着图文步骤一步步来，十分钟搞定。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/rewasd.html">reWASD 上手一周：手柄调瞄准手感这件事，终于不用靠玄学了</a></h2>
+  <p class="card-desc">一个被 FPS 瞄准漂移折磨了半年的人，用 reWASD 把摇杆曲线掰了半小时后，第一次觉得&#34;瞄准手感&#34;这玩意儿是能被精确描述和调整的。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/snaptube-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了一周 Snaptube，说说它到底值不值得留在手机里</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/jshook.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">我用了半年 JsHook，从&#34;Frida 替代品&#34;到&#34;AI 时代的 Hook 工作流&#34;</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

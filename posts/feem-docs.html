@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链 · 老杨技术栈</title>
+  
+<meta name="description" content="每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/feem-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链">
+<meta property="og:description" content="每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/feem-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/feem-docs/01_534x927.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/feem-docs/01_534x927.jpg">
+
+<meta name="twitter:title" content="每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链">
+<meta name="twitter:description" content="每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6bcf\u5468\u4ece\u516c\u53f8\u7535\u8111\u642c\u8bbe\u8ba1\u7a3f\u56de\u5bb6\u7ee7\u7eed\u6539\u3001\u7ed9\u540c\u4e8b\u4f20\u4e34\u65f6\u6587\u4ef6\uff0c\u4ee5\u524d\u8981\u5fae\u4fe1+U\u76d8+\u4e91\u76d8\u8f6e\u7740\u7528\u3002\u88c5\u4e0a Feem \u540e\u642d\u4e86\u4e00\u6761\u7eaf\u672c\u5730\u7684\u70b9\u5bf9\u70b9\u4f20\u8f93\u94fe\uff0c\u8fde\u5207\u6362App\u90fd\u7701\u4e86\u3002", "headline": "\u6bcf\u5468\u8de8\u8bbe\u5907\u642c\u6587\u4ef6\uff0c\u6211\u7528 Feem \u642d\u4e86\u4e00\u6761\u4e0d\u4f9d\u8d56\u4e91\u76d8\u7684\u672c\u5730\u4f20\u8f93\u94fe", "image": ["https://alipymanbu.github.io/images/feem-docs/01_534x927.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/feem-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/feem-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6bcf\u5468\u8de8\u8bbe\u5907\u642c\u6587\u4ef6\uff0c\u6211\u7528 Feem \u642d\u4e86\u4e00\u6761\u4e0d\u4f9d\u8d56\u4e91\u76d8\u7684\u672c\u5730\u4f20\u8f93\u94fe", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+  </header>
+  <div class="prose">
+<h2>我每周都要做一件麻烦事</h2>
+<p>我是做设计的，每周至少有三次要把公司电脑上刚做好的图稿、视频素材打包带回家继续改。还有同事之间临时传个方案文档、压缩包这种小事，每天都在发生。</p>
+<p>以前的流程说出来都是泪：微信传超过 100MB 就卡住，钉钉稍大一点的文件要等半天还容易被限流；U盘倒是稳，但我经常忘带；开云盘分享链接的话，还要先生成链接、发对方、对方再打开下载——来回好几个步骤。一个简单的"把这 2GB 图稿带回家"，以前要折腾十五分钟。</p>
+<p>后来我从<a href="https://feem.ggcd.online/download.html" target="_blank" rel="noopener">下载</a>装上 Feem，把它插进了这条链里。现在下班前在公司电脑上点几下，手机震一下就收到了；到家后手机发笔记本，整个过程不打开任何云盘、不生成任何分享链接、不用插U盘。</p>
+<h2>旧流程为什么卡</h2>
+<p>先把旧流程拆解一下，你会发现它卡的地方不是单一一个工具不行，而是整条链的每一环都有各自的短板：</p>
+<ul><li>微信和钉钉的文件传输本质上还是走云端中转，大文件要先上传到服务器再下发，速度取决于两边网络，高峰期经常卡</li><li>U盘是唯一不依赖网络的方案，但物理介质就是容易丢、容易忘、容量还有上限</li><li>云盘分享的好处是稳定，但"生成链接 → 复制 → 发出去 → 对方打开 → 等下载"这五步，每一步都有手动操作，而且分享链接还有过期、密码、权限这些额外设置</li></ul>
+<p>核心问题就一个：这条链上<strong>没有一个环节是真正点对点的</strong>。所有方案都是"你 → 服务器 → 他"，中间多一跳就多一层延迟和不确定性。</p>
+<h2>新流程：Feem 插进了哪一环</h2>
+<p>Feem 的<a href="https://feem.ggcd.online" target="_blank" rel="noopener">官网</a>定位很简单——<strong>局域网内的设备之间点对点传文件，不经过任何服务器</strong>。我把它插进了旧流程里原本最耗时的那一段：两台设备之间的文件搬运。</p>
+<p>新的工作流是这样的：</p>
+<p><strong>场景一：公司电脑 → 我的手机 → 家</strong></p>
+<ol><li>下班前，公司电脑和我的手机连同一个公司 Wi-Fi</li><li>电脑上打开 Feem，手机上也打开 Feem，两边自动发现彼此（UDP 45001 端口广播）</li><li>电脑端把要带走的文件拖进 Feem 的会话窗口，点发送</li><li>手机 Feem 收到，进度条走完就自动存好了</li><li>到家后，手机和笔记本连同一个 Wi-Fi，重复一遍——手机 Feem 发给笔记本 Feem</li></ol>
+<p>整个过程中 Feem 的聊天界面里每一条文件都是一个气泡，发完自动打勾，48 小时后自动清掉，不用我手动整理。</p>
+<p><strong>场景二：公司电脑 → 同事电脑（临时文件）</strong></p>
+<p>这个场景更简单——两台电脑在同一个办公区，连同一个 Wi-Fi，Feem 直接点对点传。以前我要发云盘链接的 500MB 压缩包，现在拖一下就完了。</p>
+<h2>实操里最容易断链的两个环节</h2>
+<p>上面的流程听起来很顺，但实际跑了两周，我发现有两个地方如果不提前处理，整条链就会卡住。这两个坑是样本里的文档帮我踩过的。</p>
+<h3>坑一：传输切 App 被系统杀掉</h3>
+<p>这是移动端最头疼的。安卓的 MIUI、EMUI、ColorOS 这些 ROM，后台 App 留几秒就可能直接杀掉进程。我有次在手机上用 Feem 收一个 4GB 的视频，中间切去微信回了条消息，回来就发现 Feem 的传输停了，而且因为进程被杀，断点信息也丢了——只能从头传。</p>
+<p>解决办法是系统级的，在安卓设置里把 Feem 设为无限制后台：进入手机的"电池与性能"设置，把 Feem 加入白名单，允许它在后台运行时不受系统优化限制。iOS 类似，在"设置 → Feem"里打开"后台 App 刷新"。设好之后 Feem 在后台传输就不会被系统杀了。</p>
+<p>如果还是怕，传输期间就别切 App——或者干脆用 Feem 自带的聊天功能说一声，不用切到微信。Feem 的聊天和传输在同一个界面，发完文件直接在聊天框里敲一句"图稿发你了"就行。</p>
+<p><img src="../images/feem-docs/01_534x927.jpg" alt="Feem 聊天界面的文件气泡和消息混排" loading="lazy"></p>
+<h3>坑二：公司路由器隔离搜不到设备</h3>
+<p>有几次我和同事在同一个办公区、连同一个 Wi-Fi，但 Feem 互相搜不到。查了<a href="https://feem-docs.pages.dev/" target="_blank" rel="noopener">Feem文档</a>才知道，有些企业级路由器开了"AP 隔离"或者"客户端隔离"——这个功能会让同一 Wi-Fi 下的设备互相看不到，是公司出于安全考虑开的。</p>
+<p>这种时候就要用 Feem 的 Wi-Fi Direct 直连模式。操作很简单：在手机 Feem 的设置里点一下 Wi-Fi Direct 开关，Feem 会自动创建一个临时热点（比如 "Feem-Happy-Turtle-1234"），然后在电脑的 Wi-Fi 设置里手动连接这个热点。连上之后，两台设备就在这个临时网络里，Feem 就能正常发现彼此了。</p>
+<p>Wi-Fi Direct 还有一个额外好处——速度比走路由器快一倍左右。文档里给的实测数据是：4GB 视频，走 Wi-Fi 5 路由器要 45 秒，用 Wi-Fi Direct 直连只要 20 秒。原理也很直白：走路由器是 Device A → Router → Device B，带宽被劈成两半；直连就是 A 直接到 B，没中间转发。</p>
+<p>还有一个容易忽略的点：用 Feem 之前必须关掉所有设备上的 VPN。不管是系统代理还是 Clash、V2Ray 这种工具，VPN 会把 Feem 的 UDP 广播包导到 VPN 隧道里去，导致设备发现彻底失效。</p>
+<p><img src="../images/feem-docs/04_534x927.jpg" alt="Wi-Fi Direct 直连绕过路由器的网络拓扑" loading="lazy"></p>
+<h2>效果和边界</h2>
+<p>跑了一个月，这套流程省了我两件事：<strong>少了U盘往返</strong>（再也没忘带过），<strong>少了云盘链接的五步手动操作</strong>。以前 15 分钟能搞定的事，现在打开 Feem 拖文件，进度条走完就完了——从手动步骤来说，从 7 步降到了 2 步。</p>
+<p>但这套流程也有边界，不是万能的：</p>
+<p>Feem 只能在<strong>同一个局域网</strong>内用，不能跨互联网传文件。如果我在公司要把文件发给家里的人，那还是得用云盘。还有公网环境——酒店、星巴克这些地方的 Wi-Fi 几乎都开了客户端隔离，这时候 Wi-Fi Direct 是唯一的出路，但要记得传完关掉，不然热点一直开着费电还可能被陌生人蹭。</p>
+<p>另外 Feem 的传输端口是固定的 TCP 45001 和 UDP 45001。如果 Windows Defender 或者第三方安全软件拦截了这两个端口，Feem 就会出现搜不到设备或者传一半断的情况。安装后第一次启动时如果 Windows 弹了防火墙提示，那个"允许"按钮一定要点。没点的话手动去防火墙高级设置里，把这两个端口的入站和出站规则都加上。</p>
+<h2>资料说明</h2>
+<p>这套 Feem 的配置要点和常见故障排查，我整理后同步到了三个仓库里——<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Feem" target="_blank" rel="noopener">GitHub</a>上有完整的官方版资料，<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Feem" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Feem" target="_blank" rel="noopener">GitCode</a>也各自备份了一份，方便国内网络环境下随时查阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/travelboast-docs.html">TravelBoast 是什么？快问快答把这款旅行路线动画 App 讲透</a></h2>
+  <p class="card-desc">整理了一组关于 TravelBoast 的快问快答——从它能做什么、怎么把自己的旅行轨迹变成 3D 地球仪视频，到导出卡顿、导入失败的排查技巧，一篇看完没盲区。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/pydroid3.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">安卓手机上零成本跑 Python——Pydroid 3 从安装到动手写代码</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/musicfree-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">播放器和音源解耦——MusicFree 为什么能在版权灰区活得这么久</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

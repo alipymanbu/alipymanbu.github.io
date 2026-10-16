@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>HoYoLAB 版本进化史：从签到工具到角色陪伴，他们用了三年 · 老杨技术栈</title>
+  
+<meta name="description" content="3.1.0 版把角色语音闹钟和主题皮肤同时塞进更新日志时，这个 app 的定位已经悄悄变了——我翻了翻版本号，发现这条进化线藏着很清晰的团队优先级。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hoyolab.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HoYoLAB 版本进化史：从签到工具到角色陪伴，他们用了三年">
+<meta property="og:description" content="3.1.0 版把角色语音闹钟和主题皮肤同时塞进更新日志时，这个 app 的定位已经悄悄变了——我翻了翻版本号，发现这条进化线藏着很清晰的团队优先级。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hoyolab.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hoyolab/daily-checkin.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hoyolab/daily-checkin.jpg">
+
+<meta name="twitter:title" content="HoYoLAB 版本进化史：从签到工具到角色陪伴，他们用了三年">
+<meta name="twitter:description" content="3.1.0 版把角色语音闹钟和主题皮肤同时塞进更新日志时，这个 app 的定位已经悄悄变了——我翻了翻版本号，发现这条进化线藏着很清晰的团队优先级。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "3.1.0 \u7248\u628a\u89d2\u8272\u8bed\u97f3\u95f9\u949f\u548c\u4e3b\u9898\u76ae\u80a4\u540c\u65f6\u585e\u8fdb\u66f4\u65b0\u65e5\u5fd7\u65f6\uff0c\u8fd9\u4e2a app \u7684\u5b9a\u4f4d\u5df2\u7ecf\u6084\u6084\u53d8\u4e86\u2014\u2014\u6211\u7ffb\u4e86\u7ffb\u7248\u672c\u53f7\uff0c\u53d1\u73b0\u8fd9\u6761\u8fdb\u5316\u7ebf\u85cf\u7740\u5f88\u6e05\u6670\u7684\u56e2\u961f\u4f18\u5148\u7ea7\u3002", "headline": "HoYoLAB \u7248\u672c\u8fdb\u5316\u53f2\uff1a\u4ece\u7b7e\u5230\u5de5\u5177\u5230\u89d2\u8272\u966a\u4f34\uff0c\u4ed6\u4eec\u7528\u4e86\u4e09\u5e74", "image": ["https://alipymanbu.github.io/images/hoyolab/daily-checkin.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hoyolab.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hoyolab.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "HoYoLAB \u7248\u672c\u8fdb\u5316\u53f2\uff1a\u4ece\u7b7e\u5230\u5de5\u5177\u5230\u89d2\u8272\u966a\u4f34\uff0c\u4ed6\u4eec\u7528\u4e86\u4e09\u5e74", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">HoYoLAB 版本进化史：从签到工具到角色陪伴，他们用了三年</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">HoYoLAB 版本进化史：从签到工具到角色陪伴，他们用了三年</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">3.1.0 版把角色语音闹钟和主题皮肤同时塞进更新日志时，这个 app 的定位已经悄悄变了——我翻了翻版本号，发现这条进化线藏着很清晰的团队优先级。</p>
+  </header>
+  <div class="prose">
+<p>我最近一次更新 HoYoLAB 是看到应用商店里推送了 3.1.0 的弹窗，不想等商店审核的也可以直接从<a href="https://hoyolab.laze.skin/download.html" target="_blank" rel="noopener">下载</a>拿到安装包。点开日志第一眼就是「角色语音闹钟来啦！自定义你的角色语音铃声」，后面跟着角色装扮、社区频道优化两三条。说实话我当时愣了一下——一个我用来每天点一下签到领原石的工具，什么时候开始管我早上怎么起床了？</p>
+<p>这种反差感不是第一次出现。把 3.1.0 当作一个节点往回看，能清楚看到 HoYoLAB 在悄悄换一副面孔。早期版本的更新日志里塞满了「修复签到延迟」「优化绑定流程」这类工具向的措辞，到 3.1.0 直接蹦出两个"角色陪伴"功能——闹钟管清晨、皮肤管界面，放在同一次更新里不是巧合。</p>
+<h2>起步：签到 + 社区，两件基本事</h2>
+<p>HoYoLAB 最早的定位其实就是<a href="https://hoyolab.laze.skin" target="_blank" rel="noopener">官网</a>社区的签到工具。原神上线后玩家有了签到需求，官方做了一个 app 承接这件事——每天点一下，奖励进游戏邮箱，就这么简单。那个阶段的功能全围着"能不能顺畅签到"转：UTC+8 时区重置提示、断签补签机制、多角色切换签到路径，这些在现在看来理所当然的规则，是早期版本一点点磨出来的。</p>
+<p><img src="../images/hoyolab/daily-checkin.jpg" alt="每日签到的月历界面" loading="lazy"></p>
+<p>社区功能是同步跟上的。早期只有帖子浏览和关注列表，像个简化版论坛。登录方式也在那几年从单一邮箱扩展到了 Google、Apple、Facebook——这背后是 HoYoverse 全球化发行的节奏，app 得适配不同地区玩家的账号习惯。我查登录方式那篇<a href="https://hoyolab.pages.dev/" target="_blank" rel="noopener">HoYoLAB文档</a>时看到"邮箱打底 + 关联第三方登录"的建议，这其实就是早期版本踩过的坑：游客态数据迁移麻烦、只用第三方登录找回困难，才慢慢沉淀出这个组合。</p>
+<p>那个阶段没有跨游戏整合的概念。原神玩家用它签原神，后来星穹铁道上线，app 里才多了一个星铁的签到入口——本质是在同一个壳里塞了多个独立的签到模块，社区也是各游戏各一块。</p>
+<h2>转折点：跨游戏整合与工具膨胀</h2>
+<p>真正的转折发生在星穹铁道上线之后。HoYoLAB 开始往"多游戏玩家的统一入口"方向靠拢：一个账号绑定多个 UID，切换角色时签到数据跟着变，社区频道也按游戏自动分流。同时工具区开始膨胀——地图标记、活动日历、成就追踪，这些从玩家社区里自发诞生的需求，官方一个一个收编进了 app。</p>
+<p><img src="../images/hoyolab/character-channel.jpg" alt="角色频道里的装扮入口" loading="lazy"></p>
+<p>这一步花了好几个版本。样本文档里没有具体的版本号时间线，但从功能的复杂度能看出来：签到规则在 2.x 版本基本定型（月历式、断签补、新玩家加成），登录方式也稳定在那四种——这两个基础模块之后几乎没再动过大手术。团队的精力明显转移了，往哪个方向转移？往"让玩家更愿意打开 app"。</p>
+<p>这个优先级在迭代节奏里藏不住：社区 feed 从单纯的帖子列表改成了算法推荐流，活动中心从日历式改成了卡片式聚合页，角色频道（character channel）作为新模块上线——玩家可以关注特定角色，收到该角色相关的活动、卡池、语音更新通知。这些功能都不是"必须有"的，但都在增加玩家每天打开 HoYoLAB 的理由。</p>
+<h2>3.1.0 及以后：陪伴感的集中输出</h2>
+<p>然后就是 3.1.0。语音闹钟和角色装扮同时发布，官方用了一个"角色陪伴"的词把两个功能打包。这个措辞本身就值得玩味——不是"新增功能 X 和 Y"，而是给一组功能起了一个情感化的名字。</p>
+<p>语音闹钟是社区玩家眼馋已久的功能。之前大家靠第三方闹钟 app + 自己提取的角色语音文件拼着用，官方直接把能力内置了：选角色、选语音条目、设时间，响铃走系统闹钟通道不被媒体静音影响。角色装扮则是社区玩法的延伸——把角色立绘套在 app 界面的皮肤框架上，等于把"喜欢某个角色"这件事从游戏内的抽卡延伸到了工具 app 的 UI 层。</p>
+<p>这两个功能放在同一次更新里不是巧合。它们在做同一件事：把 app 从"完成任务的入口"变成"承载情感的载体"。签到是任务，但用本命角色的语音叫你起床，早上打开 app 看到她的立绘在界面上——这两件事叠加起来，app 的打开频率和使用时长就不是靠"有没有新活动在日历上"来驱动了。</p>
+<h2>从版本号里看团队优先级</h2>
+<p>如果把 HoYoLAB 的迭代时间线串起来，能读出很清晰的团队优先级：</p>
+<p><strong>死磕的：角色情感连接和跨游戏整合</strong>。从角色频道到角色装扮再到语音闹钟，功能是一步步往"玩家和角色的关系"上靠的，而且每次上线新游戏都会同步往 app 里加对应的签到、社区、工具模块——绝区零上线后，签到页、角色频道、活动中心都第一时间多了 ZZZ 的入口。</p>
+<p><strong>一直在做但没大变化的：基础工具的打磨</strong>。签到规则从 1.x 到现在没动过骨架，登录方式也稳定了，客服体系的入口和表单结构基本没变——这些功能够用就行，不追求完美。</p>
+<p><strong>很少碰的：社区创作生态</strong>。官方帖子推荐流有过调整，但创作者激励、内容编辑工具、社区活动玩法这类"让社区自己跑起来"的投入，在版本日志里几乎看不到。</p>
+<h2>下一步会怎么走？</h2>
+<p>照这条迭代规律推，我觉得 HoYoLAB 接下来大概率会沿着两个方向继续走：</p>
+<p>一个是<strong>陪伴感的深化</strong>。语音闹钟和角色装扮是第一波，角色互动功能（比如定时推送角色语音、模拟对话）、AR 合影、角色日程提醒这类更重情感连接的功能值得继续期待。另一个是<strong>工具的继续膨胀</strong>。跨游戏的数值计算器、抽卡记录分析、角色养成规划器——这些目前分散在第三方社区和工具站的需求，官方收编进来只是时间问题。</p>
+<p>当然这都是从版本号里推的，不当官方口径。但我自己的使用习惯确实变了：以前 HoYoLAB 每天开一次，签完到就关；现在早上闹钟响完我会顺手打开看看角色频道有没有新内容，偶尔在社区里刷两条。就这一个习惯变化，说它的产品定位悄悄变了，应该不算夸张。文中提到的版本时间线和功能对照，主要参考了 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/HoYoLAB" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/HoYoLAB" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/HoYoLAB" target="_blank" rel="noopener">GitCode</a> 上社区整理的资料，在此一并说明。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/deepthink-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">DeepThink 付费账本：这笔 AI 聚合的钱到底值不值</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/vikacgapp.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了半年才发现 V站藏着四个别人不说的彩蛋</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

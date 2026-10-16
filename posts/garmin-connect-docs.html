@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>夜跑扭脚那天，我才知道 Garmin Connect 不是个摆设 · 老杨技术栈</title>
+  
+<meta name="description" content="一个加班后的深夜，六公里处的意外让我重新审视手表同步和安全功能——省电模式忘关、事件检测差点白开，好在这篇文章之后不会再有第二个人踩同样的坑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/garmin-connect-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="夜跑扭脚那天，我才知道 Garmin Connect 不是个摆设">
+<meta property="og:description" content="一个加班后的深夜，六公里处的意外让我重新审视手表同步和安全功能——省电模式忘关、事件检测差点白开，好在这篇文章之后不会再有第二个人踩同样的坑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/garmin-connect-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/garmin-connect-docs/sync.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/garmin-connect-docs/sync.jpg">
+
+<meta name="twitter:title" content="夜跑扭脚那天，我才知道 Garmin Connect 不是个摆设">
+<meta name="twitter:description" content="一个加班后的深夜，六公里处的意外让我重新审视手表同步和安全功能——省电模式忘关、事件检测差点白开，好在这篇文章之后不会再有第二个人踩同样的坑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u4e2a\u52a0\u73ed\u540e\u7684\u6df1\u591c\uff0c\u516d\u516c\u91cc\u5904\u7684\u610f\u5916\u8ba9\u6211\u91cd\u65b0\u5ba1\u89c6\u624b\u8868\u540c\u6b65\u548c\u5b89\u5168\u529f\u80fd\u2014\u2014\u7701\u7535\u6a21\u5f0f\u5fd8\u5173\u3001\u4e8b\u4ef6\u68c0\u6d4b\u5dee\u70b9\u767d\u5f00\uff0c\u597d\u5728\u8fd9\u7bc7\u6587\u7ae0\u4e4b\u540e\u4e0d\u4f1a\u518d\u6709\u7b2c\u4e8c\u4e2a\u4eba\u8e29\u540c\u6837\u7684\u5751\u3002", "headline": "\u591c\u8dd1\u626d\u811a\u90a3\u5929\uff0c\u6211\u624d\u77e5\u9053 Garmin Connect \u4e0d\u662f\u4e2a\u6446\u8bbe", "image": ["https://alipymanbu.github.io/images/garmin-connect-docs/sync.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/garmin-connect-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/garmin-connect-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "\u591c\u8dd1\u626d\u811a\u90a3\u5929\uff0c\u6211\u624d\u77e5\u9053 Garmin Connect \u4e0d\u662f\u4e2a\u6446\u8bbe", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">夜跑扭脚那天，我才知道 Garmin Connect 不是个摆设</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">夜跑扭脚那天，我才知道 Garmin Connect 不是个摆设</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一个加班后的深夜，六公里处的意外让我重新审视手表同步和安全功能——省电模式忘关、事件检测差点白开，好在这篇文章之后不会再有第二个人踩同样的坑。</p>
+  </header>
+  <div class="prose">
+<p>周五晚上九点半，公司的灯还亮着三盏。我把电脑一合，抓起挂在椅背上的速干衣就往楼下冲——这是这周最后一次能跑够十公里的机会了，周末要陪家人去扫墓，没时间。</p>
+<p>小区门口的风有点凉，但跑起来就暖了。前三公里配速稳稳卡在六分开外，第四公里开始飘了点，第五公里想加速冲一下，结果右脚外侧一软——我整个人斜着甩出去，膝盖蹭着沥青地，右脚踝像被锤子敲了一下。</p>
+<p>疼。真疼。坐在马路牙子上，我第一件事不是摸脚，是低头看手腕上那块 Forerunner：屏幕亮着，显示「活动暂停」，右上角的事件检测图标还在闪绿。好，开着的。但等等——它有没有同步上我的手机？</p>
+<p>我掏出手机，点开 Garmin Connect。首页右上角，没有绿点。</p>
+<p>没有绿点意味着手表和 App 没连上。事件检测虽然在设备端触发了自动报警，但如果蓝牙没通、手机没网络，那条带 LiveTrack 链接和 GPS 位置的求救短信根本发不出去。我刚才摔那一下，白摔了都不知道有没有人能收到信号。</p>
+<p>这不是我第一次用这款应用了，但确实是第一次遇到「关键时刻掉链子」。以前都是睡前看一眼数据，步数够不够、睡眠分数高不高，从来没想过它在紧急时刻能起多大作用——前提是它得正常工作。</p>
+<h2>它是什么</h2>
+<p><a href="https://garmin-connect.wxhp.skin" target="_blank" rel="noopener">Garmin Connect官网</a> 不是一个简单的运动数据记录 App。佳明做硬件起家，手表卖得贵，但背后这套软件生态才是它真正的护城河——一个账号管好几块表、训练计划自动生成、睡眠分数和身体电量联动、安全追踪全程托管，所有硬件的数据最终都汇聚到这一个地方。国内用的是中文版，海外还有 Connect+ 订阅加 AI 洞察和营养记录。</p>
+<p>但说归说，没遇到事之前我对它的认知就是「看数据报表」。直到那晚。</p>
+<h2>怎么装怎么用</h2>
+<p>安装没什么难的，应用商店搜一下就行，或者从<a href="https://garmin-connect.wxhp.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿安装包。注册的时候选中文，佳明账号可以同时管理跑步表、日常手环、骑行码表甚至智能体脂秤——我后来才知道这一点，之前以为每换一块表就得换个账号。</p>
+<p>配对手表才是第一个坎。我第一次带新表回家的时候，傻傻地先在手机蓝牙设置里手动点了「配对」，结果 Garmin Connect 里死活搜不到设备，卡了半个小时。后来才搞明白：<strong>配对流程必须全程在 App 内完成</strong>，App 会弹出六位配对码，手表上同步显示，两边数字对上了才算成。先走系统蓝牙 = 给自己挖坑。</p>
+<p>那晚我蹲在马路牙子上想解决同步问题的时候，脑子里跳出来的就是这一幕。先检查了手机蓝牙，开着的；手机网络也没问题，4G 信号满格。那手表呢？我看了一眼手表屏幕——左上角有个小电池图标旁边画了个叶子，省电模式。</p>
+<p>对了。上周日我跑了一个长距离，开了省电模式延长续航，跑完忘了关。省电模式会关闭蓝牙和其他无线连接，手表在这个模式下就是一块纯粹的计时器，什么同步、通知、事件检测全都歇菜。</p>
+<p><strong>排查清单的第一步其实是确认基础状态：蓝牙两端都开了吗？手机有网吗？手表有没有在省电或隐蔽模式？</strong> 官方说大量蓝牙问题到这一步就解决了，我信。我那晚的问题就是这一条。</p>
+<p>关掉省电模式，手表自动搜了一圈蓝牙，手机上 App 的绿点弹出来了，事件检测的那堆待发送数据开始传输。大概过了两分钟，我收到了自己的 LiveTrack 短信——哦，原来它在省电模式下连不上手机，根本没发出去。如果我那天没检查就直接回家了，这条短信永远也不会出现在任何紧急联系人的手机上。</p>
+<p><img src="../images/garmin-connect-docs/sync.jpg" alt="绿点与同步动画是排查的起点" loading="lazy"></p>
+<h2>深入点才发现的坑</h2>
+<p>那晚之后我开始认真研究这个应用，翻了好多 <a href="https://garmin-connect-docs.pages.dev/" target="_blank" rel="noopener">Garmin Connect文档</a> 内容，发现几个之前完全没注意到的细节：</p>
+<p><strong>第一，事件检测和紧急联系人的触发有条件。</strong> 不是打开开关就完事了。事件检测只在特定户外活动类型下生效，还得设备连着手机、手机有网络。紧急联系人最多能设三位，他们会收到通知，可接受可拒绝——我之前以为加了就是加了，没去确认朋友有没有点「接受」。</p>
+<p><strong>第二，换手机数据不会丢。</strong> 我之前最担心的就是这个——换手机得重新配对，旧数据怎么办？其实数据全在佳明账号里，新手机登同一个账号、重新配对就行，手表里的历史活动同步一下就回来了。</p>
+<p><strong>第三，身体电量低不一定是手表坏了。</strong> 我有一段时间身体电量一直 20% 以下，以为是传感器出了问题，翻了相关内容才发现：睡眠欠账 + 压力积累是主因。HRV 状态也会跟着亮红，这是在告诉你该休息了，不是手表要返厂。</p>
+<p><strong>第四，多设备共存的数据归属要搞清楚。</strong> 我同时带 Forerunner 跑步和 vivoactive 上班，训练状态这种高级指标会以我指定的「主训练设备」为基准。不设的话默认是最后配对的设备，可能不是你想要的那块。</p>
+<p><img src="../images/garmin-connect-docs/body-battery.jpg" alt="身体电量与压力水平联动" loading="lazy"></p>
+<h2>那晚之后的小习惯</h2>
+<p>现在每次出门跑步前，我会多花十秒钟检查三件事：<strong>手表有没有从省电模式切回来、绿点亮不亮、事件检测和 LiveTrack 是不是都开着</strong>。紧急联系人那三位，我都发过微信确认过他们点了「接受」。</p>
+<p>佳明官方说得对，安全功能是辅助手段，不是急救电话的替代品。但那晚如果我摔得更重一点、意识模糊一点，手机掏不出来，事件检测自动触发的那条短信就是我能发出的唯一信号。它能不能发出去，全取决于我有没有在出发前把那些开关掰对位置。</p>
+<p>这些都是我后来翻到的细节——配对的正确姿势、同步排障的顺序、安全功能的触发条件——之前我总觉得这些内容太长不想看，现在才知道，关键时刻能救命的东西，平时多花五分钟搞清楚不吃亏。</p>
+<p>资料我在 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Garmin%20Connect" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Garmin%20Connect" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/Garmin%20Connect" target="_blank" rel="noopener">GitCode</a> 三个仓库都同步了一份，国内访问哪个快用哪个，搜索「手机版」目录下就能找到。愿每一个夜跑的人出门前都花十秒钟检查手表状态。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/gradient-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">周末聚会拍了 47 张，我用 Gradient 十分钟搞定朋友圈</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/guitarpro.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">GuitarPro 快问快答：8 个问题把这款打谱软件说透</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

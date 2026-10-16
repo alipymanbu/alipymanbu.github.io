@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我用了半年 JsHook，从&#34;Frida 替代品&#34;到&#34;AI 时代的 Hook 工作流&#34; · 老杨技术栈</title>
+  
+<meta name="description" content="从把它当 Frida 的移动端包装壳开始，到发现它自带 MCP 服务能让 VS Code Copilot 直接操作手机——这半年的体验变化，比我预想的要大得多。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/jshook.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我用了半年 JsHook，从&#34;Frida 替代品&#34;到&#34;AI 时代的 Hook 工作流&#34;">
+<meta property="og:description" content="从把它当 Frida 的移动端包装壳开始，到发现它自带 MCP 服务能让 VS Code Copilot 直接操作手机——这半年的体验变化，比我预想的要大得多。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/jshook.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/jshook/screenshot-framework.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/jshook/screenshot-framework.png">
+
+<meta name="twitter:title" content="我用了半年 JsHook，从&#34;Frida 替代品&#34;到&#34;AI 时代的 Hook 工作流&#34;">
+<meta name="twitter:description" content="从把它当 Frida 的移动端包装壳开始，到发现它自带 MCP 服务能让 VS Code Copilot 直接操作手机——这半年的体验变化，比我预想的要大得多。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u628a\u5b83\u5f53 Frida \u7684\u79fb\u52a8\u7aef\u5305\u88c5\u58f3\u5f00\u59cb\uff0c\u5230\u53d1\u73b0\u5b83\u81ea\u5e26 MCP \u670d\u52a1\u80fd\u8ba9 VS Code Copilot \u76f4\u63a5\u64cd\u4f5c\u624b\u673a\u2014\u2014\u8fd9\u534a\u5e74\u7684\u4f53\u9a8c\u53d8\u5316\uff0c\u6bd4\u6211\u9884\u60f3\u7684\u8981\u5927\u5f97\u591a\u3002", "headline": "\u6211\u7528\u4e86\u534a\u5e74 JsHook\uff0c\u4ece\"Frida \u66ff\u4ee3\u54c1\"\u5230\"AI \u65f6\u4ee3\u7684 Hook \u5de5\u4f5c\u6d41\"", "image": ["https://alipymanbu.github.io/images/jshook/screenshot-framework.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/jshook.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/jshook.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6211\u7528\u4e86\u534a\u5e74 JsHook\uff0c\u4ece\"Frida \u66ff\u4ee3\u54c1\"\u5230\"AI \u65f6\u4ee3\u7684 Hook \u5de5\u4f5c\u6d41\"", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">我用了半年 JsHook，从&#34;Frida 替代品&#34;到&#34;AI 时代的 Hook 工作流&#34;</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我用了半年 JsHook，从&#34;Frida 替代品&#34;到&#34;AI 时代的 Hook 工作流&#34;</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从把它当 Frida 的移动端包装壳开始，到发现它自带 MCP 服务能让 VS Code Copilot 直接操作手机——这半年的体验变化，比我预想的要大得多。</p>
+  </header>
+  <div class="prose">
+<h2>装它的理由，以及那个被证伪的初衷</h2>
+<p>半年前从<a href="https://jshook.xnyx.quest/download.html" target="_blank" rel="noopener">官方下载</a>装 JsHook，说穿了就是一个需求：手机上的 Frida Server 太折腾。Root 后的 Android 设备要跑 Frida，先得上 magisk 模块，然后每次重启要手动 push server 二进制、开端口、确认 frida-tools 连得上——这一套下来，半小时就没了。我以为 JsHook 就是把这套流程打包成一个 APK，省掉那些手动步骤——后来才发现它的<a href="https://jshook.xnyx.quest" target="_blank" rel="noopener">官网</a>上远不止这些。</p>
+<p>现在回头看，这个理解错得很彻底。</p>
+<h2>越用越顺手的：从"手动写脚本"到"AI 帮你写"</h2>
+<p>让我真正停下来重新审视它的，是某个深夜调一个电商 App 的登录 Hook。目标是找到 token 生成的位置，手动枚举类、搜字符串、定位方法，这套流程我已经熟到机械了——但那天我开了 MCP 服务，让 VS Code Copilot 直接连手机。</p>
+<p>Copilot 问我想 Hook 什么，我说"找 com.shop.app 里处理登录请求的方法，生成 Hook 代码"。然后它自己调用了 JsHook 的 MCP 工具，枚举加载的类，搜关键词，定位到 <code>LoginManager.a(String, int)</code>，然后生成了完整的 Frida 脚本，写进了工作区。我推到手机，重启目标应用，logcat 里直接打印出了登录请求的所有参数。</p>
+<p><img src="../images/jshook/screenshot-framework.png" alt="Copilot 联动" loading="lazy"></p>
+<p>那瞬间的感觉，怎么说呢——像是用惯了命令行的人第一次点到了图形界面。不是说手动写脚本不行，而是当你每天要调三五个 App，每个都要先定位类再写 Hook，那个时间成本是实打实的。</p>
+<p>MCP 服务默认端口 28050，手机和电脑在同一 Wi-Fi 就能连。详细的配置步骤和可用工具清单，去<a href="https://jshook.pages.dev/" target="_blank" rel="noopener">jshook文档</a>翻一下就清楚了。我现在的工作流基本是：开 JsHook → 开 MCP → VS Code 里让 Copilot 搜类、写脚本 → 推手机测试。手动写 Frida 代码的场景反而少了——主要是一些复杂的内核模式 Hook，AI 生成的代码需要改，但那也只是后半段的事了。</p>
+<h2>越用越烦的：两个没解决的老问题</h2>
+<p>说好的，也得说不好的。</p>
+<p>第一个是脚本仓库的网络问题。JsHook 内置了脚本仓库订阅功能，本质上是一个 JSON 文件列表，支持官方仓库也支持自建仓库。但大陆直连 GitHub 经常超时，仓库列表加载不出来是家常便饭。开 VPN 能解决，但每次开 VPN 就为了刷一下脚本列表，总觉得哪里不对。而且就算订阅成功了，脚本下载也会因为 <code>url</code> 字段指向的服务器不稳定而失败——这事儿没什么技术含量，就是网络环境的问题，但它占了我不少排查时间。</p>
+<p><img src="../images/jshook/store-01.png" alt="脚本仓库" loading="lazy"></p>
+<p>第二个是增强渲染的兼容性。JsHook 的 modmenu 悬浮窗底层走 ImGui，增强渲染开启后直接走 GPU 绘制，体验流畅且不能被系统录屏/截图捕获——这对我来说是刚需，因为很多目标 App 会检测截图行为。但虚拟机和部分机型上增强渲染不可用，JsHook 会自动回退到 Android 系统渲染，性能差一截而且能被录屏捕获。有一次在模拟器上调一个游戏，开了增强渲染检测，结果直接闪退，花了两个小时才定位到是渲染回退导致的检测绕过失败。</p>
+<h2>每天离不开的：modmenu 悬浮窗</h2>
+<p>modmenu 是 JsApi 里最常用的接口，用 ImGui 绘制悬浮窗，支持 switch、select、slider、button、input 等组件。我现在调任何一个 App，第一件事就是建一个 modmenu——不是为了做游戏辅助，而是为了实时观察 Hook 效果。</p>
+<p>比如 Hook 了金币变化，开一个 switch 控制开关，一个 slider 调倍率，onchange 回调里直接打 log。以前是改脚本 → 重启 App → 看 logcat，现在是直接拖滑块，实时看效果，调参效率至少翻了三倍。而且多标签页支持，把不同功能分 Tab 管理，一个复杂的 Hook 项目也能保持悬浮窗的整洁。</p>
+<p><img src="../images/jshook/screenshot-home.png" alt="Mod Menu " loading="lazy"></p>
+<p>说个反直觉的：我以为 modmenu 是给"做成品辅助"的人用的，自己写脚本调试阶段根本不需要。但实际用下来，它反而在调试阶段价值最大——当你不确定某个 Hook 逻辑对不对的时候，一个可交互的悬浮窗比反复重启 App 强太多了。</p>
+<h2>当初的判断，哪些被修正了</h2>
+<p>装它的时候我以为它就是"移动端 Frida 包装器"，三个月后我以为它的核心价值是"脚本仓库 + MCP 服务"，半年后的现在我觉得，它真正厉害的地方是<strong>把 Hook 这件事从"写代码"变成了"对话"</strong>。</p>
+<p>Frida 的门槛在于"你得先会写代码"，而 JsHook + MCP 把这个门槛降到了"你得会用自然语言描述你想干什么"。这不是说代码不重要，而是说代码不再是第一道坎——Copilot 帮你把骨架搭好，你只需要把精力放在逻辑和调试验证上。</p>
+<p>高估的地方？当初以为有了 MCP，Copilot 就能直接帮我把所有 Hook 都写好。实际用下来，AI 生成的代码"骨架对，但细节常常错"——类名对了但方法重载没指定对，<code>arguments</code> 转发漏掉了，Frida 不支持 <code>%s</code> 格式化但它还是写了。让 AI 当起草者，人做最终审核，这个定位才是对的。</p>
+<p>低估的地方？当初没把 modmenu 当回事。现在它是我每天开 JsHook 之后必做的第一件事。</p>
+<h2>去留结论</h2>
+<p>会不会卸载？不会。它在我的工具链里已经从"可选项"变成了"基础设施"——就像 Frida 本身一样，你不会因为它偶尔让你烦就把它卸掉，而是会想办法绕过那些烦人的地方。</p>
+<p>什么信号出现就该换了？如果有一天 MCP 服务不再更新，或者 Frida 本身把类似能力内置了。但目前看这两件事都没迹象——JsHook 最近几个版本一直在迭代 MCP 相关功能，Copilot 联动的体验也越来越顺滑。</p>
+<p>最后说一句：源码和说明文档在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/jshook" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/jshook" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/jshook" target="_blank" rel="noopener">GitCode</a> 三个仓库都有同步，国内访问建议直接走 Gitee 或 GitCode。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/lumeow.html">Lumeow 深度盘点：一款 AI 角色扮演应用的能力面完整铺开</a></h2>
+  <p class="card-desc">从多人剧情共创到隐私保护三件套，从对话历史管理到云端同步——Lumeow 到底能做什么？本文按能力域系统性梳理这款 AI 角色扮演应用的亮点、适用场景和局限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/appenjoy.html">APPenjoy 翻了个底朝天才敢说——这五个隐藏功能你肯定漏了仨</a></h2>
+  <p class="card-desc">以为 APPenjoy 就是个找应用下 APK 的工具？三重安全审核、隐藏影视入口、社区积分体系……我把它翻了一周，挖出五个官方没写在明面上的冷门玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pado-docs.html">Pado 情侣应用全能力盘点：定位、记录、仪式感三件套到底做得怎么样</a></h2>
+  <p class="card-desc">从实时位置到 365 打卡挑战，从安全区域到甜蜜相册，这篇盘点把 Pado 的核心功能域拆开逐一评测，帮你判断它值不值得装。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ytdlnis.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从零开始用 YTDLnis：五分钟装好，立刻能下</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/captivemgr.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">还在跟 WiFi 感叹号死磕？CaptiveMgr 快问快答</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Drastic 是什么？十个快问快答把这款 NDS 模拟器讲透 · 老杨技术栈</title>
+  
+<meta name="description" content="Drastic 是 Android 平台评价最高的 NDS 模拟器之一。这篇快问快答整理了新手最常问的十个问题：它能跑什么游戏、画质能调到什么程度、多线程渲染开不开、皮肤怎么换、特殊功能键怎么绑、大 ROM 加载失败怎么办、和 DraStic 原版有啥区别。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/drastic.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Drastic 是什么？十个快问快答把这款 NDS 模拟器讲透">
+<meta property="og:description" content="Drastic 是 Android 平台评价最高的 NDS 模拟器之一。这篇快问快答整理了新手最常问的十个问题：它能跑什么游戏、画质能调到什么程度、多线程渲染开不开、皮肤怎么换、特殊功能键怎么绑、大 ROM 加载失败怎么办、和 DraStic 原版有啥区别。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/drastic.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/drastic/game-menu.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/drastic/game-menu.jpg">
+
+<meta name="twitter:title" content="Drastic 是什么？十个快问快答把这款 NDS 模拟器讲透">
+<meta name="twitter:description" content="Drastic 是 Android 平台评价最高的 NDS 模拟器之一。这篇快问快答整理了新手最常问的十个问题：它能跑什么游戏、画质能调到什么程度、多线程渲染开不开、皮肤怎么换、特殊功能键怎么绑、大 ROM 加载失败怎么办、和 DraStic 原版有啥区别。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Drastic \u662f Android \u5e73\u53f0\u8bc4\u4ef7\u6700\u9ad8\u7684 NDS \u6a21\u62df\u5668\u4e4b\u4e00\u3002\u8fd9\u7bc7\u5feb\u95ee\u5feb\u7b54\u6574\u7406\u4e86\u65b0\u624b\u6700\u5e38\u95ee\u7684\u5341\u4e2a\u95ee\u9898\uff1a\u5b83\u80fd\u8dd1\u4ec0\u4e48\u6e38\u620f\u3001\u753b\u8d28\u80fd\u8c03\u5230\u4ec0\u4e48\u7a0b\u5ea6\u3001\u591a\u7ebf\u7a0b\u6e32\u67d3\u5f00\u4e0d\u5f00\u3001\u76ae\u80a4\u600e\u4e48\u6362\u3001\u7279\u6b8a\u529f\u80fd\u952e\u600e\u4e48\u7ed1\u3001\u5927 ROM \u52a0\u8f7d\u5931\u8d25\u600e\u4e48\u529e\u3001\u548c DraStic \u539f\u7248\u6709\u5565\u533a\u522b\u3002", "headline": "Drastic \u662f\u4ec0\u4e48\uff1f\u5341\u4e2a\u5feb\u95ee\u5feb\u7b54\u628a\u8fd9\u6b3e NDS \u6a21\u62df\u5668\u8bb2\u900f", "image": ["https://alipymanbu.github.io/images/drastic/game-menu.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/drastic.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/drastic.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "Drastic \u662f\u4ec0\u4e48\uff1f\u5341\u4e2a\u5feb\u95ee\u5feb\u7b54\u628a\u8fd9\u6b3e NDS \u6a21\u62df\u5668\u8bb2\u900f", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">Drastic 是什么？十个快问快答把这款 NDS 模拟器讲透</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Drastic 是什么？十个快问快答把这款 NDS 模拟器讲透</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Drastic 是 Android 平台评价最高的 NDS 模拟器之一。这篇快问快答整理了新手最常问的十个问题：它能跑什么游戏、画质能调到什么程度、多线程渲染开不开、皮肤怎么换、特殊功能键怎么绑、大 ROM 加载失败怎么办、和 DraStic 原版有啥区别。</p>
+  </header>
+  <div class="prose">
+<p>整理一篇关于 Drastic 的快问快答——作为 Android 上口碑最好的 NDS 模拟器，圈里几乎没人没听过它，但真上手的时候总有一堆零散的疑问。下面十个问题，覆盖从入门到进阶最常见的场景。</p>
+<h3>Drastic 到底是什么？</h3>
+<p>Drastic 是一款专门跑任天堂 NDS 游戏的模拟器，首发在 Android 平台。它的定位很明确：不搞多合一，就做 NDS，而且要做到最快最稳——圈里的介绍和版本追踪在<a href="https://drastic.gkhf.beer" target="_blank" rel="noopener">drastic官网</a>上也能看到。安卓模拟器圈里同时期冒出过不少竞争者，能活到现在还在持续更新的没几个，Drastic 是其中用户量最大的一个。</p>
+<p><img src="../images/drastic/game-menu.jpg" alt="NDS 游戏加载界面" loading="lazy"></p>
+<h3>它能跑哪些游戏？</h3>
+<p>几乎所有原版 NDS ROM 都能跑。NDS 生命周期 2004 到 2011 年，游戏库超过 3000 款——从《口袋妖怪 黑白》《塞尔达传说 幻影沙漏》到《马里奥赛车 DS》《任天狗》，Drastic 基本全覆盖。社区魔改的 hack ROM 和自制游戏（homebrew）也能跑一部分，前提是 ROM 文件本身没有问题，模拟器的<a href="https://drastic.gkhf.beer/download.html" target="_blank" rel="noopener">下载</a>安装包从正规渠道拿就行。</p>
+<p>ROM 来源需要自己准备，模拟器本身不带游戏资源。这点要注意：模拟器是工具，ROM 的获取在各个圈子里有不同的传播渠道。</p>
+<h3>画质和性能能调到什么程度？</h3>
+<p>Drastic 的视频设置面板里，最能影响画面的三个选项是分辨率缩放、多线程 3D 渲染、跳帧。分辨率默认是 1x（原始 NDS 分辨率），可以拉到 2x、3x，画面会明显变清楚但 CPU 占用也跟着上去。多线程 3D 渲染是个矛盾项——开了之后多核 CPU 能获得 20% 到 40% 的帧率提升，但代价是部分游戏会出现画面闪烁、纹理错位甚至黑屏。</p>
+<p><a href="https://drastic.pages.dev/" target="_blank" rel="noopener">drastic文档</a>里特意提醒：遇到画面问题先把这个选项关掉再报 bug。经验上，骁龙 765 或天玑 800 以上的芯片比较适合开，老一些的手机建议保持默认关闭状态，出问题了再决定要不要试。多线程渲染和 GPU 没什么关系，加速完全在 CPU 层面实现，所以别以为手机 GPU 好就能随便开，核心数才是关键。</p>
+<h3>大 ROM 加载失败黑屏怎么办？</h3>
+<p>这是社区 hack ROM 玩家最常遇到的问题。NDS 原版卡带物理上限 512MB，Drastic 默认会检查文件大小，超过就拒绝加载。解决办法在高级设置里有一个叫 "Ignore gamecard limit" 的开关，打开就能跳过大小检查。</p>
+<p>这个功能默认是关的，原因也合理——开了之后所有 ROM 都跳过检查，虽然不会把正常 ROM 弄坏，但理论上可能加载到恶意伪造的超大 ROM。正确的用法是：加载某个大 ROM 失败时临时开一下，确认能跑之后再关掉，保持默认安全状态。</p>
+<p>还有一个相关选项叫 Auto-Trim ROM，和 Ignore gamecard limit 是一对。如果你的大 ROM 加载很慢，两个都开可能有帮助——一个放行一个减肥，方向不同但目标都是让大 ROM 顺利跑起来。</p>
+<h3>虚拟按键可以自定义吗？</h3>
+<p>完全可以，而且 Drastic 给了两层自由度：皮肤和布局。皮肤控制按钮的外观——颜色、形状、图标都能换，皮肤文件本质上就是一个 ZIP 包，里面是固定命名的 PNG 图片（a.png、b.png、x.png……一共十二个键位对应十二张图）。互联网上现成的皮肤包非常多，宝可梦主题、Zelda 绿金配色、复古 Game Boy 风格都有，下载后直接丢进 DraStic/virtual_controller/ 目录就行。</p>
+<p>布局编辑器控制的是按钮位置和大小——在屏幕上按住一个按钮就能拖动，还能拖出额外的虚拟按键。皮肤和布局是互补关系：先选一个喜欢的皮肤，再进布局编辑器微调位置，就是最舒适的配置。</p>
+<p><img src="../images/drastic/settings-layout.jpg" alt="虚拟按键布局设置" loading="lazy"></p>
+<h3>那三个 Special Button 是干嘛的？</h3>
+<p>这是 Drastic 最被低估的功能之一。在虚拟游戏板设置里有三个 Special Button，默认不显示在屏幕上，需要你自己拖出来或绑到实体手柄键上。每个可以绑定一个特定动作：快进、快速存读档、交换上下屏、一键分屏切单屏、自动开火、模拟 NDS 麦克风吹气、开合 NDS 盖、声音开关、触屏开关、打开菜单——一共十几种。</p>
+<p>日常玩家最常用的搭配是：快进绑一个，快速存档绑一个，快速读档绑第三个。玩口袋妖怪练级多的话可以把快速存档换成 Fake mic，部分游戏的语音互动功能需要用到它。射击游戏玩家可以把 Auto-fire 自动开火绑上，格斗游戏和节奏游戏特别实用。</p>
+<h3>和其他 NDS 模拟器比有什么优势？</h3>
+<p>现在还在活跃维护的 NDS 模拟器主要就两家：Drastic 和 DeSmuME 的移动端移植版。DeSmuME 功能全但界面偏技术向，Drastic 主打易用性和性能，虚拟按键和 Special Button 这套交互设计至今还没被别家抄到位。另一个老竞争者 DraStic 原版其实就是 Drastic 的前身——开发者后期独立出来做了现在的版本，架构更轻，兼容性反而更好。</p>
+<h3>有没有长期用的价值？</h3>
+<p>如果你手机里还有 NDS 游戏的情怀或者想补一补课，Drastic 值得装。它不怎么吃资源，2018 年后的 Android 手机基本都能满速跑，虚拟按键定制、Special Button、皮肤系统这三个功能加起来把"移动端玩 NDS"这件事的体验推到了天花板。唯一需要注意的就是多线程渲染别瞎开，遇到画面问题第一反应先把它关掉，基本都能解决。</p>
+<p>资料维护和备份这块，文档、皮肤包、配置我同步放在了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/drastic" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/drastic" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/drastic" target="_blank" rel="noopener">GitCode</a> 三个仓库，国内网络下 Gitee 和 GitCode 的访问会更顺畅一些，文档目录里也附带了完整的快捷键说明和常见问题排查清单。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gamma-zh-docs.html">Gamma 到底值不值得掏钱？一份按月度重算的付费决策账本</a></h2>
+  <p class="card-desc">我把 Gamma 的免费版和 Pro 版每个功能的实际使用频率、能省的时间、替代方案成本全部拉出来算一遍，帮你三秒决定要不要开年卡。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/halihali-docs.html">哈哩哈哩藏得真深——10 个冷门技巧让你追番效率翻倍</a></h2>
+  <p class="card-desc">哈哩哈哩大家都用来看番，但你知道搜导演名能批量找作品、追番列表能按更新状态筛选、推送没收到可能是电池优化拦了吗？这 10 个隐藏设置翻出来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/poweramp.html">Poweramp 用了两年，从&#34;音质神器&#34;到我通勤路上的默认播放器</a></h2>
+  <p class="card-desc">装 Poweramp 到现在快两年了。从 v3 初期一路更到现在的 build-909，当初冲着&#34;安卓最强音质&#34;来的，现在却发现真正离不开的不是音质，是那些当初没在意的小功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/pixverse-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">每周 12 条产品营销视频，我把 PixVerse 嵌进了一条 8 分钟的流水线</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/snkrs-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">每周抢限量鞋：我用 SNKRS 搭了一套零脚本零风险的抽签工作流</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

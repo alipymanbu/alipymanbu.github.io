@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 OPlayer 搭一条视频消费流水线——从下载到分享只留电脑一份 · 老杨技术栈</title>
+  
+<meta name="description" content="以前看片要电脑拷手机、手动调字幕、看完再分享，三步手动复制。现在用 OPlayer 连 SAMBA 共享，电脑就是资源库，手机零拷贝播放，字幕手势调，分享一键发。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/oplayer-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 OPlayer 搭一条视频消费流水线——从下载到分享只留电脑一份">
+<meta property="og:description" content="以前看片要电脑拷手机、手动调字幕、看完再分享，三步手动复制。现在用 OPlayer 连 SAMBA 共享，电脑就是资源库，手机零拷贝播放，字幕手势调，分享一键发。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/oplayer-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/oplayer-docs/network-share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/oplayer-docs/network-share.png">
+
+<meta name="twitter:title" content="用 OPlayer 搭一条视频消费流水线——从下载到分享只留电脑一份">
+<meta name="twitter:description" content="以前看片要电脑拷手机、手动调字幕、看完再分享，三步手动复制。现在用 OPlayer 连 SAMBA 共享，电脑就是资源库，手机零拷贝播放，字幕手势调，分享一键发。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u770b\u7247\u8981\u7535\u8111\u62f7\u624b\u673a\u3001\u624b\u52a8\u8c03\u5b57\u5e55\u3001\u770b\u5b8c\u518d\u5206\u4eab\uff0c\u4e09\u6b65\u624b\u52a8\u590d\u5236\u3002\u73b0\u5728\u7528 OPlayer \u8fde SAMBA \u5171\u4eab\uff0c\u7535\u8111\u5c31\u662f\u8d44\u6e90\u5e93\uff0c\u624b\u673a\u96f6\u62f7\u8d1d\u64ad\u653e\uff0c\u5b57\u5e55\u624b\u52bf\u8c03\uff0c\u5206\u4eab\u4e00\u952e\u53d1\u3002", "headline": "\u7528 OPlayer \u642d\u4e00\u6761\u89c6\u9891\u6d88\u8d39\u6d41\u6c34\u7ebf\u2014\u2014\u4ece\u4e0b\u8f7d\u5230\u5206\u4eab\u53ea\u7559\u7535\u8111\u4e00\u4efd", "image": ["https://alipymanbu.github.io/images/oplayer-docs/network-share.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/oplayer-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/oplayer-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 OPlayer \u642d\u4e00\u6761\u89c6\u9891\u6d88\u8d39\u6d41\u6c34\u7ebf\u2014\u2014\u4ece\u4e0b\u8f7d\u5230\u5206\u4eab\u53ea\u7559\u7535\u8111\u4e00\u4efd", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">用 OPlayer 搭一条视频消费流水线——从下载到分享只留电脑一份</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 OPlayer 搭一条视频消费流水线——从下载到分享只留电脑一份</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前看片要电脑拷手机、手动调字幕、看完再分享，三步手动复制。现在用 OPlayer 连 SAMBA 共享，电脑就是资源库，手机零拷贝播放，字幕手势调，分享一键发。</p>
+  </header>
+  <div class="prose">
+<h2>我每周要干的这件事，以前要手动复制三回</h2>
+<p>每周五下班我会攒一批教程视频——有的是朋友发的压缩包，有的是从网盘下的公开课——统一丢进电脑的 <code>E:\Downloads\Movies</code> 文件夹。以前的流程是：下载完用数据线或微信文件传输助手拷到手机，手机打开播放器挨个调字幕大小和位置（字幕默认压在画面底部，宽银幕片被黑边挡住一半），看完想分享给同组同事又要拷回电脑上传云盘发链接。</p>
+<p>这条链上手动复制操作有三次：电脑→手机、手机→云盘、云盘→同事。中间还夹着一次数据线插拔和一次字幕设置调整。而且我电脑上那份源文件和手机上的副本经常不同步——删了一半发现手机里还留着旧版。</p>
+<p>现在这条链缩成了：电脑开 SAMBA 共享，手机 OPlayer 直接连过去点播，字幕用手势实时调，分享走 OPlayer 内置的系统分享面板。整个流程只在电脑上留一份源文件，手机零拷贝。</p>
+<h2>把 OPlayer 插进哪一环</h2>
+<p>核心改造点只有一个：让 <a href="https://oplayer.wrwq.fun" target="_blank" rel="noopener">OPlayer官网</a> 不再当"本机播放器"，而是当"局域网点播端"。电脑上那份共享文件夹就是单一数据源，手机只是个浏览窗口。</p>
+<p>OPlayer 本身从 <a href="https://oplayer.wrwq.fun/download.html" target="_blank" rel="noopener">OPlayer下载</a> 装完就能用。前置步骤是在 Windows 上开 SAMBA 共享——这个不需要额外装软件，右键文件夹属性 → 高级共享 → 勾"共享此文件夹"，翻了 <a href="https://oplayer-docs.pages.dev/" target="_blank" rel="noopener">OPlayer文档</a> 确认权限给 Everyone 只读就够了。然后在 cmd 里 <code>ipconfig</code> 记下电脑的 IPv4 地址，比如 <code>192.168.1.108</code>。之后 OPlayer 里加一个 SAMBA 服务器，填地址、设成无密码（家里内网就图个省事），就能看到电脑上的完整文件列表。</p>
+<p><img src="../images/oplayer-docs/network-share.png" alt="电脑开 SAMBA 共享后，手机 OPlayer 直接点播" loading="lazy"></p>
+<p>上下游衔接方面，下载环节不动——还是浏览器、迅雷、网盘客户端该怎么下怎么下，统一落盘到共享文件夹。OPlayer 只负责消费端，文件分享只负责向外分发。中间没有任何脚本或同步工具介入，全靠 SAMBA 协议的文件发现机制。</p>
+<h2>最容易断链的两个环节</h2>
+<p>这条流程跑了两个月，有两个地方踩过坑，现在处理起来都是一秒钟的事。</p>
+<p>第一个断链点是字幕位置。2.39:1 的宽银幕教程片，OPlayer 默认把字幕压在画面底部，刚好落在黑边和画面之间的缝隙里——一半被黑边盖了一半。手动调的话以前我是进设置面板拖滑块，现在改成单指在屏幕上垂直滑动：向上滑字幕上移，向下滑下移，滑到正合适的位置松手就行。如果手势调完觉得这个位置以后所有宽银幕片都适用，就打开字幕设置面板点一下"设为默认"，全局记住。调字幕这一步从 30 秒缩到 2 秒，而且 OPlayer 能区分单指滑动、双指缩放（调字幕大小）和水平滑动（调播放进度），三种手势不会冲突。</p>
+<p>第二个断链点是分享大文件。同事同组要看的教程片动辄 5-10 GB，微信文件传输助手上限 2 GB 根本传不了。OPlayer 调系统分享面板，选云盘类应用上传再发链接是一条路，但更省事的是：如果同事和我在同一个 WiFi，我在 OPlayer 里长按视频进多选模式，点底部分享按钮选"WiFi 传输"——OPlayer 会临时起一个 HTTP 服务器，告诉我一个本地 IP 地址比如 <code>http://192.168.1.108:8080</code>，同事用浏览器打开就能下载。这个功能和 SAMBA 共享走的是同一条局域网，但 WiFi 传输不需要对方的播放器支持 SAMBA，任何设备的浏览器都能访问。如果同事不在同一局域网，退一步还是走云盘上传，但至少不用先把文件复制到手机再上传。</p>
+<p><img src="../images/oplayer-docs/feature-highlights.png" alt="OPlayer 的核心功能一览" loading="lazy"></p>
+<h2>省了多少事，什么时候这套流程不划算</h2>
+<p>量化一下收益：以前每周五处理这堆视频要 15-20 分钟（拷文件 + 调字幕 + 分享回传），现在压到 5 分钟以内——主要是 OPlayer 里浏览列表和点开播放的时间。手动复制操作从三次变成零次。还有个隐性收益是源文件永远只有一份，删了不会留副本，整理硬盘不用到处找重复文件。</p>
+<p>这套流程的边界也很清楚。首先，它依赖稳定的局域网连接。如果我在地铁上想看片，SAMBA 连不上，此时需要提前把关键视频拷到手机——但这是极少数场景，每周不会超过两次。其次，SAMBA 共享的电脑必须开机。我给电脑设了"从不休眠"，偶尔忘了关共享导致 OPlayer 连接失败时，重启一下网络发现就行。最后，如果共享文件夹里有敏感文件，别开无密码保护——控制面板里把"无密码保护的共享"关掉，改为给 Everyone 设账号密码，安全性和便利性各退一步。</p>
+<h2>一些延伸的小用法</h2>
+<p>除了这条主流程，还有几个零碎的操作习惯：躺着看片时手机水平放在床上，画面会歪 180 度，调出控件点一下旋转按钮就能翻正；朋友来家里坐想看我电脑里的片，直接让他在自己手机上用 OPlayer 加同一个 SAMBA 服务器地址，两台手机同时点播不冲突；字幕太小看不清时双指张开拉大，比进设置调滑块快得多。</p>
+<p>整体来说，OPlayer 在这条流水线里的角色很单纯——它不负责文件管理、不负责下载、不负责云同步，就是一台"局域网点播终端"。把它嵌进去的成本只有十分钟（SAMBA 配置 + OPlayer 加服务器），换来的是每次消费视频都不用再想"文件在不在这、是不是最新版"这类问题。这套流程用到的配置细节，我顺手同步到了三个仓库——<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/OPlayer" target="_blank" rel="noopener">GitHub</a> 是主仓库，<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/OPlayer" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/OPlayer" target="_blank" rel="noopener">GitCode</a> 做国内镜像，访问慢就换一个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gprinter.html">开水果店那阵我才知道，标签打印APP能省这么多事</a></h2>
+  <p class="card-desc">开了半年水果店，打价签和保质期标签是每天的烦心事。试了佳博配套的 Gprinter 之后，原来标签设计这件事可以在手机上 5 分钟搞定，还能语音输入、自动算日期。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/autox-js.html">Autox.js 到底强在哪？和同类自动化工具的横向对比</a></h2>
+  <p class="card-desc">在安卓自动化脚本引擎这个品类里，Autox.js 用 JavaScript + 无障碍服务的组合走出了一条不一样的路。用过按键精灵、Auto.js、Tasker 之后，我为什么最终留在了 Autox.js。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/kshare-docs.html">装KShare大半年后：那些当初没注意到的好用与糟心</a></h2>
+  <p class="card-desc">从v1.5用到v1.7，从凑活投屏到开会离不开，说说这八个月里KShare让我惊喜和头疼的地方。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/thor-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">把 Thor 嵌进我的周循环——一台安卓机当两台用的完整工作流</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/linkai-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">LinkAI 到底能不能当主力助理？11 个问题说透</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

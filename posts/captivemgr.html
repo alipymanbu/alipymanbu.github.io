@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>还在跟 WiFi 感叹号死磕？CaptiveMgr 快问快答 · 老杨技术栈</title>
+  
+<meta name="description" content="家里 WiFi 明明能上网，状态栏却挂个感叹号？CaptiveMgr 就是专门治这个的工具。整理九个快问快答，把原理、安装、使用、踩坑一次讲清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/captivemgr.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="还在跟 WiFi 感叹号死磕？CaptiveMgr 快问快答">
+<meta property="og:description" content="家里 WiFi 明明能上网，状态栏却挂个感叹号？CaptiveMgr 就是专门治这个的工具。整理九个快问快答，把原理、安装、使用、踩坑一次讲清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/captivemgr.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/captivemgr/app-home.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/captivemgr/app-home.webp">
+
+<meta name="twitter:title" content="还在跟 WiFi 感叹号死磕？CaptiveMgr 快问快答">
+<meta name="twitter:description" content="家里 WiFi 明明能上网，状态栏却挂个感叹号？CaptiveMgr 就是专门治这个的工具。整理九个快问快答，把原理、安装、使用、踩坑一次讲清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5bb6\u91cc WiFi \u660e\u660e\u80fd\u4e0a\u7f51\uff0c\u72b6\u6001\u680f\u5374\u6302\u4e2a\u611f\u53f9\u53f7\uff1fCaptiveMgr \u5c31\u662f\u4e13\u95e8\u6cbb\u8fd9\u4e2a\u7684\u5de5\u5177\u3002\u6574\u7406\u4e5d\u4e2a\u5feb\u95ee\u5feb\u7b54\uff0c\u628a\u539f\u7406\u3001\u5b89\u88c5\u3001\u4f7f\u7528\u3001\u8e29\u5751\u4e00\u6b21\u8bb2\u6e05\u3002", "headline": "\u8fd8\u5728\u8ddf WiFi \u611f\u53f9\u53f7\u6b7b\u78d5\uff1fCaptiveMgr \u5feb\u95ee\u5feb\u7b54", "image": ["https://alipymanbu.github.io/images/captivemgr/app-home.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/captivemgr.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/captivemgr.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u8fd8\u5728\u8ddf WiFi \u611f\u53f9\u53f7\u6b7b\u78d5\uff1fCaptiveMgr \u5feb\u95ee\u5feb\u7b54", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">还在跟 WiFi 感叹号死磕？CaptiveMgr 快问快答</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">还在跟 WiFi 感叹号死磕？CaptiveMgr 快问快答</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">家里 WiFi 明明能上网，状态栏却挂个感叹号？CaptiveMgr 就是专门治这个的工具。整理九个快问快答，把原理、安装、使用、踩坑一次讲清。</p>
+  </header>
+  <div class="prose">
+<p>整理一篇关于 CaptiveMgr 的快问快答——专治安卓 WiFi 感叹号那个老问题。</p>
+<h3>CaptiveMgr 到底是干嘛的？</h3>
+<p>一句话：<strong>管理安卓 Captive Portal 探测机制的工具</strong>。就是那个让你 WiFi 明明能上网却挂着感叹号的东西。</p>
+<p>安卓系统连上 WiFi 之后，会偷偷发一个轻量的 HTTP 请求（通常是 <code>/generate_204</code>）去探测："这个网络会不会弹登录页？" 返回 204 就认为网络干净，返回 302 或其他码就判定需要登录——然后状态栏就给你挂个感叹号。国内 ROM 经常把这个探测服务器指向墙外，导致家里好好的 WiFi 也被误判。CaptiveMgr 干的事就是：把探测地址改成国内能通的服务器，或者干脆关掉整套探测。完整功能可以去<a href="https://captivemgr.wxhp.skin" target="_blank" rel="noopener">CaptiveMgr官网</a>看看。</p>
+<p><img src="../images/captivemgr/app-home.webp" alt="CaptiveMgr 主界面" loading="lazy"></p>
+<h3>WiFi 感叹号是怎么来的？</h3>
+<p>系统的网络连通性检测机制。安卓从 5.0 开始内建了这套 Captive Portal 探测，每次切换网络都会触发。探测失败不代表网络真的有问题——只是系统以为你被某个公共 WiFi 拦住了需要登录页。</p>
+<p>国内用户被坑得特别多，因为 AOSP 默认的探测服务器里有 Google、微软这些在国内大陆不一定可达的地址。ROM 厂商会改，但改得不靠谱的情况也不少。</p>
+<h3>谁需要这个工具？</h3>
+<p><strong>几乎所有在中国大陆用安卓的用户都有概率需要</strong>。如果你注意到过：</p>
+<ul><li>家里 WiFi 能正常上网但状态栏有感叹号</li><li>换了某个公共 WiFi 之后感叹号消不掉</li><li>刷机之后感叹号突然出现（新 ROM 的默认探测地址没配好）</li></ul>
+<p>这些场景 CaptiveMgr 都能解决。已经用 Shizuku 或 Magisk 玩机的用户是最直接的受益人群。</p>
+<h3>安装需要什么权限？两条路</h3>
+<p>CaptiveMgr 有两种授权方式，二选一就行。先去<a href="https://captivemgr.wxhp.skin/download.html" target="_blank" rel="noopener">官方下载</a>装起来。</p>
+<p><strong>root 方案</strong>：设备已经 root（Magisk、Kitsune、SuperSU 都行），首次启动会弹 root 请求，点允许、勾"记住选择"就完事了。一次授权，重启不用重新激活，功能最完整。</p>
+<p><strong>Shizuku 方案</strong>：没有 root 也能用。装 Shizuku 之后通过 ADB 或无线调试激活，再授权给 CaptiveMgr。功能和 root 方案一致，只是 Shizuku 每次重启后可能需要重新激活一次。</p>
+<p>两条路覆盖了绝大部分用户。root 用户直接跳过 Shizuku 相关步骤即可。</p>
+<p><img src="../images/captivemgr/app-main.webp" alt="测速选服务器" loading="lazy"></p>
+<h3>第一次打开怎么操作？三步走</h3>
+<ol><li><strong>先测速</strong>。工具内置了小米、华为、Vivo、高通、Cloudflare、V2EX 等备选服务器，点一下测速按钮，它会逐个测延迟和返回状态。返回 204 是硬性要求，延迟越低越好。</li><li><strong>选一条或两条</strong>。安卓 7.0 及以上要同时填 HTTP 和 HTTPS 两个地址（可以指向同一个服务器），7.0 以下只需要一个。</li><li><strong>点应用并保存，再点刷新图标</strong>。应用写入之后不会自动触发重新探测，手动点一下刷新让系统重新跑一遍检测流程——感叹号秒消。</li></ol>
+<h3>安卓版本不同，参数会变吗？</h3>
+<p>会，而且变化还不止一次。工具内部做了版本自动适配，你不用关心这些，但知道原理有助于排查问题，细节可以翻<a href="https://captivemgr.pages.dev/" target="_blank" rel="noopener">CaptiveMgr文档</a>：</p>
+<ul><li>Android 5.0–6.0：只有一个 <code>captive_portal_server</code> 参数</li><li>Android 7.0–7.1：拆成了 <code>captive_portal_http_url</code> + <code>captive_portal_https_url</code> 两个</li><li>Android 8.0+：又加了 <code>captive_portal_mode</code> 和 HTTPS 开关相关参数</li></ul>
+<p><strong>只设了 HTTP 没设 HTTPS 在安卓 7+ 上会导致感叹号依然存在</strong>——系统会同时跑两次探测，任一次失败都算整体失败。这是很多人踩过的坑。</p>
+<h3>服务器地址选哪个好？</h3>
+<p>直接上推荐优先级，从高到低：</p>
+<ol><li><strong>小米 MIUI</strong>（<code>connect.rom.miui.com</code>）——延迟低、稳定、返回干净，公认的首选</li><li><strong>华为</strong>（<code>connectivitycheck.platform.hicloud.com</code>）——次选备份</li><li><strong>Vivo</strong> 或 <strong>高通中国</strong>——前三家都不通时的替补</li><li><strong>Cloudflare / V2EX</strong>——上面全不行再试，效果因网络环境波动大</li></ol>
+<p>别凭感觉选，跑一遍内置测速工具最靠谱。测速结果会直接显示每条的延迟和返回码，204 是底线，低延迟是加分项。</p>
+<h3>和手动敲 ADB 命令比有啥优势？</h3>
+<p>手动命令是这样的：</p>
+<pre><code>adb shell settings put global captive_portal_http_url http://xxx/generate_204
+adb shell settings put global captive_portal_https_url https://xxx/generate_204</code></pre>
+<p>CaptiveMgr 做了三件 ADB 手动敲不了的事：</p>
+<ul><li><strong>版本自动适配</strong>。你不用查自己设备对应的参数名是什么版本，工具运行时自动检测。</li><li><strong>测速+地址管理</strong>。内置备选列表、一键测速、一键填入，省得你记 URL、开浏览器测。</li><li><strong>恢复默认</strong>。想回系统默认值时，把地址栏全部留空点保存就行——不用去查不同 ROM 的默认值到底是什么。</li></ul>
+<p>本质上是同一套 <code>settings global</code> 操作，但把"查文档+敲命令+记地址"的体力活全部干掉了。</p>
+<h3>有什么坑要注意？</h3>
+<p>几个高频问题提前说清：</p>
+<ul><li><strong>Android 7+ 必须同时填 HTTP 和 HTTPS</strong>。只填一个，系统还是会跑另一个探测，感叹号消不掉。</li><li><strong>应用成功但图标没变</strong>。先点刷新图标；还不行就开关一次飞行模式；再不行等系统周期性重探测（通常几分钟内）。</li><li><strong>Shizuku 激活失效</strong>。重启设备后 Shizuku 可能需要重新激活，这时候 CaptiveMgr 写入会失败，启动一下 Shizuku 就行。</li><li><strong>Magisk DenyList 干扰</strong>。如果开了 Zygisk + Enforce DenyList，确认 CaptiveMgr 不在 DenyList 里，否则 root 授权会被静默拦截。</li><li><strong>恢复默认留空就行</strong>。不用记具体参数值，地址栏全部清空点保存，等于告诉系统"用你自己的默认值"。</li></ul>
+<h3>值不值得长期装着？</h3>
+<p>值得。安装包不大、后台不跑、用完即走——但下次刷机、换 ROM、出国回来，感叹号问题大概率还会出现，这时候 CaptiveMgr 就是 30 秒解决战斗的那种工具。国内安卓用户几乎人手一把都不夸张。完整的资料和源码同步维护在<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/CaptiveMgr" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/CaptiveMgr" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/CaptiveMgr" target="_blank" rel="noopener">GitCode</a>三个平台，国内访问哪个顺手就去哪个。</p>
+<p>最后一句：<strong>有 root 或 Shizuku 的，装上就对了；没有的，先激活 Shizuku 再装，全程不超过十分钟，换来的是再也不用盯着状态栏那个黄感叹号心烦。</strong></p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/jshook.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">我用了半年 JsHook，从&#34;Frida 替代品&#34;到&#34;AI 时代的 Hook 工作流&#34;</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/hanimeviewer.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从零上手 HanimeViewer：安装、播放到本地导入的完整走查</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>FluxDown 从零上手实战：浏览器下载、流媒体抓取、断点续传一条龙搞定 · 老杨技术栈</title>
+  
+<meta name="description" content="下载管理器不止是多线程拉文件——FluxDown 把浏览器接管、剪贴板监听、HLS/DASH 解密合并、SQLite 断点续传揉进了一套本地优先的引擎里。这篇教程带你从零把主流下载场景跑通。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/fluxdown.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FluxDown 从零上手实战：浏览器下载、流媒体抓取、断点续传一条龙搞定">
+<meta property="og:description" content="下载管理器不止是多线程拉文件——FluxDown 把浏览器接管、剪贴板监听、HLS/DASH 解密合并、SQLite 断点续传揉进了一套本地优先的引擎里。这篇教程带你从零把主流下载场景跑通。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/fluxdown.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:title" content="FluxDown 从零上手实战：浏览器下载、流媒体抓取、断点续传一条龙搞定">
+<meta name="twitter:description" content="下载管理器不止是多线程拉文件——FluxDown 把浏览器接管、剪贴板监听、HLS/DASH 解密合并、SQLite 断点续传揉进了一套本地优先的引擎里。这篇教程带你从零把主流下载场景跑通。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e0b\u8f7d\u7ba1\u7406\u5668\u4e0d\u6b62\u662f\u591a\u7ebf\u7a0b\u62c9\u6587\u4ef6\u2014\u2014FluxDown \u628a\u6d4f\u89c8\u5668\u63a5\u7ba1\u3001\u526a\u8d34\u677f\u76d1\u542c\u3001HLS/DASH \u89e3\u5bc6\u5408\u5e76\u3001SQLite \u65ad\u70b9\u7eed\u4f20\u63c9\u8fdb\u4e86\u4e00\u5957\u672c\u5730\u4f18\u5148\u7684\u5f15\u64ce\u91cc\u3002\u8fd9\u7bc7\u6559\u7a0b\u5e26\u4f60\u4ece\u96f6\u628a\u4e3b\u6d41\u4e0b\u8f7d\u573a\u666f\u8dd1\u901a\u3002", "headline": "FluxDown \u4ece\u96f6\u4e0a\u624b\u5b9e\u6218\uff1a\u6d4f\u89c8\u5668\u4e0b\u8f7d\u3001\u6d41\u5a92\u4f53\u6293\u53d6\u3001\u65ad\u70b9\u7eed\u4f20\u4e00\u6761\u9f99\u641e\u5b9a", "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/fluxdown.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/fluxdown.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "FluxDown \u4ece\u96f6\u4e0a\u624b\u5b9e\u6218\uff1a\u6d4f\u89c8\u5668\u4e0b\u8f7d\u3001\u6d41\u5a92\u4f53\u6293\u53d6\u3001\u65ad\u70b9\u7eed\u4f20\u4e00\u6761\u9f99\u641e\u5b9a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">FluxDown 从零上手实战：浏览器下载、流媒体抓取、断点续传一条龙搞定</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">FluxDown 从零上手实战：浏览器下载、流媒体抓取、断点续传一条龙搞定</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 10 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">下载管理器不止是多线程拉文件——FluxDown 把浏览器接管、剪贴板监听、HLS/DASH 解密合并、SQLite 断点续传揉进了一套本地优先的引擎里。这篇教程带你从零把主流下载场景跑通。</p>
+  </header>
+  <div class="prose">
+<p><a href="https://fluxdown.boop.uno" target="_blank" rel="noopener">FluxDown官网</a> 是一个本地优先的下载管理器——你可能之前用过 IDM、Motrix、aria2，那 FluxDown 跟它们最大的不同在于，它把浏览器扩展、剪贴板监听、自定义 URL 协议、本地 HTTP API 四条输入通道汇聚到同一套引擎上，下载任务统一进 SQLite 持久化队列，断电不丢进度、重启不丢状态。这篇教程结束时，你能从零完成：浏览器里拦截下载、从流媒体站点抓 HLS/DASH 视频、剪贴板复制 URL 自动入队，以及理解它为什么比传统下载器更稳。</p>
+<h2>准备：版本、平台与前置条件</h2>
+<p>FluxDown 支持 Windows（安装版 / 便携版）、macOS、Linux（AppImage / deb / rpm）和 Android（引擎桥）。这篇教程以 Windows 便携版为例——解压即用，不用写注册表，干净。</p>
+<p>前置条件只有一个：确保系统里没有被其他下载器抢先注册 <code>magnet:</code> 或 <code>ed2k://</code> 协议（迅雷、Motrix 都可能占）。如果之前装过，先在卸载程序里清干净，或者到系统设置里手动把这些协议的默认应用还原。</p>
+<h2>第一步：安装与 Agent 常驻</h2>
+<p><a href="https://fluxdown.boop.uno/download.html" target="_blank" rel="noopener">下载</a> 安装包后解压到任意目录（比如 <code>D:\tools\fluxdown</code>），双击 <code>FluxDown.exe</code> 启动。第一次启动会做两件事：弹出欢迎向导、在系统托盘注册一个 Agent 常驻进程。</p>
+<p>Agent 层是 FluxDown 能脱离扩展单独工作的关键——它负责监听剪贴板、注册 <code>fluxdown://</code> 协议、启动本地 HTTP API（端口 17800）。向导里问「是否开机自启」，建议选是，否则剪贴板监听和协议处理在你没开 FluxDown 时都不会响应。</p>
+<p>安装完成后别急着关——主界面会显示一个空队列。点右上角「扩展」标签，记下里面的扩展下载链接，下一步要用。</p>
+<h2>第二步：浏览器扩展对接，基本下载流</h2>
+<p>FluxDown 的浏览器扩展支持 Chromium 全系列（Chrome、Edge、Brave、Arc）和 Firefox。以 Edge 为例：</p>
+<ol><li>打开 <code>edge://extensions/</code>，开启「开发人员模式」。</li><li>点「加载解压缩的扩展」，选择 FluxDown 安装目录里的 <code>extension\edge</code> 子目录。</li><li>扩展加载后，浏览器右上角工具栏会出现 FluxDown 的图标。</li></ol>
+<p>扩展装好后就可以试了：找一个任意文件下载链接（比如 GitHub Releases 上的 zip），右键菜单里会多一条「用 FluxDown 下载」。点一下，FluxDown 主窗口会弹出「新建下载」对话框，URL、文件名、保存目录自动填好，线程数默认 8。</p>
+<p>确认点「开始」，你会看到任务进入队列、分段并行拉取、速度条跳起来。这就是 FluxDown 最基本的下载流——扩展只负责嗅探 URL 和携带 Cookie/Referer，真正拉数据的是本机引擎，中间不经过任何云端。</p>
+<h2>第三步：HLS/DASH 流媒体下载实战</h2>
+<p>这是 FluxDown 比传统下载器强得多的场景。大部分视频站点（B站、YouTube、流媒体直播平台）用 HLS（<code>.m3u8</code>）或 DASH（<code>.mpd</code>）格式分发视频——把一个完整视频切成几十上百个小片段，边下边播。传统下载器遇到这种清单文件只会下载一份空白 playlist，FluxDown 能读懂清单、并行拉分片、自动解密、合并成完整文件。</p>
+<h3>从浏览器里嗅探出来</h3>
+<p>大部分情况下你不需要手动找 <code>.m3u8</code> 地址——扩展的媒体嗅探器会在你打开视频页面时自动识别当前页的视频流，图标变绿就是嗅探到了。点击扩展图标弹出的面板里会列出所有发现的流，点「送入 FluxDown」就完成了。</p>
+<h3>选画质、解密、合并</h3>
+<p>HLS 主清单通常提供多档比特率（比如 1080p 60fps / 1080p 30fps / 720p / 480p）。FluxDown 在下载前弹出选择对话框，每个选项标注带宽和分辨率。跳过（后台下发的任务）则默认选最高带宽档。</p>
+<p>很多 HLS 分片用 AES-128-CBC 加密。FluxDown 自动从清单引用的位置拉取解密密钥、缓存后对每个分片边拉边解密——你看不到解密过程，最终拿到的是可直接播放的完整文件。Cookie 只会透传给与清单同源的分片和密钥请求，不会跨源发送到别的 CDN host。</p>
+<p>DASH 的情况稍有不同：它常把音频和视频分成两个独立的 Representation。FluxDown 分别拉完后，如果系统里有 <code>ffmpeg</code>，自动做 stream copy 合并（不重编码，几秒钟完成）；如果没有，音视频各留一个文件（比如 <code>video.mp4</code> + <code>video.audio.m4a</code>），需要你自己合并。</p>
+<h3>受管组件一键搞定 ffmpeg</h3>
+<p>不想自己装 ffmpeg？FluxDown 有「受管组件」功能——在设置 → 组件里一键让 FluxDown 自动下载 ffmpeg 和 yt-dlp，安装在自己的受控目录里，不污染系统 PATH。装好之后 DASH 合并就全自动了，HLS 和 yt-dlp 相关的高级抓取也能用上。关于 HLS/DASH 支持的完整参数和不支持场景清单，详见 <a href="https://fluxdown.pages.dev/" target="_blank" rel="noopener">fluxdown文档</a>。</p>
+<h2>第四步：剪贴板监听和 fluxdown:// 协议</h2>
+<p>FluxDown 有三条不依赖浏览器扩展的输入通道——这是它和只做浏览器内拦截的扩展型下载器的核心区别。</p>
+<h3>剪贴板监听</h3>
+<p>Agent 常驻时自动监听系统剪贴板。你复制任意一种链接，FluxDown 都会弹出「新建下载」窗口，URL 自动填好：</p>
+<ul><li><code>http://</code> / <code>https://</code> / <code>ftp://</code> 开头 → 识别为普通文件</li><li><code>magnet:?xt=...</code> → 识别为 BT 磁力</li><li><code>ed2k://|file|...</code> → 识别为电驴链接</li><li><code>.m3u8</code> / <code>.mpd</code> 结尾 → 识别为流媒体</li></ul>
+<p>这个行为可以关掉（设置 → 浏览器 → 剪贴板监听）。不想被频繁弹窗打扰时关掉，但扩展仍然正常工作——剪贴板监听只是额外通道。</p>
+<h3>fluxdown:// 自定义 URL 协议</h3>
+<p>FluxDown 启动时自动注册 <code>fluxdown://</code> 协议——和 <code>mailto:</code>、<code>magnet:</code> 一样是操作系统级的。任何应用、浏览器、IM、邮件客户端、命令行脚本都可以用这个协议拉起 FluxDown：</p>
+<pre><code>fluxdown://add?url=https://example.com/file.zip
+fluxdown://add?url=magnet:?xt=urn:btih:...</code></pre>
+<p>FluxDown 没开时点 <code>fluxdown://</code> 链接会先启动 FluxDown 再处理。这个协议特别适合 userscript、第三方下载按钮、自动化脚本使用——比调本地 HTTP API 简单。</p>
+<h2>常见卡点</h2>
+<h3>AES-128 解密失败</h3>
+<p>如果 HLS 分片加密但 FluxDown 拉不到解密密钥，任务会标失败。常见原因是密钥 URL 在另一个域，Cookie 没透过去。解法：检查扩展是否在该页面激活、源站是否需要登录态才能拿到密钥。FluxDown 会从浏览器扩展里自动带 Cookie，但仅限同源。</p>
+<h3>DASH 下音视频各留一个文件</h3>
+<p>这是系统没装 ffmpeg 的表现。FluxDown 不会报错，只是不做合并。最快的解法是去设置里开启受管组件，一键让 FluxDown 自己装 ffmpeg——比你手动下载解压省事儿。</p>
+<h3>剪贴板监听太吵</h3>
+<p>复制任何 URL 都弹下载窗口确实烦。关掉它（设置 → 浏览器 → 剪贴板监听 → 关闭），扩展内拦截、<code>fluxdown://</code> 协议、本地 HTTP API 都还正常工作，不影响主要使用场景。</p>
+<h2>进阶：本地 HTTP API</h2>
+<p>FluxDown 在本机默认监听 <code>http://127.0.0.1:17800/api/v1/tasks</code>，接受标准 JSON-RPC 请求。Tampermonkey userscript、自己写的 Python 脚本、甚至另一台机器上的 aria2 都可以直接调这个 API 给 FluxDown 下发任务。默认只绑定 localhost，要开 LAN 访问需要手动在设置 → 本地服务器里开启。这是把 FluxDown 集成到你自己的工作流里的最灵活方式。</p>
+<hr>
+<p>FluxDown 的主仓库（引擎、daemon、agent、桌面端、CLI、Android 引擎桥）全部开源（AGPL-3.0）——源码同时托管在 <a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/fluxdown" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/fluxdown" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/fluxdown" target="_blank" rel="noopener">GitCode</a> 三个平台方便不同网络环境的访问，下载 URL 永远不上传服务器、匿名统计可完全关闭、云同步只同步设置不同步下载内容。如果你之前对下载器的印象还停留在浏览器弹窗扩展，值得换个角度看看这套本地优先的引擎设计。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/google-keep-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Google Keep 踩坑实录 —— 看着简单的便签 App，藏着 5 个容易翻车的点</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/musify-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Musify 从零上手：安卓无广告开源音乐播放器完整指南</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

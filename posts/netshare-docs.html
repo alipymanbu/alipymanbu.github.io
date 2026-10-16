@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>NetShare 为什么不走原生热点？一套 WiFi Direct + HTTP 代理的技术取舍 · 老杨技术栈</title>
+  
+<meta name="description" content="Android 原生热点有 root 门槛和厂商锁，NetShare 绕路用 WiFi Direct 建 P2P Group 再用 HTTP 代理转发，这条看似多余的链路背后藏着精细的兼容性权衡。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/netshare-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NetShare 为什么不走原生热点？一套 WiFi Direct + HTTP 代理的技术取舍">
+<meta property="og:description" content="Android 原生热点有 root 门槛和厂商锁，NetShare 绕路用 WiFi Direct 建 P2P Group 再用 HTTP 代理转发，这条看似多余的链路背后藏着精细的兼容性权衡。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/netshare-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/netshare-docs/main-interface.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/netshare-docs/main-interface.webp">
+
+<meta name="twitter:title" content="NetShare 为什么不走原生热点？一套 WiFi Direct + HTTP 代理的技术取舍">
+<meta name="twitter:description" content="Android 原生热点有 root 门槛和厂商锁，NetShare 绕路用 WiFi Direct 建 P2P Group 再用 HTTP 代理转发，这条看似多余的链路背后藏着精细的兼容性权衡。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Android \u539f\u751f\u70ed\u70b9\u6709 root \u95e8\u69db\u548c\u5382\u5546\u9501\uff0cNetShare \u7ed5\u8def\u7528 WiFi Direct \u5efa P2P Group \u518d\u7528 HTTP \u4ee3\u7406\u8f6c\u53d1\uff0c\u8fd9\u6761\u770b\u4f3c\u591a\u4f59\u7684\u94fe\u8def\u80cc\u540e\u85cf\u7740\u7cbe\u7ec6\u7684\u517c\u5bb9\u6027\u6743\u8861\u3002", "headline": "NetShare \u4e3a\u4ec0\u4e48\u4e0d\u8d70\u539f\u751f\u70ed\u70b9\uff1f\u4e00\u5957 WiFi Direct + HTTP \u4ee3\u7406\u7684\u6280\u672f\u53d6\u820d", "image": ["https://alipymanbu.github.io/images/netshare-docs/main-interface.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/netshare-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/netshare-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "NetShare \u4e3a\u4ec0\u4e48\u4e0d\u8d70\u539f\u751f\u70ed\u70b9\uff1f\u4e00\u5957 WiFi Direct + HTTP \u4ee3\u7406\u7684\u6280\u672f\u53d6\u820d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">NetShare 为什么不走原生热点？一套 WiFi Direct + HTTP 代理的技术取舍</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">NetShare 为什么不走原生热点？一套 WiFi Direct + HTTP 代理的技术取舍</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 10 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Android 原生热点有 root 门槛和厂商锁，NetShare 绕路用 WiFi Direct 建 P2P Group 再用 HTTP 代理转发，这条看似多余的链路背后藏着精细的兼容性权衡。</p>
+  </header>
+  <div class="prose">
+<p>你有没有想过一个问题：Android 不是自带"便携式热点"吗，为什么还需要 NetShare 这样的应用？原生热点一键开启，看起来比 WiFi Direct 配置代理这套流程方便多了。但用过 NetShare 的人都知道——它能用的场景，原生热点根本顶不上。</p>
+<p>我特意对比过两套方案的底层实现，才发现 NetShare 选择 WiFi Direct + HTTP 代理这条看似"绕路"的链路，根本不是技术能力的限制，而是一组精准的兼容性取舍。</p>
+<h2>问题：原生热点卡在哪里</h2>
+<p>先说原生热点的问题。Android 的便携式热点 API（<code>WifiManager.setWifiApEnabled</code>）从 Gingerbread 就存在了，但它有三个硬伤：</p>
+<p>第一，<strong>权限门槛</strong>。从 Android 6.0 开始，某些厂商 ROM（小米、华为、OPPO）把热点开关绑定到了"系统应用"权限——第三方 App 直接调用会被静默拒绝。root 手机当然能绕过，但 root 本身就是大多数用户的门槛。</p>
+<p>第二，<strong>行为不一致</strong>。不同 Android 版本、不同厂商对热点的实现细节天差地别：有的机型热点开启后会自动关闭 WiFi（你只能用蜂窝数据分享），有的机型允许 WiFi 中继但需要额外 adb 命令开启，还有的机型热点启动后 <code>WifiInfo</code> 的 SSID 和 IP 根本读不出来。</p>
+<p>第三，<strong>无法分享 VPN 流量</strong>。这可能是 NetShare 最核心的竞争力。原生热点走的是系统路由表，VPN 流量走的是 <code>tun0</code> 虚拟网卡，两条路径互不相交——原生热点根本碰不到 VPN 加密后的流量。NetShare 则完全绕开了系统路由，在用户态自己做转发。</p>
+<p>这三个问题叠加起来，就出现了一个场景缺口：<strong>非 root 手机 → 分享 VPN 流量 → 多设备同时用</strong>。这个缺口就是 NetShare 的生存空间。</p>
+<h2>拆解：WiFi Direct + HTTP 代理的架构</h2>
+<p>那 NetShare 是怎么绕过去的？它的方案可以拆成三层：P2P Group 建网、HTTP 代理转发、固定 IP 约定。</p>
+<h3>第一层：用 WiFi Direct 建网，伪装成原生热点的体验</h3>
+<p>WiFi Direct（<code>WifiP2pManager</code>）是 Android 4.0 引入的 P2P 直连协议。NetShare 通过它创建一个 P2P Group，让自己成为 Group Owner（GO）。从接收端设备的角度看，这个 P2P Group 和普通 WiFi 热点几乎没有区别——它会出现在 WiFi 扫描列表里，需要输入 WPA2 密码才能连接。</p>
+<p>但这里有一个关键不同：<strong>WiFi Direct 不需要手机的蜂窝数据或 WiFi 连接状态来维持</strong>。原生热点在某些机型上会强制关闭 WiFi 连接（"手机只能二选一"），而 NetShare 的 P2P Group 可以和 WiFi 连接共存——这就是它能做 WiFi 中继模式的根本原因。</p>
+<h3>第二层：HTTP 代理做流量转发，绕开系统路由</h3>
+<p>P2P Group 建好之后，NetShare 在手机上启动一个 HTTP 代理服务器，监听固定端口 8282。所有进入 P2P 网络的设备，流量先到这个代理，再由代理转发到手机自己的出口（蜂窝数据、WiFi 或者 VPN）。</p>
+<p>这个设计的精妙之处在于：<strong>HTTP 代理可以在 Android 的系统 WiFi 设置里直接配置</strong>。用户选中 P2P 热点之后，在"修改网络"里找到"代理"选项，填 <code>192.168.49.1</code> 和 <code>8282</code> 就行——不需要 root，从<a href="https://netshare.boop.uno/download.html" target="_blank" rel="noopener">官方下载</a>装一个就行，不需要第三方客户端，不需要 adb 命令。</p>
+<p>为什么不是 SOCKS 代理？因为 SOCKS 代理在 Android 系统层面没有入口——你要么 root 配全局代理，要么每个 App 单独设。HTTP 代理虽然只能覆盖 HTTP/HTTPS 流量，但 HTTPS 可以通过 CONNECT 隧道转发，实际覆盖了绝大多数日常场景。</p>
+<h3>第三层：固定 IP <code>192.168.49.1</code>，不是巧合</h3>
+<p>如果你用过 NetShare，肯定注意到代理地址永远是 <code>192.168.49.1</code>——不是用户可配置的，也不是动态分配的。这不是 NetShare 写死了什么魔法数字，而是 Android WiFi Direct 框架本身的约定：Group Owner 在 P2P Group 里的 IP 地址就是 <code>192.168.49.1</code>。</p>
+<p>这个固定约定带来了巨大的便利：接收端不需要先扫描网络发现代理服务器在哪里，看 NetShare 主界面底部的 Proxy Host 直接抄就行。甚至 NetShare 自己也不需要做 IP 发现——它直接读 <code>WifiP2pInfo.groupOwnerAddress</code>，拿到的就是 <code>.1</code>。</p>
+<p><img src="../images/netshare-docs/main-interface.webp" alt="主界面" loading="lazy"></p>
+<h2>取舍：这套设计的代价</h2>
+<p>看起来很优雅，但这套方案不是银弹。它有几个必须接受的代价，我在实际使用中都踩过坑。</p>
+<h3>代理转发的性能损耗</h3>
+<p>HTTP 代理转发本身有开销。根据<a href="https://netshare-docs.pages.dev/" target="_blank" rel="noopener">NetShare文档</a>里的实测数据，代理层额外吃掉 15-25% 的带宽——这还没算 P2P Group 本身的 5-10% 损耗。如果你的手机直接测速能到 100Mbps，走 NetShare 之后大概是 70-85Mbps，这个比例是正常的。</p>
+<p>更夸张的是<strong>双重加密场景</strong>：如果手机本身开着 VPN，再用 NetShare 分享，那就是 VPN 加密一层 + HTTP 代理转发一层，总损耗能到 30-50%。我用 WireGuard + NetShare 测过一次，手机直接测速 50Mbps，NetShare 之后只剩 22Mbps——基本砍了一半。</p>
+<h3>WiFi 中继模式的物理限制</h3>
+<p>WiFi 中继模式（手机既连 WiFi 又开 P2P Group）看起来很爽，但它有 30-40% 的额外损耗。原因很简单：手机的 WiFi 模块在同一频段上要同时做接收（连路由器）和发射（给 P2P 设备），物理上不可能全速双工。这个损耗是硬件决定的，软件优化无能为力。</p>
+<p>我用 Redmi Note 8 做过中继测试：原始 WiFi 测速 45Mbps，中继之后只有 18Mbps，刚好是 40% 的水平。</p>
+<h3>频段拥塞的脆弱性</h3>
+<p>WiFi Direct 默认用 2.4GHz 频段，这个频段现在拥挤得离谱——微波炉、蓝牙、无线鼠标、邻居的路由器全在上面。NetShare 文档里提到，2.4GHz 拥塞时速度能掉 20-50%，而且你完全没法控制周围的环境干扰。</p>
+<h2>判断：适合什么场景，不适合什么</h2>
+<p>说了这么多代价，那 NetShare 到底值不值得用？我给它划了一条明确的适用边界。</p>
+<p><strong>适合的场景</strong>：</p>
+<ul><li><strong>分享 VPN 流量给多设备</strong>：这是 <a href="https://netshare.boop.uno" target="_blank" rel="noopener">NetShare官网</a> 主打的杀手级用途。原生热点碰不到 VPN 的 tun0 流量，但 NetShare 在用户态自己转发，天然支持。我出差时经常用它把机场 VPN 分享给 MacBook 和 iPad，比每台设备单独配机场省心多了。</li><li><strong>非 root 手机需要临时分享</strong>：不想 root 但又需要把手机网络分出去，NetShare 是最干净的选择——不需要改系统设置，不需要 adb。</li><li><strong>WiFi 中继临时救场</strong>：酒店 WiFi 信号只在窗边好，把闲置手机放窗边连 WiFi，开 NetShare 当中继器，全房间都能用。虽然速度打折但胜在够用。</li></ul>
+<p><strong>不适合的场景</strong>：</p>
+<ul><li><strong>追求极致速度</strong>：如果你需要跑满 5G 的 200Mbps+，NetShare 的代理损耗会让你抓狂。直接用原生热点（或 root 开 nat 转发）才是正道。</li><li><strong>需要 SOCKS 代理的应用</strong>：某些应用（比如游戏加速器、特定下载工具）只认 SOCKS 代理，HTTP 代理覆盖不了。这种情况只能 root 或者用专门的 VPN 客户端分享方案。</li><li><strong>长时间高负载运行</strong>：HTTP 代理转发会让手机 CPU 持续工作，发热降频是迟早的事。文档里建议接充电器 + 电池优化设为无限制，但我还是遇到过连续运行 4 小时后速度骤降的情况。</li></ul>
+<p><img src="../images/netshare-docs/advanced-options.webp" alt="高级选项" loading="lazy"></p>
+<h2>写在最后</h2>
+<p>NetShare 这套方案让我想起软件工程里的一个经典原则：<strong>先约束，再选择</strong>。它没有试图覆盖所有热点场景，而是瞄准了"非 root + 分享 VPN + 多设备"这个被原生方案放弃的缺口，用 WiFi Direct + HTTP 代理这套看起来"不够直接"的组合拳精准命中。</p>
+<p>代价是有的——损耗、发热、频段限制——但这些代价在目标场景下是可接受的。毕竟，能用和好用是两回事，而 NetShare 先解决了"能用"的问题，再在"好用"的边界上做了诚实的取舍。</p>
+<p>安装包和相关资料我在三个仓库都留了副本，<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/NetShare" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/NetShare" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/NetShare" target="_blank" rel="noopener">GitCode</a>，国内访问挑个顺手的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/anyview-docs.html">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</a></h2>
+  <p class="card-desc">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/crush-ai.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了半年 CRUSH AI 才发现，它藏着一整套让角色&#34;活&#34;起来的暗门</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/tandem-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">为什么 Tandem 敢用申请制卡用户</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>LocalSend 你只用了表层，这几个藏得真深的冷门技巧才是它的灵魂 · 老杨技术栈</title>
+  
+<meta name="description" content="你以为它只是个局域网发文件的小工具？手动 IP 直连、收藏夹自动接收、命令行脚本化、加密开关的前世今生——把 LocalSend 翻到底朝天，挖出那些官方不宣传但真能救命的隐藏功能。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/localsend-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LocalSend 你只用了表层，这几个藏得真深的冷门技巧才是它的灵魂">
+<meta property="og:description" content="你以为它只是个局域网发文件的小工具？手动 IP 直连、收藏夹自动接收、命令行脚本化、加密开关的前世今生——把 LocalSend 翻到底朝天，挖出那些官方不宣传但真能救命的隐藏功能。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/localsend-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/localsend-docs/screenshot-phone-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/localsend-docs/screenshot-phone-1.jpg">
+
+<meta name="twitter:title" content="LocalSend 你只用了表层，这几个藏得真深的冷门技巧才是它的灵魂">
+<meta name="twitter:description" content="你以为它只是个局域网发文件的小工具？手动 IP 直连、收藏夹自动接收、命令行脚本化、加密开关的前世今生——把 LocalSend 翻到底朝天，挖出那些官方不宣传但真能救命的隐藏功能。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4f60\u4ee5\u4e3a\u5b83\u53ea\u662f\u4e2a\u5c40\u57df\u7f51\u53d1\u6587\u4ef6\u7684\u5c0f\u5de5\u5177\uff1f\u624b\u52a8 IP \u76f4\u8fde\u3001\u6536\u85cf\u5939\u81ea\u52a8\u63a5\u6536\u3001\u547d\u4ee4\u884c\u811a\u672c\u5316\u3001\u52a0\u5bc6\u5f00\u5173\u7684\u524d\u4e16\u4eca\u751f\u2014\u2014\u628a LocalSend \u7ffb\u5230\u5e95\u671d\u5929\uff0c\u6316\u51fa\u90a3\u4e9b\u5b98\u65b9\u4e0d\u5ba3\u4f20\u4f46\u771f\u80fd\u6551\u547d\u7684\u9690\u85cf\u529f\u80fd\u3002", "headline": "LocalSend \u4f60\u53ea\u7528\u4e86\u8868\u5c42\uff0c\u8fd9\u51e0\u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u51b7\u95e8\u6280\u5de7\u624d\u662f\u5b83\u7684\u7075\u9b42", "image": ["https://alipymanbu.github.io/images/localsend-docs/screenshot-phone-1.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/localsend-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/localsend-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "LocalSend \u4f60\u53ea\u7528\u4e86\u8868\u5c42\uff0c\u8fd9\u51e0\u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u51b7\u95e8\u6280\u5de7\u624d\u662f\u5b83\u7684\u7075\u9b42", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">LocalSend 你只用了表层，这几个藏得真深的冷门技巧才是它的灵魂</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">LocalSend 你只用了表层，这几个藏得真深的冷门技巧才是它的灵魂</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">你以为它只是个局域网发文件的小工具？手动 IP 直连、收藏夹自动接收、命令行脚本化、加密开关的前世今生——把 LocalSend 翻到底朝天，挖出那些官方不宣传但真能救命的隐藏功能。</p>
+  </header>
+  <div class="prose">
+<p>你是不是也把 LocalSend 当成了一个"打开、选照片、点对方头像"的傻瓜式工具？连上同一 Wi-Fi 就自动发现、拖进去就传完，整个过程不到十秒——好用是好用，但你有没有想过：要是网络环境不配合呢？要是你想把它串进自动化流程呢？要是你想让它在后台悄悄干活不弹任何确认框呢？</p>
+<p>我把<a href="https://localsend.wxhp.skin" target="_blank" rel="noopener">官网</a>上这款软件翻了个底朝天，从 v1.16 一路追到 v1.18.2 的更新日志，从设置面板的高级选项到命令行工具的帮助文档——藏得真深，好几个功能我用了大半年才偶然发现。今天这篇就把它们一次性抖出来。</p>
+<p><img src="../images/localsend-docs/screenshot-phone-1.jpg" alt="手机端发现设备的主界面" loading="lazy"></p>
+<h2>第一个：手动 IP 直连——自动发现死掉时的最后一块拼图</h2>
+<p>先说一个最实用的"救命"功能。你一定遇到过这种场景：两台设备都连在同一个 Wi-Fi，权限全给了、防火墙也放行了，就是互相搜不到——急得想砸手机。</p>
+<p>这时候别再反复开关应用了。点开发送页，"附近的设备"标题栏旁边有一排小图标，找那个<strong>手写板样式的图标</strong>（v1.15 起需要先在高级设置里开启），点进去手动填对方的局域网 IP 地址，端口保持默认 53317。确认之后，应用直接跳过多播、跳过自动发现，向那个地址发起探测——通了就立刻出现在列表里。</p>
+<p>这个功能藏得有多深？它不在主界面显眼处，也不在设置面板的常规选项里，必须开了高级设置才看得见。但它能解决的场景太多了：公司网开了客户端隔离、酒店 Wi-Fi 禁了多播、甚至两台设备连的是同一个路由器但分别挂在不同网段——手动 IP 直连都能绕过去。</p>
+<p>用通了之后顺手把对方加个收藏（长按设备或详情页的心形按钮），下次它的查找方式就从"等广播公告"变成"定期向已知地址探测"，在多播被禁的网络里稳定得多。如果你有固定要互传的几台设备，这一步做完之后日常传输几乎是无感的。</p>
+<h2>第二个：加密开关——关掉它并不能让传输变快，早就过时了</h2>
+<p>设置面板里有个"加密"开关，你是不是也听人说过"关掉加密可以提速"？</p>
+<p>这个说法在 v1.17 及更早版本里可能还有点道理，但从 v1.18 开始已经彻底不成立了。它的<a href="https://localsend-docs.pages.dev/" target="_blank" rel="noopener">LocalSend文档</a>里白纸黑字写着：<strong>加密不再减缓传输速度，之前关掉的会被重新开启</strong>。我自己实测过几次，开开关关对比下来，哪怕是几个 GB 的大文件传输，加密的影响也在毫秒级——完全可以忽略。</p>
+<p>更有意思的是，这个开关在两端必须保持一致：两端都开就 HTTPS 加密传输；两端都关才走明文；要是一端开一端关，应用会弹一个"加密已关闭，正在通过未加密的 HTTP 协议连接"的确认提示。这个细节很多人不知道，"看得见却连不上"的排查清单里，加密开关不一致就是容易被忽略的一条。</p>
+<p>至于那个自签名证书为什么浏览器会警告"不受信任"——这不是安全问题，是自签名的必然表现，核对地址无误手动放行一次就行，没必要慌。</p>
+<h2>第三个：命令行工具——脚本化发文件，v1.18 才加的杀手级功能</h2>
+<p>这是 v1.18 大版本才首发的，也是我觉得最"不为人知"的宝藏功能。LocalSend 以前始终是个图形界面工具，现在它带了完整的命令行接口，意味着你可以把文件传输串进自己的自动化脚本里。</p>
+<p>官方文档里给了示例命令：<code>localsend-cli send file.txt</code>，还能指定接收方的设备 ID、超时时间、甚至通过管道接收文本输入。对于经常需要定期把日志文件或批量生成的产物同步到手机的人来说，这相当于打通了最后一公里——写一行 crontab 或者任务计划，就能让电脑每天自动把新文件推到手机上，全程零交互。</p>
+<p>可惜的是，这个命令行工具不是默认启用的，安装包从<a href="https://localsend.wxhp.skin/download.html" target="_blank" rel="noopener">LocalSend下载</a>拿，装的时候记得勾上命令行组件。官方也没有在主界面任何地方做入口提示，完全是留给重度用户自己发现的。</p>
+<h2>第四个：收藏夹自动接收——让特定设备传文件时完全不弹窗</h2>
+<p>收藏夹这个概念本身不算新鲜，但它背后的自动化逻辑很多人没摸透。</p>
+<p>把设备加入收藏之后，它的传输行为会发生两层变化：第一层是查找方式从被动等多播变成主动探测地址，刚才说过；第二层是 v1.16 引入、v1.18 默认开启的<strong>自动保存</strong>——收藏夹里的设备给你发文件时，不再弹"接收/拒绝"的确认框，直接自动收进你指定的目录。</p>
+<p>这个功能特别适合"我老婆每天把新拍的照片从手机推到我电脑"或者"办公室同事定期给我发表格"这种固定配对场景——你完全不用守着屏幕点确认。但它也有个明确的边界：自动接收只对白名单收藏夹生效，陌生设备依然会正常弹窗；而且 v1.16 那版还是"仅自动接收收藏设备"的雏形，v1.18 才做成了独立可开关的完整功能。</p>
+<h2>第五个：网络接口过滤——多网卡设备的专属救星</h2>
+<p>如果你电脑上同时插着网线、连了 Wi-Fi、还挂着一个 VPN——LocalSend 经常会"找错网卡"：它跑去扫了 VPN 虚拟网卡的地址，结果真实 Wi-Fi 上的设备一个都搜不到。</p>
+<p>这个问题的解法藏在 v1.17 才加的<strong>网络接口过滤</strong>里。进设置面板，找到网络相关的分组，你会看到一个列表，列着当前系统所有可用的网卡——物理网卡、虚拟网卡、VPN 网卡全在里面。把你实际在用的那个勾上，其他的取消，应用就只会在你指定的网卡上发多播和建立连接，再也不会乱跑。</p>
+<p>这个功能简直是程序员和运维的福音，但它藏得够深——名字本身就不直观，位置也在网络设置的最底部，没碰到过"搜不到设备"的人根本不会去翻。</p>
+<p><img src="../images/localsend-docs/screenshot-pc.webp" alt="桌面端拖放文件的传输界面" loading="lazy"></p>
+<h2>一个要提醒你的坑：AP 隔离不是它的锅，但它帮不了你绕过去</h2>
+<p>最后说一个经常被误解的情况。两台设备连同一个 Wi-Fi 互相看不见，十有八九是路由器开了"AP 隔离"——也叫客户端隔离、禁止无线设备互相访问。这是路由器的安全机制，公共 Wi-Fi 和访客网络尤其常见。</p>
+<p>手动 IP 直连在某些网络里能绕过去，但<strong>真隔离不行</strong>——隔离直接把设备间的互访请求全丢了，直连也会超时。这时候唯一可靠的办法是：拿其中一台设备开热点、另一台连热点，自建一个无隔离的小局域网。我试过在公司网、咖啡厅、甚至别人家里都用这招救回来过。</p>
+<p>另外，AP 隔离的关闭权限通常不在你手里——如果是自己家的路由器，管理页无线设置里搜"AP 隔离"或者"允许无线设备互相访问"就能找到；没有管理权的时候别硬试，直接开热点最快。</p>
+<h2>收尾</h2>
+<p>LocalSend 表面上是个"打开就用"的傻瓜工具，但把它的高级设置翻一遍、版本更新日志追一遍之后你会发现——它藏着的那些功能，刚好踩在"够用的日常"和"好用的自动化"之间的灰色地带。手动 IP 解决网络死角，命令行打通脚本化，收藏夹自动接收省掉反复确认，加密开关的旧经验早该更新了。</p>
+<p>把它用透，不是为了显得自己懂技术，而是省下来的那些反复弹窗、反复开关应用、反复搜不到设备的时间，真的可以用来做点别的。LocalSend 本身就是开源项目，感兴趣的朋友可以分别去 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/LocalSend" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/LocalSend" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/LocalSend" target="_blank" rel="noopener">GitCode</a> 看看，不同平台的社区活跃度和访问速度不太一样。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ttorrent.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用 tTorrent 搭一条手机端 BT 资料采集流水线</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/win7simu.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Win7 Simu 深度对比评测：把十年前的系统装进浏览器和手机，它做到了什么别人没做到的事</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

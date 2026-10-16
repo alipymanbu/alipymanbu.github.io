@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Auto.js 快问快答——手机上那些重复的事，能不能全交给它？ · 老杨技术栈</title>
+  
+<meta name="description" content="Auto.js 是安卓平台的无障碍自动化框架，用 JavaScript 写脚本就能操控其他 APP 的界面。整理了 7 组读者最常问的问题，覆盖定位、安装、核心用法、选择器、坑点和适合人群。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/auto-js.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Auto.js 快问快答——手机上那些重复的事，能不能全交给它？">
+<meta property="og:description" content="Auto.js 是安卓平台的无障碍自动化框架，用 JavaScript 写脚本就能操控其他 APP 的界面。整理了 7 组读者最常问的问题，覆盖定位、安装、核心用法、选择器、坑点和适合人群。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/auto-js.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/auto-js/autojs6-docs-hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/auto-js/autojs6-docs-hero.png">
+
+<meta name="twitter:title" content="Auto.js 快问快答——手机上那些重复的事，能不能全交给它？">
+<meta name="twitter:description" content="Auto.js 是安卓平台的无障碍自动化框架，用 JavaScript 写脚本就能操控其他 APP 的界面。整理了 7 组读者最常问的问题，覆盖定位、安装、核心用法、选择器、坑点和适合人群。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Auto.js \u662f\u5b89\u5353\u5e73\u53f0\u7684\u65e0\u969c\u788d\u81ea\u52a8\u5316\u6846\u67b6\uff0c\u7528 JavaScript \u5199\u811a\u672c\u5c31\u80fd\u64cd\u63a7\u5176\u4ed6 APP \u7684\u754c\u9762\u3002\u6574\u7406\u4e86 7 \u7ec4\u8bfb\u8005\u6700\u5e38\u95ee\u7684\u95ee\u9898\uff0c\u8986\u76d6\u5b9a\u4f4d\u3001\u5b89\u88c5\u3001\u6838\u5fc3\u7528\u6cd5\u3001\u9009\u62e9\u5668\u3001\u5751\u70b9\u548c\u9002\u5408\u4eba\u7fa4\u3002", "headline": "Auto.js \u5feb\u95ee\u5feb\u7b54\u2014\u2014\u624b\u673a\u4e0a\u90a3\u4e9b\u91cd\u590d\u7684\u4e8b\uff0c\u80fd\u4e0d\u80fd\u5168\u4ea4\u7ed9\u5b83\uff1f", "image": ["https://alipymanbu.github.io/images/auto-js/autojs6-docs-hero.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/auto-js.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/auto-js.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "Auto.js \u5feb\u95ee\u5feb\u7b54\u2014\u2014\u624b\u673a\u4e0a\u90a3\u4e9b\u91cd\u590d\u7684\u4e8b\uff0c\u80fd\u4e0d\u80fd\u5168\u4ea4\u7ed9\u5b83\uff1f", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">Auto.js 快问快答——手机上那些重复的事，能不能全交给它？</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Auto.js 快问快答——手机上那些重复的事，能不能全交给它？</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Auto.js 是安卓平台的无障碍自动化框架，用 JavaScript 写脚本就能操控其他 APP 的界面。整理了 7 组读者最常问的问题，覆盖定位、安装、核心用法、选择器、坑点和适合人群。</p>
+  </header>
+  <div class="prose">
+<p>整理一篇关于 Auto.js 的快问快答。如果你用过它，这是一份查漏补缺的速查表；如果你刚听说，读完就能判断要不要装。</p>
+<h2>Auto.js 到底是什么？一句话讲清</h2>
+<p><a href="https://auto-js.gerw.hair" target="_blank" rel="noopener">Auto.js官网</a>是一个安卓平台的自动化工具，核心思路是：<strong>让一段 JavaScript 代码去操控其他 APP 的界面</strong>。它通过安卓的「无障碍服务」读取当前屏幕上的控件树（按钮、文本、图片……），然后按照你的脚本规则点击、输入、滑动——像一个不知疲倦的手指替身。</p>
+<p>它不是模拟器、不是虚拟机、也不是 hook 框架。它跑在你自己的手机上，用的是系统给无障碍功能的那套 API，所以不需要 root，也不会改动其他 APP 的代码。</p>
+<p><img src="../images/auto-js/autojs6-docs-hero.png" alt="Auto.js 主界面" loading="lazy"></p>
+<h2>谁真的需要装？四类典型用户</h2>
+<p><strong>第一类是每天都要点一遍签到的人</strong>——支付宝蚂蚁森林、淘宝淘金币、京东 PLUS、拼多多果园……每个 APP 的签到按钮位置不同、文案不同，但 Auto.js 的选择器 API 可以精准定位，一次写好永久受益。</p>
+<p><strong>第二类是需要在真机上反复点 APP 的测试工程师</strong>——不能替代 Appium 那样的专业测试框架，但做快速手动回归效率很高：模拟完整交互流程、截图对比不同版本、统计按钮响应时间。</p>
+<p><strong>第三类是想做移动端数据采集的人</strong>——打开目标 APP → 翻页 → 截图 → OCR → 写文件，相比 PC 端爬虫绕过了部分反爬机制。</p>
+<p><strong>第四类是想写独立工具的开发者</strong>——Auto.js 的 UI 构建和 APK 打包能力让它超越了「脚本」范畴，可以写出完整的、带界面的安卓小工具，分发给身边人用。</p>
+<h2>怎么装？有门槛吗？</h2>
+<p>安装本身没门槛，安装包从<a href="https://auto-js.gerw.hair/download.html" target="_blank" rel="noopener">官方下载</a>拿，装上就行。但<strong>首次启动必须做一件事：去系统设置里开启无障碍服务</strong>。这是 Auto.js 能读取和操控其他 APP 界面的前提，不开的话什么脚本都跑不动。</p>
+<p>另外一个常见误区：很多人以为 Auto.js 需要 root。不需要。它全程走无障碍通道，权限级别和一个读屏软件差不多。只有遇到系统级操作（比如改系统设置、批量安装卸载 APP）才需要额外权限，大多数日常脚本都不碰这些。</p>
+<h2>核心怎么用？三个选择器搞定 80% 场景</h2>
+<p>Auto.js 的脚本逻辑大部分是：<strong>选控件 → 操作控件</strong>。选控件靠三种选择器就覆盖绝大多数情况：</p>
+<ul><li><strong>文本选择器</strong>：按界面上显示的字找，<code>text(&quot;签到&quot;)</code> 精确匹配，<code>textContains(&quot;购买&quot;)</code> 包含匹配，<code>textMatches(&quot;立.{0,2}购买&quot;)</code> 正则匹配，灵活度最高。</li><li><strong>ID 选择器</strong>：按资源 ID 找，<code>id(&quot;com.taobao.taobao:id/tv_price&quot;)</code>，精准但不同 APP 的 ID 格式不一样。</li><li><strong>类名选择器</strong>：按控件类型找，<code>className(&quot;android.widget.Button&quot;)</code>，适合批量操作同一类控件。</li></ul>
+<p>这些选择器不是一次只能用一个——可以链式组合。比如你想找「屏幕底部区域内、可点击、文本包含确定的那个按钮」，就把 bounds、clickable、textContains 串起来。</p>
+<p><img src="../images/auto-js/shot-03-1.jpg" alt="布局分析器视图" loading="lazy"></p>
+<h2>看不懂控件树怎么办？布局分析器救你</h2>
+<p>刚上手最大的障碍是「我到底该用什么选择器？」。Auto.js 内置了布局分析器，打开后屏幕上所有控件会高亮显示，左上角弹出控件树结构——每个节点告诉你 className、text、id、description、bounds 这些属性值，点一下就能复制。</p>
+<p>打开方式有三种：悬浮窗里点「布局分析」最方便，不需要切回 Auto.js；侧拉菜单里也能打开；代码里 <code>auto.layoutInspector()</code> 也能调起。拿到属性值之后，往选择器里填就行。这是写脚本之前最该用的工具，没有之一。想深入了解完整的 API 列表和边界情况，可以翻一下<a href="https://auto-js.pages.dev/" target="_blank" rel="noopener">Auto.js文档</a>。</p>
+<h2>filter 过滤是干嘛的？为什么说它是终极武器</h2>
+<p>前面的文本/ID/类名选择器都是 Auto.js 预设好的匹配条件，能覆盖 80% 场景，但总有覆盖不到的——比如「文本长度在 4 到 8 字符之间」「两个不同属性的 OR 组合」「文本是数字且大于 100」。</p>
+<p>filter 让你写自己的判断函数，返回 <code>true</code> 的控件保留。用法是先加基础选择器缩小范围，再 <code>.filter(function(view) { ... })</code>——参数 <code>view</code> 是一个 UiObject，可以访问 text()、id()、className()、bounds()、visible()、clickable() 等全部控件属性。</p>
+<p>但要注意性能：filter 需要遍历所有匹配控件执行函数，比普通选择器慢得多。<strong>千万不要裸用 filter</strong>，前面一定要先加 className("Button") 之类的基础选择器把范围缩到最小，filter 里也别放 sleep 或网络请求。</p>
+<h2>相对位置选择器什么时候用？</h2>
+<p>当两个按钮文案一样、类名一样，但在屏幕上的位置不同时，纯靠控件属性没法区分。这时候用相对位置：</p>
+<ul><li><strong>bounds</strong>：按屏幕像素区域匹配，<code>bounds(0, 1800, 1080, 2400).click()</code> 只点底部区域的按钮，避开顶部导航栏的同名按钮。</li><li><strong>父子关系</strong>：先找容器再找子控件，<code>text(&quot;购买&quot;).findOne().parent().findOne(id(&quot;price_tag&quot;))</code> 能拿到购买按钮旁边的价格文本。</li><li><strong>visible / clickable / enabled</strong>：排除被隐藏的、灰色禁用的控件。</li></ul>
+<p>这些组合起来能解决 APP 改版后选择器失效的常见问题——很多脚本挂掉不是因为控件属性变了，而是刚好碰到了另一个同名控件。</p>
+<h2>有哪些坑？五个高频踩雷点</h2>
+<p><strong>第一，不要裸用 filter</strong>——会遍历整棵控件树，在复杂界面上卡顿明显。前面一定要加基础选择器。</p>
+<p><strong>第二，bounds 坐标要按实际分辨率算</strong>——换一台手机坐标就全变了。如果脚本要跨设备用，尽量用相对位置而不是绝对像素。</p>
+<p><strong>第三，Auto.js 不做任何拦截</strong>——脚本里如果写了无限循环、或者选错了控件点到了不该点的地方，它会老老实实地执行，没有撤销。所以写新脚本一定要先小范围测试。</p>
+<p><strong>第四，不要碰需要 root 或绕过付费的场景</strong>——Auto.js 本身不提供 root 能力，涉及系统级操作还是得用别的方案；破解授权违反使用条款，也可能触碰法律红线。</p>
+<p><strong>第五，iOS 用户没份</strong>——Auto.js 只支持安卓平台。iPhone 上想做类似自动化得走捷径（Shortcuts）或越狱路线。</p>
+<h2>值得长期用吗？</h2>
+<p>值不值取决于你有没有那种「每天都要点一遍」的重复操作。如果每天至少有一件事是在手机上机械重复点五分钟以上，Auto.js 大概率能帮你省时间，而且脚本写好了就是永久受益。如果只是偶尔点几下，花半小时学选择器就有点本末倒置了。最后一句：装一个，跑一次最简单的签到脚本，感受一下它能不能省掉你每天那三分钟。我整理的脚本素材和笔记在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/auto.js" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/auto.js" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/auto.js" target="_blank" rel="noopener">GitCode</a>都同步了，哪能访问就用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/muse-ai-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了一周 AI 写歌 App，说说它到底能帮普通人做点什么</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/httpcanary.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">装了 httpCanary 一周，我终于看懂了手机里那些 App 在偷偷发什么</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

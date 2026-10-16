@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Piascore 用了三年才总结出来的六个坑 · 老杨技术栈</title>
+  
+<meta name="description" content="从纸质乐谱扫描到蓝牙踏板翻页，从手写标注到商店买谱，每个环节都踩过不少雷。这篇把真实遇到的翻车现场和应对方案一次说清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/piascore.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Piascore 用了三年才总结出来的六个坑">
+<meta property="og:description" content="从纸质乐谱扫描到蓝牙踏板翻页，从手写标注到商店买谱，每个环节都踩过不少雷。这篇把真实遇到的翻车现场和应对方案一次说清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/piascore.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/piascore/score-view.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/piascore/score-view.jpg">
+
+<meta name="twitter:title" content="Piascore 用了三年才总结出来的六个坑">
+<meta name="twitter:description" content="从纸质乐谱扫描到蓝牙踏板翻页，从手写标注到商店买谱，每个环节都踩过不少雷。这篇把真实遇到的翻车现场和应对方案一次说清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u7eb8\u8d28\u4e50\u8c31\u626b\u63cf\u5230\u84dd\u7259\u8e0f\u677f\u7ffb\u9875\uff0c\u4ece\u624b\u5199\u6807\u6ce8\u5230\u5546\u5e97\u4e70\u8c31\uff0c\u6bcf\u4e2a\u73af\u8282\u90fd\u8e29\u8fc7\u4e0d\u5c11\u96f7\u3002\u8fd9\u7bc7\u628a\u771f\u5b9e\u9047\u5230\u7684\u7ffb\u8f66\u73b0\u573a\u548c\u5e94\u5bf9\u65b9\u6848\u4e00\u6b21\u8bf4\u6e05\u3002", "headline": "Piascore \u7528\u4e86\u4e09\u5e74\u624d\u603b\u7ed3\u51fa\u6765\u7684\u516d\u4e2a\u5751", "image": ["https://alipymanbu.github.io/images/piascore/score-view.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/piascore.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/piascore.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Piascore \u7528\u4e86\u4e09\u5e74\u624d\u603b\u7ed3\u51fa\u6765\u7684\u516d\u4e2a\u5751", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">Piascore 用了三年才总结出来的六个坑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Piascore 用了三年才总结出来的六个坑</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从纸质乐谱扫描到蓝牙踏板翻页，从手写标注到商店买谱，每个环节都踩过不少雷。这篇把真实遇到的翻车现场和应对方案一次说清。</p>
+  </header>
+  <div class="prose">
+<p>Piascore 的<a href="https://piascore.bpfl.quest" target="_blank" rel="noopener">官网</a>把自己定位成 iPad 上最常用的电子乐谱阅读器，看着界面简洁、功能直观，上手好像没什么门槛。但我用了将近三年，从纸质乐谱导入、蓝牙踏板连接、手写标注到商店买谱，几乎每个环节都踩过不少坑。有些坑浪费你半小时调设置，有些坑直接让你在演出前一天发现乐谱翻不了页。</p>
+<p>这篇不讲基础操作，只挑那些文档里没写清楚、你不撞南墙不会知道的真实问题。</p>
+<h2>纸质乐谱扫描：别指望它替你做专业扫描</h2>
+<p>一开始我以为 Piascore 的扫描功能是万能的——把 iPad 架在乐谱架上拍两张，就能直接用了。实际拍出来的效果让人头疼：页面歪歪扭扭、边缘被切掉一块、中间有阴影……调了半小时角度和灯光，拍出来还是勉强能用。</p>
+<p><img src="../images/piascore/score-view.jpg" alt="iPad 上的乐谱视图" loading="lazy"></p>
+<p>后来仔细翻了<a href="https://piascore.pages.dev/" target="_blank" rel="noopener">PIASCORE文档</a>才发现，Piascore 的扫描定位是<strong>快速临时导入</strong>，不是专业文档扫描工具。它不做自动裁切矫正，不会智能对齐斜着拍的页面，也不会帮你压缩 PDF 文件。如果你手里的纸质乐谱本身就有点卷边、或者拍摄环境光线不均匀，Piascore 只会原样给你收进去，后期想调都很麻烦。</p>
+<p><strong>解法</strong>：先用专业扫描 App 处理一遍。Scanbot、Scanner Pro、百度扫描全能王这些都行，让它们帮你把页面裁正、调亮、压缩好，把生成的 PDF 存到云盘再导入 Piascore。多花两分钟，扫出来的质量差好几个档次。</p>
+<h2>蓝牙踏板翻页：iOS 稳得一批，Android 玄学</h2>
+<p>用 AirTurn 之类的蓝牙踏板翻页，是每个上台演奏的人的刚需。iPad 上配对一次就再也没掉过链子，踏板按下去即时响应，完全不用管。</p>
+<p>但 Android 设备就不一样了。我试过两台不同厂商的安卓平板，一台连 AirTurn 偶尔能翻、偶尔没反应，另一台直接搜不到设备。查了一圈才发现，不同厂商的 ROM 对蓝牙 HID 协议的实现差异很大，Piascore 官方也在文档里写了 Android 版本的蓝牙兼容性需要测试——AirTurn 尤其需要。</p>
+<p>如果你用 Android 且对翻页稳定性要求高，建议优先上 iPad。实在要在 Android 上用的话，<strong>先从<a href="https://piascore.bpfl.quest/download.html" target="_blank" rel="noopener">PIASCORE下载</a>把 App 装好、把踏板连上测一遍</strong>，确认没问题再决定要不要付费升级。别等买了完整版才发现踏板翻不了页。</p>
+<h2>手写标注：手掌误触是最烦的小事</h2>
+<p>Piascore 的手写体验整体不错，尤其是配合 Apple Pencil，压力感应跟手、延迟几乎察觉不到。但有个小问题让我烦了好久——写字时手掌搭在 iPad 屏幕边缘，居然也画出了细线，跟我特意选的蓝色指法标记混在一起，后期擦都擦不干净。</p>
+<p>Piascore 有手掌防误触功能，但它不是无条件开启的。如果你发现手掌也在画布上留下痕迹，先检查两个地方：<strong>iPad 系统设置里的「Apple Pencil → 忽略」选项有没有开，以及 Piascore App 内的防误触开关</strong>。两个都开了之后，手掌搭屏幕就只用来支撑，不会再被当成手写输入。</p>
+<p>另外写小字的时候记得先把页面放大。iPad 屏幕再大，实际手写区域也只是乐谱的一小块，放大到 200% 以上写出来的标记才够精准，尤其是那些密密麻麻的指法数字。</p>
+<h2>Piascore Store 买乐谱：要单独注册账号</h2>
+<p>第一次进 Store 买乐谱时，我下意识用了 App Store 的 Apple ID 去登，结果提示账号不存在。后来才搞明白——Piascore Store 用的是<strong>独立的账号系统</strong>，和 App Store 账号完全不绑定。</p>
+<p>注册不难，邮箱、Apple 账号、Google 账号三种方式都行。用 Apple 账号快捷登录是最快的，两步就搞定。但这个独立账号意味着：<strong>你在 Store 买的乐谱，换了 Android 设备后要用同一个 Store 账号登录才能恢复下载</strong>，Apple ID 里的完整版升级是另一码事。</p>
+<p>另外购买前务必点预览。Store 里的乐谱虽然都是 PDF 格式，但清晰度和排版质量参差不齐——我买过一份吉他弹唱谱，和弦图模糊得根本看不清手指位置，想退又因为是数字商品没法退。花几十块钱之前，先点开预览页确认内容和清晰度。</p>
+<h2>没有信用卡也能升级完整版</h2>
+<p>免费版够用，但完整版的自动滚动、Setlist 演奏列表、iCloud 同步这些功能，真正需要的人绕不开。我身边有朋友卡在「Apple ID 没绑信用卡」这一步，以为没法升级。</p>
+<p>其实 Apple Pay、礼品卡充值都能完成支付。中国大陆区域完整版大约 ¥38 一次性买断，永久有效，而且跟 Apple ID 绑定，换设备重新下载 Piascore 登录同一个 Apple ID 就自动恢复完整版了，不用再买一次。</p>
+<h2>防坑清单（速查）</h2>
+<ul><li>纸质乐谱先过专业扫描 App 再导入，Piascore 不替你做矫正和裁切</li><li>AirTurn 翻页优先 iPad，Android 先测再买完整版</li><li>手写前确认 iPad 系统和 App 内的手掌防误触都开了</li><li>Store 买谱用 Apple 账号快捷登录，别用 App Store 账号登</li><li>购买乐谱前务必点预览确认清晰度和排版</li></ul>
+<p>Piascore 本身确实是个好用的乐谱阅读器，界面干净、响应快，iPad 横屏双页显示的体验接近纸质乐谱架。但这些坑都不是什么高深技术问题，纯粹是文档没说透、或者默认用户的使用环境跟官方开发环境一致。知道之后，每次用它都能省不少烦心事。</p>
+<p>如果你也在用这个 App，踩过上面没提到的坑，欢迎在评论区补一条。</p>
+<hr>
+<p>这份资料我同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/PIASCORE" target="_blank" rel="noopener">GitHub</a>，考虑到有些朋友在国内访问速度不稳定，<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/PIASCORE" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/PIASCORE" target="_blank" rel="noopener">GitCode</a>上也各有一份完整副本，方便随时查阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/aide-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">AIDE 深度盘点：手机上写 Android 应用到底能走多远</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/wikihow-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">凌晨十一点，我靠一个小应用打出了人生第一条领带</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Olib 为什么非要让我登录？——一款电子书客户端的架构取舍 · 老杨技术栈</title>
+  
+<meta name="description" content="从 Z-Library API 对接、云端同步机制到绿色版分发，拆解 Olib 背后那些用户看不见但每天都在感知的技术选择。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/olib-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Olib 为什么非要让我登录？——一款电子书客户端的架构取舍">
+<meta property="og:description" content="从 Z-Library API 对接、云端同步机制到绿色版分发，拆解 Olib 背后那些用户看不见但每天都在感知的技术选择。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/olib-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/olib-docs/login-page.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/olib-docs/login-page.jpg">
+
+<meta name="twitter:title" content="Olib 为什么非要让我登录？——一款电子书客户端的架构取舍">
+<meta name="twitter:description" content="从 Z-Library API 对接、云端同步机制到绿色版分发，拆解 Olib 背后那些用户看不见但每天都在感知的技术选择。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece Z-Library API \u5bf9\u63a5\u3001\u4e91\u7aef\u540c\u6b65\u673a\u5236\u5230\u7eff\u8272\u7248\u5206\u53d1\uff0c\u62c6\u89e3 Olib \u80cc\u540e\u90a3\u4e9b\u7528\u6237\u770b\u4e0d\u89c1\u4f46\u6bcf\u5929\u90fd\u5728\u611f\u77e5\u7684\u6280\u672f\u9009\u62e9\u3002", "headline": "Olib \u4e3a\u4ec0\u4e48\u975e\u8981\u8ba9\u6211\u767b\u5f55\uff1f\u2014\u2014\u4e00\u6b3e\u7535\u5b50\u4e66\u5ba2\u6237\u7aef\u7684\u67b6\u6784\u53d6\u820d", "image": ["https://alipymanbu.github.io/images/olib-docs/login-page.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/olib-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/olib-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "Olib \u4e3a\u4ec0\u4e48\u975e\u8981\u8ba9\u6211\u767b\u5f55\uff1f\u2014\u2014\u4e00\u6b3e\u7535\u5b50\u4e66\u5ba2\u6237\u7aef\u7684\u67b6\u6784\u53d6\u820d", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">Olib 为什么非要让我登录？——一款电子书客户端的架构取舍</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Olib 为什么非要让我登录？——一款电子书客户端的架构取舍</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 Z-Library API 对接、云端同步机制到绿色版分发，拆解 Olib 背后那些用户看不见但每天都在感知的技术选择。</p>
+  </header>
+  <div class="prose">
+<p>第一次打开 Olib，弹窗先要 Z-Library 账号密码。我当时的第一反应是：别的下载工具都能游客搜，你凭什么非要登录？后来翻完它的<a href="https://olib-docs.pages.dev/" target="_blank" rel="noopener">Olib文档</a>才意识到，这个"非要"不是产品傲慢，而是一套架构选择后不得不付出的代价——Olib 从根上就没打算做一个自己存数据的中间层，它选择做 Z-Library API 的一个薄客户端。</p>
+<p>这意味着它的一切行为逻辑都得跟着 Z-Library 的规则走。</p>
+<h2>为什么不做游客模式</h2>
+<p>市面上那些支持匿名搜索的电子书工具，底层逻辑大多是"自己抓一份搜索索引放本地或自家服务器"。用户搜的时候查的是工具维护者那份快照，下载时要么转存到自家网盘，要么偷偷爬 Z-Library 的临时直链。这条路的好处是用户体验门槛低，但代价显而易见：索引会过期、直链会失效、一旦被封就整条链路断了。</p>
+<p>Olib 走了另一条路——它的<a href="https://olib.ggcd.uno" target="_blank" rel="noopener">官网</a>上直接写明——直接用 Z-Library 的公开 API。搜索请求发给 Z-Library 官方服务器，下载链接也是官方返回的一次性临时 URL。这条路的前提是——Z-Library 的 API 从一开始就要求鉴权。免费账号每天 10 次下载额度，赞助会员额度更高，这是 Z-Library 本身的配额设计，不是 Olib 加的限制。</p>
+<p>Olib 开发者拾壹0x7f 说过"不提供代注册"，也没有做任何绕过鉴权的尝试。从工程角度看，选择硬接官方 API 有几个清晰的好处：数据永远是实时的、不需要维护自己的索引库、不需要担心镜像站被封。但代价就是用户必须自备账号，而且 Olib 的命运和 Z-Library 的 API 稳定性直接绑定——Z-Library 哪天改了鉴权方式，Olib 就得跟着改。</p>
+<p><img src="../images/olib-docs/login-page.jpg" alt="登录页" loading="lazy"></p>
+<h2>云端同步为什么只传记录不传文件</h2>
+<p>在电脑上搜完一本书记下来，手机上打开 Olib 就能在"下载历史"里看到，这个功能很多人觉得理所当然。但你有没有想过——为什么不同步文件本身？</p>
+<p>答案藏在 Z-Library 的云端书架设计里。Olib 登录后调用的是 Z-Library 自己的书架 API，那个接口返回的数据结构就是"你下过什么书、什么时候下的、在哪台设备下的"——是一张记录表，不是文件存储。Z-Library 本身不提供个人用户的云存储空间，它的定位是一个书目索引和下载跳转服务，文件分发靠的是各个镜像节点的临时链接。</p>
+<p>所以 Olib 的"云端同步"本质上就是把你的下载请求标记回 Z-Library 的书架里，换设备登录时拉回来那张表。它跨设备能做到的上限就是 Z-Library 给它的那个 API 能提供的上限。想让文件跟着走？那就得 Olib 自己搭存储——不仅是服务器成本问题，更是版权风险问题，这条路走不通。</p>
+<p>这也是为什么本地阅读进度、收藏夹、书签这些数据也不同步。Z-Library 的书架接口只管下载历史，Olib 本地阅读时记的进度和标记只在本地 SQLite 里存着，没有对应的云端接口可以上报。</p>
+<h2>绿色版分发背后的工程选择</h2>
+<p>从<a href="https://olib.ggcd.uno/download.html" target="_blank" rel="noopener">官方下载</a>拿到 Olib Windows 版，得到一个 zip，解压双击 exe 就能跑——不写注册表、不往 AppData 塞东西、卸载直接删文件夹。这套"绿色版"不是什么高级技术，就是 PyInstaller 打出来的单文件可执行程序，把 Python 运行时、所有依赖库、Olib 代码全部打包进一个 exe 里。</p>
+<p><img src="../images/olib-docs/windows-interface.png" alt="Windows 主界面" loading="lazy"></p>
+<p>但绿色版之所以坚持下来，其实也有被倒逼的成分。作为个人开发者签名的程序，Olib 天生容易被 Windows Defender 误报。走常规安装包路线（NSIS 或 Inno Setup）意味着更多的系统写入动作，反而会增加被标记的概率。绿色版的行为模式太干净了——不碰注册表、不写系统目录、不注册自启动项——反而是降低误报率的一种策略。</p>
+<p>代价是用户没法从系统设置里卸载它，也不会自动创建桌面快捷方式。这些都是小麻烦，但对于一个主打"即插即用"的工具来说，权衡下来绿色版更合适。</p>
+<h2>那它适合谁</h2>
+<p>Olib 这套架构选择，本质上是把控制权交还给了 Z-Library，自己只做一个干净的客户端。适合对这点没意见、愿意注册 Z-Library 账号的用户——每天 10 次免费额度配合多账号轮换基本够用。但如果你期待"一个工具搞定一切"、想不登录就搜、想跨设备同步文件本身，Olib 这条路线给不了你，那它可能不是最优选择。</p>
+<p>这不是好或坏的问题，是取舍问题。薄客户端的好处是轻、干净、不碰版权红线；坏处是命运攥在别人手里、功能上限由上游决定。Olib 的设计就是老老实实把自己定位成一个界面层，把剩下的事交给 Z-Library。整理的一些 Olib 资料存在了多份，<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/Olib" target="_blank" rel="noopener">GitHub</a>是主版本，国内访问直接看<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/Olib" target="_blank" rel="noopener">Gitee</a>或<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/Olib" target="_blank" rel="noopener">GitCode</a>就行。</p>
+<p>对我来说，能用就行，登录不是什么难事。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/lumeow.html">Lumeow 深度盘点：一款 AI 角色扮演应用的能力面完整铺开</a></h2>
+  <p class="card-desc">从多人剧情共创到隐私保护三件套，从对话历史管理到云端同步——Lumeow 到底能做什么？本文按能力域系统性梳理这款 AI 角色扮演应用的亮点、适用场景和局限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/appenjoy.html">APPenjoy 翻了个底朝天才敢说——这五个隐藏功能你肯定漏了仨</a></h2>
+  <p class="card-desc">以为 APPenjoy 就是个找应用下 APK 的工具？三重安全审核、隐藏影视入口、社区积分体系……我把它翻了一周，挖出五个官方没写在明面上的冷门玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pado-docs.html">Pado 情侣应用全能力盘点：定位、记录、仪式感三件套到底做得怎么样</a></h2>
+  <p class="card-desc">从实时位置到 365 打卡挑战，从安全区域到甜蜜相册，这篇盘点把 Pado 的核心功能域拆开逐一评测，帮你判断它值不值得装。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/9apps-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">9Apps 用了快一年，从下载到安装的那些细节变化</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/googlegmail-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">第一次用 Gmail？五分钟从下载到发第一封邮件</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

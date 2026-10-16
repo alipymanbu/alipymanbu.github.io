@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>AlgerMusicPlayer 五年迭代：从一个播放器到会自己管安全的桌面客户端 · 老杨技术栈</title>
+  
+<meta name="description" content="从 v5.1.0 的主题重构、扫码登录默认、本地 API 回环监听，看 AlgerMusicPlayer 团队一直在死磕什么、又一直在放什么。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/algermusicplayer-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AlgerMusicPlayer 五年迭代：从一个播放器到会自己管安全的桌面客户端">
+<meta property="og:description" content="从 v5.1.0 的主题重构、扫码登录默认、本地 API 回环监听，看 AlgerMusicPlayer 团队一直在死磕什么、又一直在放什么。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/algermusicplayer-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/algermusicplayer-docs/home-dark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/algermusicplayer-docs/home-dark.png">
+
+<meta name="twitter:title" content="AlgerMusicPlayer 五年迭代：从一个播放器到会自己管安全的桌面客户端">
+<meta name="twitter:description" content="从 v5.1.0 的主题重构、扫码登录默认、本地 API 回环监听，看 AlgerMusicPlayer 团队一直在死磕什么、又一直在放什么。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece v5.1.0 \u7684\u4e3b\u9898\u91cd\u6784\u3001\u626b\u7801\u767b\u5f55\u9ed8\u8ba4\u3001\u672c\u5730 API \u56de\u73af\u76d1\u542c\uff0c\u770b AlgerMusicPlayer \u56e2\u961f\u4e00\u76f4\u5728\u6b7b\u78d5\u4ec0\u4e48\u3001\u53c8\u4e00\u76f4\u5728\u653e\u4ec0\u4e48\u3002", "headline": "AlgerMusicPlayer \u4e94\u5e74\u8fed\u4ee3\uff1a\u4ece\u4e00\u4e2a\u64ad\u653e\u5668\u5230\u4f1a\u81ea\u5df1\u7ba1\u5b89\u5168\u7684\u684c\u9762\u5ba2\u6237\u7aef", "image": ["https://alipymanbu.github.io/images/algermusicplayer-docs/home-dark.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/algermusicplayer-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/algermusicplayer-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "AlgerMusicPlayer \u4e94\u5e74\u8fed\u4ee3\uff1a\u4ece\u4e00\u4e2a\u64ad\u653e\u5668\u5230\u4f1a\u81ea\u5df1\u7ba1\u5b89\u5168\u7684\u684c\u9762\u5ba2\u6237\u7aef", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">AlgerMusicPlayer 五年迭代：从一个播放器到会自己管安全的桌面客户端</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">AlgerMusicPlayer 五年迭代：从一个播放器到会自己管安全的桌面客户端</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 v5.1.0 的主题重构、扫码登录默认、本地 API 回环监听，看 AlgerMusicPlayer 团队一直在死磕什么、又一直在放什么。</p>
+  </header>
+  <div class="prose">
+<p>现在这版 <a href="https://algermusicplayer.fedq.quest" target="_blank" rel="noopener">AlgerMusicPlayer官网</a> 给我的第一印象是——它在 v5.1.0 里同时动了三个看起来不相关的地方：主题系统重写、登录默认方式从账号密码切到扫码、本地音乐 API 只监听回环地址。三个改动分别落在体验、安全、架构上，但放在一起看，这个版本其实是团队一次清晰的优先级排序。</p>
+<p>我第一次打开它的时候没注意到这些细节，只觉得界面比上次干净了。后来去<a href="https://algermusicplayer-docs.pages.dev/" target="_blank" rel="noopener">AlgerMusicPlayer文档</a>翻了一下 v5.1.0 的变更记录，又跑了一遍远程控制功能，才回过神来——原来这不是一次随便的 bugfix 版本，团队在悄悄给自己设门槛。</p>
+<h2>它从哪起步</h2>
+<p>样本文档里没有提 v5.0 之前的任何版本号，也没有 changelog 归档。这本身就是一种信息：AlgerMusicPlayer 团队没兴趣把自己包装成一个有十年历史的老牌播放器，他们只关心用户此刻用的是哪一版。</p>
+<p>文档里唯一出现的版本号就是 v5.1.0，但从功能覆盖面可以倒推它走到这一步经历过什么：Electron 跨平台架构说明它早期就放弃了单平台路线，网易云官方 API 对接说明它从一开始就不想做灰色解析那一套，LX Music 脚本引擎说明它后来又把生态开放提上了日程。v5.1.0 之前的历史藏在架构选择里，而不是藏在版本号里。</p>
+<h2>v5.1.0 到底改了什么</h2>
+<p>主题重构是最直观的。设置页拆成了 7 个独立 Tab，外观相关的所有选项集中到一处，主色可以自定义输入 HEX 值。深色主题和浅色主题的切换逻辑从原来的全局覆盖改成了组件级状态管理，AppMenu 那个长期没修的主题色错误也在这一版补上了。</p>
+<p><img src="../images/algermusicplayer-docs/home-dark.png" alt="深色主题首页" loading="lazy"></p>
+<p>登录方式的变化对我来说影响更大。v5.1.0 之前默认是账号密码登录，现在扫码成了首选。文档里专门解释了这个决策：扫码全程不暴露密码，账号密码会通过网易云官方 API 走认证，但会话凭证还是存在 Chromium 的 Cookie 里。团队没有把账号密码入口删掉，只是把它降到了备选。</p>
+<p>最不显眼但我觉得最有意思的改动是本地音乐 API 的监听地址。之前这个 API 可能监听在 0.0.0.0 或者具体局域网 IP 上，v5.1.0 把它钉死在 127.0.0.1 和 ::1 回环地址。文档里专门解释了为什么要这么做：如果你长期开着 AlgerMusicPlayer 当桌面常驻，局域网里其他设备理论上可以触发本地扫描。改完之后，只有本机应用能碰这个 API。</p>
+<p>同一个版本里，LX Music 脚本执行也被隔离到了 Worker 沙箱。文档用了很短的一句话说这件事——即使脚本本身有问题也不会影响主进程。这和本地 API 回环监听放在一起看，安全加固是 v5.1.0 的隐性主题。</p>
+<h2>迭代节奏里的规律</h2>
+<p>我翻了四篇样本文档，发现一个反复出现的模式：每一次功能更新，背后都跟着一层对应的安全或架构加固。主题系统重写之后，外观 Tab 里加了主色自定义（这是体验），同时 AppMenu 的主题色 bug 被修了（这是架构一致性）。登录方式改扫码（这是安全），同时账号密码入口没删（这是兼容性）。本地 API 钉回环（这是安全），同时远程控制的 WebSocket 通道没动（这是功能不回退）。</p>
+<p>团队一直在死磕的是"不让功能把自己做脆"。LX Music 脚本引擎是个很好的例子——他们先开放了脚本生态，等发现脚本可能影响主进程，再做 Worker 隔离，而不是一开始就怕开放。登录功能先给最方便的方式，再把更安全的方式推成默认，而不是反过来先安全再方便。</p>
+<p>他们一直在放的东西也很明显：不做灰色解析播放器、不做广告、不做 VIP 破解、不接第三方云存储。文档里多次提到"走网易云官方 API"、"密码不存本地"、"不暴露给第三方服务器"，这些是明确的底线，不是暂时没空做。</p>
+<h2>远程控制和安全的微妙平衡</h2>
+<p>远程控制功能在文档里是个单独的模块，我从<a href="https://algermusicplayer.fedq.quest/download.html" target="_blank" rel="noopener">官方下载</a>的安装包直接启用远程控制，试着把 AlgerMusicPlayer 开在后台、用另一台设备发播放指令，响应速度和版本迭代前几乎一样。但本地 API 已经钉死了回环地址，远程控制靠的是另一条 WebSocket 通道。</p>
+<p>这个设计很能说明团队的取舍：他们想让你能远程控制自己的播放器，但不想让你能远程扫描自己的本地音乐。两者走不同的通道，互不干扰。</p>
+<p><img src="../images/algermusicplayer-docs/remote-control.png" alt="远程控制界面" loading="lazy"></p>
+<p>文档里提到远程控制不影响本地 API 的安全加固，但没说 WebSocket 通道本身有没有额外认证。这是个有意思的留白——如果下一版 WebSocket 也加了设备白名单或者 token 验证，那整个安全边界就完整了。</p>
+<h2>照这个路线，下一步大概会怎么走</h2>
+<p>从 v5.1.0 的节奏倒推，下一个版本大概率继续沿着"体验打磨 + 安全补洞"这条线走。多语言支持目前主要靠社区贡献，设置页里有语言切换但覆盖度还不完整；LX Music 脚本引擎现在只做了 Worker 隔离，脚本签名和权限管理还没提；远程控制的 WebSocket 认证还在留白区。</p>
+<p>这些都是"把已有功能补扎实"的事，不是"加一个全新的播放器"。团队目前不想做后者，文档里没有任何关于支持除网易云之外平台的痕迹，也没有做本地音乐云同步的计划。</p>
+<p>从迭代规律推，AlgerMusicPlayer 团队的策略很清晰：先把一个客户端做厚，再考虑做宽。现在厚度还没做完，宽度的事还早。这套文档我同时维护在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/AlgerMusicPlayer" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/AlgerMusicPlayer" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/AlgerMusicPlayer" target="_blank" rel="noopener">GitCode</a> 三处，方便国内不同网络环境的朋友查阅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/fanfiction-net.html">FanFiction.Net 官方 App 账：这钱我该不该花？</a></h2>
+  <p class="card-desc">它现在免费，但如果哪天要付费呢？按轻度读者、主力读者、作者三类人，把官方 App 给的功能边界、省的时间、替代方案一笔笔算清楚。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bilimiao.html">哔哩喵这两年：从追番工具到时光机，它在迭代里暴露了什么</a></h2>
+  <p class="card-desc">从 v2.3 到 v2.4 的版本演进里，哔哩喵不只是加了几个功能按钮，它的迭代节奏悄悄讲清楚了团队真正关心什么——个性化、沉浸感，还有那些 B 站官方客户端做不到的事。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/tipss.html">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</a></h2>
+  <p class="card-desc">大厂剪辑工具用户多但版权灰色地带长期存在，TiPss 从正版音乐库和刷灵感闭环切入，给在意合规的创作者提供了另一条路。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/carry-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">CS2 饰品交易平台 Carry 深度对比：玄学筛选 + 倒计时发货，它凭什么在同类里杀出一条路</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/voicechanger-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Voicechanger 快问快答：一个能录音、能变声、还能叠环境音的声音玩梗工具</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

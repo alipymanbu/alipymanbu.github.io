@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零用 Bochs 调试你的第一个 Bootloader · 老杨技术栈</title>
+  
+<meta name="description" content="Bochs 是 OS 开发圈标配的 x86 全系统模拟器，精度碾压 VirtualBox 但速度极慢。本文带你装好 Bochs、写最小 Bootloader、用内置调试器在 0x7c00 下断点单步执行，全程手敲命令。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/bochs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零用 Bochs 调试你的第一个 Bootloader">
+<meta property="og:description" content="Bochs 是 OS 开发圈标配的 x86 全系统模拟器，精度碾压 VirtualBox 但速度极慢。本文带你装好 Bochs、写最小 Bootloader、用内置调试器在 0x7c00 下断点单步执行，全程手敲命令。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/bochs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/bochs/bochs-freedos.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/bochs/bochs-freedos.png">
+
+<meta name="twitter:title" content="从零用 Bochs 调试你的第一个 Bootloader">
+<meta name="twitter:description" content="Bochs 是 OS 开发圈标配的 x86 全系统模拟器，精度碾压 VirtualBox 但速度极慢。本文带你装好 Bochs、写最小 Bootloader、用内置调试器在 0x7c00 下断点单步执行，全程手敲命令。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Bochs \u662f OS \u5f00\u53d1\u5708\u6807\u914d\u7684 x86 \u5168\u7cfb\u7edf\u6a21\u62df\u5668\uff0c\u7cbe\u5ea6\u78be\u538b VirtualBox \u4f46\u901f\u5ea6\u6781\u6162\u3002\u672c\u6587\u5e26\u4f60\u88c5\u597d Bochs\u3001\u5199\u6700\u5c0f Bootloader\u3001\u7528\u5185\u7f6e\u8c03\u8bd5\u5668\u5728 0x7c00 \u4e0b\u65ad\u70b9\u5355\u6b65\u6267\u884c\uff0c\u5168\u7a0b\u624b\u6572\u547d\u4ee4\u3002", "headline": "\u4ece\u96f6\u7528 Bochs \u8c03\u8bd5\u4f60\u7684\u7b2c\u4e00\u4e2a Bootloader", "image": ["https://alipymanbu.github.io/images/bochs/bochs-freedos.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/bochs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/bochs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u7528 Bochs \u8c03\u8bd5\u4f60\u7684\u7b2c\u4e00\u4e2a Bootloader", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">从零用 Bochs 调试你的第一个 Bootloader</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零用 Bochs 调试你的第一个 Bootloader</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 11 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Bochs 是 OS 开发圈标配的 x86 全系统模拟器，精度碾压 VirtualBox 但速度极慢。本文带你装好 Bochs、写最小 Bootloader、用内置调试器在 0x7c00 下断点单步执行，全程手敲命令。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇，你能从零搭建一个可运行、可单步调试的 Bochs 环境，写一个 512 字节的 Bootloader 让它从软盘启动，并在调试器里观察每一条指令的执行。整个流程半小时搞定，之后你就能用同样的套路跑 MIT 6.828、哈工大操作系统等经典实验。</p>
+<h2>准备：Bochs 到底是什么，为什么不用 VirtualBox</h2>
+<p>先看看它的<a href="https://bochs.fwen.ren" target="_blank" rel="noopener">官网</a>上怎么定义自己——Bochs 不是虚拟机，是<strong>纯指令级模拟器</strong>。VirtualBox、VMware 走的是硬件虚拟化路线：客户操作系统直接跑在宿主机 CPU 上，VMM 只截获特权指令，性能接近原生。Bochs 则是用 C++ 把每一条 x86 指令逐条解释执行一遍，不依赖 VT-x、AMD-V 任何硬件扩展。</p>
+<p>速度差距是数量级的——Bochs 通常只有真实机器的 1/50 到 1/100。但精度换来了一个关键能力：<strong>你可以在任意物理内存地址下断点，逐条反汇编正在执行的指令，观察每一次中断的完整处理路径，随时修改 EIP、EAX、CR3 等任何寄存器的值</strong>。</p>
+<p>这对 OS 开发意味着什么？你写了一个 Bootloader 让它在 0x7c00 开始执行，想确认 BIOS 到底传了什么参数进来、栈指针设在哪里、中断向量表初始化了没有——这些在 VirtualBox 里要么做不了，要么代价极高。Bochs 原生支持，一个 <code>b 0x7c00</code> 断点就搞定。</p>
+<p>所以如果你的目标是写操作系统内核、做底层逆向分析，Bochs 是标配；如果只是想跑个 Linux 做日常开发测试，别用 Bochs，直接上 QEMU 或 VirtualBox。</p>
+<p><img src="../images/bochs/bochs-freedos.png" alt="在 Bochs 里启动的 FreeDOS，终端风很适合开发实验" loading="lazy"></p>
+<h2>第一步：安装 Bochs</h2>
+<p>Windows 用户最简单——直接从<a href="https://bochs.fwen.ren/download.html" target="_blank" rel="noopener">下载</a>页面拿官方安装包，一路点就行。安装完在安装目录下能看到 <code>bochs.exe</code>、<code>bximage.exe</code>、<code>bochsdbg.exe</code> 三个主要可执行文件。Linux 用户直接用包管理器，Debian/Ubuntu 一条 <code>apt install bochs bochs-x</code> 搞定。macOS 推荐用 Homebrew 装。</p>
+<p>装好之后先验证一下，命令行敲 <code>bximage</code>，如果能弹出交互菜单就说明环境没问题。找不到的话检查一下 PATH 或者直接在安装目录里运行。</p>
+<h2>第二步：创建软盘镜像</h2>
+<p>Bootloader 的经典起步介质是 1.44MB 软盘——理由很充分：软盘的 0 道 0 头 1 扇区就是 Bootloader 的加载位置，恰好加载到物理地址 0x7c00，一切对齐，没有多余的中间层。</p>
+<p>用 Bochs 自带的 <code>bximage</code> 工具创建：</p>
+<pre><code class="language-bash">bximage -q -create -fd -size 1_44M -filename boot.img</code></pre>
+<p><code>-q</code> 是静默模式，不输出进度条适合脚本。<code>-fd</code> 指定软盘，<code>-size 1_44M</code> 是标准 3.5 英寸高密度盘大小。执行完会在当前目录生成 <code>boot.img</code>。</p>
+<p>软盘不需要 C/H/S 参数——这个信息已经隐含在 type 里了（1.44MB 软盘默认 80 cylinders × 2 heads × 18 sectors/track）。后面写 bochsrc 的时候直接引用就行。</p>
+<p>如果你之后要给 Bootloader 配一个内核文件（超过 512 字节），软盘剩余空间也够放几 KB 到几十 KB 的内核。用 losetup 挂载进去 copy 就行——这个后面进阶再讲。</p>
+<h2>第三步：写一个最小 Bootloader</h2>
+<p>这步不需要你真的写汇编，理解结构就够了。Bootloader 的硬性要求只有两个：</p>
+<ol><li><strong>长度恰好 512 字节</strong>（引导扇区的标准大小）</li><li><strong>最后两个字节必须是 0x55 0xAA</strong>（BIOS 判定可引导的签名，偏移 0x1FE 和 0x1FF）</li></ol>
+<p>最小可用的 Bootloader 做的事情就是：在屏幕上打印一句 "Hello from Bootloader"，然后进入死循环。汇编代码大概这样：</p>
+<pre><code class="language-asm">org 0x7c00              ; BIOS 把我们加载到 0x7c00
+mov ah, 0x0e            ; BIOS 中断 0x10 的电传打字功能
+mov al, &#x27;H&#x27;             ; 要打印的字符
+int 0x10                ; 调用中断
+; ... 重复打印剩余字符 ...
+jmp $                   ; 死循环
+times 510 - ($ - $$) db 0   ; 填充到 510 字节
+dw 0xAA55               ; 引导签名（注意小端序，0x55 0xAA 存成 0xAA55）</code></pre>
+<p>用 <code>nasm bootloader.asm -o bootloader.bin</code> 编译得到 512 字节的 bin 文件。然后写进软盘镜像的第一个扇区：</p>
+<pre><code class="language-bash">dd if=bootloader.bin of=boot.img bs=512 count=1 conv=notrunc</code></pre>
+<p><code>conv=notrunc</code> 很关键——它告诉 dd 不要截断目标文件，只覆盖前 512 字节。不加这个参数你的 boot.img 会变成 512 字节而不是 1.44MB。</p>
+<h2>第四步：写 bochsrc 配置</h2>
+<p>Bochs 用一个纯文本配置文件来描述整个虚拟硬件。新建一个 <code>bochsrc.txt</code>：</p>
+<pre><code># 内存：32MB 足够跑我们的实验
+megs: 32
+
+# CPU：最简单的配置
+cpu: model=corei7
+
+# 全局设置
+config_interface: textconfig
+display_library: sdl2
+
+# 最重要的两行：软盘和启动顺序
+floppyA: type=1_44, path=&quot;boot.img&quot;, status=inserted
+boot: floppy</code></pre>
+<p>几个关键点解释一下：<code>type=1_44</code> 告诉 Bochs 这是标准 1.44MB 软盘，几何参数自动生效。<code>boot: floppy</code> 告诉 BIOS 优先从软盘启动。<code>status=inserted</code> 模拟软盘已插入——这些参数在 Bochs 的<a href="https://bochs.pages.dev/" target="_blank" rel="noopener">文档</a>里有完整速查表，需要调硬盘或光盘配置时直接去查。</p>
+<p>现在启动 Bochs：</p>
+<pre><code class="language-bash">bochsdbg -f bochsrc.txt</code></pre>
+<p>注意这里用的是 <code>bochsdbg</code> 而不是 <code>bochs</code>——<code>bochsdbg</code> 带调试器，会在开始执行前停在命令行等你输入。这正是我们想要的。</p>
+<h2>第五步：调试你的 Bootloader</h2>
+<p>Bochs 调试器的命令和 GDB 很像，最常用的几个：</p>
+<table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>b &lt;地址&gt;</code></td><td>在某个地址下断点，比如 <code>b 0x7c00</code></td></tr><tr><td><code>c</code></td><td>继续执行直到遇到下一个断点</td></tr><tr><td><code>s</code></td><td>单步执行一条指令</td></tr><tr><td><code>r</code></td><td>显示所有寄存器的值</td></tr><tr><td><code>x/10x &lt;地址&gt;</code></td><td>从某地址开始 dump 10 个字的十六进制内容</td></tr><tr><td><code>u &lt;地址&gt;</code></td><td>反汇编某地址开始的指令</td></tr><tr><td><code>info cpu</code></td><td>显示 CPU 状态，包括段寄存器</td></tr></tbody></table>
+<p>启动 <code>bochsdbg</code> 后它会停在初始化阶段。按以下步骤操作：</p>
+<ol><li>敲 <code>b 0x7c00</code> 设置断点——这是 BIOS 加载完 Bootloader 后跳转的位置</li><li>敲 <code>c</code> 让 Bochs 继续跑，直到 BIOS 完成引导、跳转到我们的 Bootloader</li><li>几秒后调试器会在 0x7c00 处停住——恭喜，这是你的代码第一次被执行</li><li>敲 <code>r</code> 看看寄存器——特别注意 CS:IP 应该是 0x0000:0x7c00，EAX、EBX 等的值反映了 BIOS 传给 Bootloader 的参数</li><li>敲 <code>u 0x7c00</code> 反汇编验证一下确实是你写的指令</li><li>用 <code>s</code> 一步步单步，观察每执行一条指令后寄存器怎么变</li></ol>
+<p>这就是 OS 开发最核心的调试循环——写代码 → 编译 → 写进镜像 → 在 Bochs 里单步 → 观察寄存器和内存 → 回到代码修改。整个过程比在真机上烧硬盘重启快无数倍。</p>
+<p><img src="../images/bochs/bochs-winxp.png" alt="Bochs 里启动 Windows XP，虽然不适合跑日常系统但精度极高" loading="lazy"></p>
+<h2>常见卡点</h2>
+<h3>Boot failed: could not read the boot disk</h3>
+<p>这是最经典的报错。90% 的情况是你的 Bootloader 最后两个字节没写 0x55AA 签名。用十六进制编辑器打开 bootloader.bin，跳到 0x1FE 位置确认最后两个字节是不是 55 AA（注意 x86 小端序，汇编里写 dw 0xAA55）。</p>
+<h3>敲 c 之后 Bochs 没停在 0x7c00</h3>
+<p>两个可能：一是软盘配置写错了，比如 boot.img 路径不对或 <code>status=inserted</code> 没写，BIOS 根本没从软盘启动；二是 boot 顺序不对，BIOS 优先从硬盘启动了（而硬盘没有可引导扇区）。检查 bochsrc 里的 <code>floppyA</code> 和 <code>boot: floppy</code> 两行，确认无误。</p>
+<h3>bximage 找不到</h3>
+<p>Windows 用户：检查安装目录下有没有 bximage.exe，有的话把安装目录加到 PATH 或直接在那个目录里运行。Linux 用户：Debian/Ubuntu 用 <code>apt install bochs</code> 会自动带上 bximage，Fedora/CentOS 也是同理。如果是自己编译的 Bochs，bximage 会在编译目录里一起生成。</p>
+<h2>进阶：下一步可以玩什么</h2>
+<p>跑通最小 Bootloader 之后，你可以往几个方向扩展：给 Bootloader 加加载内核的逻辑（从软盘或硬盘读文件）、搭建 flat 格式的硬盘镜像（这时就要手动指定 C/H/S 参数了，bximage 创建时会打印出来抄进 bochsrc）、跑一个最小的 Linux 发行版（找一张小体积 ISO 配置成 cdrom 启动）、或者试试 sparse 格式的 undoable 模式——每次实验完删掉红日志就能回到干净状态。</p>
+<p>对于打算认真学 OS 开发的朋友，建议直接去找 MIT 6.828 或哈工大操作系统实验的课程材料——那些实验从第一步开始就用 Bochs，每一步该做什么、bochsrc 该怎么写，都有现成的模板和说明文档。</p>
+<hr>
+<p>想找现成的 bochsrc 配置模板、课程实验的完整代码样例？社区里有人整理了一份专门面向 OS 开发实验的 Bochs 配置包，同时在<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/bochs" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/bochs" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/bochs" target="_blank" rel="noopener">GitCode</a>三个平台都有维护——GitHub 上版本最新更新最勤，Gitee 在国内拉取速度更快，GitCode 还做了额外的中文注释补充，三个仓库内容保持同步。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/supermarket-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从一个货架到两条过道：我在超市模拟器里当了三个月老板</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/shiki-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">我为什么装了一个俄语圈的动漫客户端——ShikiApp 上手体验</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

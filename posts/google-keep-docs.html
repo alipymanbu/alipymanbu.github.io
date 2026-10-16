@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Google Keep 踩坑实录 —— 看着简单的便签 App，藏着 5 个容易翻车的点 · 老杨技术栈</title>
+  
+<meta name="description" content="Google Keep 以&#34;极简&#34;著称，用着顺手但设计细节里藏着好几个容易让新手懵圈的坑。图片删了找不回、归档后置顶失效、企业账户侧边栏消失……这篇把我踩过的 5 个实坑一次说清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/google-keep-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Keep 踩坑实录 —— 看着简单的便签 App，藏着 5 个容易翻车的点">
+<meta property="og:description" content="Google Keep 以&#34;极简&#34;著称，用着顺手但设计细节里藏着好几个容易让新手懵圈的坑。图片删了找不回、归档后置顶失效、企业账户侧边栏消失……这篇把我踩过的 5 个实坑一次说清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/google-keep-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/google-keep-docs/main-cards.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/google-keep-docs/main-cards.jpg">
+
+<meta name="twitter:title" content="Google Keep 踩坑实录 —— 看着简单的便签 App，藏着 5 个容易翻车的点">
+<meta name="twitter:description" content="Google Keep 以&#34;极简&#34;著称，用着顺手但设计细节里藏着好几个容易让新手懵圈的坑。图片删了找不回、归档后置顶失效、企业账户侧边栏消失……这篇把我踩过的 5 个实坑一次说清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Google Keep \u4ee5\"\u6781\u7b80\"\u8457\u79f0\uff0c\u7528\u7740\u987a\u624b\u4f46\u8bbe\u8ba1\u7ec6\u8282\u91cc\u85cf\u7740\u597d\u51e0\u4e2a\u5bb9\u6613\u8ba9\u65b0\u624b\u61f5\u5708\u7684\u5751\u3002\u56fe\u7247\u5220\u4e86\u627e\u4e0d\u56de\u3001\u5f52\u6863\u540e\u7f6e\u9876\u5931\u6548\u3001\u4f01\u4e1a\u8d26\u6237\u4fa7\u8fb9\u680f\u6d88\u5931\u2026\u2026\u8fd9\u7bc7\u628a\u6211\u8e29\u8fc7\u7684 5 \u4e2a\u5b9e\u5751\u4e00\u6b21\u8bf4\u6e05\u3002", "headline": "Google Keep \u8e29\u5751\u5b9e\u5f55 \u2014\u2014 \u770b\u7740\u7b80\u5355\u7684\u4fbf\u7b7e App\uff0c\u85cf\u7740 5 \u4e2a\u5bb9\u6613\u7ffb\u8f66\u7684\u70b9", "image": ["https://alipymanbu.github.io/images/google-keep-docs/main-cards.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/google-keep-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/google-keep-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "Google Keep \u8e29\u5751\u5b9e\u5f55 \u2014\u2014 \u770b\u7740\u7b80\u5355\u7684\u4fbf\u7b7e App\uff0c\u85cf\u7740 5 \u4e2a\u5bb9\u6613\u7ffb\u8f66\u7684\u70b9", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">Google Keep 踩坑实录 —— 看着简单的便签 App，藏着 5 个容易翻车的点</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Google Keep 踩坑实录 —— 看着简单的便签 App，藏着 5 个容易翻车的点</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Google Keep 以&#34;极简&#34;著称，用着顺手但设计细节里藏着好几个容易让新手懵圈的坑。图片删了找不回、归档后置顶失效、企业账户侧边栏消失……这篇把我踩过的 5 个实坑一次说清。</p>
+  </header>
+  <div class="prose">
+<p>我用 Google Keep 快两年了，当初找<a href="https://google-keep.fewf.click/download.html" target="_blank" rel="noopener">google keep下载</a>的时候就是冲着它的"简单"——一个便签 App 还能有多复杂？结果用着用着发现，它确实简单，但简单里藏的坑真不少。都是那种"第一次遇到以为要重装"级别的坑，今天把这几个说一下，用着的人刚好避一避。</p>
+<p>先说最容易让新人忽视的一点：<a href="https://google-keep.fewf.click" target="_blank" rel="noopener">Google Keep官网</a>虽然是 Google 生态里的轻量应用，但它的<strong>定位从不是"专业笔记管理"，而是"极速捕获"</strong>。所以很多设计决策都围绕"快速记下来"而非"精细管理"来做——这是理解下面好几个坑的前提。</p>
+<p><img src="../images/google-keep-docs/main-cards.jpg" alt="Keep 主界面" loading="lazy"></p>
+<h2>坑一：图片笔记删了找不回，还悄悄吃你 Drive 空间</h2>
+<p><strong>症状</strong>：我习惯拍白板存会议记录。某天清理笔记时手滑删了一条带图片的，然后就慌了——回收站里只看得到文字片段，图片好像没跟着进去？而且慢慢发现 Google Drive 15GB 免费空间掉得比预想的快很多，还以为是照片太多。</p>
+<p><strong>原因</strong>：Keep 的图片笔记有两个设计，都不够显眼：第一，<strong>删除笔记里的图片就是真删了</strong>——Keep 不会在什么地方偷偷留一份原始副本，不是"隐藏了"或"归档了"，是彻底没了；第二，<strong>所有图片都计入 Google Drive 的存储配额</strong>，你以为 Keep 自带空间其实没有，每一张拍下来的白板、收据、菜单都在吃那 15GB 免费额度。</p>
+<p><strong>解法</strong>：图片笔记删之前先确认三遍——尤其那种"反正拍的模糊删了吧"的心态，回头想起内容需要的时候真没了。需要长期留底的图片笔记，拍完后顺手另存到 Drive 的专门文件夹；定期去 Drive 设置 → 存储占用里看一眼 Keep 的文件夹占了多少，别等快满了才发现。</p>
+<h2>坑二：置顶白做了 —— 归档后自动取消，恢复还不回来</h2>
+<p><strong>症状</strong>：我把本周三项待办置顶放最顶。周五干完一批归档了，周一回来发现置顶的全没了——而且从回收站恢复一条之前置顶过的，它还是不置顶。</p>
+<p><strong>原因</strong>：Keep 的设计是<strong>归档 = 自动取消置顶</strong>——归档的笔记本来就不该在"当前最重要"的区域，所以归档动作顺带去掉置顶标志。更坑的是，<strong>从回收站恢复的笔记不会自动重新置顶</strong>。回收站是 7 天临时存储，恢复后就是一条普通笔记，不会记住它之前的置顶状态。我猜这是 Keep "不记得太多"哲学的延伸，但确实反直觉。</p>
+<p><strong>解法</strong>：归档之前先想清楚——真的完成了吗？还是"先归档以后可能要用"。如果是后者，留着比归档好。恢复笔记后手动重新置顶一下，就几秒的事，但我每次都是恢复完才想起这茬。</p>
+<h2>坑三：公司账户找不到侧边栏 —— 被管理员关了</h2>
+<p><strong>症状</strong>：在个人 Gmail 上 Keep 侧边栏好好的，Docs 里写文档时随时能打开记想法。换了公司 Workspace 账户死活找不到——右侧边栏点开了也没有 Keep 图标。</p>
+<p><strong>原因</strong>：这里有两层：第一，Keep 的侧边栏入口默认是折叠的，有时候你以为没了其实只是没展开，先检查一下；第二，Workspace 企业管理员<strong>可以禁用侧边栏集成功能</strong>，这是管理员端的权限设置，普通用户在客户端改不了。我后来找公司 IT 问了才知道，他们因为安全合规关掉了 Google Workspace 应用间的侧边栏互通。</p>
+<p><strong>解法</strong>：先确认侧边栏是不是折叠状态；真被禁用的话，要么找管理员开（理由要合理，比如"工作中需要从 Docs 快速存想法到 Keep"），要么去<a href="https://google-keep-docs.pages.dev/" target="_blank" rel="noopener">google keep文档</a>查更多替代方案，实在不行用 keep.google.com 网页版配合使用——开两个窗口也能凑合，只是不那么丝滑。</p>
+<h2>坑四：OCR 拍了就以为识别了 —— 没联网等于白拍</h2>
+<p><strong>症状</strong>：在地铁上拍了一张纸质表格文档，到家后想搜关键词"季度目标"找不到。打开笔记点"提取文字"，只出来个空框。</p>
+<p><strong>原因</strong>：Keep 的 OCR 文字识别是<strong>云端处理</strong>的。拍照本身不需要网络（可以先存本地），但文字识别必须有网络请求 Google 的服务器才能完成。如果那张图拍了之后你一直离线，或者当时网络很差，OCR 就一直没跑完。我那次就是地铁里拍的，到家就睡了，第二天搜才发现没识别。</p>
+<p><strong>解法</strong>：拍了图片笔记，过会儿有网络时打开看一眼——如果图片打开了但没看到自动识别的文字（搜索关键词找不到），手动点击图片 → 右下角三个点 → 提取文字，看识别结果。OCR 完成后会缓存，之后搜关键词就能搜到了。</p>
+<h2>坑五：标签颜色贪多，最后自己找不到东西</h2>
+<p><strong>症状</strong>：一开始我给每条笔记都加标签、配颜色——"项目A""项目B""待办""灵感""购物"，颜色黄的蓝的绿的红的。几个月后打开 Keep，50 多个标签、6 种颜色混在一起，反而找不到任何东西了。每次打开 Keep 都要先想"我那条购物清单加的什么标签来着"。</p>
+<p><strong>原因</strong>：Keep 的核心设计哲学是"快速捕获"而非"精细管理"。标签和颜色是辅助分类手段，不是主组织方式——置顶 + 搜索才是 Keep 的核心检索手段。我犯的错误是把 Keep 当成 Notion 或 Obsidian 来用，给每条笔记做精细分类，反而把最核心的优势浪费了。而且 Keep 的标签系统本身不支持层级嵌套，标签多了就是一坨。</p>
+<p><strong>解法</strong>：颜色按大类就够了——比如黄 = 工作相关、蓝 = 生活日常、红 = 紧急事项，别超过 4 种；标签用高频的几个，比如当前在做的项目名，别每条都加。真要找东西，直接搜关键词比翻标签快得多。我现在基本放弃标签了，置顶 + 搜索 + 颜色三色就够用。</p>
+<p><img src="../images/google-keep-docs/rich-note.jpg" alt="富文本笔记示例" loading="lazy"></p>
+<h2>防坑清单（速查）</h2>
+<ul><li>图片笔记删之前三思，Keep 不留副本；定期检查 Drive 存储占用</li><li>归档自动取消置顶，回收站恢复后记得手动重新置顶</li><li>企业账户找不到侧边栏，先确认折叠状态，再考虑是不是被管理员禁了</li><li>OCR 需要联网，拍了图过会儿打开确认识别是否完成</li><li>标签颜色别贪多，置顶 + 搜索 + 三色分类是 Keep 的正确姿势</li></ul>
+<p>说实在的，这些坑都是"用久了才知道"的级别——Keep 本身确实简单好用，"按下去就能写"的体验至今没几个 App 能比。顺手整理的相关资料放在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/google%20keep" target="_blank" rel="noopener">GitHub</a>，国内访问不方便的话还有<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/google%20keep" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/google%20keep" target="_blank" rel="noopener">GitCode</a>镜像。但简单不代表没有设计上的小刁钻，知道之后其实相当省心。我现在还在用，而且比刚开始顺多了。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/autoclicker-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">自动点击器横向挑了一圈，为什么最后留了这一款</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/fluxdown.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">FluxDown 从零上手实战：浏览器下载、流媒体抓取、断点续传一条龙搞定</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

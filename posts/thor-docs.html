@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把 Thor 嵌进我的周循环——一台安卓机当两台用的完整工作流 · 老杨技术栈</title>
+  
+<meta name="description" content="我每周要把同一台安卓机在工作和生活两种状态间切换三次：工作日冻结所有娱乐应用，周末一键恢复。以前靠 Tasker 加 ADB 脚本要维护六七段触发器，现在用 Thor 串起 Shizuku、日历和微信自动化，一条链搞定。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/thor-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把 Thor 嵌进我的周循环——一台安卓机当两台用的完整工作流">
+<meta property="og:description" content="我每周要把同一台安卓机在工作和生活两种状态间切换三次：工作日冻结所有娱乐应用，周末一键恢复。以前靠 Tasker 加 ADB 脚本要维护六七段触发器，现在用 Thor 串起 Shizuku、日历和微信自动化，一条链搞定。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/thor-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/thor-docs/app-list.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/thor-docs/app-list.jpg">
+
+<meta name="twitter:title" content="把 Thor 嵌进我的周循环——一台安卓机当两台用的完整工作流">
+<meta name="twitter:description" content="我每周要把同一台安卓机在工作和生活两种状态间切换三次：工作日冻结所有娱乐应用，周末一键恢复。以前靠 Tasker 加 ADB 脚本要维护六七段触发器，现在用 Thor 串起 Shizuku、日历和微信自动化，一条链搞定。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6211\u6bcf\u5468\u8981\u628a\u540c\u4e00\u53f0\u5b89\u5353\u673a\u5728\u5de5\u4f5c\u548c\u751f\u6d3b\u4e24\u79cd\u72b6\u6001\u95f4\u5207\u6362\u4e09\u6b21\uff1a\u5de5\u4f5c\u65e5\u51bb\u7ed3\u6240\u6709\u5a31\u4e50\u5e94\u7528\uff0c\u5468\u672b\u4e00\u952e\u6062\u590d\u3002\u4ee5\u524d\u9760 Tasker \u52a0 ADB \u811a\u672c\u8981\u7ef4\u62a4\u516d\u4e03\u6bb5\u89e6\u53d1\u5668\uff0c\u73b0\u5728\u7528 Thor \u4e32\u8d77 Shizuku\u3001\u65e5\u5386\u548c\u5fae\u4fe1\u81ea\u52a8\u5316\uff0c\u4e00\u6761\u94fe\u641e\u5b9a\u3002", "headline": "\u628a Thor \u5d4c\u8fdb\u6211\u7684\u5468\u5faa\u73af\u2014\u2014\u4e00\u53f0\u5b89\u5353\u673a\u5f53\u4e24\u53f0\u7528\u7684\u5b8c\u6574\u5de5\u4f5c\u6d41", "image": ["https://alipymanbu.github.io/images/thor-docs/app-list.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/thor-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/thor-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u628a Thor \u5d4c\u8fdb\u6211\u7684\u5468\u5faa\u73af\u2014\u2014\u4e00\u53f0\u5b89\u5353\u673a\u5f53\u4e24\u53f0\u7528\u7684\u5b8c\u6574\u5de5\u4f5c\u6d41", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">把 Thor 嵌进我的周循环——一台安卓机当两台用的完整工作流</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把 Thor 嵌进我的周循环——一台安卓机当两台用的完整工作流</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">我每周要把同一台安卓机在工作和生活两种状态间切换三次：工作日冻结所有娱乐应用，周末一键恢复。以前靠 Tasker 加 ADB 脚本要维护六七段触发器，现在用 Thor 串起 Shizuku、日历和微信自动化，一条链搞定。</p>
+  </header>
+  <div class="prose">
+<h2>开头：我需要每周把同一台手机切换三次</h2>
+<p>我的主力安卓机上装了差不多 180 个应用，其中一半是工作类（飞书、企业微信、Git 客户端、SSH 工具），另一半是生活类（微信、抖音、B站、外卖、银行）。以前这两类混在一起的时候，每次写文档写一半弹个抖音通知，或者周末想刷视频的时候飞书还在后台收消息，两头都不干净。</p>
+<p>最早的解决方案是 Tasker 写脚本：每周一早上 8 点执行 40 条 <code>pm disable-user</code>，周五下班执行 <code>pm enable</code> 解冻。跑了三个月，脚本里硬编码的包名攒了满满两屏，每次手机系统更新或某个应用改了包名就漏冻；Tasker 的 profile 触发经常因为电池优化被系统杀掉，以为冻了其实没冻。</p>
+<p>后来换过 IceBox（冰箱），UI 漂亮但批量操作慢，解冻一个组要等 20 秒以上；也试过 App Manager，功能太多像个瑞士军刀，我只想要一个冻结工具却要翻三级菜单。直到朋友推给我 <a href="https://thor.ggcd.uno" target="_blank" rel="noopener">Thor官网</a>，从<a href="https://thor.ggcd.uno/download.html" target="_blank" rel="noopener">官方下载</a>拿到安装包之后我才真正把这件事做成了一条不需要维护的固定流程。</p>
+<h2>旧流程卡在哪</h2>
+<p>先说清楚我之前那条链的断点，Thor 就是专门补这些的：</p>
+<ol><li><strong>包名硬编码</strong>：Tasker 脚本里写死 40 个包名，删一个应用或换一个版本就得手动改脚本。</li><li><strong>触发器不稳定</strong>：Tasker 的时间 profile 被 MIUI 的后台限制偶尔跳过，周一早上起来发现娱乐应用还在跑。</li><li><strong>解冻慢</strong>：IceBox 和 App Manager 批量解冻一个组要逐进程恢复，40 个应用经常卡 30 秒以上。</li><li><strong>状态不透明</strong>：不知道当前到底冻了多少，有没有漏网的，心里没数。</li></ol>
+<p>这四个问题我用 Thor 串了一条新链之后，全部消失。</p>
+<h2>新流程：Thor 插在哪</h2>
+<p>完整的链是这样的：</p>
+<pre><code>日历事件（每周一 08:00 / 每周五 18:00）
+    ↓ 触发 Tasker（只当触发器，不再自己执行命令）
+    ↓
+Thor（批量冻结 / 批量解冻）
+    ↓
+飞书机器人推送结果（&quot;本周已冻结 42 个应用&quot;）
+    ↓
+Done——整个流程跑完我继续上班/下班</code></pre>
+<p>核心变化是 Thor 从"被脚本调用的工具"变成了"流程的中心"：</p>
+<ul><li><strong>Tasker 只当触发器</strong>：不再写任何 <code>pm</code> 命令，只负责监听日历事件然后发一个 intent 给 Thor。这样即使 Tasker 被杀，Thor 自己的定时任务也能兜底。</li><li><strong>Thor 维护冻结列表</strong>：这是最大的变化。我不再在脚本里写包名——Thor 的应用列表里直接搜索筛选，勾选娱乐类应用，批量冻结。下次要增删应用，直接在 Thor 里改勾选，不用动任何脚本。</li><li><strong>Shizuku 模式替代 Root</strong>：我的手机没 Root，Shizuku 通过无线调试给 Thor shell 权限，冻结和 <code>pm</code> 命令效果完全一样。关键是 Shizuku 重启后只要无线调试还开着，Thor 能自动恢复连接——以前 Tasker 脚本依赖 ADB 连接，每次重启都要手动重连。</li><li><strong>结果通知</strong>：Thor 批量操作完成后，Tasker 读取 Thor 的操作日志（Thor 本身不联网也不需要联网，日志是本地可访问的），然后用 HTTP 请求推给飞书机器人。这样我不需要打开 Thor 就能看到这周冻了几个。</li></ul>
+<h2>实操细节：最容易断链的两个环节</h2>
+<p>这条链跑了大概两个月，有两个环节是最开始不稳定、后来找着窍门的。</p>
+<h3>环节一：Shizuku 重启后的自动恢复</h3>
+<p>Android 安全机制决定了每次重启后 ADB 连接会断开，Shizuku 守护进程也就跟着停了。最开始我每周一早上起来先手动开 Shizuku 再点 Thor，两步操作不算多但每次都忘。</p>
+<p>现在的做法是：</p>
+<ol><li>开发者选项里<strong>永久开启无线调试</strong>（部分 ROM 重启后会自动关，小米 HyperOS 是每次开机自动开，华为 HarmonyOS 需要进开发者选项手动勾「允许无线调试自动启动」）。</li><li>Tasker 加一个开机后 1 分钟的 profile，自动打开 Shizuku App 并触发「重新连接」。Thor 的设置里有「自动恢复 Shizuku 连接」的开关，开了之后不用额外动作——更详细的 Shizuku 配对参数说明可以翻 <a href="https://thor-docs.pages.dev/" target="_blank" rel="noopener">Thor文档</a>。</li><li>如果还是连不上，Thor 的设置页能看到 Shizuku 状态——显示未连接的时候直接在 Thor 里点一下「连接 Shizuku」就行，比回到 Shizuku App 操作快。</li></ol>
+<p>一个小坑：华为和荣耀的 ROM 无线调试入口被隐藏了，找不到的话就用 USB 数据线插一下手机电脑，<code>adb pair</code> 配对一次之后就能稳定用无线。旧款小米 MIUI 12 及更早也是同样的情况。</p>
+<h3>环节二：冻结列表的维护</h3>
+<p>应用列表在变：上个月把某个 B 站第三方客户端卸了，这周装了个新的外卖 App 需要加入生活组。以前改包名列表要翻脚本，现在 Thor 的应用列表页直接解决：</p>
+<ul><li><strong>搜索 + 筛选</strong>：Thor 主页的应用分布图表能按安装来源分组，一眼就能看出哪些是 Play 商店装的、哪些是手动装的。</li><li><strong>长按进入多选</strong>：应用卡片长按之后顶部出现选中数量和批量操作按钮，我直接把要冻的应用勾进去。</li><li><strong>冻结标签页分组</strong>：冻完之后切换到冻结标签页，状态过滤器选 Frozen，就能看到所有被冻的应用。如果某个应用冻了之后还耗电（极个别厂商 ROM 会尝试"修复"被冻的应用），在这里再点一下冻结按钮就行。</li></ul>
+<p>批量冻结 40 个应用 Thor 只需要 3-5 秒，和单个操作一样快——因为底层走的是 Package Manager 原生 API，不管你批量还是单个，命令都是一次性发出去的。以前 IceBox 逐应用解冻要等 30 秒的情况不会再出现了。</p>
+<p><img src="../images/thor-docs/app-list.jpg" alt="Thor 应用列表页" loading="lazy"></p>
+<p><img src="../images/thor-docs/freeze-page.jpg" alt="冻结标签页的状态过滤器" loading="lazy"></p>
+<h2>效果与边界</h2>
+<p>这条链到现在跑了 10 个周循环，算下来：</p>
+<ul><li><strong>少了两次手动操作</strong>：以前周一早上手动开 Tasker profile、周五下班手动跑解冻脚本，现在完全自动。</li><li><strong>零脚本维护</strong>：Tasker 的 profile 只留了 3 行触发逻辑，包名列表全在 Thor 里维护，改应用只改 Thor 的勾选。</li><li><strong>状态透明</strong>：Thor 主页的活跃应用数卡片直接告诉我当前还有多少活跃应用，冻完之后数字一下掉下来，清清楚楚。</li></ul>
+<p>但也有明显的边界，这套流程不是万能的：</p>
+<ol><li><strong>不能清理缓存</strong>：Thor 刻意不做缓存清理功能——清理缓存需要更复杂的权限，而且效果有限，真正想腾空间还是得逐个应用去系统设置里删。Thor 只做应用管理，这点要认清楚。</li><li><strong>动态色彩依赖系统</strong>：Android 12+ 才有的 Material You 动态色彩，Thor 有开关但前提是系统本身开着。我朋友用的一台 Android 10 的旧手机，Thor 界面就是固定配色。</li><li><strong>冻结系统应用有风险</strong>：不能冻 Launcher（桌面）、SystemUI（状态栏）、Telephony（拨号）这些核心组件——冻了桌面直接消失，只能用 ADB 手动 <code>pm enable</code> 恢复。我第一次用 Thor 冻应用的时候误冻了桌面，USB 连电脑敲了半天命令才救回来，现在每次批量冻结前都先搜一遍有没有 Launcher 或 SystemUI 的包名在列表里。</li><li><strong>不读应用内部数据</strong>：Thor 只能读 Package Manager 的元数据，不能读聊天记录、不能看应用内部文件。这点我反而觉得好——冻应用就是冻应用，别越界读隐私数据。</li></ol>
+<p>Thor 的定位就是轻量、干净、开源的应用管理器。它不抢 Tasker 的触发器位置，不抢 IceBox 的界面颜值，就把冻结这件事做到极致。我现在每周只需要花 5 分钟在 Thor 里调整一次冻结列表，剩下的时间它自己跑。这套流程跑通之后，我甚至忘了还有手动切工作/生活模式这回事。</p>
+<hr>
+<p>Thor 的完整文档和配置示例我都同步到了 GitHub、Gitee 和 GitCode 三个仓库里，<a href="https://github.com/alipymanbu/APK/tree/main/APP/Thor" target="_blank" rel="noopener">GitHub主仓库</a>是主版本，<a href="https://gitee.com/manbu1103/APK/tree/main/APP/Thor" target="_blank" rel="noopener">Gitee镜像</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/Thor" target="_blank" rel="noopener">GitCode备份</a>对国内网络访问更友好。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/remax-zh-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Remax 耳机 App 的设备管理原理：为什么多副耳机不乱连？</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/oplayer-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用 OPlayer 搭一条视频消费流水线——从下载到分享只留电脑一份</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

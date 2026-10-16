@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>TravelBoast 是什么？快问快答把这款旅行路线动画 App 讲透 · 老杨技术栈</title>
+  
+<meta name="description" content="整理了一组关于 TravelBoast 的快问快答——从它能做什么、怎么把自己的旅行轨迹变成 3D 地球仪视频，到导出卡顿、导入失败的排查技巧，一篇看完没盲区。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/travelboast-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TravelBoast 是什么？快问快答把这款旅行路线动画 App 讲透">
+<meta property="og:description" content="整理了一组关于 TravelBoast 的快问快答——从它能做什么、怎么把自己的旅行轨迹变成 3D 地球仪视频，到导出卡顿、导入失败的排查技巧，一篇看完没盲区。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/travelboast-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/travelboast-docs/animation-route.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/travelboast-docs/animation-route.jpg">
+
+<meta name="twitter:title" content="TravelBoast 是什么？快问快答把这款旅行路线动画 App 讲透">
+<meta name="twitter:description" content="整理了一组关于 TravelBoast 的快问快答——从它能做什么、怎么把自己的旅行轨迹变成 3D 地球仪视频，到导出卡顿、导入失败的排查技巧，一篇看完没盲区。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6574\u7406\u4e86\u4e00\u7ec4\u5173\u4e8e TravelBoast \u7684\u5feb\u95ee\u5feb\u7b54\u2014\u2014\u4ece\u5b83\u80fd\u505a\u4ec0\u4e48\u3001\u600e\u4e48\u628a\u81ea\u5df1\u7684\u65c5\u884c\u8f68\u8ff9\u53d8\u6210 3D \u5730\u7403\u4eea\u89c6\u9891\uff0c\u5230\u5bfc\u51fa\u5361\u987f\u3001\u5bfc\u5165\u5931\u8d25\u7684\u6392\u67e5\u6280\u5de7\uff0c\u4e00\u7bc7\u770b\u5b8c\u6ca1\u76f2\u533a\u3002", "headline": "TravelBoast \u662f\u4ec0\u4e48\uff1f\u5feb\u95ee\u5feb\u7b54\u628a\u8fd9\u6b3e\u65c5\u884c\u8def\u7ebf\u52a8\u753b App \u8bb2\u900f", "image": ["https://alipymanbu.github.io/images/travelboast-docs/animation-route.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/travelboast-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/travelboast-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "TravelBoast \u662f\u4ec0\u4e48\uff1f\u5feb\u95ee\u5feb\u7b54\u628a\u8fd9\u6b3e\u65c5\u884c\u8def\u7ebf\u52a8\u753b App \u8bb2\u900f", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">TravelBoast 是什么？快问快答把这款旅行路线动画 App 讲透</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">TravelBoast 是什么？快问快答把这款旅行路线动画 App 讲透</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">整理了一组关于 TravelBoast 的快问快答——从它能做什么、怎么把自己的旅行轨迹变成 3D 地球仪视频，到导出卡顿、导入失败的排查技巧，一篇看完没盲区。</p>
+  </header>
+  <div class="prose">
+<p>整理一篇关于 TravelBoast 的快问快答。它在国外社交平台上已经火了一阵，但中文用户入坑时踩的坑和问的问题，网上分散得很——去<a href="https://travelboast.yoan.quest" target="_blank" rel="noopener">TravelBoast官网</a>看了一眼产品定位和用户评论，下面把核心问题一次性答清楚。</p>
+<h3>TravelBoast 到底是什么？</h3>
+<p>一句话：TravelBoast 是一款把你走过的旅行路线渲染成 3D 地球仪动画视频的移动端 App。用户导入路线数据或手动钉点，选一辆交通工具模型（汽车、飞机、自行车、马、甚至太空船都有），加几张照片和注释，一键导出就能得到一个在地球上画出你旅行轨迹的短视频。</p>
+<p>它不是导航软件，也不是轨迹追踪器——它吃的是"已经走完"的数据，干的是"把走过的路拍成动画"这一件事。</p>
+<p><img src="../images/travelboast-docs/animation-route.jpg" alt="3D 地球仪路线动画" loading="lazy"></p>
+<h3>谁会用上 TravelBoast？</h3>
+<p>最典型的用户是这几类：旅行博主想把自己的环球路线做成开场视频发到 YouTube 或 B 站；骑行/徒步爱好者手里有运动手表记录的 GPX 轨迹，想做成一条可视的回顾视频；情侣或家庭想把一次长途旅行的全程浓缩成 15 秒朋友圈素材。</p>
+<p>如果你的需求是"记录"或"导航"，它帮不上忙；如果你想"展示"走过的路线、"回顾"一次旅行，它的效率比自己剪辑素材高太多。从<a href="https://travelboast.yoan.quest/download.html" target="_blank" rel="noopener">TravelBoast下载</a>拿安装包后，几分钟就能跑通第一条路线。</p>
+<h3>怎么把路线导进去？三种方式分别适合什么场景？</h3>
+<p>TravelBoast 提供了三种路线创建入口，这个设计在同类 App 里算比较完整的。</p>
+<p>手动钉点适合没有任何电子轨迹的回忆场景——凭记忆在地图上点起点、终点、中间经停点，适合补记很久以前的旅行。GPX 文件导入是运动党最常用的方式——从佳明、Strava、骑行 APP 里导出标准 GPX，直接分享进 TravelBoast 就能还原完整轨迹。Google Maps 链接粘贴适合规划中的路线还没走但想做展示的情况——复制 Maps 的导航路线链接，App 自动解析出路线。</p>
+<p>三种入口覆盖了从"纯回忆"到"现成数据"再到"计划中"的全部场景。</p>
+<h3>导出视频的分辨率和水印怎么选？</h3>
+<p>免费版默认 HD（1920×1080），导出的视频右下角会带 TravelBoast 水印。订阅版可以选 4K 并关闭水印。</p>
+<p>HD 导出适合 TikTok、抖音、朋友圈这类竖屏社交平台，15 秒视频大概 10-20 MB，移动设备 20-60 秒就能出片。4K 适合 YouTube、B 站这类专业内容平台，画质更锐利但文件是 HD 的四倍，导出时间也是数倍。</p>
+<p>关于水印：免费版的水印位置固定、尺寸不大但很显眼，如果发布平台允许（比如朋友圈）可以接受；如果想做专业内容，订阅版去水印是必须的。</p>
+<h3>导出速度慢或崩溃怎么办？</h3>
+<p>这是用户反馈最多的问题，大多数情况都能从设备端解决。</p>
+<p>航点过多是头号杀手——高精度 GPX 可能有几千个航点，每个都要在 3D 地球上渲染。解决方法是导入后在路线编辑界面批量删掉中间不重要的航点，只保留关键转弯点和停靠点。注释里的照片太大也会拖慢导出，高分辨率原片每张超 10 MB，从相册导入前先压缩到 1080p 或 4K 即可。</p>
+<p>设备过热也是常见问题——3D 渲染是高负载任务，导出前取下手机壳、放在通风处、避免边充边导出，可以明显减少发烫降频。崩溃最常见的原因是内存不足，导出前清掉所有后台 App，复杂路线先删一些注释再导出。</p>
+<h3>GPX 导入失败、Google Maps 链接解析不了，原因是什么？</h3>
+<p>三种路线入口各有各的坑，<a href="https://travelboast-docs.pages.dev/" target="_blank" rel="noopener">文档</a>里有完整的排障列表，这里挑最常见的说。</p>
+<p>GPX 导入报错，最常见的是格式不兼容——极少数 APP 导出的 GPX 是非标准的（版本差异或有扩展字段），用免费的 GPX 转换工具转成标准格式只保留基础航点数据就能解决。其次是文件过大，超过 10 MB 会导致移动设备内存不足崩溃，在源追踪 APP 里先简化轨迹即可。还有一种是路径太深，把 GPX 移到设备根目录、文件名改短一点试试。</p>
+<p>Google Maps 链接粘进去没反应，先确认复制的是完整的 <code>dir/</code> 导航路线链接，不是搜索结果或地点详情链接；再检查分享权限是不是公开的——私密路线 TravelBoast 访问不到；最后确认手机网络正常。</p>
+<h3>它和同类路线动画 App 比有什么差异？</h3>
+<p>两个核心差异让 TravelBoast 在同类里显得突出。</p>
+<p>第一是路线动画会跟随真实道路网络弯曲。很多竞品直接用直线连接航点，看起来像一条直线飞过去；TravelBoast 的动画线条贴合 OpenStreetMap / Google Maps 的道路走向，在城市街道和乡村道路上都能看到自然弯曲的效果。对于海洋、无人区这类没有道路数据的区域才会退化成直线。</p>
+<p>第二是交通工具模型库。官方宣称 250+ 款手作 3D 模型，涵盖汽车、飞机、自行车、马、骆驼、潜水艇、太空船，还有不少虚构角色载具。更重要的是——官方特别强调这些模型都是人工手绘而非 AI 生成，4K 分辨率下不会出现 AI 模型常见的噪点和失真。部分模型还支持选颜色，这在竞品里很少见。</p>
+<h3>值不值得装？</h3>
+<p>如果你手里有值得回顾的旅行轨迹、或者想做一条能拿得出手的路线展示视频，TravelBoast 是当前移动端效率最高的选择——路线导入方式灵活、动画效果真实、导出流程顺滑。免费版足够体验核心功能，订阅版去水印和 4K 对做专业内容的用户来说是合理的升级。</p>
+<p>这套资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/TravelBoast" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/TravelBoast" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/TravelBoast" target="_blank" rel="noopener">GitCode</a>三个仓库都能拿到——GitHub 访问稳定但国内偶尔抽风，Gitee 国内速度友好，GitCode 是另一个备份入口，按需选一个就好。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/wikihow-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">凌晨十一点，我靠一个小应用打出了人生第一条领带</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/y8games.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">我装了 Y8 Browser 玩老 Flash 游戏，这几天把童年遗憾补了一遍</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

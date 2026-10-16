@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>JanitorAI 对比评测：角色创作工具里，它凭 Scripts 三件套站稳脚跟 · 老杨技术栈</title>
+  
+<meta name="description" content="在角色AI创作平台的混战里，JanitorAI 是少有的把进阶系统做扎实的那一个。本文从 Scripts 三件套、宏系统和模型选择三个维度，对比它与同类工具的差异，以及为这些优势付出的代价。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/janitorai-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JanitorAI 对比评测：角色创作工具里，它凭 Scripts 三件套站稳脚跟">
+<meta property="og:description" content="在角色AI创作平台的混战里，JanitorAI 是少有的把进阶系统做扎实的那一个。本文从 Scripts 三件套、宏系统和模型选择三个维度，对比它与同类工具的差异，以及为这些优势付出的代价。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/janitorai-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/janitorai-docs/hero-plate.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/janitorai-docs/hero-plate.webp">
+
+<meta name="twitter:title" content="JanitorAI 对比评测：角色创作工具里，它凭 Scripts 三件套站稳脚跟">
+<meta name="twitter:description" content="在角色AI创作平台的混战里，JanitorAI 是少有的把进阶系统做扎实的那一个。本文从 Scripts 三件套、宏系统和模型选择三个维度，对比它与同类工具的差异，以及为这些优势付出的代价。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5728\u89d2\u8272AI\u521b\u4f5c\u5e73\u53f0\u7684\u6df7\u6218\u91cc\uff0cJanitorAI \u662f\u5c11\u6709\u7684\u628a\u8fdb\u9636\u7cfb\u7edf\u505a\u624e\u5b9e\u7684\u90a3\u4e00\u4e2a\u3002\u672c\u6587\u4ece Scripts \u4e09\u4ef6\u5957\u3001\u5b8f\u7cfb\u7edf\u548c\u6a21\u578b\u9009\u62e9\u4e09\u4e2a\u7ef4\u5ea6\uff0c\u5bf9\u6bd4\u5b83\u4e0e\u540c\u7c7b\u5de5\u5177\u7684\u5dee\u5f02\uff0c\u4ee5\u53ca\u4e3a\u8fd9\u4e9b\u4f18\u52bf\u4ed8\u51fa\u7684\u4ee3\u4ef7\u3002", "headline": "JanitorAI \u5bf9\u6bd4\u8bc4\u6d4b\uff1a\u89d2\u8272\u521b\u4f5c\u5de5\u5177\u91cc\uff0c\u5b83\u51ed Scripts \u4e09\u4ef6\u5957\u7ad9\u7a33\u811a\u8ddf", "image": ["https://alipymanbu.github.io/images/janitorai-docs/hero-plate.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/janitorai-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/janitorai-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "JanitorAI \u5bf9\u6bd4\u8bc4\u6d4b\uff1a\u89d2\u8272\u521b\u4f5c\u5de5\u5177\u91cc\uff0c\u5b83\u51ed Scripts \u4e09\u4ef6\u5957\u7ad9\u7a33\u811a\u8ddf", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">JanitorAI 对比评测：角色创作工具里，它凭 Scripts 三件套站稳脚跟</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">JanitorAI 对比评测：角色创作工具里，它凭 Scripts 三件套站稳脚跟</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">在角色AI创作平台的混战里，JanitorAI 是少有的把进阶系统做扎实的那一个。本文从 Scripts 三件套、宏系统和模型选择三个维度，对比它与同类工具的差异，以及为这些优势付出的代价。</p>
+  </header>
+  <div class="prose">
+<p>角色AI创作这个赛道，近几年挤进来不少玩家。有的主打一键生成角色卡，有的把精力放在对话体验上，还有的靠社区模板量取胜。JanitorAI 的<a href="https://janitorai.rggd.pw" target="_blank" rel="noopener">官网</a>虽然不算最早入场的，但它在一个点上做得比很多同类都扎实——把「让角色活起来」这件事，做成了有体系、有门槛的进阶系统。</p>
+<p>如果你已经用过一两款角色AI工具，大概会有这种感觉：默认的人格框撑不起复杂的世界观，想给角色加个隐藏设定，要么挤在 2500 字符的红线里硬塞，要么干脆放弃。JanitorAI 解决这个痛点的方式，就是它的 Scripts 框架。这也是我单独拿它出来说的原因——不是因为它界面最漂亮或社区最大，而是它在进阶创作这块，确实给出了一套能落地的方案。</p>
+<h2>Scripts 三件套：它比同类多了什么</h2>
+<p>同类工具里，给角色加设定的方式大同小异：人格框写满、场景框补几句、开场白念一段，然后祈祷模型能记住。JanitorAI 的 Scripts 把这件事拆成了三个独立组件，各自干各自的活。</p>
+<p><strong>Lorebook 世界书</strong>是最容易上手的入口。说白了就是一套关键词触发的设定库——你提到「做饭」，它自动把厨房场景的详细描述递给模型；聊到某个 NPC 的名字，对应的背景故事就注入上下文。对比同类工具里那种「把所有设定塞进一个超长人格框」的做法，世界书的好处是按需加载，不浪费 token 窗口。模型不会因为塞了一堆暂时用不上的设定而提前「失忆」。</p>
+<p><strong>Triggers 触发器</strong>解决的是剧情推进问题。举个例子：你想让角色在前三次正面互动后解锁一段隐藏对话，或者提到某个敏感词时切换语气。同类工具要么做不到，要么靠写复杂的 Prompt 让模型「自觉判断」——而模型自觉这件事，大家都懂有多不靠谱。JanitorAI 把触发器做成了可视化配置：设条件、绑内容、调整优先级，剧情走到那一步自动触发，不依赖模型的阅读理解能力。</p>
+<p><strong>Events 事件系统</strong>是三件套里最重的那一环。它记录已经发生过什么，然后让角色根据历史做出不同反应。比如你在某个分支里救了角色一次，之后的对话里角色会记得这份恩情；如果选了另一条路，角色的态度会完全不同。同类工具里，能做到动态分支的屈指可数，而且大多需要写代码。JanitorAI 把它做成了图形化的条件树，不用写代码就能搭出多结局的剧情框架。</p>
+<p><img src="../images/janitorai-docs/hero-plate.webp" alt="世界书触发设定的效果" loading="lazy"></p>
+<h2>宏系统：小设计解决大麻烦</h2>
+<p>翻公开角色卡的时候，你肯定注意过 <code>{{char}}</code> 和 <code>{{user}}</code> 这两个花括号词。JanitorAI 是我见过的把宏系统用得最彻底的平台之一——它不是一个可选的小功能，而是整个角色卡体系的基础。</p>
+<p>宏的逻辑很简单：<code>{{char}}</code> 自动替换成角色的聊天名，<code>{{user}}</code> 替换成玩家的 Persona 名。但这个小设计解决了一个大问题：一张角色卡会被成千上万个不同身份的玩家使用。如果名字写死成「你，约翰」，遇到 Persona 叫「塞琳娜」的玩家就穿帮了。用宏，每个玩家开局都自动获得自己的名字，创作者改聊天名时，卡里几十处指代也不用一处处手动改。</p>
+<p>社区里其实有两种流派：一派坚持全卡用宏，方便改名和跨卡复制；另一派喜欢手写真名，因为卡里指代恒定，写死了更直观。两种都没错，但 JanitorAI 把宏做成了默认推荐，这一点和某些同类工具「宏是高级用户才用的东西」的定位不一样。对于想做量产角色卡的创作者来说，宏系统是刚需而不是锦上添花。</p>
+<p><img src="../images/janitorai-docs/create-01.png" alt="角色创建界面的宏用法" loading="lazy"></p>
+<h2>模型选择：它给了三类用户三种答案</h2>
+<p>很多同类工具在模型这件事上的态度是「绑定官方模型，没得选」。JanitorAI 的思路完全不同——它把模型选择的选择权还给用户，而且做得相当务实。安装包从<a href="https://janitorai.rggd.pw/download.html" target="_blank" rel="noopener">下载</a>拿，装好就能开始配模型。</p>
+<p>官方提供了免费的 JLLM，够日常玩；想换口味，OpenRouter 的免费档有三款可选：deepseek-chat 适合甜蜜向日常，deepseek-r1 推理型适合权谋冲突剧情，microsoft/mai-ds-r1 是温和变体适合轻松向。付费接口层面，DeepSeek 官方接口价格低、中文扮演底子好；Claude 长文写作强但成本偏高；OpenAI 生态稳但有服务商侧的内容审查，和平台自己的内容分级是两套规则。</p>
+<p>这种多模型策略的好处很明显：零成本用户有得玩，重度用户有升级路径，追求上限的创作者也有高端选项。代价就是配置门槛比同类工具高——你得自己选模型、配密钥、调上下文参数，新手上来会有点懵。但这个设计选择我是认可的：角色AI创作不是一个「一键出活」的事情，给用户选择权，比锁死在一套模型上更尊重这个品类的本质。</p>
+<h2>它的取舍：为这些优势付出了什么</h2>
+<p>说了这么多好处，也得聊聊它的代价。</p>
+<p><strong>上手门槛偏高</strong>是第一硬伤。Scripts 三件套、宏系统、多模型配置——每个单独看都不难，但堆在一起，新手要花不少时间才能摸透。对比同类工具里那种「注册就能玩、模板一抓一把」的轻量路线，JanitorAI 显然不是给只想偶尔聊两句的用户做的。它的设计语言是给认真做角色卡的创作者看的。</p>
+<p><strong>依赖第三方服务</strong>是第二个问题。不管是模型接口还是服务器，JanitorAI 自己不跑这些。遇到 unauthorized 报错，可能是会话过期、可能是服务器过载、也可能是绑定的密钥被服务商吊销了。排查链路比自托管或绑定单一模型的工具要复杂。JanitorAI<a href="https://janitorai-docs.pages.dev/" target="_blank" rel="noopener">文档</a>里专门有一篇处理网站打不开和登录转圈的文章，说明这类问题确实是高频。</p>
+<p><strong>社区体量不算最大</strong>。相比一些靠社区模板量起家的平台，JanitorAI 的公开角色卡数量没那么夸张。当然这也可能是门槛筛选的结果——能玩转 Scripts 的创作者产出质量更高，但数量上确实不占优。</p>
+<h2>选购结论：什么人选它，什么人换别的</h2>
+<p>如果你满足下面任一条，JanitorAI 值得认真试：</p>
+<ul><li>你已经有一两款角色AI工具的使用经验，觉得默认人格框不够用，想做有世界观和分支剧情的深度角色卡；</li><li>你在意模型选择权，不想被锁死在平台绑定的模型上；</li><li>你打算量产角色卡，宏系统能帮你省大量重复劳动。</li></ul>
+<p>如果你只想要「注册就能玩、随手就能聊、模板抓过来直接用」的轻量体验，那同类工具里还有更省心的选择。JanitorAI 的进阶能力，对 casual 用户来说反而是负担。</p>
+<p>总结下来，JanitorAI 在角色AI创作这个类目里的位置很清晰：它不是最大众的，也不是界面最花哨的，但它在进阶创作系统这件事上，确实做得比多数同类工具更扎实。Scripts 三件套解决了复杂世界观的承载问题，宏系统解决了量产效率问题，多模型策略给了不同预算的用户都有得玩。代价是上手门槛和依赖链路的复杂度，这个取舍它做得很明确。</p>
+<p>我的推荐结论是：<strong>认真做角色卡的创作者，应该给 JanitorAI 一次机会；只是想找个伴聊聊天的 casual 用户，可以先从更轻量的同类工具入门</strong>。</p>
+<p>想深入研究的话，这套资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/JanitorAI" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/JanitorAI" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/JanitorAI" target="_blank" rel="noopener">GitCode</a> 三个仓库都有同步，主用哪个看你网络环境。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/mangadex-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">MangadeX 的扩展架构：一个阅读器如何同时服务几十个漫画源</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/tasker-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Tasker 上手一周，我把手机交给了一个会自己思考的助手</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Univer 迭代史：从手机端到简易创作工具的三次转身 · 老杨技术栈</title>
+  
+<meta name="description" content="从一份 36MB 的手机安装包说起，Univer 用不到两个版本周期完成了从&#34;能跑&#34;到&#34;能用&#34;再到&#34;能做出点东西&#34;的三级跳。我翻了它的中文文档，整理出版本号背后藏着的决策逻辑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/univer-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Univer 迭代史：从手机端到简易创作工具的三次转身">
+<meta property="og:description" content="从一份 36MB 的手机安装包说起，Univer 用不到两个版本周期完成了从&#34;能跑&#34;到&#34;能用&#34;再到&#34;能做出点东西&#34;的三级跳。我翻了它的中文文档，整理出版本号背后藏着的决策逻辑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/univer-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/univer-docs/editor-viewport.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/univer-docs/editor-viewport.jpg">
+
+<meta name="twitter:title" content="Univer 迭代史：从手机端到简易创作工具的三次转身">
+<meta name="twitter:description" content="从一份 36MB 的手机安装包说起，Univer 用不到两个版本周期完成了从&#34;能跑&#34;到&#34;能用&#34;再到&#34;能做出点东西&#34;的三级跳。我翻了它的中文文档，整理出版本号背后藏着的决策逻辑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u4e00\u4efd 36MB \u7684\u624b\u673a\u5b89\u88c5\u5305\u8bf4\u8d77\uff0cUniver \u7528\u4e0d\u5230\u4e24\u4e2a\u7248\u672c\u5468\u671f\u5b8c\u6210\u4e86\u4ece\"\u80fd\u8dd1\"\u5230\"\u80fd\u7528\"\u518d\u5230\"\u80fd\u505a\u51fa\u70b9\u4e1c\u897f\"\u7684\u4e09\u7ea7\u8df3\u3002\u6211\u7ffb\u4e86\u5b83\u7684\u4e2d\u6587\u6587\u6863\uff0c\u6574\u7406\u51fa\u7248\u672c\u53f7\u80cc\u540e\u85cf\u7740\u7684\u51b3\u7b56\u903b\u8f91\u3002", "headline": "Univer \u8fed\u4ee3\u53f2\uff1a\u4ece\u624b\u673a\u7aef\u5230\u7b80\u6613\u521b\u4f5c\u5de5\u5177\u7684\u4e09\u6b21\u8f6c\u8eab", "image": ["https://alipymanbu.github.io/images/univer-docs/editor-viewport.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/univer-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/univer-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "Univer \u8fed\u4ee3\u53f2\uff1a\u4ece\u624b\u673a\u7aef\u5230\u7b80\u6613\u521b\u4f5c\u5de5\u5177\u7684\u4e09\u6b21\u8f6c\u8eab", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">Univer 迭代史：从手机端到简易创作工具的三次转身</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Univer 迭代史：从手机端到简易创作工具的三次转身</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 5 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从一份 36MB 的手机安装包说起，Univer 用不到两个版本周期完成了从&#34;能跑&#34;到&#34;能用&#34;再到&#34;能做出点东西&#34;的三级跳。我翻了它的中文文档，整理出版本号背后藏着的决策逻辑。</p>
+  </header>
+  <div class="prose">
+<h2>现在这版：2026.1.1r1 的尴尬与亮点</h2>
+<p>我手里这份<a href="https://univer-docs.pages.dev/" target="_blank" rel="noopener">Univer文档</a>对应的版本是 2026.1.1r1。这个版本号的命名方式本身就透着一股"还在快速迭代"的意思——三段式加一个修订号，不是那种定版后的正式 release，去它的<a href="https://univer.gkhf.beer" target="_blank" rel="noopener">官网</a>上扫一眼，产品页还很简洁。安装包从<a href="https://univer.gkhf.beer/download.html" target="_blank" rel="noopener">下载</a>拿，只有 36MB，2GB 内存就能跑基础编辑，4GB 才能开 3D 模式的流畅体验。</p>
+<p>它最大的亮点也是它最矛盾的地方：编辑与试玩共用一块屏幕。虚拟摇杆嵌在视口左下角、升降控件钉在右侧，编辑态用它们走位选点，运行态同一套控件变成操控玩家的工具。这个设计砍掉了"切出去预览"那道工序，代价是屏幕上永远留着两块碍事的控件。</p>
+<p><img src="../images/univer-docs/editor-viewport.jpg" alt="编辑器视口：左下虚拟摇杆与右侧升降控件" loading="lazy"></p>
+<h2>来路：样本文档没提的那些版本</h2>
+<p>我翻了四篇样本文档，没找到任何更早版本的 changelog 或迁移说明。版本现状那页只写了当前号，FAQ 里提到"工程文件的导入导出标注为后续推出"——连"后续"是哪个版本都没说。</p>
+<p>文档导航的层级结构其实已经暴露了它的迭代节奏：</p>
+<ul><li><strong>核心能力层先落地</strong>：四类基本物件（胶囊体、球体、方块、玩家）、3D 视口、虚拟摇杆——这些构成了"能搭东西"的最低门槛，应该是最早一批交付的。</li><li><strong>物理引擎第二梯队</strong>：重力模拟、碰撞与刚体运动。这一层的加入让场景从静态摆设变成了有反馈的小世界，多米诺推倒、球体滚落这些玩法才成立。</li><li><strong>逻辑与剧情编辑器第三梯队</strong>：可视化节点逻辑编辑器、对话剧情编辑器。这是从"搭场景"到"做游戏"的关键一跃，但样本文档里关于这两块的页面内容还很薄，说明功能刚落地不久。</li><li><strong>项目管理还在路上</strong>：保存退出、本地存储是现成的，但导入导出、换机迁移、上架 APK 这些"产出环节"要么标注后续推出，要么只给了口径没落地。</li></ul>
+<p>从这条阶梯看，Univer 的团队优先把"创作闭环"做扎实——你能从空白项目一路搭到可运行的小场景。至于"作品怎么搬走、怎么上架"，排在后面。</p>
+<p><img src="../images/univer-docs/new-project-dialog.jpg" alt="新建项目对话框" loading="lazy"></p>
+<h2>规律：他们一直在死磕什么</h2>
+<p>三个版本梯队读下来，有一件事特别明显：<strong>他们在死磕"无代码"这件事。</strong></p>
+<p>物件是点选即放的，不拖不放不旋转；逻辑是节点编辑器，不写脚本不写事件；对话有专门的剧情编辑器；连保存都是一个软盘图标按钮——整个界面里找不到任何代码框、脚本编辑器或语法提示。</p>
+<p>FAQ 里最典型的三个问题："没有建模和编程基础能做出东西吗"、"低配手机能用吗"、"能导入自己的图片音效吗"——全都围绕同一个用户画像：<strong>想做点东西但不想学任何技术的普通人。</strong> 这个定位在 36MB 安装包、中文界面、手机端运行这三个产品决策里反复出现，不是偶然。</p>
+<p>反过来，什么一直没做？项目管理工具链：导入导出、换机迁移、多人协作、云端同步。样本文档里"保存与退出"那一整页只讲了一件事——点左上角软盘图标，本地存好。对于一个想认真做点什么的创作者来说，本地存储的脆弱性是最让人焦虑的事，但这个版本里这件事还没被解决。</p>
+<h2>预判：照这个路线，下一步大概率走向哪里</h2>
+<p>这部分是从迭代规律推的，不当官方口径传。</p>
+<p>如果团队继续沿着"创作闭环优先"的思路走，下一个版本应该先补项目管理这块短板——导入导出至少要落地一个方向，换机迁移能不能做也要给个准信。FAQ 里已经把这个问题顶到了明面上，用户的焦虑值是明确的。</p>
+<p>再往下，逻辑编辑器和对话编辑器的功能密度肯定要加厚。样本文档里这两块的页面数量比物理引擎少，内容也偏概述——说明骨架搭好了，肉还没填。节点类型、条件分支、变量传递，这些是让"小场景"变成"小游戏"的关键。</p>
+<p>至于上架 APK 的能力，文档里说"导出支持自定义签名、包名、图标"但"能力落地情况以当前版本为准"——这种口径上的模糊通常意味着功能在内部测试或者刚上线还有硬伤，下一个修订版应该能看到更明确的落地。</p>
+<p>写完这篇的时候我又翻了一遍文档目录，版本现状那页孤零零挂着 2026.1.1r1，像是一个还在爬坡的团队留下的脚印。它还没到"功能完备"的阶段，但"能让零基础的人在手机上搭出有物理反馈的 3D 小场景"这件事本身，已经比同类工具走得靠前了一步。整理这些资料的过程中顺手把文档副本同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Univer" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Univer" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Univer" target="_blank" rel="noopener">GitCode</a>三个仓库，国内访问按需选一个就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/epik-docs.html">epik 六年迭代：一款修图 App 如何在「一键美型」和「精细控制」之间反复横跳</a></h2>
+  <p class="card-desc">从早期一键式美颜工具到如今同时拥有专业调色面板和 AI 毕业照服务，epik 的版本迭代史藏着一个修图产品最真实的两难。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wikihow-docs.html">凌晨十一点，我靠一个小应用打出了人生第一条领带</a></h2>
+  <p class="card-desc">面试前一夜对着领带慌了神，室友睡了爸妈远在千里，Google 搜出来的全是广告。偶然想起下载过的 wikiHow，跟着图文步骤一步步来，十分钟搞定。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/rewasd.html">reWASD 上手一周：手柄调瞄准手感这件事，终于不用靠玄学了</a></h2>
+  <p class="card-desc">一个被 FPS 瞄准漂移折磨了半年的人，用 reWASD 把摇杆曲线掰了半小时后，第一次觉得&#34;瞄准手感&#34;这玩意儿是能被精确描述和调整的。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/marvisapp.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">MarvisApp 用了半年：从远控玩具到每天都开的电脑管家</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/koreader.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">KOReader 完全上手：从零配置你的专属阅读器</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

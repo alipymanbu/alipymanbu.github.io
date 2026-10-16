@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>朋友那台被 Kingroot 搞残的旧手机，我用 SuperSU 救回来了 · 老杨技术栈</title>
+  
+<meta name="description" content="一台被 Kingroot 一键 Root 后裸奔的安卓机，任何应用都能悄摸提权删东西。SuperSU 不是帮你 Root 的工具，它是 Root 之后那道真正有用的闸。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/supersu-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="朋友那台被 Kingroot 搞残的旧手机，我用 SuperSU 救回来了">
+<meta property="og:description" content="一台被 Kingroot 一键 Root 后裸奔的安卓机，任何应用都能悄摸提权删东西。SuperSU 不是帮你 Root 的工具，它是 Root 之后那道真正有用的闸。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/supersu-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/supersu-docs/apps-tab.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/supersu-docs/apps-tab.jpg">
+
+<meta name="twitter:title" content="朋友那台被 Kingroot 搞残的旧手机，我用 SuperSU 救回来了">
+<meta name="twitter:description" content="一台被 Kingroot 一键 Root 后裸奔的安卓机，任何应用都能悄摸提权删东西。SuperSU 不是帮你 Root 的工具，它是 Root 之后那道真正有用的闸。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e00\u53f0\u88ab Kingroot \u4e00\u952e Root \u540e\u88f8\u5954\u7684\u5b89\u5353\u673a\uff0c\u4efb\u4f55\u5e94\u7528\u90fd\u80fd\u6084\u6478\u63d0\u6743\u5220\u4e1c\u897f\u3002SuperSU \u4e0d\u662f\u5e2e\u4f60 Root \u7684\u5de5\u5177\uff0c\u5b83\u662f Root \u4e4b\u540e\u90a3\u9053\u771f\u6b63\u6709\u7528\u7684\u95f8\u3002", "headline": "\u670b\u53cb\u90a3\u53f0\u88ab Kingroot \u641e\u6b8b\u7684\u65e7\u624b\u673a\uff0c\u6211\u7528 SuperSU \u6551\u56de\u6765\u4e86", "image": ["https://alipymanbu.github.io/images/supersu-docs/apps-tab.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/supersu-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/supersu-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "\u670b\u53cb\u90a3\u53f0\u88ab Kingroot \u641e\u6b8b\u7684\u65e7\u624b\u673a\uff0c\u6211\u7528 SuperSU \u6551\u56de\u6765\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">朋友那台被 Kingroot 搞残的旧手机，我用 SuperSU 救回来了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">朋友那台被 Kingroot 搞残的旧手机，我用 SuperSU 救回来了</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">一台被 Kingroot 一键 Root 后裸奔的安卓机，任何应用都能悄摸提权删东西。SuperSU 不是帮你 Root 的工具，它是 Root 之后那道真正有用的闸。</p>
+  </header>
+  <div class="prose">
+<p>上周六下午，我正窝在沙发上补番，手机弹了个视频通话。是大学室友阿哲，画面里他举着那台用了四年的荣耀 9，屏幕上反复跳着一堆乱七八糟的权限请求，而且<strong>根本不弹窗确认</strong>——点进去就已经授权完了。</p>
+<p>"帮我看看这手机怎么回事，我前两天想装个旧版的 ES 文件管理器，手贱点了一下 Kingroot，结果现在啥 App 都能偷偷跑根命令。昨天晚上它自己把我微信缓存清了一半，聊了三年的表情包没了……"</p>
+<p>我让他把手机递过来翻了十分钟。设置里果然挂着一个 Kingroot 的管理器，点开 su 设置默认是"自动允许所有请求"。更狠的是 Kingroot 自己没卸载通道，想删它要么刷固件要么手动进 recovery 分区清 <code>/data/app</code>，对阿哲这种只会"下载 App 一键搞定"的选手来说等于无解。</p>
+<h2>不是帮你 Root，是管 Root 的</h2>
+<p>我一开始也以为 SuperSU 是个 Root 工具——直到翻了它的资料才搞清楚，它<strong>根本不负责让你拿到 Root</strong>。它做的是另一套事：在你已经 Root 之后，架一道可控的闸门，每次有应用想提权就弹个框问你放行还是拒绝，还能记录谁什么时候请求了什么命令。</p>
+<p>这正好是阿哲现在最缺的那层东西。Kingroot 给了他一把万能钥匙，然后把钥匙扣直接挂在了所有人都能拿到的地方。SuperSU 的定位就是看门人和审计员——钥匙还是你的，但每次有人想开必须先敲一下门。</p>
+<p>我翻了它的<a href="https://www.fwen.ren" target="_blank" rel="noopener">官网</a>，它的设计思路很直白：三个面板各司其职。应用程序标签列出所有曾经请求过 Root 的 App，日志面板记录每次请求的时间和命令，设置面板管全局行为。打开 SuperSU 的界面第一眼你会注意到三个标签页整整齐齐，不像 Kingroot 那样堆满"一键优化""清理垃圾"这类花里胡哨的按钮。</p>
+<p><img src="../images/supersu-docs/apps-tab.jpg" alt="SuperSU 的三栏界面：应用程序、日志、设置" loading="lazy"></p>
+<h2>单独装 APK 接管 su 二进制</h2>
+<p>阿哲这台手机已经有 Root 了，所以不需要重新刷 ZIP 包那种搞法——直接替换 su 二进制就行。这条路径是 <a href="https://supersu-docs.pages.dev/" target="_blank" rel="noopener">SuperSU文档</a> 里专门给"已经 Root 但想换权限管理器"的人准备的，步骤走下来还挺顺。</p>
+<p>先去 <a href="https://www.fwen.ren/download.html" target="_blank" rel="noopener">SuperSU下载</a> 拿 APK 安装包，大约四到六兆。Android 八以上默认不给装未知来源，得先进设置把浏览器的"安装未知应用"权限打开。装完之后<strong>先别急着打开 App</strong>——关键步骤在这：你得先让现有的权限管理器（就是那个 Kingroot）把 su 二进制的控制权交出来。</p>
+<p>Kingroot 里有个叫"安装 / 更新 su 二进制"的选项，我点开之后选了"替换 su 二进制"，它弹出警告说这可能导致 Root 失效，我确认了。然后回到桌面打开 SuperSU，它自动检测到设备上已有的 su，提示"需要更新 su 二进制"，点 Continue → Normal，等它跑完重启。</p>
+<p>重启的那一刻我盯着屏幕——Kingroot 的那个小企鹅图标还在不在？不在了。SuperSU 的小绿钩图标干干净净地挂在桌面上。我随手打开一个 Root Explorer，弹窗出现了，上面清清楚楚显示着进程链：<code>Root Explorer → su</code>，不像 Kingroot 那样悄无声息。</p>
+<h2>深度检测：看清是谁在请求</h2>
+<p>SuperSU 有个我之前没注意到的功能叫深度进程检测。它不只是告诉你"App X 请求了 Root"，还会把整个调用链一层层往上扒——直接调用者是谁、父进程是谁、宿主 APK 包名是什么、运行在什么上下文里。</p>
+<p>我给阿哲演示了几个场景。正常的终端模拟器请求 Root，进程链干干净净：<code>Terminal Emulator → su</code>。但如果哪天突然弹出一个请求，调用者是 <code>app_process</code> 这种 Android 用来执行 Java 代码的系统可执行文件，那就要警惕了——正常应用不会直接调它，说明有东西通过反射或者 ClassLoader 动态加载了代码来绕过程序。</p>
+<p>最夸张的是如果看到 <code>system_server</code> 这个 Android 核心进程在请求 Root，正常情况下绝对不该出现。阿哲的手机上之前没有装 Xposed 这类 Hook 框架，所以看到这个大概率是被劫持了。</p>
+<p>我在设置里顺手勾上了 Enable Su during boot。这个开关控制开机过程中 su 二进制是否立即应用所有已配置的权限规则，默认关闭是为了兼容极少数定制 ROM，但一般用户开着更稳——阿哲那台手机有个开机自启的备份脚本，不开这个的话那个脚本每次都会静默失败，之前他还以为是脚本写坏了。</p>
+<h2>系统应用转换与 Full Unroot</h2>
+<p>SuperSU 可以把自己从普通应用变成系统应用——移动到 <code>/system/priv-app/SuperSU/</code> 目录下，普通方式就卸载不掉了。我给阿哲转了，因为他已经确定不会再换方案了，多一层保护多一层安全。变成系统应用之后也不用担心，以后要升级版本不需要重新做转换，直接在同一目录下覆盖就行。</p>
+<p><img src="../images/supersu-docs/settings-bottom.jpg" alt="Settings 底部：Full Unroot 和系统应用转换入口" loading="lazy"></p>
+<p>然后就是收尾的清理工作。SuperSU 接管成功之后，我用 Kingroot 自己的卸载功能把它卸了——<strong>千万别用 Kingroot 里的 unroot 选项</strong>，那会同时把 su 二进制删掉，等于把 SuperSU 的工作基础直接刨了。卸完 Kingroot，又手动删了它残留的几个 <code>/data</code> 目录。</p>
+<h2>收尾：把钥匙还给你</h2>
+<p>整个过程用了不到半小时。重启之后我让阿哲随便点了几个之前被 Kingroot 自动授权过的 App——ES 文件管理器、SD 卡挂载助手、一个旧版的 Terminal——全部正常弹出 SuperSU 的授权弹窗，每个上面都带着清晰的进程链信息。我帮他给几个最常用的设成了"永远允许"，剩下的保留每次询问。</p>
+<p>后来我去翻了一下 SuperSU 文档，发现还有不少进阶玩法我没来得及试——比如可以单独给某个 App 设置通知级别、可以开启日志审计记录每次 Root 请求的完整命令、可以一键临时隐藏 Root 或者彻底移除（Full Unroot）。这些功能对大多数人来说可能用不上，但对于像阿哲这种踩过坑的人来说，知道自己手里这道闸有多少备用锁还是挺安心的。</p>
+<p>Kingroot 和 360 Root 这类"一键 Root"工具最大的问题不是给你 Root，而是给了 Root 之后就不管了——它帮你打开了家门，但没有给你装锁。SuperSU 干的就是那把锁的活。如果你当初也是图省事用了一键 Root，现在发现手机上到处都是悄摸提权的痕迹，不妨换个思路：不用重新刷固件，装个 SuperSU 的 APK，把 su 的控制权拿回来就行。</p>
+<p>这篇资料我在三个地方都做了备份，方便你在不同环境下随时查阅——Chainfire 原始资料整理在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/SuperSU" target="_blank" rel="noopener">GitHub</a>，国内访问可能有墙所以 <a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/SuperSU" target="_blank" rel="noopener">Gitee</a> 也同步了一份，内网环境的朋友可以直接去 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/SuperSU" target="_blank" rel="noopener">GitCode</a> 看。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/spotube-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">把Spotube嵌进我的独立音乐周报工作流：从搜歌到网盘分享一条链</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/sophclaw.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Sophclaw 问答速查：装一只会干活的 AI 龙虾到底值不值</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

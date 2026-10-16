@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>三枪以内把 Crosshair 用上：安卓悬浮准星工具零基础实操 · 老杨技术栈</title>
+  
+<meta name="description" content="从拿到安装包到在训练场里打出第一发校准弹，手把手走完 Crosshair 准星覆盖工具的完整启用流程，新手不会在权限和校准环节翻车。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/crosshair-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三枪以内把 Crosshair 用上：安卓悬浮准星工具零基础实操">
+<meta property="og:description" content="从拿到安装包到在训练场里打出第一发校准弹，手把手走完 Crosshair 准星覆盖工具的完整启用流程，新手不会在权限和校准环节翻车。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/crosshair-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/crosshair-docs/main-screen.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/crosshair-docs/main-screen.png">
+
+<meta name="twitter:title" content="三枪以内把 Crosshair 用上：安卓悬浮准星工具零基础实操">
+<meta name="twitter:description" content="从拿到安装包到在训练场里打出第一发校准弹，手把手走完 Crosshair 准星覆盖工具的完整启用流程，新手不会在权限和校准环节翻车。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u62ff\u5230\u5b89\u88c5\u5305\u5230\u5728\u8bad\u7ec3\u573a\u91cc\u6253\u51fa\u7b2c\u4e00\u53d1\u6821\u51c6\u5f39\uff0c\u624b\u628a\u624b\u8d70\u5b8c Crosshair \u51c6\u661f\u8986\u76d6\u5de5\u5177\u7684\u5b8c\u6574\u542f\u7528\u6d41\u7a0b\uff0c\u65b0\u624b\u4e0d\u4f1a\u5728\u6743\u9650\u548c\u6821\u51c6\u73af\u8282\u7ffb\u8f66\u3002", "headline": "\u4e09\u67aa\u4ee5\u5185\u628a Crosshair \u7528\u4e0a\uff1a\u5b89\u5353\u60ac\u6d6e\u51c6\u661f\u5de5\u5177\u96f6\u57fa\u7840\u5b9e\u64cd", "image": ["https://alipymanbu.github.io/images/crosshair-docs/main-screen.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/crosshair-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/crosshair-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4e09\u67aa\u4ee5\u5185\u628a Crosshair \u7528\u4e0a\uff1a\u5b89\u5353\u60ac\u6d6e\u51c6\u661f\u5de5\u5177\u96f6\u57fa\u7840\u5b9e\u64cd", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">三枪以内把 Crosshair 用上：安卓悬浮准星工具零基础实操</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">三枪以内把 Crosshair 用上：安卓悬浮准星工具零基础实操</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从拿到安装包到在训练场里打出第一发校准弹，手把手走完 Crosshair 准星覆盖工具的完整启用流程，新手不会在权限和校准环节翻车。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程结束的时候，你能做到：Crosshair 安装好、悬浮准星正常显示、在训练场里把落点校到准星中心，进游戏开第一把不用再临时调参数。</p>
+<h2>准备：先确认两件事</h2>
+<h3>平台与版本</h3>
+<p>Crosshair 是安卓端的悬浮准星覆盖工具，目前只支持安卓。应用商店能直接搜到，它的<a href="https://crosshair.fewz.tech" target="_blank" rel="noopener">官网</a>上也能找到完整的产品介绍，网盘分发的安装包版本也稳定——网盘的版本更新略滞后一周左右，但差异不大。这篇教程用的是 1.0.22 及以上版本，低于这个版本的话建议先升级，因为 1.0.22 修过界面卡死的问题，低版本可能遇到设置界面滑不动的情况。</p>
+<h3>前置条件</h3>
+<ul><li>一台安卓手机，系统版本 7.0 以上（Android 8 以下部分机型可能找不到悬浮窗权限开关）；</li><li>一个 FPS 游戏用于验证——训练场模式最佳，没有训练场就找一个能自由开火的 PVE 关卡；</li><li>安装包从<a href="https://crosshair.fewz.tech/download.html" target="_blank" rel="noopener">官方下载</a>入口拿，拿到后记得先转存到自己的网盘再下载，直接下别人的分享链接容易失效。</li></ul>
+<h2>第一步：安装并给悬浮窗权限</h2>
+<p>先把安装包装上，再处理唯一的核心权限。</p>
+<ol><li>在文件管理器里点开下载好的 APK，系统弹「不允许安装未知来源应用」时点「设置」，勾选允许此来源安装，返回再点安装。不同品牌叫法略有差异——有的叫「安装未知应用」，有的叫「未知来源」，都在系统设置的安装权限区。</li><li>装完桌面出现图标，打开应用。它会立刻弹出「显示在其他应用上层」的权限请求——这是它唯一需要的权限，不给的话准星层出不来，点「允许」就行。安卓 8.0 以上部分机型要手动跳转到系统设置页勾选，跟着它的提示走。</li></ol>
+<p><img src="../images/crosshair-docs/main-screen.png" alt="Crosshair 主界面" loading="lazy"></p>
+<ol><li>权限给到之后，界面中央会出现一个预览准星。别急着进游戏——先把样式挑好、位置对好再切出去，比进了游戏再回来调省事得多。</li></ol>
+<h2>第二步：挑一个你能看清的准星样式</h2>
+<p>Crosshair 内置了几十种准星图案，按形状大致分：实心点、十字、断点圆环、狙击镜分划。选的时候别纠结"最优解"——适合你的就两个标准：在地图背景上不丢、开镜后不跟游戏自带分划撞。</p>
+<p>打开样式选择区，挨个点一遍预览。如果不确定选什么，断点圆环是万能型——环框感强，中心落点明确，狙击和步枪通吃。狙击枪玩家可以看看狙击镜式图案，圆环和镜内分划重合度高，开镜后叠影不明显。</p>
+<p>样式定了之后，把大小调到中等偏上——太小了在手游里费眼，太大了挡住弹道。颜色这块稍微讲究一点：深色地图选亮色（白色/黄色），浅色地图选深色（黑色/红色），两套备用比一套通吃更靠谱。样式之间的详细对比和不同枪种的搭配建议，在<a href="https://crosshair-docs.pages.dev/" target="_blank" rel="noopener">Crosshair文档</a>里有完整梳理。</p>
+<p><img src="../images/crosshair-docs/adjust-position.png" alt="位置校准四向拖动盘" loading="lazy"></p>
+<h2>第三步：把准星校到你的枪口上——关键步骤</h2>
+<p>准星默认出现在屏幕中央附近，但你的枪口轴线未必在那里。这一步是整个教程里最容易被新手跳过、也是跳过之后最难受的步骤。</p>
+<ol><li>启动准星层，进入游戏训练场。</li><li>切回 Crosshair 的 Adjust Position 区块，四向箭头盘就在界面右下。</li><li>按住对应方向的箭头微调：按上准星上移、按下下移、左右同理。每按一次移动一小步，反复点按累积距离。</li><li>打一发腰射，看弹着点落在哪里——弹着点对准准星中心 = 校准完成。</li></ol>
+<p>这里有个先后顺序：先定外观再校位置。图案、大小、角度改了之后，中心点的视觉位置可能微移，位置最后锁最省事。</p>
+<p>换了横竖屏、换了不同分辨率的游戏，都要重新校一次；但校准结果在同一类游戏之间基本通用，比如 PUBG 和和平精英同为横屏，校一次就能通吃。</p>
+<h2>第四步：进游戏用它——不同枪种的用法差异</h2>
+<p>准星调完直接切游戏。不同枪种的用法略有差别，说三个最常见的场景：</p>
+<p><strong>步枪腰射</strong>：悬浮准星就是你唯一的瞄准参照。预瞄时把准星套住敌人露头的位置，开火后准星跟着枪口往上跳——如果跳幅太大看不清弹道，回去把透明度调高一点。</p>
+<p><strong>狙击不开镜</strong>：这是悬浮准星价值最大的场景。狙击腰射状态下屏幕上没有准星，用悬浮准星拉枪找目标，开镜瞬间准星已经贴近，只需要最小修正就打——瞬狙玩家最吃这一套。</p>
+<p><strong>狙击开镜后</strong>：会跟游戏自带分划叠影。如果两者重合度高，稍微透出一点无伤大雅——把透明度调低就行；如果画面放大导致悬浮准星显得突兀，讲究的做法是开镜瞬间手动点 Stop 停掉、关镜再启动，熟练了就是半秒动作。嫌麻烦就接受叠影，或者只在腰射流程里用它。</p>
+<h2>新手最容易翻车的三个卡点</h2>
+<h3>卡点一：权限给了但游戏里看不到准星</h3>
+<p>先确认准星层真的启动了——界面上 Start 按钮按下才生效，光装完应用不够。然后检查系统是不是又把权限回收了，安卓后台管理激进的品牌经常发生这种事。最后排除游戏层面的屏蔽——个别游戏有准星覆盖检测，换个游戏试一下。</p>
+<h3>卡点二：界面卡死，按钮点了没反应</h3>
+<p>设置界面滑不动、预览冻结，多半是应用侧的冻结问题。最直接的处理：彻底退出应用（最近任务里划掉）再开；反复出现就重启手机；仍复现就升级到最新版本，1.0.22 的更新记录里明确修过这个问题。</p>
+<h3>卡点三：换了游戏准星位置对不上</h3>
+<p>这是正常现象，不是校准失效。不同游戏的枪口轴线位置不一样，第三人称视角的枪口天生不在屏幕中心。解决就是重新走一遍第三步的校准流程——打一发腰射，挪箭头，再打一发，对准了就完事。</p>
+<h2>往下还能玩什么</h2>
+<p>准星位置有偏差、想同时跑多套配置、或者想开镜自动隐藏这些进阶功能，都可以继续往下挖。</p>
+<p>另外说句题外话——我在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Crosshair" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Crosshair" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Crosshair" target="_blank" rel="noopener">GitCode</a>三个仓库都同步了这套资料，国内网络环境下 Gitee 访问起来通常更顺手，GitHub 那边主要方便交叉参考，GitCode 是最新加的镜像，三份内容保持一致。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/epik-docs.html">epik 六年迭代：一款修图 App 如何在「一键美型」和「精细控制」之间反复横跳</a></h2>
+  <p class="card-desc">从早期一键式美颜工具到如今同时拥有专业调色面板和 AI 毕业照服务，epik 的版本迭代史藏着一个修图产品最真实的两难。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wikihow-docs.html">凌晨十一点，我靠一个小应用打出了人生第一条领带</a></h2>
+  <p class="card-desc">面试前一夜对着领带慌了神，室友睡了爸妈远在千里，Google 搜出来的全是广告。偶然想起下载过的 wikiHow，跟着图文步骤一步步来，十分钟搞定。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/rewasd.html">reWASD 上手一周：手柄调瞄准手感这件事，终于不用靠玄学了</a></h2>
+  <p class="card-desc">一个被 FPS 瞄准漂移折磨了半年的人，用 reWASD 把摇杆曲线掰了半小时后，第一次觉得&#34;瞄准手感&#34;这玩意儿是能被精确描述和调整的。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/toptop-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">TopTop 老玩家踩过的六个坑——从被踢到账号安全，一次说清</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/addons-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MCPE Addons 到底值不值得掏钱——一个模组党的付费决策账本</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Crushon.AI 用了三个月，这 5 个坑我替你踩过了 · 老杨技术栈</title>
+  
+<meta name="description" content="Crushon.AI 看上去就是个 AI 角色聊天工具，但实际用起来藏着好几处容易翻车的细节——声音切换、数据留存、积分消耗……本文把我踩过的坑逐个拆解，帮你省时间省积分。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/crushon-ai-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Crushon.AI 用了三个月，这 5 个坑我替你踩过了">
+<meta property="og:description" content="Crushon.AI 看上去就是个 AI 角色聊天工具，但实际用起来藏着好几处容易翻车的细节——声音切换、数据留存、积分消耗……本文把我踩过的坑逐个拆解，帮你省时间省积分。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/crushon-ai-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/crushon-ai-docs/hero-headphones.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/crushon-ai-docs/hero-headphones.webp">
+
+<meta name="twitter:title" content="Crushon.AI 用了三个月，这 5 个坑我替你踩过了">
+<meta name="twitter:description" content="Crushon.AI 看上去就是个 AI 角色聊天工具，但实际用起来藏着好几处容易翻车的细节——声音切换、数据留存、积分消耗……本文把我踩过的坑逐个拆解，帮你省时间省积分。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Crushon.AI \u770b\u4e0a\u53bb\u5c31\u662f\u4e2a AI \u89d2\u8272\u804a\u5929\u5de5\u5177\uff0c\u4f46\u5b9e\u9645\u7528\u8d77\u6765\u85cf\u7740\u597d\u51e0\u5904\u5bb9\u6613\u7ffb\u8f66\u7684\u7ec6\u8282\u2014\u2014\u58f0\u97f3\u5207\u6362\u3001\u6570\u636e\u7559\u5b58\u3001\u79ef\u5206\u6d88\u8017\u2026\u2026\u672c\u6587\u628a\u6211\u8e29\u8fc7\u7684\u5751\u9010\u4e2a\u62c6\u89e3\uff0c\u5e2e\u4f60\u7701\u65f6\u95f4\u7701\u79ef\u5206\u3002", "headline": "Crushon.AI \u7528\u4e86\u4e09\u4e2a\u6708\uff0c\u8fd9 5 \u4e2a\u5751\u6211\u66ff\u4f60\u8e29\u8fc7\u4e86", "image": ["https://alipymanbu.github.io/images/crushon-ai-docs/hero-headphones.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/crushon-ai-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/crushon-ai-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Crushon.AI \u7528\u4e86\u4e09\u4e2a\u6708\uff0c\u8fd9 5 \u4e2a\u5751\u6211\u66ff\u4f60\u8e29\u8fc7\u4e86", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">Crushon.AI 用了三个月，这 5 个坑我替你踩过了</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Crushon.AI 用了三个月，这 5 个坑我替你踩过了</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Crushon.AI 看上去就是个 AI 角色聊天工具，但实际用起来藏着好几处容易翻车的细节——声音切换、数据留存、积分消耗……本文把我踩过的坑逐个拆解，帮你省时间省积分。</p>
+  </header>
+  <div class="prose">
+<p>我第一次逛它的<a href="https://crushon-ai.uerg.quest" target="_blank" rel="noopener">官网</a>是被朋友拉去试角色聊天，当时心想不就是另一个 Character.AI 吗？注册完、建了个角色、挑了个温柔的中文预设声就开聊了。结果三天之内踩了五个坑，其中两个直接让我把号删了重玩。</p>
+<p>说实话这软件看着简单——选模型、挑声音、开聊——但真要长期用，里面的门道不少。下面这五个坑都是我实打实踩过的，每个都给你说清楚症状、原因和解法。</p>
+<h2>坑一：切了声音，角色还是用原来的语气说话</h2>
+<p><strong>症状</strong>：你和角色聊到紧张的剧情节点，手忙脚乱切了一个沙哑低沉的预设声，结果角色下一条消息的文字还是"呢~""呀~"，语气一点没变。你以为声音切换坏了，反复切了三四个，还是一样。</p>
+<p><strong>原因</strong>：Crushon 的声音系统只影响<strong>语音输出</strong>，完全不碰文字生成。这是官方设计就这么定的——声音和模型是两套独立系统，声音管"怎么说"，模型管"说什么"。你从温柔腔切到沙哑低音，角色可能还是说同样的话，只有"说出来"的声音变了。</p>
+<p>我第一次遇到这个坑时以为模型抽风了，刷了七八条消息，越刷越气。后来去翻了一下<a href="https://crushon-ai-docs.pages.dev/" target="_blank" rel="noopener">Crushon.AI文档</a>才明白，得手动告诉角色换语气。</p>
+<p><strong>解法</strong>：切完声音后，立刻发一条指令，比如"现在用更严肃的语气说话"。Ultra 模型能理解并调整，Pro 和 Free 可能不太灵。如果想让角色全程用新语气，可以直接在角色设定里改，比每条消息都指令更省事。</p>
+<p><img src="../images/crushon-ai-docs/hero-headphones.webp" alt="声音切换面板" loading="lazy"></p>
+<h2>坑二：免费层放着不管，三天后对话全没了</h2>
+<p><strong>症状</strong>：上周用免费号建了个角色聊得很嗨，这周想继续，打开一看对话列表空了——不是加载慢，是真的没了。角色卡还在，但所有聊天记录全没了。</p>
+<p><strong>原因</strong>：Crushon 的免费层和付费层在数据留存上有本质区别。付费层对话长期保存，免费层默认 <strong>7 天不活跃</strong>就可能被清理。注意是"可能"——官方用的是弹性策略，有时候 7 天多一点也留着，有时候 5 天就清了，完全没个准。</p>
+<p>我当时就是周末聊得好好的，周一上班忙忘了，周四打开号就空了。</p>
+<p><strong>解法</strong>：要么升级付费（Standard $5.99/月起），要么养成<strong>定期导出重要对话</strong>的习惯。免费层用户别把它当长期存档用，临时聊完存一下截图或者自己复制备份更保险。如果你只是想体验一把声音系统，从<a href="https://crushon-ai.uerg.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿免费版完全够用 40+ 预设声，但别指望它帮你保管回忆。</p>
+<h2>坑三：删了账号，社区里自己发的角色卡还在飘</h2>
+<p><strong>症状</strong>：某天想彻底弃用，删了整个账户。过了一周搜自己之前发布的角色卡名字，还在社区里——设定、性格描述、背景故事全都原封不动。你以为删号等于删一切，其实不是。</p>
+<p><strong>原因</strong>：Crushon 的数据权分两块。私人对话和私有角色卡，删号时确实会永久删除。但<strong>发布到社区的公开角色卡</strong>不归你删号管——角色卡的文字内容归你所有，但你发布时授予了平台展示和分发的权限。删号只切断了你自己和平台的关系，之前公开出去的内容它没义务帮你回收。</p>
+<p>而且还有更糟的：其他用户早就把你的角色卡导入到本地（PNG 格式）了，或者基于你的设定做了二次创作。删号后这些也不会消失。</p>
+<p><strong>解法</strong>：想彻底撤下自己的公开角色卡，<strong>删号之前先单独下架每个角色卡</strong>。进社区找到自己发布的角色，走下架流程确认后，再去删账户。两个步骤不能省。</p>
+<h2>坑四：当前正在播放的语音，声音切换根本拦不住</h2>
+<p><strong>症状</strong>：角色正在用温柔腔说一大段台词，你想中途切个沙哑声打断它——点切换按钮没反应，这段语音还是按原声音播完。你等下一条，发现还是不对，以为切换没生效。</p>
+<p><strong>原因</strong>：声音切换有个延迟机制——当前正在"播放"的角色语音<strong>不会被中断</strong>，切换只对<strong>下一条</strong>角色消息生效。这个设计可能是为了避免音频流错乱，但体验上真的很反直觉。</p>
+<p>我第一次遇到时反复点了五分钟切换按钮，以为是网页卡了，刷新三次。后来才知道只能等这条播完，下一条才是新声音。</p>
+<p><strong>解法</strong>：切换声音要预判时机。角色消息刚出来、还没开始播报的时候切最理想——等它播完才点，那段已经改不了了。实在不行可以点消息旁边的停止播放按钮，然后直接发下一条逼它出下一条消息。</p>
+<h2>坑五：Ultra 模型积分烧得太快，不知不觉余额见底</h2>
+<p><strong>症状</strong>：月初刚充的积分，聊了不到两周就空了。查积分消耗记录，发现 Ultra 模型每条消息的消耗是 Free 的好几倍——但你可能完全没注意自己什么时候切到了 Ultra。</p>
+<p><strong>原因</strong>：Crushon 的模型分三档——Free、Pro、Ultra，消耗逐级递增。Ultra 模型有 24K 上下文，记忆最深、理解能力最强，但积分消耗也最凶。而且切换模型的操作就在对话界面底部，点一下就切了，很容易忘了切回来。</p>
+<p>我后来养成了一个习惯：非必要不用 Ultra。只有剧情推到关键转折点、需要角色回忆三周前的细节时才切过去，平时老老实实 Pro 或者 Free。</p>
+<p><strong>解法</strong>：给自己定个规则——Ultra 只在两种情况用：① 需要角色回忆很早的对话时；② 需要它理解复杂语气/指令时。其他时候 Pro 完全够用，省积分得多。另外订阅制比单买积分划算，如果你用得频繁，直接 Standard 起步更省心。</p>
+<p><img src="../images/crushon-ai-docs/hero-suit-man.webp" alt="角色聊天界面" loading="lazy"></p>
+<h2>防坑清单</h2>
+<ol><li><strong>切声音≠改语气</strong>：切完声音记得手动发指令调文字语气，Ultra 模型配合效果最好</li><li><strong>免费层数据7天清</strong>：别把重要对话存在免费号里，定期手动备份</li><li><strong>删号前先下架公开角色卡</strong>：两个步骤缺一不可，否则社区内容还在</li><li><strong>声音切换等下一条</strong>：当前播放的语音拦不住，预判时机在消息刚出来时切</li><li><strong>Ultra 省着用</strong>：只在长上下文和复杂指令场景下切换，Pro 日常够用</li></ol>
+<p>说到底，Crushon.AI 的核心体验——声音系统、记忆深度、跨端同步——确实比竞品用心。但这些坑如果不提前知道，用起来真的很闹心。把这五条记住，这软件其实相当省心。对了，顺手说一句，这套整理好的资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Crushon.AI" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Crushon.AI" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/Crushon.AI" target="_blank" rel="noopener">GitCode</a> 都能拿到，国内访问走 Gitee 或 GitCode 更流畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/listen1-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Listen 1 对比评测：一站式聚合听歌，到底值不值得从你现在的播放器里迁移过去</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/taskmanager-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">TaskManager 快问快答 — 它到底能帮你看清手机的什么</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

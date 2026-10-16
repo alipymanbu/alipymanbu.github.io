@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把零散视频素材收进同一条流水线：我用 9xbuddy 做周素材采集的完整工作流 · 老杨技术栈</title>
+  
+<meta name="description" content="每周要从 B 站、YouTube、Twitter 等七八个平台收视频做剪辑，以前分平台找工具、手动整理文件夹，现在把 9xbuddy 嵌进一条分享→批量→自动归档→电脑同步的固定流程，省下了什么、又在哪几个环节还得手动介入，这里给你一条可直接抄的作业链。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/9xbuddy-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把零散视频素材收进同一条流水线：我用 9xbuddy 做周素材采集的完整工作流">
+<meta property="og:description" content="每周要从 B 站、YouTube、Twitter 等七八个平台收视频做剪辑，以前分平台找工具、手动整理文件夹，现在把 9xbuddy 嵌进一条分享→批量→自动归档→电脑同步的固定流程，省下了什么、又在哪几个环节还得手动介入，这里给你一条可直接抄的作业链。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/9xbuddy-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/9xbuddy-docs/one-click.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/9xbuddy-docs/one-click.webp">
+
+<meta name="twitter:title" content="把零散视频素材收进同一条流水线：我用 9xbuddy 做周素材采集的完整工作流">
+<meta name="twitter:description" content="每周要从 B 站、YouTube、Twitter 等七八个平台收视频做剪辑，以前分平台找工具、手动整理文件夹，现在把 9xbuddy 嵌进一条分享→批量→自动归档→电脑同步的固定流程，省下了什么、又在哪几个环节还得手动介入，这里给你一条可直接抄的作业链。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6bcf\u5468\u8981\u4ece B \u7ad9\u3001YouTube\u3001Twitter \u7b49\u4e03\u516b\u4e2a\u5e73\u53f0\u6536\u89c6\u9891\u505a\u526a\u8f91\uff0c\u4ee5\u524d\u5206\u5e73\u53f0\u627e\u5de5\u5177\u3001\u624b\u52a8\u6574\u7406\u6587\u4ef6\u5939\uff0c\u73b0\u5728\u628a 9xbuddy \u5d4c\u8fdb\u4e00\u6761\u5206\u4eab\u2192\u6279\u91cf\u2192\u81ea\u52a8\u5f52\u6863\u2192\u7535\u8111\u540c\u6b65\u7684\u56fa\u5b9a\u6d41\u7a0b\uff0c\u7701\u4e0b\u4e86\u4ec0\u4e48\u3001\u53c8\u5728\u54ea\u51e0\u4e2a\u73af\u8282\u8fd8\u5f97\u624b\u52a8\u4ecb\u5165\uff0c\u8fd9\u91cc\u7ed9\u4f60\u4e00\u6761\u53ef\u76f4\u63a5\u6284\u7684\u4f5c\u4e1a\u94fe\u3002", "headline": "\u628a\u96f6\u6563\u89c6\u9891\u7d20\u6750\u6536\u8fdb\u540c\u4e00\u6761\u6d41\u6c34\u7ebf\uff1a\u6211\u7528 9xbuddy \u505a\u5468\u7d20\u6750\u91c7\u96c6\u7684\u5b8c\u6574\u5de5\u4f5c\u6d41", "image": ["https://alipymanbu.github.io/images/9xbuddy-docs/one-click.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/9xbuddy-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/9xbuddy-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u628a\u96f6\u6563\u89c6\u9891\u7d20\u6750\u6536\u8fdb\u540c\u4e00\u6761\u6d41\u6c34\u7ebf\uff1a\u6211\u7528 9xbuddy \u505a\u5468\u7d20\u6750\u91c7\u96c6\u7684\u5b8c\u6574\u5de5\u4f5c\u6d41", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">把零散视频素材收进同一条流水线：我用 9xbuddy 做周素材采集的完整工作流</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把零散视频素材收进同一条流水线：我用 9xbuddy 做周素材采集的完整工作流</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">每周要从 B 站、YouTube、Twitter 等七八个平台收视频做剪辑，以前分平台找工具、手动整理文件夹，现在把 9xbuddy 嵌进一条分享→批量→自动归档→电脑同步的固定流程，省下了什么、又在哪几个环节还得手动介入，这里给你一条可直接抄的作业链。</p>
+  </header>
+  <div class="prose">
+<h2>旧流程：一周 20 条素材要花 40 分钟在「搬运」上</h2>
+<p>我做科技类短视频的剪辑，每周固定要从 B 站、YouTube、Twitter、Reddit、知乎专栏等七八个平台各收一两条素材，攒够 15~25 条再集中剪。以前这条链是散的：</p>
+<p>B 站用一个专门工具、YouTube 用另一个、Twitter 偶尔还要开浏览器扩展；每个工具的下载目录各归各，一条素材有时候分散在三个不同文件夹；批量下到一半有失败的，得每条点进去看报错、判断重连还是换链接；下完还要手动挑好的版本（同一视频被我下了三次不同分辨率是常事），拖进剪辑素材盘，再做一轮去重和重命名。</p>
+<p>粗算下来，每周「搬运整理」这一步要 30~40 分钟，真正影响剪辑进度的不是下载本身，是<strong>每次都要重新判断怎么下、下到哪里、要不要删旧版本</strong>。</p>
+<h2>新流程：9xbuddy 作为统一入口，三步串起整条链</h2>
+<p>后来把 9xbuddy 嵌进来，作为所有平台的统一下载器——它的<a href="https://9xbuddy.laze.skin" target="_blank" rel="noopener">官网</a>上对这款工具的定位也是多平台视频统一下载，整条链变成了：</p>
+<p><strong>分享菜单直接进 → 批量队列一次跑完 → 电脑端自动同步素材盘</strong></p>
+<p>具体怎么接：</p>
+<h3>第一步：分享菜单进 9xbuddy，告别复制粘贴</h3>
+<p>从<a href="https://9xbuddy.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿的 APK 直装版（商店版不支持 YouTube，我直接绕过这个限制），所有我常逛的 App 都能从原生分享菜单直接调起 9xbuddy。YouTube 视频、B 站稿件、Twitter 推文带的视频——在原 App 里点分享、选 9xbuddy，它自动解析、弹出格式列表。</p>
+<p>这里有个 Pro 功能叫<strong>一键下载</strong>，开了之后格式列表整个跳过，直接按我预设的偏好画质（1080p、H.264）往队列里丢。我每天要下三四条 YouTube，每次省掉选画质、点确认那四五次点按，一周下来累积能少 20 多次重复操作。一键下载照常占每日额度，但额度省下来的操作步骤就是实打实的省。</p>
+<p><img src="../images/9xbuddy-docs/one-click.webp" alt="一键下载按偏好画质直接进队列，省掉格式列表那一步" loading="lazy"></p>
+<h3>第二步：批量队列让零碎任务攒成一段连续时间</h3>
+<p>以前是想到一条下一条，现在改了习惯：上午刷到好素材、直接分享进 9xbuddy，它先排队、不下。中午休息的 20 分钟打开批量列表，把上午攒的七八条一次性勾选、开跑。</p>
+<p>批量下载前我会手动关掉电池优化——Android 系统会在后台杀下载进程，<a href="https://9xbuddy-docs.pages.dev/" target="_blank" rel="noopener">9xbuddy文档</a>里专门提了这个坑，踩过一次之后就成了固定检查项。关完电池优化、开队列，这时候就可以去干别的了。</p>
+<p>队列跑完有失败的怎么办？9xbuddy 有三个恢复按钮：重试、重启、浏览器。按失败原因选，别乱点：</p>
+<ul><li>网络断了、限速了 → 点<strong>重试</strong>，从断点续传</li><li>提示链接过期、格式失效 → 点<strong>重启</strong>，重新解析换一条新链接</li><li>遇到登录墙、人机验证 → 点<strong>浏览器</strong>，在内置浏览器里登录之后用页面会话继续</li></ul>
+<p>这个判断口诀我贴在电脑显示器角上了，省得每次打开文档查。</p>
+<h3>第三步：从手机收藏库同步到电脑素材盘</h3>
+<p>下载完成的视频会进收藏库，支持按来源站点自动分类——B 站的归 B 站文件夹、YouTube 的归 YouTube。我在电脑端开了一个局域网 SMB 共享盘，用 ES 文件管理器每周日晚上把 9xbuddy 的收藏库整个同步过去，剪辑软件直接在电脑上读共享盘，不用再用数据线或微信传。</p>
+<p><img src="../images/9xbuddy-docs/android-library.webp" alt="收藏库按来源自动分类，同步到电脑直接给剪辑用" loading="lazy"></p>
+<h2>实操细节：两个最容易断链的环节</h2>
+<h3>环节一：解析成功但列表空——不是没下到，是链接没指正主</h3>
+<p>这是我踩过最多的坑。贴一个聚合页、嵌入页、分享跳转链进去，解析不报任何错，但格式列表就是空的。原因通常有三个：媒体不在你贴的那一页上、分享链带了一堆跳转没落到正主、或者视频还没真正播放起来流地址没暴露。</p>
+<p>解法也简单：复制规范链接（视频播放页本身那条）、用内置浏览器打开让视频播一会儿再解析、最后确认普通浏览器里这页媒体能直接播。这三步走完基本都能出结果，不行就等一两天再试——平台偶尔对刚发布的内容解析不稳定。</p>
+<h3>环节二：批量跑了一半停了——不一定是下载器的问题</h3>
+<p>批量队列跑到一半停住、任务还在显示「传输中」，常见的假故障有两个：免费额度用完了（每日额度有上限，得等第二天恢复），或者系统后台把进程杀了。前者在设置里能看额度剩余，后者就是开头说的电池优化问题，跑大队列前务必手动关一次。</p>
+<h2>效果与边界：这条链什么时候划算、什么时候不划算</h2>
+<h3>划算的情况</h3>
+<ul><li>每天需要从多个平台收素材、量在 5~20 条之间——9xbuddy 的分享菜单入口和批量队列能把跨平台切换的成本降到几乎为零</li><li>画质偏好固定（比如永远 1080p、H.264）——一键下载功能省的操作量最大</li><li>有定期整理素材的习惯（每周一次或每两天一次）——攒批量跑比零散下载效率高得多</li></ul>
+<h3>不太划算的情况</h3>
+<ul><li>偶尔才下一两条视频、对画质要求随内容变化很大——一键下载没用、批量也攒不起来，反而多了个要管理的工具</li><li>主要下 YouTube——商店版明确不支持，必须用 APK 直装版，意味着手动更新和未知来源授权，对不折腾的人来说这个成本要算进去</li><li>对 DRM 加密内容有期待——会员视频、私享内容、地区受限的，工具如实反映源站权限，列表空就是空，不是工具坏了</li></ul>
+<h2>我的周度 SOP</h2>
+<p>最后把整套流程压成一句话，方便你抄：</p>
+<blockquote><p>周一到周五刷到素材 → 原生分享菜单直接进 9xbuddy 排队（一键下载自动按偏好画质）→ 每天中午开批量列表、攒够 10 条一次性跑完（跑前关电池优化）→ 周日晚上收藏库同步到电脑素材盘 → 下周剪辑直接读共享盘。</p></blockquote>
+<p>这条链搭好之后，「搬运整理」这一步从我每周固定的 40 分钟降到了 8 分钟左右——多出来的时间全用在剪辑上了。我把这套配置清单和常见坑的排查笔记也同步放在三个代码仓库里维护：<a href="https://github.com/alipymanbu/APK/tree/main/APP/9xbuddy" target="_blank" rel="noopener">GitHub</a> 上面是主版本，国内访问慢的话可以直接去 <a href="https://gitee.com/manbu1103/APK/tree/main/APP/9xbuddy" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/APP/9xbuddy" target="_blank" rel="noopener">GitCode</a> 拿，内容完全一致。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/mikumikudance.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从零开始用 MikuMikuDance — 不写代码也能让虚拟角色跳起来</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/saucenao.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">周末整理了 127 张动漫截图，终于知道每张都是谁画的</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

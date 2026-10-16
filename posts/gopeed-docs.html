@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Gopeed 深度体验：一款让下载器真正&#34;可编程&#34;的开源工具 · 老杨技术栈</title>
+  
+<meta name="description" content="下载工具走过了浏览器原生、FlashGet、迅雷、aria2 这条演化线，Gopeed 站在这条线的最新节点——用 Go 重写、REST API 开放、Webhook 联动、桌面/服务端双形态，把下载从一个&#34;点一下等完成&#34;的孤立动作，改造成了可以接入自动化流水线的基础设施。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/gopeed-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gopeed 深度体验：一款让下载器真正&#34;可编程&#34;的开源工具">
+<meta property="og:description" content="下载工具走过了浏览器原生、FlashGet、迅雷、aria2 这条演化线，Gopeed 站在这条线的最新节点——用 Go 重写、REST API 开放、Webhook 联动、桌面/服务端双形态，把下载从一个&#34;点一下等完成&#34;的孤立动作，改造成了可以接入自动化流水线的基础设施。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/gopeed-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/gopeed-docs/home-main.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/gopeed-docs/home-main.png">
+
+<meta name="twitter:title" content="Gopeed 深度体验：一款让下载器真正&#34;可编程&#34;的开源工具">
+<meta name="twitter:description" content="下载工具走过了浏览器原生、FlashGet、迅雷、aria2 这条演化线，Gopeed 站在这条线的最新节点——用 Go 重写、REST API 开放、Webhook 联动、桌面/服务端双形态，把下载从一个&#34;点一下等完成&#34;的孤立动作，改造成了可以接入自动化流水线的基础设施。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4e0b\u8f7d\u5de5\u5177\u8d70\u8fc7\u4e86\u6d4f\u89c8\u5668\u539f\u751f\u3001FlashGet\u3001\u8fc5\u96f7\u3001aria2 \u8fd9\u6761\u6f14\u5316\u7ebf\uff0cGopeed \u7ad9\u5728\u8fd9\u6761\u7ebf\u7684\u6700\u65b0\u8282\u70b9\u2014\u2014\u7528 Go \u91cd\u5199\u3001REST API \u5f00\u653e\u3001Webhook \u8054\u52a8\u3001\u684c\u9762/\u670d\u52a1\u7aef\u53cc\u5f62\u6001\uff0c\u628a\u4e0b\u8f7d\u4ece\u4e00\u4e2a\"\u70b9\u4e00\u4e0b\u7b49\u5b8c\u6210\"\u7684\u5b64\u7acb\u52a8\u4f5c\uff0c\u6539\u9020\u6210\u4e86\u53ef\u4ee5\u63a5\u5165\u81ea\u52a8\u5316\u6d41\u6c34\u7ebf\u7684\u57fa\u7840\u8bbe\u65bd\u3002", "headline": "Gopeed \u6df1\u5ea6\u4f53\u9a8c\uff1a\u4e00\u6b3e\u8ba9\u4e0b\u8f7d\u5668\u771f\u6b63\"\u53ef\u7f16\u7a0b\"\u7684\u5f00\u6e90\u5de5\u5177", "image": ["https://alipymanbu.github.io/images/gopeed-docs/home-main.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/gopeed-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/gopeed-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "Gopeed \u6df1\u5ea6\u4f53\u9a8c\uff1a\u4e00\u6b3e\u8ba9\u4e0b\u8f7d\u5668\u771f\u6b63\"\u53ef\u7f16\u7a0b\"\u7684\u5f00\u6e90\u5de5\u5177", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">Gopeed 深度体验：一款让下载器真正&#34;可编程&#34;的开源工具</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Gopeed 深度体验：一款让下载器真正&#34;可编程&#34;的开源工具</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">下载工具走过了浏览器原生、FlashGet、迅雷、aria2 这条演化线，Gopeed 站在这条线的最新节点——用 Go 重写、REST API 开放、Webhook 联动、桌面/服务端双形态，把下载从一个&#34;点一下等完成&#34;的孤立动作，改造成了可以接入自动化流水线的基础设施。</p>
+  </header>
+  <div class="prose">
+<h2>下载器品类的格局，以及 Gopeed 站在哪</h2>
+<p>下载工具这个品类，过去十几年格局相当稳定：浏览器自带的下载面板管日常文件，迅雷管 BT 和磁力的大盘流量，IDM/FlashGet 这类多线程 HTTP 下载器管批量文件拉取，进阶玩家则用 aria2 走命令行或 RPC。这四类工具各自盘踞一个领地，交集不大。</p>
+<p>Gopeed 进来的时候，没有在任何一个领地正面硬刚。从它的<a href="https://gopeed.xnyx.quest" target="_blank" rel="noopener">官网</a>能看出来这套设计思路——用 Go 重写一套下载核心，把 HTTP/HTTPS、BT、磁力链接、WebDAV 这些协议全部收进同一个进程，然后把 RESTful API 和 Webhook 做成一等公民——下载这件事，终于不再是"开个窗口点一下"，而是可以被脚本、被通知通道、被远程面板、被 AI agent 调用的服务。</p>
+<p>这个定位决定了它不是给所有人用的。如果你只需要下载一个压缩包或一部电影，浏览器自带和迅雷够用；但如果你想让"新资源自动检测 → 推送下载任务 → 完成后推送到手机 → 自动解压归档"这条链路跑起来，Gopeed 可能是目前开箱即用成本最低的方案。</p>
+<p><img src="../images/gopeed-docs/home-main.png" alt="主界面一览" loading="lazy"></p>
+<h2>三个做得明显比同类好的地方</h2>
+<h3>API + Webhook：唯一把自动化做成默认能力的下载器</h3>
+<p>aria2 有 JSON-RPC，但接口风格和 RESTful 不是一回事，上手需要适配；迅雷、IDM 这类闭源工具的"自动化"基本停留在"浏览器扩展发送任务"的层面，没有开放的接口供外部系统查询任务状态或回调。</p>
+<p>Gopeed 的做法是：RESTful API 完整覆盖任务增删查改、协议参数配置、全局设置，Webhook 则用 HTTP POST 在任务完成或失败时推送 JSON 负载。开 API 只要三步——切通讯协议到 TCP、设端口、填接口令牌，重启即生效。Webhook 更简单，填一个 URL 就能接 Bark、钉钉、Telegram Bot，还能同时推多个渠道。</p>
+<p>这意味着，你可以让手机在下班路上收到通知说"那个 BT 任务下完了"，也可以让本地脚本在检测到新资源时自动向 Gopeed API 发一条 POST 请求建任务，完全不需要人介入。这类能力在传统下载器里几乎是空白。</p>
+<p><img src="../images/gopeed-docs/api-set-port.png" alt="设置通讯协议与端口" loading="lazy"></p>
+<h3>Web 版：把下载器搬上服务器的最短路径</h3>
+<p>大多数下载工具的服务端形态要么需要 Docker，要么需要自己编译——aria2 虽然支持守护进程模式，但管理界面需要单独搭（yaaw、ariang 都是第三方项目），版本同步和安全性全靠自己维护。</p>
+<p>从<a href="https://gopeed.xnyx.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿对应系统的 Web 版发行包，解压运行后浏览器打开 9999 端口就是完整操作界面，任务管理、BT、磁力、设置一应俱全，下载核心和桌面版同源。这让 NAS 用户、家庭服务器用户、想要一个"下载中枢"的人多了一个极简选项——不想碰 Docker 命令，解压即用；愿意折腾容器的，官方也提供了一行命令部署的 Docker 镜像。</p>
+<p>功能上，Web 版没有本地文件关联和系统通知，但自动化能力反而因为常驻后台更好用——API 和 Webhook 在常驻服务里跑，比桌面版随开随关的形态更稳定。</p>
+<h3>BT 做种控制：显式化、不模糊，尊重社群规则</h3>
+<p>BT 网络存续的根基是每个下载者都在做种。传统下载器在做种这件事上往往只有"下载完成后继续上传"的模糊选项，要么一直做要么立即停，缺少中间态的精细化控制。</p>
+<p>Gopeed 把做种控制做成了显式配置：按分享率（上传量 N 倍于下载量自动停止）或按做种时间（完成后挂 N 小时/天）两种自动停止条件，可以只设其一也可以都设；上传速度可以独立限速，避免吃满上行带宽拖垮同线路的下载体验。<a href="https://gopeed-docs.pages.dev/" target="_blank" rel="noopener">Gopeed文档</a>里也明确交代了"完全不做种对冷门资源的影响"——不是道德绑架，而是给用户一个诚实的信息量。</p>
+<h2>它付出的代价</h2>
+<p>把自动化和多形态作为第一优先级，意味着 Gopeed 在一些传统下载器的主场需要取舍。</p>
+<p>最明显的是上手门槛。虽然桌面版界面已经做得相当直白，但一旦进入高级设置——协议参数、API 端口、Webhook JSON 结构、BT 连接并发——信息量会骤增。对只想"点一下就下载"的用户来说，这些细节是噪音；对需要自动化的玩家来说，这些细节是骨架。这是它从一开始就做的用户筛选。</p>
+<p>其次是协议覆盖的深度。HTTP/HTTPS、BT、磁力、WebDAV 这些主流协议它都支持，但一些特定协议（比如 ftp、ed2k）暂时还没有完整实现。如果你手里有一批老 ed2k 链接，可能需要备用工具。</p>
+<p>还有，作为一个较新的开源项目，生态层面的周边工具——比如第三方管理面板、社区维护的 tracker 列表、浏览器扩展的完整集成——还在积累中，不像 aria2 和迅雷那样有十年以上的社区沉淀。</p>
+<h2>选购结论：谁该选 Gopeed</h2>
+<p>如果你属于下面这几类人，Gopeed 很可能比你现在用的下载工具更合适：</p>
+<ul><li><strong>想搭下载自动化流水线的人</strong>：API + Webhook + 脚本，这是目前下载器品类里最完整的自动化组合，不需要自己造轮子；</li><li><strong>NAS/家庭服务器用户</strong>：Web 版解压即用，或者 Docker 一行命令部署，远程下载中枢的搭建成本低；</li><li><strong>BT 社群活跃用户</strong>：显式化的做种控制、独立的上传限速、对社群规则的尊重，比"完成即关"的工具更适合长期混 PT；</li><li><strong>对闭源工具敏感的人</strong>：Go 语言编写，核心逻辑全部开源，可以自己审计也可以二次开发。</li></ul>
+<p>如果你只偶尔下载几个文件、不关心做种、不需要任何自动化，浏览器自带下载面板或者迅雷就够了——Gopeed 的那些高级能力对你来说是冗余。</p>
+<h3>推荐语</h3>
+<p>Gopeed 不是在下载速度上打败同行的工具，它是在"下载能做什么"这个维度重新定义了边界的工具。当你需要下载器不再只是一个"点一下等完成"的孤岛，而是一个能被脚本、被通知、被远程面板调动的基础设施时，它是目前市面上最值得上手的开源选项。完整源码和资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Gopeed" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Gopeed" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/Gopeed" target="_blank" rel="noopener">GitCode</a>三个平台都有同步维护，国内网络环境下访问也不用愁。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gprinter.html">开水果店那阵我才知道，标签打印APP能省这么多事</a></h2>
+  <p class="card-desc">开了半年水果店，打价签和保质期标签是每天的烦心事。试了佳博配套的 Gprinter 之后，原来标签设计这件事可以在手机上 5 分钟搞定，还能语音输入、自动算日期。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/autox-js.html">Autox.js 到底强在哪？和同类自动化工具的横向对比</a></h2>
+  <p class="card-desc">在安卓自动化脚本引擎这个品类里，Autox.js 用 JavaScript + 无障碍服务的组合走出了一条不一样的路。用过按键精灵、Auto.js、Tasker 之后，我为什么最终留在了 Autox.js。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/kshare-docs.html">装KShare大半年后：那些当初没注意到的好用与糟心</a></h2>
+  <p class="card-desc">从v1.5用到v1.7，从凑活投屏到开会离不开，说说这八个月里KShare让我惊喜和头疼的地方。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/roborock.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Roborock 扫地机 App 快问快答：新用户最该知道的十件事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/myfitnesspal-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了三年 MyFitnessPal：这八个能力域我替你盘一遍</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

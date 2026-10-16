@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Heavenly 三年磨一剑——从 v3.0.13 回看这款影视 App 的版本进化史 · 老杨技术栈</title>
+  
+<meta name="description" content="以观察者视角梳理 Heavenly 从早期起步到 v3.0.13 的迭代脉络：底部四板块、双付费入口、每周追更节奏，哪些是一上来就有的，哪些是憋了好几个版本才补上的。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/heavenly-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Heavenly 三年磨一剑——从 v3.0.13 回看这款影视 App 的版本进化史">
+<meta property="og:description" content="以观察者视角梳理 Heavenly 从早期起步到 v3.0.13 的迭代脉络：底部四板块、双付费入口、每周追更节奏，哪些是一上来就有的，哪些是憋了好几个版本才补上的。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/heavenly-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/heavenly-docs/app-home.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/heavenly-docs/app-home.png">
+
+<meta name="twitter:title" content="Heavenly 三年磨一剑——从 v3.0.13 回看这款影视 App 的版本进化史">
+<meta name="twitter:description" content="以观察者视角梳理 Heavenly 从早期起步到 v3.0.13 的迭代脉络：底部四板块、双付费入口、每周追更节奏，哪些是一上来就有的，哪些是憋了好几个版本才补上的。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u89c2\u5bdf\u8005\u89c6\u89d2\u68b3\u7406 Heavenly \u4ece\u65e9\u671f\u8d77\u6b65\u5230 v3.0.13 \u7684\u8fed\u4ee3\u8109\u7edc\uff1a\u5e95\u90e8\u56db\u677f\u5757\u3001\u53cc\u4ed8\u8d39\u5165\u53e3\u3001\u6bcf\u5468\u8ffd\u66f4\u8282\u594f\uff0c\u54ea\u4e9b\u662f\u4e00\u4e0a\u6765\u5c31\u6709\u7684\uff0c\u54ea\u4e9b\u662f\u618b\u4e86\u597d\u51e0\u4e2a\u7248\u672c\u624d\u8865\u4e0a\u7684\u3002", "headline": "Heavenly \u4e09\u5e74\u78e8\u4e00\u5251\u2014\u2014\u4ece v3.0.13 \u56de\u770b\u8fd9\u6b3e\u5f71\u89c6 App \u7684\u7248\u672c\u8fdb\u5316\u53f2", "image": ["https://alipymanbu.github.io/images/heavenly-docs/app-home.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/heavenly-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/heavenly-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "Heavenly \u4e09\u5e74\u78e8\u4e00\u5251\u2014\u2014\u4ece v3.0.13 \u56de\u770b\u8fd9\u6b3e\u5f71\u89c6 App \u7684\u7248\u672c\u8fdb\u5316\u53f2", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">Heavenly 三年磨一剑——从 v3.0.13 回看这款影视 App 的版本进化史</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Heavenly 三年磨一剑——从 v3.0.13 回看这款影视 App 的版本进化史</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以观察者视角梳理 Heavenly 从早期起步到 v3.0.13 的迭代脉络：底部四板块、双付费入口、每周追更节奏，哪些是一上来就有的，哪些是憋了好几个版本才补上的。</p>
+  </header>
+  <div class="prose">
+<h2>开场：站在 v3.0.13 回看</h2>
+<p>现在打开 <a href="https://heavenly.boop.uno" target="_blank" rel="noopener">Heavenly官网</a> 发布的 App，底部四个板块 HOME / DISCOVER / EVENT / MY BOX 一字排开，顶部 PPV 和 MEMBERSHIP 两个付费入口清清楚楚地分开——这个界面已经稳了很久，我甚至想不起来它什么时候不是这样的。</p>
+<p>文档站里给安装包标注的版本号是 <strong>v3.0.13</strong>，72MB 的 APK，安卓四步装好。但样本文档没有附 changelog，没有"v2.x 加了什么""v1.x 删了什么"这样的时间线。这种"不提版本历史"本身是有意思的——它说明当前结构已经稳定到团队觉得不需要再解释演进过程了，或者说，早期那些试错的痕迹已经被完全覆盖。</p>
+<h2>起步：样本文档没提的部分恰恰说明</h2>
+<p>我翻遍了文档站的四篇样本，涉及安装、首页、追更节奏、故障排查——没有一处提到 v1.x 或 v2.x 的界面长什么样。这让我想起那些产品已经跑到某个稳定期的 App：当用户被引导的全部注意力都集中在"当前版本怎么用"上时，团队往往默认旧版本已经完成了它的使命，不值得占用文档篇幅。</p>
+<p>但从几个细节可以反推早期形态：</p>
+<p><strong>双付费入口的分离一定是某个大版本才敲定的。</strong> PPV（按部买 Cube）和 MEMBERSHIP（月会员无限看）在当前版本里分得清清楚楚——首页两个独立按钮，不会在播放器里突然跳出弹窗。但影视 App 的早期版本几乎都会混着来：先让你充会员，遇到独占内容再告诉你"这个要额外买"，或者反过来。Heavenly 的这种分离感不是随手设计的，是踩过坑之后才定下来的策略。我倾向于认为这是 v2.x 某个版本的核心改动——文档不写，但首页把这两个按钮并排放的方式本身就是"我们想了很久才这么放的"的信号。</p>
+<p><strong>底部四板块的结构大概率是从三板块演化来的。</strong> EVENT 活动页在样本里的定位很特殊——它不承载日常内容消费，只放限时活动、应援、HEAVENLY NIGHT 这类内容。这类板块在 App 早期通常是被塞进 HOME 或 DISCOVER 的二级入口里的。把 EVENT 提升到底部常驻，说明团队在某个阶段判断"活动运营"已经成为核心用户留存手段，不再是边角功能。这个判断本身就是产品走向成熟期的标志。</p>
+<p><img src="../images/heavenly-docs/app-home.png" alt="首页四个底部板块，HOME 信息密度最高" loading="lazy"></p>
+<h2>迭代节奏里藏着的团队优先级</h2>
+<p>从文档能确认的事实出发，我注意到几个有意思的迭代规律：</p>
+<p><strong>追更体验一直在打磨，但追剧日历至今没做。</strong> <a href="https://heavenly-docs.pages.dev/" target="_blank" rel="noopener">heavenly文档</a>里给了四种追更新番的方式：DISCOVER 页刷新、TOP 10 榜单、会员 push 通知、MY BOX 想看列表——这四种覆盖了主动刷新到被动提醒，说明团队在追更这个场景上花了不少心思。但文档作者在"追剧日历"一节直接说"Heavenly 本身没有专门的追剧日历功能"，然后给了三个替代方案（MY BOX 列表、手机日历、标签订阅）。这是一种很坦诚的写法——文档不美化，也不回避。</p>
+<p>这件事很能代表 Heavenly 的产品逻辑：<strong>用户最痛的那几个点（怎么知道有新番、怎么不忘记追）他们死磕，锦上添花的功能（一个好看的追剧日历 Widget）他们就放一放。</strong> 不是技术做不到，是优先级排序里它排不上。</p>
+<p><strong>故障排查文档的详细程度暗示了安装问题是历史痛点。</strong> 文档站里专门有一篇"安装被拦截"的排查文章，列了原生 Android、小米、华为、OPPO 四家厂商的具体路径，还提到企业 MDM 策略、儿童模式、安全软件拦截等边界情况。这不是给第一次写 Android App 的团队写的文档——这是踩过无数次坑、收到过大量安装失败反馈之后才总结出来的。安装被拦截这件事，从某个版本开始变成高频问题，团队先是加了系统弹窗里的"仍要安装"引导，然后在文档里补了完整的排查路径——但底层逻辑可能没有变：他们就是坚持用 APK 分发，<a href="https://heavenly.boop.uno/download.html" target="_blank" rel="noopener">下载</a>只能走第三方渠道进手机，不进应用商店，所以这个痛点会一直存在。</p>
+<p><strong>会员片库的刷新节奏是稳定信号。</strong> 文档提到"Heavenly 新番完结后约 0~4 周进入会员片库"——这个"约 0~4 周"的窗口其实不短，但写在文档里说明它已经是可预期的，不是今天更明天不更的状态。影视平台早期最容易出问题的就是会员内容更新的稳定性，用户充了会员发现片库半个月不动会直接退订。Heavenly 能把刷新节奏写入文档，说明这件事至少在 v2.x 后期就已经跑顺了。</p>
+<h2>照这个路线，下一步大概率的走向</h2>
+<p>从 v3.0.13 的形态倒推，我对接下来几个版本有几个判断——明确说这是从迭代规律推的，不当官方口径：</p>
+<p>第一，<strong>底部四板块的结构短期内不会动。</strong> 一个 App 如果连文档都在围绕这套结构写，说明它已经过了快速试错期。新功能会以二级入口或首页卡片的形式出现，不会改底层导航。</p>
+<p>第二，<strong>追剧日历这件事可能永远不会做。</strong> 不是技术原因，是从文档里"给替代方案而不是等功能"的写法来看，团队更倾向于让用户用现有能力组合出自己的追更工作流，而不是把这个功能内置到 App 里。这是一种很典型的"够用就行"的产品态度。</p>
+<p>第三，<strong>故障排查文档会继续加厚。</strong> 只要 APK 分发渠道不变，安装拦截就是永远的高频问题。可能下一个版本他们会在安装包里加一个"安装助手"组件，或者文档里再多两三个厂商的路径——但本质上还是在和 Android 系统的安全机制打持续战。</p>
+<p>第四，<strong>付费结构可能继续微调。</strong> PPV 和 MEMBERSHIP 的分离是当前版本的一大优点，但如果后续引入更多地区（比如东南亚市场），可能会出现地区差异化定价或更多的付费档位。</p>
+<h2>一个观察者的总结</h2>
+<p>我对 Heavenly 的产品史最大的感受是——<strong>它像一个已经把自己想清楚了的 App。</strong> 文档不写 changelog，版本号只在安装包上标，界面不搞大改，踩过的坑（安装拦截、付费弹窗）用务实的方式补（详细排查文档、双入口分离），不急着加功能但把核心场景（追更）打磨到能给四种方案。</p>
+<p>这类 App 在影视工具类里不算激进，但用户留存通常会很稳——因为它不会让你每次打开都重新学习一遍怎么用，也不会在你最想看的时候突然跳出来催你充钱。站在 v3.0.13 看过去，它的每一步迭代都像是在"让这件事做得更顺手"，而不是"让这件事变得更不一样"。</p>
+<p>关于这款 App 的资料我同步维护在三个代码仓库里，<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/heavenly" target="_blank" rel="noopener">GitHub</a> 是主阵地，国内网络环境下想同步可以看 <a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/heavenly" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/heavenly" target="_blank" rel="noopener">GitCode</a> 镜像。</p>
+<p><img src="../images/heavenly-docs/app-signin.png" alt="APP 登录界面支持 Google、Kakao、邮箱三种方式" loading="lazy"></p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/pipepipe-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">PipePipe 从 0 到能刷能下，五分钟搞定这个不登录的视频客户端</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/novelai-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">NovelAI上手记：当AI画师和AI编剧同时住进了一个订阅账户</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

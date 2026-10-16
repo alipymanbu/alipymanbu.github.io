@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组 · 老杨技术栈</title>
+  
+<meta name="description" content="午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/pojavlauncher-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组">
+<meta property="og:description" content="午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/pojavlauncher-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/pojavlauncher-docs/launch-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/pojavlauncher-docs/launch-cover.jpg">
+
+<meta name="twitter:title" content="宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组">
+<meta name="twitter:description" content="午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5348\u4f11\u60f3\u73a9 Minecraft \u5374\u6478\u4e0d\u5230\u7535\u8111\uff1f\u624b\u673a\u4e0a\u7684\u57fa\u5ca9\u7248\u53c8\u6ca1\u6709 Fabric \u6a21\u7ec4\u751f\u6001\u3002\u76f4\u5230\u6211\u53d1\u73b0 PojavLauncher\uff0c\u5b83\u8ba9 Android \u771f\u6b63\u8dd1\u8d77\u4e86 Java \u7248 Minecraft\uff0c\u4ece RAM \u5206\u914d\u5230 Zink \u6e32\u67d3\u5668\uff0c\u6bcf\u4e00\u6b65\u90fd\u662f\u6298\u817e\u515a\u624d\u61c2\u7684\u5feb\u4e50\u3002", "headline": "\u5bbf\u820d\u5348\u4f11\u60ca\u73b0 Minecraft Java \u7248\u2014\u2014\u6211\u5728\u624b\u673a\u4e0a\u8dd1\u4e86\u4e00\u6574\u4e2a\u4e0b\u5348\u7684\u6a21\u7ec4", "image": ["https://alipymanbu.github.io/images/pojavlauncher-docs/launch-cover.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/pojavlauncher-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/pojavlauncher-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u5bbf\u820d\u5348\u4f11\u60ca\u73b0 Minecraft Java \u7248\u2014\u2014\u6211\u5728\u624b\u673a\u4e0a\u8dd1\u4e86\u4e00\u6574\u4e2a\u4e0b\u5348\u7684\u6a21\u7ec4", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+  </header>
+  <div class="prose">
+<h2>锁在抽屉里的笔记本电脑</h2>
+<p>那是周三中午，宿舍的日光灯关了两盏，室友们三三两两爬上床，手机屏幕调到最暗，整个房间进入一种半明半暗的午睡节奏。我盯着桌上那个抽屉，锁扣歪歪扭扭地卡在那里——我的 ThinkPad 就躺在里面，被我自己锁起来的。</p>
+<p>不是不想玩，是论文已经拖了三天，早上出门前咬牙给自己定了规矩：不写完第五章不许开机。</p>
+<p>但是，午休四十分钟，除了刷短视频还有什么选择？</p>
+<p>我掏出手机，打开 Minecraft 基岩版。进入存档，看到那片熟悉的针叶林，树还是那片树，矿洞还是那个矿洞，但是——没有 OptiFine，没有 Sodium，没有我攒了一个月的 Fabric 模组包。基岩版的世界流畅是流畅，可总觉得少了点什么。</p>
+<h2>"你试试 PojavLauncher？"</h2>
+<p>这句话是隔壁床的阿远说的。他翻了个身，露出一只眼睛盯着我的屏幕："你想玩 Java 版？手机上能跑啊。"</p>
+<p>我当时的反应是，你别瞎扯。Java 版 Minecraft 从来都是 PC 游戏，手机上那点算力，能跑个基岩版都得砍到最低画质。</p>
+<p>"你装一个试试，不费事儿。"阿远说完这句就把耳机塞回耳朵，不再理我。</p>
+<p>午休结束后我抱着试试看的心态搜了一下，发现还真有这么个东西：PojavLauncher——它的<a href="https://pojavlauncher.fewa.skin" target="_blank" rel="noopener">官网</a>上介绍这是一个开源的 Android 启动器，专门用来在手机上跑 Minecraft Java Edition。它的思路也简单——内置了一个精简的 Java 运行环境，把 OpenGL 调用翻译到手机 GPU 能理解的 Vulkan 接口上。</p>
+<h2>从安装到能玩，踩了三个坑</h2>
+<p>从<a href="https://pojavlauncher.fewa.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿了安装包装好，打开界面的时候我心里是嘀咕的。第一眼看上去就是个移植过来的桌面启动器，按钮排布和 PC 版几乎一模一样，但手机屏幕就那么大，触控操作能不能顺畅是个问号。</p>
+<p>第一个坑就是 RAM 分配。启动器默认给游戏分了 1GB，我的手机物理内存 8GB，一开始我想当然地拖到了 4GB。结果进入游戏还没加载完存档，手机就开始发烫，切出去回个微信的功夫，游戏进程直接被系统杀掉了。后来才明白，Android 本身就要吃掉两三个 GB 的系统内存，分给游戏的再多也不能超过物理 RAM 的一半。我把滑块拉回 2.5GB，重启启动器，这次稳了。</p>
+<p><img src="../images/pojavlauncher-docs/launch-cover.jpg" alt="启动器封面" loading="lazy"></p>
+<p>第二个坑是渲染器。PojavLauncher 默认用的是 GL4ES 路线，进去之后画面确实在动，但帧率稳在 25 FPS 左右，转头的时候画面一帧一帧地跳，像在看老电影。折腾了半小时才找到设置里的渲染器选项，切换到 Zink——这条路线直接把 OpenGL 翻译成 Vulkan，省掉了中间那层转译损耗。切换完重启游戏，帧率直接冲到了 55 FPS 以上，画面也不再卡顿。后来进游戏按 F3 看调试屏幕，看到右上角显示 <code>Zink (Mesa)</code> 那行字的时候，心里那个踏实。</p>
+<p>第三个坑是模组加载器。我想装的是 Fabric，因为 Fabric 的性能模组在手机上效果最好。启动器内置了 Forge 安装向导，Fabric 反而得自己去装。下载了 Fabric Loader 的 jar 文件，扔进启动器指定的目录，重启启动器，版本下拉菜单里终于出现了 <code>fabric-loader-0.15.7-1.20.1</code>。第一次启动 Fabric 的时候卡了整整两分钟——它要扫描模组目录、初始化配置，进了主菜单之后我松了口气，这个加载过程和 PC 上一模一样。</p>
+<h2>Fabric 三件套的魔法</h2>
+<p>模组是 PojavLauncher 的灵魂所在。如果说基岩版是"手机上能玩就行"，那 Java 版加了 Fabric 就是"手机上也能玩到 PC 级体验"。</p>
+<p>我装的是性能三件套：Sodium、Lithium、Starlight。这三个模组在手机上的效果比 PC 上还要明显。Sodium 重写了整个渲染引擎，FPS 直接翻倍；Lithium 优化了游戏逻辑和内存管理，消除了那些周期性的垃圾回收卡顿；Starlight 重写了光照引擎，洞穴里再也不会一卡一卡地生成光影。</p>
+<p>装完之后回到那片针叶林，我站在原地转了三圈——帧率始终稳定在 60 FPS，渲染距离调到了 8 区块，连粒子效果都没降到最低。说真的，这个体验和我电脑上跑基岩版差不多，而这台手机只是一台两年前的中端机型。</p>
+<p>后来我还尝试装了几个光影包。去<a href="https://pojavlauncher-docs.pages.dev/" target="_blank" rel="noopener">PojavLauncher文档</a>翻了一下才确认，光影包对手机 GPU 开销巨大，要选 Lite 档的。我找了 Sildur's Vibrant Lite，渲染距离降到 4 区块，开了 V-Sync 之后帧率稳稳锁在 60。画面确实好看了不少，水面反光、树叶透光都有了，代价就是手机背板烫得能煎鸡蛋，玩半小时就得给它降降温。</p>
+<p><img src="../images/pojavlauncher-docs/gameplay-water.jpg" alt="游戏画面" loading="lazy"></p>
+<h2>午休之后的那些天</h2>
+<p>从那天起，PojavLauncher 成了我手机上的常驻 App。论文还是得写，但写完一章就摸出手机玩二十分钟。我建了一个新存档，名字叫「宿舍午休存档」，里面有我自己搭的小木屋、种的一片麦子、还有一条挖了三格宽的护城河。</p>
+<p>当然它也不是完美的。有些用到 OpenGL 4.5 高级特性的模组在 Zink 上会报错，周期性卡顿在渲染距离拉得太高的时候还是会出现。手机毕竟是手机，物理上的限制摆在那里——玩超过一小时就得停下来让它降降温，不然 CPU/GPU 降频之后 FPS 会骤降到 30 以下。</p>
+<p>但话说回来，这些都算什么呢？我一个星期前还觉得，手机上玩 Minecraft 只能玩玩基岩版，模组生态那是 PC 专属。现在 PojavLauncher 把这堵墙凿穿了，虽然凿得有点粗糙，虽然需要自己调 RAM、选渲染器、折腾模组加载器，但这种自己动手把一件事搞定的感觉，不就是折腾党想要的吗？</p>
+<h2>资料都在那儿</h2>
+<p>写这篇的时候翻了不少资料，从 RAM 分配的推荐表到 Zink 支持的 GPU 型号，大部分细节都是从 PojavLauncher 的中文文档里抠出来的。这套资料的维护记录在<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/PojavLauncher" target="_blank" rel="noopener">GitHub</a>上最完整，国内网络环境下访问<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/PojavLauncher" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/PojavLauncher" target="_blank" rel="noopener">GitCode</a>镜像会更顺畅。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/deepai-docs.html">DeepAI 值不值得掏钱？一笔一笔算明白</a></h2>
+  <p class="card-desc">DeepAI 把 AI 图像、视频、聊天、音乐、编辑塞进了同一个订阅里。免费版能用到什么程度？Pro 订阅到底值不值？我把定价、配额、场景拆解了一遍，三类人对号入座。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/pdfelement.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">采购合同从收件到归档的一条链——我用 PDFelement 嵌进工作流的实战</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/melonticket.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MelonTicket 付费决策账本：粉丝俱乐部和 Melon 会员到底值不值？</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

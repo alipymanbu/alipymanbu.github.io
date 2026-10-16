@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>PipePipe 从 0 到能刷能下，五分钟搞定这个不登录的视频客户端 · 老杨技术栈</title>
+  
+<meta name="description" content="还在纠结装不装 Google 服务？PipePipe 让你不用登录就能看 YouTube、哔哩哔哩和 Niconico，隐私、订阅、下载一站式搞定，这篇带你从完全不懂到跑通。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/pipepipe-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PipePipe 从 0 到能刷能下，五分钟搞定这个不登录的视频客户端">
+<meta property="og:description" content="还在纠结装不装 Google 服务？PipePipe 让你不用登录就能看 YouTube、哔哩哔哩和 Niconico，隐私、订阅、下载一站式搞定，这篇带你从完全不懂到跑通。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/pipepipe-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/pipepipe-docs/00-v2.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/pipepipe-docs/00-v2.png">
+
+<meta name="twitter:title" content="PipePipe 从 0 到能刷能下，五分钟搞定这个不登录的视频客户端">
+<meta name="twitter:description" content="还在纠结装不装 Google 服务？PipePipe 让你不用登录就能看 YouTube、哔哩哔哩和 Niconico，隐私、订阅、下载一站式搞定，这篇带你从完全不懂到跑通。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd8\u5728\u7ea0\u7ed3\u88c5\u4e0d\u88c5 Google \u670d\u52a1\uff1fPipePipe \u8ba9\u4f60\u4e0d\u7528\u767b\u5f55\u5c31\u80fd\u770b YouTube\u3001\u54d4\u54e9\u54d4\u54e9\u548c Niconico\uff0c\u9690\u79c1\u3001\u8ba2\u9605\u3001\u4e0b\u8f7d\u4e00\u7ad9\u5f0f\u641e\u5b9a\uff0c\u8fd9\u7bc7\u5e26\u4f60\u4ece\u5b8c\u5168\u4e0d\u61c2\u5230\u8dd1\u901a\u3002", "headline": "PipePipe \u4ece 0 \u5230\u80fd\u5237\u80fd\u4e0b\uff0c\u4e94\u5206\u949f\u641e\u5b9a\u8fd9\u4e2a\u4e0d\u767b\u5f55\u7684\u89c6\u9891\u5ba2\u6237\u7aef", "image": ["https://alipymanbu.github.io/images/pipepipe-docs/00-v2.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/pipepipe-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/pipepipe-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "PipePipe \u4ece 0 \u5230\u80fd\u5237\u80fd\u4e0b\uff0c\u4e94\u5206\u949f\u641e\u5b9a\u8fd9\u4e2a\u4e0d\u767b\u5f55\u7684\u89c6\u9891\u5ba2\u6237\u7aef", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">PipePipe 从 0 到能刷能下，五分钟搞定这个不登录的视频客户端</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">PipePipe 从 0 到能刷能下，五分钟搞定这个不登录的视频客户端</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">还在纠结装不装 Google 服务？PipePipe 让你不用登录就能看 YouTube、哔哩哔哩和 Niconico，隐私、订阅、下载一站式搞定，这篇带你从完全不懂到跑通。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到用起来，不需要任何基础——只要你手里有一台安卓手机，跟着下面几步走就行。</p>
+<p>你可以把 PipePipe 想成一个「不用出门的视频遥控器」：平时刷视频总要装这个 App 那个 App、每个都要登录账号、还得忍受中间插出来的广告片。PipePipe 不一样——它一个应用就能同时看好几个平台，<strong>不用登录账号就能看</strong>，<strong>不依赖 Google 官方接口</strong>，而且完全开源、没有广告、不收集数据。代码按 GPL-3.0 开源，订阅历史全部留在你手机本地，不会被推荐算法喂饭。</p>
+<p><img src="../images/pipepipe-docs/00-v2.png" alt="PipePipe 应用主界面：左侧是订阅时间线，右侧是正在播放的视频" loading="lazy"></p>
+<h2>它到底是干嘛的</h2>
+<p>说直白一点，<a href="https://pipepipe.gerw.hair" target="_blank" rel="noopener">PipePipe官网</a>上介绍得很清楚——这是一个给安卓手机用的开源视频客户端。它的原型叫 NewPipe，是一个老牌子的开源客户端，PipePipe 在它的基础上「重新想象了一遍」——更快、更稳、功能更多。</p>
+<p>它能干的事不少，挑几个最实用的：<strong>后台放视频</strong>像音乐播放器那样锁屏继续响、<strong>自动跳过赞助片段</strong>（集成 SponsorBlock）、<strong>恢复 YouTube 点踩计数</strong>、<strong>屏蔽 Short 短视频</strong>不让算法给你推碎碎念、<strong>纯时间线订阅流</strong>不被推荐算法打乱顺序、<strong>整个频道或播放列表批量下载</strong>。</p>
+<p>适合什么人？手机里没装 Google 服务框架但想看 YouTube 的人；想一个 App 同时刷 YouTube、B站、Niconico 的多平台观众；讨厌片头中插推广的重度观众；把订阅当核心、不想被算法喂饭的用户；关心数据去向、希望隐私留在本机的敏感用户。</p>
+<h2>五分钟上手</h2>
+<p>从拿到安装包到第一次刷视频跑通，不超过五分钟。一步一步来：</p>
+<p><strong>第一步：拿到安装包。</strong> PipePipe 不上架 Google Play，安装包从<a href="https://pipepipe.gerw.hair/download.html" target="_blank" rel="noopener">官方下载</a>拿就行。它有四个更新渠道——GitHub Releases 最快、Obtainium 自动提醒、F-Droid 和 IzzyOnDroid 作为同步仓库。第一次装的话随便选一个，选定后就固定用，别混着追，节奏不一样容易晕。拿到 APK 后直接点，允许「未知来源」安装就行。</p>
+<p><strong>第二步：第一次打开。</strong> 打开后它会问你要哪些权限——存储和通知，正常给就好。然后是语言选择，挑你顺手的。主界面一上来就是一个搜索框，旁边一排平台入口：YouTube、哔哩哔哩、Niconico 等等。点哪个就进入哪个站的搜索页，和你平时在浏览器里搜东西没区别。</p>
+<p><img src="../images/pipepipe-docs/01-v3.png" alt="PipePipe 搜索界面：顶部搜索栏，下方是支持的平台入口" loading="lazy"></p>
+<p><strong>第三步：搜一个视频，点播放。</strong> 搜完结果出来后，点进去就是视频播放页。这里你有两个选择：直接点播放按钮在应用里看，或者点右下角的 Download 按钮把视频或音频下到本地。就是这么简单，没有额外的登录门槛，也不会弹「请先绑定账号」。</p>
+<p>到这里就算跑通了。剩下的就是慢慢摸它还有什么好用的东西。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>刚装好别乱点设置，先把这三个摸清楚——你会发现日常用得上的功能都在这几个地方。</p>
+<h3>订阅时间线：脱离算法的纯按时间排序</h3>
+<p>你会发现：它的订阅流不是按「推荐指数」排的，而是<strong>纯按上传时间排序</strong>。谁先发的谁在上面，没有算法在背后偷偷给你换顺序。想关掉推荐算法的朋友，这一个功能就值了。订阅分组也能建，把你关注的 UP 主按类型分成几组，刷的时候只看某一组。</p>
+<h3>下载对话框：视频还是音频、格式、线程数都能选</h3>
+<p>找到下载按钮点一下，会弹出一个对话框——文件名默认取视频标题、Video 和 Audio 二选一（选 Audio 就是只抽音频流，体积小一个量级，适合当播客存）、格式档位列出当前视频可用的具体分辨率和预估体积、Threads 滑杆调节下载并发数（一般 3 左右够用，太高可能被限速）。视频和音频的下载目录可以分开指定，在设置里改。更多下载参数和高级玩法可以去<a href="https://pipepipe-docs.pages.dev/" target="_blank" rel="noopener">PipePipe文档</a>里翻。</p>
+<h3>SponsorBlock：自动跳过赞助片段和订阅请求</h3>
+<p>你会发现：YouTube 视频里原本插的赞助段、片头片尾推广、订阅请求提示，PipePipe 都能自动跳过。这个功能默认开着，不用你手动去开开关。如果某次跳错了或者没跳，去设置里找 SponsorBlock 那一页，可以自己调整跳过规则。</p>
+<h2>小白的三个常见疑问</h2>
+<p>Q1：视频默认分辨率在哪里改？会不会太费流量？在 <strong>Settings → Player → Default resolution</strong> 里，从 144p 到 2160p 全档位可选，默认是 720p，大多数场景够用。同一页还有一个 <strong>Limit resolution on mobile data</strong> 开关——不在 Wi-Fi 时自动切到指定档位，默认 480p，流量下省一档、Wi-Fi 下用默认值，两头都顾上。悬浮窗的默认分辨率单独一个设置位，默认 480p，小窗本来就看不清细节，保持默认就是最优解。</p>
+<p>Q2：下载失败或者下到一半停了怎么办？下载与播放是两条独立的路径——能放不等于能下，能下不等于能放，出问题时分开定位。线程数太高可能被服务端限速甚至拒接，先把 Threads 滑到 3 试试。HLS 直播式的流下载和普通渐进式流不一样，遇到「下下来不能拖动进度」这类情况，先确认流的类型，别急着当文件损坏处理。</p>
+<p>Q3：更新的时候选哪个渠道？稳定版和预发布版有什么区别？GitHub Releases 节奏最快、跟着源头走；Obtainium 自动提醒适合想省脑子的人；F-Droid 和 IzzyOnDroid 有同步延迟、适合习惯用仓库客户端管理应用的人。选定一个就固定用，别混着追。应用内自带更新检查，入口在 <strong>Settings → Updates</strong>，可以手动检查也可以订阅预发布版提醒——但预发布版是用来测试特定改动的构建，不一定比已装的稳定版「更新」，日常用就认稳定版就好。</p>
+<hr>
+<p>PipePipe 的开源社区维护得很勤快，安装指南、功能说明和排障手册都在持续更新；源码和配套资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/PipePipe" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/PipePipe" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/PipePipe" target="_blank" rel="noopener">GitCode</a>三个仓库同步更新，国内外访问都方便。如果你正在找一款不折腾账号、不装 Google 服务也能刷视频的手机客户端，它值得占一个桌面角落。进阶方向也很明确——试试后台音频播放、AV1 和 VP9 高级编解码、或者整个频道的批量下载，你会发现日常观看的效率能提一大截。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/anyview-docs.html">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</a></h2>
+  <p class="card-desc">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/chemist-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">化学实验模拟 App 横评：为什么我单独说 Chemist</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/heavenly-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Heavenly 三年磨一剑——从 v3.0.13 回看这款影视 App 的版本进化史</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>SmartThings 上手两周：从一脸懵到全屋自动的真实体验 · 老杨技术栈</title>
+  
+<meta name="description" content="作为一个对智能家居只停留在&#34;小爱同学关灯&#34;水平的新手，我抱着试试看的心态装了 SmartThings。两周之后，我家的灯、空调、门锁、冰箱都开始自己动了。这篇是我踩过坑、尝过甜头之后的真实感受。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/smartthings.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SmartThings 上手两周：从一脸懵到全屋自动的真实体验">
+<meta property="og:description" content="作为一个对智能家居只停留在&#34;小爱同学关灯&#34;水平的新手，我抱着试试看的心态装了 SmartThings。两周之后，我家的灯、空调、门锁、冰箱都开始自己动了。这篇是我踩过坑、尝过甜头之后的真实感受。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/smartthings.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/smartthings/app-device-control.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/smartthings/app-device-control.png">
+
+<meta name="twitter:title" content="SmartThings 上手两周：从一脸懵到全屋自动的真实体验">
+<meta name="twitter:description" content="作为一个对智能家居只停留在&#34;小爱同学关灯&#34;水平的新手，我抱着试试看的心态装了 SmartThings。两周之后，我家的灯、空调、门锁、冰箱都开始自己动了。这篇是我踩过坑、尝过甜头之后的真实感受。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4f5c\u4e3a\u4e00\u4e2a\u5bf9\u667a\u80fd\u5bb6\u5c45\u53ea\u505c\u7559\u5728\"\u5c0f\u7231\u540c\u5b66\u5173\u706f\"\u6c34\u5e73\u7684\u65b0\u624b\uff0c\u6211\u62b1\u7740\u8bd5\u8bd5\u770b\u7684\u5fc3\u6001\u88c5\u4e86 SmartThings\u3002\u4e24\u5468\u4e4b\u540e\uff0c\u6211\u5bb6\u7684\u706f\u3001\u7a7a\u8c03\u3001\u95e8\u9501\u3001\u51b0\u7bb1\u90fd\u5f00\u59cb\u81ea\u5df1\u52a8\u4e86\u3002\u8fd9\u7bc7\u662f\u6211\u8e29\u8fc7\u5751\u3001\u5c1d\u8fc7\u751c\u5934\u4e4b\u540e\u7684\u771f\u5b9e\u611f\u53d7\u3002", "headline": "SmartThings \u4e0a\u624b\u4e24\u5468\uff1a\u4ece\u4e00\u8138\u61f5\u5230\u5168\u5c4b\u81ea\u52a8\u7684\u771f\u5b9e\u4f53\u9a8c", "image": ["https://alipymanbu.github.io/images/smartthings/app-device-control.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/smartthings.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/smartthings.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "SmartThings \u4e0a\u624b\u4e24\u5468\uff1a\u4ece\u4e00\u8138\u61f5\u5230\u5168\u5c4b\u81ea\u52a8\u7684\u771f\u5b9e\u4f53\u9a8c", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">SmartThings 上手两周：从一脸懵到全屋自动的真实体验</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">SmartThings 上手两周：从一脸懵到全屋自动的真实体验</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">作为一个对智能家居只停留在&#34;小爱同学关灯&#34;水平的新手，我抱着试试看的心态装了 SmartThings。两周之后，我家的灯、空调、门锁、冰箱都开始自己动了。这篇是我踩过坑、尝过甜头之后的真实感受。</p>
+  </header>
+  <div class="prose">
+<p>说实话，之前我对"全屋智能"这四个字是有点抵触的。总觉得那是极客玩家才玩得转的东西，需要蹲论坛刷教程、写代码、折腾各种协议，普通人碰了就是给自己找罪受。</p>
+<p>但上个月家里换了台三星的 Family Hub 冰箱，配送师傅随口说了句"装个 SmartThings 手机上就能看冰箱温度"。我随手搜了一下，发现它的<a href="https://smartthings.fedq.ren" target="_blank" rel="noopener">官网</a>做得挺干净——没什么花里胡哨的营销，就是告诉你能接多少设备、能做多少自动化。抱着"反正免费，装一下试试"的心态，我从<a href="https://smartthings.fedq.ren/download.html" target="_blank" rel="noopener">SmartThings下载</a>拿了 App 装上了。</p>
+<p>这一下就收不住了。</p>
+<h2>第一眼：App 比我想象的简单</h2>
+<p>打开 SmartThings 的主界面，我的第一反应是：这居然不是一堆乱七八糟的卡片堆在那儿。顶部是你家的平面图（我用的是默认布局，还没仔细调），下面分了几个 Tab：Favorites（收藏夹，你常用的设备放这儿）、Devices（所有设备）、Rooms（按房间分组）、Routines（自动化场景）。</p>
+<p><img src="../images/smartthings/app-device-control.png" alt="主界面的收藏夹和设备列表" loading="lazy"></p>
+<p>我最先加的设备是那台 Family Hub 冰箱——因为它自己就是三星的，配对完全不用我操心，App 自动检测到它就在同一个 Wi-Fi 里，点一下就连上了。然后加了几个家里已有的设备：Aqara 的门窗传感器（装的时候才发现，SmartThings 原生支持 Matter 协议，直接扫 Matter 二维码就配对了，比我以前用小米网关还省心）、Philips Hue 的几盏灯、一台老的美的空调（这个有点麻烦，走的是桥接方式，要先在美的 App 里授权）。</p>
+<p>前后不到十分钟，六个设备全部在 App 里亮起来了。说实话，这比我预期的快太多——我做好了蹲半小时教程的准备。</p>
+<h2>用了两周，三个地方让我觉得值</h2>
+<h3>最惊喜的是 Routines，不是摆设</h3>
+<p>最开始我以为自动化场景就是个花架子——"定时开灯"谁不会啊，我用智能灯自带的定时功能就能搞。但真正玩了 Routines 之后才发现，它的 IF-THEN 逻辑比我想的灵活太多。</p>
+<p>我设的第一个 Routine 是"回家自动亮灯"：IF 手机 GPS 检测到我到家了（Geofencing），THEN 开玄关灯 + 开客厅空调。就这么一条规则，每天下班进家门的瞬间，玄关灯"啪"地亮起来，空调已经提前在吹冷风了——说实话，每次都有那么一瞬间觉得自己活在科幻片里。</p>
+<p>但这里有个我踩过的坑：Geofencing 默认的位置权限是"只在使用时允许"，这样你离开 App 之后 SmartThings 就拿不到 GPS 数据了，自动化完全不触发。我头一天晚上没注意这个设置，到家了灯没亮，还以为是 SmartThings 坏了。后来翻设置改成"始终允许"，又把精确位置打开，这才正常。而且 Geofence 半径默认是 150 米，我家小区楼挺密，GPS 经常飘，调大到 300 米之后就没怎么误触发了。</p>
+<p><img src="../images/smartthings/app-routines.png" alt="Routines 自动化场景列表" loading="lazy"></p>
+<p>现在我家有五个常驻的 Routine：回家开灯、离家关灯、晚上十点自动锁门+关灯+空调调睡眠档、冰箱门没关两分钟推通知、早上六点半主卧灯慢慢亮起来当闹钟。这些全是在 App 里点出来的，不用写一行代码。</p>
+<h3>设备控制统一了，不再切来切去</h3>
+<p>之前我控制家里的设备，要在三四个 App 之间来回切：空调用美的美居、灯用 Philips Hue、门锁用 Aqara Home、冰箱……其实冰箱我之前几乎没在手机上看过。现在所有设备全在 SmartThings 里，一个界面搞定。</p>
+<p>而且它做得挺细——调节 Hue 灯的亮度是实时滑块，不是点按钮跳档；空调能直接设具体温度和模式；门窗传感器的状态（开/关）能一眼看到。对我这种懒癌来说，这一个统一入口就已经值回票价了。</p>
+<h3>Home Insight 那个 AI 还真不是噱头</h3>
+<p>SmartThings 有个后台叫 Home Insight，官方说法是"AI 洞察引擎"，我一开始以为就是个统计面板之类的东西。但用了一段时间之后，它干了几件让我意外的事：</p>
+<p>有一天我发现它提醒我"冰箱温度异常，请检查门封"。我去看了一眼，确实是冰箱门没关严——可能是我前一天放蛋糕进去的时候带出来了一点东西卡着。还有一次它说"Hub 信号弱，建议挪到更开阔的位置"，我把 Hub 从电视柜后面挪到客厅中间的茶几上，之后门窗传感器的响应速度明显快了。</p>
+<p>它还根据我的设备和习惯，主动给我推荐 Routines。比如它发现我有三星洗衣机，就推荐了"洗衣机完成后 Family Hub 屏幕推送通知"——这个我之前完全没想到，现在真的用上了，不用再跑到阳台去看洗衣机有没有洗完。</p>
+<h2>但也有几个不爽的地方</h2>
+<p>生态虽然大，但不是万能的。我家那台老美的空调走的是云桥接，有一次美的那边服务器抽风，SmartThings 就控制不了它了，得等美的恢复。桥接的延迟也比直连的 Matter 设备明显，点一下开关，灯是立刻亮的，但空调可能要等个两三秒。</p>
+<p>还有，SmartThings 的服务器在国外，国内访问偶尔会慢一下——不是经常，但有时候打开 App 要加载个三五秒。后来去<a href="https://smartthings.pages.dev/" target="_blank" rel="noopener">SmartThings文档</a>翻了一下才弄明白，这是很多国内用户都反馈过的问题，暂时没什么特别好的解决办法。</p>
+<p>以及，Home Insight 的部分功能在国内是受限的。节能建议那一块，AI Energy Mode 这些，官方说目前主要在韩国和美国可用。我这边用不了全部，但至少设备健康提醒和 Routines 推荐是正常的。</p>
+<h2>适合谁，不适合谁</h2>
+<p>如果你跟我之前一样，觉得"全屋智能太折腾"，那 SmartThings 可能真的可以试试看。它的核心优势就是：配对简单（尤其是 Matter 设备扫个码就行）、Routines 不用写代码、生态够大（380+ 品牌、4500+ 设备，基本主流品牌都覆盖了），新手也能在半小时内搭出一个能用起来的自动化雏形。</p>
+<p>如果你是那种想玩自定义协议、写复杂规则、追求极致自由度的硬核玩家，那 SmartThings 可能不够"折腾"——它的 IF-THEN 逻辑虽然灵活，但毕竟是图形化的，跟 Home Assistant 那种想改什么改什么的比起来还是差了点。</p>
+<p>还有一点要提醒：Geofencing 要开"始终允许"位置权限，这个会稍微增加一点手机的后台耗电。我 iPhone 上感觉不太明显，但 Android 用户可能要注意一下。</p>
+<p>现在我每天回家都会自动亮灯、空调已经调好温度，睡前说一声"Good night"所有灯关掉、门锁自动锁上、空调切到睡眠档。这些东西听起来好像没什么，但真正融入生活之后，你就回不去了。这种"什么都不用我管，它自己就弄好了"的感觉，是我用 SmartThings 之前没想到的。</p>
+<p>这套智能家居的完整资料我同步放在三个仓库了，不管你习惯用 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/SmartThings" target="_blank" rel="noopener">GitHub</a> 还是国内访问更稳定的 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/SmartThings" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/SmartThings" target="_blank" rel="noopener">GitCode</a>，都能拿到。后续我还会继续探索更多玩法，到时候再更新。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ruffle-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Ruffle 到底值不值得掏钱？一个老 Flash 玩家的付费账本</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/axmanager.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AxManager 深度盘点：Android 非 Root 场景下的 Shell 执行器与插件容器</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

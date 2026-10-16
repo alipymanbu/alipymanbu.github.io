@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>部门周会从准备到纪要，一条链在 FlowIn 里跑完 · 老杨技术栈</title>
+  
+<meta name="description" content="以前周会要开三个文档（飞书大纲、PPT、纪要），会后还要手动汇总。现在把 FlowIn 插进去，多人同页实时写、权限分级控范围、AI 自动转 PPT，会后纪要就在那个页面上，少了两次手动复制。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/flowin-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部门周会从准备到纪要，一条链在 FlowIn 里跑完">
+<meta property="og:description" content="以前周会要开三个文档（飞书大纲、PPT、纪要），会后还要手动汇总。现在把 FlowIn 插进去，多人同页实时写、权限分级控范围、AI 自动转 PPT，会后纪要就在那个页面上，少了两次手动复制。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/flowin-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/flowin-docs/real-time-collab.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/flowin-docs/real-time-collab.png">
+
+<meta name="twitter:title" content="部门周会从准备到纪要，一条链在 FlowIn 里跑完">
+<meta name="twitter:description" content="以前周会要开三个文档（飞书大纲、PPT、纪要），会后还要手动汇总。现在把 FlowIn 插进去，多人同页实时写、权限分级控范围、AI 自动转 PPT，会后纪要就在那个页面上，少了两次手动复制。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u5468\u4f1a\u8981\u5f00\u4e09\u4e2a\u6587\u6863\uff08\u98de\u4e66\u5927\u7eb2\u3001PPT\u3001\u7eaa\u8981\uff09\uff0c\u4f1a\u540e\u8fd8\u8981\u624b\u52a8\u6c47\u603b\u3002\u73b0\u5728\u628a FlowIn \u63d2\u8fdb\u53bb\uff0c\u591a\u4eba\u540c\u9875\u5b9e\u65f6\u5199\u3001\u6743\u9650\u5206\u7ea7\u63a7\u8303\u56f4\u3001AI \u81ea\u52a8\u8f6c PPT\uff0c\u4f1a\u540e\u7eaa\u8981\u5c31\u5728\u90a3\u4e2a\u9875\u9762\u4e0a\uff0c\u5c11\u4e86\u4e24\u6b21\u624b\u52a8\u590d\u5236\u3002", "headline": "\u90e8\u95e8\u5468\u4f1a\u4ece\u51c6\u5907\u5230\u7eaa\u8981\uff0c\u4e00\u6761\u94fe\u5728 FlowIn \u91cc\u8dd1\u5b8c", "image": ["https://alipymanbu.github.io/images/flowin-docs/real-time-collab.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/flowin-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/flowin-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/latest/", "name": "\u6700\u65b0\u7248", "position": 2}, {"@type": "ListItem", "name": "\u90e8\u95e8\u5468\u4f1a\u4ece\u51c6\u5907\u5230\u7eaa\u8981\uff0c\u4e00\u6761\u94fe\u5728 FlowIn \u91cc\u8dd1\u5b8c", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/latest/index.html">最新版</a><span>/</span>
+    <span class="crumb-cur">部门周会从准备到纪要，一条链在 FlowIn 里跑完</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">部门周会从准备到纪要，一条链在 FlowIn 里跑完</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前周会要开三个文档（飞书大纲、PPT、纪要），会后还要手动汇总。现在把 FlowIn 插进去，多人同页实时写、权限分级控范围、AI 自动转 PPT，会后纪要就在那个页面上，少了两次手动复制。</p>
+  </header>
+  <div class="prose">
+<h2>旧流程的痛点：三个文档，三次搬运</h2>
+<p>我每周二下午开部门周会，涉及的环节很简单——会前准备大纲、会中大家一起讨论、会后整理纪要和待办。以前的工具链是这样的：</p>
+<ol><li><strong>会前</strong>：飞书文档写好本周议题和数据点 → 导出 PDF 发群里通知时间 → 单独打开 PowerPoint 做十几页的汇报稿（把文档里的重点手动复制过去）。这一步平均要花我四十分钟，其中二十分钟在"飞书 → PPT"的搬运上。</li><li><strong>会中</strong>：大家各自打开自己的飞书文档或笔记本，讨论的时候有人记重点、有人写代码示例、有人改 PPT。会后要把三份不同来源的内容汇总到一份纪要里。</li><li><strong>会后</strong>：纪要整理好之后，要给老板一份完整版、给其他同事一份只读版。以前是复制两份飞书文档，分别设置权限，再发两封邮件。</li></ol>
+<p>这套流程最烦的不是工作量，而是<strong>搬运和同步</strong>——同一个数据点要在三个地方改，改了 PPT 忘了改纪要，或者反过来，月底复盘的时候对不上号。而且多人同时编辑飞书文档偶尔会冲突，谁先保存谁赢，另一个人的改动就没了。</p>
+<h2>新流程：FlowIn 串起整条链</h2>
+<p>把 FlowIn 插进来之后，整条链的形态变成了。这款主打多人实时协同的文档工具，在<a href="https://flowin.kook.yoga" target="_blank" rel="noopener">官网</a>上有详细的功能介绍和版本对比，我下面讲的流程用免费版就能跑通：</p>
+<pre><code>会前（FlowIn 单页面写大纲 → AI 一键转 PPT）
+  ↓
+会中（多人同页实时编辑，块级锁定不冲突）
+  ↓
+会后（页面本身就是纪要 → 权限分级 → AI 补代码示例）</code></pre>
+<h3>会前：一个页面搞定大纲 + 汇报稿</h3>
+<p>周二上午打开 FlowIn（<a href="https://flowin.kook.yoga/download.html" target="_blank" rel="noopener">下载</a>安装包免费），我建一个页面，标题就是「第 N 周部门周会」。空间里的同事默认有编辑权限，我把议题拆成几个块：上周目标完成情况、本周计划、风险点、待讨论事项。大家各自打开这个页面，在对应块里填自己的内容——因为是<strong>实时协同</strong>，我这边刚写完「测试环境部署进度 90%」，负责测试的同事那边光标就跳到了同一块，补上了具体部署的版本号和回归测试结果。</p>
+<p>填完之后，我在页面上用 <code>/ai-ppt</code> 唤起 AI 做 PPT，选一下"按 H2 标题自动分页"，AI 就在旁边生成了一套<strong>画布集</strong>——横向翻页的幻灯片格式，每页一屏。原来要手动复制内容调排版的二十分钟，现在变成了点一下按钮然后花五分钟微调每页的详略（有些重点内容我手动加粗，风险点那页加了个流程图）。</p>
+<h3>会中：同页实时写，块级锁定免冲突</h3>
+<p>开会的时候，所有人还是打开同一个页面。FlowIn 的<strong>块级锁定</strong>机制意味着：当我正在编辑"风险点"那块的时候，其他同事的光标进不来那块，只能在别的区域写。有人在"代码示例"块里补了一段 SQL 查询语句，有人在"待办事项"块里写了三条 action item——各自负责各自的块，不会出现"两个人同时改同一段"的冲突。</p>
+<p>实时同步的延迟通常在一秒以内，我看到一个同事刚把"接口联调预计周五完成"改成"接口联调提前到周四"，另一个负责排期的同事光标马上就跳到了周计划那块，把周五的任务往前挪了一天。这种即时反馈是飞书文档没有的——飞书的多人编辑有延迟，经常要手动刷新一下才能看到别人改了什么。</p>
+<p><img src="../images/flowin-docs/real-time-collab.png" alt="多人实时协同" loading="lazy"></p>
+<h3>会后：页面即纪要，权限分级一次搞定</h3>
+<p>会后不需要再整理——页面上的内容就是讨论过程的完整记录，谁在哪块写了什么、改了什么，都在里面。我做的事情只是：</p>
+<ol><li><strong>删一下空块和重复内容</strong>（有些人写了草稿又删了，留下了空块）；</li><li><strong>AI 补一下代码示例</strong>——有个同事在讨论里提到了一个 Python 数据处理函数，但没写具体代码。我在对应块里用 <code>/ai-code</code> 唤起 AI 写代码，描述一下需求："Python，用 pandas 读 CSV，按日期分组汇总用户活跃数，输出每天的活跃用户总数和去重后的设备数，加上注释"。AI 生成一个带语法高亮的代码块，我检查了一下逻辑没问题，直接插进去了；</li><li><strong>权限分级</strong>——给老板设置"编辑"权限（他可能会补充备注），给其他同事设置"查看"权限（只能看不能改），然后把页面链接发到群里。</li></ol>
+<p>以前会后要复制两份文档、设置两次权限、发两封邮件，现在变成了：一个链接 + 两次权限调整（老板升编辑，其他人降查看）。少了<strong>两次手动复制</strong>和<strong>两封格式化邮件</strong>。</p>
+<h2>实操细节：最容易断链的两个环节</h2>
+<p>这条流程跑了一个多月，踩过两个坑，值得单独说一下。</p>
+<h3>坑一：外部协作者的权限边界</h3>
+<p>有时候我们会邀请外部的合作方（比如外包的测试同学）进来一起写。FlowIn 的<strong>三级权限体系</strong>在这个场景下特别好用——给外部协作者设"评论"权限，他们可以在页面上发表意见但改不了内容。之前用飞书的时候，我没注意到飞书的权限默认是"可编辑"，外包同学不小心把上周的数据删了一条，花了半小时恢复。</p>
+<p>设置权限的入口很简单：页面右上角有个分享按钮，点进去就能看到每个协作者的权限等级。改完<strong>即时生效</strong>——<a href="https://flowin-docs.pages.dev/" target="_blank" rel="noopener">FlowIn文档</a>里对这个权限模型有完整说明。我刚把一个外包的权限从"编辑"降到"评论"，他那边下一次尝试编辑就被系统阻止了。这个即时性在紧急场景下特别好用。</p>
+<p><img src="../images/flowin-docs/permission-share.png" alt="权限分享界面" loading="lazy"></p>
+<h3>坑二：AI 做 PPT 的生成质量</h3>
+<p>AI 做 PPT 有个前提：源文档的<strong>标题层级要清晰</strong>。我第一次用的时候，页面里全是平铺的段落，没有 H2 标题，AI 生成的 PPT 每页内容都堆得很满，像把整页文档直接塞进幻灯片框里，根本没法用。</p>
+<p>后来我养成了一个习惯：会前写大纲的时候就用 H2/H3 把章节划清楚——比如「一、上周目标」「二、本周计划」「三、风险点」，每个大章节下面用 H3 分小节。这样 AI 生成的时候，每个 H2 自动变成一页幻灯片，H3 变成这页里的子块，粒度刚好合适。生成之后再花三五分钟手动微调一下每页的详略，就可以拿去用了。</p>
+<p>还有一点要注意：AI 做 PPT 是<strong>付费功能</strong>，每次消耗 1 AI 点数。如果团队用的是免费版，这步就跳过——直接用 FlowIn 的普通页面做汇报（全屏模式也可以演示），省掉 PPT 这一步，其他环节不变。</p>
+<h2>效果与边界</h2>
+<p>跑了六周之后，实际对比下来：</p>
+<ul><li><strong>会前准备时间</strong>：从 40 分钟降到 15 分钟（写大纲 10 分钟 + AI 转 PPT + 微调 5 分钟）</li><li><strong>会后整理时间</strong>：从 25 分钟降到 5 分钟（删空块 + 补代码 + 设权限）</li><li><strong>数据同步错误</strong>：从每周 1~2 次变成了 0（之前飞书文档和 PPT 对不上的情况）</li><li><strong>多人编辑冲突</strong>：0 次（块级锁定确实有效）</li></ul>
+<p>这套流程也有不划算的情况：</p>
+<ul><li>如果会议只有两三个人，讨论内容也不多，那 FlowIn 的实时协同优势发挥不出来，用飞书文档就够了；</li><li>如果汇报需要精致的动画效果（比如产品发布会级别的 PPT），还是得用 PowerPoint。FlowIn 的画布集只有基础布局，样式选择有限；</li><li>如果团队成员不习惯斜杠命令（<code>/ai-ppt</code>、<code>/ai-code</code>），前期需要花个十分钟教一下，或者让他们先从 AI 菜单里点选，习惯了再用斜杠命令。</li></ul>
+<p>但对于<strong>每周固定要开、涉及多人讨论、会后需要整理纪要</strong>这类常规会议——FlowIn 这套链是真的能省事，而且是那种"每次省半小时，半年下来省一天"的细水长流型效率提升。</p>
+<p>想看更完整的功能清单和版本迭代记录的话，这套资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/FlowIn" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/FlowIn" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%9C%80%E6%96%B0%E7%89%88/FlowIn" target="_blank" rel="noopener">GitCode</a>三个仓库都同步更新了。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gprinter.html">开水果店那阵我才知道，标签打印APP能省这么多事</a></h2>
+  <p class="card-desc">开了半年水果店，打价签和保质期标签是每天的烦心事。试了佳博配套的 Gprinter 之后，原来标签设计这件事可以在手机上 5 分钟搞定，还能语音输入、自动算日期。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/autox-js.html">Autox.js 到底强在哪？和同类自动化工具的横向对比</a></h2>
+  <p class="card-desc">在安卓自动化脚本引擎这个品类里，Autox.js 用 JavaScript + 无障碍服务的组合走出了一条不一样的路。用过按键精灵、Auto.js、Tasker 之后，我为什么最终留在了 Autox.js。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/latest/index.html">最新版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/kshare-docs.html">装KShare大半年后：那些当初没注意到的好用与糟心</a></h2>
+  <p class="card-desc">从v1.5用到v1.7，从凑活投屏到开会离不开，说说这八个月里KShare让我惊喜和头疼的地方。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/cerulean-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">一个木函踩坑实录：这几个问题我花了半天才搞定</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/guise-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Guise 用过之后才懂的几个坑——我重装了两次才踩明白</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

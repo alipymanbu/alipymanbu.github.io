@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我为什么装了一个俄语圈的动漫客户端——ShikiApp 上手体验 · 老杨技术栈</title>
+  
+<meta name="description" content="ShikiApp 是 Shikimori 社区的第三方安卓客户端，Kotlin 开源，用了一周说说目录检索、声优反查、追番日历这些功能到底好不好用。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/shiki-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我为什么装了一个俄语圈的动漫客户端——ShikiApp 上手体验">
+<meta property="og:description" content="ShikiApp 是 Shikimori 社区的第三方安卓客户端，Kotlin 开源，用了一周说说目录检索、声优反查、追番日历这些功能到底好不好用。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/shiki-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/shiki-docs/app-icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/shiki-docs/app-icon.png">
+
+<meta name="twitter:title" content="我为什么装了一个俄语圈的动漫客户端——ShikiApp 上手体验">
+<meta name="twitter:description" content="ShikiApp 是 Shikimori 社区的第三方安卓客户端，Kotlin 开源，用了一周说说目录检索、声优反查、追番日历这些功能到底好不好用。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "ShikiApp \u662f Shikimori \u793e\u533a\u7684\u7b2c\u4e09\u65b9\u5b89\u5353\u5ba2\u6237\u7aef\uff0cKotlin \u5f00\u6e90\uff0c\u7528\u4e86\u4e00\u5468\u8bf4\u8bf4\u76ee\u5f55\u68c0\u7d22\u3001\u58f0\u4f18\u53cd\u67e5\u3001\u8ffd\u756a\u65e5\u5386\u8fd9\u4e9b\u529f\u80fd\u5230\u5e95\u597d\u4e0d\u597d\u7528\u3002", "headline": "\u6211\u4e3a\u4ec0\u4e48\u88c5\u4e86\u4e00\u4e2a\u4fc4\u8bed\u5708\u7684\u52a8\u6f2b\u5ba2\u6237\u7aef\u2014\u2014ShikiApp \u4e0a\u624b\u4f53\u9a8c", "image": ["https://alipymanbu.github.io/images/shiki-docs/app-icon.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/shiki-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/shiki-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6211\u4e3a\u4ec0\u4e48\u88c5\u4e86\u4e00\u4e2a\u4fc4\u8bed\u5708\u7684\u52a8\u6f2b\u5ba2\u6237\u7aef\u2014\u2014ShikiApp \u4e0a\u624b\u4f53\u9a8c", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">我为什么装了一个俄语圈的动漫客户端——ShikiApp 上手体验</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我为什么装了一个俄语圈的动漫客户端——ShikiApp 上手体验</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">ShikiApp 是 Shikimori 社区的第三方安卓客户端，Kotlin 开源，用了一周说说目录检索、声优反查、追番日历这些功能到底好不好用。</p>
+  </header>
+  <div class="prose">
+<p>前阵子跟朋友聊番剧，他突然问我："你有没有在用俄语圈那个 Shikimori？"我当时一脸懵——Anilist、MyAnimeList 这些主流的倒是听过，俄语圈的动漫社区是个什么路子？朋友给我递了一个安装包，说"试试这个客户端，比浏览器好用多了"。</p>
+<p>于是我就把 ShikiApp 装上了。</p>
+<p>说实话，一开始没抱太大期望。一个第三方客户端，还是俄语圈的，界面会不会全是西里尔字母看不懂？功能会不会跟 MAL 客户端大同小异？抱着试试看的心态打开之后，发现事情没我想的那么简单。</p>
+<h2>安装那点事——跨渠道签名冲突真的会劝退人</h2>
+<p>先从安装说起。ShikiApp 同时在 GitHub、RuStore、IzzyOnDroid、F-Droid 四个渠道分发，理论上都是同一个包名，应该能互相覆盖。但我自己亲测了一下——先从 GitHub 装了一个，后来想换成 IzzyOnDroid 版本（听说更新更快），结果系统直接弹"签名不一致，拒绝覆盖安装"。</p>
+<p><img src="../images/shiki-docs/app-icon.png" alt="ShikiApp 图标" loading="lazy"></p>
+<p>这倒不是 ShikiApp 本身的问题，不同渠道的打包流程用的签名 key 可能不完全一样，国产 ROM 对签名不同的包又尤其严格，MIUI 和 ColorOS 上这种情况更常见。解决办法也简单——卸载旧版再装新的就行，而且追番列表、收藏、私信这些数据全在云端账号里，卸载不丢数据，只是下次打开要重新登录一下。我后来干脆锁定了一个渠道，安装包从<a href="https://shiki.usea.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿，省得来回折腾。</p>
+<h2>第一眼界面：俄语导航条反而让我有点新鲜感</h2>
+<p>打开之后默认停在新闻流页面，顶部标题栏写着大大的「Новости」（新闻）。底部一排导航按钮从左到右依次是搜索、目录、日历、列表、消息、新闻、个人中心——全是俄文，但图标画得挺清楚，用两次就记住了。我本来以为会有英文切换选项，找了一圈没找到，索性也不找了，反正核心操作就那几个按钮。</p>
+<p>新闻流本身没什么好说的，就是一个信息流，显示动画化发表、PV 公开、站点公告这些消息。每天花两分钟往下滚一遍，能第一时间知道自己关注的作品有没有新动作。对追番的人来说，这一点挺实用——比天天刷 Twitter 或微博找消息省事多了。</p>
+<h2>目录检索：声优反查作品这个功能真的戳到我了</h2>
+<p>说几个让我印象深刻的功能。第一个就是目录板块的条目体系——这是我在其他动漫客户端里没见过的设计。</p>
+<p>Shikimori 的条目不是只有"动漫"和"漫画"两类，它分成五大类：动漫（Аниме）、漫画（Манга）、轻小说（Ранобэ）、角色（Персонажи）、人物（Персоналии）。前五类好理解，后两类是它的特色——角色是动漫里的虚拟人物，有身高、生日这些资料；人物是真实的创作者，声优、作者、导演都在里面。</p>
+<p><img src="../images/shiki-docs/screenshot-catalog.png" alt="目录检索界面" loading="lazy"></p>
+<p>"声优反查作品"这个操作就是在这里用的——先搜一个声优的名字，点进他的个人页面，底部会列出这位声优配过的全部角色。反过来也成立，在某个动漫详情页点角色名字，会跳到角色页面，那里列出了这位角色的全部声优出演。我上周就是用这个功能追着梶裕贵的配音表，一路发现了好几部之前没注意到的小众番。这个双向关联的设计，真的比单纯的"作品列表"有用太多——后来去<a href="https://shiki-docs.pages.dev/" target="_blank" rel="noopener">Shiki文档</a>翻了一下才弄明白，Shikimori 本身的条目体系就比其他动漫数据库完整得多。</p>
+<h2>追番日历：把"今天该看什么"从脑子里搬到手机上</h2>
+<p>第二个让我觉得贴心的是日历功能。底部导航栏有个「Календарь」按钮，点进去就是按月排的放送时间表。今天更哪部、明天更哪部，一目了然——对我这种追了二十多部番的人来说，不用再在脑子里记"这周星期三那部更新了没"，打开看一眼就知道。</p>
+<p>追番列表（「Мой список」）也做得挺细。每部作品可以标"在看""想看""已看完""搁置"四种状态，还能打评分。这些数据全部实时同步到 Shikimori 云端，换手机或者卸载重装都不会丢——只要账号还在就行。我之前用 MAL 客户端的时候就吃过"本地数据没同步"的亏，ShikiApp 这一点让我踏实不少。</p>
+<h2>那些让我觉得"差点意思"的地方</h2>
+<p>说完好的，也说几个别扭的。</p>
+<p>首先是俄语界面这个事——虽然用两次就记住了，但搜索框只能搜俄文名或罗马音，我用中文搜《进击的巨人》是搜不到的，得输入"Shingeki no Kyojin"或者俄文名"Атака Титанов"才行。这对不习惯的人来说是个门槛。</p>
+<p>然后是它完全依赖 Shikimori 网站的接口——说白了，它的<a href="https://shiki.usea.quest" target="_blank" rel="noopener">官网</a>上对自己的定位写得也很直白——就是网站账号的随身入口，不是独立的动漫平台。网站抽风或者被墙，客户端就一片空白。我这一周里就碰到过一次 Shikimori 站点短暂不可达，打开客户端什么都加载不出来，等了大概十分钟才恢复。如果你所在的网络环境访问 Shikimori 本身就困难，那这个客户端用起来会很痛苦。</p>
+<p>还有一个小问题——新闻流里的讨论串点进去会跳转到 Shikimori 网站，而不是在客户端内部打开。这个跳转逻辑虽然合理，但体验上确实有点割裂。</p>
+<h2>总结：适合谁，不适合谁</h2>
+<p>用了一周下来，我的结论是这样的：</p>
+<p>如果你是一个喜欢探索小众番、对声优阵容敏感、又想找一个不同于英语圈社区的动漫爱好者，ShikiApp 值得装一下——目录检索的双向关联、追番日历、不丢数据的云端同步，这几个功能确实能解决实际问题。尤其是声优反查那个点，我至今还在给身边同好安利。</p>
+<p>但如果你更习惯 Anilist 或 MAL 的生态、只看主流番、或者所在环境访问 Shikimori 本身就有困难，那 ShikiApp 可能帮不到你什么——俄语界面的门槛、对 Shikimori 网站的强依赖，这两个问题不是靠设计能解决的。</p>
+<p>它不是什么"神器"，也不是"最好的动漫客户端"，就是一个把 Shikimori 社区的核心功能搬到手机上的第三方开源应用。定位清晰，功能够用，该做的事做到了，不该碰的也没碰——这在客户端里已经算难得了。</p>
+<p>对了，还有个事没说——这个客户端完全免费，代码在<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Shiki" target="_blank" rel="noopener">GitHub</a>上公开，GPL-3.0 许可，独立开发者 pewaru-333 维护。我个人是觉得这种社区驱动的开源项目挺值得支持的，毕竟不是谁都能花时间写一个 Kotlin 应用出来给大家免费用。整理这份资料时顺手同步到了<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Shiki" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Shiki" target="_blank" rel="noopener">GitCode</a>，国内访问会快不少。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/bochs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从零用 Bochs 调试你的第一个 Bootloader</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/javdb-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">javdb 用了三个月，那些我踩过的真实坑</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

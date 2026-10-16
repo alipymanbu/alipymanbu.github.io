@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>手办维基 Hpoi 迭代观察：一个资料库怎么长成社区又长出商城 · 老杨技术栈</title>
+  
+<meta name="description" content="从样本文档的&#34;现在时&#34;反推 Hpoi 的成长逻辑——资料库是地基，社区层长在上面，商城又补了商业闭环，团队始终在死磕什么、什么一直不管。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hpoi.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手办维基 Hpoi 迭代观察：一个资料库怎么长成社区又长出商城">
+<meta property="og:description" content="从样本文档的&#34;现在时&#34;反推 Hpoi 的成长逻辑——资料库是地基，社区层长在上面，商城又补了商业闭环，团队始终在死磕什么、什么一直不管。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hpoi.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hpoi/library-ios.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hpoi/library-ios.webp">
+
+<meta name="twitter:title" content="手办维基 Hpoi 迭代观察：一个资料库怎么长成社区又长出商城">
+<meta name="twitter:description" content="从样本文档的&#34;现在时&#34;反推 Hpoi 的成长逻辑——资料库是地基，社区层长在上面，商城又补了商业闭环，团队始终在死磕什么、什么一直不管。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u6837\u672c\u6587\u6863\u7684\"\u73b0\u5728\u65f6\"\u53cd\u63a8 Hpoi \u7684\u6210\u957f\u903b\u8f91\u2014\u2014\u8d44\u6599\u5e93\u662f\u5730\u57fa\uff0c\u793e\u533a\u5c42\u957f\u5728\u4e0a\u9762\uff0c\u5546\u57ce\u53c8\u8865\u4e86\u5546\u4e1a\u95ed\u73af\uff0c\u56e2\u961f\u59cb\u7ec8\u5728\u6b7b\u78d5\u4ec0\u4e48\u3001\u4ec0\u4e48\u4e00\u76f4\u4e0d\u7ba1\u3002", "headline": "\u624b\u529e\u7ef4\u57fa Hpoi \u8fed\u4ee3\u89c2\u5bdf\uff1a\u4e00\u4e2a\u8d44\u6599\u5e93\u600e\u4e48\u957f\u6210\u793e\u533a\u53c8\u957f\u51fa\u5546\u57ce", "image": ["https://alipymanbu.github.io/images/hpoi/library-ios.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hpoi.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hpoi.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "\u624b\u529e\u7ef4\u57fa Hpoi \u8fed\u4ee3\u89c2\u5bdf\uff1a\u4e00\u4e2a\u8d44\u6599\u5e93\u600e\u4e48\u957f\u6210\u793e\u533a\u53c8\u957f\u51fa\u5546\u57ce", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">手办维基 Hpoi 迭代观察：一个资料库怎么长成社区又长出商城</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">手办维基 Hpoi 迭代观察：一个资料库怎么长成社区又长出商城</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从样本文档的&#34;现在时&#34;反推 Hpoi 的成长逻辑——资料库是地基，社区层长在上面，商城又补了商业闭环，团队始终在死磕什么、什么一直不管。</p>
+  </header>
+  <div class="prose">
+<p>现在从<a href="https://www.kook.yoga/download.html" target="_blank" rel="noopener">Hpoi下载</a>拿到 App，打开它，底部导航五个板块整整齐齐：首页、条目、相册、商城、我的。新用户第一次逛，照着官方给的建议刷十分钟首页、搜一个 IP、点赞几张图、补完个人资料，一小时就能把骨架摸透。这骨架看着顺，但我好奇的是——它从哪来，是一步到位的设计，还是一块块长出来的？</p>
+<h2>样本文档里没有的东西</h2>
+<p>我翻了一遍<a href="https://hpoi.pages.dev/" target="_blank" rel="noopener">Hpoi文档</a>的所有页面，有一件事很显眼：<strong>找不到一行 changelog 式的版本号标注</strong>。所有内容都是现在时——"底部五个板块""HP 积分的获取途径""相册审核标准"——就好像这个 App 天生就是今天这个样子，没有过去可言。</p>
+<p>这反而给了我一个观察切口。一个产品的文档选择暴露了它的什么阶段：早期产品忙着补功能，文档跟着功能走；成熟期产品开始整理资料，才会系统性地写进版本号和迭代记录。Hpoi 的文档只讲"现在怎么用"，不说"什么时候变成这样的"，说明它还在<strong>快速迭代期</strong>——功能还在变，文档整理的优先级还没提上来。</p>
+<p>从功能分层倒推来路，倒是能拼出一个大致的生长顺序。</p>
+<h2>地基：条目板块</h2>
+<p>条目板块是整个平台的地基。按分类浏览手办、模型等词条，查参数、看官图、追发售——所有这些围绕"一个具体商品"的功能，是 Hpoi 最早的内核。我这么判断有两个依据：第一，样本文档里讲"资料库查词条"的章节最厚，搜条目、看详情、作品页聚合，子页面最多，这通常意味着这块最早、迭代次数最多；第二，其他板块都在引用它——相册里的图要挂到条目上，商城里的商品要对应条目，"我的"里的收藏网格也是条目状态的个人化视图。</p>
+<p><img src="../images/hpoi/library-ios.webp" alt="资料库界面" loading="lazy"></p>
+<p>条目板块的一个关键设计是<strong>作品页聚合</strong>——把同一 IP 下的所有角色、所有厂商版本、所有周边聚成一页。这个功能出现的时间点文档没写，但它的存在本身说明了一个产品决策：<a href="https://www.kook.yoga" target="_blank" rel="noopener">Hpoi官网</a>不满足于当一个手办数据库，它想当<strong>IP 维度的资料库</strong>。从"单个商品条目"上升到"作品→角色→多版本条目"的树形结构，这是一次从"工具"到"平台"的跃迁。</p>
+<h2>社区层：相册与积分</h2>
+<p>如果说条目板块是地基，相册板块就是长在地基上的社区层。社区功能什么时候加的？样本文档没说，但 HP 积分体系的设计给了线索。</p>
+<p>HP 是贡献积分，上传一张普通图 +1，原创图 +3，发图文 +5；有每日上限，有盗图双倍扣罚。ATK 和 DEF 是活跃值，和 HP 分开算——这说明团队在设计积分体系时，明确把"做贡献"和"单纯活跃"拆成了两条线。这个拆分本身就是社区成熟期的标志：早期社区往往只有一种积分，谁活跃谁拿分；拆成多条，说明社区已经有了"水帖刷分"的问题，需要用积分结构来引导高质量内容。</p>
+<p>相册审核标准的四条（已出荷、原创、光线、背景）也是同理。官方公告里甚至写了"精美摄影图片将不受到上述条件限制"——这条口子说明团队在严格和宽松之间反复权衡过：太松会被低质量内容淹没，太严又会把新用户挡在门外。最后选了"有下限、对精品网开一面"的策略。</p>
+<h2>商业闭环：商城</h2>
+<p>商城板块是最"晚"的那一层。我这么判断，一是因为样本文档里商城相关的页面最少，只有一个总览页，没有具体的下单流程、售后服务、价格波动追踪；二是商城的入口设计——底部五栏里商城和条目、相册并列，但商城里的商品要引用条目数据，本质上是"用资料库给商城导流"。</p>
+<p>这个设计关系很重要。很多社区做电商是反过来的——先有流量，再找变现渠道。Hpoi 的逻辑是：先有资料库（工具属性），长出社区（内容属性），再在社区流量上铺商城（商业属性）。三步走下来，每一步都用上了前一步的积累，没有跳步。</p>
+<h2>团队一直在死磕什么</h2>
+<p>从现在的功能组合看，团队有两件事一直在死磕。</p>
+<p>第一是<strong>资料库的完整度</strong>。作品页聚合、角色标签关联、收藏状态网格——这些功能的核心动机都是"别让用户找不到、别让用户重复搜"。样本文档里讲"资料库查词条"的章节最多、最细，每条字段都有解读，这不是一天能写出来的，是每次迭代都在补一点的结果。</p>
+<p>第二是<strong>社区贡献的正向激励</strong>。HP 积分的原创三倍收益、盗图双倍扣罚、相册审核的"精品豁免"——这些规则组合起来，就是一套"让贡献者赚到积分、让水帖者付出代价"的博弈机制。而且规则不是死的，有活动（相册补完计划），有口子（精美图豁免），有反馈渠道——团队在定期微调这套平衡。</p>
+<h2>什么一直没管</h2>
+<p>有意思的是，样本文档里完全没提几类功能：没有数据导出、没有批量操作、没有 API、没有跨设备同步的任何说明。这说明团队始终把<strong>单个用户的浏览体验</strong>放在最前面——你能不能在 App 里舒服地逛、方便地收藏、愉快地晒图，比你能不能批量导数据、能不能对接第三方服务重要得多。</p>
+<p>这不是缺点，是优先级选择。每个产品都有"必须做"和"可以等"的清单，Hpoi 明显把后者拉得很长。</p>
+<h2>下一步大概率走向哪</h2>
+<p>让我猜一下——纯从迭代规律推，不是官方口径。</p>
+<p>第二手交易相关的功能值得关注。素材包里有二手交易的截图（发现页的二手入口、卖货弹窗），但样本文档里没有对应的完整章节。这通常意味着一个功能还在快速迭代中，文档没跟上。如果二手板块从"能发帖卖"进化到"能对标条目自动定价、能走站内担保、能关联收藏里的想买清单"，那整个商业闭环就真的扣死了——从看条目→逛社区→买新品→淘二手→回来晒图，一条链在 App 里就能走完。</p>
+<p>另外，HP 积分的兑换玩法文档里只提了"与兑换、抽奖等玩法挂钩"，没展开。如果积分能换商城优惠券、能换相册曝光位、甚至能换条目编辑权限，那激励体系会再上一个台阶。</p>
+<h2>写在最后</h2>
+<p>手办维基这个名字起得挺准——它既是维基（大家共建的资料库），又是社区（大家晒图的广场），还在变成商城（大家买卖的市场）。三样东西叠在一起，没有哪个是多余的：没有资料库，社区没有锚点；没有社区，商城没有流量；没有商城，前两步的努力没有商业闭环。</p>
+<p>从样本文档的"现在时"反推过去，我看到的是一个团队在一步步把功能往上搭，每一层都用着下面一层的积累，没跳步。这次参考的资料我在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/Hpoi" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/Hpoi" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/Hpoi" target="_blank" rel="noopener">GitCode</a>三处都放了副本，继续往下看，还挺有意思的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/lumeow.html">Lumeow 深度盘点：一款 AI 角色扮演应用的能力面完整铺开</a></h2>
+  <p class="card-desc">从多人剧情共创到隐私保护三件套，从对话历史管理到云端同步——Lumeow 到底能做什么？本文按能力域系统性梳理这款 AI 角色扮演应用的亮点、适用场景和局限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/appenjoy.html">APPenjoy 翻了个底朝天才敢说——这五个隐藏功能你肯定漏了仨</a></h2>
+  <p class="card-desc">以为 APPenjoy 就是个找应用下 APK 的工具？三重安全审核、隐藏影视入口、社区积分体系……我把它翻了一周，挖出五个官方没写在明面上的冷门玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pado-docs.html">Pado 情侣应用全能力盘点：定位、记录、仪式感三件套到底做得怎么样</a></h2>
+  <p class="card-desc">从实时位置到 365 打卡挑战，从安全区域到甜蜜相册，这篇盘点把 Pado 的核心功能域拆开逐一评测，帮你判断它值不值得装。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/readwise-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">试过十几款阅读复习工具后，我为什么把 Readwise 留在了主力位</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ruffle-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Ruffle 到底值不值得掏钱？一个老 Flash 玩家的付费账本</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

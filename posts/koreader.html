@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>KOReader 完全上手：从零配置你的专属阅读器 · 老杨技术栈</title>
+  
+<meta name="description" content="本教程带你从零把 KOReader 跑起来，从安装到排版到笔记导出，跟着做一遍就能彻底摆脱 Kindle 原生阅读器的束缚。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/koreader.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KOReader 完全上手：从零配置你的专属阅读器">
+<meta property="og:description" content="本教程带你从零把 KOReader 跑起来，从安装到排版到笔记导出，跟着做一遍就能彻底摆脱 Kindle 原生阅读器的束缚。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/koreader.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/koreader/koreader-menu.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/koreader/koreader-menu.png">
+
+<meta name="twitter:title" content="KOReader 完全上手：从零配置你的专属阅读器">
+<meta name="twitter:description" content="本教程带你从零把 KOReader 跑起来，从安装到排版到笔记导出，跟着做一遍就能彻底摆脱 Kindle 原生阅读器的束缚。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u672c\u6559\u7a0b\u5e26\u4f60\u4ece\u96f6\u628a KOReader \u8dd1\u8d77\u6765\uff0c\u4ece\u5b89\u88c5\u5230\u6392\u7248\u5230\u7b14\u8bb0\u5bfc\u51fa\uff0c\u8ddf\u7740\u505a\u4e00\u904d\u5c31\u80fd\u5f7b\u5e95\u6446\u8131 Kindle \u539f\u751f\u9605\u8bfb\u5668\u7684\u675f\u7f1a\u3002", "headline": "KOReader \u5b8c\u5168\u4e0a\u624b\uff1a\u4ece\u96f6\u914d\u7f6e\u4f60\u7684\u4e13\u5c5e\u9605\u8bfb\u5668", "image": ["https://alipymanbu.github.io/images/koreader/koreader-menu.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/koreader.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/koreader.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "KOReader \u5b8c\u5168\u4e0a\u624b\uff1a\u4ece\u96f6\u914d\u7f6e\u4f60\u7684\u4e13\u5c5e\u9605\u8bfb\u5668", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">KOReader 完全上手：从零配置你的专属阅读器</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">KOReader 完全上手：从零配置你的专属阅读器</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">本教程带你从零把 KOReader 跑起来，从安装到排版到笔记导出，跟着做一遍就能彻底摆脱 Kindle 原生阅读器的束缚。</p>
+  </header>
+  <div class="prose">
+<p>读完这篇教程，你能把 KOReader 装上你的墨水屏设备、调出一套舒服的排版、用上夜间模式和自动色温、还能把高亮笔记自动导出到你的第二大脑。</p>
+<h2>准备工作：先确认你的设备</h2>
+<p>先提一句——<a href="https://koreader.uerg.quest" target="_blank" rel="noopener">koreader官网</a>上有完整的兼容性列表和安装指南，动手之前可以对照着查一下你的设备。KOReader 不是只给某一家用的——它支持相当多平台。动手之前先判断一下：</p>
+<ul><li><strong>Kindle（Paperwhite/Oasis/入门款）</strong>：需要越狱，然后把 KOReader 扔进 <code>extensions</code> 目录</li><li><strong>Kobo 全系列</strong>：最简单，把 <code>koreader</code> 目录直接拷到 <code>.kobo</code> 隐藏目录，插上 USB 就能用</li><li><strong>PocketBook</strong>：装 <code>koreader</code> 插件包，启动器里会多出一个入口</li><li><strong>Android 平板/手机</strong>：直接装 APK，当成普通 App 用（注意：Android 版墨水屏特性支持有限）</li><li><strong>Linux 电脑</strong>：有桌面版，可以直接运行体验配置</li></ul>
+<p>如果你是第一次接触 KOReader，我建议先用一台 Kobo 或 Android 平板试手——不用折腾越狱，几分钟就能跑起来。安装包从<a href="https://koreader.uerg.quest/download.html" target="_blank" rel="noopener">下载</a>拿，解压后按你设备型号找对应子目录。</p>
+<h2>第一步：启动 KOReader 并导入书</h2>
+<p>装好之后第一次打开，你会看到一个简洁的文件管理器界面——</p>
+<ol><li>点击右上角的齿轮进入设置</li><li>先点「语言」，把界面切换成中文（KOReader 默认是英文）</li><li>点「文件管理器」，导航到你存放电子书的目录，逐个点进去导入</li></ol>
+<p>支持的格式非常全：EPUB、PDF、CBZ、MOBI、DJVU、FB2、TXT……几乎没有 KOReader 打不开的格式。如果你的书已经在设备里了，点「扫描」让 KOReader 一次性把所有文件编入书库。</p>
+<p><img src="../images/koreader/koreader-menu.png" alt="KOReader 主菜单" loading="lazy"></p>
+<p>导入完成，书库就是你的主界面了。点任意一本开始阅读。</p>
+<h2>第二步：调出一套舒服的排版</h2>
+<p>KOReader 最强的就是排版引擎——这也是它能取代原生阅读器的核心原因。打开一本书后，点击屏幕中央唤出阅读菜单，进入「文档设置」：</p>
+<p><strong>字号</strong>：从 16px 开始调，直到你眼睛看着不累——16~20px 是大多数人的舒适区<strong>行距</strong>：默认 1.3 偏紧，小说调到 1.5，技术书调到 1.8 或 2.0 <strong>字体</strong>：中文推荐「思源宋体」或「霞鹜文楷」，英文推荐「Crimson Pro」——KOReader 会自动识别系统字体<strong>页边距</strong>：不要贴边，每边至少留 12~15px，呼吸感很重要</p>
+<p>点一下底部的「应用」，然后回到阅读界面感受一下。如果是 PDF 或扫描版书籍，额外启用「裁边」和「K2pdfopt 重排」——这两个功能能把扫描书的双栏排版拆成单栏，跟 EPUB 一样舒服。</p>
+<h2>第三步：夜间模式 + 自动色温，深夜再也不刺眼</h2>
+<p>白屏黑字在黑暗环境里像个小太阳。KOReader 的解决方案分三层，按需组合：</p>
+<p><strong>夜间模式</strong>：点击顶部菜单的月亮图标一键切换。黑底白字，1~2 秒完成，墨水屏上几乎无延迟。默认只对当前书生效——如果你想所有书都夜间模式，记得在「设备设置」里打开「全局夜间模式」。</p>
+<p>别急着点下一步，这里有个细节：KOReader 允许你把反转后的背景色改成深蓝或深灰，比纯黑更柔和。进入「夜间模式设置 → 自定义颜色」，把背景改成 <code>#1a1a2e</code> 试试看。</p>
+<p><strong>自动色温</strong>：这是大多数人忽略的功能。它按时间曲线自动调节前光色温——白天偏冷白光、日落时逐步转暖、深夜暖黄光为主。操作：设置 → 设备 → 自动色温，按你所在时区设三个时间节点（8:00 冷 / 18:00 过渡 / 20:00 暖）。</p>
+<p>注意：不是所有设备都支持色温调节。带可调前光的 Kobo Libra H2O、PocketBook Verse 可以直接用；只有冷暖光档位的设备（部分 Kindle）只能切三档；无前光设备夜间模式能用但色温无效。功能不支持时会被自动隐藏，不用纠结。</p>
+<p><strong>定时熄屏</strong>：睡前设一个 30 分钟倒计时，看完自动关灯——设置 → 设备 → 定时熄屏。</p>
+<p>我的常用组合是：白天正常模式，傍晚自动色温接管，打开阅读就自动应用夜间模式（通过配置文件，见下文），睡前 30 分钟定时熄屏。一套流程下来完全不用手动切换。</p>
+<h2>第四步：高亮、笔记、导出——让阅读变成知识积累</h2>
+<p>阅读不是读完就算。KOReader 的笔记系统相当完整，而且能直接对接你的第二大脑。</p>
+<p><strong>选中文字的两种姿势</strong>：</p>
+<ul><li>默认单击选中单词（适合英文），然后拖动扩展范围</li><li>双击进入拖拽模式，手指拖一下就能选整段（适合中文长段落）</li></ul>
+<p>选中后弹出菜单，你可以选：</p>
+<table><thead><tr><th>样式</th><th>用法</th></tr></thead><tbody><tr><td>荧光笔（半透明）</td><td>标注关键词、好句子</td></tr><tr><td>下划线</td><td>强调</td></tr><tr><td>删除线</td><td>划掉不认同的观点</td></tr><tr><td>波浪线</td><td>存疑、有疑问</td></tr></tbody></table>
+<p>选好样式自动保存。想加笔记？选中后选「添加笔记」，KOReader 会弹出内置的拼音键盘——专为中文用户设计，打拼音显示候选字，墨水屏上打字比软键盘高效得多。</p>
+<p><strong>导出到笔记应用</strong>是重头戏。KOReader 支持直接同步到 Joplin、Readwise、Memos、Flomo、XMind，配置完保存就自动同步，不用手动导出。以 Joplin 为例：</p>
+<ol><li>在 Joplin 桌面端开启 Web Clipper 服务（端口 3000）</li><li>KOReader 里点「导出插件 → Joplin」，输入 Joplin 给你的 Token</li><li>保存，之后每次高亮或写笔记都会自动推送到 Joplin</li></ol>
+<p>如果你用 Obsidian、Logseq、Notion，选 Markdown 格式导出——KOReader 会生成一个 <code>.md</code> 文件，直接丢进你的 vault 就能用，还带回链定位到原文页码。笔记导出的详细插件配置在<a href="https://koreader.pages.dev/" target="_blank" rel="noopener">koreader文档</a>里有完整步骤，Joplin、Readwise、Flomo 都覆盖到了。</p>
+<p><img src="../images/koreader/footnotes-reading.png" alt="脚注阅读体验" loading="lazy"></p>
+<h2>第五步：配置文件——一劳永逸的自动化</h2>
+<p>做到这里你可能觉得挺不错，但 KOReader 还有更狠的：<strong>配置文件系统</strong>。</p>
+<p>不同类型的书需要不同的排版——小说字号 18 行距 1.5 夜间模式，PDF 论文字号 20 行距 2.0 裁边，漫画翻页方向右到左图像预处理。如果每次换书都手动调一遍，很快就烦了。配置文件就是帮你自动化这个过程的。</p>
+<p>操作三步走：</p>
+<ol><li>打开一本小说，把排版调到满意（字号 18、行距 1.5、字体思源宋体、夜间模式开）</li><li>进入文档设置 → 配置文件 → 保存当前设置为配置文件，命名「小说默认」</li><li>绑定规则选「按 .epub 扩展名」，保存</li></ol>
+<p>之后你任何时候打开 EPUB，KOReader 自动套用「小说默认」——换 PDF 自动用你另设的 PDF 配置，换漫画自动切右到左翻页。层级叠加：全局默认 → 按扩展名 → 按目录 → 按单本书 → 当前手动调整，高的覆盖低的，灵活得很。</p>
+<p>进阶玩法：为 <code>Books/睡前读物/</code> 整个目录绑一个配置文件，自动开启夜间模式 + 暖光色温，睡前从这个目录拿书就不用调了。</p>
+<h2>常见卡点</h2>
+<h3>Kindle 越狱失败？</h3>
+<p>不是所有 Kindle 都能越狱。Paperwhite 3（KPW3）及以前型号成功率较高，KPW4/Oasis 2 之后基本没戏。如果你的 Kindle 越狱不了，直接买个 Kobo Libra 2——原生支持 KOReader，安装简单到几分钟搞定。</p>
+<h3>PDF 文字选不中、高亮不了？</h3>
+<p>这是 PDF 本身的问题——扫描版 PDF 没有文字层，KOReader 识别不到文字自然没法高亮。解决方法是开启「K2pdfopt 重排」把扫描版重排成可编辑文本，或者换用「图像标注」功能直接在页面上圈画。</p>
+<h3>导出到 Joplin 没同步？</h3>
+<p>按这个顺序排查：Joplin 桌面端是不是开着、Web Clipper 端口是不是 3000、Token 是不是抄对了、KOReader 和 Joplin 是不是在同一个局域网。90% 的情况是 Joplin 忘了开或者 Token 复制时丢了几个字符。</p>
+<h2>进阶一句话</h2>
+<p>KOReader 的深度玩法远不止这些——用户补丁可以替换 Lua 模块改渲染逻辑、手势自定义可以把双击/长按绑成任意动作、书籍地图鸟瞰全书一眼找到笔记位置。等你把上面五步跑通了，会发现 KOReader 能调的参数比你想象的多得多。</p>
+<p>这套资料我在三个仓库都放了副本，开源项目嘛多点备份总没坏处。<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/koreader" target="_blank" rel="noopener">GitHub</a>主力维护、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/koreader" target="_blank" rel="noopener">Gitee</a>国内访问快、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/koreader" target="_blank" rel="noopener">GitCode</a>用来做灾备，内容是同步维护的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/univer-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Univer 迭代史：从手机端到简易创作工具的三次转身</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/readany.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">那本 800 页的英文专著，我终于啃完了</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

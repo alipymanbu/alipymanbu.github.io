@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>BitComet 版本进化史：一个 BT 客户端十五年的&#34;冷门资源救场&#34;执念 · 老杨技术栈</title>
+  
+<meta name="description" content="从 2007 年的文件分块对齐到今天的长效种子机制，BitComet 的迭代逻辑始终围绕同一个核心——让那些快被遗忘的老资源、冷门资源不至于真的消失。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/bitcomet.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BitComet 版本进化史：一个 BT 客户端十五年的&#34;冷门资源救场&#34;执念">
+<meta property="og:description" content="从 2007 年的文件分块对齐到今天的长效种子机制，BitComet 的迭代逻辑始终围绕同一个核心——让那些快被遗忘的老资源、冷门资源不至于真的消失。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/bitcomet.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/bitcomet/preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/bitcomet/preview.png">
+
+<meta name="twitter:title" content="BitComet 版本进化史：一个 BT 客户端十五年的&#34;冷门资源救场&#34;执念">
+<meta name="twitter:description" content="从 2007 年的文件分块对齐到今天的长效种子机制，BitComet 的迭代逻辑始终围绕同一个核心——让那些快被遗忘的老资源、冷门资源不至于真的消失。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece 2007 \u5e74\u7684\u6587\u4ef6\u5206\u5757\u5bf9\u9f50\u5230\u4eca\u5929\u7684\u957f\u6548\u79cd\u5b50\u673a\u5236\uff0cBitComet \u7684\u8fed\u4ee3\u903b\u8f91\u59cb\u7ec8\u56f4\u7ed5\u540c\u4e00\u4e2a\u6838\u5fc3\u2014\u2014\u8ba9\u90a3\u4e9b\u5feb\u88ab\u9057\u5fd8\u7684\u8001\u8d44\u6e90\u3001\u51b7\u95e8\u8d44\u6e90\u4e0d\u81f3\u4e8e\u771f\u7684\u6d88\u5931\u3002", "headline": "BitComet \u7248\u672c\u8fdb\u5316\u53f2\uff1a\u4e00\u4e2a BT \u5ba2\u6237\u7aef\u5341\u4e94\u5e74\u7684\"\u51b7\u95e8\u8d44\u6e90\u6551\u573a\"\u6267\u5ff5", "image": ["https://alipymanbu.github.io/images/bitcomet/preview.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/bitcomet.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/bitcomet.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "BitComet \u7248\u672c\u8fdb\u5316\u53f2\uff1a\u4e00\u4e2a BT \u5ba2\u6237\u7aef\u5341\u4e94\u5e74\u7684\"\u51b7\u95e8\u8d44\u6e90\u6551\u573a\"\u6267\u5ff5", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">BitComet 版本进化史：一个 BT 客户端十五年的&#34;冷门资源救场&#34;执念</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">BitComet 版本进化史：一个 BT 客户端十五年的&#34;冷门资源救场&#34;执念</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 2007 年的文件分块对齐到今天的长效种子机制，BitComet 的迭代逻辑始终围绕同一个核心——让那些快被遗忘的老资源、冷门资源不至于真的消失。</p>
+  </header>
+  <div class="prose">
+<h2>现状：这版 BitComet 在想什么</h2>
+<p>如果现在打开 BitComet 的<a href="https://bitcomet.bmww.store" target="_blank" rel="noopener">BitComet官网</a>，你会发现它的宣传口径和五六年前没什么本质变化——多平台支持、长效种子、跨协议下载。<a href="https://bitcomet.bmww.store/download.html" target="_blank" rel="noopener">下载</a>下来界面还是那个经典的三段式布局，左侧任务分类、中间任务列表、底部详情面板，功能按钮排列紧凑，没有花里胡哨的动画。但就是这样一个"看起来没怎么变"的客户端，我注意到一个细节：最新版本的长效种子相关配置项比两年前多了三四个，包括协议选择、限速阈值、池节点筛选。</p>
+<p>这不是一个在追赶潮流的产品。qBittorrent 有更现代的界面、更活跃的社区迭代；uTorrent 体积更小、启动更快。BitComet 的开发者显然清楚自己的定位——他们不想做"最好用的 BT 客户端"，他们想做"那个在别人都挂了的时候还能把文件拽下来的家伙"。</p>
+<h2>来路：从分块对齐到长效种子，关键版本都在解决同一个痛点</h2>
+<p>我手头的样本文档最早能追溯到 2007 年左右——那是 BitComet 引入 <strong>Piece Boundary Alignment（文件分块对齐）</strong> 的时间点。这个功能放在今天看可能不算什么，但是在 BT 协议还普遍依赖不支持选择性下载的老客户端的年代，它解决了一个实际问题：多文件 BT 任务里，如果你只想下其中两个，传统 BT 会让你白下一堆你根本不想要的文件碎片。BitComet 的解法是调整分片大小或插入填充，让每个文件的边界刚好落在分片边界上——这样任何客户端都能精确跳过不需要的文件，零冗余传输。</p>
+<p><img src="../images/bitcomet/preview.png" alt="Piece Boundary Alignment 技术示意" loading="lazy"></p>
+<p>这个功能到今天仍然是 BitComet 制作 torrent 时的默认行为，而且文档里明确说它是"业内首创"。我查了一下其他客户端的现状：qBittorrent 新版本支持但非默认，uTorrent 和 Vuze 压根没实现制作端的对齐——能下载对齐的 torrent，但自己做出来的还是老样子。这说明 BitComet 团队在这个特性上的先发优势保持了超过十五年。</p>
+<p>然后是长效种子。这个功能 BitComet 官方也声称是首创，它要解决的痛点更经典：<strong>老资源断种，下载到 99% 卡住再也完不成</strong>。传统 BT 里一个任务要能完成必须有完整种子在线，而发布了几个月到一年以上的资源，原始发布者大概率早就离线了。BitComet 的解法是让已经完成下载的客户端继续作为"隐性种子"存在，同时主动搜索 HTTP 镜像作为额外数据源。</p>
+<p>长效种子背后的设计思路其实挺激进的：它要求用户的客户端即使下完了也保持某种程度的参与——客户端后台运行、和 BitComet 的云服务节点通信、告知拥有哪些资源。这个思路在当时（大概 2010 年代初）被一些隐私敏感用户批评过，但从效果来看，它确实解决了一个真实存在的问题。<a href="https://bitcomet.pages.dev/" target="_blank" rel="noopener">BitComet文档</a>里提到的四个下载加速通道——BT 对等者、长效种子、HTTP/FTP 镜像、eMule 电驴插件——构成了一条兜底链：前面几条路都没贡献的时候，总有一条能补上。</p>
+<h2>规律：十五年迭代，他们一直在死磕什么</h2>
+<p>把样本文档里散落的版本线索拼起来，我发现 BitComet 的迭代有一条非常清晰的主线：<strong>所有大功能都指向同一个方向——让冷门资源、老资源不至于真的从互联网上消失</strong>。</p>
+<p>文件分块对齐解决的是"冷门资源发布者做出来的 torrent 别人下载有冗余"的问题。长效种子解决的是"冷门资源没人做种下载到 99% 卡住"的问题。HTTP 镜像搜索解决的是"BT 种子断了但 HTTP 源还在"的问题。电驴插件是最极端的兜底——当 BT 网络里一个种子都没有的时候，去 eMule 网络里碰碰运气。</p>
+<p>这条思路从 2007 年到今天完全没有动摇过。但与此同时，BitComet 也有一些东西始终没怎么管：</p>
+<ul><li>Windows 端功能最完整，macOS 和 Linux 端长期滞后。文档里明确说电驴插件主要在 Windows 端维护，其他平台支持不完整。</li><li>界面设计的更新节奏很慢，最新版本的 UI 和五六年前相比变化不大。</li><li>没有跟上 BT 协议的一些新扩展，比如 BEP 52（v2 torrent）的支持就比 qBittorrent 晚了不少。</li></ul>
+<p>这种"单点深钻、其他放一放"的策略其实挺少见的——大多数软件会追求全面，BitComet 选择了在一个非常垂直的场景里做到极致。他们的产品经理可能想的是：如果我是一个只需要热门资源的用户，我选 qBittorrent 就好了；但如果我手里有一堆发布了好几年、种子早就掉光的老资源，我需要一个能把它们拉下来的工具——那就是 BitComet。</p>
+<h2>预判：照这个路线，下一步大概率走向哪里</h2>
+<p>文档里没有提到任何"下一个大功能"的线索，所以我的判断完全是从迭代规律推的，不当官方口径传。</p>
+<p>首先，多平台覆盖大概率会继续补强。目前 Linux 端只有命令行守护进程，没有图形界面；macOS 端缺几个 Windows 专属功能。但跨平台本身不是 BitComet 的核心竞争力——他们补平台更多是为了让"冷门资源救场"这条主线覆盖更多用户场景，而不是为了和 qBittorrent 比谁的 GUI 更漂亮。</p>
+<p>其次，长效种子的技术可能继续加深。文档里提到长效种子会登记用户拥有的资源、主动通知其他下载者、使用 TCP/UDP 双协议——这套机制在今天的云服务能力下应该还有升级空间。比如引入更精准的节点筛选、或者把长效种子的"隐性做种"机制做得更透明，减少隐私争议。</p>
+<p>第三，HTTP 镜像搜索和 eMule 插件这两个"兜底通道"大概率会保持现状——它们已经不在 BitComet 的核心投入里了。eMule 网络本身在逐年萎缩，HTTP 镜像搜索的效果也越来越依赖搜索引擎的爬虫策略。但它们作为"最后的救命稻草"的地位不会变，BitComet 不会轻易砍掉任何一个兜底通道。</p>
+<p>最后，我不太看好 BitComet 会在界面现代化或新协议支持上投入太多。这不是他们的主战场。</p>
+<p>如果你手里有一些发布了好几年、BT 种子可能早就掉光的老资源想拉下来，不妨试试它——说不定它就是那个能帮你完成最后 1% 的家伙。</p>
+<hr>
+<p>这套 BitComet 的相关资料我分别同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/BitComet" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/BitComet" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/BitComet" target="_blank" rel="noopener">GitCode</a>三个仓库，国内网络环境下 Gitee 和 GitCode 的访问体验可能更好一些。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gamma-zh-docs.html">Gamma 到底值不值得掏钱？一份按月度重算的付费决策账本</a></h2>
+  <p class="card-desc">我把 Gamma 的免费版和 Pro 版每个功能的实际使用频率、能省的时间、替代方案成本全部拉出来算一遍，帮你三秒决定要不要开年卡。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/halihali-docs.html">哈哩哈哩藏得真深——10 个冷门技巧让你追番效率翻倍</a></h2>
+  <p class="card-desc">哈哩哈哩大家都用来看番，但你知道搜导演名能批量找作品、追番列表能按更新状态筛选、推送没收到可能是电池优化拦了吗？这 10 个隐藏设置翻出来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/poweramp.html">Poweramp 用了两年，从&#34;音质神器&#34;到我通勤路上的默认播放器</a></h2>
+  <p class="card-desc">装 Poweramp 到现在快两年了。从 v3 初期一路更到现在的 build-909，当初冲着&#34;安卓最强音质&#34;来的，现在却发现真正离不开的不是音质，是那些当初没在意的小功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/gamestoday.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">gamestoday 深度盘点：一款让 Android 游戏管理变得省心的工具</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/zfont3.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">zFont3 对比评测：它可能是安卓上覆盖面最广的系统字体工具</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

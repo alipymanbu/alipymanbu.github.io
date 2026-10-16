@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>零代码把网页变手机 App？WebToApp 新手五分钟上手 · 老杨技术栈</title>
+  
+<meta name="description" content="还在纠结怎么把一个网页变成独立的手机应用？WebToApp 让这件事像打包照片一样简单——不用写一行代码，选类型、填链接、点构建，一个属于你的 APK 就出来了。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/webtoapp-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="零代码把网页变手机 App？WebToApp 新手五分钟上手">
+<meta property="og:description" content="还在纠结怎么把一个网页变成独立的手机应用？WebToApp 让这件事像打包照片一样简单——不用写一行代码，选类型、填链接、点构建，一个属于你的 APK 就出来了。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/webtoapp-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/webtoapp-docs/my-apps-empty.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/webtoapp-docs/my-apps-empty.jpg">
+
+<meta name="twitter:title" content="零代码把网页变手机 App？WebToApp 新手五分钟上手">
+<meta name="twitter:description" content="还在纠结怎么把一个网页变成独立的手机应用？WebToApp 让这件事像打包照片一样简单——不用写一行代码，选类型、填链接、点构建，一个属于你的 APK 就出来了。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd8\u5728\u7ea0\u7ed3\u600e\u4e48\u628a\u4e00\u4e2a\u7f51\u9875\u53d8\u6210\u72ec\u7acb\u7684\u624b\u673a\u5e94\u7528\uff1fWebToApp \u8ba9\u8fd9\u4ef6\u4e8b\u50cf\u6253\u5305\u7167\u7247\u4e00\u6837\u7b80\u5355\u2014\u2014\u4e0d\u7528\u5199\u4e00\u884c\u4ee3\u7801\uff0c\u9009\u7c7b\u578b\u3001\u586b\u94fe\u63a5\u3001\u70b9\u6784\u5efa\uff0c\u4e00\u4e2a\u5c5e\u4e8e\u4f60\u7684 APK \u5c31\u51fa\u6765\u4e86\u3002", "headline": "\u96f6\u4ee3\u7801\u628a\u7f51\u9875\u53d8\u624b\u673a App\uff1fWebToApp \u65b0\u624b\u4e94\u5206\u949f\u4e0a\u624b", "image": ["https://alipymanbu.github.io/images/webtoapp-docs/my-apps-empty.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/webtoapp-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/webtoapp-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u96f6\u4ee3\u7801\u628a\u7f51\u9875\u53d8\u624b\u673a App\uff1fWebToApp \u65b0\u624b\u4e94\u5206\u949f\u4e0a\u624b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">零代码把网页变手机 App？WebToApp 新手五分钟上手</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">零代码把网页变手机 App？WebToApp 新手五分钟上手</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">还在纠结怎么把一个网页变成独立的手机应用？WebToApp 让这件事像打包照片一样简单——不用写一行代码，选类型、填链接、点构建，一个属于你的 APK 就出来了。</p>
+  </header>
+  <div class="prose">
+<p>这篇文章能带你从完全不懂到用起来。不需要任何编程基础，甚至不需要知道 APK 是什么——跟着点就行。</p>
+<h2>它到底是干嘛的？一个生活化类比讲明白</h2>
+<p>想象你在奶茶店点了一杯招牌茶饮，觉得好喝想推荐给朋友，但你说不清楚配方。<a href="https://webtoapp.fewa.skin" target="_blank" rel="noopener">WebToApp官网</a> 就像那个「帮你把配方包装成一个独立包装」的服务员——你只要说「这是我喜欢的网页」或者「这是我拍的一组照片」，它帮你打包成一个<strong>能直接装到安卓手机上的独立应用</strong>。</p>
+<p>这个独立应用就是 APK。安装之后，你的手机桌面上会多一个图标，点进去就是你想分享的内容——可以是一个新闻网站的封装，可以是摄影作品集，也可以是一组旅行照片。</p>
+<p>和直接发链接的区别是：它有应用图标，有启动画面，用户安装之后图标一直留在桌面，打开就是全屏浏览，不需要在浏览器地址栏里输网址。</p>
+<h2>五分钟上手：从下载安装到第一次跑通</h2>
+<p>先从<a href="https://webtoapp.fewa.skin/download.html" target="_blank" rel="noopener">官方下载</a>把 WebToApp 装上，打开应用之后你会看到一个干净的界面，左边是类型选择器，右边是配置区。新手第一次建议用最简单的「网页」类型——就拿你平时常逛的某个网站练手。</p>
+<p>第一步，点类型选择器里的「网页」卡片。你会发现其实不止网页一种——画廊、多站点、单张图片都能打包成独立应用，但先专注把网页类型跑通。</p>
+<p>第二步，在基本信息里填三样东西：应用名称（随便起，比如「我的资讯速递」）、应用图标（可以用系统默认，也可以从相册挑一张）、网页地址（比如你常看的某个新闻站点）。</p>
+<p><img src="../images/webtoapp-docs/my-apps-empty.jpg" alt="第一次打开 WebToApp 的界面，空空如也等待你的第一个应用" loading="lazy"></p>
+<p>第三步，点右上角那个看起来像播放按钮的「构建」。屏幕上会出现一个进度条——这就是 WebToApp 在帮你把网页编译成 APK。通常几十秒就好了，网站内容复杂可能要一两分钟。</p>
+<p>第四步，构建完成会弹出「已导出」提示。点一下就能调起系统的 APK 安装器，确认安装。装完回到桌面，你会看到刚才起的那个应用图标——点开，就是你填的那个网页，全屏，没有浏览器地址栏。</p>
+<p>就四步，五分钟，零代码。这就是 WebToApp 的核心用法。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>跑通第一个网页应用之后，别只会点网页类型。新手最值得先碰的三个点，每一个都会让你觉得「原来还能这样」。</p>
+<h3>画廊类型：把照片打包成一个独立相册 App</h3>
+<p>你拍了一堆旅行照片想发给同行朋友，直接发图太散，做 PDF 又嫌麻烦。画廊类型就是为这个场景准备的。</p>
+<p>创建时选择「画廊」卡片，然后选一个图片文件夹，剩下的事情 WebToApp 帮你搞定。你可以选三种布局：网格（规则排列）、瀑布流（高低错落，像 Pinterest）、时间轴（按拍摄日期分组）。</p>
+<p>你会看到什么：导出的 APK 打开之后直接进入图片浏览界面，左右滑动切图，双指缩放看细节，甚至支持把单张图片分享出去。桌面上新出现一个应用图标，上面是你的旅行主题。</p>
+<p>这意味着什么：你的照片不再躺在微信群聊里被刷走，而是作为一个独立应用，朋友安装之后图标一直留在桌面，想起来就能打开翻一翻。</p>
+<h3>Hosts 去广告：规则编译进 APK，不需要 root</h3>
+<p>你可能用过 AdGuard 之类的去广告工具，但那些要么需要 root，要么需要 VPN 通道，要么影响整个系统。WebToApp 的去广告只对<strong>你导出的那个 APK</strong> 生效。</p>
+<p>在应用的通用配置里找到「隐私」卡片，打开 hosts 去广告的总开关。内置了约 20 个主流过滤列表，涵盖广告域名、跟踪器、钓鱼域名、社交网络追踪器——勾选你想要的，保存后<strong>重新构建一次 APK</strong> 就行。</p>
+<p>你会看到什么：新版 APK 运行时，广告请求会在 DNS 层面被拦截，页面直接不加载广告位。不需要安装任何额外工具，不需要 root 权限。</p>
+<p>这意味着什么：你给家人打包的新闻网站、你自己做的作品集，可以在构建时就把广告挡在门外。而且每个应用可以独立配置——新闻站点全开去广告，电商封装可能需要放行购物相关的广告。</p>
+<h3>JS/CSS 模块注入：不改宿主就能给 APK 追加功能</h3>
+<p>假设你打包了一个网站的 APK，过了几周那个网站改版了，旧样式在 WebView 里显示得乱七八糟。换做是其他工具，你得重新打包、重新分发。但 WebToApp 有个模块市场机制。</p>
+<p>在「我的应用」的三点菜单里进模块市场，你可以手动写一段 CSS 覆盖新网站的样式，或者写一段 JS 在页面加载时自动执行某个操作——模块市场能做的远不止这些，<a href="https://webtoapp-docs.pages.dev/" target="_blank" rel="noopener">WebToApp文档</a>里有完整的模块列表和示例。创建好之后选择目标应用点「安装」，模块会下载到设备上，原 APK 不需要重新构建。</p>
+<p>你会看到什么：重新打开 APK，刚才写的样式已经生效，网站显示正常。整个过程不到五分钟，不需要重打包，不需要重新签名，不需要重新分发。</p>
+<p>这意味着什么：你的 APK 有了「热更新」能力——网站改版了、想加个自定义功能、想注入分析脚本，都可以在不碰原宿主的情况下快速搞定。</p>
+<h2>小白的三个常见疑问</h2>
+<p><strong>Q：APK 会不会很大？装多了占空间吗？</strong></p>
+<p>网页类型的 APK 通常在几 MB 到十几 MB 之间，主要是 WebView 内核的大小，实际网页内容是运行时加载的。画廊类型的体积取决于你打包了多少张图片——50 张 2MB 的 JPG 大概会让 APK 变成 120-150MB。如果担心体积，可以用「网页类型 + 远程图片 CDN」的方案，图片放云端，APK 本身很轻。</p>
+<p><strong>Q：iOS 用户能装吗？</strong></p>
+<p>不能。WebToApp 生成的是标准 APK，只能在安卓设备上安装。iOS 用户如果也想看你的内容，可以用网页类型生成一个轻量 WebView APK 作为中间方案，或者直接把网页链接发给对方用浏览器打开。</p>
+<p><strong>Q：我打包的应用更新了，用户那边会自动更新吗？</strong></p>
+<p>不会。APK 的更新机制是用户手动安装新版。如果你需要频繁更新内容又不想每次都让用户重装，可以用模块市场的 JS/CSS 注入机制——在不重建宿主 APK 的情况下追加新功能或样式。如果是画廊类型的图片内容更新，目前还是需要重新打包分发。</p>
+<h2>下一步怎么走</h2>
+<p>跑通网页类型、玩过画廊、体验过去广告和模块注入之后，你应该对 WebToApp 的能力边界有概念了。进阶方向是试试「多站点」类型——它可以把多个网页或画廊聚合到一个应用里，用标签页切换。比如把一个画廊和一个简单的 HTML 介绍页组合在一起，用户点标签就能在作品展示和作者介绍之间来回切换。</p>
+<p>总之，WebToApp 不是什么高深的开发工具，它就是一个帮你把想法快速变成可分享的手机应用的工具箱。上手不难，玩深了也挺有意思。</p>
+<p>这套资料在三个仓库都能拿到，<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/WebToApp" target="_blank" rel="noopener">GitHub</a> 上有完整的文档目录，国内访问速度慢的朋友可以直接去 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/WebToApp" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/WebToApp" target="_blank" rel="noopener">GitCode</a> 查同名仓库，内容是同步更新的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/walkcolor-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">折腾了三天 WalkColor，我终于把手机壁纸换了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/hryfine.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从 HryFine 看百元智能手表的设计哲学——为什么它能撑住 7 天续航</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

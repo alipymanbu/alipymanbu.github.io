@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我的手机不想要它自己的样子——LSPosed 折腾记事 · 老杨技术栈</title>
+  
+<meta name="description" content="从一个想把浏览器手势换掉的下午说起，讲讲我怎么用 LSPosed 让手机变成我想要的模样：刷入、作用域、模块管理，踩过的坑和学到的事。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/lsposed-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的手机不想要它自己的样子——LSPosed 折腾记事">
+<meta property="og:description" content="从一个想把浏览器手势换掉的下午说起，讲讲我怎么用 LSPosed 让手机变成我想要的模样：刷入、作用域、模块管理，踩过的坑和学到的事。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/lsposed-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/lsposed-docs/magisk-install-from-storage.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/lsposed-docs/magisk-install-from-storage.png">
+
+<meta name="twitter:title" content="我的手机不想要它自己的样子——LSPosed 折腾记事">
+<meta name="twitter:description" content="从一个想把浏览器手势换掉的下午说起，讲讲我怎么用 LSPosed 让手机变成我想要的模样：刷入、作用域、模块管理，踩过的坑和学到的事。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u4e00\u4e2a\u60f3\u628a\u6d4f\u89c8\u5668\u624b\u52bf\u6362\u6389\u7684\u4e0b\u5348\u8bf4\u8d77\uff0c\u8bb2\u8bb2\u6211\u600e\u4e48\u7528 LSPosed \u8ba9\u624b\u673a\u53d8\u6210\u6211\u60f3\u8981\u7684\u6a21\u6837\uff1a\u5237\u5165\u3001\u4f5c\u7528\u57df\u3001\u6a21\u5757\u7ba1\u7406\uff0c\u8e29\u8fc7\u7684\u5751\u548c\u5b66\u5230\u7684\u4e8b\u3002", "headline": "\u6211\u7684\u624b\u673a\u4e0d\u60f3\u8981\u5b83\u81ea\u5df1\u7684\u6837\u5b50\u2014\u2014LSPosed \u6298\u817e\u8bb0\u4e8b", "image": ["https://alipymanbu.github.io/images/lsposed-docs/magisk-install-from-storage.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/lsposed-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/lsposed-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u6211\u7684\u624b\u673a\u4e0d\u60f3\u8981\u5b83\u81ea\u5df1\u7684\u6837\u5b50\u2014\u2014LSPosed \u6298\u817e\u8bb0\u4e8b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">我的手机不想要它自己的样子——LSPosed 折腾记事</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我的手机不想要它自己的样子——LSPosed 折腾记事</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从一个想把浏览器手势换掉的下午说起，讲讲我怎么用 LSPosed 让手机变成我想要的模样：刷入、作用域、模块管理，踩过的坑和学到的事。</p>
+  </header>
+  <div class="prose">
+<h2>一个想改浏览器手势的下午</h2>
+<p>上周三下午三点，我坐在公司会议室等着产品经理开会，无聊地戳着手机上的浏览器。我用的这款浏览器有个让我别扭了好几个月的设定：底部上滑是新建标签页，而我习惯的浏览器，上滑应该是关闭当前页。</p>
+<p>这个别扭小到不足以驱动我换浏览器，但大到每次都要愣一秒钟。就在我又一次错滑出一个空白标签的时候，我打开了 Magisk。</p>
+<p>我的手机解锁 bootloader 已经两年了，Magisk 装着用来调试一些 root 权限的东西，但 Zygisk 开关一直没动过。我知道有个叫 LSPosed 的东西能改应用的行为，但一直觉得太折腾——模块装多了容易循环重启，以前用过 Riru 的时候踩过坑。</p>
+<h2>从 Zygisk 开关开始</h2>
+<p>Magisk 设置里翻到 Zygisk，打开了那个开关。手机提示重启，我点了同意。重启的那几十秒里，我在脑子里过了一遍以前的教训：版本不配套会激活失败，模块装错了会循环重启，刷完之后要先装 manager 不然看不见模块。</p>
+<p>但这次感觉不一样。Zygisk 是 Magisk 内置的，不像当年 Riru 是额外刷的 zip，和面具本体经常版本打架。重启回来之后，Magisk 模块页多了一个 Zygisk 的条目，状态显示已启用。</p>
+<p>接下来就是装 LSPosed 本体。这个框架的<a href="https://lsposed.bpfl.quest" target="_blank" rel="noopener">官网</a>上有完整的刷入指引，安装包从<a href="https://lsposed.bpfl.quest/download.html" target="_blank" rel="noopener">官方下载</a>，放到了 Download 目录，Magisk 模块页点"从本地安装"，选那个 zip 文件。控制台开始滚动日志，我盯着等那个 Done 字样——版本检查通过了，Zygisk 状态正常，最后一行跳出来 Done。</p>
+<p><img src="../images/lsposed-docs/magisk-install-from-storage.png" alt="从本地安装选择 zip 的操作过程" loading="lazy"></p>
+<p>重启之后，Magisk 模块列表里出现了框架条目，作者一栏写着官方开发团队，版本号和我下载的那个对上了。这一刻才算真的装上了。</p>
+<p><img src="../images/lsposed-docs/magisk-module-list.png" alt="Magisk 模块列表中的框架条目" loading="lazy"></p>
+<h2>装 manager 和第一个模块</h2>
+<p>LSPosed 本体刷完只是一半，没有 manager 应用你什么都看不见——模块没法勾选作用域，开关也没法管理。我从同一个地方把 manager 装上，打开之后，应用图标静静躺在桌面，点开是一张空白的模块列表。</p>
+<p>真正的乐趣从找模块开始。我第一个找的就是改浏览器手势的模块，搜了一圈，找到一个叫"浏览器手势增强"的，装完回到 manager，它出现在模块列表里。</p>
+<p>然后就到了最关键的一步：勾作用域。这个模块的描述写着"只动指定浏览器"，所以我只勾了我想改手势的那款浏览器，没有勾其他任何应用，更没勾系统框架。</p>
+<p>这里我得说一句，以前我对作用域的态度是"多勾总比少勾好"，结果装了个改状态栏的模块顺手勾了几个银行应用，后来那几个应用启动就崩，排查了半天才发现是这个模块的锅。作用域的纪律真的很重要——模块改的是"某个应用里的东西"就勾那个应用，改的是"所有应用共用的系统部分"才勾系统框架，多勾无益，白担风险。</p>
+<p>勾完之后强停浏览器重开，打开试了一下上滑手势，这回是关闭标签页了。那个别扭了好几个月的小问题，就这么解决了。</p>
+<h2>完整性检查那点事</h2>
+<p>装好框架之后，我第一个想到的是那些用了完整性检查的应用——银行、支付、还有一个远程办公的客户端。我的经验是这样的：软件级校验的那些，作用域里不给它们勾任何模块，再配合 DenyList 加 Shamiko，大部分都能正常用；但硬件级强校验的，框架活跃的时候基本过不去，这是原理层面的限制，不是配置问题。</p>
+<p>远程办公客户端这次真的挂了，直接提示环境异常拒绝启动。试了 DenyList，没用。后来去<a href="https://lsposed-docs.pages.dev/" target="_blank" rel="noopener">lsposed文档</a>翻了一下才弄明白，这个应用用的是硬件级的校验锚定。我放弃了，把这个应用留在没 root 的备用手机上——玩机设备和金融设备分离，这是社区十年下来最实用的建议，没必要跟它死磕。</p>
+<p>好在大部分日常用的应用都没这个问题，框架在它们进程里不存在，该怎么用怎么用。</p>
+<h2>装了十几个模块之后的教训</h2>
+<p>第一个月我装了十几个模块：改状态栏的、换通知风格的、给另一个聊天应用加双击翻译的、自动记录每个应用使用时长的……直到有一天早上，手机开机直接卡在厂商 logo 循环重启。</p>
+<p>我第一反应是安全模式。LSPosed 内置熔断机制，安全模式启动会停用全部模块，这次顺利开机了。打开 manager，逐个禁用模块再重启排查，最后发现是那个改通知风格的模块和一个系统界面补丁冲突了——两个都钩系统界面，打架了。</p>
+<p>删掉那个通知风格模块之后，一切恢复正常。这之后我定下了一条规矩：模块从少到多逐个加，每装一个测试半小时，没问题再加下一个。不要一口气装十来个，出问题了排查起来要命。</p>
+<p>刷框架本身其实没那么大风险，社区千万级装机量，因为刷框架本体变砖的案例极其罕见。真正危险的是装模块和乱动系统分区——乱刷第三方 ROM、误刷错误机型的镜像、Recovery 里乱格式化，这些才是真的会把手机弄成砖的操作，而且和框架本身没关系。</p>
+<h2>现在的样子</h2>
+<p>三个月过去了，我手机上还留着五个模块：浏览器手势、状态栏时钟样式、聊天应用翻译、应用使用统计、还有一个自动跳过启动页广告的。没有再循环重启过，完整性检查该过的过、过不了的老老实实放备用机，LSPosed 的 manager 里作用域勾得清清楚楚。</p>
+<p>回头想，Zygisk 开关那个下午只是个开始。从刷入框架、装 manager、找第一个模块、勾对作用域，到理解完整性检查的边界、学会安全模式自救、建立逐个装模块的习惯——这一套下来，我对 Android 应用层的运作方式理解深了一层，也对"用工具改造自己的设备"这件事有了更踏实的信心。</p>
+<p>如果你也想试试，先备份 boot 镜像，解锁那一刻就把数据备份好，按流程来：核对版本、刷入、模块从少到多逐个加。每一步都有退路，安全模式、Magisk 模块管理、Recovery 删模块，三级保险在那等着。</p>
+<p>这套资料在三个仓库都能拿到：<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/LSPosed" target="_blank" rel="noopener">GitHub</a> 上维护着主备份，<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/LSPosed" target="_blank" rel="noopener">Gitee</a> 做了国内镜像方便访问，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/LSPosed" target="_blank" rel="noopener">GitCode</a> 还有一份归档。挑一个你方便的源就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/anyview-docs.html">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</a></h2>
+  <p class="card-desc">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/metv-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从&#34;一个台&#34;到&#34;一档节目&#34;——MeTV 迭代史里藏着什么产品逻辑</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/famistudio.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从零做出第一首NES 8-bit曲子：FamiStudio实操入门</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

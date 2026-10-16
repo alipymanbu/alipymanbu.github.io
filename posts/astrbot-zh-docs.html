@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零跑通 AstrBot：不会写代码也能搭一个自己的 AI 机器人 · 老杨技术栈</title>
+  
+<meta name="description" content="AstrBot 是一款能接入各大聊天平台的 AI 机器人框架。本文从完全零基础出发，一步步带你把它装起来、跑起来，顺便把新手最该先摸透的几个功能讲清楚。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/astrbot-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零跑通 AstrBot：不会写代码也能搭一个自己的 AI 机器人">
+<meta property="og:description" content="AstrBot 是一款能接入各大聊天平台的 AI 机器人框架。本文从完全零基础出发，一步步带你把它装起来、跑起来，顺便把新手最该先摸透的几个功能讲清楚。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/astrbot-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/astrbot-zh-docs/architecture.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/astrbot-zh-docs/architecture.png">
+
+<meta name="twitter:title" content="从零跑通 AstrBot：不会写代码也能搭一个自己的 AI 机器人">
+<meta name="twitter:description" content="AstrBot 是一款能接入各大聊天平台的 AI 机器人框架。本文从完全零基础出发，一步步带你把它装起来、跑起来，顺便把新手最该先摸透的几个功能讲清楚。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "AstrBot \u662f\u4e00\u6b3e\u80fd\u63a5\u5165\u5404\u5927\u804a\u5929\u5e73\u53f0\u7684 AI \u673a\u5668\u4eba\u6846\u67b6\u3002\u672c\u6587\u4ece\u5b8c\u5168\u96f6\u57fa\u7840\u51fa\u53d1\uff0c\u4e00\u6b65\u6b65\u5e26\u4f60\u628a\u5b83\u88c5\u8d77\u6765\u3001\u8dd1\u8d77\u6765\uff0c\u987a\u4fbf\u628a\u65b0\u624b\u6700\u8be5\u5148\u6478\u900f\u7684\u51e0\u4e2a\u529f\u80fd\u8bb2\u6e05\u695a\u3002", "headline": "\u4ece\u96f6\u8dd1\u901a AstrBot\uff1a\u4e0d\u4f1a\u5199\u4ee3\u7801\u4e5f\u80fd\u642d\u4e00\u4e2a\u81ea\u5df1\u7684 AI \u673a\u5668\u4eba", "image": ["https://alipymanbu.github.io/images/astrbot-zh-docs/architecture.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/astrbot-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/astrbot-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u8dd1\u901a AstrBot\uff1a\u4e0d\u4f1a\u5199\u4ee3\u7801\u4e5f\u80fd\u642d\u4e00\u4e2a\u81ea\u5df1\u7684 AI \u673a\u5668\u4eba", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">从零跑通 AstrBot：不会写代码也能搭一个自己的 AI 机器人</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零跑通 AstrBot：不会写代码也能搭一个自己的 AI 机器人</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">AstrBot 是一款能接入各大聊天平台的 AI 机器人框架。本文从完全零基础出发，一步步带你把它装起来、跑起来，顺便把新手最该先摸透的几个功能讲清楚。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到用起来——不用你会写代码，也不用你懂什么是"大模型 API"，跟着点几下就能把 AstrBot 搭起来、聊上第一句。</p>
+<h2>它到底是干嘛的</h2>
+<p>你可以把 AstrBot 想成一个"AI 机器人的组装台"。去<a href="https://astrbot.yoan.quest" target="_blank" rel="noopener">AstrBot官网</a>溜一圈就能看到它的完整介绍——它本身不带智能——智能是你接进来的各种大模型（比如 GPT、豆包、通义千问）——但它帮你把模型和聊天平台接好线，让机器人能在 QQ、Telegram、Discord、微信这些地方跟人对话。</p>
+<p>更棒的是它的扩展性：你可以给机器人装技能包让它按固定流程干活，可以接 MCP 服务器让它去查论文、翻日历，还可以让它看图、读文件。这些能力都不是硬编码在里面的，全部按需加装。</p>
+<p><img src="../images/astrbot-zh-docs/architecture.png" alt="AstrBot 架构一览" loading="lazy"></p>
+<h2>五分钟上手：从下载到第一次跑通</h2>
+<p>下面是最短路径，跟着走不会踩坑。</p>
+<p><strong>第一步：拿到安装包</strong>。从 AstrBot 的<a href="https://astrbot.yoan.quest/download.html" target="_blank" rel="noopener">下载</a>页拿对应你操作系统的版本——Windows 用户直接下打包好的解压版就行，不用折腾 Python 环境。解压到一个没有中文路径的目录里，双击启动脚本（通常是 <code>start.bat</code>）。</p>
+<p><strong>第二步：打开管理面板</strong>。启动脚本跑完后，浏览器里会自动弹出一个地址（一般是 <code>http://localhost:8080</code>），这就是管理面板。默认用户名和密码在<a href="https://astrbot-zh-docs.pages.dev/" target="_blank" rel="noopener">AstrBot文档</a>里能找到，第一次登录后建议立刻改掉。</p>
+<p><strong>第三步：接入一个大模型</strong>。面板里找到"AI → 提供商"，选一个你有 API Key 的服务商（没有的话豆包、通义都有免费额度），把 Key 粘进去，选一个模型保存。测试一下对话能不能返回东西——能返回就说明模型接好了。</p>
+<p><strong>第四步：接入第一个聊天平台</strong>。面板里"消息平台"那边，选一个你用的（新手推荐 QQ 或 Telegram），按提示填一下机器人的 Token 或 AppID。保存之后启动这个平台插件。</p>
+<p>就是这四步。当你在聊天平台里 @ 机器人说第一句话、它回你消息的那一刻——恭喜，你已经把 AstrBot 跑通了。</p>
+<p><img src="../images/astrbot-zh-docs/webui-overview.png" alt="管理面板总览" loading="lazy"></p>
+<h2>上手后先玩这三个功能</h2>
+<p>跑通只是起点。下面三个功能是新手最值得先摸透的，每一个都能让你对"这个框架到底能干嘛"有全新的理解。</p>
+<h3>装一个 Skills 技能包</h3>
+<p>Skill（技能）是 AstrBot v4.13.0 引入的概念——你可以把它理解成一份"给机器人看的操作手册"。一个技能包就是一个文件夹，里面放一份叫 <code>SKILL.md</code> 的说明文件，写清楚"遇到某类任务时该按什么步骤做"，还能附带辅助脚本。</p>
+<p>上传很简单：面板里找到"插件 → 技能"，右下角点加号，把 ZIP 包拖进去就行。上传完别忘了两件事：一是去"AI → 能力"里配一下运行环境（选 local 让它用你这台机器的环境），二是回到人格设定里勾选这个技能——不勾选等于没激活。</p>
+<p>激活之后怎么触发？直接在对话里说"使用 weekly-report 技能，把以下记录整理成周报"就行。</p>
+<p>你会发现：机器人不再只会瞎聊天，它会按你写好的步骤一步步执行任务。这意味着什么？意味着你可以把重复的手工活打包成技能，让机器人帮你做。</p>
+<h3>接入一个 MCP 服务器</h3>
+<p>MCP（Model Context Protocol，模型上下文协议）是最近很火的一个开放协议——简单说，它让 AI 应用能调用外部工具。一个 MCP 服务器就是一组能被 AI 调用的工具：接了论文检索服务器就能"帮我找最近的 RAG 论文"，接了日历服务器就能查日程。</p>
+<p>AstrBot 原生支持 MCP，入口在"插件 → MCP"。新手最省心的连接方式是 Streamable HTTP——服务商给你一个远程地址，你粘进去，点"测试连接"，能返回工具列表就成了，不用装任何额外环境。</p>
+<p>连接成功之后还不能用。你得去人格设定里，在工具列表里把这个 MCP 服务器的工具勾选上。然后用明确的任务试探一下——"检索最近关于多模态 RAG 的论文，给我标题和链接"——如果它真的去查了，说明接线成功。</p>
+<h3>试试多模态对话</h3>
+<p>不是所有模型都"看得见"图片。但你接的模型如果支持视觉输入（各家旗舰模型大多支持），就可以在聊天里直接发图、发文件、发语音给机器人。</p>
+<p>两条通道都能用：如果你接了 QQ 或 Telegram 平台，直接在聊天里发图就行；或者用内置 ChatUI（管理面板左边菜单里能进），上传附件还有预览，调试多模态行为最方便。</p>
+<p>几个注意点：图片要清晰，文字可辨；大文件有上限，报错时先看日志；敏感内容先脱敏，隐私需求可以考虑走本地模型（Ollama 一类）。</p>
+<h2>小白的三个常见疑问</h2>
+<p>下面这些问题是新手 FAQ 里出现频率最高的，提前知道能帮你省掉好几个小时的排查时间。</p>
+<p><strong>为什么机器人不回复我？</strong> 先别急。最常见的三个原因：模型 API Key 没配对（去"AI → 提供商"里测试一下能不能调通）；消息平台插件没启动（看面板里插件列表是不是显示"已运行"）；你可能没 @ 它——有些平台默认只响应 @ 或者特定前缀的消息。</p>
+<p><strong>我怎么变成管理员？</strong> 两步搞定：在聊天里给机器人发 <code>/sid</code>，它会返回你的用户 ID；然后去管理面板"访问控制 → 管理员"里把这个 ID 加进去，保存。管理员能做的事比普通用户多很多——比如切模型、管插件、改机器人名字。电脑能力（让机器人读写文件、跑代码）默认只对管理员开放，这是 AstrBot 的安全设计，别乱改。</p>
+<p><strong>为什么上传了技能包但触发不了？</strong> 先检查三件事：运行环境配了没有（local / sandbox 二选一，none 的话技能说明都读不了）；人格里勾选了这个技能没有；触发时有没有明确提及技能名和意图。还有一个容易忽略的细节——<strong>同名技能不会被覆盖</strong>，更新技能要先删旧的。</p>
+<h2>接下来往哪走</h2>
+<p>跑通、玩熟上面三个功能，你就已经超过 80% 的新手了。接下来可以考虑接一个 Agent 沙盒环境——让机器人在隔离的虚拟环境里跑代码，这才是真正的"让 AI 动手干活"。</p>
+<p>这套框架的开源社区很活跃，文档也一直在更新。偏好不同托管平台的读者可以各取方便——<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/astrbot" target="_blank" rel="noopener">GitHub</a> 上有完整的英文镜像，<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/astrbot" target="_blank" rel="noopener">Gitee</a> 对国内访问更友好，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/astrbot" target="_blank" rel="noopener">GitCode</a> 则是另一份热更新的备份。不管你是想搭一个个人助理、做一个群聊里的问答机器人，还是想搞点小项目练手，AstrBot 都是一个不错的起点。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gamma-zh-docs.html">Gamma 到底值不值得掏钱？一份按月度重算的付费决策账本</a></h2>
+  <p class="card-desc">我把 Gamma 的免费版和 Pro 版每个功能的实际使用频率、能省的时间、替代方案成本全部拉出来算一遍，帮你三秒决定要不要开年卡。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/halihali-docs.html">哈哩哈哩藏得真深——10 个冷门技巧让你追番效率翻倍</a></h2>
+  <p class="card-desc">哈哩哈哩大家都用来看番，但你知道搜导演名能批量找作品、追番列表能按更新状态筛选、推送没收到可能是电池优化拦了吗？这 10 个隐藏设置翻出来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/poweramp.html">Poweramp 用了两年，从&#34;音质神器&#34;到我通勤路上的默认播放器</a></h2>
+  <p class="card-desc">装 Poweramp 到现在快两年了。从 v3 初期一路更到现在的 build-909，当初冲着&#34;安卓最强音质&#34;来的，现在却发现真正离不开的不是音质，是那些当初没在意的小功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/zenconverter-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">ZenConverter 的 38.8MB 之谜：为什么一个能做 AI 超分的转换器体积却这么小</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/appmanager-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">App Manager 藏了这 5 个功能，90% 的人只用来备份 APK</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

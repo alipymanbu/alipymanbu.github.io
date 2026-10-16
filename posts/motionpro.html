@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>MotionPro 用了一年半：从&#34;凑合用&#34;到&#34;离不开&#34;的 VPN 客户端体验 · 老杨技术栈</title>
+  
+<meta name="description" content="装 MotionPro 是因为公司强制换了 VPN 网关。从最初嫌弃到现在每天必开，聊聊这一年半里哪些地方越用越顺、哪些问题熬到了尽头。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/motionpro.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MotionPro 用了一年半：从&#34;凑合用&#34;到&#34;离不开&#34;的 VPN 客户端体验">
+<meta property="og:description" content="装 MotionPro 是因为公司强制换了 VPN 网关。从最初嫌弃到现在每天必开，聊聊这一年半里哪些地方越用越顺、哪些问题熬到了尽头。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/motionpro.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/motionpro/mobile-connected.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/motionpro/mobile-connected.png">
+
+<meta name="twitter:title" content="MotionPro 用了一年半：从&#34;凑合用&#34;到&#34;离不开&#34;的 VPN 客户端体验">
+<meta name="twitter:description" content="装 MotionPro 是因为公司强制换了 VPN 网关。从最初嫌弃到现在每天必开，聊聊这一年半里哪些地方越用越顺、哪些问题熬到了尽头。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u88c5 MotionPro \u662f\u56e0\u4e3a\u516c\u53f8\u5f3a\u5236\u6362\u4e86 VPN \u7f51\u5173\u3002\u4ece\u6700\u521d\u5acc\u5f03\u5230\u73b0\u5728\u6bcf\u5929\u5fc5\u5f00\uff0c\u804a\u804a\u8fd9\u4e00\u5e74\u534a\u91cc\u54ea\u4e9b\u5730\u65b9\u8d8a\u7528\u8d8a\u987a\u3001\u54ea\u4e9b\u95ee\u9898\u71ac\u5230\u4e86\u5c3d\u5934\u3002", "headline": "MotionPro \u7528\u4e86\u4e00\u5e74\u534a\uff1a\u4ece\"\u51d1\u5408\u7528\"\u5230\"\u79bb\u4e0d\u5f00\"\u7684 VPN \u5ba2\u6237\u7aef\u4f53\u9a8c", "image": ["https://alipymanbu.github.io/images/motionpro/mobile-connected.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/motionpro.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/motionpro.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "MotionPro \u7528\u4e86\u4e00\u5e74\u534a\uff1a\u4ece\"\u51d1\u5408\u7528\"\u5230\"\u79bb\u4e0d\u5f00\"\u7684 VPN \u5ba2\u6237\u7aef\u4f53\u9a8c", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">MotionPro 用了一年半：从&#34;凑合用&#34;到&#34;离不开&#34;的 VPN 客户端体验</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">MotionPro 用了一年半：从&#34;凑合用&#34;到&#34;离不开&#34;的 VPN 客户端体验</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">装 MotionPro 是因为公司强制换了 VPN 网关。从最初嫌弃到现在每天必开，聊聊这一年半里哪些地方越用越顺、哪些问题熬到了尽头。</p>
+  </header>
+  <div class="prose">
+<h2>开头：被 IT 逼着装的那一个</h2>
+<p>说起来 MotionPro 不是我主动选的。去年夏天公司把旧的 SSL VPN 网关换成了 Array Networks 的 AG 系列，IT 群发邮件让所有人卸载旧客户端、装 MotionPro Plus。我当时把这条消息归到"又一个装完就忘的企业软件"里，随便在手机应用商店搜了一下，或者直接从<a href="https://motionpro.fedq.quest/download.html" target="_blank" rel="noopener">下载</a>渠道拿也行，选了 Global 版本装上，它的<a href="https://motionpro.fedq.quest" target="_blank" rel="noopener">官网</a>上也有版本说明和更新日志，填完网关地址和账号密码，能连上内网就行。</p>
+<p>那时候对它的评价是四个字：凑合用。界面长得像个没磨过皮的工业软件，字体生硬，配色就是白加灰。但它能连内网、能访问公司的发布应用，这就够了——对于一个 VPN 客户端来说，能连上就是正义。</p>
+<p><img src="../images/motionpro/mobile-connected.png" alt="手机端已连接状态，VPN 图标显示在通知栏" loading="lazy"></p>
+<h2>第一个月：哪些地方越用越顺手</h2>
+<h3>虚拟网卡切换救了我的命</h3>
+<p>最开始我用公司发的笔记本，Windows 10 家庭版，MotionPro 装好之后每隔半小时就"正在重连"一次，托盘里的 VPN 图标在红黄绿之间反复切换，像个信号不好的收音机。IT 说"你试试在高级配置里把 VNIC 切成 SSTP"，我当时以为这是某种玄学操作，结果切完之后，重连的频率从半小时一次降到了三天一次。后来我自己排查才明白，旧版 Windows 更新之后 SSTP 协议有时候会抽风，反过来切回 VNIC 又能解决另一批问题——这个来回切换的逻辑，现在我已经能背下来了。</p>
+<p><img src="../images/motionpro/vnic-setting.png" alt="高级配置里虚拟网卡类型的切换界面" loading="lazy"></p>
+<h3>发布应用是真爽</h3>
+<p>公司很多业务系统还是老的 Windows 客户端，以前想在 Mac 上用要么装虚拟机要么远程桌面整台机器。MotionPro 的发布应用直接把服务器上的单窗口应用丢到本地桌面，体验和原生应用几乎没区别——看不到远程桌面的背景，也不用管服务器卡不卡。我现在天天在自己的 Mac 上跑财务系统的客户端，就是靠这个功能。缺点是 SSO 密码传不进去，每次点发布应用都要手动再输一遍 RDP 密码，这是个已知限制，IT 说短期改不了，只能忍。</p>
+<h3>安卓版的后台保活做得还行</h3>
+<p>手机上用 MotionPro 的时候，我最担心的是安卓系统把 VPN 进程杀掉。试了几家国产安卓厂商的手机，华为、小米、OPPO 都试过，只要在电池优化里把 MotionPro 设成"允许后台运行"，基本不会掉。相比之下之前用的某款 VPN 客户端，在小米手机上一天能被系统杀掉三次。这个区别是真实的。</p>
+<h2>那些慢慢暴露的问题</h2>
+<h3>Device ID 升级就变</h3>
+<p>MotionPro 的一个设计是用硬件特征生成 Device ID，配合网关端策略做设备绑定——意思是你的账号只能在你那台特定设备上登录，别人拿你账号登不上。听起来挺安全对吧？但我发现每次 MotionPro 客户端升级之后，Device ID 会变。上个月公司推了一次自动升级，升级完我手机上直接登不上了，IT 那边说"你设备绑定失效了"，然后帮我重新绑定。这个问题不是我一个人遇到的，同事群里至少有六七个人升级之后登不上。IT 说这是已知问题，让我们升级前先手动检查一下绑定状态。</p>
+<h3>认证方式多，但文档跟不上</h3>
+<p>MotionPro 支持的认证方式真的挺全：账号密码、双因素（短信/OTP/Push）、客户端证书、Device ID，还有 SSO 对接 Google Workspace 和 Microsoft 365。但问题是，每种认证方式的配置细节，文档里写得都不够细。我去年帮 IT 调试双因素认证的时候，发现文档里关于 RADIUS 对接的部分是旧版的，和实际网关的配置项对不上。后来我去 MotionPro 的<a href="https://motionpro.pages.dev/" target="_blank" rel="noopener">文档</a>翻了最新的配置指南才把问题搞定。如果你在配置上卡住了，别只看厂商给的 PDF，去文档站找最新的在线版本，更新得更及时。</p>
+<h3>Auto Detect 有时候会误判</h3>
+<p>MotionPro 的认证类型有个 Auto Detect 选项，让客户端自动探测网关支持的认证方式。听起来很方便对吧？但我遇到过一次：我手动选了 Certificate 认证，后来又切回 Auto Detect，结果 Device ID 认证直接失效了。这不是我操作错了，是 MotionPro 的一个已知 bug——从手动 Certificate 切到 Auto Detect 之后，Device ID 就再也不认了。遇到这种情况直接选 Manual 手动配置，别依赖自动检测。</p>
+<h2>发布应用：当初嫌它麻烦，现在每天离不开</h2>
+<p>刚装好 MotionPro 的时候，我对发布应用是持怀疑态度的——"不就是远程桌面换了个壳吗"。但用了三个月之后，发布应用成了我每天用得最多的功能。原因很简单：公司的 ERP 客户端只能在 Windows 上跑，而我日常用 Mac。发布应用让我不用装虚拟机、不用开远程桌面会话、不用来回切换窗口，直接把 ERP 当成一个本地应用来用。</p>
+<p>有个细节值得提：如果发布应用的名称里包含日文或中文字符，远程桌面访问可能会出问题。这个是官方 Release Notes 里明写的警告，不是配置问题。我同事曾经因为发布应用名称里加了个中文括号导致连接不上，把括号改成英文的就好了。这个坑，如果你在做发布应用的配置，记得绕开。</p>
+<h2>观感修正：当初高估了自动升级，低估了手动配置的价值</h2>
+<p>刚装 MotionPro 的时候，我觉得"自动推送升级"是个挺好的功能——客户端静默下载新版本，重启一下就完事。但后来升级导致 Device ID 变的事情出过两次之后，我现在对自动升级持保守态度。每次收到升级提示，我先在同事群里问一句"你们升了没？登得上吗？"，确认没人出问题我再升。</p>
+<p>反过来，手动配置的价值是我低估了的。MotionPro 默认配置能跑起来，但如果你愿意花十分钟在高级选项里调一调——虚拟网卡类型、认证方式、设备 ID 的绑定——能解决 80% 你日常遇到的连接问题。我现在给新同事装 MotionPro 的时候，第一件事就是打开高级配置帮他们把虚拟网卡类型检查一遍，比 IT 远程调试快多了。</p>
+<h2>会不会卸载？</h2>
+<p>短期不会。公司的 VPN 网关只认 MotionPro，我没有选择。但如果哪天公司换了网关，我会不会把 MotionPro 留在手机上当个备用工具？大概率不会——MotionPro 是典型的企业绑定客户端，离开配套的 AG 网关它什么都不是。</p>
+<p>什么信号出现我会主动换掉？两个：第一，如果 Device ID 升级就变的问题在接下来的版本里还没修，我会建议 IT 关掉自动升级、统一手动推送；第二，如果发布应用的 SSO 密码传递问题还在，我会考虑在 Mac 上装个轻量的远程桌面客户端做备用。</p>
+<h2>顺手交代一下资料来源</h2>
+<p>这次用到的所有配置细节和已知限制，都是从公司 IT 分享的文档里和在线 MotionPro 文档站看到的。Array Networks 客户端的安装包和版本更新在国内安卓应用市场也都能搜到，下载很方便。</p>
+<p>如果你也在公司用 MotionPro 并且遇到了连接不稳定、升级后登不上、发布应用中文名称报错这些问题，可以去 MotionPro 文档站翻一下对应的章节，大部分问题都有现成的解决方案。文档站的内容更新得比厂商 PDF 快，值得 bookmark 一下。</p>
+<p>这套资料我在三个仓库都同步了一份，方便不同地区的同学访问：<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/MotionPro" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/MotionPro" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/MotionPro" target="_blank" rel="noopener">GitCode</a>。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mirai-docs.html">把 AI 角色原型嵌进内容创作流水线，我是这样用 MIRAI 的</a></h2>
+  <p class="card-desc">做虚拟角色设定以前要翻三份文档、手动演对话，现在用 MIRAI 当原型工场——从灵感收集到社区发布，一条链串起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/hailuo-ai-docs.html">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</a></h2>
+  <p class="card-desc">用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/iapp-docs.html">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</a></h2>
+  <p class="card-desc">从最初的可视化拖拽到裕语言 V7 的成熟，iApp 每一个语言版本背后都是一次产品定位的微调。我们顺着版本号看它的迭代节奏，猜一猜它下一步想做什么。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/bala-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">你以为 BALA 只是 AI 聊天？我翻了三天找出这 5 个藏得真深的玩法</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/kooky-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">第一次用 Kooky？手把手带你从下载到投票</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

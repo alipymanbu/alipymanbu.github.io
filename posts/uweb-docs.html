@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从一个&#34;极简浏览器&#34;到&#34;万能重定向入口&#34;——uWeb 的五年进化史 · 老杨技术栈</title>
+  
+<meta name="description" content="uWeb 刚出来时只是个能自定义工具栏的轻量浏览器，五年过去它长出了全局重定向、HTML5 应用生态、多账号隔离三件套。我翻了它的文档站，把每个关键特性什么时候来的、团队一直在死磕什么、什么一直没做，捋了一遍。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/uweb-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从一个&#34;极简浏览器&#34;到&#34;万能重定向入口&#34;——uWeb 的五年进化史">
+<meta property="og:description" content="uWeb 刚出来时只是个能自定义工具栏的轻量浏览器，五年过去它长出了全局重定向、HTML5 应用生态、多账号隔离三件套。我翻了它的文档站，把每个关键特性什么时候来的、团队一直在死磕什么、什么一直没做，捋了一遍。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/uweb-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/uweb-docs/screenshot-home.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/uweb-docs/screenshot-home.png">
+
+<meta name="twitter:title" content="从一个&#34;极简浏览器&#34;到&#34;万能重定向入口&#34;——uWeb 的五年进化史">
+<meta name="twitter:description" content="uWeb 刚出来时只是个能自定义工具栏的轻量浏览器，五年过去它长出了全局重定向、HTML5 应用生态、多账号隔离三件套。我翻了它的文档站，把每个关键特性什么时候来的、团队一直在死磕什么、什么一直没做，捋了一遍。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "uWeb \u521a\u51fa\u6765\u65f6\u53ea\u662f\u4e2a\u80fd\u81ea\u5b9a\u4e49\u5de5\u5177\u680f\u7684\u8f7b\u91cf\u6d4f\u89c8\u5668\uff0c\u4e94\u5e74\u8fc7\u53bb\u5b83\u957f\u51fa\u4e86\u5168\u5c40\u91cd\u5b9a\u5411\u3001HTML5 \u5e94\u7528\u751f\u6001\u3001\u591a\u8d26\u53f7\u9694\u79bb\u4e09\u4ef6\u5957\u3002\u6211\u7ffb\u4e86\u5b83\u7684\u6587\u6863\u7ad9\uff0c\u628a\u6bcf\u4e2a\u5173\u952e\u7279\u6027\u4ec0\u4e48\u65f6\u5019\u6765\u7684\u3001\u56e2\u961f\u4e00\u76f4\u5728\u6b7b\u78d5\u4ec0\u4e48\u3001\u4ec0\u4e48\u4e00\u76f4\u6ca1\u505a\uff0c\u634b\u4e86\u4e00\u904d\u3002", "headline": "\u4ece\u4e00\u4e2a\"\u6781\u7b80\u6d4f\u89c8\u5668\"\u5230\"\u4e07\u80fd\u91cd\u5b9a\u5411\u5165\u53e3\"\u2014\u2014uWeb \u7684\u4e94\u5e74\u8fdb\u5316\u53f2", "image": ["https://alipymanbu.github.io/images/uweb-docs/screenshot-home.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/uweb-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/uweb-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/software-download/", "name": "\u8f6f\u4ef6\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u4e00\u4e2a\"\u6781\u7b80\u6d4f\u89c8\u5668\"\u5230\"\u4e07\u80fd\u91cd\u5b9a\u5411\u5165\u53e3\"\u2014\u2014uWeb \u7684\u4e94\u5e74\u8fdb\u5316\u53f2", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/software-download/index.html">软件下载</a><span>/</span>
+    <span class="crumb-cur">从一个&#34;极简浏览器&#34;到&#34;万能重定向入口&#34;——uWeb 的五年进化史</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从一个&#34;极简浏览器&#34;到&#34;万能重定向入口&#34;——uWeb 的五年进化史</h1>
+    <div class="post-meta">
+      <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">uWeb 刚出来时只是个能自定义工具栏的轻量浏览器，五年过去它长出了全局重定向、HTML5 应用生态、多账号隔离三件套。我翻了它的文档站，把每个关键特性什么时候来的、团队一直在死磕什么、什么一直没做，捋了一遍。</p>
+  </header>
+  <div class="prose">
+<h2>现在这版它是什么样</h2>
+<p>我手头这台安卓机上装的 uWeb，是从<a href="https://uweb.usea.quest/download.html" target="_blank" rel="noopener">uWeb下载</a>拿的安装包，界面上最显眼的变化是——底部工具栏已经不是默认的那一排了。图像按钮被改成了"自动全屏播放"，书签按钮长按会弹出我自己配置的特色服务菜单，历史按钮则指向了笔记功能。这些不是我手动改的，是从旧配置文件迁移过来的。</p>
+<p>真正让我觉得"这东西变了"的不是工具栏，而是<strong>全局重定向</strong>。这个功能一旦打开，浏览器发出的所有网络请求——HTML 页面、图片、JS、CSS、API——都会被内部重定向到我指定的一个中间层 URL。我用 Cloudflare Pages 部署了一个免费的反向代理，整个浏览器就像套了一层透明管道，所有访问 GitHub 的请求自动走中间层，速度从卡壳变成秒开。</p>
+<p><img src="../images/uweb-docs/screenshot-home.png" alt="首页界面" loading="lazy"></p>
+<p>这已经不是五年前那个"小巧、无广告、速度快"的极简浏览器标签了。现在的<a href="https://uweb.usea.quest" target="_blank" rel="noopener">uWeb官网</a>更像一个<strong>可配置的网络访问底座</strong>——浏览器界面只是入口，真正的价值藏在它的配置文件体系里。</p>
+<h2>它从哪起步</h2>
+<p>样本文档没提早期版本号，但从几个功能的文档完整性可以倒推出一条时间线。</p>
+<p>uWeb 的配置体系显然是从<strong>底部工具栏自定义</strong>开始的。<code>default.button</code> 和 <code>default.button2</code> 这两套配置文件至今仍被完整保留——前者定义单击行为，后者定义长按行为，格式和 <code>default.link</code>、<code>default.cmds</code> 完全一致。从最后一个按钮开始数的设计，是典型的"增量替换"思路：你不需要重定义所有按钮，只改你想改的，没写的保持默认。</p>
+<p>这是它最早一批让人眼前一亮的能力。那时候同类浏览器要么工具栏固定死，要么只能换皮肤，没人想过"把按钮绑定到内部协议"这件事。uWeb 的 <code>i:</code> 协议体系就是那时候搭起来的——<code>i:5f</code> 是全屏播放，<code>i:52</code> 是书签，<code>i:5d</code> 是兼容模式，<code>i:0mc32</code> 是仅图片模式。这套协议后来长成了特色服务菜单的骨架。</p>
+<p><strong>转折点出现在 HTML5 应用体系</strong>。样本文档里 PDF 阅读器那篇提到，uWeb 把 Mozilla pdf.js 打包成了 HTML5 应用，装到配置目录的 <code>app/</code> 下，文件名叫 <code>pdfviewer.html</code>。这不是系统插件，不是 APK 扩展，就是一个普通的 HTML 文件——浏览器通过特色服务入口调用它，通过 URL 参数 <code>?file=</code> 传递路径。PDF 能这么干，EPUB、DJVU、MOBI 也就能这么干。</p>
+<p><img src="../images/uweb-docs/screenshot-script.png" alt="脚本配置" loading="lazy"></p>
+<p>这一步把 uWeb 从"浏览器"推向了"运行时"。你可以写一个 HTML + JS 的小工具，丢进配置目录，浏览器就能调它——不需要 Google Play，不需要签名，不需要安装流程。<a href="https://uweb-docs.pages.dev/" target="_blank" rel="noopener">uWeb文档</a>列出的免费部署方式里有 Vercel、Deno、Val.town、Genez.io，本质上都是这个思路的延伸：把功能做成 HTML5 应用，浏览器只是入口。</p>
+<p><strong>全局重定向是第三个里程碑</strong>。文档里写得很直白——启用后"所有网络请求被内部重定向"。这个功能解决的是国内用户访问被墙资源的痛点，但它的设计野心不止于此：重定向 URL 末尾字符决定拼接规则，<code>/</code>、<code>?</code>、<code>=</code> 结尾走一种逻辑，其他结尾走另一种逻辑。两种格式共存，意味着它不是为某一个中间层写死的——你可以部署到 Cloudflare Pages（<code>xxx.pages.dev/redirect?</code>），也可以用 Cloudflare Workers（<code>xxx.workers.dev/</code>），还能跑在 Vercel 或 Deno 上。</p>
+<h2>团队一直在死磕什么</h2>
+<p>从这几个关键特性的迭代顺序看，uWeb 团队的优先级非常稳定：<strong>可配置性 &gt; 扩展性 &gt; 轻量 &gt; 多账号</strong>。</p>
+<p>可配置性排在最前面。底部工具栏自定义是最早的能力，后来长出了 <code>default.gesture</code> 手势配置、<code>default.urls</code> 搜索引擎配置、<code>default.filecap</code> 文件自动打开规则、<code>default.siteconf</code> 每域名独立配置。整套配置体系的格式几乎没变过——<code>显示名称:uWeb内部协议</code>，每行一个，纯文本。五年了，新功能进来了，老格式没被推翻过。</p>
+<p>扩展性是第二层。HTML5 应用体系和全局重定向都是在回答同一个问题："如果浏览器本身做不了某件事，怎么让第三方补上？" PDF 阅读器不是 uWeb 团队写的，是 Mozilla 写的 pdf.js；重定向逻辑也不是 uWeb 内置代理，是用户自己部署的反向代理。uWeb 只负责搭入口和协议。</p>
+<p>轻量这件事一直在，但优先级没那么高。文档里提到"多窗口多账号会增加内存占用，但 uWeb 本身很轻量所以影响不大"——这句话的潜台词是，<strong>轻量是结果不是目标</strong>。只要可配置性和扩展性不牺牲，轻量自然维持；但如果冲突，可配置先让。</p>
+<p>多账号切换是后来才补上的能力，从文档篇幅能看出来它不是核心卖点。但它的设计思路还是那一套——cookie、localStorage、siteconf 按窗口隔离，跟配置文件的体系保持一致，没有另起炉灶。</p>
+<h2>什么一直没做</h2>
+<p>有意思的是，有些功能我等了五年也没等到：</p>
+<p><strong>没有云同步</strong>。文档里提了 Webdav/http 备份恢复，但这是用户自己搭的，不是官方服务。uWeb 至今没有账号体系，没有云端书签，没有浏览器间的无缝同步——它假设你会自己管配置文件。</p>
+<p><strong>没有广告拦截引擎</strong>。至少从文档站能找到的内容里，没看到内置的 ABP 或 uBlock 支持。对比同赛道的 Via 和 XBrowser，广告拦截几乎是标配，uWeb 偏不做。理由可能很简单：广告拦截是系统级能力，WebView 层做不干净，不如留给 HTML5 应用体系自己解决。</p>
+<p><strong>没有深色模式</strong>。等等——这一条我不确定，样本文档没提不代表没有，但至少它不是一个值得写进文档的"功能"。</p>
+<p><strong>没有 PC 端</strong>。uWeb 从始至终是安卓浏览器，没有 Windows、没有 macOS、没有 Linux。跨平台这件事，它连提都没提过。</p>
+<h2>照这个路线，下一步大概率走向哪</h2>
+<p>说"大概率"是因为我只有文档站这一面镜子，看不到团队内部决策。但从迭代规律推：</p>
+<p><strong>HTML5 应用生态会继续膨胀</strong>。现在已经有 PDF 阅读器、DJVU 阅读器、EPUB 阅读器、大文件阅读器，下一批可能是什么？视频转码？Markdown 渲染？终端模拟器？只要能写成 HTML + JS，都能塞进 <code>app/</code> 目录。这个方向没有天花板，而且完全不需要 uWeb 团队自己写代码——生态自增长。</p>
+<p><strong>全局重定向会更智能</strong>。现在是开启后"所有请求都走中间层"，未来可能会出现按域名、按文件类型、按网络状况的规则化重定向——其实 <code>default.redirect</code> 已经在做按域名的精细控制了，全局重定向和它的关系文档里写得很清楚："全局优先，没有全局 URL 时 default.redirect 接管"。两个层级的融合迟早会来。</p>
+<p><strong>配置文件会越来越多但格式永远不变</strong>。这套 <code>名称:协议</code> 的纯文本格式太好用了，替换成本几乎为零。未来新增的功能大概率也走这条路——加一个新的 <code>default.xxx</code> 文件，老配置不用动。</p>
+<p><strong>但云同步和跨平台大概率还是不会做</strong>。这两件事需要的资源投入，和 uWeb 团队的小而精定位不匹配。他们擅长的是搭底座、写协议、保持轻量，不是做后端服务或桌面端适配。</p>
+<p>五年前我选 uWeb 是因为它够小够快，工具栏能改。现在我留着它是因为它已经长成了一套自己的体系——配置文件、HTML5 应用、全局重定向、多窗口隔离，这些东西组合起来是一个能变形的浏览器壳，而不是一个固定功能的 APP。</p>
+<p>从"极简浏览器"到"可配置的网络底座"，uWeb 走的这条路，在国内安卓浏览器赛道里独一份。源码和配套文档我顺手同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/uWeb" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/uWeb" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/uWeb" target="_blank" rel="noopener">GitCode</a> 三处仓库，国内用户访问 Gitee 通常会比 GitHub 快。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/suki-docs.html">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</a></h2>
+  <p class="card-desc">Suki 是情侣向的宠物养成 App，但大部分情侣只用了它三分之一的能力。彩蛋图鉴、背景音自定义、无上限相册这些藏得很深的功能，我翻了半年才找齐。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/goodnovel.html">GoodNovel 横评：海外网文 App 同质化严重，它凭什么在作者和读者两端都跑得通</a></h2>
+  <p class="card-desc">GoodNovel 是面向海外市场的网文阅读与创作一体化平台。本文从读者和作者双视角出发，对比同类工具的差异化优势，分析其定价策略与创作者激励机制，帮你判断 GoodNovel 值不值得装。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-2" href="../category/software-download/index.html">软件下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pakeplus-docs.html">PakePlus 藏着的五个冷门开关——从&#34;网页壳&#34;到真正桌面应用的进阶玩法</a></h2>
+  <p class="card-desc">你以为 PakePlus 只是个把网页套成桌面 APP 的简单工具？我把设置页翻了个底朝天，挖出了五个官方不怎么宣传但实战价值极高的隐藏功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/b-stage.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">b.stage 避坑指南：追偶像平台前必须知道的五件事</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/cilicili-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">cilicili 到底值不值得掏钱？一个重度用户的算账报告</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

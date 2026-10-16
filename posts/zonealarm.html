@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>ZoneAlarm 装了快两年，从弹框烦到离不开的防火墙到底变了什么 · 老杨技术栈</title>
+  
+<meta name="description" content="从第一次启动对着三层安全区域发呆，到现在每天依赖 Threat Extraction 净化下载的文档，说说长期用 ZoneAlarm 的真实感受变化。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/zonealarm.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZoneAlarm 装了快两年，从弹框烦到离不开的防火墙到底变了什么">
+<meta property="og:description" content="从第一次启动对着三层安全区域发呆，到现在每天依赖 Threat Extraction 净化下载的文档，说说长期用 ZoneAlarm 的真实感受变化。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/zonealarm.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/zonealarm/firewall-panel.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/zonealarm/firewall-panel.png">
+
+<meta name="twitter:title" content="ZoneAlarm 装了快两年，从弹框烦到离不开的防火墙到底变了什么">
+<meta name="twitter:description" content="从第一次启动对着三层安全区域发呆，到现在每天依赖 Threat Extraction 净化下载的文档，说说长期用 ZoneAlarm 的真实感受变化。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u7b2c\u4e00\u6b21\u542f\u52a8\u5bf9\u7740\u4e09\u5c42\u5b89\u5168\u533a\u57df\u53d1\u5446\uff0c\u5230\u73b0\u5728\u6bcf\u5929\u4f9d\u8d56 Threat Extraction \u51c0\u5316\u4e0b\u8f7d\u7684\u6587\u6863\uff0c\u8bf4\u8bf4\u957f\u671f\u7528 ZoneAlarm \u7684\u771f\u5b9e\u611f\u53d7\u53d8\u5316\u3002", "headline": "ZoneAlarm \u88c5\u4e86\u5feb\u4e24\u5e74\uff0c\u4ece\u5f39\u6846\u70e6\u5230\u79bb\u4e0d\u5f00\u7684\u9632\u706b\u5899\u5230\u5e95\u53d8\u4e86\u4ec0\u4e48", "image": ["https://alipymanbu.github.io/images/zonealarm/firewall-panel.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/zonealarm.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/zonealarm.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "ZoneAlarm \u88c5\u4e86\u5feb\u4e24\u5e74\uff0c\u4ece\u5f39\u6846\u70e6\u5230\u79bb\u4e0d\u5f00\u7684\u9632\u706b\u5899\u5230\u5e95\u53d8\u4e86\u4ec0\u4e48", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">ZoneAlarm 装了快两年，从弹框烦到离不开的防火墙到底变了什么</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">ZoneAlarm 装了快两年，从弹框烦到离不开的防火墙到底变了什么</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从第一次启动对着三层安全区域发呆，到现在每天依赖 Threat Extraction 净化下载的文档，说说长期用 ZoneAlarm 的真实感受变化。</p>
+  </header>
+  <div class="prose">
+<p>ZoneAlarm 装到现在快两年了，从 Pro 升到 Extreme 也过了一年半。当初选它没什么特别的理由——就是 Windows Defender 只管杀毒不管防火墙，ZoneAlarm 的<a href="https://zonealarm.laze.skin" target="_blank" rel="noopener">官网</a>上一看就觉得合适，找个能精细控制程序联网行为的东西就行。安装包是从<a href="https://zonealarm.laze.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿的。现在回头看，当初的那个"随便装一个"的决定，让我对安全软件的认知被它悄悄地掰了好几次。</p>
+<h2>越用越顺手的：从弹框轰炸到 Auto 模式的默契</h2>
+<p>刚装 ZoneAlarm 那几天，差点把它卸了。每开一个新软件就弹一个框，问你允不允许联网——Chrome 第一次启动弹框，Steam 更新弹框，连 WinRAR 解压时要联网检查更新都弹框。那时候我直接切到 Ask 模式，以为"每个程序都问一遍总比静默放行安全"，结果第三天就受不了了，弹框多到把正常使用打断。</p>
+<p>后来才弄明白 ZoneAlarm 的 Auto 模式不是偷懒。它有个内置的已知安全程序数据库，Chrome、Firefox、Outlook、Windows 系统进程这些都在里面，自动静默放行。只有不在数据库里的新程序才弹框——这才是正常的防火墙交互逻辑，不是每个程序都问。切回 Auto 模式后，弹框数量直接砍到几乎零。偶尔冒出来一个，一看是我刚装的小众软件或者破解工具，反而觉得 ZoneAlarm 在认真干活。</p>
+<p>这个"只在该出声的时候出声"的分寸感，是我用下来最舒服的地方。不像有些安全软件天天在托盘区跳存在感，ZoneAlarm 安静的时候真的安静。</p>
+<p><img src="../images/zonealarm/firewall-panel.png" alt="ZoneAlarm 主界面的防火墙面板" loading="lazy"></p>
+<h2>越用越烦的：那些当初没注意的小毛病</h2>
+<p>用久了问题才慢慢露出来。</p>
+<p>第一个烦的是应用控制对小众软件的反复弹框。Auto 模式的已知安全数据库覆盖了主流软件，但我偶尔会用到一些国外的小众工具——开发者没知名度、下载量小，ZoneAlarm 数据库里没收录。第一次弹框我选了"允许"，它记住了；第二次还弹，第三次还弹。ZoneAlarm 的记忆机制有时候很固执，同一个程序同一个联网行为，它就是不肯把它加入白名单。我后来去<a href="https://zonealarm.pages.dev/" target="_blank" rel="noopener">zonealarm文档</a>翻了一下才弄明白，好像是那个程序的签名证书有问题，ZoneAlarm 不信任它的签名就反复确认。理解归理解，实际体验就是烦。</p>
+<p>第二个烦的是身份保险箱。当初买 Extreme 套件的时候觉得"送个密码管理器挺好"，用了三个月就放弃了。没有云端同步意味着只有这一台电脑能用——我手机上登网站还是得手动输密码，换了电脑就得导出导入。没有密码生成器，没有双因素认证，没有密码健康检查。对比 Bitwarden 的免费版，身份保险箱简直是个功能残缺的 demo。现在它就躺在托盘区角落里，我连主密码都快忘了。</p>
+<p>第三个烦的是更新。ZoneAlarm 官方说杀毒引擎签名每小时更新、防火墙攻击特征实时推送，但我感觉它的更新机制有时候会卡住——有几次打开主界面发现签名库停在几天前，手动点"检查更新"才开始拉取。这个不是大问题，但每次看到都要手动戳一下，久而久之就觉得它不够"自动"。</p>
+<h2>每天离不开的：Threat Extraction 和三层区域划分</h2>
+<p>有两个功能是现在每天都在碰的。</p>
+<p>第一个是 Threat Extraction——Extreme 独有的文档净化。我每天要收各种各样的 Word、Excel、PDF 附件，有些来自陌生邮件、有些来自客户。以前的习惯是下载前先扫一遍病毒，现在 ZoneAlarm 直接帮我做了。它不是简单地扫描文档里有没有恶意宏，而是主动把文档里所有可被攻击者利用的结构——宏脚本、OLE 嵌入对象、外部超链接——全部剥离，然后重建出一份干净的版本给我打开。原始可疑文档被隔离在后台，我根本碰不到。</p>
+<p>这个功能用了一年多，没出过漏网的文档投毒攻击。朋友那边倒是发生过一次——用的是另一个安全软件，宏文档双击后触发了远程代码执行。对比之下，Threat Extraction 的主动剥离比传统杀毒的"等签名收录再拦截"靠谱得多。杀毒引擎要等恶意宏的签名被数据库收录才能识别，而 Threat Extraction 不管宏是不是已知威胁，只要是可执行结构就先剥掉。</p>
+<p>第二个是三层安全区域划分。Trusted Zone、Internet Zone、Blocked Zone 这个设计，是 ZoneAlarm 和 Windows 自带防火墙最大的区别。我家里的路由器归 Trusted Zone、Medium 级别——能和同网段的 NAS、打印机正常通信，又不让局域网其他设备扫到我的端口。出门连公共 Wi-Fi 自动归 Internet Zone、High 级别——在公网上完全隐身，端口扫描收不到任何响应。上次出差住酒店，隔壁房间有人扫同 Wi-Fi 下的设备，ZoneAlarm 的攻击日志里清清楚楚记着扫描记录，但我电脑这边半点儿反应都没有。</p>
+<p><img src="../images/zonealarm/main-dashboard.jpg" alt="ZoneAlarm 主界面仪表板" loading="lazy"></p>
+<h2>时间修正的那些判断</h2>
+<p>当初装 ZoneAlarm 时做了三个判断，后来全变了。</p>
+<p>第一个，当初觉得"Extreme 太贵了，Pro 就够"。Pro 有杀毒有沙箱，觉得够用了。后来遇到朋友那次宏文档攻击，加上自己下载的文档越来越多，才意识到 Threat Extraction 是真的有用——不是花架子。现在极端套件的授权是五设备两年，折合下来每台设备每年的成本其实没那么高，当初只看了单设备订阅价。</p>
+<p>第二个，当初想"Trusted Zone 调到 High 更安全"。第一次启动向导里我差点就这么干了，还好 ZoneAlarm 弹窗警告说这样会断局域网共享。后来听朋友说他真这么干了，结果连不上家里的 NAS，折腾了半小时才找回来。Medium 级别已经足够抵御来自互联网和局域网的外部攻击了，High 只是让局域网通信也断掉——属于过度安全反而添乱。</p>
+<p>第三个，当初以为身份保险箱是"免费的密码管理器"。三个月后我把它彻底抛弃，换回了 Bitwarden。功能差距不是一星半点，身份保险箱能做的事 Bitwarden 免费版全做了还做得更好，云端同步更是 ZoneAlarm 根本没有的东西。ZoneAlarm 的本地加密无云同步设计对隐私敏感用户可能有吸引力，但对大部分人来说，跨设备同步才是密码管理器的刚需。</p>
+<h2>什么时候该换了</h2>
+<p>短期应该不会换。Threat Extraction 和三层安全区域这两个核心功能，在同类产品里还没找到能替代的——Check Point 自家的反勒索和文档净化技术确实是它最强的护城河。如果哪天 Threat Extraction 失效了，或者 ZoneAlarm 的价格涨到离谱，那时候可能会考虑换。</p>
+<p>但有一件事我已经在做准备了：身份保险箱的内容已经全部迁移到 Bitwarden，Extreme 到期后可能会回退到 Pro——或者干脆退回 Free 版防火墙加 Windows Defender 的组合，只保留 ZoneAlarm 的防火墙精细控制能力。毕竟 Free 版的三层区域划分和应用控制和付费版是一样的，真正让我付费的理由只有 Threat Extraction。</p>
+<p>用了两年 ZoneAlarm，最大的感受是安全软件的"存在感"应该是反过来的——平时越安静越好，关键时刻越管用越好。ZoneAlarm 在关键时刻确实管用，但平时的小毛病也确实烦人。不过话说回来，有哪个安全软件是完美的呢？能用的就是好的。</p>
+<p>ZoneAlarm 的资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/zonealarm" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/zonealarm" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/zonealarm" target="_blank" rel="noopener">GitCode</a>上都有同步——看文档、翻历史版本还是自己下载测试，哪个顺手就用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gamma-zh-docs.html">Gamma 到底值不值得掏钱？一份按月度重算的付费决策账本</a></h2>
+  <p class="card-desc">我把 Gamma 的免费版和 Pro 版每个功能的实际使用频率、能省的时间、替代方案成本全部拉出来算一遍，帮你三秒决定要不要开年卡。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/halihali-docs.html">哈哩哈哩藏得真深——10 个冷门技巧让你追番效率翻倍</a></h2>
+  <p class="card-desc">哈哩哈哩大家都用来看番，但你知道搜导演名能批量找作品、追番列表能按更新状态筛选、推送没收到可能是电池优化拦了吗？这 10 个隐藏设置翻出来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/poweramp.html">Poweramp 用了两年，从&#34;音质神器&#34;到我通勤路上的默认播放器</a></h2>
+  <p class="card-desc">装 Poweramp 到现在快两年了。从 v3 初期一路更到现在的 build-909，当初冲着&#34;安卓最强音质&#34;来的，现在却发现真正离不开的不是音质，是那些当初没在意的小功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/nilight.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">越野夜路被自己灯带坑过之后，我终于把 Nilight 调明白了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/file-converter-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了 file converter 这么久，才发现它藏着这五个冷门玩法</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

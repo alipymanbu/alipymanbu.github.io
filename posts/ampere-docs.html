@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 Ampere 看懂你的手机充电电流——新手五分钟上手 · 老杨技术栈</title>
+  
+<meta name="description" content="还在纠结为什么这根线充得比那根慢？Ampere 帮你实时看到手机到底在吃多少毫安电流，本文从零带你跑通第一次测量。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/ampere-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Ampere 看懂你的手机充电电流——新手五分钟上手">
+<meta property="og:description" content="还在纠结为什么这根线充得比那根慢？Ampere 帮你实时看到手机到底在吃多少毫安电流，本文从零带你跑通第一次测量。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/ampere-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/ampere-docs/measuring-charging.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/ampere-docs/measuring-charging.jpg">
+
+<meta name="twitter:title" content="用 Ampere 看懂你的手机充电电流——新手五分钟上手">
+<meta name="twitter:description" content="还在纠结为什么这根线充得比那根慢？Ampere 帮你实时看到手机到底在吃多少毫安电流，本文从零带你跑通第一次测量。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u8fd8\u5728\u7ea0\u7ed3\u4e3a\u4ec0\u4e48\u8fd9\u6839\u7ebf\u5145\u5f97\u6bd4\u90a3\u6839\u6162\uff1fAmpere \u5e2e\u4f60\u5b9e\u65f6\u770b\u5230\u624b\u673a\u5230\u5e95\u5728\u5403\u591a\u5c11\u6beb\u5b89\u7535\u6d41\uff0c\u672c\u6587\u4ece\u96f6\u5e26\u4f60\u8dd1\u901a\u7b2c\u4e00\u6b21\u6d4b\u91cf\u3002", "headline": "\u7528 Ampere \u770b\u61c2\u4f60\u7684\u624b\u673a\u5145\u7535\u7535\u6d41\u2014\u2014\u65b0\u624b\u4e94\u5206\u949f\u4e0a\u624b", "image": ["https://alipymanbu.github.io/images/ampere-docs/measuring-charging.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/ampere-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/ampere-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 Ampere \u770b\u61c2\u4f60\u7684\u624b\u673a\u5145\u7535\u7535\u6d41\u2014\u2014\u65b0\u624b\u4e94\u5206\u949f\u4e0a\u624b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">用 Ampere 看懂你的手机充电电流——新手五分钟上手</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 Ampere 看懂你的手机充电电流——新手五分钟上手</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">还在纠结为什么这根线充得比那根慢？Ampere 帮你实时看到手机到底在吃多少毫安电流，本文从零带你跑通第一次测量。</p>
+  </header>
+  <div class="prose">
+<p>你是不是也有过这种疑惑：手机插上充电器后，到底在以多快的速度充电？是这个原装头快还是那个第三方快充头猛？充电时后台挂着的那些 App 会不会偷偷吃掉一大半功率？这些问题，以前只能靠"感觉"和标称参数瞎猜，现在只要一个 Ampere 就能让你清清楚楚看到答案。</p>
+<p>这篇指南写给<strong>第一次接触 Ampere 的小白</strong>，全程不需要任何 Android 开发或硬件知识，跟着走一遍，五分钟内你就能看到自己手机的实时电流读数。</p>
+<h2>它到底是干嘛的——一个生活化的类比</h2>
+<p>把手机电池想象成一个水桶，充电器在往里灌水，App 在往外舀水。水桶里水的总量是电量百分比，灌水速度减去舀水速度就是净增加的速度。</p>
+<p>Ampere 做的事，就是在桶上装了一个<strong>流量计</strong>——它告诉你：现在这一秒钟，充电器往桶里灌了多少毫升（充电电流，正值），或者桶里正在漏掉多少毫升（放电电流，负值）。单位是 <strong>mA（毫安）</strong>，1000 mA = 1 A，这个数越大充电越快，越小放电越省电。</p>
+<p><img src="../images/ampere-docs/measuring-charging.jpg" alt="主界面就能看到实时的电流读数" loading="lazy"></p>
+<p>听起来很厉害，但原理其实简单——Android 手机内部都有一个电源管理芯片（PMIC），它内置的电流传感器一直在干活，只是系统默认不把这个数据暴露给普通用户。Ampere 做的就是<strong>读这个传感器的数据，然后用友好的界面展示出来</strong>。这款工具可以在<a href="https://ampere.fedq.ren" target="_blank" rel="noopener">Ampere官网</a>找到。</p>
+<h2>五分钟上手——从下载到第一次跑通</h2>
+<h3>第一步：装 App</h3>
+<p>安装包从<a href="https://ampere.fedq.ren/download.html" target="_blank" rel="noopener">官方下载</a>页面拿就行。Ampere 有免费版和付费 Pro 版，免费版已经覆盖了核心的电流读取、历史记录、桌面小组件，日常用完全够。如果你后续想要通知栏常驻、电池警报、自定义主题这些进阶功能，再考虑升级就行——现在我们先用免费版跑通流程。</p>
+<h3>第二步：打开就等十秒</h3>
+<p>装完直接点开 App。你会看到主界面中间一个大大的数字，下方有两条曲线。<strong>什么都别做，耐心等 10~15 秒</strong>。</p>
+<p>为什么要等？因为 Ampere 启动后需要先探测你的手机用的是哪种测量接口——不同厂商、不同 Android 版本暴露数据的路径不一样，App 得挨个试一遍才能找到对的那一条。</p>
+<h3>第三步：如果出了 0 mA 怎么办</h3>
+<p>如果你等了十秒，数字还是停在 0 mA 或者一直显示"正在检测"，别急，这是最常见的新手障碍。Ampere 给了几个救场选项：</p>
+<ol><li>打开右上角的设置图标，进入「旧测量方法」把开关打开</li><li>再往下找到「测量接口」，里面会列出一排候选路径，挨个点一下，每次切换后等 5 秒看数字有没有跳动</li><li>如果还是不行，重启手机再试一次</li></ol>
+<p><img src="../images/ampere-docs/settings-page.jpg" alt="设置页面里藏着几个救场开关" loading="lazy"></p>
+<p>大部分主流品牌（小米、OPPO、vivo、一加、荣耀、Pixel，2016 年后发布的机型）走不到第三步就能正常出数。如果全部都试过还是 0，那就不是你操作的问题了——很可能你的手机硬件上<strong>没有电流传感器</strong>，或者厂商在固件里把数据封死了。这种情况在一些入门低端机上比较常见，属于硬件限制，不是 Ampere 能解决的。</p>
+<h3>第四步：插上充电器看变化</h3>
+<p>出数之后，拔掉充电器你会看到数字变成<strong>负数</strong>（放电），插上充电器变成<strong>正数</strong>（充电）。试试切换不同的充电头、换不同的数据线，观察数字的跳动——这就是 Ampere 最有价值的用法：<strong>直接对比，哪个组合跑得快一目了然</strong>。</p>
+<h2>上手后先玩这三个功能</h2>
+<h3>1. 充/放电历史列表——看看一晚上掉了多少</h3>
+<p>主界面底部有个历史标签页，每一条记录都有时间戳、电流值和对应的电量变化。点进去还能看到详细曲线。</p>
+<p>你会发现一件很有意思的事：<strong>熄屏充电和亮屏充电，电流读数差很多</strong>。亮屏本身就要耗电，而且屏幕越亮耗电越多，所以充电时尽量锁屏，效率会更高。</p>
+<p><img src="../images/ampere-docs/discharge-list.jpg" alt="历史列表里能回放每一次充放电" loading="lazy"></p>
+<h3>2. 桌面小组件——不用开 App 也能扫一眼</h3>
+<p>长按空白桌面，添加 Ampere 小组件。它会一直显示当前的电流读数和状态图标。充电时看一眼图标颜色就知道有没有在正常充，不用每次都进 App。</p>
+<h3>3. 放电测试——快速定位"什么东西在吃电"</h3>
+<p>拔掉充电器，保持屏幕亮着，记下初始的放电 mA 值（比如 -300 mA）。然后打开 WiFi，等 10 秒再看——读数可能会跳到 -400 mA 甚至更高。关掉 WiFi，读数又会回到 -300。</p>
+<p>这个小实验能让你<strong>直观看到 WiFi、移动数据、GPS 这些模块各自吃掉了多少功耗</strong>。以后你做严肃的充电器对比测试时，就知道要先把所有网络模块都关掉，不然测出来的数字里混进了后台同步、推送通知这些额外功耗，对比就不准了。想知道还有哪些因素会影响读数，回头翻<a href="https://ampere-docs.pages.dev/" target="_blank" rel="noopener">Ampere文档</a>有完整的测试条件控制指南。</p>
+<h2>小白最常问的三个问题</h2>
+<h3>问：为什么同一个充电器，读出来的电流一会儿 1500 mA 一会儿又掉到 800？</h3>
+<p>别担心，这完全正常。手机内部有一套复杂的充电协议握手逻辑——刚插上时会先"试探"一下充电器能提供多大功率，然后逐步拉上去；电池接近满时又会降速进入涓流充电（细水慢灌，保护电池不被过充）。Ampere 读到的是<strong>实时电流</strong>，这个值本来就是动态波动的，不是一个固定数字。</p>
+<h3>问：固件更新后突然变成 0 mA 了，App 坏了吗？</h3>
+<p>App 没坏，是手机变了。Android 系统更新可能会换掉电源管理芯片的驱动、收紧传感器数据的访问权限，导致 Ampere 原来用的那条测量路径在新系统里失效了。</p>
+<p>解决方法很简单：打开 Android 设置 → 应用管理 → 找到 Ampere → 存储 → 点<strong>清除数据</strong>（注意不是"清除缓存"，清缓存不够）→ 再点强制停止 → 重新打开 App。Ampere 会回到出厂默认配置，重新探测新系统的可用接口，十有八九就能恢复。</p>
+<h3>问：免费版和 Pro 版差别大吗？</h3>
+<p>日常看电流、做对比测试、用桌面小组件——免费版完全够用。Pro 版主要解锁三个东西：<strong>通知栏常驻显示</strong>（把 mA 读数塞进下拉通知栏，比小组件更不占桌面）、<strong>电池警报</strong>（温度过高或电压异常时自动推通知）、<strong>自定义主题</strong>。如果你只是想"看懂充电电流"，免费版就够了；如果你想让电流数据变成日常监控的一部分，Pro 值得考虑。</p>
+<h2>写在最后</h2>
+<p>Ampere 是那种<strong>装上就停不下来</strong>的小工具——一旦你看到了真实的电流数字，就再也回不去靠标称参数"盲猜"的状态了。原来我那根 C to Lightning 线居然只有 600 mA，原来快充头插上后要等 20 秒才真正拉到峰值……这些以前不知道的细节，现在一眼就能看清。</p>
+<p>进阶方向的话，建议你试试<strong>充电对比测试</strong>的完整流程：关掉所有网络和后台、锁屏、固定电量区间（比如从 20% 充到 60%），换不同的充电器和数据线跑一遍，你会得到一份非常客观的真实性能排名。</p>
+<p>开源资料我顺手同步了三份：<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Ampere" target="_blank" rel="noopener">GitHub</a>上有完整目录，<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Ampere" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Ampere" target="_blank" rel="noopener">GitCode</a>也各自有一份，挑你访问顺畅的用就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/fromm.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">fromm 是什么？一份关于韩国偶像粉丝私信 App 的快问快答</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/brickit-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">我用 Brickit 把每月积木清点从三天缩到半小时——一条扫描到复刻的完整链</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

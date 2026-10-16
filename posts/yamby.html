@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>换了三台手机，Yamby 还在我主屏幕上 · 老杨技术栈</title>
+  
+<meta name="description" content="从 Emby 官方客户端逃到 Yamby 大半年，说点时间才能晒出来的真感受——MD3 设计、缓存手感、4K 播放那些当初没注意的细节，慢慢都显形了。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/yamby.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="换了三台手机，Yamby 还在我主屏幕上">
+<meta property="og:description" content="从 Emby 官方客户端逃到 Yamby 大半年，说点时间才能晒出来的真感受——MD3 设计、缓存手感、4K 播放那些当初没注意的细节，慢慢都显形了。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/yamby.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/yamby/library-home.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/yamby/library-home.jpg">
+
+<meta name="twitter:title" content="换了三台手机，Yamby 还在我主屏幕上">
+<meta name="twitter:description" content="从 Emby 官方客户端逃到 Yamby 大半年，说点时间才能晒出来的真感受——MD3 设计、缓存手感、4K 播放那些当初没注意的细节，慢慢都显形了。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece Emby \u5b98\u65b9\u5ba2\u6237\u7aef\u9003\u5230 Yamby \u5927\u534a\u5e74\uff0c\u8bf4\u70b9\u65f6\u95f4\u624d\u80fd\u6652\u51fa\u6765\u7684\u771f\u611f\u53d7\u2014\u2014MD3 \u8bbe\u8ba1\u3001\u7f13\u5b58\u624b\u611f\u30014K \u64ad\u653e\u90a3\u4e9b\u5f53\u521d\u6ca1\u6ce8\u610f\u7684\u7ec6\u8282\uff0c\u6162\u6162\u90fd\u663e\u5f62\u4e86\u3002", "headline": "\u6362\u4e86\u4e09\u53f0\u624b\u673a\uff0cYamby \u8fd8\u5728\u6211\u4e3b\u5c4f\u5e55\u4e0a", "image": ["https://alipymanbu.github.io/images/yamby/library-home.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/yamby.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/yamby.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u6362\u4e86\u4e09\u53f0\u624b\u673a\uff0cYamby \u8fd8\u5728\u6211\u4e3b\u5c4f\u5e55\u4e0a", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">换了三台手机，Yamby 还在我主屏幕上</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">换了三台手机，Yamby 还在我主屏幕上</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 5 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 Emby 官方客户端逃到 Yamby 大半年，说点时间才能晒出来的真感受——MD3 设计、缓存手感、4K 播放那些当初没注意的细节，慢慢都显形了。</p>
+  </header>
+  <div class="prose">
+<p>装 Yamby 到现在快九个月了，换了三台手机它都留在主屏幕的同一格位置。当初从<a href="https://yamby.fewa.skin" target="_blank" rel="noopener">官网</a>了解到它是 Emby 客户端里最早完整跟进 MD3 的，就换掉了用了两年的官方客户端——那套老派设计实在腻了。</p>
+<h2>变化一：越用越顺手的地方</h2>
+<p>最明显的是图片缓存。第一次进媒体库加载那批海报墙的时候我还嘀咕「怎么还没出来」，第二次秒开——后来才知道它默认 256MB 的缓存上限、7 天过期策略，1000 部影片的库命中率能到 90% 以上。缓存文件按服务器图片 API 链接的 MD5 哈希存，不同服务器的图不冲突，这点做得出乎意料地细致。</p>
+<p>后来发现 Yamby 是 Emby 客户端里最早完整跟进 MD3 的。大圆角卡片、动态取色跟壁纸走、更大的触摸目标——这些设计决策不是好看而已。单手操作时误触率明显降低，平板横屏自动扩展多列不浪费屏幕空间，折叠屏响应式布局也有考虑。底部导航四个固定入口（媒体库、搜索、收藏、设置）一开始觉得少，用久了才感激这种克制：所有功能在四栏里组织，不会出现层级过深翻半天找不到设置的情况。</p>
+<p><img src="../images/yamby/library-home.jpg" alt="主界面海报墙" loading="lazy"></p>
+<h2>变化二：慢慢暴露的烦人事</h2>
+<p>缓存的过期机制有时候反而是个坑。Emby 服务器上管理员改了封面图，Yamby 客户端不会立刻看到——本地缓存里存的还是旧图。等七天自然过期太慢了，手动刷新的入口藏得比较深：长按封面才能调出来「刷新图片」选项。我有两次以为服务器没同步，折腾半天原来是缓存的问题。</p>
+<p>4K 播放的卡顿排查也得花点功夫，对照<a href="https://yamby.pages.dev/" target="_blank" rel="noopener">Yamby文档</a>里的排查步骤一条条来才快。Yamby 长按下能调出播放信息面板，里面显示硬解/软解、帧率、码率、CPU 占用、转码状态。我那台老骁龙 845 的手机 HEVC 硬解能力有限，软解 4K 时开视频滤镜 CPU 直接 100%，关了锐化反交错才能流畅。公网播放还得算带宽，把最大播放码率调到实际带宽的 70% 才稳。这些都不是 bug，但新手第一次碰 4K 大概率会卡。</p>
+<p>还有安装渠道的问题。Google Play 下架后，安装包从<a href="https://yamby.fewa.skin/download.html" target="_blank" rel="noopener">官方下载</a>或官方 Telegram 频道获取，第三方下载站可能捆绑广告。权限倒是按需授予就行，拒绝非必要权限不影响核心功能——这点做得到位，但安装来源得自己盯紧。</p>
+<h2>变化三：哪部分已成依赖、哪部分再也没碰过</h2>
+<p>每天必用的是首页推荐区的「继续观看」，断点续播能记住精准到秒。全局搜索支持模糊匹配，找一部冷门片不用翻分类。收藏栏也常开着，把常看的剧放进去比在媒体库里翻快多了。</p>
+<p>Pro 功能区我到现在没开通，也没感到有啥必须的。画中画权限开了但很少用——我习惯看完一部再开下一部，边看边干别的场景没那么多。</p>
+<p><img src="../images/yamby/settings-screen.jpg" alt="设置界面" loading="lazy"></p>
+<h2>观感修正：当初高估和低估了什么</h2>
+<p><strong>高估了什么</strong>：MD3 动态取色。刚装上那会儿觉得「跟着壁纸变色」特别酷，实际上一周后就审美疲劳了——换了三四次壁纸，Yamby 的界面每次都来一遍新配色，反而觉得不如固定主题稳。现在反而更怀念 Emby 官方那种不变的色调，不会因为换了一张壁纸突然觉得应用很陌生。</p>
+<p><strong>低估了什么</strong>：按需授予权限这件事。Yamby 不会一上来就要全部权限，网络、存储、画中画、通知都是用到的时候才弹。之前用过几款别的客户端，首次启动就弹一堆权限请求，不给就不让进。这种克制在 Android 生态里真的少见，也让我对这个开发者的做事风格多了几分信任。</p>
+<h2>去留结论</h2>
+<p>短期不会卸载。主要原因是缓存手感——换了三台手机每台第一次用 Yamby 加载完媒体库后，第二次打开的秒开体验就留下来了，这个细节太实在。4K 播放的问题我也摸清楚了，设备升级后应该不是瓶颈。</p>
+<p>什么信号出现就该换？两个：一是 Emby 官方客户端哪天终于更新到 MD3 设计并解决掉我积累的那些小抱怨，二是 Yamby 的开发者突然跑路不再维护——不过从官方 Telegram 频道还在正常发版来看，暂时不用担心。</p>
+<p>现在回想当初装 Yamby 的理由就一个「换个新设计看看」，九个月后留下的却是一堆时间才能发现的细节。这类 Android 客户端的魅力大概就在这：不靠花哨功能，靠每天都要按的那些按钮、每天都要看的那些海报、每天都要等的那些加载时间——时间久了，手感比啥都重要。顺便提一句，我整理的这类客户端资料分别放在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Yamby" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Yamby" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Yamby" target="_blank" rel="noopener">GitCode</a>，国内访问各有优势。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/simpler-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">用了 Simpler 八个月，我来说说哪些功能真的留得住人</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/afreeca-tv.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用了半年 Afreeca TV 才发现这五个隐藏功能，直播体验直接翻番</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

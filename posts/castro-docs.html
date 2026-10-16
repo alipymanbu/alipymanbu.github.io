@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 Castro 查了两周参数，踩出来的五个深坑 · 老杨技术栈</title>
+  
+<meta name="description" content="Castro 看着就是个参数工具，但真用来验机、调性能、查驱动的时候，我发现自己一开始完全没看懂读数。这篇把我踩过的几个典型坑摊开说，帮你少走弯路。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/castro-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Castro 查了两周参数，踩出来的五个深坑">
+<meta property="og:description" content="Castro 看着就是个参数工具，但真用来验机、调性能、查驱动的时候，我发现自己一开始完全没看懂读数。这篇把我踩过的几个典型坑摊开说，帮你少走弯路。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/castro-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/castro-docs/cpu-detail.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/castro-docs/cpu-detail.png">
+
+<meta name="twitter:title" content="用 Castro 查了两周参数，踩出来的五个深坑">
+<meta name="twitter:description" content="Castro 看着就是个参数工具，但真用来验机、调性能、查驱动的时候，我发现自己一开始完全没看懂读数。这篇把我踩过的几个典型坑摊开说，帮你少走弯路。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Castro \u770b\u7740\u5c31\u662f\u4e2a\u53c2\u6570\u5de5\u5177\uff0c\u4f46\u771f\u7528\u6765\u9a8c\u673a\u3001\u8c03\u6027\u80fd\u3001\u67e5\u9a71\u52a8\u7684\u65f6\u5019\uff0c\u6211\u53d1\u73b0\u81ea\u5df1\u4e00\u5f00\u59cb\u5b8c\u5168\u6ca1\u770b\u61c2\u8bfb\u6570\u3002\u8fd9\u7bc7\u628a\u6211\u8e29\u8fc7\u7684\u51e0\u4e2a\u5178\u578b\u5751\u644a\u5f00\u8bf4\uff0c\u5e2e\u4f60\u5c11\u8d70\u5f2f\u8def\u3002", "headline": "\u7528 Castro \u67e5\u4e86\u4e24\u5468\u53c2\u6570\uff0c\u8e29\u51fa\u6765\u7684\u4e94\u4e2a\u6df1\u5751", "image": ["https://alipymanbu.github.io/images/castro-docs/cpu-detail.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/castro-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/castro-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "\u7528 Castro \u67e5\u4e86\u4e24\u5468\u53c2\u6570\uff0c\u8e29\u51fa\u6765\u7684\u4e94\u4e2a\u6df1\u5751", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">用 Castro 查了两周参数，踩出来的五个深坑</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 Castro 查了两周参数，踩出来的五个深坑</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Castro 看着就是个参数工具，但真用来验机、调性能、查驱动的时候，我发现自己一开始完全没看懂读数。这篇把我踩过的几个典型坑摊开说，帮你少走弯路。</p>
+  </header>
+  <div class="prose">
+<p><a href="https://castro.uerg.quest" target="_blank" rel="noopener">Castro官网</a> 说起来就是个 Android 设备信息工具——仪表盘、CPU 频率、GPU 状态、屏幕测试，界面干干净净的，第一次打开我以为"这不就是个更漂亮的 AIDA64 吗"。结果用了两周，踩了一连串的坑，有的坑甚至让我差点把软件卸载了重装。写这篇就是想把这些教训整理出来，毕竟踩过的坑如果能让别人绕过去，也算值了。</p>
+<p>我用它主要是两个场景：一是二手手机验机，二是自己玩游戏掉帧时查原因。这两个场景刚好覆盖了我踩坑最多的模块——屏幕测试、CPU/GPU 监控、驱动读取。下面逐个说。</p>
+<h2>坑一：GPU 模块一片空白，以为软件坏了</h2>
+<p>第一次在我那台老小米上打开 GPU 模块，只看到 Adreno 640 这个型号，下面频率、负载、温度全是空的，连实时跳动的数字都没有。我当时第一反应：这软件读取权限没拿到，或者版本不兼容。卸载后从<a href="https://castro.uerg.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿新版本重装，甚至换回旧版本试试，折腾了半小时还是一样。</p>
+<p>后来才明白这根本不是 Castro 的问题，是厂商的事。很多机型的 GPU 驱动压根不让第三方应用读取实时负载和温度——这是 Android 生态里的老问题了，厂商觉得这些信息涉及性能调优的"敏感数据"，干脆在驱动层就封死了。Castro 遇到这种情况只能显示静态规格，不是它没读到，是根本没数据可读。</p>
+<p>解法很简单：先查一下你的机型有没有社区反馈说 GPU 实时数据可用。如果同机型别人也只有静态信息，那就不用折腾了。刷机换成开放内核（比如某些第三方 ROM）可能会解开，但那已经超出普通用户的范畴了。</p>
+<h2>坑二：CPU 频率卡片上数字一直在跳，读数根本"不准"</h2>
+<p>仪表盘里那张 CPU 频率卡片是我最喜欢的部分，八个核心的频率柱状图并排摆着，一目了然。但刚用的时候我总觉得哪里不对——开个设置页面，大核频率一下跳到顶一下又掉下来，我盯着看了十秒钟，频率没一个瞬间是稳定的。这让我很怀疑：这数字到底准不准？</p>
+<p><img src="../images/castro-docs/cpu-detail.png" alt="CPU 频率卡片" loading="lazy"></p>
+<p>实际上这不是读数不准，是我对 DVFS（动态电压频率调整）的理解错了。手机的 CPU 和桌面端不一样，它不会维持一个固定频率跑，而是根据当前负载动态调整——打开应用的瞬间需要算力，DVFS 立刻把大核频率拉上去；等页面加载完进入空闲，一秒之内就降回基频省电。你看到的"一直在跳"恰恰是 DVFS 在正常工作，反而如果频率长时间钉在某个数值不动，那才是有问题（比如温控锁频了）。</p>
+<p>所以用 CPU 频率卡片的时候不要盯着单帧读数看，而是<strong>观察趋势</strong>——游戏场景下大核能不能持续维持在高位？空闲时能不能顺利降频？前者决定性能，后者影响续航。</p>
+<h2>坑三：游戏掉帧只盯 CPU，忽略了 GPU 才是真正的瓶颈</h2>
+<p>这是我踩过最久的坑。手机玩《原神》掉帧，我第一反应就是打开 Castro 看 CPU 使用率——哦，大核跑到 90% 了，果然是 CPU 不行。然后想办法降压超频，搞了半天效果也不明显。</p>
+<p>直到有一天我同时盯着 CPU 和 GPU 两个模块看，才发现问题：CPU 确实高，但 GPU 频率直接拉到了最高而且使用率持续 95% 以上，CPU 高只是因为在等 GPU 渲染完送回来的数据。真正的瓶颈在 GPU 这边——图形设置调得超过了 GPU 的极限，CPU 被迫在做同步等待。</p>
+<p>从那以后我养成了一个习惯：<strong>掉帧时先看 GPU 再看 CPU</strong>。如果 GPU 满载而 CPU 使用率低，调低画质或分辨率；如果 CPU 满而 GPU 空闲，那才是应用没有正确使用硬件加速，或者在做非图形密集型计算（比如后台在同步大量数据）。</p>
+<h2>坑四：温控降频只看 CPU 频率，忘了跳 Thermal 状态页</h2>
+<p>有段时间我手机一玩游戏就掉帧，CPU 大核频率直接被压到一半。我第一反应是应用调度有问题，把游戏后台清了重开，还是压频率。翻了好一会 Castro 的菜单才想起 Thermal 状态页——进去一看，CPU 温度已经到 72°C，温控策略主动把大核频率砍了一半。</p>
+<p>这事儿说出来很蠢，但我猜不止我一个人犯过。Castro 的模块是分开的：CPU 频率卡只负责摆读数，温控状态在独立的 Thermal 页面。你不主动跳过去看，频率压下来的原因永远是个谜。现在我只要看到大核频率被压，第一反应就是切 Thermal 看温度，而不是先折腾应用调度。</p>
+<p>顺便提一句，GPU 也有独立温度传感器的机型（比如骁龙 8 系的部分平台），GPU 温度超过 60°C 也会触发频率限制，逻辑和 CPU 一样，别只盯 CPU 那一侧。</p>
+<h2>坑五：验机时屏幕测试只测坏点，忘了触摸和边缘</h2>
+<p>这是我最早用 Castro 的场景——二手验机。第一次验机的时候我只盯着坏点测试，五纯色轮完发现没亮点暗点，就放心付了钱。结果用了三天发现屏幕左边框触摸偶尔失灵，打字时光标会跳到屏幕外。</p>
+<p>后来去<a href="https://castro-docs.pages.dev/" target="_blank" rel="noopener">Castro文档</a>翻了一下才弄明白——它根本就是三件套：坏点检查、触摸测试、颜色准确性。触摸测试要在全屏深色背景上连续划线，覆盖整个屏幕尤其是四个角和边缘——我那台机器左边框的触摸驱动有缺陷，画线到那个区域就会断触。颜色测试则是并排纯色方块比偏色，白色明显泛黄的话面板质量就有问题。</p>
+<p>现在验机我固定三分钟流程：先划满屏触摸线、再轮五纯色坏点、最后盯一眼白色纯不纯。比事后发现问题再回头找卖家高效得多。</p>
+<p><img src="../images/castro-docs/dashboard-main.png" alt="屏幕测试" loading="lazy"></p>
+<h2>防坑清单</h2>
+<p>写了这么多，最后浓缩成几条速查，下次打开 Castro 的时候扫一眼：</p>
+<ul><li>GPU 模块只有静态规格 = 厂商驱动锁了，不是软件坏了，别重装</li><li>CPU 频率一直在跳 = DVFS 正常工作，看趋势别看单帧</li><li>掉帧排查顺序：先 GPU 再 CPU，别让 CPU 高使用率蒙了你</li><li>大核频率被压 = 立刻切 Thermal 看温度，别先折腾应用</li><li>验机屏幕测试 = 触摸 + 坏点 + 颜色三件套，少做一件漏一个坑</li></ul>
+<p>其实说来说去，Castro 本身没什么坑，坑都是我自己的认知盲区——看到一个读数就想当然地下结论，没去想"为什么会这样"。用多了就明白，这种工具的价值从来不是给你一个"好/坏"的判定，而是把原始数据摆出来让你自己判断。知道这些坑之后，这软件其实相当省心——对了，写这篇时参考的资料散落在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Castro" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Castro" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Castro" target="_blank" rel="noopener">GitCode</a>三个仓库里，看哪个方便用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gamma-zh-docs.html">Gamma 到底值不值得掏钱？一份按月度重算的付费决策账本</a></h2>
+  <p class="card-desc">我把 Gamma 的免费版和 Pro 版每个功能的实际使用频率、能省的时间、替代方案成本全部拉出来算一遍，帮你三秒决定要不要开年卡。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/halihali-docs.html">哈哩哈哩藏得真深——10 个冷门技巧让你追番效率翻倍</a></h2>
+  <p class="card-desc">哈哩哈哩大家都用来看番，但你知道搜导演名能批量找作品、追番列表能按更新状态筛选、推送没收到可能是电池优化拦了吗？这 10 个隐藏设置翻出来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/poweramp.html">Poweramp 用了两年，从&#34;音质神器&#34;到我通勤路上的默认播放器</a></h2>
+  <p class="card-desc">装 Poweramp 到现在快两年了。从 v3 初期一路更到现在的 build-909，当初冲着&#34;安卓最强音质&#34;来的，现在却发现真正离不开的不是音质，是那些当初没在意的小功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/lovemo.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">lovemo 的养成线架构：为什么先开聊再捏人</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/qbot-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">QBot 深度盘点：QQ 浏览器里藏着的 AI 能力到底有多强</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

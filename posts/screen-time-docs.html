@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Screen Time 用了半个月，踩过的五个坑一次说清 · 老杨技术栈</title>
+  
+<meta name="description" content="以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/screen-time-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Screen Time 用了半个月，踩过的五个坑一次说清">
+<meta property="og:description" content="以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/screen-time-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/screen-time-docs/home-main.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/screen-time-docs/home-main.png">
+
+<meta name="twitter:title" content="Screen Time 用了半个月，踩过的五个坑一次说清">
+<meta name="twitter:description" content="以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u4e3a\u88c5\u4e2a\u7edf\u8ba1\u8f6f\u4ef6\u5c31\u80fd\u7ba1\u597d\u624b\u673a\uff1f\u6ca1\u8fd9\u4e48\u7b80\u5355\u2014\u2014\u5e73\u5747\u503c\u53e3\u5f84\u4f1a\u9a97\u4eba\u3001\u4e2d\u4f4d\u6570\u85cf\u5728\u70b9\u51fb\u91cc\u3001\u9ed8\u8ba4\u6863\u4f4d\u9519\u4e86\u767d\u770b\u3001\u6743\u9650\u88ab\u56de\u6536\u8fd8\u4e0d\u81ea\u77e5\u3002\u4e94\u4e2a\u771f\u5b9e\u5751\uff0c\u8e29\u8fc7\u624d\u77e5\u9053\u3002", "headline": "Screen Time \u7528\u4e86\u534a\u4e2a\u6708\uff0c\u8e29\u8fc7\u7684\u4e94\u4e2a\u5751\u4e00\u6b21\u8bf4\u6e05", "image": ["https://alipymanbu.github.io/images/screen-time-docs/home-main.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/screen-time-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/screen-time-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "Screen Time \u7528\u4e86\u534a\u4e2a\u6708\uff0c\u8e29\u8fc7\u7684\u4e94\u4e2a\u5751\u4e00\u6b21\u8bf4\u6e05", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">Screen Time 用了半个月，踩过的五个坑一次说清</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Screen Time 用了半个月，踩过的五个坑一次说清</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+  </header>
+  <div class="prose">
+<p>在 <a href="https://screen-time.hfdk.space" target="_blank" rel="noopener">Screen Time官网</a> 上一眼就被主界面的柱状图吸引了——我装它的动机也很简单：手机从早亮到晚，想看看时间到底花在哪了。第一次打开界面拍胸脯觉得"这软件也太好懂了吧"，结果接下来一周连着踩了好几个坑，差点以为软件坏了要重装。</p>
+<p>其实这些问题都不是 bug，就是没人告诉你而已。</p>
+<h2>坑一：那个大数字我看了整整三天才发现读错了</h2>
+<p>主界面数据卡右边那个大号数字，我一开始以为不管哪天都是"每天平均几小时"——直到有天总时长显示 8 分多钟，那个大数字跳成了 21 秒，我盯着屏幕愣了好一会儿。</p>
+<p>后来才搞明白：<strong>日视图的大数字是"每小时平均"，分母是 24；周视图的大数字才是"每日平均"，分母是 7</strong>。这两个数字回答的问题完全不一样，我把日视图的 21 秒当成了"今天平均每天才用 21 秒"来自我感动了整整三天。</p>
+<p>日视图的每小时平均天然偏小——凌晨那八个小时零使用也被摊进了 24 小时，所以它不是"我今天用得多不多"的答案，而是"平摊下来每个小时用了多久"。真正判断"今天用得猛不猛"，得看逐小时柱状图，把柱子和那条红横线比，高出平均线越多的时段就是重灾区。</p>
+<p>周视图的每日平均才是一周整体水平的靠谱指标。单看某一天容易被偶然行为误导，比如周末刷了一天短视频，单日数字爆高，但放到周维度里就被拉回了平均。</p>
+<h2>坑二：中位数功能我找了一周，原来藏在点击里</h2>
+<p>周视图的红横线默认是平均值，但平均值有个致命弱点——对极端值太敏感。某一天我爆用了 16 小时（赶项目熬夜写文档），那一根柱子直接把整周的红线拉高了一大截，平均值从 2 小时跳到了 4 小时。</p>
+<p>那天我盯着界面吐槽了五分钟"这平均假得离谱"，甚至一度怀疑软件算法有问题，直到翻到文档才知道：<strong>1.4.0 版本起，点一下那个大数字就能在平均值和中位数之间切换</strong>——中位数才是"典型的一天"，它会把那根 16 小时的柱子完全忽略掉。</p>
+<p>试了一下，点完数字瞬间跳到 2 小时，那才是我六天里真实的日常水平。平均值远高于中位数 = 这周有个别失控日；两者接近 = 这周用得很均匀。这个判断逻辑比单纯看数字实用多了。</p>
+<p><img src="../images/screen-time-docs/home-main.png" alt="点一下大数字就能切平均值和中位数" loading="lazy"></p>
+<h2>坑三：默认时间段没设对，每次打开都白切换</h2>
+<p>我习惯每天睡前打开瞄一眼"今天用多久"，但每次进主界面都默认停在周视图，还得手动切一下到日视图——我以为这就是软件的固定逻辑，连续点了三天才想到"会不会有设置"。</p>
+<p>果然在设置页的显示组里有个「默认显示的时间段」选项，可以选周或日。选了日之后，每次打开直接就是当天的逐小时柱状图，第一眼就知道今天用得怎么样，不用再多一次无意义的切换。</p>
+<p>这个小选项看起来不起眼，但行为习惯类工具的"第一眼"很关键。想控制"今天"的人，每次先看到当天总量比先看到周平均更有行动提示作用——毕竟你想改的是今天，不是上周。</p>
+<p><img src="../images/screen-time-docs/settings.png" alt="设置里的默认时间段选项" loading="lazy"></p>
+<h2>坑四：统计不到数据，以为软件崩了，结果是权限没了</h2>
+<p>有天打开软件，图表一片空白，总时长显示 0。我第一反应是软件更新搞坏了数据，差点卸载重装。重启手机才恢复正常。</p>
+<p>后来才知道这不是什么数据损坏——<strong>安卓系统会在省电模式下回收 Usage Access 权限</strong>，一旦被回收，软件就看不到任何应用使用数据，图表直接归零。重启后权限会重新授权，但过几天可能又被系统收走。</p>
+<p>排查顺序其实很简单：先去系统设置里看 Usage Access 权限还在不在，不在的话手动重新开一下就行。<a href="https://screen-time-docs.pages.dev/" target="_blank" rel="noopener">Screen Time文档</a>里专门有一组统计不到数据的排查项，按顺序走一遍，九成情况不是真 bug。</p>
+<h2>坑五：装的版本老了，功能压根没有</h2>
+<p>我网盘下回来的是 1.2.1 版，后来发现文档里说的中位数切换、忽略系统应用这些功能都用不了，一度以为是我装的姿势不对。查了版本对照才知道：这些都是 1.4.0 之后才加的功能，1.2.1 只有基础的平均值和图表，根本没有切换能力。</p>
+<p>不是我不会用，是版本差了好几个迭代。如果从<a href="https://screen-time.hfdk.space/download.html" target="_blank" rel="noopener">官方下载</a>时注意看一下版本号，很多疑问一开始就不会有。</p>
+<h2>防坑清单</h2>
+<p>最后汇总一下，下次新装可以直接对照：</p>
+<ul><li><strong>先看版本号</strong>：1.4.0 以下没有中位数切换、忽略系统应用管理，别瞎找功能</li><li><strong>设对默认时间段</strong>：每天复盘选日，每周回顾选周，减少无意义的切换</li><li><strong>平均值和中位数都看看</strong>：点一下大数字就能切，别被极端日拉高的假平均骗了</li><li><strong>权限被回收不是 bug</strong>：图表归零先去系统设置查 Usage Access，重启能恢复</li><li><strong>日视图数字别看错</strong>：每小时平均 = 当天总时长 ÷ 24，不是"平均每天"</li></ul>
+<p>其实知道这些之后，Screen Time 就相当省心了——剩下的就是每天花一分钟瞄一眼逐小时柱状图，看看哪个时段又没忍住。这套资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Screen%20Time" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Screen%20Time" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Screen%20Time" target="_blank" rel="noopener">GitCode</a> 三个仓库都能拿到，国内访问选 Gitee 或 GitCode 更快一些。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/travelboast-docs.html">TravelBoast 是什么？快问快答把这款旅行路线动画 App 讲透</a></h2>
+  <p class="card-desc">整理了一组关于 TravelBoast 的快问快答——从它能做什么、怎么把自己的旅行轨迹变成 3D 地球仪视频，到导出卡顿、导入失败的排查技巧，一篇看完没盲区。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/fishbowl-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Fishbowl 藏得最深的 5 个冷门功能——用了半年才发现原来还能这样</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/unifans.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">引力圈创作者入门：从注册到发第一条付费帖子的完整实战</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Shelter 踩坑实录：隔离空间看着简单，这几个地方真会翻车 · 老杨技术栈</title>
+  
+<meta name="description" content="把银行应用丢进隔离区后闪退、克隆半天失败、冻结完找不到应用图标——四个真实踩过的坑，逐个拆解原因和解法，帮你把 Shelter 用顺。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/shelter-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shelter 踩坑实录：隔离空间看着简单，这几个地方真会翻车">
+<meta property="og:description" content="把银行应用丢进隔离区后闪退、克隆半天失败、冻结完找不到应用图标——四个真实踩过的坑，逐个拆解原因和解法，帮你把 Shelter 用顺。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/shelter-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/shelter-docs/wizard-compatibility.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/shelter-docs/wizard-compatibility.jpg">
+
+<meta name="twitter:title" content="Shelter 踩坑实录：隔离空间看着简单，这几个地方真会翻车">
+<meta name="twitter:description" content="把银行应用丢进隔离区后闪退、克隆半天失败、冻结完找不到应用图标——四个真实踩过的坑，逐个拆解原因和解法，帮你把 Shelter 用顺。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u628a\u94f6\u884c\u5e94\u7528\u4e22\u8fdb\u9694\u79bb\u533a\u540e\u95ea\u9000\u3001\u514b\u9686\u534a\u5929\u5931\u8d25\u3001\u51bb\u7ed3\u5b8c\u627e\u4e0d\u5230\u5e94\u7528\u56fe\u6807\u2014\u2014\u56db\u4e2a\u771f\u5b9e\u8e29\u8fc7\u7684\u5751\uff0c\u9010\u4e2a\u62c6\u89e3\u539f\u56e0\u548c\u89e3\u6cd5\uff0c\u5e2e\u4f60\u628a Shelter \u7528\u987a\u3002", "headline": "Shelter \u8e29\u5751\u5b9e\u5f55\uff1a\u9694\u79bb\u7a7a\u95f4\u770b\u7740\u7b80\u5355\uff0c\u8fd9\u51e0\u4e2a\u5730\u65b9\u771f\u4f1a\u7ffb\u8f66", "image": ["https://alipymanbu.github.io/images/shelter-docs/wizard-compatibility.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/shelter-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/shelter-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "Shelter \u8e29\u5751\u5b9e\u5f55\uff1a\u9694\u79bb\u7a7a\u95f4\u770b\u7740\u7b80\u5355\uff0c\u8fd9\u51e0\u4e2a\u5730\u65b9\u771f\u4f1a\u7ffb\u8f66", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">Shelter 踩坑实录：隔离空间看着简单，这几个地方真会翻车</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Shelter 踩坑实录：隔离空间看着简单，这几个地方真会翻车</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">把银行应用丢进隔离区后闪退、克隆半天失败、冻结完找不到应用图标——四个真实踩过的坑，逐个拆解原因和解法，帮你把 Shelter 用顺。</p>
+  </header>
+  <div class="prose">
+<p>我第一次装 Shelter 是冲着它那句"开源、无广告、用系统级工作资料做隔离"去的，在它的<a href="https://shelter.fedq.ren" target="_blank" rel="noopener">官网</a>上一眼就看中了这个定位。安装向导五分钟走完，主界面一目了然——左边 MAIN 右边 SHELTER，看起来就像给手机装了个文件夹。</p>
+<p>然后坑就来了。</p>
+<p>第一个坑是在装完银行应用之后。那次我想当然地把手机上所有 App 都克隆进了隔离区，图个清爽。结果第二天早上起来，银行 App 点进去就是白屏，再过一会儿直接闪退。我以为是版本问题，卸载重装了三次，还清了缓存，折腾了快四十分钟才反应过来——不是 App 坏了，是它在检测运行环境。</p>
+<p>金融类应用对运行环境的敏感度比想象中高得多。银行、支付类的程序会检查设备上是否存在工作资料——这在它们的风控模型里属于"环境异常"信号，轻则限制功能，重则直接拒绝启动。我那次就是把银行应用克隆进去后，它发现自己跑在一个"档案管理员"管的隔离空间里，二话不说就罢工了。</p>
+<p>解决办法其实很简单：银行、支付这类你信得过的应用，老老实实放在主空间。隔离空间本来就是给"不太信得过的 App"准备的——来路不明的工具、海外版社交应用、会偷数据的免费 VPN，这些才是它该管的对象。把不该隔离的放进去，反而给自己添乱。</p>
+<h2>克隆失败：到底是哪一步卡住了</h2>
+<p>第二个坑是克隆。某次我装完一个新出的社交 App，按惯例点克隆，结果进度条走了一半卡在那里，等了十分钟不动。我以为手机卡死了，强制重启，再打开 Shelter 发现克隆出来的 App 图标是灰色的，点不动也删不掉。</p>
+<p>后来才搞清楚，克隆失败常见几个原因：一是目标应用本身在启动时就有防多开逻辑，克隆后它自己检测到有另一份实例就拒绝运行；二是系统版本和应用的 targetSdkVersion 不兼容，Android 14、15 上这个问题比 12、13 多；三是隔离空间的存储配额快满了——这一条最容易被忽略，我那次就是因为前一天装了七八个应用把隔离空间撑爆了。</p>
+<p>解法按优先级排：先看隔离空间剩余空间够不够，不够就删几个冻结的应用或用文件穿梭把大文件备份出去；然后检查目标 App 有没有防克隆的特殊逻辑，这种只能换个版本或者直接放弃；最后不行就卸载克隆出的那个灰色图标，回到主空间卸载原版再重新克隆一次——Shelter 的界面里长按灰色图标一般能调出卸载选项。实在不行就去<a href="https://shelter.fedq.ren/download.html" target="_blank" rel="noopener">官方下载</a>拿最新版重新装，有时候版本差异也会影响克隆行为。</p>
+<h2>通知消失：我以为 App 死了</h2>
+<p>第三个坑是通知。隔离空间里的应用锁屏自动冻结之后，第二天解锁发现十几个通知红点没了。我以为是 App 崩溃了，点进去一看好好的，就是通知不出来。</p>
+<p>这里要搞清楚冻结的机制：冻结之后 App 进程被彻底杀掉，后台也跑不起来，自然没法推送通知。如果你用了自动冻结服务——锁屏即冻结——那每天早上解锁之后，隔离空间里的所有应用都得手动点一下才能重新活过来，之前冻结期间的通知是收不到的。</p>
+<p>这不是 bug，是 Shelter 的设计取舍。如果你确实需要某些应用的实时通知，要么把它们从自动冻结列表里排除，要么干脆别放进隔离空间。我后来的做法是：社交工具保留在隔离空间但关掉自动冻结，锁屏时用一键暂停整个空间替代——这样进程不被杀，通知照收，暂停的目的就是防止锁屏后有人手滑点开。遇到通知彻底失联的情况，可以去<a href="https://shelter-docs.pages.dev/" target="_blank" rel="noopener">shelter文档</a>里找通知排查思路，比自己瞎试省时间。</p>
+<p><img src="../images/shelter-docs/wizard-compatibility.jpg" alt="Shelter 冻结应用找不到时的排查入口" loading="lazy"></p>
+<h2>文件穿梭：为什么我看不到两个空间</h2>
+<p>第四个坑是文件穿梭。Shelter 的文件穿梭功能默认是关掉的，要自己去设置里开。我第一次开的时候，系统引导走完，回到文件管理器一看——还是只有主空间那几个文件夹，隔离空间的入口根本没出现。</p>
+<p>排查了半天，原因有三个。第一，Google Play 版的 Shelter 根本没有文件穿梭这个功能——我那次刚好装的是 Play 版，白忙活了一场。第二，有些国产 ROM 把系统文件管理器替换掉了，文件穿梭依赖的系统组件跟第三方文件管理器不兼容，换回原生的"文件"应用就正常了。第三，有时候开关状态会被系统重置，回 Shelter 设置里确认一下 File Shuttle 是不是真的开着，关掉再开一次重走引导流程。</p>
+<p>文件穿梭打通的只有文件这一层，两个空间的应用数据不会互通。所以聊天记录、应用缓存这些它传不了，只能传你主动选中的图片、文档、安装包。把它当跨空间的文件传输管道用，别指望它帮你做数据备份。</p>
+<h2>防坑清单</h2>
+<p>踩完这四个坑之后，我总结了几条每次更新 Shelter 都要过一遍的检查项：</p>
+<ul><li><strong>金融类应用一律放主空间</strong>：银行、支付、证券——凡是有强风控的，别碰隔离区。</li><li><strong>克隆前先看隔离空间剩余存储</strong>：剩个几百 MB 就该清了，克隆失败大概率是空间不够。</li><li><strong>需要通知的应用别开自动冻结</strong>：关掉自动冻结服务，改用一键暂停手动关灯。</li><li><strong>文件穿梭要 F-Droid 版才稳</strong>：别装 Google Play 版，缺功能还查半天原因。</li><li><strong>国产 ROM 上遇到怪问题先关文件管理器</strong>：换回系统自带的"文件"应用再试。</li></ul>
+<p>知道这些坑之后，Shelter 其实相当省心。隔离空间把我手机里乱七八糟的应用都归置进去了，主空间干干净净只有每天必须用的那几个。踩过的坑其实都有现成解法，只是第一次遇到的时候容易慌。</p>
+<p>更多细节可以翻文档，设置向导里关于权限和兼容性的说明也值得慢读一遍——那段写得很实在，没有藏着掖着。</p>
+<p>这套资料我同时同步到了 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/shelter" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/shelter" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/shelter" target="_blank" rel="noopener">GitCode</a> 三个仓库，GitHub 为主，国内访问可以直接走 Gitee 或 GitCode，都在 APK 仓库的官网版目录下。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/epik-docs.html">epik 六年迭代：一款修图 App 如何在「一键美型」和「精细控制」之间反复横跳</a></h2>
+  <p class="card-desc">从早期一键式美颜工具到如今同时拥有专业调色面板和 AI 毕业照服务，epik 的版本迭代史藏着一个修图产品最真实的两难。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wikihow-docs.html">凌晨十一点，我靠一个小应用打出了人生第一条领带</a></h2>
+  <p class="card-desc">面试前一夜对着领带慌了神，室友睡了爸妈远在千里，Google 搜出来的全是广告。偶然想起下载过的 wikiHow，跟着图文步骤一步步来，十分钟搞定。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/rewasd.html">reWASD 上手一周：手柄调瞄准手感这件事，终于不用靠玄学了</a></h2>
+  <p class="card-desc">一个被 FPS 瞄准漂移折磨了半年的人，用 reWASD 把摇杆曲线掰了半小时后，第一次觉得&#34;瞄准手感&#34;这玩意儿是能被精确描述和调整的。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/cinetry.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Cinetry 实战：五分钟把家里所有媒体源装进同一个播放器</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/twire.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Twire 是什么？安卓 Twitch 第三方客户端快问快答</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

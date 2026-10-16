@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>XbotGo 避坑指南：我踩过的四个大坑和防坑清单 · 老杨技术栈</title>
+  
+<meta name="description" content="从 SD 卡红灯闪到直播推流卡帧，从区域追踪漏拍到 4K 导出爆内存——用 XbotGo 大半年才踩出来的四个真实坑，附防坑清单一次说清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/xbotgo.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XbotGo 避坑指南：我踩过的四个大坑和防坑清单">
+<meta property="og:description" content="从 SD 卡红灯闪到直播推流卡帧，从区域追踪漏拍到 4K 导出爆内存——用 XbotGo 大半年才踩出来的四个真实坑，附防坑清单一次说清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/xbotgo.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/xbotgo/xbotgo-live-stream.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/xbotgo/xbotgo-live-stream.png">
+
+<meta name="twitter:title" content="XbotGo 避坑指南：我踩过的四个大坑和防坑清单">
+<meta name="twitter:description" content="从 SD 卡红灯闪到直播推流卡帧，从区域追踪漏拍到 4K 导出爆内存——用 XbotGo 大半年才踩出来的四个真实坑，附防坑清单一次说清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece SD \u5361\u7ea2\u706f\u95ea\u5230\u76f4\u64ad\u63a8\u6d41\u5361\u5e27\uff0c\u4ece\u533a\u57df\u8ffd\u8e2a\u6f0f\u62cd\u5230 4K \u5bfc\u51fa\u7206\u5185\u5b58\u2014\u2014\u7528 XbotGo \u5927\u534a\u5e74\u624d\u8e29\u51fa\u6765\u7684\u56db\u4e2a\u771f\u5b9e\u5751\uff0c\u9644\u9632\u5751\u6e05\u5355\u4e00\u6b21\u8bf4\u6e05\u3002", "headline": "XbotGo \u907f\u5751\u6307\u5357\uff1a\u6211\u8e29\u8fc7\u7684\u56db\u4e2a\u5927\u5751\u548c\u9632\u5751\u6e05\u5355", "image": ["https://alipymanbu.github.io/images/xbotgo/xbotgo-live-stream.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/xbotgo.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/xbotgo.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "XbotGo \u907f\u5751\u6307\u5357\uff1a\u6211\u8e29\u8fc7\u7684\u56db\u4e2a\u5927\u5751\u548c\u9632\u5751\u6e05\u5355", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">XbotGo 避坑指南：我踩过的四个大坑和防坑清单</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">XbotGo 避坑指南：我踩过的四个大坑和防坑清单</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 SD 卡红灯闪到直播推流卡帧，从区域追踪漏拍到 4K 导出爆内存——用 XbotGo 大半年才踩出来的四个真实坑，附防坑清单一次说清。</p>
+  </header>
+  <div class="prose">
+<p><a href="https://xbotgo.qhah.skin" target="_blank" rel="noopener">XbotGo官网</a> 看着简单，一个手机加个小硬件就能拍 AI 自动追踪的比赛录像——教练拍训练、家长拍孩子踢球、俱乐部拍比赛，开箱即用。但我用了快半年，坑踩了四个，有一个甚至差点丢了整场决赛的录像。这些坑都不是什么高端配置问题，全是日常用的场景里没注意到的细节，写出来给后来人避。</p>
+<h2>坑一：Falcon 红灯闪，录到一半自动停</h2>
+<p>这是我踩的第一个也是最狠的坑。某次少年队的决赛，下半场刚开球 Falcon 的红灯就开始闪，录了不到十分钟直接停了。我当时以为硬件坏了，拍给客服，结果客服第一句话就是"你的 SD 卡什么格式？"——我后来去<a href="https://xbotgo.qhah.skin/download.html" target="_blank" rel="noopener">XbotGo下载</a>页翻了一下才确认 Falcon 只认 exFAT。</p>
+<p><strong>症状</strong>：Falcon 指示灯红灯持续闪烁；录制启动几秒后自动停止；App 里提示"存储设备异常"。</p>
+<p><strong>原因</strong>：90% 是 SD 卡格式不对。Falcon 只认 exFAT——但你去数码店买的新卡，十张里有八张出厂是 FAT32。FAT32 单文件最大 4GB，4K 录像一分钟就超了，所以录到一半直接崩。还有一种情况是卡速不够，杂牌卡虚标 U1 实际读写只有 5MB/s，Falcon 写入跟不上就报错。</p>
+<p><strong>解法</strong>：先把卡插电脑上查格式，右键属性一看就知道。FAT32 的话直接格式化成 exFAT——注意 Windows 格式化窗口里文件系统那个下拉框，别选错了。换卡的话认准 Samsung、SanDisk、Lexar 这几个牌子，U3 级别的稳当，别图便宜买杂牌。格式化之前一定先导出里面的视频，我那次没做备份，之前的训练素材全没了。</p>
+<p>录像结束后别立刻拔卡，等 3 秒让 Falcon 写完文件，急着拔很容易把文件写坏，App 恢复也救不回来。</p>
+<h2>坑二：直播推流画面卡，YouTube 提示推流不稳定</h2>
+<p>第一次给老家的家人直播孩子比赛，刚开两分钟 YouTube 就跳警告说推流不稳定，画面一卡一卡的，老家那边看了个寂寞。</p>
+<p><strong>症状</strong>：YouTube 直播画面间歇性卡住、掉帧；YouTube Studio 后台显示"推流不稳定"；严重时直接断流重连。</p>
+<p><strong>原因</strong>：XbotGo 的直播不是靠硬件本身推的——Chameleon 用手机的 WiFi 或流量，Falcon 也是连手机 WiFi 推流，所以瓶颈全在手机的上传带宽。比赛场地的公共 WiFi 往往人很多、带宽被分走，看起来信号满格实际上上传只有几百 KB。</p>
+<p><strong>解法</strong>：开播前先测一下手机的上传速度，1080p 至少要 5 Mbps，4K 要 15 Mbps 起步。场地 WiFi 不稳的话，把手机切到 5G 流量热点给 XbotGo 连，我后来直播全这么干，比公共 WiFi 靠谱多了——流量费可以办个临时加餐包，比丢一场直播划算。画质选 1080p 就够了，大多数家庭网络也吃不下 4K 推流。还有个小技巧：先开始录制再开直播，万一直播断了至少本地有素材，不至于两头空。</p>
+<p><img src="../images/xbotgo/xbotgo-live-stream.png" alt="直播推流设置示意" loading="lazy"></p>
+<h2>坑三：Zone Mapping 画完反而漏掉精彩镜头</h2>
+<p>Zone Mapping 是个好东西——圈个区域让 AI 只追踪场内、忽略场边乱跑的人。但我第一次画的时候，为了"精准"把区域框得严严实实刚好贴着边线，结果角球时球员冲出了半米，AI 直接把镜头拉回场内，精彩的头球攻门没录上。</p>
+<p><strong>症状</strong>：AI 追踪突然"断片"，镜头在空无一人的场内晃；回放时发现边线附近的镜头被裁掉了；场边替补起身走动反而触发了追踪跳转（这是区域太大时的反面问题）。</p>
+<p><strong>原因</strong>：Zone Mapping 的区域边界没有缓冲区——你画多大它就严格卡多大，AI 不会自动留余量。画太小，正常出界的球、边线附近的对抗都会被排除；画太大，场边的干扰又进来了。还有一点，Zone Mapping 是录制前画好、全程生效的，换了场地没重新画，旧的区域就完全不对了——画区域留缓冲的技巧我后来去<a href="https://xbotgo.pages.dev/" target="_blank" rel="noopener">XbotGo文档</a>翻了一下才想明白。</p>
+<p><strong>解法</strong>：画区域时<strong>故意画大一圈</strong>——比实际场地多出一米左右的边界缓冲。这样边线附近的镜头不会被漏掉，场外的干扰又被挡住。室内篮球场可以画成整个半场再往外扩一点，足球场沿着边线和底线各加半米。换了场地一定要重新画，别嫌麻烦——我后来养成习惯，摆好设备第一件事就是调 Zone Mapping。</p>
+<p><img src="../images/xbotgo/xbotgo-chameleon-tracking.png" alt="Chameleon 区域追踪示意" loading="lazy"></p>
+<h2>坑四：4K 素材导出到手机，相册空间被吃爆了</h2>
+<p>Falcon 拍 4K 是爽，但导出的时候没注意，20 分钟的比赛素材导到手机相册直接占了 8GB，然后微信发的时候又被自动压缩了一遍——等于我存了个巨无霸文件实际用不上。</p>
+<p><strong>症状</strong>：手机相册突然少了好几 GB 空间；在微信、抖音里发视频时提示"文件过大"只能先压缩；整理相册时发现一堆 XbotGo 的 4K 视频占着地方没动过。</p>
+<p><strong>原因</strong>：Falcon 录制的是原生 4K 素材，XbotGo App 导出时默认"原尺寸"——没压缩直接存。手机的 4K 相册一个文件轻松上几个 GB，而大多数社交平台都会自动把视频压到 1080p 甚至更低，存 4K 纯属浪费空间。</p>
+<p><strong>解法</strong>：导出时别选原尺寸，先压到 2K 或者 1080p——肉眼看不出区别，文件小一半不止。真要留原画做后期的话，直接导出到电脑或云存储，别往手机相册塞。我现在养成习惯：重要比赛留一份 2K 在本地相册方便分享，原画导到电脑备份，两边都不耽误。</p>
+<h2>防坑清单</h2>
+<p>踩了这四个坑之后我总结了几条，每次开录前扫一遍：</p>
+<ul><li><strong>SD 卡第一次用必查格式</strong>：exFAT、U3、主流品牌，三个条件一个都不能少</li><li><strong>直播前先测手机上传带宽</strong>：不够就切 5G 流量热点，别指望场地 WiFi</li><li><strong>Zone Mapping 画大一圈</strong>：比实际场地多留 1 米缓冲，边线镜头别丢</li><li><strong>导出选 2K 别存 4K 原画</strong>：手机空间省一半，社交平台照样能发</li><li><strong>录像完等 3 秒再拔卡</strong>：让 Falcon 写完文件，急着拔必坏</li></ul>
+<p>知道这些坑之后，XbotGo 其实相当省心——开箱即用的自动追踪、AI 高光剪辑、手动时间轴精修，该有的功能都有。避开这些细节问题，拍比赛录像这件事就再也没掉过链子。相关的排查手册和实操截图我同步到了<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/XbotGo" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/XbotGo" target="_blank" rel="noopener">Gitee</a> 和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/XbotGo" target="_blank" rel="noopener">GitCode</a>，国内访问 Gitee 和 GitCode 更顺手一些。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mirai-docs.html">把 AI 角色原型嵌进内容创作流水线，我是这样用 MIRAI 的</a></h2>
+  <p class="card-desc">做虚拟角色设定以前要翻三份文档、手动演对话，现在用 MIRAI 当原型工场——从灵感收集到社区发布，一条链串起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/hailuo-ai-docs.html">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</a></h2>
+  <p class="card-desc">用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/iapp-docs.html">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</a></h2>
+  <p class="card-desc">从最初的可视化拖拽到裕语言 V7 的成熟，iApp 每一个语言版本背后都是一次产品定位的微调。我们顺着版本号看它的迭代节奏，猜一猜它下一步想做什么。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/cryptomator-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Cryptomator 用了半年踩过的七个坑，第三个差点让我丢了所有文件</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/edrawings.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">用 eDrawings 两年，从觉得它多余到每天离不开</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

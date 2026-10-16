@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>我用 WigglyPaint 把每周的动态素材生产链砍了三刀 · 老杨技术栈</title>
+  
+<meta name="description" content="以前做一张会动的社交配图要三四个软件切换加半小时时间轴调试，现在用一支带抖动的画笔直接出活。这篇讲我怎么把 WigglyPaint 嵌进每周的素材生产流程，以及哪些环节最容易断链。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/wigglypaint-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我用 WigglyPaint 把每周的动态素材生产链砍了三刀">
+<meta property="og:description" content="以前做一张会动的社交配图要三四个软件切换加半小时时间轴调试，现在用一支带抖动的画笔直接出活。这篇讲我怎么把 WigglyPaint 嵌进每周的素材生产流程，以及哪些环节最容易断链。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/wigglypaint-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/wigglypaint-docs/ipad-canvas.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/wigglypaint-docs/ipad-canvas.webp">
+
+<meta name="twitter:title" content="我用 WigglyPaint 把每周的动态素材生产链砍了三刀">
+<meta name="twitter:description" content="以前做一张会动的社交配图要三四个软件切换加半小时时间轴调试，现在用一支带抖动的画笔直接出活。这篇讲我怎么把 WigglyPaint 嵌进每周的素材生产流程，以及哪些环节最容易断链。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ee5\u524d\u505a\u4e00\u5f20\u4f1a\u52a8\u7684\u793e\u4ea4\u914d\u56fe\u8981\u4e09\u56db\u4e2a\u8f6f\u4ef6\u5207\u6362\u52a0\u534a\u5c0f\u65f6\u65f6\u95f4\u8f74\u8c03\u8bd5\uff0c\u73b0\u5728\u7528\u4e00\u652f\u5e26\u6296\u52a8\u7684\u753b\u7b14\u76f4\u63a5\u51fa\u6d3b\u3002\u8fd9\u7bc7\u8bb2\u6211\u600e\u4e48\u628a WigglyPaint \u5d4c\u8fdb\u6bcf\u5468\u7684\u7d20\u6750\u751f\u4ea7\u6d41\u7a0b\uff0c\u4ee5\u53ca\u54ea\u4e9b\u73af\u8282\u6700\u5bb9\u6613\u65ad\u94fe\u3002", "headline": "\u6211\u7528 WigglyPaint \u628a\u6bcf\u5468\u7684\u52a8\u6001\u7d20\u6750\u751f\u4ea7\u94fe\u780d\u4e86\u4e09\u5200", "image": ["https://alipymanbu.github.io/images/wigglypaint-docs/ipad-canvas.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/wigglypaint-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/wigglypaint-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u6211\u7528 WigglyPaint \u628a\u6bcf\u5468\u7684\u52a8\u6001\u7d20\u6750\u751f\u4ea7\u94fe\u780d\u4e86\u4e09\u5200", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">我用 WigglyPaint 把每周的动态素材生产链砍了三刀</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">我用 WigglyPaint 把每周的动态素材生产链砍了三刀</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">以前做一张会动的社交配图要三四个软件切换加半小时时间轴调试，现在用一支带抖动的画笔直接出活。这篇讲我怎么把 WigglyPaint 嵌进每周的素材生产流程，以及哪些环节最容易断链。</p>
+  </header>
+  <div class="prose">
+<p>每周一上午九点，我有一个固定任务：给三条不同的社交渠道准备一批会动的配图和梗图。以前这套流程跑下来要两个小时，中间要在 Photoshop、在线 GIF 制作器、微信表情编辑器之间来回切换。现在一条链就走完了，大部分时间省在了"画的时候就在动"这件事上。</p>
+<h2>旧流程：三个软件 + 反复导出</h2>
+<p>先说旧流程卡在哪。我需要的素材大致分三类：产品宣传用的动态小贴纸、内部飞书群用来活跃气氛的梗图、课件里偶尔需要的会动的示意图。以前这三类各走各的路：</p>
+<p>贴纸在 Photoshop 里画静态图 → 导入到 GIF 制作器（有时是 Piskel，有时是在线工具）逐帧加动画 → 导出 GIF → 还要再调一版 MP4 给 Instagram Reels 用。梗图更折腾——先找一张静态梗图模板，然后要么在手机上的表情编辑器里手动加抖动文字，要么回到电脑上重复一遍 GIF 的流程。示意图虽然简单，但"在静态 PPT 里插个会抖的箭头"这件事，我试过插件也试过录屏，都不顺手。</p>
+<p>三个软件切换的成本比时间轴本身还大。每次换工具都要重新对齐画布尺寸、重新选导出格式，最烦的是 GIF 制作器默认把帧速压得很慢，我得手动拉参数才能让动画看起来不拖沓。</p>
+<h2>新流程：WigglyPaint 卡在创作入口</h2>
+<p>现在我把 <a href="https://wigglypaint.gkhf.beer" target="_blank" rel="noopener">wigglypaint官网</a> 上这款 App 作为整条链的创作起点，所有素材都从它的画布里出来。</p>
+<p>上下游配合是这样的：</p>
+<p><strong>第一步，在 WigglyPaint 里一次性出完所有素材</strong>。安装包从<a href="https://wigglypaint.gkhf.beer/download.html" target="_blank" rel="noopener">官方下载</a>拿，iPad 上打开 App，用 Apple Pencil 直接画——因为画的同时笔触就在抖动，所以不需要后期再加动画。Marker 笔粗线条大幅摇摆用来画梗图角色和贴纸轮廓，Brush 填色，Pencil 写细节和文字。我把画布尺寸设成 1080×1080，导出时三套格式（GIF、MP4、Live Photo）一次性搞定，省了来回调尺寸和换工具。</p>
+<p><img src="../images/wigglypaint-docs/ipad-canvas.webp" alt="iPad 上用 Pencil 直接画" loading="lazy"></p>
+<p><strong>第二步，导出后直接分发</strong>。GIF 直接丢飞书群和微信聊天——WigglyPaint 导出的 GIF 体积控制得不错，单帧抖动的小贴纸一般不超过 200KB，不会被聊天软件二次压缩糊掉。MP4 给 Reels 和视频号，Live Photo 给 iPhone 用户的 iMessage 互动。这步已经不需要任何二次处理了。</p>
+<p><strong>第三步，需要静态版本时再回到 WigglyPaint</strong>。有时候同一张素材还需要静态图用在文档或 PPT 里——直接在 WigglyPaint 里导出 PNG 就行，同一画布随时切换导出格式，不用重画。</p>
+<p>这条链的核心是：<strong>WigglyPaint 把"画"和"动画"合成了一个动作</strong>。以前三四个软件各管一段，现在一个软件从创意到成品就出来了。</p>
+<h2>实操里最容易断链的两个环节</h2>
+<p>说点实际的。这条链跑了大概两个月，有两个环节我踩过坑，现在有了固定的处理方式。</p>
+<h3>第一坑：Classic 编辑器的自动保存</h3>
+<p>我一开始习惯用 Classic Pixel 风格——粗像素边框、8-bit 感，挺对我胃口。但 Classic 编辑器有个已知问题：清空画布之后 undo 不回来，而且退出 App 前最后一分钟的改动偶尔会丢。上个月我有一张画了四十分钟的梗图因为这个 bug 丢过一次，之后就养成了"每画完一个素材就手动导出一次"的习惯。</p>
+<p>这些编辑器行为差异在<a href="https://wigglypaint-docs.pages.dev/" target="_blank" rel="noopener">wigglypaint文档</a>里有详细说明。现在的做法是：重要素材用 Modern 编辑器（它的清空后 undo 是正常的），只有纯像素风的东西才切 Classic，而且画的时候每完成一个元素就点一下导出。多花五秒钟，比重画四十分钟划算。</p>
+<h3>第二坑：背景图层的原图边界</h3>
+<p>WigglyPaint 支持导入照片做背景图层，我有时候会从网上抓一张梗图模板直接在上面加抖动文字。这里有个边界需要注意：导入的照片只存在本地，导出时会被"烘焙"进最终作品，原图不会上传。但如果我后来想换一张底图重新画，就得重新导入——WigglyPaint 不保留原始背景的分层。</p>
+<p>所以我的做法是：从外部导入的背景图统一存在 iPad 的"素材"相册里，文件名按用途命名（比如"meme-template-cat.png"），万一要重做能快速找回来。自己手绘的就没这个问题，画布本身就是源文件。</p>
+<p><img src="../images/wigglypaint-docs/iphone-export.webp" alt="导出格式选择界面" loading="lazy"></p>
+<h2>效果与边界</h2>
+<p>量化一下省了多少事。旧流程每周大概花 100 分钟：Photoshop 画静态 + GIF 工具加动画 + 导出调格式 + 偶尔翻车重跑。新流程稳定在 30 分钟以内，其中 25 分钟在画，5 分钟导出和分发。<strong>少了两次手动导出和三次软件切换</strong>，还有以前因为帧速没调对导致的重导出，现在根本不会发生。</p>
+<p>但这套流程也有明确的边界。如果哪天我需要一个精确到帧的动画——比如眨眼、走路循环——WigglyPaint 就不适合了。它把动画做进画笔这件事，本质上是用"放弃帧控制"换"速度和风格统一"。我有朋友是做独立游戏的像素动画师，他试过两天就换回 Piskel 了，因为他需要精确控制每一帧的偏移量，而 WigglyPaint 的抖动是随机的。</p>
+<p>另外隐私这点我挺在意。WigglyPaint 不要求注册账号、不上传作品、App Store 隐私政策明确写"不收集任何数据"——这意味着我画的所有素材都留在设备上，不需要担心云端泄漏。唯一要注意的是社区画廊，我从来没发过，因为 App 内似乎没有删除按钮，发出去就撤不回来了。</p>
+<h2>什么时候这套流程划算</h2>
+<p>如果你每周有固定的动态素材产出需求——不管是梗图、贴纸、课件示意图，还是社交媒体上的小动作——而且你不需要精确的帧级控制，那 WigglyPaint 值得放进你的工具箱。</p>
+<p>我的判断标准很简单：旧流程里我花在"软件切换和格式调参"上的时间，超过了"实际创作"的时间，那就该换工具了。WigglyPaint 解决的正是这个问题——它不试图替代 Photoshop 或 Piskel，而是在"快速出可分享的动图"这个狭窄但高频的场景里，把整条链缩短了三分之二。这个软件的资料我同步维护在 <a href="https://github.com/alipymanbu/APK/tree/main/APP/wigglypaint" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/wigglypaint" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/APP/wigglypaint" target="_blank" rel="noopener">GitCode</a> 三个仓库里，国内访问有需要直接换着用。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/flud.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">把 Flud 翻了个底朝天：五个藏得真深的冷门技巧</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/lolipop-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Lolipop 深度体验：在 AI 角色聊天赛道里，它靠什么站住脚</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

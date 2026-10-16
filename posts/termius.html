@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Termius 凭什么把 SSH 客户端做成付费产品？拆解它的 Vaults 架构 · 老杨技术栈</title>
+  
+<meta name="description" content="SSH 客户端同质化严重，PuTTY、Xshell、Windows Terminal 都能连服务器。Termius 却敢卖 Pro 版，核心不在终端模拟而在一套加密凭证管理体系——Vaults。本文拆解它的设计原理、同步机制与技术取舍。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/termius.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Termius 凭什么把 SSH 客户端做成付费产品？拆解它的 Vaults 架构">
+<meta property="og:description" content="SSH 客户端同质化严重，PuTTY、Xshell、Windows Terminal 都能连服务器。Termius 却敢卖 Pro 版，核心不在终端模拟而在一套加密凭证管理体系——Vaults。本文拆解它的设计原理、同步机制与技术取舍。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/termius.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/termius/vaults-create.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/termius/vaults-create.png">
+
+<meta name="twitter:title" content="Termius 凭什么把 SSH 客户端做成付费产品？拆解它的 Vaults 架构">
+<meta name="twitter:description" content="SSH 客户端同质化严重，PuTTY、Xshell、Windows Terminal 都能连服务器。Termius 却敢卖 Pro 版，核心不在终端模拟而在一套加密凭证管理体系——Vaults。本文拆解它的设计原理、同步机制与技术取舍。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "SSH \u5ba2\u6237\u7aef\u540c\u8d28\u5316\u4e25\u91cd\uff0cPuTTY\u3001Xshell\u3001Windows Terminal \u90fd\u80fd\u8fde\u670d\u52a1\u5668\u3002Termius \u5374\u6562\u5356 Pro \u7248\uff0c\u6838\u5fc3\u4e0d\u5728\u7ec8\u7aef\u6a21\u62df\u800c\u5728\u4e00\u5957\u52a0\u5bc6\u51ed\u8bc1\u7ba1\u7406\u4f53\u7cfb\u2014\u2014Vaults\u3002\u672c\u6587\u62c6\u89e3\u5b83\u7684\u8bbe\u8ba1\u539f\u7406\u3001\u540c\u6b65\u673a\u5236\u4e0e\u6280\u672f\u53d6\u820d\u3002", "headline": "Termius \u51ed\u4ec0\u4e48\u628a SSH \u5ba2\u6237\u7aef\u505a\u6210\u4ed8\u8d39\u4ea7\u54c1\uff1f\u62c6\u89e3\u5b83\u7684 Vaults \u67b6\u6784", "image": ["https://alipymanbu.github.io/images/termius/vaults-create.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/termius.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/termius.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "Termius \u51ed\u4ec0\u4e48\u628a SSH \u5ba2\u6237\u7aef\u505a\u6210\u4ed8\u8d39\u4ea7\u54c1\uff1f\u62c6\u89e3\u5b83\u7684 Vaults \u67b6\u6784", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">Termius 凭什么把 SSH 客户端做成付费产品？拆解它的 Vaults 架构</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Termius 凭什么把 SSH 客户端做成付费产品？拆解它的 Vaults 架构</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">SSH 客户端同质化严重，PuTTY、Xshell、Windows Terminal 都能连服务器。Termius 却敢卖 Pro 版，核心不在终端模拟而在一套加密凭证管理体系——Vaults。本文拆解它的设计原理、同步机制与技术取舍。</p>
+  </header>
+  <div class="prose">
+<h2>为什么一个 SSH 客户端敢收 Pro 费</h2>
+<p>如果只看"连服务器"这件事，SSH 客户端根本不缺——PuTTY 免费、Xshell 好用、Windows Terminal 原生支持，甚至浏览器里都能开 WebSSH。<a href="https://termius.bpfl.quest" target="_blank" rel="noopener">Termius官网</a>凭什么从 Starter 免费版往上设 Pro 档，还真有人付费？</p>
+<p>答案不在终端窗口里。Termius 的核心竞争力其实是一套叫 <strong>Vaults</strong> 的架构——它把 SSH 凭证管理、跨设备同步、命令片段、端口转发规则这些"运维上下文"全部收拢到一个加密保险库里。终端只是 Vaults 体系的输入端，真正值钱的是整套工作流的无缝衔接。</p>
+<p>把它想成一个场景：你早上用 MacBook 连公司集群调了 nginx，下午坐地铁掏出 Android 手机想看下日志。如果用传统 SSH 客户端，你得手动同步 SSH 密钥、重新配置服务器地址、回忆昨天那段 <code>tail -f</code> 命令敲了什么。用 Termius，这些信息全部自动出现在手机上——密钥、主机分组、Snippets 命令历史、Known Hosts 指纹，一个不差。</p>
+<h2>Vaults 到底在同步什么</h2>
+<p>Termius 的跨设备同步架构非常朴素，朴素到有点"就这？"的感觉：每台设备本地维护 Vaults 数据的加密副本，任意一端修改后用加密密钥重新加密、上传到 Termius Cloud，其他设备收到变更通知就拉取更新、本地解密应用。</p>
+<p>增量同步是它的第一个设计决策。只传变化的部分，不是每次把整个 Vault 打包上传。你改了一台主机的备注，传输量可能只有几百字节。这个选择直接来自 SSH 客户端的实际使用模式——绝大多数时候用户是在微调现有主机配置，而不是重建整个连接库。</p>
+<p>但"朴素"只到表面。Vaults 内同步的数据类型值得列一下：主机连接配置（IP、端口、认证方式）、分组结构、SSH 密钥对（加密存储）、凭证条目、Snippets、端口转发规则、Known Hosts 指纹、终端命令历史。这基本覆盖了运维人员一天工作中需要"记下来"的全部东西。</p>
+<p><img src="../images/termius/vaults-create.png" alt="Vaults 本地创建界面" loading="lazy"></p>
+<p>不同步的东西同样有意思——终端输出历史（太占空间也包含敏感信息）、本地终端会话、应用界面偏好（字体大小、主题）。这里有个清晰的边界：<strong>Vaults 同步"能让你在另一台设备接着工作"的必要数据，不同步"纯本地体验"的冗余数据</strong>。这个取舍让同步延迟和流量都控制在合理范围。</p>
+<h2>冲突解决：为什么不用 CRDT</h2>
+<p>多设备同步的核心难题是冲突。当你在笔记本上把某台服务器端口从 2222 改成 22，同时手机上还在编辑同一台主机的备注，两份修改同时到达云端怎么办？</p>
+<p>Termius 的选择是 <strong>last-writer-wins</strong>——时间戳较新的版本覆盖较旧的。简单粗暴，但对 SSH 客户端场景是合理的。想想看：你绝不会在两台设备上同时编辑同一台主机的端口。这种"逻辑上不可能发生但技术上必须处理"的冲突，用时间戳覆盖比实现 CRDT（无冲突复制数据类型）成本低得多，用户感知也更明确——"我最后一次改的就是对的"。</p>
+<p>离线可用性是 Vaults 架构的另一个关键点。网络断了（地铁、电梯、咖啡馆信号差），Termius 完全可用——所有数据的本地副本都在，SSH 连接本身不依赖云端。恢复网络后自动继续同步。对运维来说这是刚需：故障发生时你就是在移动状态下连服务器排查的。</p>
+<h2>不止 SSH：Mosh 协议的技术选择</h2>
+<p>Termius 支持 Mosh（Mobile Shell）协议，这在 SSH 客户端里不算常见。Mosh 的核心优势是移动网络下的会话稳定性——信号从 5G 切到 4G 再切到 Wi-Fi，终端会话不会断。</p>
+<p>原理上 Mosh 放弃了 SSH 依赖的 TCP，改用 UDP 传输。UDP 是无连接的，更适合网络切换时不中断。Mosh 客户端会先通过 SSH 登录服务器启动 mosh-server 进程，然后关闭 SSH 连接，改用 UDP 直接通信。这意味着服务器端需要额外安装 mosh 包并放行 UDP 端口范围（60000-61000），而客户端从<a href="https://termius.bpfl.quest/download.html" target="_blank" rel="noopener">官方下载</a>装好后，新建主机时直接选 Mosh 协议就行。</p>
+<p><img src="../images/termius/new-host-detail.png" alt="主机连接配置界面" loading="lazy"></p>
+<p>为什么 Termius 要做这件事？因为 Vaults 的目标就是跨设备无缝体验。如果桌面端能稳定连、移动端一断网 SSH 就挂，"跨设备"就是个伪命题。Mosh 是让移动端体验真正追平桌面端的技术补丁。</p>
+<h2>Snippets：把 Shell alias 搬进云端</h2>
+<p>Snippets 是 Vaults 体系里最容易被低估的一环。你每天敲几十次的 <code>sudo systemctl restart nginx &amp;&amp; sudo systemctl status nginx --no-pager</code>，存进 Snippets 就是一键执行。</p>
+<p>它和 Shell alias 的本质区别在于<strong>存在位置</strong>。alias 定义在服务器端（<code>~/.bashrc</code>），换机器就没了、跨 Shell（bash/zsh/fish）也不通用。Snippets 存在 Termius 客户端，跟着 Vaults 同步，连哪台服务器都能用。</p>
+<p>更实用的是批量执行——选中 10 台服务器，同一个 Snippet 同时跑完。Shell alias 做不到这件事。对运维来说，批量升级、批量重启服务这种场景，Snippets + 多主机连接是真正的效率倍增器。</p>
+<h2>Helium：本地 AI 补全的代价</h2>
+<p>Termius Pro 版的 Helium（内部代号）是 IDE 风格的命令自动补全——类似 VS Code 的智能提示，但跑在终端里。关键点是：<strong>Helium 运行在本地，不联网，命令数据不上传</strong>。</p>
+<p>这个设计决策的背后是安全。运维人员在终端里敲的命令可能包含生产环境的路径、密钥片段、内部 IP。如果 AI 补全把这些内容发到云端处理，就是一个安全漏洞。本地运行意味着模型体积受限、补全质量不如云端方案，但换来了"我的命令只在我机器上跑"的确定性。Helium 支持哪些 Shell、补全规则怎么调，这些参数细节在<a href="https://termius.pages.dev/" target="_blank" rel="noopener">Termius文档</a>里有完整说明。</p>
+<h2>这套设计的代价</h2>
+<p>Vaults 架构不是没有成本。最大的门槛是加密密码——Vaults 使用端到端加密，意味着你必须记住那个解锁密码。忘记了 = 所有凭证永远找不回，Termius 官方也帮不了你（因为他们看不到密文）。</p>
+<p>Starter 免费版不支持云同步，Personal Vault 数据只存在本地。如果你换电脑又忘了手动导出配置，就是从零开始。这让 Pro 升级对多设备用户几乎成了必选项。</p>
+<p>另一个代价是跨平台一致性。Termius 有桌面端（Windows/macOS/Linux）、移动端（iOS/Android），每个平台的协议实现和 UI 细节都有差异。Serial 串口连接在移动端需要 OTG 适配器 + USB 转串口线，Mosh 在 Android 上的 UDP 端口放行还可能遇到厂商系统限制。</p>
+<h2>总结：Vaults 为什么值这个价</h2>
+<p>Termius 的产品哲学可以用一句话概括：<strong>终端模拟是免费的，运维上下文管理是付费的</strong>。PuTTY 给你一个窗口敲命令，Termius 给你一套跨设备、加密同步、团队协作的凭证工作流。</p>
+<p>如果你的工作流是：早上在桌面端配好 20 台服务器的 SSH 密钥和端口转发规则，下午在高铁上掏出手机继续看日志，回到家笔记本自动同步了新的命令历史——那 Termius 的 Pro 档是值的。如果你的场景只是在固定一台电脑上连一台固定服务器跑几条命令，它就是过度设计。</p>
+<p>这套 Vaults 架构的设计取舍，值得每个在跨设备运维中摸过爬过的人仔细看看。<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/Termius" target="_blank" rel="noopener">GitHub</a>上的 APK 仓库也备了对应分类目录的归档，国内访问不方便的朋友可以分别去 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/Termius" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/Termius" target="_blank" rel="noopener">GitCode</a> 同步拉取。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mirai-docs.html">把 AI 角色原型嵌进内容创作流水线，我是这样用 MIRAI 的</a></h2>
+  <p class="card-desc">做虚拟角色设定以前要翻三份文档、手动演对话，现在用 MIRAI 当原型工场——从灵感收集到社区发布，一条链串起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/hailuo-ai-docs.html">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</a></h2>
+  <p class="card-desc">用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/iapp-docs.html">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</a></h2>
+  <p class="card-desc">从最初的可视化拖拽到裕语言 V7 的成熟，iApp 每一个语言版本背后都是一次产品定位的微调。我们顺着版本号看它的迭代节奏，猜一猜它下一步想做什么。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/usj-app.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">日本环球影城官方 App 实操教程 — 号码券、等候时间、SNW 互动一次讲透</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/qnet-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">QNET 弱网测试的底层逻辑：为什么用 VPN 接管而不是改系统参数</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

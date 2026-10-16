@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>PCAPdroid 挖到底：五个藏得深到官方文档都没说的冷门玩法 · 老杨技术栈</title>
+  
+<meta name="description" content="我把 PCAPdroid 翻了个底朝天，发现五个隐藏设置：虚拟 IP 不是泄漏、TLS 解密还有进阶玩法、防火墙的端口级拦截、SOCKS5 配合 Tor、以及 HTTP Server 模式导出抓包。这些功能大多数人用了半年都没碰过。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/pcapdroid.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PCAPdroid 挖到底：五个藏得深到官方文档都没说的冷门玩法">
+<meta property="og:description" content="我把 PCAPdroid 翻了个底朝天，发现五个隐藏设置：虚拟 IP 不是泄漏、TLS 解密还有进阶玩法、防火墙的端口级拦截、SOCKS5 配合 Tor、以及 HTTP Server 模式导出抓包。这些功能大多数人用了半年都没碰过。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/pcapdroid.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/pcapdroid/decrypted-payload.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/pcapdroid/decrypted-payload.jpg">
+
+<meta name="twitter:title" content="PCAPdroid 挖到底：五个藏得深到官方文档都没说的冷门玩法">
+<meta name="twitter:description" content="我把 PCAPdroid 翻了个底朝天，发现五个隐藏设置：虚拟 IP 不是泄漏、TLS 解密还有进阶玩法、防火墙的端口级拦截、SOCKS5 配合 Tor、以及 HTTP Server 模式导出抓包。这些功能大多数人用了半年都没碰过。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u6211\u628a PCAPdroid \u7ffb\u4e86\u4e2a\u5e95\u671d\u5929\uff0c\u53d1\u73b0\u4e94\u4e2a\u9690\u85cf\u8bbe\u7f6e\uff1a\u865a\u62df IP \u4e0d\u662f\u6cc4\u6f0f\u3001TLS \u89e3\u5bc6\u8fd8\u6709\u8fdb\u9636\u73a9\u6cd5\u3001\u9632\u706b\u5899\u7684\u7aef\u53e3\u7ea7\u62e6\u622a\u3001SOCKS5 \u914d\u5408 Tor\u3001\u4ee5\u53ca HTTP Server \u6a21\u5f0f\u5bfc\u51fa\u6293\u5305\u3002\u8fd9\u4e9b\u529f\u80fd\u5927\u591a\u6570\u4eba\u7528\u4e86\u534a\u5e74\u90fd\u6ca1\u78b0\u8fc7\u3002", "headline": "PCAPdroid \u6316\u5230\u5e95\uff1a\u4e94\u4e2a\u85cf\u5f97\u6df1\u5230\u5b98\u65b9\u6587\u6863\u90fd\u6ca1\u8bf4\u7684\u51b7\u95e8\u73a9\u6cd5", "image": ["https://alipymanbu.github.io/images/pcapdroid/decrypted-payload.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/pcapdroid.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/pcapdroid.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "PCAPdroid \u6316\u5230\u5e95\uff1a\u4e94\u4e2a\u85cf\u5f97\u6df1\u5230\u5b98\u65b9\u6587\u6863\u90fd\u6ca1\u8bf4\u7684\u51b7\u95e8\u73a9\u6cd5", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">PCAPdroid 挖到底：五个藏得深到官方文档都没说的冷门玩法</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">PCAPdroid 挖到底：五个藏得深到官方文档都没说的冷门玩法</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">我把 PCAPdroid 翻了个底朝天，发现五个隐藏设置：虚拟 IP 不是泄漏、TLS 解密还有进阶玩法、防火墙的端口级拦截、SOCKS5 配合 Tor、以及 HTTP Server 模式导出抓包。这些功能大多数人用了半年都没碰过。</p>
+  </header>
+  <div class="prose">
+<p>你以为 <a href="https://pcapdroid.fewz.tech" target="_blank" rel="noopener">PCAPdroid官网</a> 就是一个在手机上抓包看流量的工具？打开应用、点开始、盯着 Connections 列表跑，这就是你对它的全部认知？我之前也是这么想的——直到把它翻了个底朝天，才发现这货藏的东西远不止"抓包"这么简单。</p>
+<p>今天就聊聊我挖出来的五个隐藏功能，每一个都需要拐好几个弯才能摸到开关。</p>
+<h2>第一个：10.215.173.1 不是 VPN 泄漏，是它自带的 NAT 层</h2>
+<p>这是我见过最多人误解的地方。刚开抓包时盯着 Connections 列表一看，所有源 IP 都变成了 <code>10.215.173.1</code> 或者偶尔 <code>10.215.173.2</code>，瞬间慌了——这不是 VPN 泄漏吗？我又没开任何代理，怎么流量全跑到一个奇怪的内网地址去了？</p>
+<p>翻了半天才搞明白，后来去查了 <a href="https://pcapdroid.pages.dev/" target="_blank" rel="noopener">PCAPdroid文档</a> 才确认，这是 VpnService 模式在内部做 NAT 的必然结果。</p>
+<p>简单说：PCAPdroid 创建了一个虚拟网卡，所有应用的流量先被引到这个虚拟接口上，源 IP 被统一改成 <code>10.215.173.1</code>，经过它内部检查一遍之后，再改回设备的真实公网 IP 发出去。对外你访问什么网站、显示什么 IP，完全不受影响。<code>10.215.173.1</code> 就是个跑在你手机里的流量代理中转站，跟"泄漏"半毛钱关系都没有。</p>
+<p>至于为什么还有个 <code>10.215.173.2</code> 那是专门给 DNS 查询准备的——部分 DNS 请求会被路由到这个地址，方便 PCAPdroid 单独处理 DNS 解析和加密 DNS（DoT/DoH）的识别。</p>
+<p>想验证很简单：开着 PCAPdroid 抓包，浏览器访问 whatismyipaddress.com，它显示的应该是你家路由器的公网 IP，绝不会是 <code>10.215.173.1</code>。</p>
+<p>这个认知还能帮你判断 PCAPdroid 是不是正常工作着——如果源 IP 显示的是应用自己的包名加设备真实 IP，说明 VpnService 模式根本没跑起来。</p>
+<h2>第二个：TLS 解密不只是看锁颜色，Full Payload 才是杀招</h2>
+<p>Connections 列表里每行右边那个锁图标大家都见过吧？灰色 = 未加密、绿色 = 解密成功、红色 = 解密失败、橙色 = 协议不支持解密。</p>
+<p>但你有没有试过点开一条绿色锁的连接，往下翻到最底部看看 Full Payload？</p>
+<p>默认情况下 PCAPdroid 只解密到请求头层——能看到 SNI 域名、HTTP 方法、UA 字符串这些。但在顶栏设置 → Traffic Inspection 里把 Full payload 打开之后，它会尝试把整条 TLS 会话的加密流量都解出来，包括 POST 请求体、响应内容、甚至 JSON 格式的 API 返回值。</p>
+<p>这意味着什么？意味着你可以直接在手机上看到某个 App 发给后端服务器的完整 JSON 请求，或者把某个 App 拉下来的 API 响应原文扒出来——不需要用电脑开 Wireshark 再搭代理那么麻烦。</p>
+<p>当然有几个前提要注意：证书锁定（certificate pinning）的应用解不了，红色锁就是这个原因；部分银行类 App 用了额外的加密层，就算解密了也可能只拿到二进制数据。但对 90% 的普通应用来说，开了 Full Payload 之后，你看到的东西比一般想象的要多得多。</p>
+<p><img src="../images/pcapdroid/decrypted-payload.jpg" alt="Full Payload 解密效果" loading="lazy"></p>
+<h2>第三个：防火墙不止拦整个 App，还能做到端口级拦截</h2>
+<p>长按 Connections 列表里的某条连接，或者在 Apps 标签里长按某个应用图标，都会弹出上下文菜单。绝大多数人到这里就停了——最多把这个应用加到黑名单。</p>
+<p>但你有没有点开过 <strong>Port Exemptions</strong> 和 <strong>Port Map</strong>？</p>
+<p>Port Exemptions 是防火墙的进阶设置，它允许你在"允许所有流量通过"的基础上，<strong>只拦截特定端口</strong>。比如你想让某个游戏正常联网、但禁止它通过某些端口上传遥测数据——不需要把整个游戏拉黑，只在防火墙里给那个遥测端口加一条拦截规则就行。</p>
+<p>Port Map 更隐蔽了——它在 Status 标签页找了很久才摸到。这个功能可以把 PCAPdroid 抓到的流量通过端口映射转发到你指定的本地端口上，配合调试 App 接口的时候特别好用：手机端抓包、端口映射到 8080、电脑上就能用 curl 直接调被映射过去的接口，省掉在手机上手动复制粘贴的麻烦。</p>
+<p><img src="../images/pcapdroid/port-exemptions.jpg" alt="防火墙端口拦截" loading="lazy"></p>
+<h2>第四个：搭配 SOCKS5 + Tor，抓同时在暗网跑的流量</h2>
+<p>很多人不知道 PCAPdroid 自带 SOCKS5 代理支持——在顶栏设置里翻到 VPN 那一块，能看到 SOCKS5 proxy 开关。</p>
+<p>我试过用 Tor for Android 加 PCAPdroid 的组合——PCAPdroid 直接 <a href="https://pcapdroid.fewz.tech/download.html" target="_blank" rel="noopener">官方下载</a> 拿最新版装好，然后先在 Tor 设置里开启 SOCKS5 代理监听（一般是 127.0.0.1:9050），再在 PCAPdroid 的 SOCKS5 代理里填上同样的地址端口。之后打开 PCAPdroid 抓包时，所有流量在离开设备前会先经过 Tor 的 SOCKS5 代理加密走 Tor 网络出去。</p>
+<p>这个玩法有什么用？当你想测试某个 App 会不会在你用 Tor 匿名浏览的同时偷偷泄漏明文连接时——PCAPdroid 能把所有不经过 Tor 的旁路流量抓得一干二净。对隐私测试党来说这是刚需，但对普通用户来说可以直接忽略——除非你真的需要这个。</p>
+<h2>第五个：HTTP Server 模式，抓包不用导出文件</h2>
+<p>Status 标签页里 dump mode 下拉框，默认是"无导出"，点开有好几个选项。大多数人只知道 PCAP 文件导出或者 UDP/TCP 导出。</p>
+<p>但那个 <strong>HTTP Server</strong> 模式藏得真深。</p>
+<p>选中 HTTP Server 之后，PCAPdroid 会在本地开启一个轻量 HTTP 服务器（地址会显示在 Status 页上，比如 <code>http://127.0.0.1:8080</code>），把实时抓包的数据以 HTTP 流的方式往外推。</p>
+<p>想象一下这个场景：你在电脑上开个浏览器，访问手机的 HTTP Server 地址，就能实时看到手机上正在跑的所有连接——包括源 IP、目标域名、协议、流量统计。而且这个流是持续更新的，不需要等你手机上手动导出文件再传到电脑。</p>
+<p>对做 App 抓包调试的人来说，这个模式几乎是神级效率提升。但它也有一个坑：HTTP Server 的地址默认只绑定在 127.0.0.1 上，意味着你只能在手机本机访问。想在电脑上看得通过 adb forward 端口转发，或者在同一个局域网里临时开一下绑定 0.0.0.0——但要注意安全，别让局域网里其他人也能访问到你的抓包数据。</p>
+<p><img src="../images/pcapdroid/http-request-list.png" alt="HTTP Server 抓包流" loading="lazy"></p>
+<h2>别踩的坑</h2>
+<p>说了这么多隐藏功能，也顺便提醒一个我踩过的坑：TLS 解密时如果同时开 Full Payload，而且你的 TLS 解密规则里加了太多应用（包括证书锁定的），PCAPdroid 的内存占用会飙得特别夸张，有些机型上直接 OOM 杀进程。建议解密规则只加你真正需要看的那几个 App，别贪多。</p>
+<h2>最后</h2>
+<p>PCAPdroid 这个应用给我的最大感受是：它把功能都做全了，但藏得特别深。很多实用功能不是没做，是根本没人能一眼找到。</p>
+<p>如果你之前只用它看 Connections 列表，今天不妨翻到顶栏设置里的 Traffic Inspection、VPN、Firewall 那几个区域多点点。挖透一个工具，比不停换工具效率高多了。顺手说一句，这套整理好的中文资料我分别同步到了 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/PCAPdroid" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/PCAPdroid" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/PCAPdroid" target="_blank" rel="noopener">GitCode</a>，国内访问直接走 Gitee 那套就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/voloco.html">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</a></h2>
+  <p class="card-desc">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/xprinter.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">XPrinter 全能力盘点：从空白画布到行业落地，一款标签打印 App 能走多远</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/vtn-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">VTN 对比评测：在跨境健康电商这条赛道上，它为什么敢只选 12 个品牌</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

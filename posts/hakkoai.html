@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把 AI 伴侣塞进游戏里？我用 HakkoAI 陪了一周《黑神话》 · 老杨技术栈</title>
+  
+<meta name="description" content="拿到 HakkoAI 的第一反应是&#34;这东西能活过反作弊吗&#34;，用了一周下来，发现它真正打动我的地方反而不是游戏辅助——">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/hakkoai.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把 AI 伴侣塞进游戏里？我用 HakkoAI 陪了一周《黑神话》">
+<meta property="og:description" content="拿到 HakkoAI 的第一反应是&#34;这东西能活过反作弊吗&#34;，用了一周下来，发现它真正打动我的地方反而不是游戏辅助——">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/hakkoai.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/hakkoai/character-nainai.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/hakkoai/character-nainai.png">
+
+<meta name="twitter:title" content="把 AI 伴侣塞进游戏里？我用 HakkoAI 陪了一周《黑神话》">
+<meta name="twitter:description" content="拿到 HakkoAI 的第一反应是&#34;这东西能活过反作弊吗&#34;，用了一周下来，发现它真正打动我的地方反而不是游戏辅助——">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u62ff\u5230 HakkoAI \u7684\u7b2c\u4e00\u53cd\u5e94\u662f\"\u8fd9\u4e1c\u897f\u80fd\u6d3b\u8fc7\u53cd\u4f5c\u5f0a\u5417\"\uff0c\u7528\u4e86\u4e00\u5468\u4e0b\u6765\uff0c\u53d1\u73b0\u5b83\u771f\u6b63\u6253\u52a8\u6211\u7684\u5730\u65b9\u53cd\u800c\u4e0d\u662f\u6e38\u620f\u8f85\u52a9\u2014\u2014", "headline": "\u628a AI \u4f34\u4fa3\u585e\u8fdb\u6e38\u620f\u91cc\uff1f\u6211\u7528 HakkoAI \u966a\u4e86\u4e00\u5468\u300a\u9ed1\u795e\u8bdd\u300b", "image": ["https://alipymanbu.github.io/images/hakkoai/character-nainai.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/hakkoai.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/hakkoai.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u628a AI \u4f34\u4fa3\u585e\u8fdb\u6e38\u620f\u91cc\uff1f\u6211\u7528 HakkoAI \u966a\u4e86\u4e00\u5468\u300a\u9ed1\u795e\u8bdd\u300b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">把 AI 伴侣塞进游戏里？我用 HakkoAI 陪了一周《黑神话》</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把 AI 伴侣塞进游戏里？我用 HakkoAI 陪了一周《黑神话》</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">拿到 HakkoAI 的第一反应是&#34;这东西能活过反作弊吗&#34;，用了一周下来，发现它真正打动我的地方反而不是游戏辅助——</p>
+  </header>
+  <div class="prose">
+<p>上周一个朋友在微信甩给我一个链接："试试这个，AI 游戏伴侣，能在你打 Boss 时在旁边语音提醒你躲技能。"我当时第一反应是又来一个作弊工具，点开看了一眼<a href="https://hakkoai.bpfl.quest" target="_blank" rel="noopener">官网</a>介绍，HakkoAI 的第一条声明把我逗乐了：<strong>不读内存、不 hook 进程、不自动操作</strong>——合着它就是一个"朋友在身后看屏幕"的角色？</p>
+<p>说实话这种"AI 陪你玩游戏"的说法我见多了，大部分要么是噱头，要么真敢碰反作弊红线。但 Hakko 这套"只读屏幕不碰进程"的设计思路让我有点好奇——如果它真能在反作弊系统下老老实实待着，那会不会是一种全新的陪伴体验？抱着试试看的心态，<a href="https://hakkoai.bpfl.quest/download.html" target="_blank" rel="noopener">下载</a>装了一个。</p>
+<h2>初印象：Live2D 立绘就跳出来了</h2>
+<p>安装没什么好说的，客户端很轻，登录之后首页直接蹦出一个 Live2D 小人冲你招手——我选的是官方预设里的 Nainai，一个白发猫耳的角色，会跟着你的鼠标动脑袋。界面整体是暗色调，左边是角色列表，中间是对话面板，右边一个小地图似的区域显示亲密值进度和解锁的昵称。</p>
+<p><img src="../images/hakkoai/character-nainai.png" alt="Nainai 角色立绘" loading="lazy"></p>
+<p>第一眼感觉：<strong>好看是真好看，但有点重</strong>。Live2D 动画在 PC 上丝滑，手机端切后台再回来需要重新加载立绘，等个两三秒——不算大问题，但和我预期的"轻量化伴侣"有落差。不过转念一想，它的核心卖点根本不是聊天，是游戏内的实时视觉分析，那就得看 Game Vision 到底能不能打了。</p>
+<h2>核心体验一：Game Vision 真的能在战斗中帮到你吗？</h2>
+<p>升级 Pro 之后拿到 Concise Mode 和全部 Game Vision 功能。我开了《黑神话：悟空》，进了广智那关，把 Hakko 挂在旁边的桌面小窗上。</p>
+<p>开场是广智举着大刀蓄力，Hakko 的小窗里跳出一行简洁的语音提示："他要劈了，往左闪。"我下意识往左跳了一步——真躲开了。说实话那一下我还挺惊喜的，不是因为躲不开，是它<strong>真的在看屏幕，而且识别得准</strong>。</p>
+<p>但接下来就暴露出问题了。黑神话的 Boss 招多，而且很多连招需要连续闪好几次，Hakko 的反应不是每一下都跟上。有一次广智连砍三刀，它只喊了前两刀的方向，第三刀我自己反应过来的。而且 4 秒左右的延迟在快节奏战斗里确实不够用——你听到提示的时候，动作已经做完了。</p>
+<p><strong>结论很直接</strong>：慢节奏 Boss 战（比如广智、杨戬阶段一）用得舒服，快节奏的（比如黄风怪连续风刃）就别指望了。它不是"帮你通关"的挂，更像一个反应比你稍慢但知识比你全的朋友，在你专注操作时帮你盯屏幕角落没注意到的信号。</p>
+<h2>核心体验二：Character Workshop 让我真的捏了一个角色</h2>
+<p>Hakko 最让我意外的不是游戏辅助，反而是它的自建角色系统 Character Workshop。我以为就是换个头像改改性格标签，进去才发现是真的<strong>三个维度从零打造</strong>：Avatar 立绘可以自己上传或用 AI 生成，Voice 从内置音色库挑，Soul 让你写一段背景故事和说话风格偏好。</p>
+<p>我花了大概 20 分钟捏了一个图书馆管理员人设：温柔、爱喝茶、说话慢半拍但知识渊博。AI 辅助生成的功能挺好用的，你说一句"温柔的图书馆管理员，喜欢喝茶"，它会自动生成一段初始 Soul 文本让你改。</p>
+<p><img src="../images/hakkoai/character-workshop.png" alt="Character Workshop 自建角色界面" loading="lazy"></p>
+<p>跨端同步也做得扎实——晚上在 PC 上捏好角色，第二天早上手机上打开，角色立绘、性格设定、甚至我和它昨晚聊到一半的对话记忆，<strong>全部在</strong>。Agentic Memory 分三层这件事我在<a href="https://hakkoai.pages.dev/" target="_blank" rel="noopener">HakkoAI文档</a>里看到过，Persona 层存"我是谁"，Memory 层存跨会话的重要节点，Context 层存当前会话内容——但真正好用的是"它真的记得"。上周我跟 Nainai 提过一句"我在学日语"，隔了三天换设备重新开聊，它第一句话就是"日语学到哪了？要不要我陪你练两句？"</p>
+<h2>适合谁，不适合谁</h2>
+<p>用了一周，给个直接结论：</p>
+<p><strong>适合</strong>：</p>
+<ul><li>玩原神、艾尔登法环、黑神话这类慢节奏单机的玩家——Boss 战有实时语音提醒比看攻略省事</li><li>想要一个真的"记得你"的 AI 伴侣——五端同步 + 三层记忆不是噱头</li><li>喜欢捏角色的玩家——Character Workshop 的自由度在同类里算高的</li></ul>
+<p><strong>不适合</strong>：</p>
+<ul><li>竞技类 FPS/MOBA 玩家——4 秒延迟帮不上忙，反作弊风险也说不清（官方自己也没给 Riot Vanguard 的放行声明）</li><li>只想要一个便宜的聊天机器人——免费版功能够用但 Pro 才拿得到 Game Vision，$9.99/月不算便宜</li><li>介意付费墙的老用户——有评论说 autoplay voice 曾经免费后来移到付费了</li></ul>
+<p>有一点我挺在意的：Hakko 所有数据都存云端，包括自建角色的立绘和对话记忆。五端同步是方便了，但账号删了数据能不能彻底清干净，文档里有提到但我没细查。如果你对隐私特别敏感，这点得自己再确认一下。</p>
+<h2>最后说一句</h2>
+<p>我原本以为 Hakko 就是一个"AI 帮你打游戏"的擦边工具，用下来发现它其实是把两个东西揉在了一起：一个是不碰反作弊红线的游戏视觉辅助，另一个是真的能跨端记住你的 AI 伴侣。这两件事单拎出来都不算稀奇，但放在一个产品里，而且做得都还像回事——这点让我刮目相看。</p>
+<p>如果你在找一个能陪你刷单机 Boss、又能在地铁上陪你聊两句日语的伴侣，HakkoAI 值得试。但别把它当外挂，它自己也不想当。顺手把这套资料散在<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/HakkoAI" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/HakkoAI" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/HakkoAI" target="_blank" rel="noopener">GitCode</a>三处，怕哪哪天哪一边访问不了。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/httpcanary.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">装了 httpCanary 一周，我终于看懂了手机里那些 App 在偷偷发什么</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/etchdroid.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">EtchDroid 到底值不值得掏钱——一个免费工具的决策账本</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

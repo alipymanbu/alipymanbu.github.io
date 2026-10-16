@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解 · 老杨技术栈</title>
+  
+<meta name="description" content="从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/anyview-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解">
+<meta property="og:description" content="从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/anyview-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/anyview-docs/web-devices.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/anyview-docs/web-devices.png">
+
+<meta name="twitter:title" content="为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解">
+<meta name="twitter:description" content="从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u4e09\u6863\u5206\u7ea7\u5230 MSI \u6279\u91cf\u90e8\u7f72\uff0c\u62c6\u89e3 AnyViewer \u80cc\u540e\u7684\u4ea7\u54c1\u67b6\u6784\u903b\u8f91\u2014\u2014\u4e3a\u4ec0\u4e48\u514d\u8d39\u6863\u5361\u6b7b\u5e76\u53d1\u6570\u3001\u4e3a\u4ec0\u4e48\u5c4f\u5e55\u5899\u4ece 2 \u53f0\u8df3\u5230 24 \u53f0\u3001\u4e3a\u4ec0\u4e48\u4f01\u4e1a\u6863\u975e\u8981\u505a\u89d2\u8272\u6743\u9650\u3002", "headline": "\u4e3a\u4ec0\u4e48\u8fdc\u7a0b\u63a7\u5236\u8f6f\u4ef6\u8981\u5206\u4e09\u6863\uff1aAnyViewer \u7684\u67b6\u6784\u53d6\u820d\u62c6\u89e3", "image": ["https://alipymanbu.github.io/images/anyview-docs/web-devices.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/anyview-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/anyview-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download/", "name": "\u4e0b\u8f7d", "position": 2}, {"@type": "ListItem", "name": "\u4e3a\u4ec0\u4e48\u8fdc\u7a0b\u63a7\u5236\u8f6f\u4ef6\u8981\u5206\u4e09\u6863\uff1aAnyViewer \u7684\u67b6\u6784\u53d6\u820d\u62c6\u89e3", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download/index.html">下载</a><span>/</span>
+    <span class="crumb-cur">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">为什么远程控制软件要分三档：AnyViewer 的架构取舍拆解</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/download/index.html">下载</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从三档分级到 MSI 批量部署，拆解 AnyViewer 背后的产品架构逻辑——为什么免费档卡死并发数、为什么屏幕墙从 2 台跳到 24 台、为什么企业档非要做角色权限。</p>
+  </header>
+  <div class="prose">
+<h2>一个技术观察者的问题</h2>
+<p>我用过不下五六款远程控制软件，从 TeamViewer、向日葵到 Chrome Remote Desktop，然后注意到一个有意思的共性——<strong>几乎所有做得出名的远控软件都在刻意做「档位分层」</strong>，而且分层的逻辑出奇地一致：免费档、专业档、企业档。不是随便定个价格表就叫分层，而是每层卡在一个能力阈值上，让你觉得"再加点钱就能跨过某个坎"。</p>
+<p>AnyViewer 也不例外——去它的<a href="https://anyview.kook.yoga" target="_blank" rel="noopener">官网</a>看一眼档位表就能发现，但真正让我感兴趣的不是"它也分三档"这件事，而是<strong>为什么它在某个具体的能力点上卡得特别死</strong>——比如免费档的并发会话数严格锁在 2，屏幕墙只有 1 面且每面 2 台，到了企业档突然跳到每面 24 台、墙数不限。这种跳变不是拍脑袋定的，背后是远控产品架构设计的三层原理。</p>
+<h2>第一层原理：并发即商业模式</h2>
+<p>远控软件的核心资源是什么？不是带宽，不是服务器——是<strong>并发会话槽位</strong>。</p>
+<p>你可以把它理解成一家餐厅的餐桌数量。一张餐桌对应一组并发：A 桌在修电脑，B 桌在传文件，C 桌在看屏幕。餐厅可以翻台（一个会话结束后新会话可以占这个槽位），但同一时刻能同时坐下来的客人数量是固定的。</p>
+<p>AnyViewer 在这个点上的设计是典型的<strong>阶梯式卡位</strong>：</p>
+<ul><li>免费档并发 2 会话、2 通道——精确覆盖"一个人同时照看两台设备"的家庭和个人用户。修着台式机的同时盯一眼笔记本的进度条，够用了。</li><li>专业档并发不限——这是小团队和自由职业者的阈值。你需要同时处理的机器数量不确定，但肯定不止两台。不限并发给的是"安全感"，让你不会因为今天设备多了一台就卡住。</li><li>企业档和专业档在并发上一模一样。为什么？因为并发不是组织级场景的瓶颈——<strong>设备规模才是</strong>。一个运维可能同时连不了 500 台机器，但他需要系统里能登记 500 台设备。</li></ul>
+<p>这套设计的精妙之处在于：<strong>它不按"能用不能用"来分层，而是按"痒不痒"来分层</strong>。免费档能用，但卡你的那个点恰好在你快要不满足的时候戳你一下。</p>
+<p><img src="../images/anyview-docs/web-devices.png" alt="设备管理界面与分组视图" loading="lazy"></p>
+<h2>第二层原理：屏幕墙为什么从 2 跳到 24</h2>
+<p>屏幕墙（Screen Wall）是远控软件里一个很有趣的功能——它不是用来"控制"的，而是用来"监控"的。把多台被控电脑的画面拼成一面墙，实时看过去，哪个屏幕蓝了、哪个弹窗了、哪个画面异常了，一眼扫到。</p>
+<p>AnyViewer 在屏幕墙的量级上设计了一个很有意思的跳变：免费/专业档每面墙 2 台、1 面墙；企业档每面墙 24 台、墙数不限。</p>
+<p>为什么是 2 和 24？这两个数字不是乱定的：</p>
+<ul><li><strong>2 台</strong>是个人用户的监控上限。你家里不可能同时看着两台电脑的画面墙，你盯过来做什么？这是"让你知道有这个功能但用不上"的演示级实现。</li><li><strong>24 台</strong>是机房和门店的一个巡检量级。一间标准机房可能有 20~30 台服务器，一层连锁门店可能有 15~25 台收银机和工控机——24 台刚好用一面墙覆盖一个物理单元。墙数不限意味着你可以按物理空间分墙：机房 A 一面、机房 B 一面、三楼门店一面。</li></ul>
+<p>这个设计背后的取舍是：<strong>屏幕墙的本质是"巡检效率"，而巡检只在规模化场景下才有价值</strong>。一个人、两台电脑，你直接挨个点开看就行了，拼墙干嘛？但几十上百台，挨个点就是噩梦——一面墙的时间复杂度从 O(n) 降到了 O(1)。</p>
+<p>代价是屏幕墙本身的资源消耗：每多一台设备上墙，就多一条视频流在官方服务器中转。企业档用户付的费用里，有相当一部分是在为这个中转能力买单。</p>
+<h2>第三层原理：MSI 批量部署为什么只有企业档有</h2>
+<p>这里是 AnyViewer 架构设计最体现"懂运维"的部分——MSI 批量部署配合 AD 域环境，这个能力的完整实现可以去<a href="https://anyview-docs.pages.dev/" target="_blank" rel="noopener">文档</a>里查。</p>
+<p>如果你不是做运维的，可能不知道这意味着什么。简单说：一个管理员，手里有 50 台公司电脑，需要把远控客户端全部装上。手动装的话，每台要<a href="https://anyview.kook.yoga/download.html" target="_blank" rel="noopener">下载</a>安装包、点下一步、登录账号、配置自启——50 台跑下来是一整天的活。</p>
+<p>MSI 批量部署的解法是：<strong>在域控制器上一条组策略，客户端自动铺装到所有符合条件的电脑，装完自动登录指定账号、自动开机自启、自动入组</strong>。50 台机器从手动变成了"等它们自己装好"。</p>
+<p>为什么这个功能不放专业档？因为<strong>批量部署依赖域环境</strong>，而域环境本身就是组织级的基础设施——小工作室、自由职业者、小型团队根本没有域，这个功能给了他们也用不上。</p>
+<p>和 MSI 配对出现的另外两个组织级能力——<strong>设备分组</strong>和<strong>角色权限</strong>——也是同理：</p>
+<ul><li>设备分组是把 500 台机器按部门、楼层、用途分层管理。个人用户的设备列表就两三条，分什么组？</li><li>角色权限是给"谁能控制哪台机器、能用哪些功能"做系统约束。个人用户只需要自己的账号，不需要授权别人；而一个运维团队里，值班员能不能碰生产服务器？实习生能不能重启设备？这些必须写进角色里。</li></ul>
+<p>这三件事加在一起，才是组织级远控的完整闭环——<strong>批量铺 → 分层管 → 权限控</strong>。缺任何一环，组织用上都会出事。</p>
+<h2>代价与失效场景</h2>
+<p>讲了三层原理，也得说这套设计的代价和失效点——毕竟没有完美的产品架构。</p>
+<p>第一个失效场景：<strong>低延迟刚需</strong>。AnyViewer 的视频流走的是官方服务器中转，不是 P2P 直连（它的架构决定了所有会话都经过中心服务器）。在跨运营商、跨国网络的场景下，延迟可能到 100ms 以上，对于需要精细操作的场景（比如远程打游戏、远程调 CAD 图纸）就卡壳了。它的设计目标是"够用"而不是"极限"，这是一个主动取舍。</p>
+<p>第二个失效场景：<strong>无域环境的小团队</strong>。你有七八台电脑，想批量装 AnyViewer，但你没有域控制器——MSI 部署用不上，设备分组也没必要，角色权限更是多余。这时候专业档就是你的上限，也是最优解。你花的钱不会浪费，但也不会有惊喜。</p>
+<p>第三个代价：<strong>免费档的功能阉割不是均匀的</strong>。并发锁 2 是最明显的，隐私模式（付费档才能黑掉被控端屏幕）、游戏鼠标（精确点击）、高清画质这些也都卡了点。AnyViewer 的定价逻辑是"让你在最需要的时候付钱"，而不是"让你花钱解锁所有功能"。这对于免费用户来说可能有点不舒服，但对于付费用户来说是划算的——你只在你需要的那个档位上付费，不会多花。</p>
+<h2>这套原理意味着什么</h2>
+<p>回到开头那个问题：为什么远程控制软件要分三档？</p>
+<p>因为远控的用户群体天然就是三层的——个人、小团队、组织——而每一层对"远程控制"的理解完全不同：</p>
+<ul><li>个人用户理解的远控是"帮朋友修电脑"、"出门取家里电脑的文件"，他不需要并发、不需要分组、不需要权限。</li><li>小团队理解的远控是"同时照看客户的几台机器"、"远程给同事演示"，他需要并发不限，但不需要批量部署。</li><li>组织理解的远控是"运维设备台账"、"巡检监控"、"权限合规"，他需要的不是一个工具，而是一套流程。</li></ul>
+<p>AnyViewer 的三档架构，本质上是把"一个工具"变成了"三层产品"——每层对应用户的需求深度，每层有自己的核心价值主张。免费档卖的是"能连上"，专业档卖的是"够快够多"，企业档卖的是"能管住"。</p>
+<p>如果你在考虑远控工具的选型，先问自己一个问题：<strong>你是想"连一下"，还是想"长期管"，还是想"流程化地管"</strong>？这个答案直接决定你在三档里落在哪一层——而 AnyViewer 的架构设计，早就为每一层准备好了对应的能力包。顺带说一句，关于 AnyViewer 的完整资料，我在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD/anyview" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD/anyview" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD/anyview" target="_blank" rel="noopener">GitCode</a>上分别都归档了一份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mifun-docs.html">用了一年多 MiFun，说说这款追番工具到底值不值得留</a></h2>
+  <p class="card-desc">从随手安装到每天必开，经历过播源波动、投屏踩坑和缓存管理，这篇是老用户的真实使用沉淀。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gitmind-docs.html">GitMind 这几年迭代了什么——从思维导图到 AI 研究助手的路线图</a></h2>
+  <p class="card-desc">从样本文档透露的版本线索出发，梳理 GitMind 近年的功能演进轨迹，看看团队在死磕什么、哪些方向一直没碰，以及下一步可能走向哪里。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/download/index.html">下载</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/edrawings.html">用 eDrawings 两年，从觉得它多余到每天离不开</a></h2>
+  <p class="card-desc">当初装它只是因为同事发的 CAD 文件打不开，两年下来发现这款免费查看器的稳定和克制远超预期，也踩过不少只有长期用才会暴露的坑。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/new-bing-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/afusekt.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">从零搭建专属家庭影院：AfuseKt 上手实战全流程</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

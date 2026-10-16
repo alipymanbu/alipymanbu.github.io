@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>把 DataBackup 嵌进我的刷机与换机工作流 · 老杨技术栈</title>
+  
+<meta name="description" content="从旧 ROM 到新设备，从主空间到分身空间，DataBackup 不只是备份工具——它是我整条 Android 折腾链的连接器。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/databackup.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把 DataBackup 嵌进我的刷机与换机工作流">
+<meta property="og:description" content="从旧 ROM 到新设备，从主空间到分身空间，DataBackup 不只是备份工具——它是我整条 Android 折腾链的连接器。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/databackup.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/databackup/backup-list.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/databackup/backup-list.jpg">
+
+<meta name="twitter:title" content="把 DataBackup 嵌进我的刷机与换机工作流">
+<meta name="twitter:description" content="从旧 ROM 到新设备，从主空间到分身空间，DataBackup 不只是备份工具——它是我整条 Android 折腾链的连接器。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u65e7 ROM \u5230\u65b0\u8bbe\u5907\uff0c\u4ece\u4e3b\u7a7a\u95f4\u5230\u5206\u8eab\u7a7a\u95f4\uff0cDataBackup \u4e0d\u53ea\u662f\u5907\u4efd\u5de5\u5177\u2014\u2014\u5b83\u662f\u6211\u6574\u6761 Android \u6298\u817e\u94fe\u7684\u8fde\u63a5\u5668\u3002", "headline": "\u628a DataBackup \u5d4c\u8fdb\u6211\u7684\u5237\u673a\u4e0e\u6362\u673a\u5de5\u4f5c\u6d41", "image": ["https://alipymanbu.github.io/images/databackup/backup-list.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/databackup.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/databackup.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "\u628a DataBackup \u5d4c\u8fdb\u6211\u7684\u5237\u673a\u4e0e\u6362\u673a\u5de5\u4f5c\u6d41", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">把 DataBackup 嵌进我的刷机与换机工作流</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">把 DataBackup 嵌进我的刷机与换机工作流</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从旧 ROM 到新设备，从主空间到分身空间，DataBackup 不只是备份工具——它是我整条 Android 折腾链的连接器。</p>
+  </header>
+  <div class="prose">
+<h2>旧流程：刷机像搬家，每次都在赌运气</h2>
+<p>我是那种每年至少刷两次 ROM 的人。以前每次刷机前的准备工作是这样的：</p>
+<p>先花半小时在旧设备上跑一遍系统自带的备份（Google One 同步应用数据 + 手动导出微信聊天记录到电脑 + 备忘录复制到云盘），然后刷完 ROM，新设备启动后得一个个装应用、一个个手动导回数据。微信还好有自己的迁移功能，但其他几十上百个应用呢？有的根本不支持云备份，有的备份了恢复回来设置全丢，游戏存档得等十几分钟的云同步。</p>
+<p>最头疼的是多用户场景。我主空间装的是日常用的微信和支付宝，分身空间是工作号和测试用的 App。系统自带备份只会备份当前登录的那个用户的数据——我得先切到分身、跑一遍备份、导出、再切回主空间、再跑一遍，两套备份文件分开存，恢复时还得记清楚哪份对应哪个用户。</p>
+<p>跑下来一套流程至少两三个小时，还经常在某个环节卡壳：签名冲突导致恢复失败、备份文件损坏、应用商店里找不到某个冷门 App……每次刷机前都像在赌运气。</p>
+<h2>新流程：DataBackup 当整条链的枢纽</h2>
+<p>我把 DataBackup 插进这条折腾链之后，整个流程的骨架变成了：</p>
+<p><strong>刷机前 → 跑一轮全量备份 → 自动打包成时间戳命名的目录 → 拷一份到 NAS → 刷机 → 从商店批量装应用 → 打开 DataBackup 点恢复</strong></p>
+<p>看起来好像只是把系统自带备份换成了 DataBackup，但变化是结构性的——以前那些分散在各个环节的手动操作，现在集中在两个点上完成：备份一次、恢复一次。中间的应用安装环节我用 Play 商店的「批量安装」搞定，跟 DataBackup 完全解耦；DataBackup 自己则从<a href="https://databackup.xnyx.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿安装包，不走商店渠道。</p>
+<h3>工作流里 DataBackup 接在哪一环</h3>
+<p>整个流程的衔接点很清晰：</p>
+<ul><li><strong>备份端</strong>：从<a href="https://databackup.xnyx.quest" target="_blank" rel="noopener">DataBackup官网</a>下载装好后，直接读 <code>/data/data/</code> 下的原始数据，不依赖各应用自己的云备份功能。不管应用本身支不支持备份，DataBackup 都能拿到完整数据。备份产物按应用分目录、按 zstd 压缩，跑完后整个备份目录就是一个可以随手拷走的文件夹。</li><li><strong>存储端</strong>：备份目录跑完后，我用一个简单的脚本（<code>adb pull</code> 整个备份目录）拉到电脑，再用 Rclone 同步到 NAS。zstd 压缩率比 gzip 好 10~20%，拉取和同步都省时间省带宽；压缩参数和存储路径的高级配置，我去<a href="https://databackup.pages.dev/" target="_blank" rel="noopener">DataBackup文档</a>翻了一下才完全搞清楚。</li><li><strong>恢复端</strong>：刷完 ROM 后，我先用应用商店把常用应用批量装一遍（用"仅恢复数据"模式），DataBackup 只负责把数据解压进去，不碰 APK。这样避开了最常见的签名冲突坑——ROM 自带商店装的版本和备份里的 APK 签名可能不一样，用前者装完再恢复数据就没这个问题。</li><li><strong>多用户端</strong>：备份和恢复时顶部有用户切换按钮，在主空间就能看到并备份分身空间的所有应用，切换一下就能把主用户、分身用户各自的数据分开存档。恢复时也可以选把哪份备份恢复到哪个用户，甚至支持跨用户还原——我试过把工作号的某个 App 数据临时恢复到主空间来查一个文件，完了再切回去，全程不用切换系统用户。</li></ul>
+<h2>实操里最容易断链的两个环节</h2>
+<h3>环节一：备份中途被打断</h3>
+<p>有次刷机前手机只剩 10% 电，备份跑到一半自动关机。重新开机跑恢复时 DataBackup 跳过了几个失败的应用，但那次不完整的备份子目录一直躺在那里占空间，下次恢复时我差点选错了那份。</p>
+<p>现在我的做法是：备份完成后先在 DataBackup 的核对界面扫一眼有没有失败项，<strong>任何失败项都直接删掉那次备份子目录、重新跑一遍</strong>。有失败项的备份宁可不用，恢复时在一堆时间戳目录里找对的那份本来就费劲，混入一份损坏的只会更乱。</p>
+<h3>环节二：换机时的跨设备恢复</h3>
+<p>换机场景和刷机不同——旧设备的 APK 和数据是一套的，签名版本完全匹配，所以我用的是「完整恢复」模式，DataBackup 会先装 APK 再解压数据，一步到位。但新设备上如果某些应用从商店装不到（比如一些小众的 Android Auto 应用），旧备份里刚好有 APK，这时候完整恢复就特别有用。</p>
+<p>跨设备恢复前的关键动作是：<strong>先确认备份目录在新设备上能读到</strong>。我习惯把备份目录放在手机内部存储的根目录下，新设备插上数据线就能识别到。如果备份存在旧设备的 SD 卡或 NAS 里，得先拷到新设备本地再开 DataBackup，否则它找不到备份源。</p>
+<h3>备份目录的命名和管理</h3>
+<p>DataBackup 默认用时间戳命名备份子目录（<code>2026-10-15-14-30-00</code>），排序方便但看不出那次备份是干什么的。我现在每次备份前都自定义名称：「刷机前-2026-10-15」「换机前-旧设备-2026-10-12」「日常备份-2026-10-01」，恢复时一眼就能找到对应用途的那份。</p>
+<p>保留几份的原则是：日常备份留最近 2~3 份；刷机前的那份保留到新系统跑稳了再删；关键节点（比如大版本升级前）的备份单独拷到 NAS 长期存档。已经在电脑或云端另存过的本地备份可以删，双份保险够了。</p>
+<p><img src="../images/databackup/backup-list.jpg" alt="备份列表与时间戳命名" loading="lazy"> <img src="../images/databackup/restore-view.jpg" alt="恢复时选择目标应用" loading="lazy"></p>
+<h2>效果：两三个小时变二十分钟</h2>
+<p>整套流程跑通之后，时间成本的变化是这样的：</p>
+<ul><li><strong>备份端</strong>：以前分散在各个应用里手动导出，现在 DataBackup 一次性跑完，全程不用盯着，5~10 分钟搞定</li><li><strong>存储端</strong>：zstd 压缩后的备份目录比以前各自导出的散文件小了接近一半，拉取和同步 NAS 少了一半时间</li><li><strong>恢复端</strong>：以前先手动装几十个应用再逐个导数据，现在应用商店批量装完，DataBackup 点一下自动解压所有数据，二十分钟内整个流程走完</li></ul>
+<p>最实在的变化不是省了多少时间，而是<strong>整个流程的确定性</strong>——以前每次刷机都在赌某个 App 的备份会不会损坏、签名会不会冲突、数据能不能完整恢复；现在 DataBackup 把这些不确定性都收拢成了两个操作：备份和恢复，中间的环节要么自动化、要么解耦。</p>
+<h2>什么时候这套流程不划算</h2>
+<p>DataBackup 依赖 Root 权限，没有 Root 的设备用不了。另外它不处理照片、音乐这些媒体文件——那些我用相册自带的云备份和 Rclone 同步，不在这条链里。还有一种情况：如果你只打算备份一两个核心 App，DataBackup 的重量级工具链就显得冗余了，单独用应用自己的备份功能反而更快。但像我这种每次要处理几十个 App、还得分身两套数据的场景，DataBackup 是唯一能把整个折腾流程串起来的工具。</p>
+<p>这套工作流我已经跑了大半年，刷过三次 ROM、换过一次设备，每次恢复都一次过。DataBackup 不是备份市场里功能最全的工具，但它是我见过最像"连接器"的那个——把 Android 折腾这条链上的各个环节真正粘合成了一套能跑的流程。整理这套工作流的相关资料时，我顺手在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/DataBackup" target="_blank" rel="noopener">GitHub</a>放了主仓库，国内访问的朋友可以走<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/DataBackup" target="_blank" rel="noopener">Gitee</a>或<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/DataBackup" target="_blank" rel="noopener">GitCode</a>镜像。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/gtsaool.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">装了一年半，说说 GTSAOOL 把我的 GTASA 变成了什么样子</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/mangatoon-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">MangaToon 能力面全梳理：从内容生态到免费通路的深度盘点</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

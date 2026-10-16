@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用了三年GoodSync才摸到这五个暗门，藏得真深 · 老杨技术栈</title>
+  
+<meta name="description" content="你以为GoodSync就是个文件夹双向同步工具？其实它还藏着Smart Backup、版本历史、Forwarder强制模式等连老用户都没摸过的隐藏功能，翻到底层把它们挖出来。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/goodsync.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用了三年GoodSync才摸到这五个暗门，藏得真深">
+<meta property="og:description" content="你以为GoodSync就是个文件夹双向同步工具？其实它还藏着Smart Backup、版本历史、Forwarder强制模式等连老用户都没摸过的隐藏功能，翻到底层把它们挖出来。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/goodsync.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/goodsync/version-history.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/goodsync/version-history.png">
+
+<meta name="twitter:title" content="用了三年GoodSync才摸到这五个暗门，藏得真深">
+<meta name="twitter:description" content="你以为GoodSync就是个文件夹双向同步工具？其实它还藏着Smart Backup、版本历史、Forwarder强制模式等连老用户都没摸过的隐藏功能，翻到底层把它们挖出来。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4f60\u4ee5\u4e3aGoodSync\u5c31\u662f\u4e2a\u6587\u4ef6\u5939\u53cc\u5411\u540c\u6b65\u5de5\u5177\uff1f\u5176\u5b9e\u5b83\u8fd8\u85cf\u7740Smart Backup\u3001\u7248\u672c\u5386\u53f2\u3001Forwarder\u5f3a\u5236\u6a21\u5f0f\u7b49\u8fde\u8001\u7528\u6237\u90fd\u6ca1\u6478\u8fc7\u7684\u9690\u85cf\u529f\u80fd\uff0c\u7ffb\u5230\u5e95\u5c42\u628a\u5b83\u4eec\u6316\u51fa\u6765\u3002", "headline": "\u7528\u4e86\u4e09\u5e74GoodSync\u624d\u6478\u5230\u8fd9\u4e94\u4e2a\u6697\u95e8\uff0c\u85cf\u5f97\u771f\u6df1", "image": ["https://alipymanbu.github.io/images/goodsync/version-history.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/goodsync.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/goodsync.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528\u4e86\u4e09\u5e74GoodSync\u624d\u6478\u5230\u8fd9\u4e94\u4e2a\u6697\u95e8\uff0c\u85cf\u5f97\u771f\u6df1", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">用了三年GoodSync才摸到这五个暗门，藏得真深</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用了三年GoodSync才摸到这五个暗门，藏得真深</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">你以为GoodSync就是个文件夹双向同步工具？其实它还藏着Smart Backup、版本历史、Forwarder强制模式等连老用户都没摸过的隐藏功能，翻到底层把它们挖出来。</p>
+  </header>
+  <div class="prose">
+<p>你以为 GoodSync 就是个把文件夹从 A 戳到 B 的双向同步工具？我之前也是这么想的——安装包从<a href="https://goodsync.ggcd.store/download.html" target="_blank" rel="noopener">下载</a>拿，装上去建个作业选好两端点，点一下 Analyze 然后 Sync，完事。直到上个月跟 NAT 穿透死磕了三天，被逼着翻遍了所有 Advanced 设置和日志文件才去<a href="https://goodsync.ggcd.store" target="_blank" rel="noopener">官网</a>翻了一圈，才发现这货肚子里藏着好几个连老用户都没摸过的暗门。</p>
+<p>今天把五个压箱底的隐藏功能挨个掏出来，每个都讲清楚在哪、怎么开、什么场景真有用。</p>
+<h2>暗门一：Smart Backup——Backup 和 Sync 中间那条缝</h2>
+<p>大多数人在 Job Type 下拉框里只会选两个选项：Backup（单向备份）或者 Synchronize（双向同步）。但你仔细数一下下拉框的条目——是不是多了一个？有的版本叫 Smart Backup，有的叫 Uni-directional Sync，翻译过来就是单向同步。</p>
+<p>这个模式跟普通 Backup 看起来像一回事，实际行为差得远：</p>
+<p>普通 Backup 是「左是主、右是镜像」——左边删了的文件右边跟着删，左边改了的右边覆盖，右边的任何操作都传回不来。Smart Backup 则只同步<strong>新增和修改</strong>，<strong>左边删了的文件不会从右边抹掉</strong>。</p>
+<p>什么时候用得上？比如我有一台主办公机，要把最新的代码仓库推到三台测试节点。测试节点上经常会临时生成调试日志、覆盖率报告、临时构建产物——这些文件不该存在主仓库里，也不该每次同步被删掉。用普通 Backup 的话，主端清理后测试节点的临时文件也跟着消失；用 Synchronize 又会把测试节点的临时文件反传回来搞脏主仓库。Smart Backup 正好卡在中间：主端的改动能推下去，测试端的额外文件能留住，互不干扰。</p>
+<p>在哪开的？打开作业 → Options → General → Job Type 下拉框。别再只盯着前两个选项了。</p>
+<h2>暗门二：版本历史——被删的文件还能捞回来</h2>
+<p>用 Backup 模式的人都有过类似的心理阴影：某天脑子抽了在左侧源目录批量删了一堆旧文件，启动同步后右侧镜像也跟着消失了，悔得拍大腿。官方文档里提过一句「建议配合版本历史功能使用」，但没说怎么开，默认也是关闭的。后来翻了<a href="https://goodsync.pages.dev/" target="_blank" rel="noopener">文档</a>才确认这功能真的存在。</p>
+<p>开启后，Backup 模式下左侧删除或覆盖的文件不会直接从右侧抹掉——它们会被转移到一个版本历史目录里，文件名带上时间戳。你想要恢复的话，在版本历史里找到那个文件，右键选 Restore 就回来了。</p>
+<p><img src="../images/goodsync/version-history.png" alt="版本历史功能面板" loading="lazy"></p>
+<p>开启路径：作业 → Options → 找版本历史相关的选项（不同版本位置略有差异，有的在 Advanced 子标签里）。开启后你可以设置保留多少个版本、保留多久。对做异地备份的朋友来说，这功能相当于给备份套了一层垃圾桶——误删不再是灾难。</p>
+<h2>暗门三：Forwarder Only——NAT 穿透失败时的杀招</h2>
+<p>GoodSync Connect 的连接机制默认是「直连优先、Forwarder 兜底」。直连靠的是 P2P hole punching，在对称 NAT 或者企业防火墙后面经常穿不过。大部分人遇到连接失败会去重启、换账户、检查防火墙——但很少有人知道 Connect 设置的 Advanced 里藏着一个「Forwarder Only」开关。</p>
+<p>勾上它之后，GoodSync 直接跳过直连尝试，强制走 Forwarder 中转。日志里不会再出现一连串的 "Direct connection failed"，而是一条干净的 "Using Forwarder"。Forwarder 不是降级方案，它是正常设计——官方文档明确说这是备选用途，只是默认不启用。</p>
+<p>我的场景是办公电脑在公司路由器后面（对称 NAT），家里 NAS 挂在光猫下，直连从来没成功过。之前每次同步都要等直连超时（大概 30 秒）才会走 Forwarder，现在直接勾了 Forwarder Only，连接时间从 30 秒缩到 3 秒。</p>
+<p>在哪找：GoodSync → Tools → GoodSync Connect Setup → Advanced → 勾选 Forwarder Only。</p>
+<h2>暗门四：GSTP 应用层二次加密——给 TLS 再套一层 AES-256</h2>
+<p>GoodSync 用 GSTP 协议（也就是 GoodSync Connect 默认的传输协议）的时候，底层已经有 TLS + AES-256 加密了，正常来说链路安全已经够了。但如果你在 Options 的安全相关设置里深挖，会发现有一个额外加密的开关——开启后在 TLS 之上<strong>再套一层应用层的 AES-256 加密</strong>，等于双重加密。</p>
+<p>密钥怎么来？由你首次启用时设置的密码通过 PBKDF2 算法派生，GoodSync 本身不保存这个密码——两端必须设同一个密码才能同步。官方文档里只提了一句，很多人没注意到 GSTP 也能开这层，因为它对 FTP 和 HTTP 版 WebDAV 才是<strong>强制推荐</strong>的，而 GSTP 已经有 TLS 了，所以默认不提示。</p>
+<p>实际开销几乎可以忽略——现代 CPU 有 AES 指令集，加解密吞吐数百 MB/s，加密开销小于 5%。我自己在 NAS 上测过，开了双层加密后同步 10GB 文件，时间差不到 10 秒。低性能 ARM 设备（比如老款 Raspberry Pi）可能会有感觉，但对正常电脑和主流 NAS 来说没影响。</p>
+<p>提醒一个坑：这个密码丢了就彻底找不回来。不像网盘能找回密码，GoodSync 不存你的加密密码，只存加密后的密钥文件。设置完密码一定要记好，或者写进密码管理器。</p>
+<h2>暗门五：过滤器面板——按扩展名、路径、大小、日期精细筛选</h2>
+<p>打开作业的 Options，翻到 Filters 标签——这里藏着一整套精细的文件筛选规则。大多数人建作业的时候就是选好左侧目录和右侧目录，直接 Analyze 然后 Sync，但过滤器可以让同步变得极其精准。</p>
+<p>比如我在给 NAS 做照片备份的时候，不想把 iPhone 照片流里那些 <code>.aae</code> 编辑文件（其实是个 XML）和 <code>.mov</code> 实况视频的附加文件也同步过去。过滤器里加一条排除 <code>*.aae</code> 和 <code>*.mov</code> 的规则就搞定了，不用去照片目录里手动删。</p>
+<p>过滤器支持按扩展名、路径模式（通配符）、文件大小、修改日期范围来筛选，还支持包含和排除两种方向。更进阶的是可以用正则表达式——比如只同步目录结构里包含 <code>2024</code> 的子目录，或者只同步大小超过 1MB 的文档。</p>
+<p><img src="../images/goodsync/options-filters.png" alt="过滤器面板" loading="lazy"></p>
+<h2>一个提醒：别让 Smart Backup 和普通 Backup 搞混</h2>
+<p>Smart Backup 虽然好用，但它和普通 Backup 切换的时候要格外小心。切换模式不会清空端点和过滤器配置，但操作逻辑会变。我之前有个作业从 Backup 改成了 Smart Backup 之后忘了这件事，结果右侧镜像里积累了好几个 GB 的临时构建产物没被清理——直到下次检查备份一致性才发现。</p>
+<p>如果你的场景确实需要 Smart Backup，建议在作业名称里加个标注，比如 <code>OfficeToTestNodes_SmartBackup</code>，免得日后自己忘了。</p>
+<p>GoodSync 的官方文档写得太简略，很多功能只提一句存在但不告诉你怎么找。翻完所有设置、摸完所有 Advanced 面板之后才发现，它藏起来的不是冷门功能，而是那些能让日常使用效率翻倍的进阶设置。把它用透的关键不是学操作流程，而是把每个下拉框、每个 Advanced 标签都点开看看——暗门就在那里。另外整理 GoodSync 相关资料的时候顺手也塞了一份到三个仓库：<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/GoodSync" target="_blank" rel="noopener">GitHub</a> 是主仓，国内访问慢的话去 <a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/GoodSync" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/GoodSync" target="_blank" rel="noopener">GitCode</a> 也能拿到同样的东西。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/zeta-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">zeta 半年用下来，我对这款角色扮演聊天应用的真实感受</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/soundbrenner.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">手腕上的节拍器——Soundbrenner 新手入门指南</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

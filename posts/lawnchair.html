@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用了五年 Nova Launcher，我为什么在一个周末迁到了 Lawnchair · 老杨技术栈</title>
+  
+<meta name="description" content="从 Nova 到 Lawnchair 的完整迁移故事：备份导入、搜索计算器真香、小部件踩电池优化坑，以及那些预想不到的细节差异。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/lawnchair.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用了五年 Nova Launcher，我为什么在一个周末迁到了 Lawnchair">
+<meta property="og:description" content="从 Nova 到 Lawnchair 的完整迁移故事：备份导入、搜索计算器真香、小部件踩电池优化坑，以及那些预想不到的细节差异。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/lawnchair.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/lawnchair/home-screen.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/lawnchair/home-screen.jpg">
+
+<meta name="twitter:title" content="用了五年 Nova Launcher，我为什么在一个周末迁到了 Lawnchair">
+<meta name="twitter:description" content="从 Nova 到 Lawnchair 的完整迁移故事：备份导入、搜索计算器真香、小部件踩电池优化坑，以及那些预想不到的细节差异。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece Nova \u5230 Lawnchair \u7684\u5b8c\u6574\u8fc1\u79fb\u6545\u4e8b\uff1a\u5907\u4efd\u5bfc\u5165\u3001\u641c\u7d22\u8ba1\u7b97\u5668\u771f\u9999\u3001\u5c0f\u90e8\u4ef6\u8e29\u7535\u6c60\u4f18\u5316\u5751\uff0c\u4ee5\u53ca\u90a3\u4e9b\u9884\u60f3\u4e0d\u5230\u7684\u7ec6\u8282\u5dee\u5f02\u3002", "headline": "\u7528\u4e86\u4e94\u5e74 Nova Launcher\uff0c\u6211\u4e3a\u4ec0\u4e48\u5728\u4e00\u4e2a\u5468\u672b\u8fc1\u5230\u4e86 Lawnchair", "image": ["https://alipymanbu.github.io/images/lawnchair/home-screen.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/lawnchair.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/lawnchair.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528\u4e86\u4e94\u5e74 Nova Launcher\uff0c\u6211\u4e3a\u4ec0\u4e48\u5728\u4e00\u4e2a\u5468\u672b\u8fc1\u5230\u4e86 Lawnchair", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">用了五年 Nova Launcher，我为什么在一个周末迁到了 Lawnchair</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用了五年 Nova Launcher，我为什么在一个周末迁到了 Lawnchair</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 10 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 Nova 到 Lawnchair 的完整迁移故事：备份导入、搜索计算器真香、小部件踩电池优化坑，以及那些预想不到的细节差异。</p>
+  </header>
+  <div class="prose">
+<h2>周五晚上的那通电话</h2>
+<p>「你说 Nova 又重载桌面了？」朋友在电话那头笑，「MIUI 把第三方启动器往死里杀，你还没换啊？」</p>
+<p>我握着手机盯着黑屏亮起来又暗下去的桌面——这已经是这周第三次了。Nova Launcher 我用了五年，从三星 S9 一直用到现在的 K60 Pro。它陪我换过三台手机，桌面布局跟着我漂洋过海，文件夹里的应用分类比我的衣柜还整齐。但最近这半年，MIUI 的电池优化把它往死里干：早上出门摆好的小部件，中午拿出来看天气发现显示的是昨天的数据；微信支付的快捷方式偶尔会消失，等我手动重载 Nova 才回来；最过分的一次是坐高铁回家，中途想拍张照片直接开相机，按了 Home 键等了三秒桌面才加载出来——三秒够错过一张好照片了。</p>
+<p>「你换个 Lawnchair 试试，开源的，原生 Pixel 那味儿。」朋友说，「而且新版支持直接读 Nova 备份，不用手动重建。」</p>
+<p>挂了电话我在床上翻了个身。五年的布局、五年的文件夹结构、五年的手势习惯……说换就换？但那个三秒的空白画面又浮上来。我爬起来，打开浏览器搜了一下它的<a href="https://lawnchair.gltd.quest" target="_blank" rel="noopener">官网</a>，决定先看看再说。</p>
+<h2>第一次启动：导入 Nova 备份</h2>
+<p>安装包从<a href="https://lawnchair.gltd.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿的。安装完按 Home 键，系统弹出了熟悉的「选择启动器」对话框——这次多了 Lawnchair。我选了「始终」，屏幕闪了一下，Lawnchair 的默认桌面出现在眼前：干净、极简，底部 Dock 一排图标，上面是几个推荐的小部件。</p>
+<p><img src="../images/lawnchair/home-screen.jpg" alt="Lawnchair 主屏幕预览" loading="lazy"></p>
+<p>但默认的空白桌面不是我想要的。我要的是用了五年的那套布局：主屏第一页放常用 app 和支付快捷方式，第二页文件夹分类，第三页留给小部件。朋友说的「支持 Nova 备份」让我抱着试试看的心态打开了设置。</p>
+<p>长按空白 → 主屏幕设置 → 右上角三个点 → 恢复备份。文件选择器里我找到之前在 Nova 里导出的那个 <code>.novabackup</code> 文件——名字叫 <code>backup_20261001.novabackup</code>，是上个月调完布局顺手存的。</p>
+<p>Lawnchair 弹出了一个预览对话框，告诉我哪些内容能迁移、哪些不能：</p>
+<ul><li>主屏幕网格布局和图标位置——能迁移</li><li>文件夹结构和里面的应用——能迁移（前提是应用还在）</li><li>小部件的位置——能迁移，但内部数据要重新配</li><li>Nova 专属的那些复杂手势——不能迁移</li><li>抽屉布局——不能迁移，两个启动器逻辑完全不同</li></ul>
+<p>最后一条有点扎心。但想想也是，抽屉这个东西两个启动器从设计理念上就不一样：Nova 是网格为主、搜索为辅；Lawnchair 反过来，搜索才是主角。</p>
+<p>我点了「恢复」，等了大概十秒。屏幕闪了一下——我的桌面回来了。</p>
+<p>不是一模一样，但八九不离十。每个图标的位置大致对齐了，文件夹结构完整，小部件也都在原来的位置。唯一明显的区别是 Nova 用了子网格定位（图标能精确对齐到更小的间距），Lawnchair 把这些图标对齐到了标准网格，有几个地方间距略宽了一点。但说实话，如果不是我盯了五年，根本看不出来。</p>
+<p><img src="../images/lawnchair/app-drawer.jpg" alt="Lawnchair 应用抽屉" loading="lazy"></p>
+<h2>搜索栏的计算器：被低估的功能</h2>
+<p>迁移完的第一个早晨，我在抽屉搜索框里随手敲了一句 <code>(199 + 299) * 2</code>，Lawnchair 在搜索框下方直接弹出了计算结果 996。</p>
+<p>我愣了一下。这是什么时候加的功能？</p>
+<p>以前用 Nova 的时候抽屉搜索就是纯搜应用，顶多加个联系人匹配。Lawnchair 这个搜索栏把好几个功能揉在了一起：搜索应用是基本操作，往上翻会看到联系人、系统设置项、文件、网页搜索建议，还有计算器——只要输入里有数学表达式，结果实时显示，点击不会跳转到任何地方，就是纯给你看一眼。</p>
+<p>那天早上我在算信用卡分期的手续费，本来要切到计算器 app 按半天，结果直接在搜索框里敲了个式子就完事了。后来慢慢发现搜索还能匹配联系人姓名、公司名称和备注——上次找一个忘了号码的老同事，直接敲公司名就出来了，比在通讯录里翻快多了。</p>
+<p>但文件搜索有个坑。一开始我搜不到下载目录里的东西，以为是我没开权限。后来才发现这不是我没设置，是 Play Store 版本的限制——Google Play 不让第三方启动器拿「全部文件访问」权限，所以 Play Store 版只能搜照片视频和音频。要搜全盘文件得用 GitHub 版，手动去系统设置里授予「所有文件访问」权限。我把 Play Store 版卸了装了 GitHub Releases 版，重新授权之后文件搜索才正常。</p>
+<h2>小部件的电池优化坑</h2>
+<p>如果说搜索计算器是惊喜，那小部件问题就是周末最大的败兴。</p>
+<p>恢复备份之后小部件都在原来的位置，但第二天早上起来一看——天气小部件显示的还是昨天的温度，日历上过了的事件还挂在那，连音乐小部件都停在昨晚听的那首歌。</p>
+<p>我以为是恢复备份时小部件的内部数据没迁过来——<a href="https://lawnchair.pages.dev/" target="_blank" rel="noopener">Lawnchair文档</a>里也说了，备份只保存位置和尺寸，不保存内部数据。我长按天气小部件想手动刷新，结果连刷新选项都没有。打开对应的天气 app，手动触发了一次数据更新，回到桌面——还是旧的。</p>
+<p>折腾了半小时才反应过来：这跟之前 Nova 重载桌面的原因是同一个——电池优化。</p>
+<p>MIUI 的电池管理把 Lawnchair 的后台进程时不时就杀了，连带着挂在它上面的小部件宿主 app 也被一并清理了。之前给 Nova 排除电池优化时我只设了 Nova 本身，这次在 Lawnchair 上我犯了同样的错：只把 Lawnchair 设成了「无限制」，忘了小部件对应的宿主应用也得设。</p>
+<p>天气小部件对应天气 app，日历小部件对应系统日历，音乐小部件对应音乐播放器——这些宿主 app 一个一个找出来，统统在电池设置里排除优化。然后重启了一次 Lawnchair，小部件才慢慢刷新过来。</p>
+<p>这个教训我记下来了：换启动器之后，电池优化要排两层——启动器本身要排，所有你用的小部件对应的宿主 app 也要排。之前 Nova 上小部件偶尔出问题就是这个原因，只不过当时以为是 Nova 的 bug 就没深究。</p>
+<h2>抽屉、主题和那些意料之外的调整</h2>
+<p>Nova 的手势不能迁过来，这意味着常用的双击锁屏、上滑打开抽屉这些得重新配。Lawnchair 的手势设置界面比 Nova 简洁不少——没有 Nova 那种一个手势可以触发十几个动作的复杂度，但该有的都有：双击锁屏、捏合进入桌面设置、上滑打开抽屉、左右滑动切换屏幕。我花了大概五分钟就把手势重新配了一遍，比想象中快。</p>
+<p>抽屉设置是全新的，因为 Lawnchair 的抽屉逻辑跟 Nova 完全不同。Nova 是固定网格，Lawnchair 可以调透明度、背景模糊程度、网格大小，还有个叫 Caddy 的功能——把常用的 app 固定在抽屉顶部一排。我把微信、支付宝、相机、浏览器这些高频 app 钉在了 Caddy 上，平时用抽屉直接点顶部那排就行，不用翻到底下找。</p>
+<p>主题这块我倒是省了心。Lawnchair 默认就是 Pixel 原生风格，跟我之前用的 Nova 主题包颜色差不多——深蓝强调色、圆形图标、圆角卡片。我只在主题设置里把强调色调成了跟手机壁纸更搭的青绿色，其他保持默认。</p>
+<h2>周日晚上的复盘</h2>
+<p>两天时间，从决定换启动器到现在完全适应，比我预想的顺利。Nova 备份导入省了我至少两小时的手动重建，搜索计算器是实打实提高了日常效率，抽屉的 Caddy 功能让高频应用触手可及。踩的坑主要就两个：文件搜索要 GitHub 版、小部件宿主 app 也要排电池优化——都是一次性的事，调好就不用管了。</p>
+<p>现在我坐在书桌前敲这篇东西的时候，桌面安安稳稳的，没有闪屏重载，小部件实时更新，抽屉一滑就出来。三年前如果有人跟我说我会换掉用了五年的 Nova Launcher，我肯定觉得他疯了。但 Lawnchair 确实做到了——它没有 Nova 那么多花里胡哨的功能，但该有的都有，不该有的一个都不多，开源、轻量、原生 Pixel 那种干净的气质，用起来不闹心。</p>
+<p><img src="../images/lawnchair/settings-menu.jpg" alt="Lawnchair 设置菜单" loading="lazy"></p>
+<p>至于 Nova 嘛，我暂时没删。毕竟五年的感情在那，万一哪天想回去看看呢。但说实话，这两天用下来，我已经不太想回去了。</p>
+<p>这套桌面配置折腾完之后我习惯性地做了个备份——设置里点三个点创建备份，存到了下载目录。换启动器、刷 ROM、换手机，这都是会让人头大的场景，但有个完整的备份在手上，不管是往前冲还是往后退，心里都踏实。完整的开源资料在三个地方都有——<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Lawnchair" target="_blank" rel="noopener">GitHub</a>是主仓库，<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Lawnchair" target="_blank" rel="noopener">Gitee</a>对国内用户更友好，<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Lawnchair" target="_blank" rel="noopener">GitCode</a>也算一份冗余备份——不管你习惯用哪个平台，总能找到对应的那一份。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/brickit-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">我用 Brickit 把每月积木清点从三天缩到半小时——一条扫描到复刻的完整链</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/gamekee.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">我每周给手游群做福利周报，现在把 GameKee 插进整条链里省了至少两小时</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

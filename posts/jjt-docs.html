@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>JJT 为什么敢按次扣费？拆解它的 AI PPT 生成流水线 · 老杨技术栈</title>
+  
+<meta name="description" content="AI PPT 工具扎堆出现，但 JJT 选择了「先给大纲确认、再逐页生成、动手前就知道扣多少分」的三段式设计。我琢磨了一周，想明白这套背后的技术取舍。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/jjt-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JJT 为什么敢按次扣费？拆解它的 AI PPT 生成流水线">
+<meta property="og:description" content="AI PPT 工具扎堆出现，但 JJT 选择了「先给大纲确认、再逐页生成、动手前就知道扣多少分」的三段式设计。我琢磨了一周，想明白这套背后的技术取舍。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/jjt-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/jjt-docs/workbench-hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/jjt-docs/workbench-hero.webp">
+
+<meta name="twitter:title" content="JJT 为什么敢按次扣费？拆解它的 AI PPT 生成流水线">
+<meta name="twitter:description" content="AI PPT 工具扎堆出现，但 JJT 选择了「先给大纲确认、再逐页生成、动手前就知道扣多少分」的三段式设计。我琢磨了一周，想明白这套背后的技术取舍。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "AI PPT \u5de5\u5177\u624e\u5806\u51fa\u73b0\uff0c\u4f46 JJT \u9009\u62e9\u4e86\u300c\u5148\u7ed9\u5927\u7eb2\u786e\u8ba4\u3001\u518d\u9010\u9875\u751f\u6210\u3001\u52a8\u624b\u524d\u5c31\u77e5\u9053\u6263\u591a\u5c11\u5206\u300d\u7684\u4e09\u6bb5\u5f0f\u8bbe\u8ba1\u3002\u6211\u7422\u78e8\u4e86\u4e00\u5468\uff0c\u60f3\u660e\u767d\u8fd9\u5957\u80cc\u540e\u7684\u6280\u672f\u53d6\u820d\u3002", "headline": "JJT \u4e3a\u4ec0\u4e48\u6562\u6309\u6b21\u6263\u8d39\uff1f\u62c6\u89e3\u5b83\u7684 AI PPT \u751f\u6210\u6d41\u6c34\u7ebf", "image": ["https://alipymanbu.github.io/images/jjt-docs/workbench-hero.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/jjt-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/jjt-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "JJT \u4e3a\u4ec0\u4e48\u6562\u6309\u6b21\u6263\u8d39\uff1f\u62c6\u89e3\u5b83\u7684 AI PPT \u751f\u6210\u6d41\u6c34\u7ebf", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">JJT 为什么敢按次扣费？拆解它的 AI PPT 生成流水线</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">JJT 为什么敢按次扣费？拆解它的 AI PPT 生成流水线</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">AI PPT 工具扎堆出现，但 JJT 选择了「先给大纲确认、再逐页生成、动手前就知道扣多少分」的三段式设计。我琢磨了一周，想明白这套背后的技术取舍。</p>
+  </header>
+  <div class="prose">
+<p>我一直在想一个问题：AI PPT 工具的核心技术门槛到底是什么？</p>
+<p>不是模型能力——现在哪家不拉来几个大模型当底座。不是模板数量——那是运营问题，不是工程问题。真正难的是：<strong>怎么让一个"生成一份 PPT"的黑盒操作，变成用户能感知、能控、能算账的白盒流程。</strong></p>
+<p><a href="https://jjt.gltd.quest" target="_blank" rel="noopener">官网</a>上的 JJT 给了一套答案，而且这套答案有点反直觉。今天我就把它拆开来聊，不只讲"它是什么功能"，而是讲清楚"它为什么要这么设计"。</p>
+<h2>问题：一个"生成"按钮背后藏着多少事？</h2>
+<p>安装包从<a href="https://jjt.gltd.quest/download.html" target="_blank" rel="noopener">官方下载</a>拿，装好后你给工具一个主题，比如"季度复盘汇报"，然后呢？工具需要把这四个字展开成一份 20 页的 PPT。这中间至少要完成五件事：理解主题、搭大纲、填内容、选模板、做排版。</p>
+<p>市面上很多工具是一把梭——你点生成，它一股脑全做完，你等一分钟出来一份成品。快是快了，但有三个问题：</p>
+<p>第一，<strong>你没法在中间叫停</strong>。大纲搭歪了，你只能等全部生成完再推倒重来。时间浪费还算小事，更糟的是你可能懒得重写，就用一份结构有硬伤的东西去汇报了。</p>
+<p>第二，<strong>你没法控成本</strong>。很多工具是包月订阅，看起来划算，但实际上你每次生成都在消耗算力。包月的"无限"是假的——高峰期排队、质量下降、甚至直接限流，都是成本被摊薄后的隐性后果。</p>
+<p>第三，<strong>你没法理解质量波动</strong>。同样的主题，为什么这次生成的图表特别好，下次的文字却特别啰嗦？你不知道，因为所有随机性都被黑盒吞掉了。</p>
+<p>JJT 的设计思路，就是要把这五件事拆开，让你看见中间的每一步。</p>
+<p><img src="../images/jjt-docs/workbench-hero.webp" alt="工作台界面：主题输入后先给大纲确认，再逐页生成" loading="lazy"></p>
+<h2>拆解：三段式流水线到底是怎么跑的</h2>
+<h3>第一段：大纲先确认</h3>
+<p>这是 JJT 最值钱的一步。你输入主题（或者上传文档、贴网页链接、导入大纲），它先做的事不是生成 PPT，而是给你一份大纲草案——标题、副标题、每页要点。你可以在这个阶段改结构、删页数、加模块。</p>
+<p>为什么这一步单独拎出来？因为大纲决定了整份 PPT 的骨架。骨架歪了，后面排版再漂亮也救不回来。把大纲确认放在最前面，相当于在装修前先改户型图，而不是贴完瓷砖再砸墙。</p>
+<p>技术实现上，这一步用的是轻量级模型推理——只需要理解主题语义、组织逻辑结构，不需要处理视觉渲染。所以这一步很快，通常几秒钟就出结果。</p>
+<h3>第二段：逐页生成</h3>
+<p>大纲确认后，才进入真正的生成阶段。这里有两个关键设计：<strong>云端异步任务</strong>和<strong>进度可查</strong>。</p>
+<p>所谓云端异步，就是生成不会卡死你的浏览器标签页。你发起任务后可以切出去干别的，系统在后台跑。完成了通知你。<a href="https://jjt-docs.pages.dev/" target="_blank" rel="noopener">JJT文档</a>里提到的"逐页进度"意味着你能看到"第 8/20 页"这样的具体数字，而不是一个永远在转的加载圈。</p>
+<p>逐页生成的好处是什么？第一，你可以在生成过程中提前判断方向对不对。看到前几页觉得模板风格不合适，就可以先停，省得等全部浪费算力。第二，它天然支持断点续传——网络断了重连，任务还在。</p>
+<h3>第三段：编辑是独立能力，不是"重新生成"</h3>
+<p>很多 AI PPT 工具的编辑能力就是"再来一遍"。你说"这页图表我不满意"，它就整页重做。JJT 的设计不一样，它把编辑拆成了不同粒度：</p>
+<ul><li><strong>元素级精修</strong>：只改单个元素——一张图、一个数字、一段文字框。其他东西不动。这在消耗对比表里是最小的。</li><li><strong>智能排版优化</strong>：整页重新布局，但内容不变。</li><li><strong>数据转图表</strong>：你自己填数据，它帮你选图表类型和配色。</li><li><strong>全套风格换新</strong>：整份 PPT 换模板、换配色、换字体。</li></ul>
+<p>这看起来像是产品功能设计，但背后其实是工程架构的选择。JJT 生成的 PPT，每个元素在内部是独立对象——文字框有自己的属性（内容、字体、位置、尺寸），图表有自己的数据源和渲染参数。这跟传统 PPT 的结构类似，但加了一层 AI 能力的钩子，让你可以在任意粒度上调用 AI，而不是每次都推倒重来。</p>
+<p><img src="../images/jjt-docs/chart-demo.png" alt="数据转图表：用户填数据，AI 选类型和配色" loading="lazy"></p>
+<h2>取舍：这套设计的代价是什么</h2>
+<p>好，讲了这么多优点，这套三段式设计有没有代价？有，而且很明显。</p>
+<p><strong>第一，速度口径的分裂。</strong> 你看到"10-15 秒生成 20 页"和"实测 16 分钟"两组数字，都对——但说的是不同阶段。前者是"拿到大纲草案"的时间，后者是"逐页全部生成完毕"的时间。如果不加说明，用户很容易被第一组数字吸引，然后对第二组产生落差。这不是谁在撒谎，是三段式本身就有两个不同的"完成"定义。</p>
+<p><strong>第二，算力消耗的精细化，让定价也变复杂。</strong> JJT 用 J分做单位，生成一份 PPT 扣多少、编辑一次扣多少、转一张图表扣多少，各自独立。动手前有预估消耗，这个设计很贴心，但也意味着你每次操作前得看一下余额——不像包月那种"用就完了"的粗犷。对高频用户来说，精细化计费意味着要养成"算账"的习惯。</p>
+<p><strong>第三，异步任务的等待焦虑。</strong> 逐页生成、云端任务，听起来很先进，但如果没有进度反馈，用户会不知道是卡了还是在正常跑。JJT 做了逐页进度显示，这是解决了的。但如果碰上高峰期，云端队列排得长，等待时间不可控，体验还是会打折。这本质上是云端架构的通病，不是 JJT 独有。</p>
+<h2>判断：这套原理意味着什么</h2>
+<p>讲完拆解和取舍，最后落一个判断——这套设计适合谁、不适合谁。</p>
+<p>适合的人：<strong>对 PPT 质量有真实要求、不想浪费时间在返工上的人。</strong> 比如每周要交汇报的职场人、要做课件的老师、要给客户提案的设计师。大纲确认这一步对你来说省的不是时间，是避免方向错了之后的巨大沉没成本。元素级精修让你可以在成品上做最后一公里的微调，而不是被 AI 的一次生成锁死。</p>
+<p>不太适合的人：<strong>只需要一份"能交就行"的快速初稿的人。</strong> 如果你只是想给领导交个差，或者在会上随便演示一下，那一把梭的工具反而更快——你点生成，等一分钟，拿结果，完事。JJT 的三段式给了你更多控制权，但也意味着你要多做几个决策。</p>
+<p>最后说一个我自己的观察：AI PPT 这个赛道，最终拼的不是谁能生成得更快，而是谁能让用户<strong>用得更有信心</strong>。信心来自于可预期——预期质量、预期成本、预期进度。JJT 的三段式 + 精细化计费 + 进度可查，本质上都是在往"可预期"上堆。这条路对不对，要看后面大家买单不买单。顺带一提，JJT 的资料我在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/JJT" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/JJT" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/JJT" target="_blank" rel="noopener">GitCode</a>三个仓库都留了备份，国内用户访问不稳时可以换着用。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/landrop-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">LANDrop 快问快答：跨平台 AirDrop 到底能不能打</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/hello-zh-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Hello语音踩过的那些坑：从闪退到房间被封，一篇说清</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

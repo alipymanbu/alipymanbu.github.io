@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Geekbench6 完全上手指南：从跑分小白到看懂分数只需要五分钟 · 老杨技术栈</title>
+  
+<meta name="description" content="第一次听说 Geekbench6？这篇手把手带你从零开始认识这个跑分工具，五分钟跑通第一次测试，再告诉你分数怎么看、常见坑怎么绕，全程不需要任何电脑知识基础。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/geekbench6.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Geekbench6 完全上手指南：从跑分小白到看懂分数只需要五分钟">
+<meta property="og:description" content="第一次听说 Geekbench6？这篇手把手带你从零开始认识这个跑分工具，五分钟跑通第一次测试，再告诉你分数怎么看、常见坑怎么绕，全程不需要任何电脑知识基础。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/geekbench6.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/geekbench6/macos-launcher.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/geekbench6/macos-launcher.png">
+
+<meta name="twitter:title" content="Geekbench6 完全上手指南：从跑分小白到看懂分数只需要五分钟">
+<meta name="twitter:description" content="第一次听说 Geekbench6？这篇手把手带你从零开始认识这个跑分工具，五分钟跑通第一次测试，再告诉你分数怎么看、常见坑怎么绕，全程不需要任何电脑知识基础。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7b2c\u4e00\u6b21\u542c\u8bf4 Geekbench6\uff1f\u8fd9\u7bc7\u624b\u628a\u624b\u5e26\u4f60\u4ece\u96f6\u5f00\u59cb\u8ba4\u8bc6\u8fd9\u4e2a\u8dd1\u5206\u5de5\u5177\uff0c\u4e94\u5206\u949f\u8dd1\u901a\u7b2c\u4e00\u6b21\u6d4b\u8bd5\uff0c\u518d\u544a\u8bc9\u4f60\u5206\u6570\u600e\u4e48\u770b\u3001\u5e38\u89c1\u5751\u600e\u4e48\u7ed5\uff0c\u5168\u7a0b\u4e0d\u9700\u8981\u4efb\u4f55\u7535\u8111\u77e5\u8bc6\u57fa\u7840\u3002", "headline": "Geekbench6 \u5b8c\u5168\u4e0a\u624b\u6307\u5357\uff1a\u4ece\u8dd1\u5206\u5c0f\u767d\u5230\u770b\u61c2\u5206\u6570\u53ea\u9700\u8981\u4e94\u5206\u949f", "image": ["https://alipymanbu.github.io/images/geekbench6/macos-launcher.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/geekbench6.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/geekbench6.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "Geekbench6 \u5b8c\u5168\u4e0a\u624b\u6307\u5357\uff1a\u4ece\u8dd1\u5206\u5c0f\u767d\u5230\u770b\u61c2\u5206\u6570\u53ea\u9700\u8981\u4e94\u5206\u949f", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">Geekbench6 完全上手指南：从跑分小白到看懂分数只需要五分钟</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Geekbench6 完全上手指南：从跑分小白到看懂分数只需要五分钟</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">第一次听说 Geekbench6？这篇手把手带你从零开始认识这个跑分工具，五分钟跑通第一次测试，再告诉你分数怎么看、常见坑怎么绕，全程不需要任何电脑知识基础。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到用起来，不需要任何基础。</p>
+<h2>它到底是干嘛的——一个生活化类比讲明白</h2>
+<p>想象你在挑一台新笔记本，厂商说它"性能超强"，隔壁老王说他那台也"很快"，但你怎么知道到底谁更快？Geekbench6 就是一把标准化的尺子——把你的电脑或手机放到同一组任务里跑一遍，出来一个分数，大家用同一把尺子量，结果自然就能放到一张表里比。</p>
+<p>它的<a href="https://geekbench6.hhdc.tech" target="_blank" rel="noopener">geekbench6官网</a>上有一张巨大的排行榜，全球用户跑完上传的成绩都在上面。你看中的型号，别人跑过的分数一查就有，比厂商自己的宣传靠谱多了。</p>
+<p>简单说：Geekbench6 = 一台机器的"体能测试表"。</p>
+<p>它测两大类：CPU 和 GPU Compute。CPU 那栏给两个分数——单核（单个大脑的反应速度，对应网页打开、界面点按这些日常操作）和多核（所有大脑一起干活的总速度，对应视频导出、代码编译这种能拆分的重活）。GPU Compute 测的是显卡当"并行计算器"的本事，不是游戏帧率——视频会议的背景虚化、AI 修图、3D 渲染都吃这一项。</p>
+<p><img src="../images/geekbench6/macos-launcher.png" alt="软件在 macOS 上的主界面，两个大按钮分别是跑 CPU 和跑 GPU Compute" loading="lazy"></p>
+<h2>五分钟上手——从下载安装到第一次跑通</h2>
+<p>别担心，整个过程真的五分钟够了。</p>
+<p><strong>第一步：下载。</strong> 去<a href="https://geekbench6.hhdc.tech/download.html" target="_blank" rel="noopener">官方下载</a>拿安装包（Windows 是 .exe，macOS 是 .dmg，Linux 有命令行版），安装方式跟你装 QQ、装 Office 一模一样，双击、下一步、完成，不需要任何配置。</p>
+<p><strong>第二步：打开。</strong> 桌面图标双击进去，你会看到一个非常简洁的界面——就是上面那张图那样，两个大按钮：Run CPU Benchmark 和 Run GPU Compute Benchmark。</p>
+<p><strong>第三步：点一下，等着。</strong> 先跑 CPU，整个过程大约两分钟。屏幕上会出现一堆进度条，跑完自动出结果。GPU 测试时间差不多，跑完会问你要不要上传成绩——上传了就能进全球排行榜，不上传也不影响本地看分。</p>
+<p>就这三步。你现在可以停在这里去试了，回来再继续看。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>跑完第一次，界面中间会显示你的分数。别急着关，先玩这三件事。</p>
+<h3>1. 去看看全球排行榜</h3>
+<p>跑完结果页右上角有个按钮可以直接跳到网站上的成绩库。Mac、Windows 桌面处理器、iOS、Android 各有一张实时排行。你会发现同一款芯片的不同型号分数差得挺明显——这就是为什么要看排行榜而不是只看厂商宣传。你把自己的分数输入进去，系统会帮你算一个"百分位"，比如"你的 CPU 比 72% 的同平台设备快"——这比一个孤立的数字有意义得多。</p>
+<h3>2. 点开子项分数看看自己的短板在哪</h3>
+<p>综合分是加权出来的，但子项分数才是真实能力表。Geekbench6 有 16 组 CPU 负载，挑几个代表说一下：</p>
+<ul><li><strong>文件压缩</strong>：跟你解压文件、网盘备份的速度直接相关</li><li><strong>HTML5 浏览</strong>：单核跑这个——你日常刷网页流畅不流畅，就看这项</li><li><strong>Clang 编译</strong>：多核跑这个——如果你写代码，这项比综合分重要</li><li><strong>背景虚化</strong>：就是视频会议每天在做的事，同时压 CPU 和内存</li><li><strong>光线追踪</strong>：纯浮点密集型，跟 3D 渲染同源</li></ul>
+<p>子项分数表里你会看到每个小项目单独的得分，对照自己常做的事，哪个子项低就知道自己机器的短板在哪了。想知道这 16 组负载背后各自测的到底是什么算法、多大数据量，可以去翻翻<a href="https://geekbench6.pages.dev/" target="_blank" rel="noopener">geekbench6文档</a>，上面有每组的详细拆解。</p>
+<p><img src="../images/geekbench6/macos-result.png" alt="跑完后的成绩页，左边综合分，右边 16 个子项分数逐个列出来" loading="lazy"></p>
+<h3>3. 跑两次看看温度影响</h3>
+<p>第一次跑完等机器凉个五分钟再跑一次，你会发现分数可能有差距——这就是温度墙的影响。笔记本尤其明显，散热不好的话 CPU 一热就自动降频，分数掉一大截。两次分数对比一下，心里对机器的散热能力就有数了。评测媒体为什么会跑三遍取均值？就是为了把这个温度波动的影响消掉。</p>
+<h2>小白的三个常见疑问</h2>
+<h3>Q：GPU 测试列表是空的怎么办？</h3>
+<p>很多朋友打开 GPU 测试发现 OpenCL 或 Vulkan 一个都没有，以为软件坏了。别慌，90% 的情况是驱动没装好或太旧。Geekbench6 的 GPU 计算测试依赖显卡驱动里的运行时组件——系统自带的通用驱动通常不带这些。去显卡厂商官网（NVIDIA、AMD、Intel）下载最新的正式版驱动，装完重开软件就能看到了。还有一种情况是版本不支持某个 API，比如 Vulkan 在 Linux/ARM 上是 6.6 才加进去的，对照一下你手里的版本号。服务器用户（无显示器的无头环境）特别要注意：AMD 的无头 Vulkan 需要 2019 年 9 月之后的驱动版本才认。</p>
+<h3>Q：CPU 分数和游戏帧率是什么关系？</h3>
+<p>完全不是一回事。很多人以为 GPU Compute 分高 = 游戏画质高帧率稳，这是误解。Geekbench6 的 GPU 测试测的是通用并行算力——数学运算、AI 推理、图像处理的速度，它跟游戏的渲染管线、驱动优化走的是两条路。想知道游戏表现，去看 3DMark 或者直接实测游戏帧率；想知道视频导出、AI 修图、背景虚化这些，看 Geekbench6 就对了。两者分工明确，不要拿尺子去量体重。</p>
+<h3>Q：我的分数比同型号别人低，是不是买到假货了？</h3>
+<p>先别紧张。影响分数的变量太多了：室温高两度、笔记本没插电源、后台挂了一堆程序、驱动版本不同、甚至系统是 Windows 10 还是 11，都能让分数差个 5% 到 15%。正常范围，不用慌。真要较真的话，把后台全关、插好电源、室温控制在 22°C 左右再跑一遍，分数会好看很多。</p>
+<h2>写在最后</h2>
+<p>Geekbench6 上手其实真的没什么门槛——下载、点一下、等两分钟、看分。真正需要花时间的是"怎么解读"这一步，但那也不难，跟着上面三步走就够了。这篇覆盖了新手最常用的部分，如果你想深挖——比如命令行批量跑、长期追踪性能变化、或者对照更多子项负载理解硬件瓶颈，后面还有不少进阶玩法可以看。</p>
+<p>总的来说，把它当成一把尺子就好，不要把分数当信仰。同一把尺子量自己的机器，知道它的能力边界在哪，够用就行。顺便提一句，这套资料在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Geekbench6" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Geekbench6" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/Geekbench6" target="_blank" rel="noopener">GitCode</a> 上都能拿到，挑你访问方便的那个就行。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/epik-docs.html">epik 六年迭代：一款修图 App 如何在「一键美型」和「精细控制」之间反复横跳</a></h2>
+  <p class="card-desc">从早期一键式美颜工具到如今同时拥有专业调色面板和 AI 毕业照服务，epik 的版本迭代史藏着一个修图产品最真实的两难。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 5 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/wikihow-docs.html">凌晨十一点，我靠一个小应用打出了人生第一条领带</a></h2>
+  <p class="card-desc">面试前一夜对着领带慌了神，室友睡了爸妈远在千里，Google 搜出来的全是广告。偶然想起下载过的 wikiHow，跟着图文步骤一步步来，十分钟搞定。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/rewasd.html">reWASD 上手一周：手柄调瞄准手感这件事，终于不用靠玄学了</a></h2>
+  <p class="card-desc">一个被 FPS 瞄准漂移折磨了半年的人，用 reWASD 把摇杆曲线掰了半小时后，第一次觉得&#34;瞄准手感&#34;这玩意儿是能被精确描述和调整的。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/grindr-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Grindr 隐私架构深解：为什么它敢把真实位置暴露到这种程度</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/kerning-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">可灵AI到底值不值得掏钱——四个档位给你算到分</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

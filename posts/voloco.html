@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷 · 老杨技术栈</title>
+  
+<meta name="description" content="免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/voloco.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷">
+<meta property="og:description" content="免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/voloco.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/voloco/fx-preset-panel.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/voloco/fx-preset-panel.png">
+
+<meta name="twitter:title" content="Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷">
+<meta name="twitter:description" content="免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u514d\u8d39\u7248\u4e00\u5c42\u8f68\u3001\u8ba2\u9605\u68c0\u6d4b\u4e0d\u751f\u6548\u3001\u5206\u8f68\u5bfc\u51fa\u70e7\u8fdb\u4fee\u97f3\u2026\u2026Voloco \u770b\u7740\u7b80\u5355\uff0c\u7528\u8d77\u6765\u51e0\u4e2a\u6697\u5751\u85cf\u5f97\u6df1\u3002\u8fd9\u7bc7\u628a\u6211\u8e29\u8fc7\u7684\u96f7\u4e00\u4e2a\u4e2a\u62c6\u5f00\u8bf4\u6e05\u3002", "headline": "Voloco \u5751\u70b9\u590d\u76d8\uff1a\u4ece\u8ba2\u9605\u5931\u8e2a\u5230\u5bfc\u51fa\u7ffb\u8f66\uff0c\u6211\u8e29\u8fc7\u7684\u516d\u4e2a\u96f7", "image": ["https://alipymanbu.github.io/images/voloco/fx-preset-panel.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/voloco.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/voloco.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/chinese-version/", "name": "\u4e2d\u6587\u7248", "position": 2}, {"@type": "ListItem", "name": "Voloco \u5751\u70b9\u590d\u76d8\uff1a\u4ece\u8ba2\u9605\u5931\u8e2a\u5230\u5bfc\u51fa\u7ffb\u8f66\uff0c\u6211\u8e29\u8fc7\u7684\u516d\u4e2a\u96f7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/chinese-version/index.html">中文版</a><span>/</span>
+    <span class="crumb-cur">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Voloco 坑点复盘：从订阅失踪到导出翻车，我踩过的六个雷</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">免费版一层轨、订阅检测不生效、分轨导出烧进修音……Voloco 看着简单，用起来几个暗坑藏得深。这篇把我踩过的雷一个个拆开说清。</p>
+  </header>
+  <div class="prose">
+<p>Voloco 给人的第一印象是「哇，手机上也能修音」——它的<a href="https://voloco.bpfl.quest" target="_blank" rel="noopener">官网</a>明确定位就是"口袋里的人声工作站"，点开就能唱，挂上预设立刻有 studio 感。但我用了几个月，从免费版一路折腾到 Premium，中间踩了好几个让我想摔手机的坑。不是应用本身烂，是它的设计有几处和直觉反着来，不提前知道的话，轻则白花十分钟返工，重则订阅白买、分轨废掉。</p>
+<p>下面把我遇到的坑按"出现频率"排——订阅相关的我身边至少三个人踩过，排第一。</p>
+<h2>坑一：刚付的订阅，应用里还显示免费版</h2>
+<p><strong>症状</strong>：Google Play 或 App Store 里明明已经扣款成功、订单状态也正常，回到 Voloco 打开还是"升级 Premium"按钮，八轨用不了、WAV 导出也灰着。我第一次遇到时以为要重装，删了又装还是老样子，急得在客服框里戳了五分钟。</p>
+<p><strong>原因</strong>：Voloco 的订阅不是自己管的，它完全依赖应用商店的授权回执。商店那边的支付处理有延迟（尤其是首次内购或换绑过支付方式的账号），或者你手机上登了不止一个商店账号——付款用的是 A 账号，应用读的是 B 账号的授权，这就对不上了。我那次就是 Android 上 Google Play 有两个账号，默认账号不是付款那个。</p>
+<p><strong>解法</strong>：别重装，先找应用里的「恢复购买」入口。点一下，用<strong>付款的那个商店账号</strong>确认登录，十秒内就能拉到授权。如果还不行，进商店确认两桩事：支付是否显示"已完成"而非"处理中"；当前登录账号和付款账号是不是同一个。这两步排完基本就好。</p>
+<p><img src="../images/voloco/fx-preset-panel.png" alt="订阅恢复入口" loading="lazy"></p>
+<h2>坑二：分轨导出来的 stem，修音和混响全烧进去了</h2>
+<p><strong>症状</strong>：我按<a href="https://voloco.pages.dev/" target="_blank" rel="noopener">Voloco文档</a>里说的"逐轨静音法"一条条导 stem，发给混音的朋友后他问我："你这声还让我怎么混？修音全焊死在文件里了。"我以为分轨导出会自动 strip 效果，结果不是。</p>
+<p><strong>原因</strong>：Voloco 的分轨导出逻辑很朴素——它把这条轨道<strong>当前听到的样子</strong>直接烧进文件。你挂的 Auto-Tune、Compressor、Room Reverb 全都会写进 stem。文档里其实提了一句"带"，但我当时没细看。如果你想给制作人干净的干声（dry stem），得先把这条轨的效果链全部关掉，再导出。</p>
+<p><strong>解法</strong>：导出前，进每条轨的效果面板，把修音和混响 preset 暂时存一份（点 save），然后把效果链清空——挂一个空 preset 也行。导出完再把原 preset 挂回去。八条轨就是八轮操作，但比导出来废掉重录强。另外格式务必选 WAV，MP3 压缩过的 stem 进混音根本救不回来。</p>
+<h2>坑三：换手机迁移，工程跟着丢</h2>
+<p><strong>症状</strong>：旧手机录的项目，在新手机上登录同一账号，打开 Voloco 一看——空的。我攒了半个月的多轨工程全没了，当时差点原地去世。</p>
+<p><strong>原因</strong>：Voloco 本地存储为主，云端同步不是默认开启的，而且免费版根本没这功能。我之前不知道这事，旧手机恢复出厂设置前也没主动导出过。Premium 版虽然有云同步，但也是"项目级"的，效果 preset 和混音快照不会跟着走。</p>
+<p><strong>解法</strong>：有 Premium 的，把自动云同步开起来（项目设置里）。不管有没有付费，<strong>每完成一个项目就导出一份 WAV 或 MP3 到本地文件</strong>，别指望应用存一辈子。跨设备迁移最稳妥的办法是：旧手机导出 → 云端或电脑中转 → 新手机再导入。别嫌麻烦，我吃过亏才养成这个习惯。</p>
+<h2>坑四：免费版以为能多轨叠唱，结果只有一层</h2>
+<p><strong>症状</strong>：我刚从<a href="https://voloco.bpfl.quest/download.html" target="_blank" rel="noopener">下载</a>装上 Voloco 时兴冲冲地录了主唱，点加号想加和声轨——按钮是灰的。研究了半天才发现：免费版<strong>只能有一条人声轨</strong>。文档里写的"八轨"是 Premium 订阅的上限，免费用户就是单层。</p>
+<p><strong>原因</strong>：这是个产品定位上的"先给你一颗糖再告诉你糖罐要付费"的设计。多轨是 Voloco 的核心卖点，免费版只给你尝一口，吊你胃口。我当时在应用商店评论区看到不止一个人说"被骗了"。</p>
+<p><strong>解法</strong>：要么订阅 Premium，要么换应用录和声轨再导回 Voloco 混。我朋友用的是后者：免费版录主唱 → 另一款免费录音 App 录和声 → 导入 Voloco → 用 AI 分离或直接进多轨（如果你在别处录完导进来是可以叠的）。不是最顺的路子，但能省点钱。</p>
+<h2>坑五：AI 人声分离把伴奏也削没了</h2>
+<p><strong>症状</strong>：导入一首流行歌做分离，拿到的"纯伴奏"比原唱还薄，底鼓和贝斯几乎全没了——我本来想用来自己翻唱，结果用不了。试了两首都这样。</p>
+<p><strong>原因</strong>：Voloco 的 AI 分离模型对"人声和伴奏混在一起"的场景最擅长，但对重低音占比大的曲目（EDM、重型说唱）识别不准。底鼓和低频贝斯会被误判成"人声的一部分"一起剥掉。另外录音质量差、原唱混响拉满的歌，分离效果也会打折——模糊地带它分不清谁是谁。</p>
+<p><strong>解法</strong>：选分离源时挑人声突出、底鼓不压人声的版本。如果分离结果伴奏残缺，换个分离源试试（比如 YouTube 上的 vocal-only 版本再导进来）。另外，分离完别直接用来唱——先试听十秒，确认伴奏的完整性。不满意就再换一首，别硬凑。</p>
+<h2>坑六：预设调完忘了保存，换项目全没了</h2>
+<p><strong>症状</strong>：花了半小时把 Auto-Tune 的音高修正强度、混响时间、压缩比调到刚好贴合自己的声线，手滑切到另一个项目，刚才调的效果链全重置成默认了。没有任何"未保存"提示。</p>
+<p><strong>原因</strong>：Voloco 的效果链是<strong>项目级绑定</strong>的，不是全局用户配置。你在 A 项目上调的 preset 只属于 A 项目。文档里提了"可以存自定义 preset"，但我一开始以为它是自动存的——其实要你手动点效果面板里的「Save as Preset」才会进个人预设库。</p>
+<p><strong>解法</strong>：调完满意立刻手动 save，起个好记的名字（比如"我的主唱干声"、"说唱 ad-libs 夸张版"）。下次开新项目直接从个人预设库里拖过来，不会丢。这个习惯我现在录五分钟就养成了——踩过一次就够。</p>
+<h2>防坑清单（速查版）</h2>
+<ul><li><strong>订阅问题先找商店</strong>：扣款成功但应用不认 → 恢复购买 → 确认账号一致 → 等支付处理完；别在应用客服框里耗</li><li><strong>分轨导出前先清效果</strong>：想要干净的干声给混音，效果链暂时存一份然后清空，导出完恢复</li><li><strong>每完成一个项目立刻导出备份</strong>：不要指望应用存工程，跨设备迁移靠 WAV 文件中转</li><li><strong>分离 AI 人声选源要挑歌</strong>：重低音猛的曲目分离效果差，换人声突出、伴奏干净的版本</li><li><strong>效果链调完记得手动 Save</strong>：它不会自动存，换项目就没，养成"调完即存"的肌肉记忆</li></ul>
+<p>说了这么多坑，其实 Voloco 本身的产品力没问题——修音的手感、预设的覆盖面、手机本地处理的速度，都是同价位里能打的。只是它把一些"反直觉"的设计藏得太深，不踩一遍很难自己摸索出来。关于这个软件的资料我在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Voloco" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Voloco" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Voloco" target="_blank" rel="noopener">GitCode</a> 三个平台都留了备份，国内访问哪个顺就用哪个。知道这些坑之后，这软件其实相当省心。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simple-live.html">Simple Live 从零到流畅看全平台直播——手把手教你装好用好</a></h2>
+  <p class="card-desc">多平台直播聚合工具 Simple Live 新手实战：安装权限、画质解锁、跨设备同步全流程走通，常见踩坑点提前规避。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/soundhound.html">SoundHound∞ 值得掏钱吗？3.99 美元买断前先算清楚这笔账</a></h2>
+  <p class="card-desc">从定价结构、使用频率到替代方案，把 SoundHound 免费版和付费版的每一分钱掰开来算——三类用户对号入座，三秒决定买不买。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/chinese-version/index.html">中文版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bud-docs.html">国际服 bud 从零上手：语言切换、基础操作到第一件衣服发布</a></h2>
+  <p class="card-desc">新手第一次打开国际服 bud 满眼英文懵圈？这篇手把手带你把界面改成中文、跑通第一个房间、摸透商城和创作者工具，一小时内从看客变成能发布自己作品的玩家。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/suki-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Suki 里那些藏得没谱的功能——用了大半年才摸到门清</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/lumeow.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Lumeow 深度盘点：一款 AI 角色扮演应用的能力面完整铺开</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

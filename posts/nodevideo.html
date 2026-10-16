@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程 · 老杨技术栈</title>
+  
+<meta name="description" content="带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/nodevideo.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程">
+<meta property="og:description" content="带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/nodevideo.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/nodevideo/home_1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/nodevideo/home_1.png">
+
+<meta name="twitter:title" content="NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程">
+<meta name="twitter:description" content="带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5e26\u8bfb\u8005\u4ece\u96f6\u4e0a\u624b NodeVideo\uff1a\u9879\u76ee\u65b0\u5efa\u3001\u7d20\u6750\u5bfc\u5165\u3001\u5173\u952e\u5e27\u52a8\u753b\u3001\u5149\u6d41\u8865\u5e27\u6162\u52a8\u4f5c\u3001\u81ea\u5b9a\u4e49 LUT \u8c03\u8272\u5230\u6700\u7ec8\u5bfc\u51fa\uff0c\u9644\u65b0\u624b\u6700\u5bb9\u6613\u7ffb\u8f66\u7684\u4e09\u4e2a\u5361\u70b9\u89e3\u6cd5\u3002", "headline": "NodeVideo \u624b\u673a\u526a\u8f91\u4ece\u96f6\u5230\u4e1d\u6ed1\u6162\u52a8\u4f5c\uff1a\u5b9e\u6218\u5168\u6d41\u7a0b", "image": ["https://alipymanbu.github.io/images/nodevideo/home_1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/nodevideo.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/nodevideo.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "NodeVideo \u624b\u673a\u526a\u8f91\u4ece\u96f6\u5230\u4e1d\u6ed1\u6162\u52a8\u4f5c\uff1a\u5b9e\u6218\u5168\u6d41\u7a0b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程结束时，你能用 NodeVideo 在手机上从零剪出一支带丝滑慢动作、自定义调色的短视频——不需要电脑，也不需要付费会员。</p>
+<h2>准备：你需要什么</h2>
+<p>先确认三样东西：</p>
+<ul><li><strong>版本</strong>：NodeVideo 9.0 或更高版本（9.0 对关键帧曲线和光流补帧做了大升级）</li><li><strong>平台</strong>：安卓手机或 iPhone 均可，两者界面基本一致；PC 版操作逻辑也相通</li><li><strong>素材</strong>：一段手机拍的运动画面（比如跑步、弹跳、快速挥动的物体）——光线稳定、运动方向明确的素材补帧效果最好</li></ul>
+<p>从<a href="https://nodevideo.boop.uno" target="_blank" rel="noopener">nodevideo官网</a>能直接拿到最新版，安装包走<a href="https://nodevideo.boop.uno/download.html" target="_blank" rel="noopener">下载</a>入口就行，别从第三方市场下载，版本老会少不少功能。</p>
+<h2>第一步：新建项目与比例设置</h2>
+<p>打开 NodeVideo，首页点<strong>新建项目</strong>。</p>
+<p>弹出的项目设置面板里，先选比例：竖屏短视频选 <strong>9:16</strong>，横屏创作选 <strong>16:9</strong>，方形社交平台用 <strong>1:1</strong>。然后把<strong>预览帧率</strong>调到 30fps——这一步很关键，能大幅降低预览时的卡顿感，导出时再改回高帧率就行。预览质量默认是 50%，新手别改它，改了只会让手机更卡，导出画质一点不受影响。</p>
+<p>设置完点确认，时间线和素材面板就会铺开。</p>
+<p><img src="../images/nodevideo/home_1.png" alt="NodeVideo 项目设置与时间线界面" loading="lazy"></p>
+<h2>第二步：导入素材与时间线剪辑</h2>
+<p>时间线底部有个<strong>加号</strong>，点它可以从手机相册、文件管理器或 NodeVideo 自带的素材库导入。选你准备好的运动视频。</p>
+<p>素材拖进时间线后，先做两件事：</p>
+<ol><li><strong>选入点和出点</strong>：时间轴上按住素材片段的左端或右端，左右拖动就能裁掉开头结尾没用的部分。比如运动主体从第 2 秒开始进入画面，就把素材左端拖到 2 秒处。</li><li><strong>剪成多段</strong>：把播放指针（白色竖线）移到你想切的位置，点时间线工具栏里的<strong>剪刀图标</strong>，素材就会被分成两段。做慢动作的时候，我们只给其中一段补帧，这样手机不会整体变慢。</li></ol>
+<p>到这一步，你的时间线上应该只有一段 3~5 秒的运动镜头——够了，太长会拖慢后续所有操作。</p>
+<h2>第三步：关键帧做一个简单动画</h2>
+<p>给片段加个入场缩放，让视频不那么单调。</p>
+<p>选中时间线上的那段视频，底部面板切到<strong>属性</strong>，找到<strong>缩放 Scale</strong> 属性。把播放指针移到片段最开头，点 Scale 旁边的<strong>菱形图标</strong>加一个关键帧，把数值调到 80%——画面会稍微缩小一点。然后把播放指针移到片段第 1 秒处，再加一个关键帧，把 Scale 调到 100%。</p>
+<p>现在从头播放，你会看到画面从 80% 平滑放大到 100%。两个关键帧之间的插值 NodeVideo 默认就处理好了，不用手动调曲线。等你把基础流程玩熟了，再去碰曲线编辑器调缓动就行。</p>
+<h2>第四步：光流补帧做丝滑慢动作</h2>
+<p>这是 NodeVideo 的招牌功能，也是今天的重点。</p>
+<p>选中你要做慢动作的那段视频（如果之前没剪开，先用剪刀切出来）。点片段上方的<strong>图层菜单</strong>（三条横杠的图标），往下翻找到<strong>补帧</strong>，选里面的<strong>光流</strong>。保持默认参数不动，先返回时间线。</p>
+<p>现在对这段素材做变速：选中后在属性面板找<strong>速度</strong>，调到 <strong>0.2x</strong>（也就是慢放五倍）。播放看看——如果素材质量够好，你会看到运动物体的每个动作都被均匀插值，没有传统抽帧慢动作那种跳帧感。</p>
+<p>这里要注意：<strong>时间轴预览时补帧质量被刻意压低了</strong>，你可能看到果冻纹或模糊，这不是最终效果。导出之后才是真实渲染结果，耐心点。如果导出后还是有明显果冻，多半是素材本身光线太暗或者有重复帧——回去补帧参数里把<strong>去重复帧</strong>打开再试。</p>
+<p><img src="../images/nodevideo/home_2.png" alt="光流补帧慢动作效果对比" loading="lazy"></p>
+<h2>第五步：调色——导入自定义 LUT</h2>
+<p>最后给视频加个电影感滤镜。NodeVideo 支持直接导入 .cube 格式的 LUT 文件，Photoshop、Lightroom、达芬奇导出的都能直接用。</p>
+<p>操作路径：选中视频 → 属性面板 → <strong>添加属性</strong> → <strong>颜色校正</strong> → <strong>滤镜(新)</strong>。弹出滤镜面板后选<strong>自定义</strong>，点红色加号，从手机里挑一个你事先存好的 .cube 文件。可以一次多选，逐个预览找到喜欢的效果。</p>
+<p>网上搜"免费 LUT"能找到海量资源，挑一个色调不太重的先用——LUT 太浓会让画面过饱和，后面还得用 RGB 曲线局部拉回来，调色曲线的具体调法可以去<a href="https://nodevideo.pages.dev/" target="_blank" rel="noopener">nodevideo文档</a>翻一下。</p>
+<h2>第六步：导出</h2>
+<p>回到项目设置，把帧率改回你想要的最终值（60fps 对应手机高帧率拍摄的素材），预览质量不用管它。点右上角的<strong>导出</strong>，选分辨率和码率，等进度条走完就行。</p>
+<h2>三个新手最容易翻车的卡点</h2>
+<p><strong>卡点一：预览卡得像幻灯片</strong>。八成是素材太大会直接塞进来了——别硬扛，选中素材 → 图层菜单 → 其它 → 信息，看看分辨率是不是超过 1080p。是的话先在电脑或手机端压缩一下，再导进来。另外确认预览帧率在 30fps 以下、预览质量 50%，这两个设置对流畅度影响极大。</p>
+<p><strong>卡点二：补帧出来果冻感严重</strong>。先排除素材问题：光线昏暗、运动方向突变、画面有大面积重复纹理的素材，补帧质量天生会打折扣。换一段光线稳定、主体运动方向明确的素材试试。如果素材没问题，回去图层菜单的补帧参数里，把<strong>去重复帧</strong>选项打开——它会自动检测并跳过重复帧，对解决果冻有直接帮助。</p>
+<p><strong>卡点三：LUT 文件选了但没效果</strong>。最常见的原因是文件格式不对。NodeVideo 只认 .cube 后缀的 LUT，如果你手里是 .3dl、.lut、.xmp 之类的格式，先在电脑端用调色软件导出成 .cube 再传手机。检查一下文件是不是真的存到了手机本地目录里，别存在云端网盘里没下载下来。</p>
+<h2>往下还能玩什么</h2>
+<p>把今天的流程摸熟之后，可以试试运动跟踪（让字幕跟着视频里的物体一起动）、音频反应器（让画面跟着音乐节拍跳动）、或者用钢笔工具做局部调色蒙版——NodeVideo 9.0 加的迷你脚本表达式也值得研究，能用几行代码驱动属性做程序化动画。</p>
+<p>这套剪辑工作流的完整资料在几个开源仓库都能拿到——最新版本更新以<a href="https://github.com/alipymanbu/APK/tree/main/APP/nodevideo" target="_blank" rel="noopener">GitHub</a>为准，国内网络不方便直连的话可以去<a href="https://gitee.com/manbu1103/APK/tree/main/APP/nodevideo" target="_blank" rel="noopener">Gitee</a>或<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/nodevideo" target="_blank" rel="noopener">GitCode</a>这两个镜像源，搜 APP/nodevideo 目录就能找到 .cube 滤镜示例、补帧参数参考和调色曲线预设，适合入门之后继续深挖。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/musicfree-docs.html">播放器和音源解耦——MusicFree 为什么能在版权灰区活得这么久</a></h2>
+  <p class="card-desc">音乐工具做聚合几乎是一条必死之路：版权围剿、API 变动、作者跑路。MusicFree 用&#34;播放器壳 + 插件音源&#34;的架构把自己从必死名单里摘了出来——这篇拆解它的设计原理和隐含代价。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/pado-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Pado 情侣应用全能力盘点：定位、记录、仪式感三件套到底做得怎么样</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/autox-js.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Autox.js 到底强在哪？和同类自动化工具的横向对比</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>安卓组件拦截工具横评，Bloker 为什么值得单独拿出来说 · 老杨技术栈</title>
+  
+<meta name="description" content="从 Intent Firewall 到 SDK 规则库，Bloker 在安卓组件拦截这个类目里走出了一条跟别家不太一样的路。用过三四款同类工具后，聊聊它的定位、差异化优势和不适合谁。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/blocker-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓组件拦截工具横评，Bloker 为什么值得单独拿出来说">
+<meta property="og:description" content="从 Intent Firewall 到 SDK 规则库，Bloker 在安卓组件拦截这个类目里走出了一条跟别家不太一样的路。用过三四款同类工具后，聊聊它的定位、差异化优势和不适合谁。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/blocker-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/blocker-docs/01_460x819.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/blocker-docs/01_460x819.png">
+
+<meta name="twitter:title" content="安卓组件拦截工具横评，Bloker 为什么值得单独拿出来说">
+<meta name="twitter:description" content="从 Intent Firewall 到 SDK 规则库，Bloker 在安卓组件拦截这个类目里走出了一条跟别家不太一样的路。用过三四款同类工具后，聊聊它的定位、差异化优势和不适合谁。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece Intent Firewall \u5230 SDK \u89c4\u5219\u5e93\uff0cBloker \u5728\u5b89\u5353\u7ec4\u4ef6\u62e6\u622a\u8fd9\u4e2a\u7c7b\u76ee\u91cc\u8d70\u51fa\u4e86\u4e00\u6761\u8ddf\u522b\u5bb6\u4e0d\u592a\u4e00\u6837\u7684\u8def\u3002\u7528\u8fc7\u4e09\u56db\u6b3e\u540c\u7c7b\u5de5\u5177\u540e\uff0c\u804a\u804a\u5b83\u7684\u5b9a\u4f4d\u3001\u5dee\u5f02\u5316\u4f18\u52bf\u548c\u4e0d\u9002\u5408\u8c01\u3002", "headline": "\u5b89\u5353\u7ec4\u4ef6\u62e6\u622a\u5de5\u5177\u6a2a\u8bc4\uff0cBloker \u4e3a\u4ec0\u4e48\u503c\u5f97\u5355\u72ec\u62ff\u51fa\u6765\u8bf4", "image": ["https://alipymanbu.github.io/images/blocker-docs/01_460x819.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/blocker-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/blocker-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/app/", "name": "APP", "position": 2}, {"@type": "ListItem", "name": "\u5b89\u5353\u7ec4\u4ef6\u62e6\u622a\u5de5\u5177\u6a2a\u8bc4\uff0cBloker \u4e3a\u4ec0\u4e48\u503c\u5f97\u5355\u72ec\u62ff\u51fa\u6765\u8bf4", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/app/index.html">APP</a><span>/</span>
+    <span class="crumb-cur">安卓组件拦截工具横评，Bloker 为什么值得单独拿出来说</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">安卓组件拦截工具横评，Bloker 为什么值得单独拿出来说</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/app/index.html">APP</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从 Intent Firewall 到 SDK 规则库，Bloker 在安卓组件拦截这个类目里走出了一条跟别家不太一样的路。用过三四款同类工具后，聊聊它的定位、差异化优势和不适合谁。</p>
+  </header>
+  <div class="prose">
+<p>安卓生态里有一个常年灰色的小众类目：<strong>组件级拦截</strong>。跟系统自带的"禁用应用"不是一回事——那是整个应用一刀切，而组件拦截是把应用拆成一块块（activity、service、receiver、provider），精准关掉你不想让它干的那部分，保留要用的功能。这个类目不大，但用户忠诚度极高，因为真能解决问题。</p>
+<p>我前后摸过三四款同类工具，从早年靠 shell pm disable 的简单方案，到后来利用 Shizuku 权限做批量操作的，再到 Bloker——它的<a href="https://blocker.uerg.quest" target="_blank" rel="noopener">官网</a>上关于 Intent Firewall 的介绍让我眼前一亮。先说结论：如果你是那种"已经 root、想精细化控制每一个应用"的用户，Bloker 大概率是你最终会落脚的那一个。原因不是它功能最多，而是它在几个关键设计上想得比别家深。</p>
+<h2>同类工具的格局先铺个底</h2>
+<p>组件拦截工具大致分三代：第一代是纯 PM 模式，直接调用 <code>pm disable-component</code> 改系统组件状态；第二代加上了 Shizuku 作为免 root 替代；Bloker 属于第三代，把 Intent Firewall（意图防火墙）拉进来当主拦截通道，PM 和 Shizuku 退居二线或组合模式。</p>
+<p>格局上没什么可争的——能做到组件级拦截的工具本来就少，用户群体也小。但 Bloker 在这个有限的选择里做了几个别家没有的决定。</p>
+<h2>差异化一：Intent Firewall 是真的护城河</h2>
+<p>绝大多数同类工具的拦截逻辑都是改组件的 enabled/disabled 状态。Bloker 也能这么干，但它主推的是 <strong>Intent Firewall</strong>——不碰组件状态，而是在 Intent 分发层拦截。</p>
+<p>这个区别听起来很技术，实际体验差距很大。PM 模式改了组件状态之后，应用自己是知道的——有些大厂应用检测到某个组件被禁用，会想尽办法"复活"它（典型的比如重新注册 receiver、或者用反射绕过检查）。IFW 模式下组件在系统层面显示的是 enabled，但任何要启动它的 Intent 都被拦了——应用根本察觉不到，也就不会去复活。</p>
+<p><img src="../images/blocker-docs/01_460x819.png" alt="IFW 控制器设置界面" loading="lazy"></p>
+<p>而且 Bloker 允许 IFW 和 PM 组合使用。我自己主要对付的是几款大厂视频应用，开屏广告那个 service 用 PM 关了，过一周它又自己起来——换成 IFW + PM 双通道之后，再也没复活过。代价是规则文件会多一份，但对有 root 的用户来说这根本不是事。</p>
+<h2>差异化二：SDK 规则库省了至少一半的摸索时间</h2>
+<p>刚接触组件拦截的人最痛苦的环节就是：<strong>应用里几十上百个组件，到底关哪个？</strong></p>
+<p>Bloker 的做法是维护一套公开的 SDK 规则库。它会自动识别应用里嵌入了哪些 SDK——穿山甲、AdMob、优量汇、极光推送、友盟 Bugly、华为 HMS……然后给这些 SDK 的组件打上标记，告诉你哪些是广告 service、哪些是追踪 receiver、哪些是核心组件别碰。</p>
+<p>这个标记不是玄学，是真有用。举个砍广告的实战：先打开应用跑一遍记下广告场景（开屏几秒弹、播放完插横幅），回 Bloker 搜"穿山甲"，命中后按 service → activity → receiver 的优先级逐个关，每关几个就杀应用重启验证一次。有规则库的标记，你不会把支付 SDK 的组件跟广告 SDK 的搞混，也不会误杀厂商 HMS 的核心组件导致系统功能异常。</p>
+<p><img src="../images/blocker-docs/02_460x819.png" alt="SDK 规则库命中效果" loading="lazy"></p>
+<h2>差异化三：切换控制器不丢规则</h2>
+<p>这个点看起来不起眼，但用过同类工具的人都懂其中的坑。之前用别的工具，从 PM 模式切到 Shizuku 或者反过来，经常出现"之前关的组件没了一半"或者"状态显示错乱但实际还在拦"的情况。Bloker 做了自动翻译——读取当前所有禁用规则，翻译成新控制器的形式（IFW 规则文件或 PM 组件状态），无缝应用。</p>
+<p>唯一的小注意：从 IFW 切回 PM 时，IFW 规则禁用的组件会被翻译回 PM 的 enabled 状态——因为两套东西，切换时 Bloker 清掉旧控制器的影响。这个行为在 Bloker 的<a href="https://blocker-docs.pages.dev/" target="_blank" rel="noopener">文档</a>里写得很清楚，我反而觉得这是诚实的设计，不是 bug。</p>
+<h2>它的取舍：不是所有人都该选</h2>
+<p>说了这么多好，也得讲 Bloker 的代价。</p>
+<p><strong>第一，上手门槛偏高。</strong> SDK 规则库帮你省了组件识别的时间，但真正执行起来仍然需要你理解 service、receiver、activity 分别是什么、关掉会影响什么。厂商 HMS 的组件、跟支付 SDK 绑定的广告组件、推送 SDK 里同时承担应用内消息的 receiver——这些场景需要判断力，不是点一下"全部关"就完事。Bloker 提供了规则备份和"一次只关 1~2 个"的安全建议，但判断力还得你自己有。</p>
+<p><strong>第二，不是完全免 root。</strong> Shizuku 模式可以免 root 用 PM 通道，但 IFW 模式需要 root 才能生效——Intent Firewall 是 Android 系统的底层机制，不开放给第三方应用。从<a href="https://blocker.uerg.quest/download.html" target="_blank" rel="noopener">下载</a>页看，Bloker 也没打算在免 root 这件事上做妥协，它的核心设计就是围绕 root 用户展开的。如果你设备没 root、也不想折腾 Shizuku，Bloker 的核心优势就用不上，不如直接找一个免 root 的简单方案。</p>
+<p><strong>第三，推送场景要权衡。</strong> 关掉推送组件效果立竿见影——后台不再维持长连接、省电省流量、不会被推送唤醒。但社交聊天、游戏活动、好友请求这些核心场景依赖推送，关了等于自断功能。Bloker 不会替你做决定，它只把组件列表摊开告诉你每个都负责什么。</p>
+<h2>选购结论：三类用户对号入座</h2>
+<p><strong>应该选 Bloker 的</strong>：有 root 权限、想精细化控制应用行为、已经被大厂应用的广告/推送/后台唤醒烦了、愿意花半小时学习组件类型和风险判断的人。如果你是那种刷 XDA 论坛知道 PM disable 是什么、开过 Shizuku、理解 Intent Firewall 的老安卓玩家——Bloker 就是为你做的。</p>
+<p><strong>可以考虑但不必强求的</strong>：没有 root 但装了 Shizuku、主要需求就是关掉几个推送通道或广告 SDK 组件的人。PM 模式也够用，Bloker 的规则库仍然有价值，只是少了 IFW 这层护城河。</p>
+<p><strong>不建议折腾的</strong>：只想关掉某个应用或者系统自带禁用就能满足的人。Bloker 的学习曲线和风险判断成本，在你不需要精细控制的时候都是额外负担——系统"禁用"、通知权限、自启动管理，这些现成的开关简单得多。</p>
+<h2>最后一句</h2>
+<p>跟很多同类工具在国内靠论坛散养、更新不透明不同，Bloker 的维护节奏和文档质量在这个小众类目里属于比较稳的那一档。如果你已经翻过了 PM 模式的墙，想往上走一步——Bloker 值得你花时间。这套资料我同步到了<a href="https://github.com/alipymanbu/APK/tree/main/APP/blocker" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/APP/blocker" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/blocker" target="_blank" rel="noopener">GitCode</a>三个仓库，国内访问哪个顺手用哪个。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/simeji.html">Simeji Premium 值不值得买？三档用户的付费账本</a></h2>
+  <p class="card-desc">从免费版的广告骚扰到 Premium 的 AI 解锁，把 Simeji 的每一档功能对应到真实使用场景，算清楚哪类人该掏钱、哪类人能忍就忍。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/nodevideo.html">NodeVideo 手机剪辑从零到丝滑慢动作：实战全流程</a></h2>
+  <p class="card-desc">带读者从零上手 NodeVideo：项目新建、素材导入、关键帧动画、光流补帧慢动作、自定义 LUT 调色到最终导出，附新手最容易翻车的三个卡点解法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/app/index.html">APP</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/new-bing-docs.html">从搜索引擎到系统入口：New Bing / Copilot 三年进化史</a></h2>
+  <p class="card-desc">2023 年初横空出世的 New Bing，如今已经改名为 Copilot 并深度嵌入 Windows 生态。回看这三年的迭代节奏，微软在下一盘什么样的棋？</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/make-best-music.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">做播客的第三周，我终于把片头片尾的版权问题解决了</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/moodly-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Moodly 的角色隔离架构：为什么每个 AI 搭子都能&#34;守口如瓶&#34;</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

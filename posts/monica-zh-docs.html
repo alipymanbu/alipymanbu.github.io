@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Monica 避坑指南：看着全能，这四个地方容易翻车 · 老杨技术栈</title>
+  
+<meta name="description" content="Monica 聚合了多家模型，功能面很广，但几个使用细节如果没摸透，轻则白花积分、重则数据隐私出问题。本文挑四个真实踩过的坑，逐个讲清症状、原因和解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/monica-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monica 避坑指南：看着全能，这四个地方容易翻车">
+<meta property="og:description" content="Monica 聚合了多家模型，功能面很广，但几个使用细节如果没摸透，轻则白花积分、重则数据隐私出问题。本文挑四个真实踩过的坑，逐个讲清症状、原因和解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/monica-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/monica-zh-docs/app-chat.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/monica-zh-docs/app-chat.png">
+
+<meta name="twitter:title" content="Monica 避坑指南：看着全能，这四个地方容易翻车">
+<meta name="twitter:description" content="Monica 聚合了多家模型，功能面很广，但几个使用细节如果没摸透，轻则白花积分、重则数据隐私出问题。本文挑四个真实踩过的坑，逐个讲清症状、原因和解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Monica \u805a\u5408\u4e86\u591a\u5bb6\u6a21\u578b\uff0c\u529f\u80fd\u9762\u5f88\u5e7f\uff0c\u4f46\u51e0\u4e2a\u4f7f\u7528\u7ec6\u8282\u5982\u679c\u6ca1\u6478\u900f\uff0c\u8f7b\u5219\u767d\u82b1\u79ef\u5206\u3001\u91cd\u5219\u6570\u636e\u9690\u79c1\u51fa\u95ee\u9898\u3002\u672c\u6587\u6311\u56db\u4e2a\u771f\u5b9e\u8e29\u8fc7\u7684\u5751\uff0c\u9010\u4e2a\u8bb2\u6e05\u75c7\u72b6\u3001\u539f\u56e0\u548c\u89e3\u6cd5\u3002", "headline": "Monica \u907f\u5751\u6307\u5357\uff1a\u770b\u7740\u5168\u80fd\uff0c\u8fd9\u56db\u4e2a\u5730\u65b9\u5bb9\u6613\u7ffb\u8f66", "image": ["https://alipymanbu.github.io/images/monica-zh-docs/app-chat.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/monica-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/monica-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "Monica \u907f\u5751\u6307\u5357\uff1a\u770b\u7740\u5168\u80fd\uff0c\u8fd9\u56db\u4e2a\u5730\u65b9\u5bb9\u6613\u7ffb\u8f66", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">Monica 避坑指南：看着全能，这四个地方容易翻车</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Monica 避坑指南：看着全能，这四个地方容易翻车</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Monica 聚合了多家模型，功能面很广，但几个使用细节如果没摸透，轻则白花积分、重则数据隐私出问题。本文挑四个真实踩过的坑，逐个讲清症状、原因和解法。</p>
+  </header>
+  <div class="prose">
+<p>Monica 刚上手给我的印象是"一站式"——去<a href="https://monica.usea.quest" target="_blank" rel="noopener">官网</a>上看一眼，AI 搜索、对话、写作、生图、PDF 翻译、Agent 自动化……几乎能想到的 AI 应用都给你塞在同一个壳里。界面也做的清爽，点进去就想直接开用。</p>
+<p>但用了两三周之后我发现，越是这种"全家桶"形态的工具，越容易在角落里藏着几个反直觉的设计。我前前后后踩过至少四个坑，其中一个还差点把我私人聊天记录忘在上面。写下来给同样在摸索的朋友提个醒。</p>
+<h2>坑一：对话中途切模型，以为之前的回答会重生成</h2>
+<p><strong>症状</strong>：一个聊到一半的对话，我觉得 GPT-4o 的回答太啰嗦，想切到 Claude 来收个尾。切完之后往下看，之前 GPT 说的那一大段还好好挂在对话里——我以为会自动刷新，结果什么都没发生。</p>
+<p><img src="../images/monica-zh-docs/app-chat.png" alt="对话界面" loading="lazy"></p>
+<p><strong>原因</strong>：Monica 的模型切换机制是"只对后续回答生效"。已经生成出来的内容不会因为你切了模型就重跑——每条消息都是在切模型那一刻之前的上下文里由对应模型独立生成的，切换操作只是告诉服务端"接下来这轮对话的回答换个模型来出"。</p>
+<p>这不是 bug，是设计选择。但它非常反直觉，因为大部分人对"切换"的预期是"用新模型重新来过"。</p>
+<p><strong>解法</strong>：切换模型之后，想让新模型基于当前上下文重答一遍之前的问题，有两条路：要么手动点那条消息右上角的「重新回答」按钮（Monica 有这个功能，大多数人没注意到）；要么直接把你不满意的那条回答对应的问题删掉重写一遍，新模型就会接过来跑了。</p>
+<p>一个经验法则：<strong>切模型 ≠ 重置对话</strong>。如果你的目标是让新模型完整地审视一遍整个对话链，最好新开一个对话窗口，把上下文复制过去。</p>
+<h2>坑二：记忆功能开了之后忘关，私人信息跨对话泄露</h2>
+<p><strong>症状</strong>：某天我在一个闲聊对话里随口提了一句"我的房贷每月大概 8000"，然后去另一个对话里问"帮我写一篇关于租房和买房的文章"，Monica 的回答里居然主动把"你提到过的房贷压力"当成论据用了。当时我后背一凉。</p>
+<p><strong>原因</strong>：Monica 的记忆功能是跨对话的。一旦你打开它（默认其实是关闭的，但第一次"个性化推荐"弹窗时容易误点开启），Monica 就会把你在任意对话里说过的敏感信息存进"记忆库"，后面不管哪个对话，只要上下文沾边，它都会主动引用。</p>
+<p>记忆本身是加密存储的，不会泄露给第三方——这点<a href="https://monica-zh-docs.pages.dev/" target="_blank" rel="noopener">monica文档</a>里写得很清楚。问题在于你自己可能忘了开过这个开关。</p>
+<p><img src="../images/monica-zh-docs/app-reasoning.png" alt="记忆与隐私" loading="lazy"></p>
+<p><strong>解法</strong>：三条：</p>
+<ul><li>第一次打开 App 看到"开启个性化记忆"弹窗时，先想清楚：你平时会不会在里面聊私事？如果会，直接跳过；</li><li>养成一个月去一次记忆管理页的习惯，把自动收录的碎片信息逐条过一遍，不需要的就删；</li><li>最彻底的做法：<strong>长期保持记忆关闭</strong>，只在需要特定个性化服务（比如"记住我喜欢的写作风格"）时临时开启，用完立刻关。</li></ul>
+<h2>坑三：免费额度和高级积分，傻傻分不清结果把积分烧光</h2>
+<p><strong>症状</strong>：我从<a href="https://monica.usea.quest/download.html" target="_blank" rel="noopener">monica下载</a>装完 App 之后，看到它宣称"每天有免费额度可以免费用"，就放心大胆地用 DeepSeek 免费通道聊天。结果某天突然被提示"积分不足"，我一脸懵——我没开会员啊，哪来的积分消耗？</p>
+<p><strong>原因</strong>：免费额度和高级积分是两套独立系统。免费额度（每日刷新）只能跑特定的免费模型，比如 DeepSeek 的那个专门通道。但一旦你切到需要"高级积分"的模型（比如 GPT-4o、Claude 3.5 Sonnet 的某些高级模式），消耗的就是积分类——而积分是会员权益，用完就没，不会每天刷新。</p>
+<p>更隐蔽的地方在 AI 搜索：搜索本身不消耗积分，但如果你让它用"深度思考"模式来推理，积分会快速往下掉。我那次就是聊天窗口里 DeepSeek 免费通道切去 AI 搜索时点了深度思考，自己没注意，积分一下烧完。</p>
+<p><strong>解法</strong>：每次操作前先看一下当前选中的模型在界面上标的是"免费"还是"积分"。积分消耗会实时显示在回答上方，别等出了账单才发现。</p>
+<p>一个实用小技巧：<strong>先开对话、后选模型</strong>。先跟免费模型聊清楚需求，确认没问题了再切付费模型来做最终输出——这样可以把付费模型的使用量压到最低。</p>
+<h2>坑四：AI 搜索带来源，但来源太少就信了</h2>
+<p><strong>症状</strong>：用 Monica 的 AI 搜索查一个技术问题，回答里标注"参考了 3 个来源"，我就觉得挺靠谱，直接抄进了技术笔记。后来发现那 3 个来源里有两个其实是同一个博客的不同页面，信息重复还带了错误。</p>
+<p><strong>原因</strong>：Monica 的 AI 搜索是把问题拆成关键词后去多个网页源抓取，但"来源数量"只是它抓取的<strong>页面数</strong>，不代表<strong>独立信息源数量</strong>。一个域名下的不同页面会被算成多个来源——而那些被抓取到的页面之间，可能互相引用、错误同源。</p>
+<p><img src="../images/monica-zh-docs/app-ai-search.png" alt="AI 搜索界面" loading="lazy"></p>
+<p><strong>解法</strong>：</p>
+<ul><li>看到答案里的来源数时，点开详情页逐个扫一下域名——如果两个来源域名相同或高度相似，当成一个用；</li><li>关键问题别只看 Monica 的整合回答，至少手动打开其中一两个来源核对原文；</li><li>如果 Monica 的答案让你觉得"太顺了不像人话"，直接切到搜索增强模式，让它把抓取到的原始片段一并列出来对照。</li></ul>
+<hr>
+<h2>防坑清单</h2>
+<ul><li>切模型 ≠ 重置对话，需要重答时手动点「重新回答」或删问题重写</li><li>记忆功能默认关就别动，定期检查记忆管理页，不需要的及时删</li><li>每次操作前确认当前模型是"免费"还是"积分"，积分不刷新省着用</li><li>AI 搜索的来源数是页面数不是独立源，关键信息手动点开来核对</li><li>对话里别随口说私人信息，哪怕是在"一次性临时对话"里也长点心</li></ul>
+<p>写这篇的时候我也在想——Monica 作为一个聚合型产品，它踩的坑本质上都是"功能太多带来的默认设置陷阱"。只要摸清楚这几个反直觉的点，平时用着其实相当省心。毕竟你也不会天天在一个 App 里同时做搜索、写论文、修图和查房贷，对吧？</p>
+<p>这套 Monica 的完整资料（安装指引、功能详解、FAQ）同步维护在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Monica" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Monica" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/Monica" target="_blank" rel="noopener">GitCode</a> 三个仓库里，搜索 "Monica" 就能找到对应目录，内容保持一致。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/yeolpumta.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">市面上学习计时器那么多，Yeolpumta 为什么值得单独说？</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/flamingo-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">地铁通勤的那台播放器，终于不用再对着会员弹窗叹气</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

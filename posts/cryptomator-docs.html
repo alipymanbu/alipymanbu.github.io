@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Cryptomator 用了半年踩过的七个坑，第三个差点让我丢了所有文件 · 老杨技术栈</title>
+  
+<meta name="description" content="Cryptomator 界面看着极简，真正用起来却藏着不少反直觉的细节。我从删除保险库到 Recovery Key 验证踩了一圈，整理出七个真实翻车场景和对应解法。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/cryptomator-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cryptomator 用了半年踩过的七个坑，第三个差点让我丢了所有文件">
+<meta property="og:description" content="Cryptomator 界面看着极简，真正用起来却藏着不少反直觉的细节。我从删除保险库到 Recovery Key 验证踩了一圈，整理出七个真实翻车场景和对应解法。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/cryptomator-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/cryptomator-docs/recovery-key-display.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/cryptomator-docs/recovery-key-display.png">
+
+<meta name="twitter:title" content="Cryptomator 用了半年踩过的七个坑，第三个差点让我丢了所有文件">
+<meta name="twitter:description" content="Cryptomator 界面看着极简，真正用起来却藏着不少反直觉的细节。我从删除保险库到 Recovery Key 验证踩了一圈，整理出七个真实翻车场景和对应解法。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "Cryptomator \u754c\u9762\u770b\u7740\u6781\u7b80\uff0c\u771f\u6b63\u7528\u8d77\u6765\u5374\u85cf\u7740\u4e0d\u5c11\u53cd\u76f4\u89c9\u7684\u7ec6\u8282\u3002\u6211\u4ece\u5220\u9664\u4fdd\u9669\u5e93\u5230 Recovery Key \u9a8c\u8bc1\u8e29\u4e86\u4e00\u5708\uff0c\u6574\u7406\u51fa\u4e03\u4e2a\u771f\u5b9e\u7ffb\u8f66\u573a\u666f\u548c\u5bf9\u5e94\u89e3\u6cd5\u3002", "headline": "Cryptomator \u7528\u4e86\u534a\u5e74\u8e29\u8fc7\u7684\u4e03\u4e2a\u5751\uff0c\u7b2c\u4e09\u4e2a\u5dee\u70b9\u8ba9\u6211\u4e22\u4e86\u6240\u6709\u6587\u4ef6", "image": ["https://alipymanbu.github.io/images/cryptomator-docs/recovery-key-display.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/cryptomator-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/cryptomator-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "Cryptomator \u7528\u4e86\u534a\u5e74\u8e29\u8fc7\u7684\u4e03\u4e2a\u5751\uff0c\u7b2c\u4e09\u4e2a\u5dee\u70b9\u8ba9\u6211\u4e22\u4e86\u6240\u6709\u6587\u4ef6", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">Cryptomator 用了半年踩过的七个坑，第三个差点让我丢了所有文件</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Cryptomator 用了半年踩过的七个坑，第三个差点让我丢了所有文件</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">Cryptomator 界面看着极简，真正用起来却藏着不少反直觉的细节。我从删除保险库到 Recovery Key 验证踩了一圈，整理出七个真实翻车场景和对应解法。</p>
+  </header>
+  <div class="prose">
+<p><a href="https://cryptomator.fedq.ren" target="_blank" rel="noopener">cryptomator官网</a> 这东西，第一次打开你会觉得"哇，这也太简单了吧"——建保险库、输密码、拖文件进去，完事。我当初也是这么想的，结果半年下来踩了七个坑，其中第三个差点让我把整个保险库当成"已经删干净了"就不管了。写这篇就是把我踩过的坑摊开说，希望你看到的时候别再像我一样懵。</p>
+<h2>坑一：以为"Remove"就是删了，结果两年的保险库还躺在云盘里</h2>
+<p><strong>症状</strong>：某天整理 Cryptomator 界面，右键一个不用的保险库点了 Remove，转头就把那个目录的事忘干净了。直到几个月后云盘空间预警，清空间时才发现那堆密文文件还占着 30 多 GB。</p>
+<p><strong>原因</strong>：Cryptomator 的 Remove 字面意思就是"从列表移除"——它真的只做这一件事。界面上的入口消失了，密文目录完全没动，云盘同步还在继续跑，Recovery Key 也安然无恙。官方文档里写得明明白白，但谁会去看 Remove 的 tooltip 啊？</p>
+<p><strong>解法</strong>：如果只是暂时不用，Remove 没问题，哪天想回来用加号重新 Open Existing Vault 就行。但要彻底删的话，Remove 只是第一步。真正的物理删除得手动用系统文件管理器删密文目录，然后等云盘同步完成，<strong>最后务必去云盘网页版清版本历史</strong>——这才是最容易漏的环节。</p>
+<h2>坑二：云盘版本历史里还留着我的 masterkey</h2>
+<p><strong>症状</strong>：保险库目录删完、云盘同步完，正想着终于干净了，结果看文档才知道——很多云盘的版本历史会保留被删除文件的旧版本。我删了 <code>masterkey.cryptomator</code>，但 Google Drive 的版本历史里还躺着三个月前的那一份。</p>
+<p><strong>原因</strong>：加密学上 masterkey 丢了也就丢了，但云盘的版本历史功能是站在"文件恢复"角度设计的，不会管你这个文件是不是加密密钥。攻击者如果拿到你的云盘访问权，从版本历史里恢复旧的 masterkey，再配上你手里的 Recovery Key——整个保险库就开门了。</p>
+<p><strong>解法</strong>：删完密文目录之后，一定要到云盘网页版找版本历史的入口。Google Drive 是文件右键 → Manage versions → Delete permanently，Dropbox 和 OneDrive 各有各的位置。不确定有没有版本历史的，安全起见都清一遍。这个步骤我之前完全没意识到它的存在，直到翻<a href="https://cryptomator-docs.pages.dev/" target="_blank" rel="noopener">cryptomator文档</a>排查才发现这是安全建议里反复提的一条。</p>
+<p><img src="../images/cryptomator-docs/recovery-key-display.png" alt="Recovery Key 验证界面" loading="lazy"></p>
+<h2>坑三：在解锁状态下手贱删了密文目录</h2>
+<p><strong>症状</strong>：清理空间的时候手快，在资源管理器里把保险库密文目录整个拖进了回收站——而那一刻 Cryptomator 还在解锁状态，虚拟盘正挂在那里。结果就是 Cryptomator 直接崩溃，解锁视图里的文件系统瞬间乱掉，有几个文件还没来得及加密写入就中断了。</p>
+<p><strong>原因</strong>：Cryptomator 解锁时会在内存里维护一个文件系统视图，所有读写操作都实时加密/解密。如果你绕过 Cryptomator 直接在磁盘层删密文目录，内存里的状态和磁盘状态瞬间脱节，轻的崩溃重启，重的就是文件损坏。</p>
+<p><strong>解法</strong>：任何时候动保险库密文目录，<strong>先 Lock</strong>。这是铁则。界面上点一下 Lock 不费一秒钟，能省掉后面几个小时的文件恢复。我那次运气好，回收站里找回来之后再解锁没问题，但如果云盘同步刚好在中间插手，后果不敢想。</p>
+<h2>坑四：Android 版选了 F-Droid，结果发现没有 Google Drive</h2>
+<p><strong>症状</strong>：手机上想从 Google Drive 访问保险库，装了 F-Droid 版之后才发现——F-Droid 版的云盘列表里没有 Google Drive 这个选项。折腾了半天才搞清楚为什么。</p>
+<p><strong>原因</strong>：F-Droid 仓库的原则是纯开源、无 Google 依赖。Google Drive 原生 API 需要 Google Play 服务，这个组件不是开源的，所以 F-Droid 版故意砍掉了 Google Drive 原生集成。同样被砍的还有 pCloud 的部分支持。如果你用 S3 兼容存储，反而只有从<a href="https://cryptomator.fedq.ren/download.html" target="_blank" rel="noopener">cryptomator下载</a>拿的 APK 版有。</p>
+<p><strong>解法</strong>：选 Android 版本的时候先看自己有什么云盘。有 Google Play 服务就装 Google Play Freemium 版，云盘支持最全、更新最快。坚持 F-Droid 生态的话，Google Drive 得靠 WebDAV 或 S3 协议间接访问——前提是你的 Google Drive 账号开通了这些协议。五个变体的区别文档里有完整表格，我之前没细看就瞎装了。</p>
+<h2>坑五：空闲自动锁定怎么等都不锁</h2>
+<p><strong>症状</strong>：开了"空闲 5 分钟自动锁定"，结果出门半小时回来保险库还在解锁状态。反复调时间，设成 2 分钟也不生效。</p>
+<p><strong>原因</strong>：Cryptomator 的空闲计时器是按"文件系统活动"来算的——不是没人碰 Cryptomator 窗口就叫空闲。后台的杀毒软件实时扫描、云盘同步程序做定时检查、甚至 Windows Defender 的定期扫描，都会触发文件系统活动，把空闲计时器重置归零。我装的云盘客户端每隔十分钟就会扫一遍同步目录，难怪自动锁从来没生效过。</p>
+<p><strong>解法</strong>：要么关掉自动锁，要么把杀毒和云盘同步程序对保险库目录做白名单排除。便携设备上我现在改成手动 Lock 配合 Windows Hello 存密码——解锁时刷个脸就行，比赌自动锁靠谱。</p>
+<h2>坑六：启动自动解锁 + Reveal Drive 放在了公司电脑上</h2>
+<p><strong>症状</strong>：公司发的笔记本，觉得每次开机都输密码麻烦，就勾了"启动自动解锁"和"解锁后自动打开文件管理器"。有天开会时同事凑过来看我屏幕，刚好 Cryptomator 在后台自己启动了，我的隐私文件直接在文件管理器里摊开。</p>
+<p><strong>原因</strong>：这个组合确实最省事——开机 → 开 Cryptomator → 自动解锁 → 自动打开，全程不用动手。但它的安全边界完全取决于"这台电脑只有你能用"。公司电脑有 IT 远程协助、有锁屏密码被重置的风险、有忘在会议室的可能。我当初就是嫌输密码麻烦，没多想就勾上了。</p>
+<p><strong>解法</strong>：只用在只有自己用的台式机上。笔记本尤其是带出门的，老老实实手动解锁。如果实在想省点事，配合系统钥匙串存密码，至少不用每次输完整密码，但解锁那一下还是手动来。</p>
+<h2>坑七：Decrypt File Name 告诉我文件名，却不告诉我它在哪</h2>
+<p><strong>症状</strong>：云盘版本历史里看到一串密文文件名，想知道哪个是我要恢复的旧版本。用 Decrypt File Name 跑了一下，表格给出来的明文文件名是对的——但我还是不知道这个文件在保险库目录树的第几层。</p>
+<p><strong>原因</strong>：这是加密设计决定的。文件名加密是确定性的（同样的明文名 → 同样的密文名），但目录结构不加密。Decrypt 工具只负责密文文件名到明文文件名的映射，不扫描整个目录树去找它的位置。文档里说可以先用 Locate Encrypted File（明文 → 密文）定位密文，再去云盘恢复，反过来再用 Decrypt 验证——这俩工具得搭配用。</p>
+<p><strong>解法</strong>：需要双向查找的时候，Locate 和 Decrypt 配合着来。先在解锁视图里用 Locate 定位密文，去云盘恢复版本之后再用 Decrypt 确认恢复的确实是目标文件。单独用 Decrypt 只能解决一半问题。</p>
+<h2>防坑清单</h2>
+<p>总结一下，七个坑浓缩成五条速查：</p>
+<ol><li><strong>Remove ≠ 删除</strong>，彻底删保险库要手动删目录 + 等云盘同步 + <strong>清云盘版本历史</strong></li><li>任何时候动密文目录，<strong>先 Lock 保险库</strong>，解锁状态下别动磁盘层</li><li>Android 版别瞎选渠道，<strong>Google Play Freemium 版云盘支持最全</strong>，F-Droid 砍了 Google Drive</li><li>自动锁不生效先查<strong>后台程序重置空闲计时器</strong>，杀毒和云盘同步是重灾区</li><li>自动解锁 + Reveal Drive <strong>只放私人台式机</strong>，笔记本老老实实手动来</li></ol>
+<p>知道这些坑之后，Cryptomator 其实相当省心。加密强度够、跨平台互通、保险库格式稳定，只要别在那几个反直觉的点上踩雷，长期用下来没出过真正的安全事故。Cryptomator 是开源项目，我整理的一些实战笔记在 <a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/cryptomator" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/cryptomator" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/cryptomator" target="_blank" rel="noopener">GitCode</a> 三个仓库都有，国内访问用后两个更稳。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/lumeow.html">Lumeow 深度盘点：一款 AI 角色扮演应用的能力面完整铺开</a></h2>
+  <p class="card-desc">从多人剧情共创到隐私保护三件套，从对话历史管理到云端同步——Lumeow 到底能做什么？本文按能力域系统性梳理这款 AI 角色扮演应用的亮点、适用场景和局限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/appenjoy.html">APPenjoy 翻了个底朝天才敢说——这五个隐藏功能你肯定漏了仨</a></h2>
+  <p class="card-desc">以为 APPenjoy 就是个找应用下 APK 的工具？三重安全审核、隐藏影视入口、社区积分体系……我把它翻了一周，挖出五个官方没写在明面上的冷门玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pado-docs.html">Pado 情侣应用全能力盘点：定位、记录、仪式感三件套到底做得怎么样</a></h2>
+  <p class="card-desc">从实时位置到 365 打卡挑战，从安全区域到甜蜜相册，这篇盘点把 Pado 的核心功能域拆开逐一评测，帮你判断它值不值得装。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/tipss.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">短视频剪辑选 TiPss 还是大厂工具？这款小众 app 的三个差异化设计</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/xbotgo.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">XbotGo 避坑指南：我踩过的四个大坑和防坑清单</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

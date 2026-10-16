@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>零门槛上手 OpenUtau｜第一次做歌声合成就选它 · 老杨技术栈</title>
+  
+<meta name="description" content="完全不懂也能看懂的 OpenUtau 入门指南——从下载到跑出第一句歌声，五分钟路径、三个必玩功能、三个高频踩坑点，一步步带你进入歌声合成的世界。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/openutau.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="零门槛上手 OpenUtau｜第一次做歌声合成就选它">
+<meta property="og:description" content="完全不懂也能看懂的 OpenUtau 入门指南——从下载到跑出第一句歌声，五分钟路径、三个必玩功能、三个高频踩坑点，一步步带你进入歌声合成的世界。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/openutau.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/openutau/select-singer.gif">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/openutau/select-singer.gif">
+
+<meta name="twitter:title" content="零门槛上手 OpenUtau｜第一次做歌声合成就选它">
+<meta name="twitter:description" content="完全不懂也能看懂的 OpenUtau 入门指南——从下载到跑出第一句歌声，五分钟路径、三个必玩功能、三个高频踩坑点，一步步带你进入歌声合成的世界。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5b8c\u5168\u4e0d\u61c2\u4e5f\u80fd\u770b\u61c2\u7684 OpenUtau \u5165\u95e8\u6307\u5357\u2014\u2014\u4ece\u4e0b\u8f7d\u5230\u8dd1\u51fa\u7b2c\u4e00\u53e5\u6b4c\u58f0\uff0c\u4e94\u5206\u949f\u8def\u5f84\u3001\u4e09\u4e2a\u5fc5\u73a9\u529f\u80fd\u3001\u4e09\u4e2a\u9ad8\u9891\u8e29\u5751\u70b9\uff0c\u4e00\u6b65\u6b65\u5e26\u4f60\u8fdb\u5165\u6b4c\u58f0\u5408\u6210\u7684\u4e16\u754c\u3002", "headline": "\u96f6\u95e8\u69db\u4e0a\u624b OpenUtau\uff5c\u7b2c\u4e00\u6b21\u505a\u6b4c\u58f0\u5408\u6210\u5c31\u9009\u5b83", "image": ["https://alipymanbu.github.io/images/openutau/select-singer.gif"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/openutau.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/openutau.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "\u96f6\u95e8\u69db\u4e0a\u624b OpenUtau\uff5c\u7b2c\u4e00\u6b21\u505a\u6b4c\u58f0\u5408\u6210\u5c31\u9009\u5b83", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">零门槛上手 OpenUtau｜第一次做歌声合成就选它</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">零门槛上手 OpenUtau｜第一次做歌声合成就选它</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">完全不懂也能看懂的 OpenUtau 入门指南——从下载到跑出第一句歌声，五分钟路径、三个必玩功能、三个高频踩坑点，一步步带你进入歌声合成的世界。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂到把一段旋律变成真正的歌声，不需要任何乐理基础，也不需要听过 UTAU、VOCALOID 这些前辈——你只要会用鼠标拖东西、会打汉字就行。</p>
+<h2>它到底是干嘛的</h2>
+<p>想象一下：你脑子里有一段旋律，想让一个虚拟歌手把它唱出来——不是 AI 生成一段现成的歌，而是<strong>你自己写旋律、自己填歌词、自己选"歌手"</strong>，然后让它按你的要求唱。这就是歌声合成。</p>
+<p>OpenUtau 就是做这件事的工作台，它的<a href="https://openutau.fedq.quest" target="_blank" rel="noopener">官网</a>上资料很全。它是开源免费的，兼容 UTAU 的所有声库（那些社区攒了十年的虚拟歌手声音），还原生支持 VOCALOID 工程文件导入，甚至自带了 DiffSinger 这种用神经网络合成的新引擎——相当于你手里同时有了经典歌手录音棚和 AI 新一代录音棚。</p>
+<h2>五分钟上手：从下载到第一句歌声</h2>
+<h3>第一步：拿安装包</h3>
+<p>去它的<a href="https://openutau.fedq.quest/download.html" target="_blank" rel="noopener">官方下载</a>选对应你系统的版本就行。Windows 用户推荐直接下带 DiffSinger 的打包版，省得后面单独装依赖。</p>
+<h3>第二步：装声库</h3>
+<p>OpenUtau 本身不带声音——"歌手"的声音要你自己装。最简单的方式：从 UTAU 社区或相关论坛下一个声库的 zip 文件，<strong>直接拖 zip 到 OpenUtau 主窗口</strong>，会弹出一个安装对话框，点确定就完了。</p>
+<p>拖 zip 安装声库就是这么简单。</p>
+<p><img src="../images/openutau/select-singer.gif" alt="拖拽安装声库的界面" loading="lazy"></p>
+<p>第一次的话挑个口碑好的免费声库就行，比如重音テト（UTAU 社区的"官方吉祥物"），或者随便找个中文 DiffSinger 声库试试。</p>
+<h3>第三步：写音符</h3>
+<p>打开 OpenUtau，点 File → New Project 新建一个工程，然后双击 Piano Roll（钢琴卷帘）里的空白轨道——Piano Roll 就是你的"谱子编辑器"，横向是时间轴，纵向是音高。</p>
+<p><img src="../images/openutau/start-screen.png" alt="启动界面" loading="lazy"></p>
+<p>用顶部工具栏里的<strong>笔工具</strong>在 Piano Roll 里点几个方块——每个方块就是一个音符，横向拖改变时长，纵向拖改变音高。随便画个两三句旋律就行，不用好听。</p>
+<h3>第四步：填歌词</h3>
+<p>音符画好之后，双击音符，在弹出的输入框里填歌词。中文 DiffSinger 声库可以直接打汉字，也可以打拼音（看声库配置）；日文声库打假名；英文声库打单词或音标。</p>
+<h3>第五步：试听</h3>
+<p>按空格键播放。如果一切顺利，你就能听到你选的那个"歌手"把你写的旋律唱出来了！</p>
+<h2>上手后先玩这三个功能</h2>
+<h3>一、试试 DiffSinger 引擎</h3>
+<p>默认的 Classic 引擎音质一般，但如果你装了 DiffSinger 声库，可以切到 DiffSinger 引擎——音质自然度提升好几个档次，而且还不会像 Classic 那样让你头疼重采样器配置。</p>
+<p>在轨道头最上层的下拉菜单（引擎选择）里选 <strong>DiffSinger</strong>，然后在 Singer 下拉里选你装的 DiffSinger 声库，音素器会自动变成 DIFFS 系列的对应语言。这时候你会发现齿轮图标的重采样器选项消失了——不用管，DiffSinger 走自己的端到端管线，不需要那些配置。想知道 DiffSinger 那十来种曲线参数具体怎么调，<a href="https://openutau.pages.dev/" target="_blank" rel="noopener">openutau文档</a>里有完整的参数说明。</p>
+<h3>二、导入一段 VSQX 体验转换魔法</h3>
+<p>如果你手上有 VOCALOID 做过的工程文件（.vsqx 格式），直接 File → Open 打开它。OpenUtau 会自动把音符、歌词、甚至表情参数（颤音、力度、滑音）全部转换成 OpenUtau 格式——VOCALOID 的工程能在 OpenUtau 里继续编辑，这一点是 UTAU 原版做不到的。</p>
+<p>转换完记得在每条轨道顶部重新选一下声库和音素器——VSQX 里写的是 VOCALOID 虚拟歌手的名字，和你本地装的声库对不上，需要手动匹配。</p>
+<h3>三、在 Piano Roll 里拉滑音</h3>
+<p>Piano Roll 里每个音符底部有个小三角，按住往下拖就是滑音（Pitchbend）。或者打开 Pitchbend 编辑模式，在音符的音高线上画曲线——画个波浪线就能做出自然的颤音效果，比单纯的音符好听多了。</p>
+<p><img src="../images/openutau/edit-pitchbend.gif" alt="滑音编辑" loading="lazy"></p>
+<h2>小白的三个常见疑问</h2>
+<h3>Q1：我装了重采样器，但齿轮图标下拉里找不到？</h3>
+<p>这个问题高频到几乎每个人都会碰到。排查清单：</p>
+<ol><li>重采样器的 .exe 文件是不是真的放在了 Resamplers 文件夹<strong>里面</strong>？外层目录不算。</li><li>是不是下了 Linux 或 macOS 版本的 .exe？Windows 只能用 Windows 版本。</li><li>某些重采样器除了 .exe 还需要配套的 .dll 或配置文件，检查 zip 里所有东西是不是都解压了。</li><li>有没有拖 .exe 到窗口安装？OpenUtau 从 0.1.119 版本起支持直接拖拽安装，比手动放文件夹省事。</li></ol>
+<h3>Q2：DiffSinger 渲染完完全静音？</h3>
+<p>按顺序检查四件事：</p>
+<ol><li>vocoder 装了吗？Tools → Singers 里能看到 vocoder 条目才算装好。Windows diffsingerpack 版通常自带，macOS 和 Linux 需要单独下。</li><li>引擎是不是选了 DiffSinger？别误选 Classic 或 WORLDLINE-R。</li><li>音素器是不是 DIFFS 系列？别选 JA VCV、EN VCCV 这些 Classic 音素器。</li><li>歌词输入格式对不对？中文声库用汉字还是拼音要看声库的 character.yaml 配置。</li></ol>
+<h3>Q3：我以前在 UTAU 下的老声库能用吗？</h3>
+<p>能用，而且 OpenUtau 比 UTAU 原版更宽容。UTAU 原版强制要求所有声库直接放在 Singers 文件夹第一层，不能建子目录分类；OpenUtau 会递归扫描所有子目录，你可以按语言、引擎类型随便分类——只要文件夹里有 character.txt 或 character.yaml 就能识别。唯一要注意的是：如果声库用了非标准的 alias 后缀或非常特殊的音频格式，可能需要手动调整一下 oto.ini。</p>
+<h2>接下来去哪</h2>
+<p>恭喜你已经迈出了歌声合成的第一步。想继续深入的话，去看详细的参数说明和声库推荐——曲线参数怎么画、不同重采样器的音色差异、DiffSinger 模型的训练与导入，这些进阶内容官方文档里都有现成的指南。歌声合成社区有十年积累的 UTAU 老声库和每天都在增长的 AI 声库，OpenUtau 把这两个生态连在一起了，你可以慢慢探索自己喜欢的风格。</p>
+<p>OpenUtau 的整套资料在<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/openutau" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/openutau" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/openutau" target="_blank" rel="noopener">GitCode</a> 三个仓库都能拿到，方便你随时翻看或者二次开发。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/gamma-zh-docs.html">Gamma 到底值不值得掏钱？一份按月度重算的付费决策账本</a></h2>
+  <p class="card-desc">我把 Gamma 的免费版和 Pro 版每个功能的实际使用频率、能省的时间、替代方案成本全部拉出来算一遍，帮你三秒决定要不要开年卡。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/halihali-docs.html">哈哩哈哩藏得真深——10 个冷门技巧让你追番效率翻倍</a></h2>
+  <p class="card-desc">哈哩哈哩大家都用来看番，但你知道搜导演名能批量找作品、追番列表能按更新状态筛选、推送没收到可能是电池优化拦了吗？这 10 个隐藏设置翻出来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/poweramp.html">Poweramp 用了两年，从&#34;音质神器&#34;到我通勤路上的默认播放器</a></h2>
+  <p class="card-desc">装 Poweramp 到现在快两年了。从 v3 初期一路更到现在的 build-909，当初冲着&#34;安卓最强音质&#34;来的，现在却发现真正离不开的不是音质，是那些当初没在意的小功能。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/beautyplus-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">BeautyPlus 用了一年多：从&#34;自拍滤镜&#34;到离不开的 AI 工具箱</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/konabess.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">KonaBess 快问快答：驯龙党人手一份的 GPU 调校神器</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

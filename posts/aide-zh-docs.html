@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>AIDE 深度盘点：手机上写 Android 应用到底能走多远 · 老杨技术栈</title>
+  
+<meta name="description" content="AIDE 把 Android Studio 的核心能力浓缩进了一部手机，从项目创建到 APK 签名交付一条龙。本文系统性盘点它的六大能力域，帮你判断它能覆盖多少开发场景。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/aide-zh-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AIDE 深度盘点：手机上写 Android 应用到底能走多远">
+<meta property="og:description" content="AIDE 把 Android Studio 的核心能力浓缩进了一部手机，从项目创建到 APK 签名交付一条龙。本文系统性盘点它的六大能力域，帮你判断它能覆盖多少开发场景。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/aide-zh-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/aide-zh-docs/project-create-1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/aide-zh-docs/project-create-1.png">
+
+<meta name="twitter:title" content="AIDE 深度盘点：手机上写 Android 应用到底能走多远">
+<meta name="twitter:description" content="AIDE 把 Android Studio 的核心能力浓缩进了一部手机，从项目创建到 APK 签名交付一条龙。本文系统性盘点它的六大能力域，帮你判断它能覆盖多少开发场景。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "AIDE \u628a Android Studio \u7684\u6838\u5fc3\u80fd\u529b\u6d53\u7f29\u8fdb\u4e86\u4e00\u90e8\u624b\u673a\uff0c\u4ece\u9879\u76ee\u521b\u5efa\u5230 APK \u7b7e\u540d\u4ea4\u4ed8\u4e00\u6761\u9f99\u3002\u672c\u6587\u7cfb\u7edf\u6027\u76d8\u70b9\u5b83\u7684\u516d\u5927\u80fd\u529b\u57df\uff0c\u5e2e\u4f60\u5224\u65ad\u5b83\u80fd\u8986\u76d6\u591a\u5c11\u5f00\u53d1\u573a\u666f\u3002", "headline": "AIDE \u6df1\u5ea6\u76d8\u70b9\uff1a\u624b\u673a\u4e0a\u5199 Android \u5e94\u7528\u5230\u5e95\u80fd\u8d70\u591a\u8fdc", "image": ["https://alipymanbu.github.io/images/aide-zh-docs/project-create-1.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/aide-zh-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/aide-zh-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "AIDE \u6df1\u5ea6\u76d8\u70b9\uff1a\u624b\u673a\u4e0a\u5199 Android \u5e94\u7528\u5230\u5e95\u80fd\u8d70\u591a\u8fdc", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">AIDE 深度盘点：手机上写 Android 应用到底能走多远</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">AIDE 深度盘点：手机上写 Android 应用到底能走多远</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 11 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">AIDE 把 Android Studio 的核心能力浓缩进了一部手机，从项目创建到 APK 签名交付一条龙。本文系统性盘点它的六大能力域，帮你判断它能覆盖多少开发场景。</p>
+  </header>
+  <div class="prose">
+<p>想体验这款 IDE，可以先去<a href="https://aide.fewz.tech" target="_blank" rel="noopener">AIDE官网</a>看看。AIDE（Android IDE）是一款在 Android 设备上运行的集成开发环境。它不是玩具——支持 Java/XML 完整工程、Git 版本控制、NDK 原生编译、设计器预览，构建产物可以直接签名分发。对于想在通勤路上写代码、或者给手机写小工具的开发者来说，它提供了桌面级 IDE 才能有的核心体验。但手机 IDE 终究有边界，哪些场景它能独立撑起，哪些地方会让你头疼，需要认真盘点。</p>
+<h2>一、项目创建：两种主流开发路径一键就绪</h2>
+<p>AIDE 首次启动就弹出新建项目对话框，这个入口的设计比桌面 IDE 更轻量。它直接问三个问题：应用名、包名、要不要创建 Git 仓库。填完之后项目结构自动生成——src 目录放 Activity 类，res 下分 layout 和 values，AndroidManifest.xml 和 project.properties 一应俱全。Hello World 模板的 <code>main.xml</code> 和 <code>MainActivity.java</code> 会被自动打开，直接可以点 Run。</p>
+<p><img src="../images/aide-zh-docs/project-create-1.png" alt="新建项目对话框" loading="lazy"></p>
+<p>包名格式要求反向域名，AIDE 不会替你纠错但会在构建时报错。Git 仓库默认勾选，这个细节其实挺重要——即使你暂时不推远程，本地已经有了版本快照，改坏了随时回滚。设置里可以关掉这个行为，但不推荐。</p>
+<p>更值得注意的是 AIDE 不只支持 Java/XML 标准模板，还有一个完整的 NDK 原生开发路径。选择"Android App / C/Java/Xml"模板，它自动生成 JNI 调用示例和 C/C++ 源文件；选"Android App / C/C++ Native Activity"，整个 Activity 用原生代码写。这意味着从 Java 到 C/C++ 的边界，AIDE 都能覆盖。</p>
+<h2>二、代码编辑器：手机上的智能补全和错误检查</h2>
+<p>AIDE 的代码编辑器是整个 IDE 体验的核心。它有语法高亮、行号、代码折叠——这些是基础。真正实用的是智能补全和实时错误检查：</p>
+<ul><li>写 Java 时输入 <code>List</code> 能自动补全 <code>List&lt;</code>，后续会提示常见实现类和方法签名</li><li>XML 布局文件里，敲 <code>android:</code> 会弹出完整属性列表，颜色值可以视觉选择</li><li>保存文件的瞬间，错误标红，悬停提示可以直接跳到定义位置</li></ul>
+<p><img src="../images/aide-zh-docs/java-error-check.png" alt="错误检查与快速修复" loading="lazy"></p>
+<p>如果只是几页代码的小应用，这个编辑器完全够用。但如果文件超过几百行，手机屏幕的物理限制就会显现——需要频繁滚动定位，多行对比 diff 会很痛苦。Premium 版本的快速修复（Quick Fix）功能能自动生成 import 语句、修复类型转换，免费版没有，遇到编译错误要手动排查。</p>
+<h2>三、UI 设计：XML 布局加设计预览</h2>
+<p>AIDE 提供了两种 UI 编辑方式。第一种是直接写 XML——这是效率最高的路径，尤其是你对 Android 布局属性很熟的情况下。第二种是设计器预览，可以在可视化界面拖拽控件、调整属性值。</p>
+<p>设计器支持 LinearLayout、RelativeLayout、ConstraintLayout 三种主流容器，控件基本覆盖日常开发需求：Button、TextView、ImageView、EditText、ListView 都有。属性面板可以直接改文字、颜色、尺寸、边距，实时预览刷新。设计器编辑完之后，底层还是写回 XML 文件，所以两种模式可以随时切换。</p>
+<p>这个设计器的定位很明确：快速搭建原型和调整属性。复杂的自定义 View、动画效果、ConstraintLayout 多约束排列，还是得在 XML 里手写。但对于大多数个人开发者的小型应用，设计器能省不少事。</p>
+<h2>四、构建与运行：从代码到 APK 一键闭环</h2>
+<p>AIDE 的构建流程是它最"IDE"的部分。先去<a href="https://aide.fewz.tech/download.html" target="_blank" rel="noopener">AIDE下载</a>拿安装包装到手机上，然后点 Run 按钮，内部走的流程和 Android Studio 本质一样：Java 源码经 javac 编译成 class 文件，C/C++ 代码用 NDK 编译成 .so 动态库，资源由 aapt 打包，最后 d8 + apksigner 生成签名的 APK。整个流程自动完成，构建进度在状态栏显示。</p>
+<p>APK 默认输出到项目根目录的 <code>bin/</code> 文件夹，文件名格式是 <code>&lt;项目名&gt;-debug.apk</code>。这里有个关键的区分：</p>
+<table><thead><tr><th>签名类型</th><th>用途</th><th>是否可上架</th></tr></thead><tbody><tr><td>调试签名</td><td>开发测试</td><td>❌ 不行</td></tr><tr><td>正式签名</td><td>分发上架</td><td>✅ 可以</td></tr></tbody></table>
+<p>调试签名用的是 AIDE 内置的 debug.keystore——所有 AIDE 用户共用同一个密钥。应用商店要求每个应用有唯一的正式签名证书，所以调试签名不能发布。正式签名（Premium 功能）需要你提供自己的 keystore 文件，AIDE 会输出正式签名的 APK，同一个签名的应用可以正常覆盖升级。</p>
+<p><img src="../images/aide-zh-docs/build-progress.png" alt="构建进度" loading="lazy"></p>
+<h2>五、Git 版本控制：commit、diff 和远程同步</h2>
+<p>AIDE 内置 Git 客户端，这是它和其他手机代码编辑器最大的区别之一。文件浏览器里右键（长按）就能看到完整的 Git 操作菜单：init、status、add、commit、branch、checkout、pull、push 都有。</p>
+<p>Commit 对话框会列出所有已修改文件，你可以勾选要包含的文件、查看 diff（绿色新增、红色删除），然后写提交信息。好的提交信息格式是"做了什么 + 为什么做"——比如"调整按钮间距为 8dp，解决紧凑模式下文字被截断的问题"，而不是"update"或"fix bug"。Diff 预览在提交前很有用，能确认有没有意外修改不该动的文件。</p>
+<p>免费版有一个关键限制：commit 功能被锁定——更多功能差异在<a href="https://aide-zh-docs.pages.dev/" target="_blank" rel="noopener">AIDE文档</a>里列得很清楚。你可以看状态、看 diff、创建本地仓库，但不能提交。这意味着版本历史是断的——改坏了回不去。对于做正经项目的开发者来说，Premium 几乎是必须的。Discard 按钮可以放弃选中文件的修改，恢复到上一次 commit 的状态，操作前一定要确认。</p>
+<h2>六、NDK 原生开发：C/C++ 在手机上的编译链路</h2>
+<p>对于需要高性能计算的场景——游戏引擎、图像压缩、加密算法——Java 的性能可能不够，或者你手里已经有一套 C/C++ 库要移植到 Android。AIDE 的 NDK 支持覆盖了这种需求。</p>
+<p>首次创建 NDK 项目时 AIDE 会提示下载移动端版本的 NDK，体积较大，建议 Wi-Fi 环境。有两种开发模式：Java + C/C++ JNI 混合（主体用 Java，通过 JNI 调用原生方法），以及纯 C/C++ Native Activity（整个 Activity 用原生代码写）。</p>
+<p>构建流程和普通项目一样——Run 按钮一键搞定，APK 里同时包含 Java 字节码和 .so 动态库。但 NDK 项目有一个硬性限制：只能在 ARM 架构设备上运行。x86/x86_64 模拟器可以编译 Java 部分，但 C/C++ 编译会直接报错。真实 ARM 手机或平板是开发 NDK 项目的必备条件。</p>
+<h2>短板也要说</h2>
+<p>盘点完能力面，得说说 AIDE 不擅长什么。</p>
+<p><strong>免费版功能阉割较多</strong>：commit、快速修复、正式签名 APK、Dropbox 同步——这些都是 Premium 的核心卖点。免费版能用但限制明显，如果你真要做项目，Premium 几乎不可避免。</p>
+<p><strong>大型项目性能存疑</strong>：代码量超过几千行的项目，编辑器的响应速度、设计器的预览刷新、Git 操作的耗时都会明显变慢。手机的 CPU 和内存和桌面级还是有差距，AIDE 再优化也绕不开硬件限制。</p>
+<p><strong>NDK 项目架构限制</strong>：只能 ARM，x86 模拟器直接报错。如果你主要在模拟器上调试（很多开发者的日常），NDK 开发在 AIDE 上基本废了。</p>
+<p><strong>无 Kotlin 支持</strong>：AIDE 目前只支持 Java。Android 官方已经把 Kotlin 设为首选语言，大量新项目用 Kotlin 编写，AIDE 完全不支持意味着你没法在手机上写现代 Android 代码。</p>
+<h2>什么样的人该用它</h2>
+<p>综合盘点下来，AIDE 的用户画像其实挺清晰：</p>
+<p><strong>想在碎片时间写小工具的业余开发者</strong>。通勤路上、午休间隙，掏手机写个记账 App、待办清单、小工具，AIDE 的轻量启动和完整构建链路能让你在几十分钟内完成一个可运行的原型。Hello World 起步到 APK 生成一条龙，不需要电脑。</p>
+<p><strong>学习 Android 开发的入门者</strong>。AIDE 的项目模板、自动生成的文件结构、中文文档的解释，比 Android Studio 更友好。免费版的功能足够覆盖基础知识——Activity 生命周期、XML 布局、简单的 UI 交互。等你需要 Kotlin 或大型项目，再切到桌面 IDE 也不迟。</p>
+<p><strong>已有 C/C++ 库需要快速移植的开发者</strong>。如果你手里有跨平台的原生代码，只是想在 Android 上验证一下能不能跑起来，AIDE 的 NDK 支持比 Android Studio 更快上手——不需要配置复杂的 SDK/NDK 路径，手机上直接编译运行。</p>
+<p>但如果你是全职 Android 开发者、团队协作需要严格的版本管理和代码审查、项目已经超过几千行、或者用 Kotlin 作为主力语言——AIDE 不适合作为主力 IDE，它更像一个补充工具，在你离开电脑的时候还能继续推进一点进度。</p>
+<p>AIDE 的定位一直很清晰：不是要取代 Android Studio，而是在手机上提供一个真正能用的开发环境。它把 IDE 的核心能力浓缩到了一部手机里——项目创建、代码编辑、UI 设计、构建签名、版本控制，这几个核心环节一个不缺。能不能覆盖你的场景，取决于你的代码量、你的主力语言、你的项目规模，以及你对免费版功能阉割的接受程度。</p>
+<p>关于这套资料的归档备份，我同步维护在<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/AIDE" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/AIDE" target="_blank" rel="noopener">Gitee</a>和<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/AIDE" target="_blank" rel="noopener">GitCode</a>，方便国内不同网络环境下的开发者按需取用。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/ikfapp.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">iKF App 深度盘点：一款耳机管理应用能把事情做细到什么程度</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/piascore.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Piascore 用了三年才总结出来的六个坑</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

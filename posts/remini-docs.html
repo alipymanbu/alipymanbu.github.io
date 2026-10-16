@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Remini 网页版翻了个底朝天，发现 5 个藏得真深的冷门技巧 · 老杨技术栈</title>
+  
+<meta name="description" content="大家都知道 Remini 能一键把模糊照片变清晰，但网页版里藏着一堆官方不宣传的偏门入口——多人合影逐张验收、组合工具串联跑、单张反复增强的止损点……这些技巧翻遍设置才挖出来。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/remini-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Remini 网页版翻了个底朝天，发现 5 个藏得真深的冷门技巧">
+<meta property="og:description" content="大家都知道 Remini 能一键把模糊照片变清晰，但网页版里藏着一堆官方不宣传的偏门入口——多人合影逐张验收、组合工具串联跑、单张反复增强的止损点……这些技巧翻遍设置才挖出来。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/remini-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/remini-docs/face-enhancer-after.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/remini-docs/face-enhancer-after.webp">
+
+<meta name="twitter:title" content="Remini 网页版翻了个底朝天，发现 5 个藏得真深的冷门技巧">
+<meta name="twitter:description" content="大家都知道 Remini 能一键把模糊照片变清晰，但网页版里藏着一堆官方不宣传的偏门入口——多人合影逐张验收、组合工具串联跑、单张反复增强的止损点……这些技巧翻遍设置才挖出来。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u5927\u5bb6\u90fd\u77e5\u9053 Remini \u80fd\u4e00\u952e\u628a\u6a21\u7cca\u7167\u7247\u53d8\u6e05\u6670\uff0c\u4f46\u7f51\u9875\u7248\u91cc\u85cf\u7740\u4e00\u5806\u5b98\u65b9\u4e0d\u5ba3\u4f20\u7684\u504f\u95e8\u5165\u53e3\u2014\u2014\u591a\u4eba\u5408\u5f71\u9010\u5f20\u9a8c\u6536\u3001\u7ec4\u5408\u5de5\u5177\u4e32\u8054\u8dd1\u3001\u5355\u5f20\u53cd\u590d\u589e\u5f3a\u7684\u6b62\u635f\u70b9\u2026\u2026\u8fd9\u4e9b\u6280\u5de7\u7ffb\u904d\u8bbe\u7f6e\u624d\u6316\u51fa\u6765\u3002", "headline": "Remini \u7f51\u9875\u7248\u7ffb\u4e86\u4e2a\u5e95\u671d\u5929\uff0c\u53d1\u73b0 5 \u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u51b7\u95e8\u6280\u5de7", "image": ["https://alipymanbu.github.io/images/remini-docs/face-enhancer-after.webp"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/remini-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/remini-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/web/", "name": "\u7f51\u9875\u7248", "position": 2}, {"@type": "ListItem", "name": "Remini \u7f51\u9875\u7248\u7ffb\u4e86\u4e2a\u5e95\u671d\u5929\uff0c\u53d1\u73b0 5 \u4e2a\u85cf\u5f97\u771f\u6df1\u7684\u51b7\u95e8\u6280\u5de7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/web/index.html">网页版</a><span>/</span>
+    <span class="crumb-cur">Remini 网页版翻了个底朝天，发现 5 个藏得真深的冷门技巧</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Remini 网页版翻了个底朝天，发现 5 个藏得真深的冷门技巧</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">大家都知道 Remini 能一键把模糊照片变清晰，但网页版里藏着一堆官方不宣传的偏门入口——多人合影逐张验收、组合工具串联跑、单张反复增强的止损点……这些技巧翻遍设置才挖出来。</p>
+  </header>
+  <div class="prose">
+<p>你以为<a href="https://remini.qjxz.skin" target="_blank" rel="noopener">Remini官网</a>的网页版就是"上传 → 点一下增强 → 保存"这条流水线？其实它藏着一堆大多数人摸不到的冷门入口和偏门用法。我把设置翻了个遍，又把样本案例逐页对照，挖出了 5 个官方不宣传但真能用的隐藏功能。</p>
+<h2>合影里只糊了一个人？试试人脸增强的"选择性重手"</h2>
+<p>大家处理合影时第一反应是跑一键增强，但整图均匀增强的算力会被背景稀释，人脸往往修不到位。藏得最深的一点是：<strong>人脸增强工具会自动判断"哪张脸最糊"，只对糊的区域下重手</strong>。</p>
+<p>操作路径很简单——在网页端加号选图后，不要点一键增强，往下拉找到"人脸增强"模式（魔棒图标旁边那个带着脸的图标）。选完合影直接触发处理，不用再做任何框选或手动标记，AI 会逐张检测每张脸的清晰度，糊得厉害的那张给足算力，本来清楚的脸只做轻度处理。</p>
+<p><img src="../images/remini-docs/face-enhancer-after.webp" alt="合影中人脸被AI逐张检测并重点重建" loading="lazy"></p>
+<p>什么人用得上：家里有老合影要翻新、或者婚礼聚餐照里后排有人脸糊了的场景。什么人可以无视：单人自拍或者整张图都糊得差不多的情况——这时候跑一键增强就行，单独人脸增强反而多此一举。</p>
+<p>提醒一个坑：AI 有时候会把人脸往"平均脸"方向修，处理完必须把图放大挨个看每张脸的眼型和脸型。发现某张脸不像本人了，换一键增强轻度处理，宁要真实的略糊，不要精致的不像。这个判断标准很重要，官方文档里提过但语气很轻，我把它单独拎出来。</p>
+<h2>手抖跑焦拖影？别用一键增强，直奔去模糊锐化</h2>
+<p>一键增强解决的是整体软、低清晰度，但手抖拖影是运动模糊——这两种模糊的底层模式完全不同。藏得真深的一点是：<strong>一键增强里的生成式重建对运动模糊的效果并不稳定</strong>，有时候会把拖影方向的纹理也重建出来，结果反而更假。</p>
+<p>偏门入口在哪：网页端加号选图后，选"去模糊锐化"模式（图标是一个带箭头的锐化线）。这个工具不走生成式重建管线，而是专门针对运动模糊的方向和强度做反向补偿。官方文档里把它归类为"更优解"，但在网页端主界面里它被折叠在"更多工具"里，不是显眼位置。</p>
+<p>判断标准：你能看到明显的拖影条纹（比如车灯拉成了一条线、人的头发拖出了残影），这时候直接上它；如果只是整体发虚看不清，还是一键增强先上。</p>
+<h2>组合工具串联：先降噪再人脸增强，或者先放大再修脸</h2>
+<p>这是我挖了好久才发现的隐藏玩法——Remini 网页版<strong>没有显式的"批量队列"按钮，但你可以按顺序对同一张图连续跑不同工具</strong>，后一次处理会基于前一次的结果继续。</p>
+<p>典型的几个串联组合：</p>
+<table><thead><tr><th>遇到的问题</th><th>推荐的串联顺序</th></tr></thead><tbody><tr><td>老照片又糊又有噪点</td><td>先降噪 → 再人脸增强</td></tr><tr><td>合影糊 + 整体偏色</td><td>先人脸增强 → 再色彩修复</td></tr><tr><td>像素太少又要修人脸</td><td>先放大 → 再人脸增强</td></tr></tbody></table>
+<p>从<a href="https://remini.qjxz.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿到的网页端操作：第一张图跑完后不要关页面，直接点"继续"选下一个工具模式，同一张图会带着刚才的结果跑下一遍。去<a href="https://remini-docs.pages.dev/" target="_blank" rel="noopener">Remini文档</a>翻"合影修复的三个要点"能看到这个思路，但没说网页端能不能这么干——实测完全可以，而且两次处理之间不会覆盖原始图，每次结果都能单独下载对比。</p>
+<p><img src="../images/remini-docs/restorer-after.webp" alt="老照片修复：组合工具串联后的效果" loading="lazy"></p>
+<h2>单张反复增强的止损点：两次之内，别贪</h2>
+<p>很多人会一张图连点三四次增强按钮，觉得"再增强一次应该更清楚"。我翻遍设置才找到官方的隐含规则：<strong>对同一张图，生成式重建的收益在两次之后就开始递减，第三次出来的细节基本是 AI 补全的猜测，不是原始照片的真实内容</strong>。</p>
+<p>怎么判断什么时候该停：跑第二次增强后对比结果——如果人脸五官的轮廓变化已经很小，说明该重建的都重建完了；如果发现皮肤出现塑料感、纹理被抹平，那就是处理过度的信号，应该回退到上一次的结果。</p>
+<p>这不是官方写在页面上的规则，但在增强原理的技术说明里藏着一句"边界是推测"——AI 重建的细节是"最可能的样子"，不是原始场景逐像素还原，所以两次之后再增强，重建出来的东西就离真实越来越远了。</p>
+<h2>视频增强的冷知识：按帧处理，必须等它跑完</h2>
+<p>大家对 Remini 网页版的印象多半停留在照片，但视频增强其实也在网页端藏着（上传时选视频就自动切到视频管线）。隐藏点在于：<strong>视频增强是逐帧跑生成式重建，不支持中途取消，高峰期排队时间可能比照片长十倍以上</strong>。</p>
+<p>实测一段 10 秒的模糊视频，在非高峰期跑了大约 40 秒；高峰期提交后直接进入队列，等了快 3 分钟才开始处理。网页端没有进度条的百分比显示，只有一个转圈的加载图标——这是很多人不知道的体验细节，以为卡住了就刷新页面，结果又要重新排队。</p>
+<p>什么人用得上：家里的老视频备份、手机拍的演唱会/毕业典礼现场。什么人可以无视：视频本身就很清楚、或者只想快速处理一张图的场景。</p>
+<h2>收尾</h2>
+<p>这五个技巧里，合影的人脸选择性重手、去模糊锐化的偏门入口、组合工具串联，这三个是我觉得最实用的——官方文档提了但没把操作路径说透，网页端界面又藏得深。把它用透的意思不是把所有设置都翻一遍，而是遇到具体问题时，脑子里多几个"还有别的工具能处理"的选项。</p>
+<p>Remini 这套 AI 照片视频增强器的资料我同步在三个仓库——<a href="https://github.com/alipymanbu/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Remini" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Remini" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E7%BD%91%E9%A1%B5%E7%89%88/Remini" target="_blank" rel="noopener">GitCode</a>，国内访问卡的时候切 Gitee 镜像就行，分类、功能清单、操作路径全都齐。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 11 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/talkmaker-docs.html">TalkMaker 小白上手指南：从下载到聊上，五分钟走完</a></h2>
+  <p class="card-desc">第一次接触 TalkMaker？不用任何基础，这篇带你从零开始：下载安装、建第一个角色、逛角色广场、调语言风格，新手最关心的疑问一次讲清。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/magic-eraser-docs.html">对比评测：AI 消除工具里，Magic Eraser 凭什么让我从同类里留它到最后？</a></h2>
+  <p class="card-desc">用过至少五款同类擦除工具后，Magic Eraser 是少数能让我反复回去用的——简单到五分钟上手，但在阴影倒影、低对比边缘这些难啃的场景上，它的表现比大厂方案稳得多。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/web/index.html">网页版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pojavlauncher-docs.html">宿舍午休惊现 Minecraft Java 版——我在手机上跑了一整个下午的模组</a></h2>
+  <p class="card-desc">午休想玩 Minecraft 却摸不到电脑？手机上的基岩版又没有 Fabric 模组生态。直到我发现 PojavLauncher，它让 Android 真正跑起了 Java 版 Minecraft，从 RAM 分配到 Zink 渲染器，每一步都是折腾党才懂的快乐。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/liberliveapp.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">智能弹唱 App 横评：LiberLive 靠什么让零基础当天能弹歌</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/stayfree-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">五分钟开始用 StayFree：把刷手机的时间抢回来</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

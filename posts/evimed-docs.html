@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>循证医学 AI 工具为什么非得做&#34;带引用标注的回答&#34; · 老杨技术栈</title>
+  
+<meta name="description" content="EviMed 这类 AI 循证搜索背后的设计取舍：为什么回答每条都挂文献引用、输入偏结构化、免费额度却不做广告。从架构原理推导出它能做什么、不能做什么。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/evimed-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="循证医学 AI 工具为什么非得做&#34;带引用标注的回答&#34;">
+<meta property="og:description" content="EviMed 这类 AI 循证搜索背后的设计取舍：为什么回答每条都挂文献引用、输入偏结构化、免费额度却不做广告。从架构原理推导出它能做什么、不能做什么。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/evimed-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/evimed-docs/app-home.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/evimed-docs/app-home.jpg">
+
+<meta name="twitter:title" content="循证医学 AI 工具为什么非得做&#34;带引用标注的回答&#34;">
+<meta name="twitter:description" content="EviMed 这类 AI 循证搜索背后的设计取舍：为什么回答每条都挂文献引用、输入偏结构化、免费额度却不做广告。从架构原理推导出它能做什么、不能做什么。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "EviMed \u8fd9\u7c7b AI \u5faa\u8bc1\u641c\u7d22\u80cc\u540e\u7684\u8bbe\u8ba1\u53d6\u820d\uff1a\u4e3a\u4ec0\u4e48\u56de\u7b54\u6bcf\u6761\u90fd\u6302\u6587\u732e\u5f15\u7528\u3001\u8f93\u5165\u504f\u7ed3\u6784\u5316\u3001\u514d\u8d39\u989d\u5ea6\u5374\u4e0d\u505a\u5e7f\u544a\u3002\u4ece\u67b6\u6784\u539f\u7406\u63a8\u5bfc\u51fa\u5b83\u80fd\u505a\u4ec0\u4e48\u3001\u4e0d\u80fd\u505a\u4ec0\u4e48\u3002", "headline": "\u5faa\u8bc1\u533b\u5b66 AI \u5de5\u5177\u4e3a\u4ec0\u4e48\u975e\u5f97\u505a\"\u5e26\u5f15\u7528\u6807\u6ce8\u7684\u56de\u7b54\"", "image": ["https://alipymanbu.github.io/images/evimed-docs/app-home.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/evimed-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/evimed-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "\u5faa\u8bc1\u533b\u5b66 AI \u5de5\u5177\u4e3a\u4ec0\u4e48\u975e\u5f97\u505a\"\u5e26\u5f15\u7528\u6807\u6ce8\u7684\u56de\u7b54\"", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">循证医学 AI 工具为什么非得做&#34;带引用标注的回答&#34;</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">循证医学 AI 工具为什么非得做&#34;带引用标注的回答&#34;</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 8 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">EviMed 这类 AI 循证搜索背后的设计取舍：为什么回答每条都挂文献引用、输入偏结构化、免费额度却不做广告。从架构原理推导出它能做什么、不能做什么。</p>
+  </header>
+  <div class="prose">
+<p>一个临床医生或药师在日常工作中最常见的场景是什么？不是写系统综述——那是科研阶段的事——而是一个具体到令人头疼的小问题：这个新诊断的糖尿病患者，糖化血红蛋白 7.2% 要不要起始胰岛素？这个抗生素用了三天患者没好转，要不要覆盖 MRSA？这类问题每天都会冒出来，传统做法是翻指南、查 PubMed、逐篇读摘要再自己拼出结论。有没有办法让 AI 直接给出能追溯的答案？</p>
+<p>可以直接去 <a href="https://evimed.qhah.skin" target="_blank" rel="noopener">evimed官网</a> 上看看它的产品定位——它就是沿着这个方向做的。但如果你用过通用大模型的聊天机器人查医学问题就知道，它们的回答偶尔会编、不给出处、同一句话换个问法就变味。EviMed 解决这个问题的思路不是"让模型更聪明"，而是在模型外面套了一整套<strong>循证医学专属的检索与合成管道</strong>——这才是它区别于普通医学 AI 聊天机器人的核心原理。</p>
+<h2>输入不是一句话，是一个"结构化问题"</h2>
+<p>通用 AI 聊天机器人的输入是纯自然语言，它的处理过程可以粗略理解为：把你的问题塞进 Transformer 序列，预测下一个 token，一路生成。这个过程不关心"你问的是干预措施还是诊断方法"、"研究对象是儿童还是成人"——它只关心语义相似度。</p>
+<p>EviMed 的入口设计反其道而行之。首页正中央是一个大搜索框，下面直接列出了 PICOS、PICO、PICO-SD、SPIDER、JBI 循证等多种结构化模板入口——具体每个框架怎么用可以去<a href="https://evimed-docs.pages.dev/" target="_blank" rel="noopener">evimed文档</a>翻一下，都有详细示例。PICOS 是循证医学里标准的问题解构框架：<strong>P</strong>atient（研究对象）、<strong>I</strong>ntervention（干预）、<strong>C</strong>omparison（对照）、<strong>O</strong>utcome（结局）、<strong>S</strong>etting（场景）。当你用 PICOS 框架输入"70 岁以上 2 型糖尿病患者（P）使用 GLP-1 受体激动剂（I）对比二甲双胍（C）的心血管结局（O）"时，EviMed 拿到的不是一段模糊的话，而是五个有明确语义边界的槽位。</p>
+<p>这个槽位化输入的意义在于——后端的检索引擎可以<strong>按槽位精准触发不同的知识源</strong>。研究对象槽位触发流行病学与指南中的人群分层，干预槽位触发药品说明书与 RCT 数据库，结局槽位触发不良事件登记与 meta 分析结果。它不是一个统一的"查一下"，而是"根据问题的每个维度，分别去最合适的数据源取证据"。</p>
+<h2>回答不是一段文字，是"结论 + 分类证据列表 + 引用标注"</h2>
+<p>通用 AI 的输出形态是一段流畅的文字，读完了你也不知道这句话是从哪篇文献来的、有没有证据等级的差异。EviMed 的输出是结构化的：开头先给一个循证结论摘要，下面按证据类别分组展示，每条证据后面直接挂<strong>引用标注</strong>——点击标注能跳到原始文献的题录页面。</p>
+<p>这个设计背后是对医学证据等级体系的硬编码。循证医学里证据等级从高到低大致是：系统综述/Meta 分析 &gt; 随机对照试验（RCT）&gt; 队列研究 &gt; 病例对照 &gt; 病例报告 &gt; 专家意见。EviMed 的证据合成层在调用模型之前，会先把检索到的文献按证据等级排序、过滤掉低于阈值的条目，再把经过筛选的证据喂给模型做"总结与归纳"。模型在这里的角色不是"自由发挥写答案"，而是"对已经结构化好的证据做语言组织"。</p>
+<p>换句话说，EviMed 里 AI 的权限被严格限制了——它不能凭空造数据，不能给没有文献支持的结论定量化表述，每个输出片段都必须能回溯到输入的证据池。模型是管道里的一环，而不是整条管道。</p>
+<h2>免费额度为什么不做广告？因为它的营收天花板不在流量而在"重度功能"</h2>
+<p>EviMed 免费使用，安装包从<a href="https://evimed.qhah.skin/download.html" target="_blank" rel="noopener">官方下载</a>拿就行。搜文献和 AI 基础查证都有免费额度，但它没有像普通工具 App 那样在首页插广告、在搜索结果之间塞推广位。反过来，它的付费体系是「灵豆 + 三档超级会员」的重度功能路线——最低档超级会员月费 299 元，旗舰档月费已经到 2999 元，还有科研联合会员专门瞄准论文季需求。</p>
+<p>这个定价逻辑值得想一下：循证医学工具的核心用户画像不是 C 端流量，而是<strong>有科研任务的临床医生、药师、医学研究员</strong>——他们的使用场景不是每天刷，而是"某个阶段集中高强度使用"：准备开题报告、做系统综述、赶论文 deadline。EviMed 的付费体系里，灵豆（按量消耗的点数）适合"偶尔出一份报告"的零散需求，科研联合会员覆盖学生和青年医生的月度高强度需求，三档超级会员瞄准机构级采购或个人重度科研。免费额度是<strong>质量门槛</strong>——让用户先用基础搜索建立信任，真正付费的是深度报告生成、科研雷达这类重计算、重人工维护的功能。</p>
+<p>不做广告不是"良心发现"，而是商业模型决定的：一旦用户发现搜索结果里混了广告，这个"循证查证"的信任感就没了，也就没人愿意为后面的重度功能付费了。</p>
+<h2>这套管道的代价：什么场景它其实做不好</h2>
+<p>说了这么多原理，自然要问这套设计有什么局限。我在实际使用中注意到三个明显的边界。</p>
+<p>第一，<strong>不能替代系统检索</strong>。EviMed 适合"我想知道这个问题大概的循证结论是什么"，但不适合"我要对某一领域做穷尽式检索"。传统文献数据库（PubMed、Embase）的布尔逻辑检索、MeSH 词表组配，是做系统评价时不可省略的步骤——AI 循证搜索是"快速查证"的补充，不是"完整检索"的替代品。</p>
+<p>第二，<strong>数据源覆盖的盲区</strong>。它对英文文献的召回率和中文摘要质量尚可，但对于一些小众语种的临床研究、尚未被数据库索引的最新 preprint、以及药企未公开的真实世界数据，EviMed 同样查不到。</p>
+<p>第三，<strong>结构化输入的学习成本</strong>。PICOS 框架本身是循证医学训练的一部分，有基础的医生上手快，但如果是刚接触的学生，可能反而觉得"还不如直接用自然语言问通用 AI 省事"。这时候 EviMed 的优势——精准性——在用户侧就变成了额外的门槛。</p>
+<h2>我的判断：谁该用、谁可以先用免费版</h2>
+<p>如果你的日常工作里有这类问题——"某个药品对某类患者人群的循证证据是什么"、"某两种干预措施在特定场景下的对比结论"、"指南最近更新了哪些与你相关的推荐"——EviMed 的 AI 循证搜索 + 引用标注的输出形态，比逐篇翻摘要高效得多。但如果你在做系统综述、写 Cochrane 风格的系统评价，还是得老老实实走文献库的全流程检索。</p>
+<p>对于偶尔用一次的人，免费额度够你把"这个东西能不能帮我省时间"想清楚再决定要不要付费。对于论文季的医生或药学生，科研联合会员的月费比起在数据库里花的时间和精力，性价比很高——尤其是当你发现一个"我之前花了三个晚上翻出来的循证结论"，用结构化输入三分钟就拿到了带引用标注的答案时。</p>
+<p>循证医学 AI 工具的设计原理，其实就是对"AI 能不能做医学"这个老问题的回答——不是让 AI 当医生，而是让 AI 当一个<strong>会按循证方法检索证据、能给你展示证据来源、不会随便编答案的高效助手</strong>。至于那个"为什么非得带引用标注"的问题，答案也很简单：在医学这个领域，<strong>能追溯比聪明更重要</strong>。顺便说一句，这套应用的整理资料我同步放在了<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/evimed" target="_blank" rel="noopener">GitHub</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/evimed" target="_blank" rel="noopener">Gitee</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/evimed" target="_blank" rel="noopener">GitCode</a> 三个仓库，国内网络访问 Gitee 或 GitCode 会更顺畅。</p>
+<p><img src="../images/evimed-docs/app-home.jpg" alt="EviMed 首页搜索框为绝对主角，下方宫格列出 AI 循证搜索入口" loading="lazy"></p>
+<p><img src="../images/evimed-docs/ai-search-answer.jpg" alt="AI 循证回答界面：结论摘要下方按证据类型分组，每条证据附引用标注" loading="lazy"></p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/lumeow.html">Lumeow 深度盘点：一款 AI 角色扮演应用的能力面完整铺开</a></h2>
+  <p class="card-desc">从多人剧情共创到隐私保护三件套，从对话历史管理到云端同步——Lumeow 到底能做什么？本文按能力域系统性梳理这款 AI 角色扮演应用的亮点、适用场景和局限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/appenjoy.html">APPenjoy 翻了个底朝天才敢说——这五个隐藏功能你肯定漏了仨</a></h2>
+  <p class="card-desc">以为 APPenjoy 就是个找应用下 APK 的工具？三重安全审核、隐藏影视入口、社区积分体系……我把它翻了一周，挖出五个官方没写在明面上的冷门玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pado-docs.html">Pado 情侣应用全能力盘点：定位、记录、仪式感三件套到底做得怎么样</a></h2>
+  <p class="card-desc">从实时位置到 365 打卡挑战，从安全区域到甜蜜相册，这篇盘点把 Pado 的核心功能域拆开逐一评测，帮你判断它值不值得装。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/nico-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">nico 是什么？快问快答带你五分钟搞懂这款人格匹配社交应用</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/netshort-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">NetShort 的付费墙为什么是双轨制——拆解短剧 App 的商业底层逻辑</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

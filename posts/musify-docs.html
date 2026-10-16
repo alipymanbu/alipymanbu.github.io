@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Musify 从零上手：安卓无广告开源音乐播放器完整指南 · 老杨技术栈</title>
+  
+<meta name="description" content="第一次装 Musify，这篇教程带你一步步走完安装、建歌单、离线下载和数据备份，让你摆脱会员广告的困扰，打造属于自己的离线曲库。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/musify-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Musify 从零上手：安卓无广告开源音乐播放器完整指南">
+<meta property="og:description" content="第一次装 Musify，这篇教程带你一步步走完安装、建歌单、离线下载和数据备份，让你摆脱会员广告的困扰，打造属于自己的离线曲库。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/musify-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/musify-docs/01-home.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/musify-docs/01-home.png">
+
+<meta name="twitter:title" content="Musify 从零上手：安卓无广告开源音乐播放器完整指南">
+<meta name="twitter:description" content="第一次装 Musify，这篇教程带你一步步走完安装、建歌单、离线下载和数据备份，让你摆脱会员广告的困扰，打造属于自己的离线曲库。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7b2c\u4e00\u6b21\u88c5 Musify\uff0c\u8fd9\u7bc7\u6559\u7a0b\u5e26\u4f60\u4e00\u6b65\u6b65\u8d70\u5b8c\u5b89\u88c5\u3001\u5efa\u6b4c\u5355\u3001\u79bb\u7ebf\u4e0b\u8f7d\u548c\u6570\u636e\u5907\u4efd\uff0c\u8ba9\u4f60\u6446\u8131\u4f1a\u5458\u5e7f\u544a\u7684\u56f0\u6270\uff0c\u6253\u9020\u5c5e\u4e8e\u81ea\u5df1\u7684\u79bb\u7ebf\u66f2\u5e93\u3002", "headline": "Musify \u4ece\u96f6\u4e0a\u624b\uff1a\u5b89\u5353\u65e0\u5e7f\u544a\u5f00\u6e90\u97f3\u4e50\u64ad\u653e\u5668\u5b8c\u6574\u6307\u5357", "image": ["https://alipymanbu.github.io/images/musify-docs/01-home.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/musify-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/musify-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-version/", "name": "\u5b98\u65b9\u7248", "position": 2}, {"@type": "ListItem", "name": "Musify \u4ece\u96f6\u4e0a\u624b\uff1a\u5b89\u5353\u65e0\u5e7f\u544a\u5f00\u6e90\u97f3\u4e50\u64ad\u653e\u5668\u5b8c\u6574\u6307\u5357", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-version/index.html">官方版</a><span>/</span>
+    <span class="crumb-cur">Musify 从零上手：安卓无广告开源音乐播放器完整指南</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Musify 从零上手：安卓无广告开源音乐播放器完整指南</h1>
+    <div class="post-meta">
+      <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">第一次装 Musify，这篇教程带你一步步走完安装、建歌单、离线下载和数据备份，让你摆脱会员广告的困扰，打造属于自己的离线曲库。</p>
+  </header>
+  <div class="prose">
+<p>如果你厌倦了每天被弹窗打断、或者会员账单越积越多，是时候试试 Musify 了——<a href="https://musify.uerg.quest" target="_blank" rel="noopener">它的官网</a>上有完整的特性说明，核心卖点是完全开源、无账号体系、内置 SponsorBlock 的安卓音乐播放器。这篇教程结束时，你会装好应用、建好第一张歌单、下载一批离线歌曲、并且把数据安全备份一份。</p>
+<h2>准备工作</h2>
+<p>先确认两件事：<strong>安卓 8.0 及以上</strong>的手机就能跑，安装包从<a href="https://musify.uerg.quest/download.html" target="_blank" rel="noopener">musify下载</a>拿最新版就行。首次打开会看到一个干净的四栏布局——首页推荐、搜索、音乐库、设置。整个界面 Material You 设计，安卓 12+ 开了动态取色之后配色会跟你桌面壁纸同步。</p>
+<p><img src="../images/musify-docs/01-home.png" alt="Musify 主界面" loading="lazy"></p>
+<p>别急着马上搜歌，先把几个基础设置调对，省得后面踩坑。</p>
+<h2>第一步：基础设置一分钟搞定</h2>
+<p>打开设置面板，从上往下过一遍：</p>
+<ol><li><strong>主题选档</strong>：找到"外观"分组，推荐选"跟随系统"，晚上自动切深色省 OLED 屏的电。有动态取色开关的话也打开，换壁纸界面颜色就跟着变。</li><li><strong>音频质量</strong>：默认是自动，不想流量烧太快的话手动拉到"平衡"档；WiFi 环境下直接选"最高"。</li><li><strong>下载路径</strong>：这个一定要改默认位置——别选应用私有目录，卸载会清空！选一个你自己能找到的文件夹，比如 <code>Downloads/Musify/</code> 或者 SD 卡里的位置。</li><li><strong>SponsorBlock</strong>：默认已开启，它会自动跳过音频里的赞助插播、自报家门、末尾提醒这些非音乐内容。有强迫症的可以去高级设置里逐项关掉。</li></ol>
+<h2>第二步：搜索、收藏、建歌单</h2>
+<p>Musify 没有账号，收藏和歌单全存在本机——这是好事，不跟踪、不上传，但也意味着你得自己备份，后面会讲。</p>
+<p>搜歌很直观：点底部第二个 tab，输入歌手或歌名，结果里分"单曲""专辑""艺术家"三个标签。搜到喜欢的单曲，长按会弹出菜单，里面有几个常用操作：</p>
+<ul><li><strong>加到喜欢</strong>：心形图标，加了之后在音乐库的"喜欢"里能找到</li><li><strong>加到歌单</strong>：新建歌单或选已有歌单，支持创建时直接选封面</li><li><strong>下载</strong>：直接开始下，默认格式是 m4a，体积小音质够用</li></ul>
+<p>建歌单的节奏是：先随便搜几首喜欢的歌，分别长按加到同一个新歌单里，等歌单攒够 15~20 首，再整体标记为喜欢或者下载整张。这样下载队列能一次性跑完，不会被多次触发打断。</p>
+<p><img src="../images/musify-docs/03-library.png" alt="歌单与音乐库" loading="lazy"></p>
+<h2>第三步：离线下载与离线模式</h2>
+<p>下载完成后，音乐库的"已离线歌曲"里就有了。Musify 的缓存和离线下载是两回事——缓存是系统自动清理的临时文件，离线下载是你主动存的、卸载前一直稳定存在。想确保一首歌不丢，必须走到"已离线歌曲"里。</p>
+<p><strong>离线模式</strong>是 Musify 独有的实用开关。正常情况下没网时播放器会自动暂停，但信号差到只有 2G、或者流量超了的时候，应用会在后台反复尝试联网拖慢播放甚至卡顿。这时候打开设置里的"离线模式"，应用强制只从本地曲库读取，搜索结果也只显示已下载的曲目，在线入口全部临时禁用。飞机上、地铁隧道里、漫游时特别好用。</p>
+<h2>第四步：换机/重装前的数据导出</h2>
+<p>Musify 没有云同步，所有歌单、收藏、偏好设置全存在手机本地。换手机、卸载重装、或者多台设备切换时，<strong>导出数据是唯一保住这些东西的办法</strong>。</p>
+<p>打开设置 → "数据"或"备份"分组 → 点"导出数据"，应用会把歌单元数据、收藏列表、收听历史、偏好设置打成一个文件。保存时<strong>千万别只存在应用私有目录</strong>——卸载时一起清空。存到 Downloads 或者自己选个网盘传一份做双备份。</p>
+<p>然后在新手机上装好 Musify，同样进设置 → 点"导入数据"，选刚才那个文件。导入过程几秒就完，歌单和收藏全部回来。</p>
+<p><strong>注意：导出文件不包含已下载的离线歌曲</strong>——那玩意儿体积可能好几 GB，导出要保持轻量。所以完整换机分两步：先导出数据保住歌单结构 → 新机导入恢复歌单 → 逐首或整张歌单重新下载。更详细的迁移步骤和边界情况可以去<a href="https://musify-docs.pages.dev/" target="_blank" rel="noopener">musify文档</a>翻翻。</p>
+<p><img src="../images/musify-docs/04-settings.png" alt="设置面板" loading="lazy"></p>
+<h2>常见卡点</h2>
+<p><strong>卡点一：导出/导入失败</strong></p>
+<p>最常见的原因是传输方式不靠谱。用某些聊天应用传文件时会自动压缩或改扩展名，导致导入校验不通过。解决方法：用数据线、网盘直下、或者蓝牙传，确保文件一字不改。还有跨大版本导出导入理论上不兼容，用导出时的同一大版本最稳。</p>
+<p><strong>卡点二：动态取色开关找不到</strong></p>
+<p>两个条件必须同时满足：安卓 12 或更高系统版本，以及 Musify 2023 年后更新的版本都支持。两个条件都满足但开关还是没出现，大概率是国产 ROM 屏蔽了 Material You 的取色接口——换一个支持的 ROM 或者手动选 accent color 就行。</p>
+<p><strong>卡点三：离线歌曲被清了</strong></p>
+<p>先去确认你是不是选对了存储路径。如果下载路径设成了应用私有目录，卸载重装就会清空。改成公开文件夹，系统就不会动它。另外清理应用数据时也要小心，别把离线曲目一起勾上。</p>
+<h2>往下还能玩什么</h2>
+<p>均衡器调一调（内置多个预设模式）、歌词样式自定义、跨平台歌单导入（支持 Spotify 链接生成）、收听回顾年度报告——Musify 的功能比表面看起来多得多，摸透了基本上就是你的私人音乐助理。这套项目同时维护在三个仓库里，<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/musify" target="_blank" rel="noopener">GitHub</a>上是原版，国内访问选 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/musify" target="_blank" rel="noopener">Gitee</a> 或 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E6%96%B9%E7%89%88/musify" target="_blank" rel="noopener">GitCode</a> 更快。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 10 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/bombanana-docs.html">翻遍手册和代码，炸弹猴藏着 5 个官方都不宣传的玩法</a></h2>
+  <p class="card-desc">大多数人把炸弹猴玩成三个人瞎比划的笑料制造机，其实这款游戏藏着角色轮换、自定义协议、计算外包等五个冷门机制，能直接拉高你的队伍上限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/feem-docs.html">每周跨设备搬文件，我用 Feem 搭了一条不依赖云盘的本地传输链</a></h2>
+  <p class="card-desc">每周从公司电脑搬设计稿回家继续改、给同事传临时文件，以前要微信+U盘+云盘轮着用。装上 Feem 后搭了一条纯本地的点对点传输链，连切换App都省了。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-3" href="../category/official-version/index.html">官方版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/screen-time-docs.html">Screen Time 用了半个月，踩过的五个坑一次说清</a></h2>
+  <p class="card-desc">以为装个统计软件就能管好手机？没这么简单——平均值口径会骗人、中位数藏在点击里、默认档位错了白看、权限被回收还不自知。五个真实坑，踩过才知道。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/fluxdown.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">FluxDown 从零上手实战：浏览器下载、流媒体抓取、断点续传一条龙搞定</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/keep-alive-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">装了半年 Keep Alive，我终于把它从&#34;安全神器&#34;改成了&#34;过日子工具&#34;</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

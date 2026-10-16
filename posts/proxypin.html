@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 ProxyPin 一年半，从第一次装到现在没卸载过 · 老杨技术栈</title>
+  
+<meta name="description" content="从桌面端抓包到 Flutter 绕过证书固定，从 HAR 导入到脚本钩子，ProxyPin 一路从&#34;装来试试&#34;变成了每天都开的调试工具。说一些长期用下来才看得出的细节。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/proxypin.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 ProxyPin 一年半，从第一次装到现在没卸载过">
+<meta property="og:description" content="从桌面端抓包到 Flutter 绕过证书固定，从 HAR 导入到脚本钩子，ProxyPin 一路从&#34;装来试试&#34;变成了每天都开的调试工具。说一些长期用下来才看得出的细节。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/proxypin.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/proxypin/toolbox.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/proxypin/toolbox.png">
+
+<meta name="twitter:title" content="用 ProxyPin 一年半，从第一次装到现在没卸载过">
+<meta name="twitter:description" content="从桌面端抓包到 Flutter 绕过证书固定，从 HAR 导入到脚本钩子，ProxyPin 一路从&#34;装来试试&#34;变成了每天都开的调试工具。说一些长期用下来才看得出的细节。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u4ece\u684c\u9762\u7aef\u6293\u5305\u5230 Flutter \u7ed5\u8fc7\u8bc1\u4e66\u56fa\u5b9a\uff0c\u4ece HAR \u5bfc\u5165\u5230\u811a\u672c\u94a9\u5b50\uff0cProxyPin \u4e00\u8def\u4ece\"\u88c5\u6765\u8bd5\u8bd5\"\u53d8\u6210\u4e86\u6bcf\u5929\u90fd\u5f00\u7684\u8c03\u8bd5\u5de5\u5177\u3002\u8bf4\u4e00\u4e9b\u957f\u671f\u7528\u4e0b\u6765\u624d\u770b\u5f97\u51fa\u7684\u7ec6\u8282\u3002", "headline": "\u7528 ProxyPin \u4e00\u5e74\u534a\uff0c\u4ece\u7b2c\u4e00\u6b21\u88c5\u5230\u73b0\u5728\u6ca1\u5378\u8f7d\u8fc7", "image": ["https://alipymanbu.github.io/images/proxypin/toolbox.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/proxypin.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/proxypin.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/android/", "name": "\u5b89\u5353\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 ProxyPin \u4e00\u5e74\u534a\uff0c\u4ece\u7b2c\u4e00\u6b21\u88c5\u5230\u73b0\u5728\u6ca1\u5378\u8f7d\u8fc7", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/android/index.html">安卓版</a><span>/</span>
+    <span class="crumb-cur">用 ProxyPin 一年半，从第一次装到现在没卸载过</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 ProxyPin 一年半，从第一次装到现在没卸载过</h1>
+    <div class="post-meta">
+      <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 6 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">从桌面端抓包到 Flutter 绕过证书固定，从 HAR 导入到脚本钩子，ProxyPin 一路从&#34;装来试试&#34;变成了每天都开的调试工具。说一些长期用下来才看得出的细节。</p>
+  </header>
+  <div class="prose">
+<p>装 ProxyPin 到现在快一年半了。最早是朋友在一个调试群里甩了个链接，说"这个比 Charles 轻，而且 Android 端直接装一个 APK 就能用"。那时候我还在用 Charles，被它那笨重的界面和每次连接都要重新配置证书烦得不行。没多想就从<a href="https://proxypin.fewf.click/download.html" target="_blank" rel="noopener">官方下载</a>拿了 APK，结果一用就是到今天。</p>
+<h2>当初为什么装它</h2>
+<p>那段时间我在调一个 Android App 的接口，需要同时抓桌面浏览器和手机上的请求。Charles 在桌面端还好，但手机那边每次换个 Wi-Fi 就得重新导出证书、重新信任，Android 7.0+ 还得把证书移动到系统目录，root 又麻烦。ProxyPin的<a href="https://proxypin.fewf.click" target="_blank" rel="noopener">官网</a>上介绍它走 VPN Service 拦截流量，APK 一装、VPN 一授权就能用，理论上比 Charles 那套 HTTPS 代理方案简单得多。</p>
+<p>抱着试试的心态装上的，说实话当时没抱太高期望——社区里这种小体量开源工具太多了，大多是 Demo 级的玩具。</p>
+<h2>哪点越用越顺手</h2>
+<p>最大的变化是"它越来越像我的一部分"。</p>
+<p>桌面端和手机端扫码连接这个设计，我第一次用时觉得有点花哨——不就是在同一个局域网下扫个码吗，至于做成个功能？后来才发现这一步解决了大部分代理工具最烦的配置问题：不需要手动填端口、不需要手动导证书、不需要在手机 Wi-Fi 设置里改代理。扫一下，两边就通了。</p>
+<p><img src="../images/proxypin/toolbox.png" alt="扫码连接界面" loading="lazy"></p>
+<p>然后是 Flutter 应用的绕过证书固定。说个反直觉的——我以为这个功能我永远用不上。Flutter 那套 Dart HttpClient 自带证书验证，常规代理抓不到，网上的教程都是 Frida + Objection 或者 Xposed 模块那种重武器。结果有次项目里 App 就是 Flutter 写的，我抱着试试看的心态开了 ProxyPin，结果真就抓到了明文 JSON。不需要改 App 源码、不需要 Hook 脚本、甚至不需要 root。这件事之后我对 ProxyPin 的定位就从"一个还行的抓包工具"变成了"解决实际问题的工具"。</p>
+<h2>哪点越用越烦</h2>
+<p>有两个地方是长期用下来才慢慢觉得别扭的。</p>
+<p>一个是 Android 7.0+ 的证书限制——这个不是 ProxyPin 的问题，是 Android 的系统策略。但每次遇到新设备或者非 root 场景，还是得手动折腾证书信任。有些 App 不信任用户证书，ProxyPin 有 Flutter 的绕过逻辑，但普通原生 App 遇到 SSL Pinning 还是得靠别的手段。这个坎目前没绕过去。</p>
+<p>另一个是脚本引擎的调试。onRequest 和 onResponse 钩子功能很强大，但脚本出错时的反馈不够友好——ProxyPin 控制台只打个错误堆栈，不会告诉你是哪一行变量没定义、还是哪个 API 用错了。一开始写脚本踩坑踩得挺频繁，后来习惯了先在浏览器控制台里把逻辑跑通再搬过来，就好多了。但总觉得这里应该有个更好的调试体验。</p>
+<h2>哪个功能成了每天离不开的</h2>
+<p>HAR 导入重放。</p>
+<p>我之前低估了这个功能的价值——觉得就是导入个文件看看，跟自己抓有什么区别？后来团队协作多了才发现，同事发来一个 HAR 文件，里面可能包含了我这边环境复现不出来的 Bug 场景。导入 ProxyPin 后可以直接重放那条请求，改个参数再发一次，看服务端返回什么。这个流程帮我省了无数次"我这边复现不出来"的来回沟通。</p>
+<p>而且 ProxyPin 导出的 HAR 跟 Chrome、Charles 那些工具完全兼容，反过来 Chrome DevTools 也能导入 ProxyPin 导出的 HAR 做瀑布图分析。跨工具打通这一点挺少见的。这些细节在ProxyPin的<a href="https://proxypin.pages.dev/" target="_blank" rel="noopener">中文文档</a>里都能查到。</p>
+<h2>哪个碰都没再碰</h2>
+<p>App 重写功能。就是那种把某个域名的请求全部重定向到另一个地址，或者把某个路径的请求替换成本地 Mock 数据。理论上这个功能挺香的，但实际工作里我更多时候用脚本钩子直接改请求参数，或者干脆用代理切后端环境。重写那套规则配置起来太笨重，优先级在我这里排得很靠后。</p>
+<p>当然这只是我的个人场景，如果是做前端 Mock 或者灰度环境切换的同事，可能天天在用。</p>
+<h2>长期用下来的观感修正</h2>
+<p>当初装它的时候，我是抱着"找个轻量替代品"的心态，觉得它就是个简化版的 Charles。现在反过来觉得——它在几个关键场景上做的比 Charles 更好。Flutter 绕过证书固定这个能力是 Charles 根本做不到的，HAR 导入后的重放和脚本化修改也是 Charles 的重写规则没法比的。</p>
+<p>但它也没完全取代 Charles。桌面端的 HTTPS 解密体验、请求瀑布图的可视化、WebSocket 的调试——这些地方 Charles 还是更成熟。现在我两个都装着，但 80% 的日常任务是 ProxyPin 完成的。</p>
+<h2>去留结论</h2>
+<p>会不会卸载？不会。现在已经到了"开电脑先启动 ProxyPin"的程度，跟开 IDE 一样自然。</p>
+<p>什么信号出现就该换了？如果哪天它跟不上 Android 的版本迭代，或者 Flutter 的某个新版本绕过逻辑失效了，那可能就得考虑换。但到目前为止，它的更新节奏还挺稳的。</p>
+<p>对了，还有一点想说的是——ProxyPin 是开源的这件事让我挺安心。网络抓包工具涉及到所有 HTTP 请求的数据，闭源的总觉得不踏实。它的源码在 <a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/ProxyPin" target="_blank" rel="noopener">GitHub</a> 仓库上有人看着，同时也同步了 <a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/ProxyPin" target="_blank" rel="noopener">Gitee</a> 和 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%89%E5%8D%93%E7%89%88/ProxyPin" target="_blank" rel="noopener">GitCode</a> 的镜像方便国内访问，就不会偷偷上传你的流量。这个安全感是花钱买不到的。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/mirai-docs.html">把 AI 角色原型嵌进内容创作流水线，我是这样用 MIRAI 的</a></h2>
+  <p class="card-desc">做虚拟角色设定以前要翻三份文档、手动演对话，现在用 MIRAI 当原型工场——从灵感收集到社区发布，一条链串起来。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/hailuo-ai-docs.html">海螺 AI 避坑清单：我踩过的七个视频生成翻车点</a></h2>
+  <p class="card-desc">用海螺 AI 做了小两个月，从主体参考到多角色、从运镜到造型室，踩了一堆文档没明说的暗坑。整理成这篇避坑指南，帮你省掉我花掉的那些重试次数和积分。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-0" href="../category/android/index.html">安卓版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/iapp-docs.html">iApp 从 V3 到 V7，一款国产低代码工具走过了怎样的五年</a></h2>
+  <p class="card-desc">从最初的可视化拖拽到裕语言 V7 的成熟，iApp 每一个语言版本背后都是一次产品定位的微调。我们顺着版本号看它的迭代节奏，猜一猜它下一步想做什么。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/drivedroid.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">DriveDroid 藏得最深的 5 个冷门玩法，把手机当启动盘用透</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/qr-scanner-app.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">一个权限都不想多要——QR Scanner app 的极简设计原理拆解</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

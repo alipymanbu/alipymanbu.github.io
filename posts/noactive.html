@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>从零搭建 NoActive：让手机后台真正安静下来的完整实战 · 老杨技术栈</title>
+  
+<meta name="description" content="NoActive 是一款 Android 后台冻结工具，通过 Cgroup Freezer 机制将不活跃的应用进程真正挂起。本文带你从零开始完成环境准备、内核模块选择、冻结方式配置到日常使用，中间穿插几个新手最容易踩的坑。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/noactive.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零搭建 NoActive：让手机后台真正安静下来的完整实战">
+<meta property="og:description" content="NoActive 是一款 Android 后台冻结工具，通过 Cgroup Freezer 机制将不活跃的应用进程真正挂起。本文带你从零开始完成环境准备、内核模块选择、冻结方式配置到日常使用，中间穿插几个新手最容易踩的坑。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/noactive.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/noactive/app-status.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/noactive/app-status.jpg">
+
+<meta name="twitter:title" content="从零搭建 NoActive：让手机后台真正安静下来的完整实战">
+<meta name="twitter:description" content="NoActive 是一款 Android 后台冻结工具，通过 Cgroup Freezer 机制将不活跃的应用进程真正挂起。本文带你从零开始完成环境准备、内核模块选择、冻结方式配置到日常使用，中间穿插几个新手最容易踩的坑。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "NoActive \u662f\u4e00\u6b3e Android \u540e\u53f0\u51bb\u7ed3\u5de5\u5177\uff0c\u901a\u8fc7 Cgroup Freezer \u673a\u5236\u5c06\u4e0d\u6d3b\u8dc3\u7684\u5e94\u7528\u8fdb\u7a0b\u771f\u6b63\u6302\u8d77\u3002\u672c\u6587\u5e26\u4f60\u4ece\u96f6\u5f00\u59cb\u5b8c\u6210\u73af\u5883\u51c6\u5907\u3001\u5185\u6838\u6a21\u5757\u9009\u62e9\u3001\u51bb\u7ed3\u65b9\u5f0f\u914d\u7f6e\u5230\u65e5\u5e38\u4f7f\u7528\uff0c\u4e2d\u95f4\u7a7f\u63d2\u51e0\u4e2a\u65b0\u624b\u6700\u5bb9\u6613\u8e29\u7684\u5751\u3002", "headline": "\u4ece\u96f6\u642d\u5efa NoActive\uff1a\u8ba9\u624b\u673a\u540e\u53f0\u771f\u6b63\u5b89\u9759\u4e0b\u6765\u7684\u5b8c\u6574\u5b9e\u6218", "image": ["https://alipymanbu.github.io/images/noactive/app-status.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/noactive.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/noactive.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/licensed/", "name": "\u6b63\u7248", "position": 2}, {"@type": "ListItem", "name": "\u4ece\u96f6\u642d\u5efa NoActive\uff1a\u8ba9\u624b\u673a\u540e\u53f0\u771f\u6b63\u5b89\u9759\u4e0b\u6765\u7684\u5b8c\u6574\u5b9e\u6218", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/licensed/index.html">正版</a><span>/</span>
+    <span class="crumb-cur">从零搭建 NoActive：让手机后台真正安静下来的完整实战</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">从零搭建 NoActive：让手机后台真正安静下来的完整实战</h1>
+    <div class="post-meta">
+      <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">NoActive 是一款 Android 后台冻结工具，通过 Cgroup Freezer 机制将不活跃的应用进程真正挂起。本文带你从零开始完成环境准备、内核模块选择、冻结方式配置到日常使用，中间穿插几个新手最容易踩的坑。</p>
+  </header>
+  <div class="prose">
+<p>这篇教程走完，你手上的 Android 手机就能做到：切到桌面或其他应用时，上一个应用的进程会被真正冻结，后台不跑了、消息不推送了，耗电和发热明显下降。</p>
+<p>它的<a href="https://noactive.fewa.skin" target="_blank" rel="noopener">官网</a>上有完整的功能清单和变更日志。NoActive 不是那种"把应用杀掉"的一刀切方案——它通过内核层面的 Cgroup Freezer 机制把进程挂起，切回来再恢复，应用状态不会丢。听起来神奇，但实际配置起来确实有几个门槛，尤其是内核模块和冻结方式的选择，选错了要么冻结不生效要么卡屏。下面一步步来。</p>
+<h2>第一步：确认前置条件</h2>
+<p>你需要三样东西（安装包直接从<a href="https://noactive.fewa.skin/download.html" target="_blank" rel="noopener">NoActive下载</a>页面拿就行）：</p>
+<ul><li>一台已 Root 的 Android 设备（KernelSU 或 Magisk 均可）</li><li>LSPosed 框架（NoActive 以 Xposed 模块形式运行）</li><li>内核版本 ≥ 4.19（太老的内核玩不了 V2 冻结）</li></ul>
+<p>先看内核版本：设置 → 关于手机 → Android 版本 → 内核版本。格式一般是 <code>5.10.xxx</code> 或 <code>4.19.xxx</code>，记下来，后面选冻结方式全靠它。</p>
+<h2>第二步：选内核模块</h2>
+<p>NoActive 的冻结功能依赖内核模块来桥接用户态和内核态。没有模块的话，要么冻结不了、要么切回来卡死。</p>
+<p>打开 NoActive 的内核模块选择界面，你会看到几个选项：</p>
+<p><strong>ReKernel-X</strong> 是现在的首选——异步缓存清理、网络解冻优化都带上了，5.10 及以上内核直接选它。如果你的内核是 5.4 或以下，选 ReKernel_KPM。极少数设备用不了 ReKernel，可以考虑 NkBinder_eBPF，不过效率低一些。</p>
+<p>有个捷径：小米/红米/POCO 的 MIUI/HyperOS 系统自带 <strong>Millet</strong> 模块，OPPO/Realme/一加的 ColorOS/RealmeUI 自带 <strong>Hans</strong> 模块。这些厂商模块直接用，不用额外刷入。</p>
+<p>刷完模块重启，打开 NoActive 主页看内核模块状态——显示模块名和版本号就是正常。如果长期显示问号，说明模块没加载成功，回头检查刷入步骤。</p>
+<p><img src="../images/noactive/app-status.jpg" alt="内核模块状态检查界面" loading="lazy"></p>
+<h2>第三步：选对冻结方式</h2>
+<p>这是新手最容易翻的一步，直接决定了冻结能不能生效。三种方式的选择逻辑完全由内核版本和厂商 ROM 决定，给你一张速查表：</p>
+<table><thead><tr><th>内核版本</th><th>ROM</th><th>冻结方式</th></tr></thead><tbody><tr><td>6.1+ / 5.15 / 5.10</td><td>任意</td><td>V2</td></tr><tr><td>5.4</td><td>任意</td><td>V2（配 ReKernel_KPM）</td></tr><tr><td>4.19</td><td>MIUI / HyperOS</td><td>V1</td></tr><tr><td>4.19</td><td>ColorOS / RealmeUI</td><td>V1</td></tr><tr><td>4.19</td><td>原生 AOSP / GSI</td><td>Kill</td></tr></tbody></table>
+<p>简单说：5.10 及以上无脑 V2；4.19 看是不是厂商定制 ROM，是的话 V1，不是就 Kill。</p>
+<p>NoActive 的设置里直接能切换冻结方式，改完保存就行，不用重启。切完之后去 NoActive 的运行列表看一眼——应用后面应该显示"已冻结"，说明配置对了。</p>
+<h2>第四步：日常使用</h2>
+<p>配置好之后，日常使用几乎不用动脑。NoActive 的主界面会列出所有已安装应用，勾上的就是开启冻结的。切到其他应用或桌面时，被勾选的应用自动冻结；切回来自动恢复。</p>
+<p>几个实用的小操作：</p>
+<ul><li><strong>白名单</strong>：有些应用不应该被冻结（比如导航、后台下载），在应用列表里长按→加入白名单，或者直接取消勾选。</li><li><strong>运行列表</strong>：这里实时显示当前哪些应用在前台活跃。点一下应用可以手动冻结或解冻，方便调试。</li><li><strong>全局开关</strong>：顶部有个总开关，临时不想用了一键关掉就行。</li></ul>
+<p><img src="../images/noactive/app-list.jpg" alt="应用勾选和白名单管理" loading="lazy"></p>
+<h2>新手最容易踩的三个坑</h2>
+<h3>坑一：冻结方式选了但运行列表还是不显示"已冻结"</h3>
+<p>别慌，按这个顺序排查：</p>
+<ol><li>回到 NoActive 设置，确认冻结方式确实切换成功了</li><li>看内核模块状态是不是长期问号——如果是，说明模块没加载，重刷一遍</li><li>打开 LSPosed 日志，搜有没有 "Freeze Error" 或通信错误</li><li>最后一招：Kill 方式如果被 SELinux 拦截，可以在终端里跑 <code>su &amp;&amp; magiskpolicy --live &quot;allow system_server * process {sigstop}&quot;</code> 放开权限</li><li>如果这几步都没搞定，去<a href="https://noactive.pages.dev/" target="_blank" rel="noopener">NoActive文档</a>找更细的排查流程，内核 Cgroup 支持检测那段讲得挺详细的</li></ol>
+<h3>坑二：切回应用时卡屏或黑屏</h3>
+<p>这个现象在解冻时出现，原因是内核恢复进程调度有短暂延迟。给三个解法：</p>
+<ul><li>先确认用的是 ReKernel 系列模块，NkBinder 的解冻稳定性确实差一些</li><li>如果某个应用特别容易卡，考虑把它加入白名单</li><li>接受现实：目前这个问题没有完美解法，切换时慢一点，别快速连切，1 秒左右就恢复了</li></ul>
+<h3>坑三：文件管理器里操作卡住</h3>
+<p>这是 NoActive 冻结了 Binder 通知导致的——文件管理器处于冻结状态时，其他组件的 Binder 通知传不进来。解法：</p>
+<ul><li>刷 ReKernel（它对 Binder 通知的处理更好）</li><li>或者在 MasterConfig.json 里把 <code>freezeBinder</code> 设为 <code>false</code>，代价是冻结效果会打折扣</li></ul>
+<h2>进阶：还能玩什么</h2>
+<p>基础配置跑通之后，可以研究一下 NoActive 的高级功能：后台优化配置（异步缓存清理的激进程度可调）、MasterConfig.json 里的 freezeBinder 开关、以及通过 KernelSU 模块批量管理应用的冻结规则。这些属于调优范畴，先用起来再慢慢折腾也不迟。</p>
+<p>整体来说，NoActive 的门槛主要在前两块——内核模块和冻结方式。选对了这两项，后面就是傻瓜式使用。选不对的话，冻结不生效、卡屏、文件操作卡住这些问题全都会冒出来。照着这篇教程的四步走下来，配置这块应该能一次搞定。</p>
+<p>NoActive 的资料和模块包在<a href="https://github.com/alipymanbu/APK/tree/main/%E6%AD%A3%E7%89%88/NoActive" target="_blank" rel="noopener">GitHub主仓</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%AD%A3%E7%89%88/NoActive" target="_blank" rel="noopener">Gitee镜像</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%AD%A3%E7%89%88/NoActive" target="_blank" rel="noopener">GitCode同步仓</a>都能拿到，国内访问哪个快就用哪个。版本更新比较勤，bug 修得也及时。用了大半年，后台耗电降了至少 40%，刷微博刷一半切出去聊微信再切回来，状态也还在。如果你也在烦 Android 后台乱跑的毛病，不妨试试。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 9 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/lumeow.html">Lumeow 深度盘点：一款 AI 角色扮演应用的能力面完整铺开</a></h2>
+  <p class="card-desc">从多人剧情共创到隐私保护三件套，从对话历史管理到云端同步——Lumeow 到底能做什么？本文按能力域系统性梳理这款 AI 角色扮演应用的亮点、适用场景和局限。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 7 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/appenjoy.html">APPenjoy 翻了个底朝天才敢说——这五个隐藏功能你肯定漏了仨</a></h2>
+  <p class="card-desc">以为 APPenjoy 就是个找应用下 APK 的工具？三重安全审核、隐藏影视入口、社区积分体系……我把它翻了一周，挖出五个官方没写在明面上的冷门玩法。</p>
+</article>
+
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-5" href="../category/licensed/index.html">正版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 6 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/pado-docs.html">Pado 情侣应用全能力盘点：定位、记录、仪式感三件套到底做得怎么样</a></h2>
+  <p class="card-desc">从实时位置到 365 打卡挑战，从安全区域到甜蜜相册，这篇盘点把 Pado 的核心功能域拆开逐一评测，帮你判断它值不值得装。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/blackbox-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Blackbox 不 Root 多开的底层原理：一台手机如何同时运行两个世界</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/ebookjapan.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">每周追刊不绕路：我用ebookjapan搭了一条固定购读链</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>
