@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>用 itch 客户端踩过的五个坑：装不上、打不开、更新失败怎么办 · 老杨技术栈</title>
+  
+<meta name="description" content="itch.io 客户端看着简单，实际在系统版本、杀毒拦截、依赖项等方面藏着几个高频翻车点。本文整理我踩过的五个真实坑，每个都有症状、原因和解法，附防坑清单速查。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/itch-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 itch 客户端踩过的五个坑：装不上、打不开、更新失败怎么办">
+<meta property="og:description" content="itch.io 客户端看着简单，实际在系统版本、杀毒拦截、依赖项等方面藏着几个高频翻车点。本文整理我踩过的五个真实坑，每个都有症状、原因和解法，附防坑清单速查。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/itch-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/itch-docs/cant-launch.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/itch-docs/cant-launch.png">
+
+<meta name="twitter:title" content="用 itch 客户端踩过的五个坑：装不上、打不开、更新失败怎么办">
+<meta name="twitter:description" content="itch.io 客户端看着简单，实际在系统版本、杀毒拦截、依赖项等方面藏着几个高频翻车点。本文整理我踩过的五个真实坑，每个都有症状、原因和解法，附防坑清单速查。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "itch.io \u5ba2\u6237\u7aef\u770b\u7740\u7b80\u5355\uff0c\u5b9e\u9645\u5728\u7cfb\u7edf\u7248\u672c\u3001\u6740\u6bd2\u62e6\u622a\u3001\u4f9d\u8d56\u9879\u7b49\u65b9\u9762\u85cf\u7740\u51e0\u4e2a\u9ad8\u9891\u7ffb\u8f66\u70b9\u3002\u672c\u6587\u6574\u7406\u6211\u8e29\u8fc7\u7684\u4e94\u4e2a\u771f\u5b9e\u5751\uff0c\u6bcf\u4e2a\u90fd\u6709\u75c7\u72b6\u3001\u539f\u56e0\u548c\u89e3\u6cd5\uff0c\u9644\u9632\u5751\u6e05\u5355\u901f\u67e5\u3002", "headline": "\u7528 itch \u5ba2\u6237\u7aef\u8e29\u8fc7\u7684\u4e94\u4e2a\u5751\uff1a\u88c5\u4e0d\u4e0a\u3001\u6253\u4e0d\u5f00\u3001\u66f4\u65b0\u5931\u8d25\u600e\u4e48\u529e", "image": ["https://alipymanbu.github.io/images/itch-docs/cant-launch.png"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/itch-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/itch-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/mobile/", "name": "\u624b\u673a\u7248", "position": 2}, {"@type": "ListItem", "name": "\u7528 itch \u5ba2\u6237\u7aef\u8e29\u8fc7\u7684\u4e94\u4e2a\u5751\uff1a\u88c5\u4e0d\u4e0a\u3001\u6253\u4e0d\u5f00\u3001\u66f4\u65b0\u5931\u8d25\u600e\u4e48\u529e", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/mobile/index.html">手机版</a><span>/</span>
+    <span class="crumb-cur">用 itch 客户端踩过的五个坑：装不上、打不开、更新失败怎么办</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">用 itch 客户端踩过的五个坑：装不上、打不开、更新失败怎么办</h1>
+    <div class="post-meta">
+      <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">itch.io 客户端看着简单，实际在系统版本、杀毒拦截、依赖项等方面藏着几个高频翻车点。本文整理我踩过的五个真实坑，每个都有症状、原因和解法，附防坑清单速查。</p>
+  </header>
+  <div class="prose">
+<p>第一次装 itch 客户端时我以为就是个"独立游戏 Steam"——双击安装、登录、找游戏，完事。结果前前后后踩了好几个坑，从装不上到打不开再到更新报错，折腾了快半小时才跑起来。今天把这些坑整理出来，给新来的朋友省点时间。</p>
+<p>先简单说下这东西是什么：itch 是 itch.io 官方的桌面客户端，itch.io 本身是独立游戏开发者的作品分发平台——类似 Steam 但更开放，很多 indie 开发者只在这里首发。客户端的定位就是帮你管 itch.io 上的游戏库，支持自动更新、离线玩、HTML5 网页游戏本地化这些功能。想看更多功能介绍可以去 <a href="https://itch.ggcd.uno" target="_blank" rel="noopener">itch 推广站</a> 翻翻。</p>
+<h2>坑一：双击安装包没反应——你的系统版本可能不够</h2>
+<p><strong>症状</strong>：下载完安装包双击，要么弹个错误窗口说"不支持的操作系统"，要么干脆没反应、进程一闪就退。</p>
+<p><strong>原因</strong>：itch 客户端最低要求 Windows 7。对，你没看错——现在还有人在用 XP 或 Vista 吗？如果你是，那 itch 从根上就装不了。官方 FAQ 里这条被问爆了，我自己公司那台 2012 年的旧笔记本就是 Vista，折腾半天最后只能用网页版。</p>
+<p><strong>解法</strong>：两个选项——要么升级系统（Windows 7 起步），要么直接用浏览器访问 itch.io 网页版。网页版功能少点但不挑系统。装之前先确认自己系统版本，省得白忙活。</p>
+<p><img src="../images/itch-docs/cant-launch.png" alt="系统版本不够时的报错提示" loading="lazy"></p>
+<h2>坑二：杀毒软件报毒拦截——这不是木马</h2>
+<p><strong>症状</strong>：安装到一半被 Windows Defender、360、火绒之类的弹框拦截，要么直接隔离要么阻止网络请求。</p>
+<p><strong>原因</strong>：itch 客户端本身是安全的，但它做的事情容易被杀软误判——它要联网下载游戏包、要在安装位置写文件、还要扫描本地游戏库。独立游戏分发平台的工具链经常被杀毒软件当成"未知程序"拦一下。我刚装完第一次启动就被 Defender 拦了，以为下到毒了，差点卸载。</p>
+<p><strong>解法</strong>：先确认你下的是 <a href="https://itch.ggcd.uno/download.html" target="_blank" rel="noopener">itch 下载页</a> 的官方客户端，不是第三方改的。然后把客户端加进杀毒软件的白名单或排除项里。Defender 的话进"病毒和威胁防护设置"→"排除项"→"添加文件夹"，把 itch 的安装目录加进去就好。</p>
+<h2>坑三：Linux 上运行报 libgtk-3.so.0 找不到</h2>
+<p><strong>症状</strong>：在 Ubuntu、Debian 或 Fedora 上安装完，运行时终端报 <code>error while loading shared libraries: libgtk-3.so.0: cannot open shared object file</code>。</p>
+<p><strong>原因</strong>：itch 客户端用 GTK3 构建 GUI，但不是所有 Linux 发行版都默认带 GTK3 运行库——尤其是服务器版、精简版或某些 rolling release 发行版。我在一台最小化安装的 Debian 上遇到过，折腾了好一会儿才想起来装依赖。</p>
+<p><strong>解法</strong>：根据你的发行版装一下：</p>
+<ul><li>Debian/Ubuntu 系：<code>sudo apt install libgtk-3-0</code></li><li>Fedora/RHEL 系：<code>sudo dnf install gtk3</code></li><li>ArchLinux：<code>sudo pacman -S gtk3</code></li></ul>
+<p>装完就能跑了。如果你用的是 tar.xz 可携带版本，也一样需要 GTK3 依赖。</p>
+<h2>坑四：HTML5 网页游戏想用启动选项——没用的</h2>
+<p><strong>症状</strong>：想给某个 HTML5 网页游戏加启动参数（比如分辨率、窗口模式），结果启动选项那一栏灰着，改了也不生效。</p>
+<p><strong>原因</strong>：itch 上不少游戏提供 HTML5 网页版——浏览器里点开就玩的那种。这些游戏在客户端里虽然也能装到本地，但本质还是用客户端内置浏览器跑的，没有原生可执行文件。启动参数、包装器这类功能只对原生二进制文件有用，网页版不吃这一套。我之前想给一个网页版游戏加 <code>--no-gui</code> 参数，研究了半天才发现这功能根本不支持。</p>
+<p><strong>解法</strong>：想折腾启动选项的话，只能用游戏的原生下载版（如果有的话）。很多作者会同时提供网页版和原生版，仔细看下游戏页面的"下载"区域。没有原生版的话，就老老实实在线玩或装到本地离线玩。</p>
+<h2>坑五：安装位置选了 Program Files——自找麻烦</h2>
+<p><strong>症状</strong>：游戏装到一半卡在"准备安装"，或者更新时报"拒绝访问"、"无法写入文件"。</p>
+<p><strong>原因</strong>：itch 客户端从设计上就是<strong>不需要管理员权限</strong>的。它默认把安装位置放在当前用户可写的目录（比如 <code>C:\Users\你的名字\AppData\Local\itch</code>），而不是 <code>Program Files</code>。你要是手动改到 Program Files，Windows 的 UAC 和权限管控就会跳出来搞你——装游戏、更新、删存档全要弹权限确认，有时候干脆静默失败。</p>
+<p><strong>解法</strong>：别手改默认路径，或者选个明确的用户目录（比如 <code>D:\Games\itch</code>）。项目文档里专门有一章讲安装位置管理，默认设置基本就是最省心的配置，别瞎动。</p>
+<p><img src="../images/itch-docs/faq-install-locations.png" alt="安装位置设置界面" loading="lazy"></p>
+<h2>防坑清单（速查版）</h2>
+<p>说了这么多，把要点整理成一个清单，下次装或出问题时对着查就行：</p>
+<ol><li><strong>系统先确认</strong>：Windows 7 以下别装，XP/Vista 直接用网页版</li><li><strong>杀毒白名单</strong>：第一次启动如果被拦，先加排除项，别慌着删</li><li><strong>Linux 补 GTK3</strong>：<code>apt install libgtk-3-0</code>，一条命令搞定</li><li><strong>网页版不玩参数</strong>：HTML5 游戏的启动选项别折腾，换原生版</li><li><strong>安装路径别碰 Program Files</strong>：默认路径或自定义用户目录，省心最重要</li></ol>
+<p>其实 itch 客户端整体还是挺良心的——轻量、干净、没广告，自动更新也挺稳。踩的这些坑大多是"小众场景默认你知道"的那种，提前有个概念就不会慌。装完跑起来之后，日常用基本没什么幺蛾子了。</p>
+<p>想深入了解功能细节的话，<a href="https://itch-docs.pages.dev/" target="_blank" rel="noopener">itch 文档站</a> 有完整的使用手册，从系统要求到开发者视角都覆盖了。我写这篇的时候也参考了上面不少 FAQ 内容，实际排障时直接翻文档站比瞎搜靠谱。</p>
+<p>相关资料我同步到了三个仓库：<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/itch" target="_blank" rel="noopener">GitHub 主库</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/itch" target="_blank" rel="noopener">Gitee 镜像</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/itch" target="_blank" rel="noopener">GitCode 同步</a>，里面有完整的软件文档和配置说明，欢迎交流。</p>
+  </div>
+</article>
+
+<section class="related">
+  <p class="sec-label mono">## 相关阅读</p>
+  <div class="card-grid cols-3">
+    
+<article class="card">
+  <div class="card-meta">
+    <a class="chip chip-1" href="../category/mobile/index.html">手机版</a>
+    <time datetime="2026-10-16">2026-10-16</time>
+    <span class="dot">·</span><span>约 8 分钟</span>
+  </div>
+  <h2 class="card-title"><a href="../posts/motivation-docs.html">Motivation 深度盘点：一款把正能量拆成三条路径递到你眼前的语录 App</a></h2>
+  <p class="card-desc">Motivation 不止是每日推一句鸡汤那么简单——应用内、小组件、通知三条路径各自独立配内容，多提醒组分时段精准送达，Affirmations 练习和签到 streak 把碎片化正念练成习惯。</p>
+</article>
+
+  </div>
+</section>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/glaze-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">手机拍的照片一键变油画？Glaze 上手这三天我踩过的坑和真香时刻</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/lyricify-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Lyricify 深度盘点：把 Spotify 歌词体验做到极致的开源项目</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

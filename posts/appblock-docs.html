@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>AppBlock 深度盘点——从基础拦截到防破防严格模式，一套能让你真正放下手机的工具链 · 老杨技术栈</title>
+  
+<meta name="description" content="AppBlock 不只是&#34;定时把 App 关掉&#34;那么简单。本文从拦截体系、严格模式六档解锁、颗粒度控制、品牌适配、免费与 Premium 分层等维度完整盘点它的能力边界，帮你判断这套工具链能不能解决你的数字干扰问题。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/appblock-docs.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AppBlock 深度盘点——从基础拦截到防破防严格模式，一套能让你真正放下手机的工具链">
+<meta property="og:description" content="AppBlock 不只是&#34;定时把 App 关掉&#34;那么简单。本文从拦截体系、严格模式六档解锁、颗粒度控制、品牌适配、免费与 Premium 分层等维度完整盘点它的能力边界，帮你判断这套工具链能不能解决你的数字干扰问题。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/appblock-docs.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:title" content="AppBlock 深度盘点——从基础拦截到防破防严格模式，一套能让你真正放下手机的工具链">
+<meta name="twitter:description" content="AppBlock 不只是&#34;定时把 App 关掉&#34;那么简单。本文从拦截体系、严格模式六档解锁、颗粒度控制、品牌适配、免费与 Premium 分层等维度完整盘点它的能力边界，帮你判断这套工具链能不能解决你的数字干扰问题。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "AppBlock \u4e0d\u53ea\u662f\"\u5b9a\u65f6\u628a App \u5173\u6389\"\u90a3\u4e48\u7b80\u5355\u3002\u672c\u6587\u4ece\u62e6\u622a\u4f53\u7cfb\u3001\u4e25\u683c\u6a21\u5f0f\u516d\u6863\u89e3\u9501\u3001\u9897\u7c92\u5ea6\u63a7\u5236\u3001\u54c1\u724c\u9002\u914d\u3001\u514d\u8d39\u4e0e Premium \u5206\u5c42\u7b49\u7ef4\u5ea6\u5b8c\u6574\u76d8\u70b9\u5b83\u7684\u80fd\u529b\u8fb9\u754c\uff0c\u5e2e\u4f60\u5224\u65ad\u8fd9\u5957\u5de5\u5177\u94fe\u80fd\u4e0d\u80fd\u89e3\u51b3\u4f60\u7684\u6570\u5b57\u5e72\u6270\u95ee\u9898\u3002", "headline": "AppBlock \u6df1\u5ea6\u76d8\u70b9\u2014\u2014\u4ece\u57fa\u7840\u62e6\u622a\u5230\u9632\u7834\u9632\u4e25\u683c\u6a21\u5f0f\uff0c\u4e00\u5957\u80fd\u8ba9\u4f60\u771f\u6b63\u653e\u4e0b\u624b\u673a\u7684\u5de5\u5177\u94fe", "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/appblock-docs.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/appblock-docs.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/official-site/", "name": "\u5b98\u7f51\u7248", "position": 2}, {"@type": "ListItem", "name": "AppBlock \u6df1\u5ea6\u76d8\u70b9\u2014\u2014\u4ece\u57fa\u7840\u62e6\u622a\u5230\u9632\u7834\u9632\u4e25\u683c\u6a21\u5f0f\uff0c\u4e00\u5957\u80fd\u8ba9\u4f60\u771f\u6b63\u653e\u4e0b\u624b\u673a\u7684\u5de5\u5177\u94fe", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/official-site/index.html">官网版</a><span>/</span>
+    <span class="crumb-cur">AppBlock 深度盘点——从基础拦截到防破防严格模式，一套能让你真正放下手机的工具链</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">AppBlock 深度盘点——从基础拦截到防破防严格模式，一套能让你真正放下手机的工具链</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/official-site/index.html">官网版</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 9 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">AppBlock 不只是&#34;定时把 App 关掉&#34;那么简单。本文从拦截体系、严格模式六档解锁、颗粒度控制、品牌适配、免费与 Premium 分层等维度完整盘点它的能力边界，帮你判断这套工具链能不能解决你的数字干扰问题。</p>
+  </header>
+  <div class="prose">
+<h2>为什么要认真盘点 AppBlock</h2>
+<p>市面上的"应用拦截"工具不少——系统自带的专注模式、数字健康、各种第三方锁机 App。但用过一圈之后会发现，绝大多数工具都卡在同一个瓶颈：<strong>规则可以被自己一秒绕过</strong>。定了"工作时间拦抖音"，手痒点开设置关掉规则，前后三秒。严格模式（Strict Mode）是 AppBlock 真正拉开差距的地方——规则上锁之后，改不了、关不掉。加上板块级拦截、网站拦截、Allowlist 极简模式这些进阶功能，它构建了一套从"提醒你"到"拦得住"再到"绕不开"的完整防线。感兴趣的读者可以先去<a href="https://appblock.fewa.skin" target="_blank" rel="noopener">AppBlock 推广站</a>看看完整的功能介绍。</p>
+<p>如果你已经被"短视频一刷就是两小时"、"深夜忍不住点开小红书"、"工作日被 App 通知打断"这些问题困扰过，这套工具链值得认真了解一下。</p>
+<h2>能力域一：基础拦截——从"定时关掉"开始</h2>
+<p>AppBlock 的入门门槛很低。Quick Block 就是一键拦 App，Schedules 就是"某个时段拦某些 App"——这两个功能免费版就全有。你可以给工作日设一个"9:00–18:00 拦抖音和小红书"的计划，或者给每晚睡觉前设一个"23:00 之后拦所有娱乐 App"的 Quick Block。</p>
+<p>基础拦截的亮点不在于"能定时"，而在于<strong>计划管理做得很扎实</strong>：每条计划可以单独启停、可以叠加多个条件、状态用颜色直观标识（绿色=运行中、灰色=暂停、红色=条件不满足）。不用的时候随手暂停，忙的时候一键全部激活，切换成本极低。</p>
+<p>对大多数用户来说，基础拦截加上用量洞察（今日用量 + 7 天趋势）已经够用了——至少能让你知道"我每天在抖音上花了 3 小时"这个事实，而不是沉浸其中毫无知觉。</p>
+<h2>能力域二：严格模式——防破防的六层防线</h2>
+<p>这是 AppBlock 的灵魂，也是 Premium 付费墙的核心。严格模式建立在你的拦截计划之上——先把要拦的对象定好，再用严格模式把规则锁死。解锁方式有六档，强度递增，覆盖从"防手滑误触"到"完全交出去"的全部场景。</p>
+<p><strong>最低两档（PIN 码、充电器）</strong> 免费版也能用。PIN 码适合防冲动——想关规则时多按一次就拦住，但自己设的码大概率自己能记住，防"深思熟虑之后决定放弃"基本没用。充电器解锁强度更低，更像一个"解锁需要做点小动作"的提醒，防止手滑误触。</p>
+<p><strong>中档的 Cooldown 冷却等待</strong> 很有意思——它不阻止你解锁，但让你等 2–10 分钟才能继续。目的不是拦你，而是让你在"最后一条短视频"的冲动中停下来想清楚。深夜刷手机最缺的就是这 2 分钟的冷静时间。</p>
+<p><strong>Follow Schedules 跟随计划</strong> 是日常用得最多的档位——只在有定时计划运行时锁死严格模式，下班时间没有计划了，规则可以自由调整。这意味着工作日白天完全锁死、晚上放松时可以灵活改动，兼顾约束和灵活。</p>
+<p><strong>Approval 担保人审批</strong> 把解锁权完全交给别人——指定一个邮箱（家人、朋友、同事），每次要解严格模式都要担保人点邮件里的批准。家长给孩子的手机开严格模式、情侣互相作为担保人、工作小组互相约束，都是这个功能的典型用法。</p>
+<p><strong>Timer 定时锁定</strong> 是强度最高的一档——锁死一个固定时长（3 天、1 周），期间无论什么条件都无法解锁，时间到了自动解除。考试周把娱乐 App 整体封存、新年数字排毒 7 天，适合这种长周期戒断场景。没有提前解锁按钮，真被锁出不来只能找官方客服走紧急解锁流程。</p>
+<h2>能力域三：颗粒度拦截——不止是"App 级"</h2>
+<p>系统自带的专注模式只能做到"整个 App 拦掉"。但很多时候你并不是不想用某个 App，只是不想用它的某个部分——比如你想把微博留着刷资讯，但 Reels 和 Shorts 必须拦掉。这就是板块级拦截（Premium 专属）解决的问题。</p>
+<p>板块级拦截可以精确到 Instagram Reels、YouTube Shorts、Snapchat Stories 这些具体板块。对"戒短视频但不想删 App"的需求来说，这个功能的价值远大于简单的 App 级拦截——毕竟很多人删了抖音没两天又装回来，不如只把最让人上瘾的那几个板块掐掉。</p>
+<p>网站拦截（Premium 专属）则把范围从 App 扩展到了浏览器——可以拦特定网站或关键词。如果你发现自己总在浏览器里打开八卦新闻，或者忍不住在工作时间刷某些论坛，这个功能能补上 App 拦截覆盖不到的那块。</p>
+<p>Allowlist 白名单模式（Premium 专属）是另一个极端——不是"拦什么"，而是"只允许什么"。开启后手机上只有白名单里的 App 能正常使用，其他全部拦截。极简主义者、数字排毒狂热者、需要"把手机变砖"的场景会用到它。</p>
+<h2>能力域四：多条件触发——不只是"时间"</h2>
+<p>免费版只支持时间条件的 Schedules，但 Premium 扩展到了位置、Wi-Fi、用量上限、打开次数四种触发方式。</p>
+<p>举几个组合玩法：到公司自动开启专注拦截（位置触发 + Wi-Fi 触发）；抖音单日使用超过 2 小时自动拦掉（用量上限触发）；某个 App 一天打开超过 10 次就触发拦截（打开次数触发）。时间、位置、网络、行为数据——四种条件自由组合，能匹配非常具体的使用场景。</p>
+<h2>能力域五：品牌系统适配——被后台杀掉怎么办</h2>
+<p>很多 Android 用户都遇到过：App 明明开着，过了一段时间发现进程被杀了，拦截自然也不工作了。小米 MIUI、华为 EMUI、OPPO ColorOS 这些国产 ROM 的后台管理策略尤其激进。</p>
+<p>AppBlock 的 Troubleshooting 页面会逐项检查核心权限（Usage Access、Accessibility Service、悬浮窗、电池优化白名单、自启动），有问题直接跳转修复。但这只是第一步——要让拦截真正"不被打扰"，你还需要把 AppBlock 加入品牌系统的"后台锁定"列表和"电池优化白名单"。不同品牌的操作路径不一样，文档站里有针对小米、华为、OPPO、vivo 的详细清单，按品牌对号入座就行。</p>
+<p>拦截突然失效时，90% 的原因是权限被回收或进程被杀。按 Troubleshooting 逐项核对，基本能在 5 分钟内定位。实在不行还有最后一招——重启手机，刷新所有系统权限、重建无障碍服务、清理后台缓存，相当一部分"权限看起来都对但拦截就是不工作"的问题，重启一次就好。</p>
+<h2>短板也要说</h2>
+<p>AppBlock 不是完美的。有一个官方已确认但难以复现的 bug——在某些设备上，定时计划到期或暂停后，原本被拦截的应用仍然显示屏蔽页面，不会自动解除。症状是计划列表显示已停止，但打开被拦的应用，屏蔽页面还在。重启手机是目前最稳定的临时解法。</p>
+<p>免费版的功能限制也很明确——严格模式、板块级拦截、网站拦截、Allowlist、多条件触发这些进阶功能全部锁在 Premium 后面。如果你的干扰源就是 1–2 个应用、时间条件够用、对自己意志力有信心，那免费版完全够。但只要你想加一点颗粒度或者加一层防反悔，Premium 基本是必选项。</p>
+<p>还有一个隐性成本：AppBlock 需要五个核心权限才能正常工作，品牌系统后台还需要额外加白名单。设置的前期工作量比"装个 App 就完事"要大一些，尤其是第一次弄的时候。</p>
+<h2>什么样的人该用它</h2>
+<p><strong>备考党 / 考研党</strong> 应该重点关注 Timer 定时锁定 + 严格模式。把娱乐 App 整体封存 2 周，没有提前解锁按钮，比靠自己意志力靠谱太多。</p>
+<p><strong>家长</strong> 应该重点关注 Approval 担保人审批 + Allowlist 白名单模式。自己当担保人，孩子想解严格模式必须经你批准；配合白名单模式，手机上只留学习需要的 App。</p>
+<p><strong>数字排毒爱好者</strong> 应该重点关注板块级拦截 + Allowlist。不用删 App，把 Reels/Shorts/Stories 这些上瘾重灾区掐掉，再用白名单把手机精简到只剩 10 个以内的核心 App，体验一次真正的极简数字生活。</p>
+<hr>
+<h2>怎么获取和进阶玩法</h2>
+<p>想快速上手的话，直接去<a href="https://appblock.fewa.skin/download.html" target="_blank" rel="noopener">下载页</a>拿安装包就行。不过 AppBlock 的能力远不止"装上用"——五个核心权限的正确配置、品牌系统的后台锁定、严格模式六档解锁的选择、板块级拦截的颗粒度调整，这些都需要花一点时间吃透。完整的 Troubleshooting 检查清单、品牌适配指南、功能详解都在<a href="https://appblock-docs.pages.dev/" target="_blank" rel="noopener">文档站</a>里，按专题查阅效率最高。</p>
+<p>相关资料我同步到了三个仓库：<a href="https://github.com/alipymanbu/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/appblock" target="_blank" rel="noopener">GitHub 主库</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/appblock" target="_blank" rel="noopener">Gitee 镜像</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E5%AE%98%E7%BD%91%E7%89%88/appblock" target="_blank" rel="noopener">GitCode 同步</a>，代码和文档内容与本地保持一致，方便不同偏好的开发者查阅和协作。</p>
+  </div>
+</article>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/apksigner.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">Apksigner 上手：小白也能在手机上给 APK 签名的五分钟教程</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/campus-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">Campus 快问快答：把这张校园地图聊明白要多久</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

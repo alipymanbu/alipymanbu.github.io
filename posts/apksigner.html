@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e14">
+  <title>Apksigner 上手：小白也能在手机上给 APK 签名的五分钟教程 · 老杨技术栈</title>
+  
+<meta name="description" content="第一次接触 APK 签名？完全不懂也没关系。这篇带你从零开始，用 Apksigner 在手机上跑通一次完整签名流程，顺手解决最常见的三个疑问。">
+<link rel="canonical" href="https://alipymanbu.github.io/posts/apksigner.html">
+<meta property="og:site_name" content="老杨技术栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apksigner 上手：小白也能在手机上给 APK 签名的五分钟教程">
+<meta property="og:description" content="第一次接触 APK 签名？完全不懂也没关系。这篇带你从零开始，用 Apksigner 在手机上跑通一次完整签名流程，顺手解决最常见的三个疑问。">
+<meta property="og:url" content="https://alipymanbu.github.io/posts/apksigner.html">
+<meta property="og:locale" content="zh_CN">
+
+<meta property="og:image" content="https://alipymanbu.github.io/images/apksigner/sign-tab.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alipymanbu.github.io/images/apksigner/sign-tab.jpg">
+
+<meta name="twitter:title" content="Apksigner 上手：小白也能在手机上给 APK 签名的五分钟教程">
+<meta name="twitter:description" content="第一次接触 APK 签名？完全不懂也没关系。这篇带你从零开始，用 Apksigner 在手机上跑通一次完整签名流程，顺手解决最常见的三个疑问。">
+<meta property="article:published_time" content="2026-10-16">
+<meta property="article:author" content="老杨">
+
+  <meta name="author" content="老杨">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="老杨技术栈" href="../atom.xml">
+  <link rel="stylesheet" href="../style.css">
+  
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "author": {"@type": "Person", "name": "\u8001\u6768"}, "dateModified": "2026-10-16", "datePublished": "2026-10-16", "description": "\u7b2c\u4e00\u6b21\u63a5\u89e6 APK \u7b7e\u540d\uff1f\u5b8c\u5168\u4e0d\u61c2\u4e5f\u6ca1\u5173\u7cfb\u3002\u8fd9\u7bc7\u5e26\u4f60\u4ece\u96f6\u5f00\u59cb\uff0c\u7528 Apksigner \u5728\u624b\u673a\u4e0a\u8dd1\u901a\u4e00\u6b21\u5b8c\u6574\u7b7e\u540d\u6d41\u7a0b\uff0c\u987a\u624b\u89e3\u51b3\u6700\u5e38\u89c1\u7684\u4e09\u4e2a\u7591\u95ee\u3002", "headline": "Apksigner \u4e0a\u624b\uff1a\u5c0f\u767d\u4e5f\u80fd\u5728\u624b\u673a\u4e0a\u7ed9 APK \u7b7e\u540d\u7684\u4e94\u5206\u949f\u6559\u7a0b", "image": ["https://alipymanbu.github.io/images/apksigner/sign-tab.jpg"], "inLanguage": "zh-CN", "mainEntityOfPage": {"@id": "https://alipymanbu.github.io/posts/apksigner.html", "@type": "WebPage"}, "publisher": {"@type": "Person", "name": "\u8001\u6768"}, "url": "https://alipymanbu.github.io/posts/apksigner.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "item": "https://alipymanbu.github.io/", "name": "\u9996\u9875", "position": 1}, {"@type": "ListItem", "item": "https://alipymanbu.github.io/category/download-official/", "name": "\u4e0b\u8f7d\u5b98\u7f51", "position": 2}, {"@type": "ListItem", "name": "Apksigner \u4e0a\u624b\uff1a\u5c0f\u767d\u4e5f\u80fd\u5728\u624b\u673a\u4e0a\u7ed9 APK \u7b7e\u540d\u7684\u4e94\u5206\u949f\u6559\u7a0b", "position": 3}]}</script>
+
+
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html"><span class="logo-mark">▍</span>老杨技术栈</a>
+    <nav class="site-nav" aria-label="站内导航">
+      <a href="../index.html">首页</a>
+      <a href="../archive.html">归档</a>
+      <a href="../about.html">关于</a>
+      <a href="../atom.xml" class="rss">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<article class="post">
+  <nav class="crumbs" aria-label="面包屑">
+    <a href="../index.html">首页</a><span>/</span>
+    <a href="../category/download-official/index.html">下载官网</a><span>/</span>
+    <span class="crumb-cur">Apksigner 上手：小白也能在手机上给 APK 签名的五分钟教程</span>
+  </nav>
+  <header class="post-head">
+    <h1 class="post-title">Apksigner 上手：小白也能在手机上给 APK 签名的五分钟教程</h1>
+    <div class="post-meta">
+      <a class="chip chip-4" href="../category/download-official/index.html">下载官网</a>
+      <time datetime="2026-10-16">2026-10-16</time>
+      <span class="dot">·</span><span>约 7 分钟</span>
+      <span class="dot">·</span><span>老杨</span>
+    </div>
+    <p class="post-lede">第一次接触 APK 签名？完全不懂也没关系。这篇带你从零开始，用 Apksigner 在手机上跑通一次完整签名流程，顺手解决最常见的三个疑问。</p>
+  </header>
+  <div class="prose">
+<p>这篇能带你从完全不懂 APK 签名到用 Apksigner 跑通第一次签名，不需要任何基础。</p>
+<h2>它到底是干嘛的——一个生活化类比</h2>
+<p>想象你寄快递，包裹上要贴一张"发货地址和签名"的标签，快递公司收到后核对签名，确认包裹没被中途拆过换过。Apksigner 就是这个"贴标签 + 核对标签"的工具，只不过它处理的不是实体包裹，而是安卓应用的 APK 文件。</p>
+<p>安卓系统在安装任何应用前都会检查这张"电子签名标签"——签名有效、和原厂一致，才允许安装。那些"应用未安装""解析包错误"里，有不少就是签名对不上导致的。Apksigner 把这套原本只能在电脑上、需要敲命令行的事，搬到了手机界面上，点几下就能完成。</p>
+<p>作为在安卓圈子里口碑不错的签名工具，它的资源站我整理在 <a href="https://apksigner.boop.uno" target="_blank" rel="noopener">Apksigner 推广站</a>，有更详细的功能介绍和版本对照。</p>
+<h2>五分钟上手：从下载安装到第一次跑通</h2>
+<h3>第一步：拿到安装包</h3>
+<p>先去下载。你可以在应用商店搜它的包名 <code>com.haibison.apksigner</code>，或者直接从 <a href="https://apksigner.boop.uno/download.html" target="_blank" rel="noopener">下载页</a> 拿网盘版。我个人倾向网盘版——固定版本，不会偷偷自动更新导致行为变了都不知道，而且能核对版本真伪。</p>
+<p>拿到安装包后安装好，打开应用。你会看到底部三个标签页：<strong>应用程序</strong>、<strong>签名</strong>、<strong>验证</strong>。先别慌，我们只用到中间那个"签名"。</p>
+<p><img src="../images/apksigner/sign-tab.jpg" alt="签名标签页的样子" loading="lazy"></p>
+<h3>第二步：准备密钥库</h3>
+<p>签名需要一把"电子印章"——就是密钥库文件（keystore）。这是你唯一需要提前准备的东西：</p>
+<ul><li>如果你之前在电脑上用 Java 的 <code>keytool</code> 生成过，好消息，免费版就能直接导入。</li><li>如果没有，免费版不能在手机上从零生成密钥库，得用电脑工具先生成一个再导进来。别担心，电脑上生成一次就够了，以后一直用这一个。</li></ul>
+<p>导入路径也简单：在签名页点"选择密钥库文件"，找到你存的 <code>.jks</code> 或 <code>.keystore</code> 文件，输入密码就行。</p>
+<h3>第三步：选 APK 并签名</h3>
+<p>密钥库就位后，点"选择 APK 文件"——可以从文件管理器里挑，也可以用应用列表里已经安装的应用直接签。选好后页面上会显示 APK 的包名、版本号，再点"签名"按钮，等几秒。</p>
+<p><img src="../images/apksigner/apps-tab.jpg" alt="应用程序标签页——也可以直接给已安装应用签名" loading="lazy"></p>
+<p>签名成功会弹一个"签名完成"的提示，输出 APK 默认加了 <code>-signed</code> 后缀，和原文件放同一目录。搞定——这就是你签的第一个包了。</p>
+<h2>上手后先玩这三个功能</h2>
+<p>签完第一个包别急着关掉，花十分钟把下面三个功能摸一遍，它们覆盖了新手最常碰到的场景。</p>
+<h3>功能一：验证已安装应用的签名</h3>
+<p>手机上装了一堆从论坛、网盘、群里找来的应用？这个功能帮你快速过一遍它们有没有被人调包。</p>
+<p>切到底部<strong>验证</strong>标签页，悬浮按钮展开选"验证应用程序"，在列表里挑可疑的那些。结果会告诉你：签名有效且匹配原厂 → 放心用；签名对不上原厂 → 大概率是重打包的；验证报错 → 包本身有问题。</p>
+<p><img src="../images/apksigner/verify-tab.jpg" alt="验证标签页" loading="lazy"></p>
+<p>你会发现来路不太正的应用，签名真的对不上——这个功能比杀毒软件还好用，因为改签名是重打包的必经步骤，一查一个准。</p>
+<h3>功能二：换签名重签</h3>
+<p>有时候你拿到一个别人签过名的 APK，想用自己的密钥库重新签。Apksigner 在签名页面有个"删除原始签名"的开关，勾上再点签名，就会把原签名清掉后用你的密钥库重签。</p>
+<p>这个功能对二次开发、测试分发特别方便——团队里每个人都用自己的密钥库签自己的测试包，出问题了一眼就能追溯到是谁签的。</p>
+<h3>功能三：Key Sender 免手输密码</h3>
+<p>如果你签名频率高（一天好几次甚至批量签），每次输入密钥库长密码是真的烦。而且在公共场合手输密码有被瞟到的风险。</p>
+<p>开发者给 Apksigner 配了一个同门小工具叫 <strong>Key Sender</strong>，密码在两个应用之间直接传值，不用经过键盘手打。密码长度再长、有再多特殊字符都不怕输错，而且传值过程屏幕上不显示明文。签名频率低的话可以先不装，但如果你日常要批量重签，这个效率件用了你就回不去了。</p>
+<h2>小白的三个常见疑问</h2>
+<h3>Q1：免费版够用吗？要不要买 Pro？</h3>
+<p>签名和验证全免费，足够覆盖日常使用。免费版唯一的两个限制是：<strong>不能在手机上新建密钥库</strong>（得用电脑先生成），以及主题不能切换。判断要不要付费的标准只有一个——你是否需要在手机上从零造一个密钥库。不需要的话，免费版完全够用。</p>
+<h3>Q2：签完名还是装不上，怎么回事？</h3>
+<p>最常见的原因有三个：密钥库密码输错了但还签成功了（签名损坏）、手机上已经装了同包名但不同签名的旧应用（先卸载旧的再装）、或者 APK 本身有问题。先用 Apksigner 的验证功能验一下签好的包，验证通过再装基本就不会有问题了。</p>
+<h3>Q3：密钥库丢了怎么办？</h3>
+<p>这是最痛的坑——密钥库一旦丢了，以后同一个包名的应用就再也没法更新安装了，只能改包名。所以一定要备份：把密钥库文件复制到多个安全的地方（网盘、U盘、电脑硬盘至少三份），密码单独记在密码管理器里，<strong>不要和密钥库文件放一起</strong>。开发者在抽屉菜单里提供了"导出密钥库备份"功能，定期点一下就行。</p>
+<p><img src="../images/apksigner/drawer-menu.jpg" alt="抽屉菜单里有导出备份、版本更新等常用入口" loading="lazy"></p>
+<h2>写在最后</h2>
+<p>恭喜你——到这里你已经在手机上完成了一次完整的 APK 签名流程，也掌握了两个最实用的辅助功能。进阶方向的话，可以去 <a href="https://apksigner.pages.dev/" target="_blank" rel="noopener">Apksigner 文档站</a> 看看版本 7.3.10 的档案数据核对、v2/v3/v4 签名方案的区别，以及更多场景化的实战案例。</p>
+<p>相关资料我同步到了三个仓库，方便不同偏好的读者查阅：主库放在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Apksigner" target="_blank" rel="noopener">GitHub</a>，镜像在 <a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Apksigner" target="_blank" rel="noopener">Gitee</a>，同步一份在 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Apksigner" target="_blank" rel="noopener">GitCode</a>。签名这件事，对新手来说门槛真的不高——动手跑一次，剩下的就是熟能生巧了。</p>
+  </div>
+</article>
+
+<nav class="post-nav" aria-label="相邻文章">
+  
+  <a class="pn-box pn-prev" href="../posts/1panel-docs.html">
+    <span class="pn-label">‹ 较早一篇</span>
+    <span class="pn-title">从一键安装到整机快照：1Panel 到底覆盖了服务器运维的哪几条线</span>
+  </a>
+  
+  
+  <a class="pn-box pn-next" href="../posts/appblock-docs.html">
+    <span class="pn-label">较新一篇 ›</span>
+    <span class="pn-title">AppBlock 深度盘点——从基础拦截到防破防严格模式，一套能让你真正放下手机的工具链</span>
+  </a>
+  
+</nav>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-about">
+      <p class="footer-logo"><span class="logo-mark">▍</span>老杨技术栈</p>
+      <p class="footer-text">老杨技术栈 · 记录每一个用过的软件</p>
+    </div>
+    <div class="footer-col">
+      <h3>// 站点</h3>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="../archive.html">归档</a></li>
+        <li><a href="../about.html">关于</a></li>
+        <li><a href="../atom.xml">RSS 订阅</a></li>
+        <li><a href="../sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bar">
+    <p>© 2026 老杨 · 老杨技术栈</p>
+    <p class="mono">Built with Markdown · Hosted on GitHub Pages</p>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+(function () {
+  var b = document.getElementById('toTop');
+  if (!b) return;
+  function f() { b.classList.toggle('show', window.scrollY > 600); }
+  window.addEventListener('scroll', f, { passive: true });
+  f();
+  b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>
