@@ -90,7 +90,7 @@
 <p>手机上装了一堆从论坛、网盘、群里找来的应用？这个功能帮你快速过一遍它们有没有被人调包。</p>
 <p>切到底部<strong>验证</strong>标签页，悬浮按钮展开选"验证应用程序"，在列表里挑可疑的那些。结果会告诉你：签名有效且匹配原厂 → 放心用；签名对不上原厂 → 大概率是重打包的；验证报错 → 包本身有问题。</p>
 <p><img src="../images/apksigner/verify-tab.jpg" alt="验证标签页" loading="lazy"></p>
-<p>你会发现来路不太正的应用，签名真的对不上——这个功能比杀毒软件还好用，因为改签名是重打包的必经步骤，一查一个准。</p>
+<p>你会发现来路不太正的应用，签名真的对不上——这个功能比杀毒软件还好用，因为改签名是重打包的必经步骤，一查一个准。重打包的常见特征和验证结果的完整判读，<a href="https://apksigner.pages.dev/" target="_blank" rel="noopener">Apksigner 文档站</a>里整理了一页对照表。</p>
 <h3>功能二：换签名重签</h3>
 <p>有时候你拿到一个别人签过名的 APK，想用自己的密钥库重新签。Apksigner 在签名页面有个"删除原始签名"的开关，勾上再点签名，就会把原签名清掉后用你的密钥库重签。</p>
 <p>这个功能对二次开发、测试分发特别方便——团队里每个人都用自己的密钥库签自己的测试包，出问题了一眼就能追溯到是谁签的。</p>
@@ -106,7 +106,7 @@
 <p>这是最痛的坑——密钥库一旦丢了，以后同一个包名的应用就再也没法更新安装了，只能改包名。所以一定要备份：把密钥库文件复制到多个安全的地方（网盘、U盘、电脑硬盘至少三份），密码单独记在密码管理器里，<strong>不要和密钥库文件放一起</strong>。开发者在抽屉菜单里提供了"导出密钥库备份"功能，定期点一下就行。</p>
 <p><img src="../images/apksigner/drawer-menu.jpg" alt="抽屉菜单里有导出备份、版本更新等常用入口" loading="lazy"></p>
 <h2>写在最后</h2>
-<p>恭喜你——到这里你已经在手机上完成了一次完整的 APK 签名流程，也掌握了两个最实用的辅助功能。进阶方向的话，可以去 <a href="https://apksigner.pages.dev/" target="_blank" rel="noopener">Apksigner 文档站</a> 看看版本 7.3.10 的档案数据核对、v2/v3/v4 签名方案的区别，以及更多场景化的实战案例。</p>
+<p>恭喜你——到这里你已经在手机上完成了一次完整的 APK 签名流程，也掌握了两个最实用的辅助功能。进阶方向的话，文档站里还有版本 7.3.10 的档案数据核对、v2/v3/v4 签名方案的区别，以及更多场景化的实战案例。</p>
 <p>相关资料我同步到了三个仓库，方便不同偏好的读者查阅：主库放在 <a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Apksigner" target="_blank" rel="noopener">GitHub</a>，镜像在 <a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Apksigner" target="_blank" rel="noopener">Gitee</a>，同步一份在 <a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%8B%E8%BD%BD%E5%AE%98%E7%BD%91/Apksigner" target="_blank" rel="noopener">GitCode</a>。签名这件事，对新手来说门槛真的不高——动手跑一次，剩下的就是熟能生巧了。</p>
   </div>
 </article>

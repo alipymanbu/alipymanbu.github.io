@@ -74,7 +74,7 @@
 <p>QEMU 是唯一一个能做全架构到全架构映射的方案。它的 TCG（Tiny Code Generator）把 Guest 指令动态翻译成宿主指令，虽然同架构下性能不如硬件加速，但覆盖了其他工具根本不存在的场景。比如你想在一台 Intel Mac 上模拟 ARM Cortex-M 开发板跑固件，或者在 Apple Silicon 上调试 x86 Linux 的内核模块——没有 QEMU 你根本没地方下手。</p>
 <h3>命令行级灵活性：一行参数就能造出想要的硬件</h3>
 <p>VirtualBox 和 VMware 的 GUI 让配置虚拟机变成了点点点，但代价是<strong>你只能用界面给你的那些选项</strong>。QEMU 反其道而行之——把所有东西都暴露成命令行参数：CPU 拓扑可以精确到核数/线程数/socket 数、磁盘控制器可选 virtio-blk/virtio-scsi/ide/ahci、网卡可以绑 macvtap/bridge/hostfwd、甚至可以给虚拟机挂一个自定义的 NUMA 拓扑。</p>
-<p>我印象最深的是用 QEMU 配出一个和生产服务器完全一致的 NUMA 拓扑做性能压测——<code>-smp 8,sockets=2,cores=2,threads=2 -numa node,cpus=0-1,mem=4G</code> 几行参数搞定，用 GUI 工具你根本找不到对应入口。如果你需要脚本化批量创建虚拟机（CI/CD 里跑测试套件、大规模嵌入式固件回归），QEMU 的命令行接口是天然友好的，写个 for 循环就能批量拉起几十台 Guest。</p>
+<p>我印象最深的是用 QEMU 配出一个和生产服务器完全一致的 NUMA 拓扑做性能压测——<code>-smp 8,sockets=2,cores=2,threads=2 -numa node,cpus=0-1,mem=4G</code> 几行参数搞定，用 GUI 工具你根本找不到对应入口。如果你需要脚本化批量创建虚拟机（CI/CD 里跑测试套件、大规模嵌入式固件回归），QEMU 的命令行接口是天然友好的，写个 for 循环就能批量拉起几十台 Guest——参数手册和批量脚本的成套示例，<a href="https://qemu-docs.pages.dev/" target="_blank" rel="noopener">官方文档站</a>里都有。</p>
 <h3>原生 Apple Silicon 支持：M 系列 Mac 上唯一完整的虚拟化方案</h3>
 <p>这一点对 Mac 用户来说是刚性需求。Apple 从 Intel 转 ARM 之后，VirtualBox 至今没放出 M 系列原生版本，VMware 虽然有 beta 但功能砍了不少（不能虚拟化其他 ARM 系统、嵌套虚拟化残缺）。QEMU 利用 macOS 自带的 HVF（Hypervisor Framework）做硬件加速，不仅能流畅跑 ARM Guest Linux，还能用 TCG 跑 x86 软件做 Rosetta 2 之外的补充。</p>
 <p>如果你是苹果架构的开发者、或者公司给配的是 M 系列 Mac 但要跑 ARM Linux 测试环境，QEMU 是目前唯一不打折的选择。想快速入门的话可以直接去它的<a href="https://qemu.ggcd.online" target="_blank" rel="noopener">推广站</a>拉最新版，Windows 用户别忘了启用 WHPX 加速（家庭版也能用），下载入口也在那边的<a href="https://qemu.ggcd.online/download.html" target="_blank" rel="noopener">下载页</a>。</p>
@@ -92,7 +92,7 @@
 <h3>不建议选的场景</h3>
 <p>你是<strong>普通桌面用户</strong>，只想装个 Ubuntu 试试或者偶尔跑个 Windows——用 VirtualBox 或者 Hyper-V，简单省心。你在虚拟机里<strong>跑 3D 图形密集型应用</strong>——VMware Workstation 的 3D 加速是目前最好的。你是<strong>Windows 服务器管理员</strong>，需要和 AD、集群、HA 深度集成——Hyper-V 已经包含在 Windows 许可里，没必要绕一圈。</p>
 <h3>折中方案</h3>
-<p>如果你认同 QEMU 的理念但不想全敲命令，Linux 上装个 <strong>virt-manager</strong> 就等于给 QEMU 套了 VirtualBox 级别的 GUI。它能帮你生成 XML 配置、管理快照、可视化网络拓扑，需要精细控制的时候再切换到命令行模式——两边都占。进阶用法和参数调优可以直接查它的<a href="https://qemu-docs.pages.dev/" target="_blank" rel="noopener">官方文档站</a>，覆盖了从基础安装到性能调优的完整链路。</p>
+<p>如果你认同 QEMU 的理念但不想全敲命令，Linux 上装个 <strong>virt-manager</strong> 就等于给 QEMU 套了 VirtualBox 级别的 GUI。它能帮你生成 XML 配置、管理快照、可视化网络拓扑，需要精细控制的时候再切换到命令行模式——两边都占。进阶用法和参数调优直接翻文档站就行，覆盖了从基础安装到性能调优的完整链路。</p>
 <h2>最后一句</h2>
 <p>虚拟化领域的分工其实很清晰：VirtualBox 做易用性的底线、VMware 做商业性能的上限、Hyper-V 做 Windows 生态的原生集成、QEMU 做<strong>所有其他工具做不了的事</strong>。它不是最好用的，但它是最不可替代的。如果你需要跨架构、Apple Silicon 原生支持、或者命令行级的硬件控制权，QEMU 就是你的唯一解——而且它的 GPL 许可和跨平台特性意味着你一旦上手，在任何主流操作系统上都能用。</p>
 <p>相关资料我同步到了三个仓库，方便随时查阅和更新：<a href="https://github.com/alipymanbu/APK/tree/main/APP/qemu" target="_blank" rel="noopener">GitHub 主库</a>存着完整的文档源码和示例脚本，<a href="https://gitee.com/manbu1103/APK/tree/main/APP/qemu" target="_blank" rel="noopener">Gitee 镜像</a>做国内加速访问，<a href="https://gitcode.com/qq352325405/APK/tree/main/APP/qemu" target="_blank" rel="noopener">GitCode 同步</a>则面向开发者社区。三个仓库的内容保持一致，选哪个取决于你的网络环境和偏好。</p>

@@ -90,13 +90,13 @@
 <h2>坑五：安装位置选了 Program Files——自找麻烦</h2>
 <p><strong>症状</strong>：游戏装到一半卡在"准备安装"，或者更新时报"拒绝访问"、"无法写入文件"。</p>
 <p><strong>原因</strong>：itch 客户端从设计上就是<strong>不需要管理员权限</strong>的。它默认把安装位置放在当前用户可写的目录（比如 <code>C:\Users\你的名字\AppData\Local\itch</code>），而不是 <code>Program Files</code>。你要是手动改到 Program Files，Windows 的 UAC 和权限管控就会跳出来搞你——装游戏、更新、删存档全要弹权限确认，有时候干脆静默失败。</p>
-<p><strong>解法</strong>：别手改默认路径，或者选个明确的用户目录（比如 <code>D:\Games\itch</code>）。项目文档里专门有一章讲安装位置管理，默认设置基本就是最省心的配置，别瞎动。</p>
+<p><strong>解法</strong>：别手改默认路径，或者选个明确的用户目录（比如 <code>D:\Games\itch</code>）。<a href="https://itch-docs.pages.dev/" target="_blank" rel="noopener">项目文档站</a>里专门有一章讲安装位置管理，默认设置基本就是最省心的配置，别瞎动。</p>
 <p><img src="../images/itch-docs/faq-install-locations.png" alt="安装位置设置界面" loading="lazy"></p>
 <h2>防坑清单（速查版）</h2>
 <p>说了这么多，把要点整理成一个清单，下次装或出问题时对着查就行：</p>
 <ol><li><strong>系统先确认</strong>：Windows 7 以下别装，XP/Vista 直接用网页版</li><li><strong>杀毒白名单</strong>：第一次启动如果被拦，先加排除项，别慌着删</li><li><strong>Linux 补 GTK3</strong>：<code>apt install libgtk-3-0</code>，一条命令搞定</li><li><strong>网页版不玩参数</strong>：HTML5 游戏的启动选项别折腾，换原生版</li><li><strong>安装路径别碰 Program Files</strong>：默认路径或自定义用户目录，省心最重要</li></ol>
 <p>其实 itch 客户端整体还是挺良心的——轻量、干净、没广告，自动更新也挺稳。踩的这些坑大多是"小众场景默认你知道"的那种，提前有个概念就不会慌。装完跑起来之后，日常用基本没什么幺蛾子了。</p>
-<p>想深入了解功能细节的话，<a href="https://itch-docs.pages.dev/" target="_blank" rel="noopener">itch 文档站</a> 有完整的使用手册，从系统要求到开发者视角都覆盖了。我写这篇的时候也参考了上面不少 FAQ 内容，实际排障时直接翻文档站比瞎搜靠谱。</p>
+<p>想深入了解功能细节的话，文档站有完整的使用手册，从系统要求到开发者视角都覆盖了。我写这篇的时候也参考了上面不少 FAQ 内容，实际排障时直接翻文档比瞎搜靠谱。</p>
 <p>相关资料我同步到了三个仓库：<a href="https://github.com/alipymanbu/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/itch" target="_blank" rel="noopener">GitHub 主库</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/itch" target="_blank" rel="noopener">Gitee 镜像</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E6%89%8B%E6%9C%BA%E7%89%88/itch" target="_blank" rel="noopener">GitCode 同步</a>，里面有完整的软件文档和配置说明，欢迎交流。</p>
   </div>
 </article>
