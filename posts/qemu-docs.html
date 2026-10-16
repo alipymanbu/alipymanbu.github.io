@@ -74,10 +74,10 @@
 <p>QEMU 是唯一一个能做全架构到全架构映射的方案。它的 TCG（Tiny Code Generator）把 Guest 指令动态翻译成宿主指令，虽然同架构下性能不如硬件加速，但覆盖了其他工具根本不存在的场景。比如你想在一台 Intel Mac 上模拟 ARM Cortex-M 开发板跑固件，或者在 Apple Silicon 上调试 x86 Linux 的内核模块——没有 QEMU 你根本没地方下手。</p>
 <h3>命令行级灵活性：一行参数就能造出想要的硬件</h3>
 <p>VirtualBox 和 VMware 的 GUI 让配置虚拟机变成了点点点，但代价是<strong>你只能用界面给你的那些选项</strong>。QEMU 反其道而行之——把所有东西都暴露成命令行参数：CPU 拓扑可以精确到核数/线程数/socket 数、磁盘控制器可选 virtio-blk/virtio-scsi/ide/ahci、网卡可以绑 macvtap/bridge/hostfwd、甚至可以给虚拟机挂一个自定义的 NUMA 拓扑。</p>
-<p>我印象最深的是用 QEMU 配出一个和生产服务器完全一致的 NUMA 拓扑做性能压测——<code>-smp 8,sockets=2,cores=2,threads=2 -numa node,cpus=0-1,mem=4G</code> 几行参数搞定，用 GUI 工具你根本找不到对应入口。如果你需要脚本化批量创建虚拟机（CI/CD 里跑测试套件、大规模嵌入式固件回归），QEMU 的命令行接口是天然友好的，写个 for 循环就能批量拉起几十台 Guest——参数手册和批量脚本的成套示例，<a href="https://qemu-docs.pages.dev/" target="_blank" rel="noopener">官方文档站</a>里都有。</p>
+<p>我印象最深的是用 QEMU 配出一个和生产服务器完全一致的 NUMA 拓扑做性能压测——<code>-smp 8,sockets=2,cores=2,threads=2 -numa node,cpus=0-1,mem=4G</code> 几行参数搞定，用 GUI 工具你根本找不到对应入口。如果你需要脚本化批量创建虚拟机（CI/CD 里跑测试套件、大规模嵌入式固件回归），QEMU 的命令行接口是天然友好的，写个 for 循环就能批量拉起几十台 Guest——参数手册和批量脚本的成套示例，<a href="https://qemu-docs.pages.dev/" target="_blank" rel="noopener">QEMU 文档</a>里都有。</p>
 <h3>原生 Apple Silicon 支持：M 系列 Mac 上唯一完整的虚拟化方案</h3>
 <p>这一点对 Mac 用户来说是刚性需求。Apple 从 Intel 转 ARM 之后，VirtualBox 至今没放出 M 系列原生版本，VMware 虽然有 beta 但功能砍了不少（不能虚拟化其他 ARM 系统、嵌套虚拟化残缺）。QEMU 利用 macOS 自带的 HVF（Hypervisor Framework）做硬件加速，不仅能流畅跑 ARM Guest Linux，还能用 TCG 跑 x86 软件做 Rosetta 2 之外的补充。</p>
-<p>如果你是苹果架构的开发者、或者公司给配的是 M 系列 Mac 但要跑 ARM Linux 测试环境，QEMU 是目前唯一不打折的选择。想快速入门的话可以直接去它的<a href="https://qemu.ggcd.online" target="_blank" rel="noopener">推广站</a>拉最新版，Windows 用户别忘了启用 WHPX 加速（家庭版也能用），下载入口也在那边的<a href="https://qemu.ggcd.online/download.html" target="_blank" rel="noopener">下载页</a>。</p>
+<p>如果你是苹果架构的开发者、或者公司给配的是 M 系列 Mac 但要跑 ARM Linux 测试环境，QEMU 是目前唯一不打折的选择。想快速入门的话可以直接去它的<a href="https://qemu.ggcd.online" target="_blank" rel="noopener">官网</a>拉最新版，Windows 用户别忘了启用 WHPX 加速（家庭版也能用），安装包就在<a href="https://qemu.ggcd.online/download.html" target="_blank" rel="noopener">QEMU 下载</a>页面。</p>
 <h2>它为这些优势付出了什么</h2>
 <h3>上手门槛陡高，零 GUI 默认劝退新人</h3>
 <p>QEMU 本身不带图形界面。virt-manager 是第三方项目才给 QEMU 套了个完整的 GUI，但 Windows 和 macOS 上 virt-manager 的体验远不如 Linux——macOS 上基本没成熟端口，Windows 上能装但配置繁琐。纯命令行的话，光 <code>-accel kvm -cpu host -smp 4 -m 8G</code> 这些参数就要记一阵，更别说网络桥接、端口转发、磁盘拓扑这些高级玩法全靠翻手册拼参数。</p>

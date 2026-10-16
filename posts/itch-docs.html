@@ -67,7 +67,7 @@
   </header>
   <div class="prose">
 <p>第一次装 itch 客户端时我以为就是个"独立游戏 Steam"——双击安装、登录、找游戏，完事。结果前前后后踩了好几个坑，从装不上到打不开再到更新报错，折腾了快半小时才跑起来。今天把这些坑整理出来，给新来的朋友省点时间。</p>
-<p>先简单说下这东西是什么：itch 是 itch.io 官方的桌面客户端，itch.io 本身是独立游戏开发者的作品分发平台——类似 Steam 但更开放，很多 indie 开发者只在这里首发。客户端的定位就是帮你管 itch.io 上的游戏库，支持自动更新、离线玩、HTML5 网页游戏本地化这些功能。想看更多功能介绍可以去 <a href="https://itch.ggcd.uno" target="_blank" rel="noopener">itch 推广站</a> 翻翻。</p>
+<p>先简单说下这东西是什么：itch 是 itch.io 官方的桌面客户端，itch.io 本身是独立游戏开发者的作品分发平台——类似 Steam 但更开放，很多 indie 开发者只在这里首发。客户端的定位就是帮你管 itch.io 上的游戏库，支持自动更新、离线玩、HTML5 网页游戏本地化这些功能。想看更多功能介绍可以去 <a href="https://itch.ggcd.uno" target="_blank" rel="noopener">itch 官网</a> 翻翻。</p>
 <h2>坑一：双击安装包没反应——你的系统版本可能不够</h2>
 <p><strong>症状</strong>：下载完安装包双击，要么弹个错误窗口说"不支持的操作系统"，要么干脆没反应、进程一闪就退。</p>
 <p><strong>原因</strong>：itch 客户端最低要求 Windows 7。对，你没看错——现在还有人在用 XP 或 Vista 吗？如果你是，那 itch 从根上就装不了。官方 FAQ 里这条被问爆了，我自己公司那台 2012 年的旧笔记本就是 Vista，折腾半天最后只能用网页版。</p>
@@ -76,7 +76,7 @@
 <h2>坑二：杀毒软件报毒拦截——这不是木马</h2>
 <p><strong>症状</strong>：安装到一半被 Windows Defender、360、火绒之类的弹框拦截，要么直接隔离要么阻止网络请求。</p>
 <p><strong>原因</strong>：itch 客户端本身是安全的，但它做的事情容易被杀软误判——它要联网下载游戏包、要在安装位置写文件、还要扫描本地游戏库。独立游戏分发平台的工具链经常被杀毒软件当成"未知程序"拦一下。我刚装完第一次启动就被 Defender 拦了，以为下到毒了，差点卸载。</p>
-<p><strong>解法</strong>：先确认你下的是 <a href="https://itch.ggcd.uno/download.html" target="_blank" rel="noopener">itch 下载页</a> 的官方客户端，不是第三方改的。然后把客户端加进杀毒软件的白名单或排除项里。Defender 的话进"病毒和威胁防护设置"→"排除项"→"添加文件夹"，把 itch 的安装目录加进去就好。</p>
+<p><strong>解法</strong>：先确认你从 <a href="https://itch.ggcd.uno/download.html" target="_blank" rel="noopener">itch 下载</a> 拿的是官方客户端，不是第三方改的。然后把客户端加进杀毒软件的白名单或排除项里。Defender 的话进"病毒和威胁防护设置"→"排除项"→"添加文件夹"，把 itch 的安装目录加进去就好。</p>
 <h2>坑三：Linux 上运行报 libgtk-3.so.0 找不到</h2>
 <p><strong>症状</strong>：在 Ubuntu、Debian 或 Fedora 上安装完，运行时终端报 <code>error while loading shared libraries: libgtk-3.so.0: cannot open shared object file</code>。</p>
 <p><strong>原因</strong>：itch 客户端用 GTK3 构建 GUI，但不是所有 Linux 发行版都默认带 GTK3 运行库——尤其是服务器版、精简版或某些 rolling release 发行版。我在一台最小化安装的 Debian 上遇到过，折腾了好一会儿才想起来装依赖。</p>
@@ -90,7 +90,7 @@
 <h2>坑五：安装位置选了 Program Files——自找麻烦</h2>
 <p><strong>症状</strong>：游戏装到一半卡在"准备安装"，或者更新时报"拒绝访问"、"无法写入文件"。</p>
 <p><strong>原因</strong>：itch 客户端从设计上就是<strong>不需要管理员权限</strong>的。它默认把安装位置放在当前用户可写的目录（比如 <code>C:\Users\你的名字\AppData\Local\itch</code>），而不是 <code>Program Files</code>。你要是手动改到 Program Files，Windows 的 UAC 和权限管控就会跳出来搞你——装游戏、更新、删存档全要弹权限确认，有时候干脆静默失败。</p>
-<p><strong>解法</strong>：别手改默认路径，或者选个明确的用户目录（比如 <code>D:\Games\itch</code>）。<a href="https://itch-docs.pages.dev/" target="_blank" rel="noopener">项目文档站</a>里专门有一章讲安装位置管理，默认设置基本就是最省心的配置，别瞎动。</p>
+<p><strong>解法</strong>：别手改默认路径，或者选个明确的用户目录（比如 <code>D:\Games\itch</code>）。<a href="https://itch-docs.pages.dev/" target="_blank" rel="noopener">itch 文档</a>里专门有一章讲安装位置管理，默认设置基本就是最省心的配置，别瞎动。</p>
 <p><img src="../images/itch-docs/faq-install-locations.png" alt="安装位置设置界面" loading="lazy"></p>
 <h2>防坑清单（速查版）</h2>
 <p>说了这么多，把要点整理成一个清单，下次装或出问题时对着查就行：</p>

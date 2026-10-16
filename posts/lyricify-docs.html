@@ -67,8 +67,8 @@
   </header>
   <div class="prose">
 <h2>为什么要认真盘点 Lyricify</h2>
-<p>Spotify 的歌词体验长期处于一个尴尬位置：官方原生界面的歌词显示极简、没有逐字对齐、不支持卡拉 OK 效果；而第三方方案要么质量参差不齐，要么只能覆盖 Windows 单一平台。Lyricify 在这个夹缝里做了一件事——<strong>用工程化的方式把歌词体验的天花板往上推了一大截</strong>。它的<a href="https://lyricify.fewz.tech" target="_blank" rel="noopener">主页</a>上写着一句定位——「把歌词体验做完整」，下文一个个能力域拆完你会发现这不是营销话术。</p>
-<p>它不是什么新玩具，已经迭代到第四代，Windows 桌面版与移动版的安装包在<a href="https://lyricify.fewz.tech/download.html" target="_blank" rel="noopener">官方下载页</a>都能拿到；GitHub 上标着"正在维护"，功能矩阵完整、架构清晰、社区活跃。对于任何一个重度 Spotify 用户来说，值得系统性盘点一遍——不是看它有多少功能，而是理解它为什么能把一个看似简单的"显示歌词"问题，做出好几个维度的产品设计。</p>
+<p>Spotify 的歌词体验长期处于一个尴尬位置：官方原生界面的歌词显示极简、没有逐字对齐、不支持卡拉 OK 效果；而第三方方案要么质量参差不齐，要么只能覆盖 Windows 单一平台。Lyricify 在这个夹缝里做了一件事——<strong>用工程化的方式把歌词体验的天花板往上推了一大截</strong>。它的<a href="https://lyricify.fewz.tech" target="_blank" rel="noopener">官网</a>上写着一句定位——「把歌词体验做完整」，下文一个个能力域拆完你会发现这不是营销话术。</p>
+<p>它不是什么新玩具，已经迭代到第四代，Windows 桌面版与移动版的安装包在<a href="https://lyricify.fewz.tech/download.html" target="_blank" rel="noopener">官方下载</a>都能拿到；GitHub 上标着"正在维护"，功能矩阵完整、架构清晰、社区活跃。对于任何一个重度 Spotify 用户来说，值得系统性盘点一遍——不是看它有多少功能，而是理解它为什么能把一个看似简单的"显示歌词"问题，做出好几个维度的产品设计。</p>
 <h2>能力域一：歌词显示的多种形态</h2>
 <p>Lyricify 4 最直观的印象就是"不把歌词只当文字"。它提供了至少三种显示模式，每一种对应不同的使用场景：</p>
 <ul><li><strong>桌面歌词</strong>：最基础的形态，窗口化悬浮在屏幕上，支持透明度、字体、颜色自定义。适合边看视频边听歌，或者多显示器上把歌词甩到副屏。</li><li><strong>灵动词岛（Dynamic Lyrics）</strong>：借鉴 macOS 灵动岛的交互，把歌词做成一个半透明的小浮窗，随时间推进、逐字淡入淡出。这个模式的妙处在于它不抢屏幕注意力，又能让人一眼瞄到歌词进度。</li><li><strong>Byland 模式</strong>：按专辑封面提取主色调做背景渐变，歌词跟随节奏脉动。更偏展示型，适合做直播背景或者放歌给朋友听的时候开着。</li></ul>
@@ -78,7 +78,7 @@
 <p>Lyricify 4 背后有一套容易被忽略但极其重要的架构设计——它<strong>同时维护两条独立的播放信息通道</strong>，根据场景自动选择最优路径：</p>
 <p><strong>通道一：Spotify Web API（云端）</strong>通过 OAuth 授权拿到 access token，向 Spotify 服务器请求当前播放状态。跨设备、跨平台都能工作（手机放歌电脑也能读到），但有 Premium 门槛（免费账号只能读不能写）、网络延迟、还有 429 限流的风险。</p>
 <p><strong>通道二：Media Session（本地）</strong>直接读 Windows 系统级的媒体控制接口。任何接入了这套接口的播放器——Spotify 桌面客户端、Apple Music、甚至 Chrome 浏览器里的 Spotify Web Player——都会把"正在播放什么、当前进度、能不能控制"暴露给系统。优点是零延迟、免费账号也能控制播放，缺点是只能管本机、只有播放器在运行时才有信号。</p>
-<p>两条通道互补的设计思路很清晰：Web API 负责跨设备场景，Media Session 负责本机低延迟场景。Lyricify 会智能判断当前哪条通道连接正常、哪条延迟更低，自动切换优先使用哪条。这套设计也是为什么很多免费账号用户依然能获得非常精准的歌词同步体验——两条通道各自的边界和切换逻辑，<a href="https://lyricify-docs.pages.dev/" target="_blank" rel="noopener">官方文档站</a>里有专门章节配图讲得很细。</p>
+<p>两条通道互补的设计思路很清晰：Web API 负责跨设备场景，Media Session 负责本机低延迟场景。Lyricify 会智能判断当前哪条通道连接正常、哪条延迟更低，自动切换优先使用哪条。这套设计也是为什么很多免费账号用户依然能获得非常精准的歌词同步体验——两条通道各自的边界和切换逻辑，<a href="https://lyricify-docs.pages.dev/" target="_blank" rel="noopener">Lyricify 文档</a>里有专门章节配图讲得很细。</p>
 <h2>能力域三：移动端的极简哲学</h2>
 <p>Lyricify Mobile 没有照搬桌面端的多模式思路，而是走了另一条路——<strong>整行滚动 + Apple Music 风格观感</strong>。</p>
 <p>它的界面比桌面端极简得多，只有一种模式：</p>
@@ -109,7 +109,7 @@
 <h2>什么样的人该用它</h2>
 <ul><li><strong>重度 Spotify 用户，追求最佳歌词体验</strong>：如果你每天都听歌、习惯跟着歌词唱，Lyricify 的逐字卡拉 OK + 灵动词岛组合体验，是官方界面给不了的。Media Session 零延迟让歌词和歌声几乎完全对齐，这一点在唱到快歌的时候差距特别明显。</li><li><strong>想折腾的开发者和极客</strong>：Premium 用户可以配置自定义 API Client、调整同步频率、微调时间差、甚至自己维护歌词导入源。整个配置过程有完整文档覆盖，踩坑成本低。</li><li><strong>移动 + 桌面双端都用的人</strong>：电脑上用 Lyricify 4 做精细管理和调校，手机上用 Lyricify Mobile 做日常看歌词，两端通过 Spotify 账号自动同步歌词数据。虽然移动端功能简化了，但跨设备歌词同步这条链路是通的。</li></ul>
 <h2>写在最后</h2>
-<p>「把歌词体验做完整」——这句写在主页上的定位，底气来自它在几个关键问题上都给出了工程化的解决方案：双通道播放信息架构解决了延迟和跨设备的矛盾，多种显示模式覆盖了不同场景的需求，Premium 分层设计让免费用户也能获得核心歌词体验。</p>
+<p>「把歌词体验做完整」——这句写在官网上的定位，底气来自它在几个关键问题上都给出了工程化的解决方案：双通道播放信息架构解决了延迟和跨设备的矛盾，多种显示模式覆盖了不同场景的需求，Premium 分层设计让免费用户也能获得核心歌词体验。</p>
 <p>如果你想深入了解完整功能矩阵，文档站里那份极其详尽的功能清单和故障排查手册，值得花一个下午通读。429 限流、Media Session 连接、Premium 订阅价值的细节，远比一篇博客能覆盖的丰富。</p>
 <p>相关资料我同步到了三个仓库：<a href="https://github.com/alipymanbu/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Lyricify" target="_blank" rel="noopener">GitHub 主库</a>、<a href="https://gitee.com/manbu1103/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Lyricify" target="_blank" rel="noopener">Gitee 镜像</a>、<a href="https://gitcode.com/qq352325405/APK/tree/main/%E4%B8%AD%E6%96%87%E7%89%88/Lyricify" target="_blank" rel="noopener">GitCode 同步库</a>，方便不同偏好的用户获取。仓库里除了软件本身的分发包，还附带了完整的中文文档目录和歌词管理工具的使用示例——开源社区维护的好处就是这些资料永远在那里，不会因为某个商业决策而消失。</p>
   </div>
