@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<title>老杨技术栈</title><subtitle>折腾软件这件事，我是认真的</subtitle><id>https://alipymanbu.github.io/</id><updated>2026-10-16T11:43:41+08:00</updated>
+<title>老杨技术栈</title><subtitle>折腾软件这件事，我是认真的</subtitle><id>https://alipymanbu.github.io/</id><updated>2026-10-16T12:12:44+08:00</updated>
 <link rel="alternate" type="text/html" href="https://alipymanbu.github.io/"/>
 <link rel="self" href="https://alipymanbu.github.io/atom.xml"/>
 <author><name>老杨</name></author>
 <entry><title>Campus 快问快答：把这张校园地图聊明白要多久</title><link href="https://alipymanbu.github.io/posts/campus-docs.html"/><id>https://alipymanbu.github.io/posts/campus-docs.html</id><updated>2026-10-16T00:00:00+08:00</updated><author><name>老杨</name></author><summary>校园社交地图 Campus 的九个高频问题：它是什么、要不要校园认证、验证码收不到怎么办、电量异常正常吗——每题先给结论再给解释，看完直接上手。</summary></entry>
+<entry><title>从一键安装到整机快照：1Panel 到底覆盖了服务器运维的哪几条线</title><link href="https://alipymanbu.github.io/posts/1panel-docs.html"/><id>https://alipymanbu.github.io/posts/1panel-docs.html</id><updated>2026-10-16T00:00:00+08:00</updated><author><name>老杨</name></author><summary>把 1Panel 的能力域按部署、建站、监控、备份四条线拆开看，每个域讲清它解决什么、亮点在哪、哪些场景用得上，也顺手点出短板和适合谁。</summary></entry>
+<entry><title>1app 深度对比：当尼日利亚本地支付都在内卷，它悄悄把路修到了二十多个国家</title><link href="https://alipymanbu.github.io/posts/1app-docs.html"/><id>https://alipymanbu.github.io/posts/1app-docs.html</id><updated>2026-10-16T00:00:00+08:00</updated><author><name>老杨</name></author><summary>从跨境汇款费率到免费实体 Visa 卡，把 1app 放进尼日利亚移动支付的完整坐标系里看——它的差异化在哪里，为这些优势又付出了什么代价。</summary></entry>
 </feed>
