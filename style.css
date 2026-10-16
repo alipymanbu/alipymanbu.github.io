@@ -1,0 +1,102 @@
+/* 老杨技术栈 —— 全站样式（换主题改这一个文件） */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  color: #2a2f36; background: #f7f8fa; line-height: 1.75; font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #2b6cb0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+/* ---- 头部 ---- */
+.site-header { background: #1f2937; color: #fff; padding: 22px 0 16px; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.site-title { color: #fff; font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+.site-title:hover { text-decoration: none; color: #93c5fd; }
+.site-nav a { color: #d1d5db; margin-left: 22px; font-size: 15px; }
+.site-nav a:hover { color: #fff; text-decoration: none; }
+.site-subtitle { color: #9ca3af; font-size: 13px; margin-top: 8px; }
+
+/* ---- 布局 ---- */
+main { padding: 32px 20px 48px; }
+.layout { display: flex; gap: 36px; align-items: flex-start; }
+.main-col { flex: 1; min-width: 0; }
+.side-col { width: 250px; flex-shrink: 0; }
+@media (max-width: 800px) { .layout { flex-direction: column; } .side-col { width: 100%; } }
+.page-title { font-size: 20px; margin-bottom: 20px; color: #1f2937; }
+
+/* ---- 文章卡片 ---- */
+.post-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  padding: 20px 24px; margin-bottom: 16px;
+  transition: box-shadow .18s ease, border-color .18s ease;
+}
+.post-card:hover { border-color: #c3d4e8; box-shadow: 0 4px 14px rgba(31, 41, 55, .07); }
+.post-meta { font-size: 13px; color: #9ca3af; display: flex; gap: 14px; margin-bottom: 6px; align-items: center; }
+.post-cat { color: #2b6cb0; background: #edf2f7; padding: 1px 10px; border-radius: 10px; }
+.post-cat:hover { text-decoration: none; background: #e2e8f0; }
+.post-title { font-size: 19px; margin-bottom: 6px; line-height: 1.45; }
+.post-title a { color: #1f2937; }
+.post-title a:hover { color: #2b6cb0; text-decoration: none; }
+.post-desc { font-size: 14px; color: #6b7280; }
+
+/* ---- 侧栏 ---- */
+.side-box { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; margin-bottom: 16px; }
+.side-box h3 { font-size: 15px; margin-bottom: 10px; color: #1f2937; }
+.cat-list { list-style: none; }
+.cat-list li { display: flex; justify-content: space-between; padding: 5px 0; font-size: 14px; }
+.cat-list li span { color: #9ca3af; }
+.side-rss { font-size: 13px; color: #6b7280; }
+
+/* ---- 分页 ---- */
+.pager { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; font-size: 14px; color: #6b7280; flex-wrap: wrap; gap: 10px; }
+.back-home { margin-top: 24px; }
+
+/* ---- 文章页 ---- */
+.post-full { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px 38px; }
+.post-head { border-bottom: 1px solid #e5e7eb; padding-bottom: 18px; margin-bottom: 24px; }
+.post-title-lg { font-size: 26px; line-height: 1.4; margin-bottom: 10px; }
+.post-body { font-size: 16px; }
+.post-body h2 { font-size: 20px; margin: 28px 0 12px; padding-left: 12px; border-left: 4px solid #2b6cb0; }
+.post-body h3 { font-size: 17px; margin: 22px 0 10px; }
+.post-body h4 { font-size: 16px; margin: 18px 0 8px; }
+.post-body p { margin: 12px 0; }
+.post-body ul, .post-body ol { margin: 12px 0 12px 24px; }
+.post-body li { margin: 5px 0; }
+.post-body blockquote {
+  border-left: 4px solid #cbd5e0; background: #f8fafc; color: #4b5563;
+  padding: 10px 16px; margin: 14px 0; border-radius: 0 6px 6px 0;
+}
+.post-body code {
+  font-family: Consolas, "Courier New", monospace; background: #edf2f7;
+  padding: 1px 6px; border-radius: 4px; font-size: 14px; color: #c0392b;
+}
+.post-body pre {
+  background: #1f2937; color: #e5e7eb; padding: 16px 18px; border-radius: 8px;
+  overflow-x: auto; margin: 14px 0; font-size: 14px; line-height: 1.6;
+}
+.post-body pre code { background: none; color: inherit; padding: 0; }
+.post-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 14px 0; display: block; border: 1px solid #e5e7eb; }
+.post-body table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 14px; }
+.post-body th, .post-body td { border: 1px solid #e5e7eb; padding: 8px 12px; text-align: left; }
+.post-body th { background: #f1f5f9; }
+.post-body hr { border: none; border-top: 1px solid #e5e7eb; margin: 22px 0; }
+.post-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 20px; font-size: 14px; flex-wrap: wrap; }
+.post-nav a { color: #2b6cb0; max-width: 44%; }
+
+/* ---- 归档 ---- */
+.archive-year { margin-bottom: 26px; }
+.archive-year-title { font-size: 18px; color: #2b6cb0; margin-bottom: 10px; }
+.archive-list { list-style: none; }
+.archive-list li { display: flex; gap: 16px; padding: 6px 0; border-bottom: 1px dashed #e5e7eb; font-size: 15px; }
+.archive-list time { color: #9ca3af; font-size: 13px; flex-shrink: 0; padding-top: 2px; }
+
+/* ---- 关于 / 404 ---- */
+.about-page { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 32px 38px; }
+.notfound { text-align: center; padding: 80px 0; color: #6b7280; }
+.notfound-code { font-size: 64px; font-weight: 700; color: #1f2937; margin-bottom: 12px; }
+
+/* ---- 页脚 ---- */
+.site-footer { background: #1f2937; color: #9ca3af; padding: 22px 0; font-size: 13px; text-align: center; }

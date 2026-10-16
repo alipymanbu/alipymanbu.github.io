@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alipymanbu.github.io/sitemap.xml
